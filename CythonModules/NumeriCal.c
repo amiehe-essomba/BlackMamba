@@ -1372,9 +1372,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyTuple_GetSlice(PyObject* src, Py_ssize_t 
 #define __Pyx_PyTuple_GetSlice(seq, start, stop)  PySequence_GetSlice(seq, start, stop)
 #endif
 
-/* None.proto */
-static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname);
-
 /* RaiseArgTupleInvalid.proto */
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
@@ -4531,6 +4528,16 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
   __pyx_v_key = 0;
 
+  /* "NumeriCal.pyx":161
+ *         list    data
+ *         str     VarName
+ *         numeric = None             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __Pyx_INCREF(Py_None);
+  __pyx_v_numeric = Py_None;
+
   /* "NumeriCal.pyx":164
  * 
  * 
@@ -4843,7 +4850,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             }
             __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_v_numeric = __pyx_t_1;
+            __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
             __pyx_t_1 = 0;
 
             /* "NumeriCal.pyx":177
@@ -5227,7 +5234,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
                   __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L27_error)
                   __Pyx_GOTREF(__pyx_t_1);
-                  __pyx_v_numeric = __pyx_t_1;
+                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
                   __pyx_t_1 = 0;
 
                   /* "NumeriCal.pyx":196
@@ -5312,7 +5319,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
                   __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L27_error)
                   __Pyx_GOTREF(__pyx_t_2);
-                  __pyx_v_numeric = __pyx_t_2;
+                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
                   __pyx_t_2 = 0;
 
                   /* "NumeriCal.pyx":199
@@ -5390,7 +5397,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
                   __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L27_error)
                   __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                  __pyx_v_numeric = __pyx_t_1;
+                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
                   __pyx_t_1 = 0;
                 }
                 __pyx_L34:;
@@ -5424,7 +5431,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
                 __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L27_error)
                 __Pyx_GOTREF(__pyx_t_1);
-                __pyx_v_numeric = __pyx_t_1;
+                __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
                 __pyx_t_1 = 0;
 
                 /* "NumeriCal.pyx":204
@@ -5785,7 +5792,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
         __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L43_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_v_numeric = __pyx_t_1;
+        __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
         __pyx_t_1 = 0;
 
         /* "NumeriCal.pyx":222
@@ -5958,7 +5965,6 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  * cdef class NUMERICAL:
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_numeric)) { __Pyx_RaiseUnboundLocalError("numeric"); __PYX_ERR(0, 228, __pyx_L1_error) }
   __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_numeric);
@@ -16212,11 +16218,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyTuple_GetSlice(
     return dest;
 }
 #endif
-
-/* None */
-static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname) {
-    PyErr_Format(PyExc_UnboundLocalError, "local variable '%s' referenced before assignment", varname);
-}
 
 /* RaiseArgTupleInvalid */
 static void __Pyx_RaiseArgtupleInvalid(
