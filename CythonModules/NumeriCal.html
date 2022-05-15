@@ -2126,8 +2126,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre><pre class="cython line score-0">&#xA0;<span class="">158</span>:         <span class="nb">int</span>     <span class="n">index</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">159</span>:         <span class="nb">list</span>    <span class="n">data</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">160</span>:         <span class="nb">str</span>     <span class="n">VarName</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">161</span>:         <span class="n">numeric</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">162</span>: </pre>
+<pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">161</span>:         <span class="n">numeric</span> <span class="o">=</span> <span class="bp">None</span></pre>
+<pre class='cython code score-1 '>  <span class='pyx_macro_api'>__Pyx_INCREF</span>(Py_None);
+  __pyx_v_numeric = Py_None;
+</pre><pre class="cython line score-0">&#xA0;<span class="">162</span>: </pre>
 <pre class="cython line score-0">&#xA0;<span class="">163</span>: </pre>
 <pre class="cython line score-13" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">164</span>:     <span class="k">if</span> <span class="n">TypeOfValue</span><span class="p">[</span> <span class="mf">0</span> <span class="p">]</span> <span class="ow">in</span> <span class="p">[</span> <span class="bp">None</span><span class="p">,</span> <span class="s">&#39;numeric&#39;</span> <span class="p">]:</span></pre>
 <pre class='cython code score-13 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_GetItemInt_List</span>(__pyx_v_TypeOfValue, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)</span>
@@ -2363,14 +2365,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             __pyx_t_8 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_t_1); if (unlikely((__pyx_t_8 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(0, 178, __pyx_L1_error)</span>
             <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_v_index = __pyx_t_8;
-</pre><pre class="cython line score-7" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">179</span>:                         <span class="n">numeric</span>     <span class="o">=</span> <span class="n">_values_</span><span class="p">[</span> <span class="n">index</span> <span class="p">]</span></pre>
-<pre class='cython code score-7 '>            if (unlikely(__pyx_v__values_ == Py_None)) {
+</pre><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">179</span>:                         <span class="n">numeric</span>     <span class="o">=</span> <span class="n">_values_</span><span class="p">[</span> <span class="n">index</span> <span class="p">]</span></pre>
+<pre class='cython code score-8 '>            if (unlikely(__pyx_v__values_ == Py_None)) {
               <span class='py_c_api'>PyErr_SetString</span>(PyExc_TypeError, "'NoneType' object is not subscriptable");
               <span class='error_goto'>__PYX_ERR(0, 179, __pyx_L1_error)</span>
             }
             __pyx_t_1 = <span class='pyx_c_api'>__Pyx_GetItemInt_List</span>(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)</span>
             <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-            __pyx_v_numeric = __pyx_t_1;
+            <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_numeric, __pyx_t_1);
             __pyx_t_1 = 0;
 </pre><pre class="cython line score-7" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">180</span>:                     <span class="k">else</span><span class="p">:</span> <span class="n">error</span>     <span class="o">=</span> <span class="n">ERRORS</span><span class="p">(</span> <span class="n">line</span> <span class="p">)</span><span class="o">.</span><span class="n">ERROR2</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
 <pre class='cython code score-7 '>          /*else*/ {
@@ -2656,10 +2658,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 /* … */
                   goto __pyx_L34;
                 }
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">195</span>:                                 <span class="n">numeric</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
-<pre class='cython code score-2 '>                  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyNumber_Float</span>(__pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L27_error)</span>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">195</span>:                                 <span class="n">numeric</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
+<pre class='cython code score-3 '>                  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyNumber_Float</span>(__pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L27_error)</span>
                   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-                  __pyx_v_numeric = __pyx_t_1;
+                  <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_numeric, __pyx_t_1);
                   __pyx_t_1 = 0;
 </pre><pre class="cython line score-41" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">196</span>:                                 <span class="n">numeric</span><span class="p">,</span> <span class="n">error</span>  <span class="o">=</span> <span class="n">FLOAT_ANALYZE</span><span class="p">(</span> <span class="n">numeric</span><span class="p">,</span> <span class="n">line</span> <span class="p">)</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">()</span></pre>
 <pre class='cython code score-41 '>                  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_line);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L27_error)</span>
@@ -2713,10 +2715,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 /* … */
                   goto __pyx_L34;
                 }
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">198</span>:                                 <span class="n">numeric</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
-<pre class='cython code score-2 '>                  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyNumber_Float</span>(__pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L27_error)</span>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">198</span>:                                 <span class="n">numeric</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
+<pre class='cython code score-3 '>                  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyNumber_Float</span>(__pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L27_error)</span>
                   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-                  __pyx_v_numeric = __pyx_t_2;
+                  <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_numeric, __pyx_t_2);
                   __pyx_t_2 = 0;
 </pre><pre class="cython line score-41" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">199</span>:                                 <span class="n">numeric</span><span class="p">,</span> <span class="n">error</span>  <span class="o">=</span> <span class="n">FLOAT_ANALYZE</span><span class="p">(</span> <span class="n">numeric</span><span class="p">,</span> <span class="n">line</span> <span class="p">)</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">()</span></pre>
 <pre class='cython code score-41 '>                  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_line);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L27_error)</span>
@@ -2764,14 +2766,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                   <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_error, ((PyObject*)__pyx_t_1));
                   __pyx_t_1 = 0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">200</span>:                             <span class="k">else</span><span class="p">:</span></pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">201</span>:                                 <span class="n">numeric</span>         <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span> <span class="p">)</span></pre>
-<pre class='cython code score-5 '>                /*else*/ {
+<pre class="cython line score-6" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">201</span>:                                 <span class="n">numeric</span>         <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span> <span class="p">)</span></pre>
+<pre class='cython code score-6 '>                /*else*/ {
                   __pyx_t_9 = <span class='pyx_c_api'>__Pyx_PyNumber_Float</span>(__pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 201, __pyx_L27_error)</span>
                   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_9);
                   __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyNumber_Int</span>(__pyx_t_9);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L27_error)</span>
                   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
                   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_9); __pyx_t_9 = 0;
-                  __pyx_v_numeric = __pyx_t_1;
+                  <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_numeric, __pyx_t_1);
                   __pyx_t_1 = 0;
                 }
                 __pyx_L34:;
@@ -2781,10 +2783,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 /* … */
               }
               __pyx_L33:;
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">203</span>:                             <span class="n">numeric</span>             <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
-<pre class='cython code score-2 '>                __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyNumber_Float</span>(__pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L27_error)</span>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">203</span>:                             <span class="n">numeric</span>             <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
+<pre class='cython code score-3 '>                __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyNumber_Float</span>(__pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L27_error)</span>
                 <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-                __pyx_v_numeric = __pyx_t_1;
+                <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_numeric, __pyx_t_1);
                 __pyx_t_1 = 0;
 </pre><pre class="cython line score-41" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">204</span>:                             <span class="n">numeric</span><span class="p">,</span> <span class="n">error</span>      <span class="o">=</span> <span class="n">FLOAT_ANALYZE</span><span class="p">(</span> <span class="n">numeric</span><span class="p">,</span> <span class="n">line</span> <span class="p">)</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">()</span></pre>
 <pre class='cython code score-41 '>                __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_line);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L27_error)</span>
@@ -2998,10 +3000,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     }
   }
   __pyx_L3:;
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">221</span>:             <span class="n">numeric</span>         <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
-<pre class='cython code score-2 '>        __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_CallOneArg</span>(((PyObject *)(&amp;PyComplex_Type)), __pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L43_error)</span>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">221</span>:             <span class="n">numeric</span>         <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span> <span class="n">Value</span> <span class="p">)</span></pre>
+<pre class='cython code score-3 '>        __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_CallOneArg</span>(((PyObject *)(&amp;PyComplex_Type)), __pyx_v_Value);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L43_error)</span>
         <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-        __pyx_v_numeric = __pyx_t_1;
+        <span class='pyx_macro_api'>__Pyx_DECREF_SET</span>(__pyx_v_numeric, __pyx_t_1);
         __pyx_t_1 = 0;
 </pre><pre class="cython line score-41" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">222</span>:             <span class="n">numeric</span><span class="p">,</span> <span class="n">error</span>  <span class="o">=</span> <span class="n">COMPLEX_ANALYZE</span><span class="p">(</span> <span class="n">numeric</span><span class="p">,</span> <span class="n">line</span> <span class="p">)</span><span class="o">.</span><span class="n">COMPLEX</span><span class="p">()</span></pre>
 <pre class='cython code score-41 '>        __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_line);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L43_error)</span>
@@ -3104,9 +3106,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
       __pyx_L45_except_error:;
 </pre><pre class="cython line score-0">&#xA0;<span class="">226</span>: </pre>
 <pre class="cython line score-0">&#xA0;<span class="">227</span>: </pre>
-<pre class="cython line score-12" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">228</span>:     <span class="k">return</span> <span class="n">numeric</span><span class="p">,</span> <span class="n">error</span></pre>
-<pre class='cython code score-12 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  if (unlikely(!__pyx_v_numeric)) { <span class='pyx_c_api'>__Pyx_RaiseUnboundLocalError</span>("numeric"); <span class='error_goto'>__PYX_ERR(0, 228, __pyx_L1_error)</span> }
+<pre class="cython line score-10" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">228</span>:     <span class="k">return</span> <span class="n">numeric</span><span class="p">,</span> <span class="n">error</span></pre>
+<pre class='cython code score-10 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_2 = <span class='py_c_api'>PyTuple_New</span>(2);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_numeric);

@@ -158,7 +158,7 @@ cdef tuple NumeriCal( dict DictValue, list variables, list _values_, int line, d
         int     index
         list    data
         str     VarName
-        numeric 
+        numeric = None
 
     
     if TypeOfValue[ 0 ] in [ None, 'numeric' ]:
