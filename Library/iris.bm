@@ -1,6 +1,0 @@
-from module statistics load Mean
-load module data
-
-v = [].random(100)
-print * Mean()
-
