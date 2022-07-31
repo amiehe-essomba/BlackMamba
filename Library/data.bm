@@ -35,7 +35,6 @@ class SUM:
 end:
 
 list = 5
-
 for i in range(0, list):
 	for i in [0:10]:
 		list += i 
