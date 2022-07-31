@@ -4,6 +4,5 @@
 
 
 ![ScreenShot](/images/create_dict.png)
-![ScreenShot](/images/if_block.png)
 
 
