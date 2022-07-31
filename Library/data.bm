@@ -1,0 +1,43 @@
+num = 1 
+
+global num
+class iris:
+	def initialize( color : string = "green" ):
+		self.color = color
+		self.size  = 1.5
+		self.name  = 'versicolor'
+		self.num   = 1
+	end:
+	def getName():
+		return name
+	end:
+	def getSize():
+		return size 
+	end:
+	def getColor():
+		return iris.getName()
+	end:
+end:
+
+class SUM:
+	class SUM1:
+		def initialize():
+			self.countries 	= ["US", "UK", "Frnace"]
+			self.num 		= num
+		end:
+		def get():
+			return 10
+		end:
+	end:
+	def Get():
+		return 10000
+	end:
+end:
+
+list = 5
+
+for i in range(0, list):
+	for i in [0:10]:
+		list += i 
+	end:
+end:

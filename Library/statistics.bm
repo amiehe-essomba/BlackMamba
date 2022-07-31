@@ -1,0 +1,19 @@
+load module data 
+
+global value 
+value = [].random(1000)
+
+def Floor( numeric : float ):
+	value = string( numeric )
+	value = value.split('.')
+	finalVal = integer( value[ 0 ] )
+	return finalVal
+end:
+
+def Mean( ):
+	return mean(value)
+end:
+
+def sin( master = 1):
+	__maths__ * "sin", master 
+end:
