@@ -446,7 +446,7 @@ class CLASSIFICATION:
         self.line       = line
     
     def CLASSIFICATION( self, modules : dict = {}, baseFileName : str = '', locked : bool = True, info : dict = {} ):
-        self.db             = db.DATA_BASE().STORAGE().copy()#DB.globalDataBase
+        self.db             = db.DATA_BASE().STORAGE().copy()
         self.lineI          = 0
         self.error          = None
         self.key            = True
@@ -503,8 +503,7 @@ class CLASSIFICATION:
         else: pass
         
         self.vars, self._values_ = [], []
-        
-     
+         
         if self.error is None:
             if self.db['global_vars']['values']:
                 for i, value in enumerate( self.db['global_vars']['values'] ):
@@ -527,7 +526,7 @@ class CLASSIFICATION:
                 self.DataBase[ 'modulesImport' ]['variables']['values'][self.index]   = self._values_.copy()
                 self.DataBase[ 'modulesImport' ]['modules'][self.index]               = info['module_main'][ 0 ]
                                 
-            if    self.db[ 'class_names' ]  :
+            if    self.db[ 'class_names']  and not self.db[ 'func_names' ]  :
                 self.star       = False
                 if  info['module_load'] is not None:
                     
@@ -621,7 +620,7 @@ class CLASSIFICATION:
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data
             
-            elif  self.db[ 'func_names' ]   :
+            elif  self.db[ 'func_names' ]  and not self.db[ 'class_names' ] :
                 self.star       = False
                 if  info['module_load'] is not None:
                     
@@ -654,11 +653,18 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'classes' ].append([])
                                                          
                             if self.star is False:
-                                self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append(info['module_load'])
-                                self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append([]) 
+                                if len(info['module']) != 4:
+                                    self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append(info['module_load'])
+                                    self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append([]) 
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ].append({} )
+                                else:
+                                    self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append([info['alias']])#(info['module_load'])
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ].append({info['alias'] : info['module_load'][0]})
+                                    self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append([]) 
                             else:
                                 self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append(self.db[ 'func_names' ][ : ])
                                 self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append([]) 
+                                self.DataBase[ 'modulesImport' ][ 'alias' ].append({} )
                             self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                         else:
                             self.index = self.DataBase[ 'modulesImport' ]['modules'].index(info['module_main'][ 0 ])
@@ -668,11 +674,18 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'class_names' ][self.index]     = []
                                                          
                             if self.star is False:
-                                self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = info['module_load'].copy()
-                                self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = []
+                                if len(info['module']) != 4:
+                                    self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = info['module_load'].copy()
+                                    self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = []
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ][self.index]               = {}
+                                else:
+                                    self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = [info['alias']]#info['module_load'].copy()
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ][self.index]               = {info['alias'] : info['module_load'][0]}
+                                    self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = []
                             else:
                                 self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = self.db[ 'func_names' ].copy()
                                 self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = []
+                                self.DataBase[ 'modulesImport' ][ 'alias' ][self.index]               = {}
     
                     else: pass
                 else:
@@ -689,6 +702,7 @@ class CLASSIFICATION:
                         self.DataBase[ 'modulesImport' ][ 'functions' ].append([])
                         self.DataBase[ 'modulesImport' ][ 'class_names' ].append( [] )
                         self.DataBase[ 'modulesImport' ][ 'classes' ].append([])
+                        self.DataBase[ 'modulesImport' ][ 'alias' ].append({})
                     else:
                         self.index = self.DataBase[ 'modulesImport' ]['modules'].index(info['module_main'][ 0 ])
                         self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.index ]      = self.data.copy()
@@ -698,11 +712,12 @@ class CLASSIFICATION:
                         self.DataBase[ 'modulesImport' ][ 'func_names' ][self.index]        = []
                         self.DataBase[ 'modulesImport' ][ 'classes' ][self.index]           = []
                         self.DataBase[ 'modulesImport' ][ 'class_names' ][self.index]       = []
+                        self.DataBase[ 'modulesImport' ][ 'alias' ][self.index]             = {}
                         
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data
              
-            elif  self.db[ 'func_names' ] and  self.db[ 'class_names' ]:
+            elif  self.db[ 'func_names' ]  and  self.db[ 'class_names' ]    :
                 self.star = False
                 if  info['module_load'] is not None:
                     for x, name in enumerate(info['module_main']):
@@ -740,11 +755,22 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'functions' ].append(self.db[ 'functions' ])
                                                          
                             if self.star is False:
-                                self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append(self.func)
-                                self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append(self.class_) 
+                                if len(info['module']) != 4:
+                                    self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append(self.func)
+                                    self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append(self.class_) 
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ].append({} )
+                                else:
+                                    if self.class_:  
+                                        self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append([info['alias']])
+                                        self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append([])
+                                    else: 
+                                        self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append([info['alias']])
+                                        self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append([])
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ].append({info['alias'] : info['module_load'][0]})
                             else:
-                                self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append(self.db[ 'func_names' ][ : ])
-                                self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append(self.db[ 'class_names' ][ : ])
+                                self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append(self.db[ 'func_names' ].copy())
+                                self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append(self.db[ 'class_names' ].copy())
+                                self.DataBase[ 'modulesImport' ][ 'alias' ].append({} )
                             self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                         else:
                             self.index = self.DataBase[ 'modulesImport' ]['modules'].index(info['module_main'][ 0 ])
@@ -754,11 +780,22 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'functions' ][ self.index ]     = self.db[ 'functions' ].copy()
                                                          
                             if self.star is False:
-                                self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = self.func.copy()
-                                self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = self.class_.copy()
+                                if len(info['module']) != 4:
+                                    self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = self.func.copy()
+                                    self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = self.class_.copy()
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ][self.index]               = {}
+                                else:
+                                    if self.class_:
+                                        self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = [info['alias']]
+                                        self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = []
+                                    else:
+                                        self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = [info['alias']]
+                                        self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = []
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ][self.index]                   = {info['alias'] : info['module_load'][0]}
                             else:
                                 self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = self.db[ 'func_names' ].copy()
                                 self.DataBase[ 'modulesImport' ][ 'mainClassNames' ][self.index ]     = self.db[ 'class_names' ].copy()
+                                self.DataBase[ 'modulesImport' ][ 'alias' ][self.index]               = {}
                         self.class_, self.func = [], []
                     else: pass
                 else:
@@ -781,6 +818,7 @@ class CLASSIFICATION:
                         self.DataBase[ 'modulesImport' ][ 'functions' ].append([])
                         self.DataBase[ 'modulesImport' ][ 'class_names' ].append( [] )
                         self.DataBase[ 'modulesImport' ][ 'classes' ].append([])
+                        self.DataBase[ 'modulesImport' ][ 'alias' ].append({})
                     else:
                         self.index = self.DataBase[ 'modulesImport' ]['modules'].index(info['module_main'][ 0 ])
                         self.DataBase[ 'modulesImport' ][ 'modulesLoadC' ][self.index ]  = self.data1.copy()
@@ -791,6 +829,7 @@ class CLASSIFICATION:
                         self.DataBase[ 'modulesImport' ][ 'func_names' ][self.index]        = []
                         self.DataBase[ 'modulesImport' ][ 'classes' ][self.index]           = []
                         self.DataBase[ 'modulesImport' ][ 'class_names' ][self.index]       = []
+                        self.DataBase[ 'modulesImport' ][ 'alias' ][self.index]             = {}
                         
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data1

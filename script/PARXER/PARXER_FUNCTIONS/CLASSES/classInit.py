@@ -16,14 +16,25 @@ except ImportError:
     
 
 class CLASS_TREATMENT:
-    def __init__(self, master: dict, DataBase: dict, line: int ) :
+    def __init__(self,
+                master      : dict,
+                DataBase    : dict, 
+                line        : int 
+                ) :
         self.master         = master
         self.DataBase       = DataBase 
         self.line           = line 
         self.classes        = self.DataBase[ 'classes' ] 
         self.class_names    = self.DataBase[ 'class_names' ]
          
-    def TREATMENT( self, main_names: str = '', loading: bool = False, idd1 : any = None, idd2 : any  =None, length = 3, tabulation: int = 2 ):
+    def TREATMENT( self, 
+                main_names  : str   = '', 
+                loading     : bool  = False, 
+                idd1        : any   = None, 
+                idd2        : any   = None, 
+                length      : int   = 3, 
+                tabulation  : int   = 2 
+                ):
         self.error                  = None 
         self.final_values           = None
         self.initialize_values      = None
@@ -59,9 +70,18 @@ class CLASS_TREATMENT:
                         self.my_class           = self.classes[ self.index ]
                         self.main_body          = self.my_class[ 0 ][ 0 ]
                     else:
-                        if length == 3:
+                        if   length == 3:
                             self.my_class           = self.DataBase[ 'modulesImport' ][ 'modulesLoadC' ][idd1]['classes'][idd2]
                             self.main_body          = self.my_class[ 0 ][ 0 ]
+                            
+                            for x, name in enumerate(self.DataBase['modulesImport'][ 'modulesLoadC' ][idd1]['class_names']):
+                                if name not in self.DataBase['class_names']:
+                                    self.DataBase['class_names'].append(name)
+                                    self.DataBase['classes'].append(self.DataBase['modulesImport'][ 'modulesLoadC' ][idd1]['classes'][x])
+                                else:
+                                    self.id = self.DataBase['class_names'].index(name)
+                                    self.DataBase['classes'][self.id] =  self.DataBase['modulesImport'][ 'modulesLoadC' ][idd1]['classes']
+                                    
                         elif length == 2:
                             self.my_class           = self.DataBase['modulesImport']['classes'][idd1][idd2]
                             self.main_body          = self.my_class[ 0 ][ 0 ]
@@ -663,7 +683,12 @@ class CLASS_TREATMENT:
         return self.final_values, self.value_from_db, self.initialize_values, self.error
                
 class CHECK:
-    def __init__(self, master:  str, name: str, DataBase, line: int):
+    def __init__(self, 
+                master      : str, 
+                name        : str, 
+                DataBase    : dict, 
+                line        : int
+                ):
         self.master             = master 
         self.line               = line
         self.DataBase           = DataBase
@@ -682,7 +707,12 @@ class CHECK:
         return self.key 
         
 class RUN_FUNCTION:
-    def __init__(self, DataBase:  dict, line : int, new_data_base: dict, _new_data_base_: dict ) :
+    def __init__(self, 
+                DataBase        : dict, 
+                line            : int, 
+                new_data_base   : dict, 
+                _new_data_base_ : dict 
+                ) :
         self.DataBase           = DataBase
         self.line               = line 
         self.new_data_base      = new_data_base

@@ -21,13 +21,23 @@ except ImportError:
 
 
 class FUNCTION_TREATMENT:
-    def __init__(self, master, data_base, line ):
+    def __init__(self, 
+                master      : any, 
+                data_base   : dict, 
+                line        : int 
+                ):
         self.master             = master
         self.line               = line
         self.data_base          = data_base
         self.library            = self.data_base[ 'LIB' ]
 
-    def TREATMENT(self, main_string: str, regular_expressions: dict, initialize_data: any = None, _main_ : str = '' ):
+    def TREATMENT(self, 
+                main_string         : str, 
+                regular_expressions : dict, 
+                initialize_data     : any = None, 
+                _main_              : str = '' 
+                ):
+        
         self.error                  = None
         self.final_values           = None
         self.regular_expressions    = regular_expressions
@@ -334,7 +344,10 @@ class FUNCTION_TREATMENT:
 
         return self.final_values, self.data_base[ 'no_printed_values' ], self.initialize_values, self.error
 
-    def TOTAL_TREATMENT(self, value: any, typ: str = 'def' ):
+    def TOTAL_TREATMENT(self, 
+                    value   : any, 
+                    typ     : str = 'def' 
+                    ):
         self.error      = None 
         self._result    = None 
         
@@ -349,14 +362,19 @@ class FUNCTION_TREATMENT:
             
         return self._result, self.error
 
-    def INIT_FUNCTION( self, initialize_data: any, new_data_base: dict, funcName: str = '', lib : bool = False):
+    def INIT_FUNCTION( self, 
+                    initialize_data : any, 
+                    new_data_base   : dict, 
+                    funcName        : str   = '', 
+                    lib             : bool  = False
+                    ):
         
-        new_data_base[ 'classes' ]          = self.data_base[ 'classes' ]
-        new_data_base[ 'class_names' ]      = self.data_base[ 'class_names' ]
-        new_data_base[ 'functions' ]        = self.data_base[ 'functions' ]
-        new_data_base[ 'func_names' ]       = self.data_base[ 'func_names' ]
+        new_data_base[ 'classes' ]          = self.data_base[ 'classes' ].copy()
+        new_data_base[ 'class_names' ]      = self.data_base[ 'class_names' ].copy()
+        new_data_base[ 'functions' ]        = self.data_base[ 'functions' ].copy()
+        new_data_base[ 'func_names' ]       = self.data_base[ 'func_names' ].copy()
+        new_data_base['modulesImport']      = self.data_base['modulesImport'].copy()
         
-    
         if lib == False:    
             self.idd = self.data_base[ 'func_names' ].index( funcName )
             self.mainFunction = self.data_base[ 'functions' ][ self.idd ][ funcName ][ 'sub_functions' ]
@@ -397,7 +415,6 @@ class FUNCTION_TREATMENT:
                 new_data_base[ 'variales' ]         = self.variables 
             
                 return new_data_base
-            
         else: return new_data_base 
             
     def LIBRARY(self):
@@ -456,7 +473,11 @@ class FUNCTION_TREATMENT:
                 UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
       
 class FUNCTION:
-    def __init__(self, master:list, data_base:dict, line:int):
+    def __init__(self, 
+                master      :list, 
+                data_base   :dict, 
+                line        :int
+                ):
         self.master             = master[ 0 ]
         self.line               = line
         self.data_base          = data_base
@@ -707,12 +728,20 @@ class FUNCTION:
         return self._return_,  self.error
 
 class EXTERNAL_DEF_STATEMENT:
-    def __init__(self, master: any, data_base: dict, line: int):
+    def __init__(self, 
+                master      : any, 
+                data_base   : dict, 
+                line        : int
+                ):
         self.master             = master
         self.line               = line
         self.data_base          = data_base
 
-    def DEF( self, tabulation: int,  class_name: str = '' , class_key : bool = False):
+    def DEF( self, 
+            tabulation  : int,  
+            class_name  : str   = '' , 
+            class_key   : bool  = False
+            ):
         self.if_line            = 0
         self.error              = None
         self.string             = ''
@@ -727,7 +756,7 @@ class EXTERNAL_DEF_STATEMENT:
         self.def_starage        = []
         self.store_value        = []
         ke                      = bm.fg.rbg(255,255, 0)
-        self.color              = bm.fg.blue_L
+        self.color              = bm.fg.cyan_L
         if class_key is False: pass 
         else: self.color        = bm.fg.rbg(0,255, 255)
         
@@ -896,13 +925,21 @@ class EXTERNAL_DEF_STATEMENT:
         self.data_base[ 'current_func' ]            = None
 
 class INTERNAL_DEF_STATEMENT:
-    def __init__(self, master: any, data_base: dict, line: int):
+    def __init__(self, 
+                master      : any, 
+                data_base   : dict, 
+                line        : int
+                ):
         self.master             = master
         self.line               = line
         self.data_base          = data_base
         self.analyze            = control_string.STRING_ANALYSE( self.data_base, self.line )
 
-    def DEF( self, tabulation: int,  class_name: str = '' , class_key : bool = False,):
+    def DEF( self, 
+            tabulation  : int,  
+            class_name  : str   = '' , 
+            class_key   : bool  = False
+            ):
         self.if_line            = 0
         self.error              = None
         self.string             = ''
@@ -1053,13 +1090,22 @@ class INTERNAL_DEF_STATEMENT:
         return self.error
 
 class EXTERNAL_DEF_LOOP_STATEMENT:
-    def __init__(self, master:any, data_base:dict, line:int):
+    def __init__(self, 
+                master      :any, 
+                data_base   :dict, 
+                line        :int
+                ):
         self.line                   = line
         self.master                 = master
         self.data_base              = data_base
         self.lex_par                = lexer_and_parxer 
 
-    def DEF_STATEMENT(self, tabulation : int = 1, def_list:list = None, class_name: str = '', class_key: bool = False):
+    def DEF_STATEMENT(self, 
+                    tabulation  : int   = 1, 
+                    def_list    : list  = None, 
+                    class_name  : str   = '', 
+                    class_key   : bool  = False
+                    ):
         self.error                  = None
         self.string                 = ''
         self.normal_string          = ''
@@ -1207,13 +1253,22 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
         return self.error
 
 class INTERNAL_DEF_LOOP_STATEMENT:
-    def __init__(self, master:any, data_base:dict, line:int):
+    def __init__(self, 
+                master      :any, 
+                data_base   :dict, 
+                line        :int
+                ):
         self.line                   = line
         self.master                 = master
         self.data_base              = data_base
         self.lex_par                = lexer_and_parxer
 
-    def DEF_STATEMENT(self, tabulation : int = 1, def_list:list = None, class_name: str = '', class_key: bool = False):
+    def DEF_STATEMENT(self, 
+                    tabulation  : int   = 1, 
+                    def_list    : list  = None, 
+                    class_name  : str   = '', 
+                    class_key   : bool  = False
+                    ):
         self.error                  = None
         self.string                 = ''
         self.normal_string          = ''
@@ -1306,7 +1361,11 @@ class INTERNAL_DEF_LOOP_STATEMENT:
         return self.error
 
 class UPDATE_DATA_BASE:
-    def __init__(self, values:any, variables:any, global_vars: dict):
+    def __init__(self, 
+                values      : any, 
+                variables   : any, 
+                global_vars : dict
+                ):
         self.values             = values
         self.variables          = variables
         self.global_vars        = global_vars
@@ -1334,8 +1393,7 @@ class UPDATE_DATA_BASE:
                 else: pass
         else: pass
 
-        if self.name_without_values:
-            data_base[ 'empty_values' ] = self.name_without_values
+        if self.name_without_values: data_base[ 'empty_values' ] = self.name_without_values
         else: pass
 
         data_base[ 'total_vars' ] = self.variables
@@ -1405,7 +1463,11 @@ class CHECK_TYPE_OF_DATA:
         return self.error 
 
 class SET_OPEN_FILE:
-    def __init__(self, master: dict, DataBase: dict, line: int):
+    def __init__(self,
+                master      : dict, 
+                DataBase    : dict, 
+                line        : int
+                ):
         self.DataBase       = DataBase 
         self.master         = master 
         self.line           = line 
@@ -1439,7 +1501,10 @@ class SET_OPEN_FILE:
         return self.error
 
 class LOAD:
-    def __init__(self, moduleLoadNames : list, funcName: str):
+    def __init__(self, 
+                moduleLoadNames : list, 
+                funcName        : str
+                ):
         self.moduleLoadNames        = moduleLoadNames 
         self.funcName               = funcName
         
@@ -1464,7 +1529,10 @@ class LOAD:
         
         return {'key' : self.key, 'id1' : self.id1, 'id2' : self.id2}
 
-    def INITIALIZE(self, new_data_base: dict, functions : list, ):
+    def INITIALIZE(self, 
+                new_data_base   : dict, 
+                functions       : list
+                ):
         
         for i, name in enumerate(self.moduleLoadNames):
             if name != self.funcName:
@@ -1476,7 +1544,13 @@ class LOAD:
                     new_data_base['func_names'].append(name) 
             else: pass
        
-    def GLOBAL_VARS(self, db: dict, var: dict, n : int, typ : str = 'def'):
+    def GLOBAL_VARS(self, 
+                    db  : dict, 
+                    var : dict, 
+                    n   : int, 
+                    typ : str = 'def'
+                    ):
+        
         self.vars, self.val = var['vars'][ n ], var['values'][n]
 
         if typ == 'def':

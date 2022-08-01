@@ -429,7 +429,6 @@ class Help:
         self.blue       = bm.fg.blue_L
         self.reset      = bm.init.reset
         
-        
     def name( self ):
         self.String     = ''
         l1 = "To create a variable, the first char should be in {}[a, b, ..., y, z] {}| {}[A, B, ..., Y, Z].".format(self.red, self.white, 

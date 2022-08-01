@@ -1,20 +1,18 @@
-from colorama import Fore, Style, init
-from script import  control_string
-from script.PARXER.LEXER_CONFIGURE import numeric_lexer
-
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
-me = Fore.LIGHTCYAN_EX
-le = Fore.RED
+from script                                     import control_string
+from script.PARXER.LEXER_CONFIGURE              import numeric_lexer
+from script.STDIN.LinuxSTDIN                    import bm_configure as bm
+try:
+    from CythonModules.Windows                  import fileError as fe 
+except ImportError:
+    from CythonModules.Linux                    import fileError as fe
 
 class EXTERNAL_BLOCKS:
-    def __init__(self, string: str, normal_string, data_base: dict, line: int):
+    def __init__(self, 
+                string          : str, 
+                normal_string   : str, 
+                data_base       : dict, 
+                line            : int
+                ):
         self.line           = line
         self.string         = string
         self.normal_string  = normal_string
@@ -42,12 +40,9 @@ class EXTERNAL_BLOCKS:
                         if  self.normal_string[ -1 ] == ':':
                             self.error = EXTERNAL_BLOCKS( self.string, self.normal_string, self.data_base,
                                                           self.line ).END_DEFAULT_BLOCK_TREATMENT( 3 )
-                            if self.error is None:
-                                self._return_ = 'end:'
-                            else:
-                                self.error = self.error
-                        else:
-                            self.error = ERRORS(self.line).ERROR1( 'end' )
+                            if self.error is None: self._return_ = 'end:'
+                            else: pass
+                        else: self.error = ERRORS(self.line).ERROR1( 'end' )
 
                     elif self.normal_string[ : 4 ] == 'case'    :
                         if self.normal_string[ - 1 ] == ':':
@@ -57,32 +52,27 @@ class EXTERNAL_BLOCKS:
                                 self._return_   = 'case:'
                                 self.value      = self._value_
                             else: pass
-                        else:
-                            self.error = ERRORS( self.line ).ERROR1( 'elif')
+                        else:  self.error = ERRORS( self.line ).ERROR1( 'elif')
 
                     elif self.normal_string[ : 7 ] == 'default' :
                         if self.normal_string[ - 1] == ':':
                             if self.normal_string[-1] == ':':
                                 self.error = EXTERNAL_BLOCKS(self.string, self.normal_string, self.data_base,
                                                              self.line).END_DEFAULT_BLOCK_TREATMENT( 7 )
-                                if self.error is None:
-                                    self._return_ = 'default:'
-                                else:
-                                    self.error = self.error
-                            else:
-                                self.error = ERRORS( self.line ).ERROR1( 'default' )
+                                if self.error is None:  self._return_ = 'default:'
+                                else: pass
+                            else: self.error = ERRORS( self.line ).ERROR1( 'default' )
 
                     else:  self.error = ERRORS( self.line ).ERROR4()
 
-                except IndexError:
-                    self.error = ERRORS( self.line ).ERROR0( self.normal_string )
+                except IndexError:  self.error = ERRORS( self.line ).ERROR0( self.normal_string )
             else:
                 self._return_   = 'empty'
                 self.error      = None
 
         except IndexError:
-            self._return_ = 'empty'
-            self.error = None
+            self._return_   = 'empty'
+            self.error      = None
 
         return self._return_, self.value, self.error
 
@@ -111,15 +101,19 @@ class EXTERNAL_BLOCKS:
         self.new_normal_string              = self.normal_string[ num : -1 ]
         self.new_normal_string, self.error  = self.control.DELETE_SPACE( self.new_normal_string )
 
-        if self.error is None:
-            self.error = ERRORS( self.line ).ERROR0( self.normal_string )
-        else:
-            self.error = None
+        if self.error is None: self.error = ERRORS( self.line ).ERROR0( self.normal_string )
+        else:  self.error = None
 
         return  self.error
 
 class INTERNAL_BLOCKS:
-    def __init__(self, string: str, normal_string, data_base: dict, line: int):
+    def __init__(self, 
+                string          : str, 
+                normal_string   : str, 
+                data_base       : dict, 
+                line            : int
+                ):
+        
         self.line           = line
         self.string         = string
         self.normal_string  = normal_string
@@ -156,7 +150,12 @@ class INTERNAL_BLOCKS:
         return self._return_, self.value, self.error
 
 class MAIN_SWITCH:
-    def __init__(self, master: str, data_base:int, line:int):
+    def __init__(self, 
+                master      : str, 
+                data_base   : dict, 
+                line        : int
+                ):
+        
         self.line               = line
         self.master             = master
         self.data_base          = data_base
@@ -172,8 +171,7 @@ class MAIN_SWITCH:
         if self.error is None:
             self._return_, self.error = self.num_lex.NUMERCAL_LEXER( self.string, self.data_base,
                                                                      self.line ).LEXER( self.master )
-        else:
-            self.error = ERRORS( self.line ).ERROR0( self.master )
+        else: self.error = ERRORS( self.line ).ERROR0( self.master )
 
         return self._return_, self.error
 
@@ -201,7 +199,12 @@ class CHECK_VALUES:
 
         return self._return_
 
-    def UPDATE(self, before: dict, after: dict, error: str):
+    def UPDATE(self, 
+            before  : dict, 
+            after   : dict, 
+            error   : str
+            ):
+        
         self.error                  = error
 
         if self.error is not None:
@@ -220,10 +223,8 @@ class CHECK_VALUES:
                     if vars in self.variables_before:
                         self.idd = self.variables_after.index( vars )
 
-                        if self.values_after[ self.idd ] == self.values_before[ self.idd ]:
-                            pass
-                        else:
-                            self.values_after[ self.idd ] = self.values_before[ self.idd ]
+                        if self.values_after[ self.idd ] == self.values_before[ self.idd ]: pass
+                        else:  self.values_after[ self.idd ] = self.values_before[ self.idd ]
                     else:
                         self.idd = self.variables_after.index( vars )
                         del self.values_after[ self.idd ]
@@ -238,10 +239,8 @@ class CHECK_VALUES:
                     if vars in self.global_vars_before:
                         self.idd = self.global_vars_after.index( vars )
 
-                        if self.global_values_after[ self.idd ] == self.global_values_before[ self.idd ]:
-                            pass
-                        else:
-                            self.global_values_after[ self.idd ] = self.global_values_before[ self.idd ]
+                        if self.global_values_after[ self.idd ] == self.global_values_before[ self.idd ]:  pass
+                        else:  self.global_values_after[ self.idd ] = self.global_values_before[ self.idd ]
                     else:
                         self.idd = self.global_vars_after.index( vars )
                         del self.global_values_after[ self.idd ]
@@ -250,7 +249,6 @@ class CHECK_VALUES:
             else:
                 self.global_values_after    = self.global_values_after
                 self.global_vars_after      = self.global_vars_after
-
 
             self.final_variables        = {
                 'vars'                  : self.variables_after,
@@ -263,28 +261,36 @@ class CHECK_VALUES:
             self.data_base[ 'variables' ]   = self.final_variables
             self.data_base[ 'global_vars' ] = self.final_global_vars
 
-        else:
-            pass
+        else:  pass
 
         return  self.error
 
 class ERRORS:
     def __init__(self, line: int):
-        self.line           = line
+        self.line       = line
+        self.cyan       = bm.fg.cyan_L
+        self.red        = bm.fg.red_L
+        self.green      = bm.fg.green_L
+        self.yellow     = bm.fg.yellow_L
+        self.magenta    = bm.fg.magenta_M
+        self.white      = bm.fg.white_L
+        self.blue       = bm.fg.blue_L
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white,
+                                                                                                       self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR1(self, string: str = 'else'):
-        error = '{}<< : >> {}is not defined at the {}end. {}line: {}{}'.format(ne, ke, ve, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> {}block. '.format(ke, 'SyntaxError', ae, string, ke) + error
+        error = '{}<< : >> {}is not defined at the {}end. {}line: {}{}'.format(self.red, self.white, self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> {}block. '.format(self.white, self.cyan, 
+                                                                                    string, self.white) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR4(self):
-        self.error = '{}{} : {}unexpected an indented block, {}line: {}{}'.format(ie, 'IndentationError',
-                                                                                  ne, we, ke, self.line)
-        return self.error
+        self.error =  fe.FileErrors( 'IndentationError' ).Errors()+'{}unexpected an indented block, {}line: {}{}'.format(self.yellow,
+                                                                                    self.white, self.yellow, self.line )
+        return self.error+self.reset
