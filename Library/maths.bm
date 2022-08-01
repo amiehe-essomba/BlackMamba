@@ -359,7 +359,7 @@ class statistics:
 end:
 
 class math:
-	soted = func( master : list)
+	sorted = func( master : list)
 		return master.sorted()
 	end:
 end:
