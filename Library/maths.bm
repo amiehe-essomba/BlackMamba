@@ -357,3 +357,9 @@ class statistics:
 		_std_ * [master, "geometric_mean"]
 	end: 
 end:
+
+class math:
+	soted = func( master : list)
+		return master.sorted()
+	end:
+end:
