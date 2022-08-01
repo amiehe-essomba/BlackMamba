@@ -3,6 +3,6 @@
 # The conditions for contributions to the development of the language will be available soon.
 
 
-![ScreenShot](/images/create_dict.png)
+![ScreenShot](/images/dict.png)
 
 
