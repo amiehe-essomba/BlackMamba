@@ -1,7 +1,7 @@
 from script.STDIN.WinSTDIN                      import stdin
 from script                                     import control_string
 from script.PARXER.LEXER_CONFIGURE              import numeric_lexer
-from script.PARXER.PARXER_FUNCTIONS._FOR_       import end_for_else,  loop_for
+from script.PARXER.PARXER_FUNCTIONS._FOR_       import end_for_else
 from script.LEXER.FUNCTION                      import function
 from script.PARXER.PARXER_FUNCTIONS._FOR_       import for_if, for_begin, for_statement
 from script.PARXER.INTERNAL_FUNCTION            import get_list
@@ -15,10 +15,11 @@ from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import def_if
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
 from script.PARXER                                      import module_load_treatment  as mlt
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
-try:
-    from CythonModules.Windows                          import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                            import fileError as fe 
+
+try:  from CythonModules.Windows                        import fileError as fe 
+except ImportError:  from CythonModules.Linux           import fileError as fe 
+try:  from CythonModules.Linux                          import loop_for
+except ImportError: from CythonModules.Windows          import loop_for
 
 
 class FUNCTION_TREATMENT:
@@ -808,7 +809,7 @@ class EXTERNAL_DEF_STATEMENT:
                                     if self.error is None:
                                         self.history.append( 'begin' )
                                         self.space = 0
-                                        self.def_starage.append( [loop, tab, self.error] )
+                                        self.def_starage.append( (loop, tab, self.error) )
 
                                     else: break             
                                 elif self.get_block == 'if:'    :
@@ -1025,7 +1026,7 @@ class INTERNAL_DEF_STATEMENT:
                                     if self.error is None:
                                         self.history.append( 'begin' )
                                         self.space = 0
-                                        self.def_starage.append( [loop, tab, self.error] )
+                                        self.def_starage.append( (loop, tab, self.error) )
 
                                     else: break 
                                 elif self.get_block == 'if:'    :

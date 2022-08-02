@@ -6,11 +6,11 @@ except ImportError:  from CythonModules.Linux   import fileError as fe
 
 class EXTERNAL_BLOCKS:
     def __init__(self, 
-                 string         : str,         # concatenated string 
-                 normal_string  : str,         # normal string 
-                 data_base      : dict,        # data base
-                 line           : int          # current line 
-                 ):
+                string         : str,         # concatenated string 
+                normal_string  : str,         # normal string 
+                data_base      : dict,        # data base
+                line           : int          # current line 
+                ):
         
         self.line           = line
         self.string         = string
@@ -30,14 +30,12 @@ class EXTERNAL_BLOCKS:
         self.value                      = None
         self.error                      = None
         self.s                          = self.string 
-
         self.string                     = self.string[ self.back_end : ]
         self.normal_string              = self.normal_string[ self.back_end : ]
 
         try:
             self.string, self.error         = self.control.DELETE_SPACE( self.string )
             self.normal_string, self.error  = self.control.DELETE_SPACE( self.normal_string )
-
             if self.error is None:
                 try:
                     if   self.normal_string[ : 3 ] == 'end'  :

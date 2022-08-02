@@ -354,7 +354,8 @@ class FINAL_LEXER:
                                 if _type_ in self.type_accepted:
                                     self._return_, self.error = self.return_.RETURN(self.master, self.data_base,
                                                                                     self.line).RETURN( self.new_data[ 0 ] )
-                                    if self.main_lexer_storage[ 'return' ] is not None:
+                                    
+                                    if self.main_lexer_storage[ 'return' ] is None:
                                         if self.error is None: self.main_lexer_storage[ 'return' ] = self._return_
                                         else: pass
                                     else: self.error = ERRORS( self.line ).ERROR3( )

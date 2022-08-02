@@ -302,14 +302,17 @@ class INTERNAL_BLOCKS:
                 if self.key is True:
                     self._return_                = 'for:'
                     self.new_normal_string      += ':'
-                    self.lex, self.error         = partial_lexer.LEXER( self.new_normal_string, self.data_base,
+                    self.lex, self.error         = partial_lexer.LEXER( self.normal_string, self.data_base,
                                                                 self.line ).MAIN_LEXER(main_string = self.normal_string)
                     if self.error is None:
                         self._values_, self.var_name, self.operator, self.error = MAIN_FOR( self.lex, self.data_base,
                                                                             self.line).BOCKS( self.new_normal_string )
                         if self.error is None:
                             self.value = {'value' : self._values_, 'variable' : self.var_name}
-                        else: pass
+                        else: 
+                            self._error_ = fe.FileErrors( self.error  ).initError()
+                            if self._error_ not in  [ 'SyntaxError' ] : self.error = None
+                            else: pass
                     else: pass
                 else:
                     self.value = self.control.DELETE_SPACE( self.normal_string )
@@ -320,6 +323,7 @@ class INTERNAL_BLOCKS:
         except IndexError:
             if self.normal_string[ -1 ] == ':': self.error = ERRORS(self.line).ERROR0(self.normal_string)
             else:   self.error = ERRORS(self.line).ERROR1('for')
+            
 
         return self._return_, self.value, self.error
 

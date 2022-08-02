@@ -12,7 +12,6 @@ from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.PARXER                                      import parxer_assembly
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
-#from cython_modules                                     import loop_for
 try:
     from CythonModules.Linux                            import loop_for
 except ImportError:
