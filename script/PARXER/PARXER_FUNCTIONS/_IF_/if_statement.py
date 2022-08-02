@@ -407,47 +407,49 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                         
                         if self.error  is None:
                             if self.get_block   == 'begin:'  :
-                                self.error = comment.COMMENT_STATEMENT(self.master,
-                                            self.data_base, self.line).COMMENT( self.tabulation + 1)
-
-                                if self.error is None:
-                                    self.store_value.append(self.normal_string)
-                                    self.history.append( 'begin' )
-                                    self.space = 0
-
-                                else: break
-
+                                self.next_line  = j + 1
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'begin' )
+                                self.space = 0
+                                
+                                if self.history[ -1 ] in ['else', 'elif']:
+                                    if self.bool_value is True :
+                                        self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base, 
+                                                                        self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ]) 
+                                        if self.error is None: pass
+                                        else: pass
+                                    else: 
+                                        self.store_value.append( self.normal_string )
+                                        self.history.append( 'begin' )
+                                        self.space = 0
+                                else: 
+                                    self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base, 
+                                                                    self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ]) 
+                                    if self.error is None: pass
+                                    else: break
+                                
                             elif self.get_block == 'if:'     :
                                 self.next_line  = j + 1
+                                self.store_value.append(self.normal_string)
+                                self.history.append('if')
+                                self.space  = 0
                                 
                                 if self.data_base[ 'pass' ] is None: pass 
                                 else: self.keyPass = True
                                 
                                 if self.history[ -1 ] in [ 'elif', 'else' ]:
-                                    
                                     if self.bool_value is True:
                                         self.error = INTERNAL_IF_LOOP_STATEMENT ( self.master,
                                                     self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
                                                                                 self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
-                                        if self.error is None:
-                                            self.store_value.append( self.normal_string )
-                                            self.history.append( 'if' )
-                                            self.space      = 0
-                                            self.keyPass    = False
+                                        if self.error is None:  self.keyPass    = False
                                         else: break
-                                    else:
-                                        self.store_value.append( self.normal_string )
-                                        self.history.append( 'if' )
-                                        self.space = 0
+                                    else: pass
                                 else: 
-                                    
                                     self.error = INTERNAL_IF_LOOP_STATEMENT(self.master,
                                     self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
                                                                                 self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
-                                    if self.error is None:
-                                        self.store_value.append(self.normal_string)
-                                        self.history.append('if')
-                                        self.space  = 0
+                                    if self.error is None: pass
                                     else: break
                                                                    
                             elif self.get_block == 'try:'    :
@@ -466,6 +468,9 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                             elif self.get_block == 'unless:' :
                                 
                                 self.next_line  = j + 1
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'unless' )
+                                self.space = 0
                                 
                                 if self.data_base[ 'pass' ] is None: pass 
                                 else: self.keyPass = True
@@ -475,35 +480,35 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                         self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( self.master,
                                                             self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
                                                             self.loop_list[ j + 1  ], _type_ = _type_, keyPass = self.keyPass )
-                                        if self.error is None:
-                                            self.store_value.append( self.normal_string )
-                                            self.history.append( 'unless' )
-                                            self.space = 0
+                                        if self.error is None: self.keyPass    = False
                                         else: break
-                                    else:
-                                        self.store_value.append( self.normal_string )
-                                        self.history.append( 'unless' )
-                                        self.space = 0
+                                    else: pass  
                                 else: 
-                                    self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
+                                    self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( self.master,
                                                             self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
                                                             self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass )
-                                    if self.error is None:
-                                        self.store_value.append( self.normal_string )
-                                        self.history.append( 'unless' )
-                                        self.space = 0
+                                    if self.error is None: pass
                                     else: break
-                                
+                                        
                             elif self.get_block == 'switch:' :
-                                self.error = switch_statement.SWITCH_STATEMENT( self.master,
-                                            self.data_base, self.line ).SWITCH( self.value, self.tabulation + 1)
-
-                                if self.error is None:
-                                    self.store_value.append( self.normal_string )
-                                    self.history.append( 'switch' )
-                                    self.space = 0
-
-                                else: break
+                                self.next_line  = j + 1
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'begin' )
+                                self.space = 0
+                                
+                                if self.history[ -1 ] in ['else', 'elif']:
+                                    if self.bool_value is True :
+                                        self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
+                                                        self.line ).SWITCH( self.value, self.tabulation + 1, self.loop_list[ j + 1 ] )
+                                        
+                                        if self.error is None: pass
+                                        else: pass
+                                    else: pass
+                                else: 
+                                    self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
+                                                        self.line ).SWITCH( self.value, self.tabulation + 1, self.loop_list[ j + 1 ] )
+                                    if self.error is None: pass
+                                    else: break
 
                             elif self.get_block == 'empty'   :
                                 if self.space <= self.max_emtyLine: self.space += 1
@@ -1034,56 +1039,49 @@ class INTERNAL_IF_LOOP_STATEMENT:
                        
                         if self.error  is None:
                             if self.get_block   == 'begin:' :
-                                if self.bool_value is True:
-                                    self.error = comment.COMMENT_STATEMENT(self.master,
-                                                        self.data_base, self.line).COMMENT( self.tabulation + 1)
-
-                                    if self.error is None:
-                                        self.store_value.append(self.normal_string)
+                                self.next_line  = j + 1
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'begin' )
+                                self.space = 0
+                                
+                                if self.history[ -1 ] in ['else', 'elif']:
+                                    if self.bool_value is True :
+                                        self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base, 
+                                                                        self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ]) 
+                                        if self.error is None: pass
+                                        else: pass
+                                    else: 
+                                        self.store_value.append( self.normal_string )
                                         self.history.append( 'begin' )
                                         self.space = 0
-
-                                    else: break
                                 else: 
-                                    self.store_value.append(self.normal_string)
-                                    self.history.append( 'begin' )
-                                    self.space = 0
+                                    self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base, 
+                                                                    self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ]) 
+                                    if self.error is None: pass
+                                    else: break
 
                             elif self.get_block == 'if:'    :
                                 self.next_line  = j + 1
+                                self.store_value.append(self.normal_string)
+                                self.history.append('if')
+                                self.space  = 0
                                 
-                                #if self.data_base[ 'pass' ] is None: pass 
-                                #else: pass
+                                if self.data_base[ 'pass' ] is None: pass 
+                                else: self.keyPass = True
                                 
-                                self.data_base[ 'pass' ]    = None
-                                self.keyPass                = False
-                                
-                                if self.history[ -1 ] in [ 'else', 'elif' ]:
+                                if self.history[ -1 ] in [ 'elif', 'else' ]:
                                     if self.bool_value is True:
-                                        if self.data_base[ 'pass' ] is None: pass 
-                                        else: pass 
-                                        self.error = EXTERNAL_IF_LOOP_STATEMENT(  self.master,
-                                                self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                    self.loop_list[ j + 1 ], _type_ = _type_)
-
-                                        if self.error is None:
-                                            self.store_value.append( self.normal_string )
-                                            self.history.append( 'if' )
-                                            self.space = 0
+                                        self.error = EXTERNAL_IF_LOOP_STATEMENT ( self.master,
+                                                    self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
+                                                                                self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
+                                        if self.error is None:  self.keyPass    = False
                                         else: break
-                                    else:
-                                        self.store_value.append( self.normal_string )
-                                        self.history.append( 'if' )
-                                        self.space = 0
-                                else:
-                                    
-                                    self.error = EXTERNAL_IF_LOOP_STATEMENT( self.master,
-                                                self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation+1,
-                                                                self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
-                                    if self.error is None:
-                                        self.store_value.append( self.normal_string )
-                                        self.history.append( 'if' )
-                                        self.space = 0
+                                    else: pass
+                                else: 
+                                    self.error = EXTERNAL_IF_LOOP_STATEMENT(self.master,
+                                    self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
+                                                                                self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
+                                    if self.error is None: pass
                                     else: break
                                     
                             elif self.get_block == 'try:'   :
@@ -1100,54 +1098,40 @@ class INTERNAL_IF_LOOP_STATEMENT:
                                 else: break
 
                             elif self.get_block == 'unless:':
-                                self.next_line  = j + 1
-                                
-                                if self.data_base[ 'pass' ] is None: pass 
-                                else: pass
-                                
-                                if self.history[ -1 ] in [ 'else', 'elif']:
+                                if self.history[ -1 ] in [ 'else', 'elif' ]:
                                     if self.bool_value is True:
-                                        if self.value is False:
-                                            if self.value is False:
-                                                self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
-                                                                    self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
-                                                                    self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass )
-                                                if self.error is None:
-                                                    self.store_value.append( self.normal_string )
-                                                    self.history.append( 'unless' )
-                                                    self.space = 0
-                                                else: break
-                                            else:
-                                                self.store_value.append( self.normal_string )
-                                                self.history.append( 'unless' )
-                                                self.space = 0
-                                        else:
-                                            self.store_value.append( self.normal_string )
-                                            self.history.append( 'unless' )
-                                            self.space = 0
-                                    else:
-                                        self.store_value.append( self.normal_string )
-                                        self.history.append( 'unless' )
-                                        self.space = 0
-                                else:
+                                        self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
+                                                            self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
+                                                            self.loop_list[ j + 1  ], _type_ = _type_, keyPass = self.keyPass )
+                                        if self.error is None: self.keyPass    = False
+                                        else: break
+                                    else: pass  
+                                else: 
                                     self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
                                                             self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
                                                             self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass )
-                                    if self.error is None:
-                                        self.store_value.append( self.normal_string )
-                                        self.history.append( 'unless' )
-                                        self.space = 0
+                                    if self.error is None: pass
                                     else: break
                                         
                             elif self.get_block == 'switch:':
-                                self.error = switch_statement.SWITCH_STATEMENT(self.master,
-                                                self.data_base, self.line).SWITCH(self.value, self.tabulation + 1)
-
-                                if self.error is None:
-                                    self.store_value.append(self.normal_string)
-                                    self.history.append('switch')
-                                    self.space = 0
-                                else: break
+                                self.next_line  = j + 1
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'begin' )
+                                self.space = 0
+                                
+                                if self.history[ -1 ] in ['else', 'elif']:
+                                    if self.bool_value is True :
+                                        self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
+                                                        self.line ).SWITCH( self.value, self.tabulation + 1, self.loop_list[ j + 1 ] )
+                                        
+                                        if self.error is None: pass
+                                        else: pass
+                                    else: pass
+                                else: 
+                                    self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
+                                                        self.line ).SWITCH( self.value, self.tabulation + 1, self.loop_list[ j + 1 ] )
+                                    if self.error is None: pass
+                                    else: break
 
                             elif self.get_block == 'empty'  :
                                 if self.space <= self.max_emtyLine:  self.space += 1

@@ -102,14 +102,9 @@ class INTERNAL_BLOCKS:
                         else: self.error = ERRORS(self.line).ERROR1( 'if' )
 
                     elif self.normal_string[ : 3 ] == 'for'   :
-                        self._return_, self._value_, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
+                        self._return_, self.value, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
                                                                    self.data_base, self.line).FOR_BLOCK_TREATMENT()
-                        if self.error is None:
-                            self._return_   = self._return_
-                            self.value      = self._value_
-                        else:
-                            self.error = self.error
-
+                    
                     elif self.normal_string[ : 6 ] == 'unless':
                         if self.normal_string[-1] == ':':
                             self._value_, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
@@ -305,7 +300,7 @@ class INTERNAL_BLOCKS:
 
             if self.error is None:
                 if self.key is True:
-                    self._return_                = 'for'
+                    self._return_                = 'for:'
                     self.new_normal_string      += ':'
                     self.lex, self.error         = partial_lexer.LEXER( self.new_normal_string, self.data_base,
                                                                 self.line ).MAIN_LEXER(main_string = self.normal_string)

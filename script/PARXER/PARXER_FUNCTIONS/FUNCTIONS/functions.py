@@ -1,9 +1,9 @@
 from script.STDIN.WinSTDIN                      import stdin
 from script                                     import control_string
 from script.PARXER.LEXER_CONFIGURE              import numeric_lexer
-from script.PARXER.PARXER_FUNCTIONS._FOR_       import end_for_else
+from script.PARXER.PARXER_FUNCTIONS._FOR_       import end_for_else,  loop_for
 from script.LEXER.FUNCTION                      import function
-from script.PARXER.PARXER_FUNCTIONS._FOR_       import for_if, for_begin
+from script.PARXER.PARXER_FUNCTIONS._FOR_       import for_if, for_begin, for_statement
 from script.PARXER.INTERNAL_FUNCTION            import get_list
 from script.LEXER.FUNCTION                      import main
 from script.PARXER.LEXER_CONFIGURE              import lexer_and_parxer
@@ -798,6 +798,17 @@ class EXTERNAL_DEF_STATEMENT:
                                         self.history.append( 'begin' )
                                         self.space = 0
                                         self.def_starage.append( self._values_ )
+                                    else: break 
+                                if self.get_block   == 'for:'   :
+                                    self.store_value.append(self.normal_string)
+                                    self.def_starage.append( ( self.normal_string, True ) )
+                                    
+                                    loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( self.master,
+                                                                self.data_base, self.line ).FOR_STATEMENT( self.tabulation+1 )
+                                    if self.error is None:
+                                        self.history.append( 'begin' )
+                                        self.space = 0
+                                        self.def_starage.append( [loop, tab, self.error] )
 
                                     else: break             
                                 elif self.get_block == 'if:'    :
@@ -1005,6 +1016,18 @@ class INTERNAL_DEF_STATEMENT:
                                         self.def_starage.append( self._values_ )
 
                                     else: break 
+                                if self.get_block   == 'for:'   :
+                                    self.store_value.append(self.normal_string)
+                                    self.def_starage.append( ( self.normal_string, True ) )
+                                    
+                                    loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( self.master,
+                                                                self.data_base, self.line ).FOR_STATEMENT( self.tabulation+1 )
+                                    if self.error is None:
+                                        self.history.append( 'begin' )
+                                        self.space = 0
+                                        self.def_starage.append( [loop, tab, self.error] )
+
+                                    else: break 
                                 elif self.get_block == 'if:'    :
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
@@ -1181,6 +1204,35 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                 self.space = 0
 
                             else: break
+                        
+                        elif self.get_block == 'for:'    :
+                            self.next_line  = j + 1
+                            self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                            
+                            self.var_name       = self.value[ 'variable' ]
+                            self.for_values_init= self.value[ 'value' ]
+                            self.variables      = self.data_base['variables']['vars'].copy()
+                            self._values_       = self.data_base['variables']['values'].copy()
+                            
+                            if self.var_name in self.variables:
+                                self.idd = self.variables.index( self.var_name )
+                                self._values_[ self.idd ] = self.for_values_init[ 0 ]
+                                self.data_base[ 'variables' ][ 'values' ] = self._values_
+
+                            else:
+                                self.variables.append( self.var_name )
+                                self._values_.append( self.for_values_init[ 0 ] )
+                                self.data_base[ 'variables' ][ 'values' ]   = self._values_
+                                self.data_base[ 'variables' ][ 'vars' ]     = self.variables
+            
+                            self.error  = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init),
+                                                                        self.var_name, True, self.def_list[ j + 1] )
+                            if self.error is None:
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'for' )
+                                self.space = 0
+
+                            else: break
 
                         elif self.get_block == 'begin:'  :
                             self.next_line  = j + 1
@@ -1190,8 +1242,10 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'begin' )
                                 self.space = 0
-
-                            else: break
+                            else:
+                                self.after = end_for_else.CHECK_VALUES( self.data_base ).AFTER()
+                                self.error = end_for_else.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
+                                break
 
                         elif self.get_block == 'def:'    :
                             self.db = db.DATA_BASE().STORAGE().copy()
@@ -1351,6 +1405,35 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'if' )
+                                self.space = 0
+
+                            else: break
+
+                        elif self.get_block == 'for:'    :
+                            self.next_line  = j + 1
+                            self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                            
+                            self.var_name       = self.value[ 'variable' ]
+                            self.for_values_init= self.value[ 'value' ]
+                            self.variables      = self.data_base['variables']['vars'].copy()
+                            self._values_       = self.data_base['variables']['values'].copy()
+                            
+                            if self.var_name in self.variables:
+                                self.idd = self.variables.index( self.var_name )
+                                self._values_[ self.idd ] = self.for_values_init[ 0 ]
+                                self.data_base[ 'variables' ][ 'values' ] = self._values_
+
+                            else:
+                                self.variables.append( self.var_name )
+                                self._values_.append( self.for_values_init[ 0 ] )
+                                self.data_base[ 'variables' ][ 'values' ]   = self._values_
+                                self.data_base[ 'variables' ][ 'vars' ]     = self.variables
+            
+                            self.error  = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init),
+                                                                        self.var_name, True, self.def_list[ j + 1] )
+                            if self.error is None:
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'for' )
                                 self.space = 0
 
                             else: break
