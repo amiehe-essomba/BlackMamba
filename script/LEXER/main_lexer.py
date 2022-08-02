@@ -354,8 +354,10 @@ class FINAL_LEXER:
                                 if _type_ in self.type_accepted:
                                     self._return_, self.error = self.return_.RETURN(self.master, self.data_base,
                                                                                     self.line).RETURN( self.new_data[ 0 ] )
-                                    if self.error is None: self.main_lexer_storage[ 'return' ] = self._return_
-                                    else: pass
+                                    if self.main_lexer_storage[ 'return' ] is not None:
+                                        if self.error is None: self.main_lexer_storage[ 'return' ] = self._return_
+                                        else: pass
+                                    else: self.error = ERRORS( self.line ).ERROR3( )
                                 else: self.error = ERRORS( self.line ).ERROR0( self.master )
 
                             elif self.new_function[ 0 ] in [ 'class' ] :
@@ -376,7 +378,7 @@ class FINAL_LEXER:
                                 if self.error is None: self.main_lexer_storage[ 'delete' ] = True
                                 else: pass
 
-                            elif self.new_function[ 0 ] in [ 'print' ]:
+                            elif self.new_function[ 0 ] in [ 'print' ] :
                                 self.get_values, self.error = print_value.PRINT( self.new_data[ 0 ], self.data_base,
                                                                                 self.line ).PRINT( _key_ )
                                 if self.error is None: self.main_lexer_storage[ 'print' ] = self.get_values
@@ -566,6 +568,12 @@ class ERRORS:
         self._str_ = '{}type {}help( {}function_name{} ) {} for more informations. '.format(self.white, self.magenta, self.yellow,
                                                                                             self.magenta, self.white)
         error = '{}in {}<< {} >> .{}line: {}{}.\n{}'.format(self.white, self.red, string, self.white, self.yellow, self.line, self._str_)
-        self.error = fe.FileErrors( 'NameError' ).Errors() +'{}function name {}ERROR '.format(self.yellow, self.yellow) + error
+        self.error = fe.FileErrors( 'NameError' ).Errors() +'{}function name {}ERROR '.format(self.white, self.yellow) + error
+
+        return self.error+self.reset
+    
+    def ERROR3(self):
+        error = '{}line: {}{}.'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() +'{}return {}was already defined. '.format(self.cyan, self.yellow) + error
 
         return self.error+self.reset

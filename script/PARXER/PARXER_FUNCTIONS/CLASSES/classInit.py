@@ -1544,7 +1544,13 @@ class DICTIONARY:
         return self._return_, self.error     
        
 class LIST:
-    def __init__(self, DataBase: dict, line:int, master: str, function: any, FunctionInfo : list ):
+    def __init__(self, 
+                DataBase    : dict, 
+                line        : int, 
+                master      : str, 
+                function    : any, 
+                FunctionInfo: list 
+                ):
         self.master         = master
         self.function       = function
         self.FunctionInfo   = FunctionInfo[ 0 ]
@@ -2086,7 +2092,11 @@ class LIST:
         
         return self._return_, self.error
         
-    def RANDOM (self, mainName: str, mainString:  str, typ : str = 'normal')    :
+    def RANDOM (self, 
+                mainName    : str, 
+                mainString  : str, 
+                typ         : str = 'normal'
+                )    :
         self.error          = None 
         self._return_       = ''
         self.arguments      = self.FunctionInfo[ self.function ][ 'arguments' ] 
@@ -2188,7 +2198,13 @@ class LIST:
         return self._return_, self.error
 
 class TUPLE:
-    def __init__(self, DataBase: dict, line:int, master: str, function: any, FunctionInfo : list ):
+    def __init__(self, 
+                DataBase    : dict, 
+                line        : int, 
+                master      : str, 
+                function    : any, 
+                FunctionInfo: list 
+                ):
         self.master         = master
         self.function       = function
         self.FunctionInfo   = FunctionInfo[ 0 ]

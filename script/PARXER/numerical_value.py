@@ -17,7 +17,6 @@ from script.PARXER.INTERNAL_FUNCTION                import get_tuple
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from script.PARXER.PARXER_FUNCTIONS.CLASSES         import classInit 
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
-
 try:
     from CythonModules.Windows                      import fileError as fe 
 except ImportError:
@@ -1193,37 +1192,29 @@ class DICT:
                                     if keys in list( self.main_dict_value.keys() ):
                                         self.main_dict_value = self.main_dict_value[ keys ]
                                         if j != len( self.key_names ) - 1:
-                                            if type( self.main_dict_value ) == type( dict() ):
-                                                pass
+                                            if type( self.main_dict_value ) == type( dict() ): pass
                                             else:
                                                 self.error = ERRORS( self.line).ERROR3( self.main_dict_value, 'a dictionary()')
                                                 break
-                                        else:
-                                            pass
+                                        else:  pass
                                     else:
-                                        self.error = ERRORS( self.line ).ERROR5( self.main_dict_value, keys )
+                                        self.error = ERRORS( self.line ).ERROR5( self.main_dict_value.keys(), keys )
                                         break
 
                                 if self.error is None:
                                     self._return_   = self.main_dict_value
                                     self.dict_type  = type( self._return_ )
-                                else:
-                                    self.error = self.error
+                                else: pass
 
-                            else:
-                                self.error = ERRORS( self.line ).ERROR3( self.main_dict, 'a dictionary()')
+                            else: self.error = ERRORS( self.line ).ERROR3( self.main_dict, 'a dictionary()')
 
-                        else:
-                            self.error = ERRORS( self.line ).ERROR2( self.main_dict )
+                        else:  self.error = ERRORS( self.line ).ERROR2( self.main_dict )
 
-                    else:
-                        self.error = self.error
+                    else: pass
                 else:
                     self.main_dict, self.error = self.control.CHECK_NAME(self.main_dict)
-                    if self.error is None:
-                        self.error = ERRORS( self.line ).ERROR2( self.main_dict )
-                    else:
-                        self.error = self.error
+                    if self.error is None:  self.error = ERRORS( self.line ).ERROR2( self.main_dict )
+                    else: pass
 
             elif self.type == 'dictionnary' :
                 self.input = {'numeric': [ self.main_dict ], 'type': 'dictionnary' }
@@ -1234,8 +1225,7 @@ class DICT:
                     for i, keys in enumerate( self.key_names ):
                         if keys in self.names:
                             self._return_ = self._return_[ keys ]
-                            if i == len( self.key_names ) - 1:
-                                pass
+                            if i == len( self.key_names ) - 1:  pass
                             else:
                                 if type( self._return_ ) == type( dict() ):
                                     self.names = list( self._return_.keys() )
@@ -1258,8 +1248,7 @@ class DICT:
                         for i, keys in enumerate( self.key_names ):
                             if keys in self.names:
                                 self._return_ = self._return_[ keys ]
-                                if i == len(self.key_names) - 1:
-                                    pass
+                                if i == len(self.key_names) - 1:  pass
                                 else:
                                     if type(self._return_) == type(dict()):
                                         self.names = list(self._return_.keys())
@@ -1270,10 +1259,8 @@ class DICT:
                             else:
                                 self.error = ERRORS(self.line).ERROR5(self._return_, keys)
                                 break
-                    else:
-                        self.error = ERRORS( self.line ).ERROR3( self._return_, 'a dictionary()')
-                else:
-                    self.error = self.error
+                    else: self.error = ERRORS( self.line ).ERROR3( self._return_, 'a dictionary()')
+                else: pass
 
             elif self.type == 'numeric'     :
                 self.error = ERRORS( self.line ).ERROR0( main_string )
@@ -1894,7 +1881,7 @@ class FINAL_VALUE:
         elif type( self.master ) == type( list() )      :   self._return_ = '{}{}list(){}'.format(bm.fg.blue, self.yellow , bm.fg.blue)
         elif type( self.master ) == type( tuple() )     :   self._return_ = '{}{}tuple(){}'.format(bm.fg.blue, self.blue, bm.fg.blue)
         elif type( self.master ) == type( dict() )      :   self._return_ = '{}{}dictionary(){}'.format( bm.fg.blue, self.magenta, bm.fg.blue)
-        elif type( self.master ) == type( str() )       :   self._return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.blue, bm.fg.blue)
+        elif type( self.master ) == type( str() )       :   self._return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.rbg(255,140,100 ), bm.fg.blue)
         elif type( self.master ) == type( range( 1 ) )  :   self._return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
         elif type( self.master ) == type( None )        :   self._return_ = '{}{}none(){}'.format(bm.fg.blue, self.orange, bm.fg.blue)
         elif type( self.master ) in self.all_Float      :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
@@ -1912,43 +1899,30 @@ class FINAL_VALUE:
             for i, val in enumerate( self.master ):
                 result = None
                 try:
-                    if self.logical == '==':
-                        result = val == object
-                    elif self.logical == '>=':
-                        result = val >= object
-                    elif self.logical == '<=':
-                        result = val <= object
-                    elif self.logical == '!=':
-                        result = val != object
-                    elif self.logical == '<':
-                        result = val < object
-                    elif self.logical == '>':
-                        result = val > object
+                    if   self.logical == '=='   : result = val ==  object
+                    elif self.logical == '>='   : result = val >=  object
+                    elif self.logical == '<='   : result = val <=  object
+                    elif self.logical == '!='   : result = val !=  object
+                    elif self.logical == '<'    : result = val <   object
+                    elif self.logical == '>'    : result = val >   object
 
                     if result is True:
                         self.number.append( i )
-                        if out_side is False:
-                            self._return_.append( True )
-                        else:
-                            self._return_.append( val )
+                        if out_side is False: self._return_.append( True )
+                        else:  self._return_.append( val )
                     else:
-                        if out_side is False:
-                            self._return_.append( False )
-                        else:
-                            pass
+                        if out_side is False:  self._return_.append( False )
+                        else:  pass
 
                 except TypeError:
                     ob1 = FINAL_VALUE(val, self.data_base, self.line, None).CONVERSION()
                     ob2 = FINAL_VALUE(object, self.data_base, self.line, None).CONVERSION()
                     self.error = ERRORS( self.line ).ERROR7( self.logical, ob1, ob2)
                     break
-        else:
-            self.error = ERRORS( self.line ).ERROR8( self.master )
+        else:  self.error = ERRORS( self.line ).ERROR8( self.master )
 
-        if type( self.master ) == type(list()):
-            pass
-        else:
-            self._return_ = tuple( self._return_ )
+        if type( self.master ) == type(list()): pass
+        else:  self._return_ = tuple( self._return_ )
 
         return self._return_, self.number, self.error
 
@@ -2339,7 +2313,13 @@ class ERRORS:
 
         return self.error+self.reset
 
-    def ERROR5(self, string: str, key: str):
+    def ERROR5(self, string: list, key: str):
+        string = list(string)
+        if len(string) <= 4 : 
+            pass 
+        else:
+            a, b, c = string[0], string[2], string[4]
+            string  = f"[{a}, ..., {b}, ..., {c}]"
         error = '{}was not found in {}<< {} >>. {}line: {}{}'.format(self.white, self.red, string, self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'KeyError' ).Errors()+'{}<< {} >> '.format(self.cyan, key) + error
 

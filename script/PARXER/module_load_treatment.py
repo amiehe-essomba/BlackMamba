@@ -16,7 +16,11 @@ except ImportError:
     from CythonModules.Linux    import fileError as fe 
 
 class TREATMENT:
-    def __init__(self, master: dict, data_base: dict, line: int, ):
+    def __init__(self, 
+                master      : dict, 
+                data_base   : dict, 
+                line        : int 
+                ):
         self.line               = line
         self.master             = master
         self.data_base          = data_base

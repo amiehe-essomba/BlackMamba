@@ -1,4 +1,3 @@
-from colorama                   import Fore
 from script                     import control_string
 from script.LEXER               import particular_str_selection
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
@@ -6,15 +5,6 @@ try:
     from CythonModules.Windows  import fileError as fe 
 except ImportError:
     from CythonModules.Linux    import fileError as fe
-
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
 
 class FUNCTION:
     def __init__(self, master: list, data_base: dict, line: int):
@@ -48,7 +38,13 @@ class FUNCTION:
             'arguments'                 : None,
             'function_name'             : None,
             'history_of_data'           : None,
-            'sub_functions'             : []
+            'sub_functions'             : [],
+            'function_info'             : {
+                'args'                  : None,
+                'typeVars'              : None,
+                'defaultValues'         : None,
+                'description'           : None
+            }
             }
 
         if self.master[ -1 ] == ')':
@@ -309,7 +305,10 @@ class FUNCTION:
                 self.function_info[ 'value' ]       = self.data_storage
                 self.function_info[ 'type' ]        = self._type_
                 self._variable_                     = []
-
+                
+                self.function_info[ 'function_info' ]['VarsType']       = self._type_.copy()
+                self.function_info[ 'function_info' ]['defaultValues']  = self.data_storage.copy()
+                 
                 if _type_ in [ 'direct' ]:
                     for name in self.variable:
                         if name in self._variable_:
@@ -321,6 +320,9 @@ class FUNCTION:
                     if self.error is None: self.function_info[ 'arguments' ]   = self._variable_
                     else: self.error = self.error
                 else: self.function_info[ 'arguments' ] = self.variable
+                
+                self.function_info[ 'function_info' ]['args']           = self.function_info[ 'arguments' ].copy()
+                
             else: self.error = self.error
         else: self.error = ERRORS( self.line).ERROR0( main_string )
 

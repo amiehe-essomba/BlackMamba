@@ -3,7 +3,7 @@ from script                                     import control_string
 from script.PARXER.LEXER_CONFIGURE              import numeric_lexer
 from script.PARXER.PARXER_FUNCTIONS._FOR_       import end_for_else
 from script.LEXER.FUNCTION                      import function
-from script.PARXER.PARXER_FUNCTIONS._FOR_       import for_if
+from script.PARXER.PARXER_FUNCTIONS._FOR_       import for_if, for_begin
 from script.PARXER.INTERNAL_FUNCTION            import get_list
 from script.LEXER.FUNCTION                      import main
 from script.PARXER.LEXER_CONFIGURE              import lexer_and_parxer
@@ -12,12 +12,13 @@ from script.PARXER.PARXER_FUNCTIONS._IF_        import if_statement
 from script.LEXER.FUNCTION                      import print_value
 from script.DATA_BASE                           import data_base as db
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import def_if
-from script.PARXER                              import module_load_treatment  as mlt
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
+from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
+from script.PARXER                                      import module_load_treatment  as mlt
+from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 try:
-    from CythonModules.Windows  import fileError as fe 
+    from CythonModules.Windows                          import fileError as fe 
 except ImportError:
-    from CythonModules.Linux    import fileError as fe 
+    from CythonModules.Linux                            import fileError as fe 
 
 
 class FUNCTION_TREATMENT:
@@ -507,8 +508,7 @@ class FUNCTION:
         self.sub_length         = 0
 
         for value in self.values:
-            if value is not None:
-                self.sub_length += 1
+            if value is not None: self.sub_length += 1
             else: pass
 
         self.difference         = self.lenght_internal - self.sub_length
@@ -789,7 +789,18 @@ class EXTERNAL_DEF_STATEMENT:
                                     break
                                 else: pass
                             if self.error is None:
-                                if self.get_block   == 'if:'    :
+                                if self.get_block   == 'begin:' :
+                                    self.store_value.append(self.normal_string)
+                                    self.def_starage.append( ( self.normal_string, True ) )
+                                    self._values_, self.error = for_begin.COMMENT_STATEMENT( self.master, self.data_base,
+                                                                                self.line  ).COMMENT( self.tabulation + 1, self.color )
+                                    if self.error is None:
+                                        self.history.append( 'begin' )
+                                        self.space = 0
+                                        self.def_starage.append( self._values_ )
+
+                                    else: break             
+                                elif self.get_block == 'if:'    :
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
 
@@ -983,7 +994,18 @@ class INTERNAL_DEF_STATEMENT:
                                     break
                                 else: pass
                             if self.error is None:
-                                if self.get_block   == 'if:'    :
+                                if self.get_block   == 'begin:' :
+                                    self.store_value.append(self.normal_string)
+                                    self.def_starage.append( ( self.normal_string, True ) )
+                                    self._values_, self.error = for_begin.COMMENT_STATEMENT( self.master, self.data_base, 
+                                                                                            self.line  ).COMMENT( self.tabulation + 1, self.color )
+                                    if self.error is None:
+                                        self.history.append( 'begin' )
+                                        self.space = 0
+                                        self.def_starage.append( self._values_ )
+
+                                    else: break 
+                                elif self.get_block == 'if:'    :
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
 
@@ -1160,6 +1182,17 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
 
                             else: break
 
+                        elif self.get_block == 'begin:'  :
+                            self.next_line  = j + 1
+                            self.error = cmt.COMMENT_LOOP_STATEMENT( self.master, self.data_base, self.line ).COMMENT( self.tabulation + 1, 
+                                                                                                            self.def_list[ j + 1]) 
+                            if self.error is None:
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'begin' )
+                                self.space = 0
+
+                            else: break
+
                         elif self.get_block == 'def:'    :
                             self.db = db.DATA_BASE().STORAGE().copy()
                             self.next_line  = j + 1
@@ -1318,6 +1351,17 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'if' )
+                                self.space = 0
+
+                            else: break
+
+                        elif self.get_block == 'begin:'  :
+                            self.next_line  = j + 1
+                            self.error = cmt.COMMENT_LOOP_STATEMENT( self.master, self.data_base, self.line ).COMMENT( self.tabulation + 1, 
+                                                                                                            self.def_list[ j + 1]) 
+                            if self.error is None:
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'begin' )
                                 self.space = 0
 
                             else: break

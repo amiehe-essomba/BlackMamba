@@ -57,6 +57,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
 
         ############################################################################
         self.keyPass                = keyPass 
+        self.max_emtyLine           = 5
         ############################################################################
         
         for j, _string_ in enumerate(self.loop_list):
@@ -167,7 +168,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
                                     break
 
                             elif self.get_block == 'empty'      :
-                                if self.space <= 2:
+                                if self.space <= self.max_emtyLine :
                                     self.space += 1
                                 else:
                                     self.error = ERRORS( self.line ).ERROR4()
@@ -236,7 +237,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
                                     break
 
                             elif self.get_block == 'empty':
-                                if self.space <= 2: self.space += 1
+                                if self.space <= self.max_emtyLine : self.space += 1
                                 else:
                                     self.error = ERRORS( self.line ).ERROR4()
                                     break
@@ -295,6 +296,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
 
         ############################################################################
         self.keyPass                = keyPass 
+        self.max_emtyLine           = 5
         ############################################################################
         
         
@@ -407,7 +409,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
                                     break
 
                             elif self.get_block == 'empty'      :
-                                if self.space <= 2:
+                                if self.space <= self.max_emtyLine:
                                     self.space += 1
                                 else:
                                     self.error = ERRORS( self.line ).ERROR4()
@@ -476,7 +478,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
                                     break
 
                             elif self.get_block == 'empty':
-                                if self.space <= 2: self.space += 1
+                                if self.space <= self.max_emtyLine : self.space += 1
                                 else:
                                     self.error = ERRORS( self.line ).ERROR4()
                                     break

@@ -15,7 +15,7 @@ from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmt_interpreter a
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
 from script.PARXER.LEXER_CONFIGURE                      import numeric_lexer
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement, for_if, for_unless, for_switch
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment, for_begin
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import functions, def_interpreter
 from script.PARXER.PARXER_FUNCTIONS.CLASSES             import classes, class_interpreter
 from script.PARXER                                      import module_load_treatment 
@@ -330,13 +330,6 @@ class ASSEMBLY( ):
                     
                 else: pass
                 
-                
-                #if self.error is None:
-                #    self.error = switch_statement.SWITCH_STATEMENT (None, self.data_base,
-                #                                        self.line).SWITCH(self._return_, 1)
-                #else:
-                #    self.error = self.error
-
             elif self.master[ 'function' ] == 'for'     :
                 self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
                                                                 self.line ).BOCKS( main_string )
@@ -371,13 +364,15 @@ class ASSEMBLY( ):
 
                 else: self.error = self.error
 
-            else:
-                print(True)
-                print(self.master)
+            else: print(self.master)
 
         else:
             if   self.master[ 'begin'  ] is True:
-                self.error = cmt.COMMENT_STATEMENT( None, self.data_base, self.line ).COMMENT( tabulation = 1 )
+                self.newLine                   = self.line 
+                self.listTransform, self.error = for_begin.COMMENT_STATEMENT( None, self.data_base, self.newLine  ).COMMENT( tabulation = 1, color = bm.fg.rbg(255,255,255) )
+                if self.error is None:
+                    self.error = cmt.COMMENT_LOOP_STATEMENT( None, self.data_base, self.newLine ).COMMENT( 1, self.listTransform ) 
+                else: pass              
             elif self.master[ 'delete' ] is True: pass
             elif self.master[ 'global' ] is True: pass
             elif self.master[ 'print'  ] is not None: pass
@@ -396,20 +391,15 @@ class ASSEMBLY( ):
                             print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
                 else:  pass
             else:
-                #print(self.data_base['functions'] )
                 if   self.data_base[ 'current_func' ]  is not None:
                     self.error = functions.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line ).DEF( 1 )
                     if self.error is None: pass
                     else: pass
-                    #print(self.data_base['func_names'] )
                 elif self.data_base[ 'current_class' ] is not None:
                     
                     self.error = classes.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES( 1 )
                     if self.error is None: pass
                     else: pass
-                    #print(self.master['class'])
-                    #print( self.data_base['classes'])
-                    #print( self.data_base['current_class'])
                 elif self.data_base[ 'importation' ]   is not None:
                     self.modules = self.data_base[ 'importation' ] 
                     self.dataS, self.info, self.error = module_load_treatment.TREATMENT( self.modules, self.data_base, 

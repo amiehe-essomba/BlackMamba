@@ -116,7 +116,7 @@ class SHOW :
         elif self.master == type( bool() )      :   self._return_ = self.cyan
         elif self.master == type( complex() )   :   self._return_ = bm.fg.cyan
         elif self.master == type( None )        :   self._return_ = bm.fg.rbg(252, 127, 0 )
-        elif self.master == type( str() )       :   self._return_ = bm.fg.blue
+        elif self.master == type( str() )       :   self._return_ = bm.fg.rbg(255,140,100 )
         elif self.master == type( range(2) )    :   self._return_ = self.green
         elif self.master in self.all_Float      :   self._return_ = bm.fg.rbg(0, 255, 0)
         elif self.master in self.all_Int        :   self._return_ = self.red
