@@ -87,12 +87,9 @@ class LEXER:
         if self.error is None:
             self.lex, self.error = self.lexer.FINAL_LEXER( main_string,
                                         self.data_base, self.line).FINAL_LEXER(self.value, _type_=_type_, _key_=_key_)
-            if self.error is None:
-                self._return_ = self.lex
-            else:
-                self.error = self.error
-        else:
-            self.error = self.error
+            if self.error is None: self._return_ = self.lex
+            else: pass
+        else: pass
 
         return self._return_, self.error
 

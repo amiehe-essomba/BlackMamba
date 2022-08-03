@@ -72,7 +72,7 @@ class INTERNAL_BLOCKS:
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
         self.lex_parxer     = numeric_lexer
 
-    def BLOCKS(self, tabulation: int, class_name :str = '', class_key: bool = False, func_name: str='', loop = None):
+    def BLOCKS(self, tabulation: int, class_name :str = '', class_key: bool = False, func_name: str='', loop = None, inter : bool = False):
         self.err            = '{} / {}class {}{}( )'.format( bm.fg.white_L, bm.fg.red_L, bm.fg.blue_L,
                                                                                         class_name)+bm.init.reset
         self.tabulation     = tabulation
@@ -102,7 +102,7 @@ class INTERNAL_BLOCKS:
 
                     elif self.normal_string[ : 3 ] == 'for'   :
                         self._return_, self.value, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
-                                                                   self.data_base, self.line).FOR_BLOCK_TREATMENT()
+                                                                   self.data_base, self.line).FOR_BLOCK_TREATMENT( inter = inter)
                     
                     elif self.normal_string[ : 6 ] == 'unless':
                         if self.normal_string[-1] == ':':
@@ -281,7 +281,7 @@ class INTERNAL_BLOCKS:
 
         return self._return_, self.value, self.error
 
-    def FOR_BLOCK_TREATMENT(self):
+    def FOR_BLOCK_TREATMENT(self, inter : bool = False):
         self.error              = None
         self._return_           = None
         self.value              = None
@@ -303,14 +303,17 @@ class INTERNAL_BLOCKS:
                     self.new_normal_string      += ':'
                     self.lex, self.error         = partial_lexer.LEXER( self.normal_string, self.data_base,
                                                                 self.line ).MAIN_LEXER(main_string = self.normal_string)
+                    
                     if self.error is None:
                         self._values_, self.var_name, self.operator, self.error = MAIN_FOR( self.lex, self.data_base,
                                                                             self.line).BOCKS( self.new_normal_string )
                         if self.error is None:
                             self.value = {'value' : self._values_, 'variable' : self.var_name}
                         else: 
-                            self._error_ = fe.FileErrors( self.error  ).initError()
-                            if self._error_ not in  [ 'SyntaxError' ] : self.error = None
+                            if inter is False:
+                                self._error_ = fe.FileErrors( self.error  ).initError()
+                                if self._error_ not in  [ 'SyntaxError' ] : self.error = None
+                                else: pass
                             else: pass
                     else: pass
                 else:

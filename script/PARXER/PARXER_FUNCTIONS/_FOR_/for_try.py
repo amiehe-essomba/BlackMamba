@@ -1,5 +1,5 @@
 from script                                             import control_string
-from script.STDIN.WinSTDIN                              import  stdin
+from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import end_except_finaly_else
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_unless
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
@@ -68,7 +68,7 @@ class EXTERNAL_TRY_STATEMENT:
 
                         self.get_block, self.value, self.error = end_except_finaly_else.INTERNAL_BLOCKS( self.string,
                                         self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1 )
-
+                        
                         if self.error  is None:
                             if self.get_block   == 'begin:'  :
                                 self.store_value.append(self.normal_string)

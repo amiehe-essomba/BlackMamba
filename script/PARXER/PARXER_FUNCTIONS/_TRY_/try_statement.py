@@ -1096,7 +1096,8 @@ class EXTERNAL_TRY_FOR_STATEMENT:
         self._finally_key_          = False
         self.except_key             = False
         self.loop_list              = loop_list
-        self.next_line              = 0
+        self.next_line              = None
+        #self.locked                 = False
         
         ############################################################################
         self.keyPass                = keyPass
@@ -1107,6 +1108,7 @@ class EXTERNAL_TRY_FOR_STATEMENT:
             for j, _string_ in enumerate( self.loop_list ):
                 
                 if j != self.next_line:
+            
                     self.if_line                        += 1
                     self.line                           += 1
                     self.normal_string, self.active_tab = _string_
@@ -1116,8 +1118,8 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                     if self.active_tab is True:
 
                         self.get_block, self.value, self.error = end_except_finaly_else.INTERNAL_BLOCKS( self.string,
-                                        self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
-
+                                        self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1, inter = True )
+                        
                         if self.error  is None:
 
                             if self.get_block   == 'begin:'  :
@@ -1273,30 +1275,27 @@ class EXTERNAL_TRY_FOR_STATEMENT:
 
                             elif self.get_block == 'for:'    :
                                 self.next_line  = j + 1
-                                self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                                self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'for' )
                                 self.space = 0
                                 
                                 self.var_name       = self.value[ 'variable' ]
                                 self.for_values_init= self.value[ 'value' ]
-                                self.variables      = self.data_base['variables']['vars'].copy()
-                                self._values_       = self.data_base['variables']['values'].copy()
                                 
-                                if self.var_name in self.variables:
-                                    self.idd = self.variables.index( self.var_name )
-                                    self._values_[ self.idd ] = self.for_values_init[ 0 ]
-                                    self.data_base[ 'variables' ][ 'values' ] = self._values_
+                                if self.var_name in self.data_base[ 'variables' ][ 'vars' ]:
+                                    self.idd = self.data_base[ 'variables' ][ 'vars' ].index( self.var_name )
+                                    self.data_base[ 'variables' ][ 'values' ] = self.for_values_init[ 0 ]
 
                                 else:
-                                    self.variables.append( self.var_name )
-                                    self._values_.append( self.for_values_init[ 0 ] )
-                                    self.data_base[ 'variables' ][ 'values' ]   = self._values_
-                                    self.data_base[ 'variables' ][ 'vars' ]     = self.variables
+                                    self.data_base[ 'variables' ][ 'values' ].append(self.for_values_init[ 0 ])
+                                    self.data_base[ 'variables' ][ 'vars' ].append(self.var_name )
 
+                                
                                 if self.keyPass is False:
                                     self.error  = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init),
                                                                         self.var_name, True, self.loop_list[ j + 1] )
+                                    
                                     if self.error is None:    
                                         if self.active_calculations is True: pass
                                         elif self.active_calculations is False:

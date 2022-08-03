@@ -2,6 +2,7 @@ from script                                         import control_string
 from script.PARXER.LEXER_CONFIGURE                  import numeric_lexer
 from script.LEXER                                   import particular_str_selection
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
+from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import def_end
 try:
     from CythonModules.Windows                      import fileError as fe 
 except ImportError:
@@ -169,7 +170,7 @@ class INTERNAL_BLOCKS:
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
         self.lex_parxer     = numeric_lexer
 
-    def BLOCKS(self, tabulation: int):
+    def BLOCKS(self, tabulation: int, inter : bool = False):
         self.tabulation     = tabulation
         self.back_end       = self.tabulation - 1
         self._return_       = None
@@ -199,7 +200,9 @@ class INTERNAL_BLOCKS:
                             self.error = ERRORS(self.line).ERROR1( 'if' )
 
                     elif self.normal_string[ : 3 ] == 'for'   :
-                        pass
+                        self._return_, self.value, self.error = def_end.INTERNAL_BLOCKS(self.normal_string, self.normal_string,
+                                                                   self.data_base, self.line).FOR_BLOCK_TREATMENT( inter = inter)
+                        
                     elif self.normal_string[ : 6 ] == 'unless':
                         if self.normal_string[-1] == ':':
                             self._value_, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
@@ -299,6 +302,7 @@ class INTERNAL_BLOCKS:
                     elif type( self._return_ ) == type( str() )                     :   self._return_   = [ True if self._return_ else False ][ 0 ]
                     elif type( self._return_ ) == type( dict() )                    :   self._return_   = [ True if list( self._return_.keys() ) else False][ 0 ]
                 else:
+                    
                     if function is None:    pass
                     elif function in [ 'def', 'class', 'for' ]:
                         self._error_ = fe.FileErrors( self.error  ).initError()
