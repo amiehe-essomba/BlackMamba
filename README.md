@@ -4,5 +4,6 @@
 
 
 ![ScreenShot](/images/dict.png)
+![ScreenShot](/images/try.png)
 
 
