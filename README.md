@@ -2,8 +2,7 @@
 # Very easy to use 
 # The conditions for contributions to the development of the language will be available soon.
 
-
-![ScreenShot](/images/dict.png)
+How to use < try statament >
 ![ScreenShot](/images/try.png)
 
 
