@@ -82,7 +82,7 @@ class EXTERNAL_IF_STATEMENT:
                                 self.store_value.append(self.normal_string)
                                 self.loop.append( ( self.normal_string, True ) )
                                 self._values_, self.error = INTERNAL_IF_STATEMENT( self.master,
-                                            self.data_base, self.if_line ).IF_STATEMENT( self.value, self.tabulation + 1)
+                                            self.data_base, self.if_line ).IF_STATEMENT( self.value, self.tabulation + 1, _type_ = _type_)
 
                                 if self.error is None:
                                     self.history.append('if')
@@ -163,7 +163,7 @@ class EXTERNAL_IF_STATEMENT:
 
                     else:
                         self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation )
+                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function = _type_ )
 
                         if self.error is None:
                             if   self.get_block == 'end:'  :
@@ -226,7 +226,7 @@ class EXTERNAL_IF_STATEMENT:
 
                     else:
                         self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS(self.string,
-                                            self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation )
+                                            self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function = _type_  )
 
                         if self.error is None:
                             if   self.get_block == 'end:'  :
@@ -359,7 +359,7 @@ class INTERNAL_IF_STATEMENT:
                                 self.store_value.append(self.normal_string)
                                 self.loop.append( (self.normal_string, True) )
                                 self._values_, self.error = EXTERNAL_IF_STATEMENT(  self.master,
-                                        self.data_base, self.if_line).IF_STATEMENT( self.value, self.tabulation + 1)
+                                        self.data_base, self.if_line).IF_STATEMENT( self.value, self.tabulation + 1, _type_=_type_)
                                 if self.error is None:
                                     self.history.append( 'if' )
                                     self.space = 0
@@ -437,7 +437,7 @@ class INTERNAL_IF_STATEMENT:
 
                     else:
                         self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation )
+                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function=_type_ )
 
                         if self.error is None:
                             if self.get_block   == 'end:' :
@@ -497,7 +497,7 @@ class INTERNAL_IF_STATEMENT:
 
                 else:
                     self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS(self.string,
-                                self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation )
+                                self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function=_type_ )
 
                     if self.error is None:
                         if self.get_block   == 'end:' :

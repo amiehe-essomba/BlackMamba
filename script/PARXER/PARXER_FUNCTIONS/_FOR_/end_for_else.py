@@ -205,7 +205,7 @@ class INTERNAL_BLOCKS:
 
         return self._return_, self.value, self.error
 
-    def BLOCK_TREATMENT(self, num :int, function : any = None):
+    def BLOCK_TREATMENT(self, num :int, function : any = None, inter : bool = False):
         self.error                     = None
         self._return_                  = None
         self.type                      = [ type( int()), type(float()), type(complex())]
@@ -229,11 +229,13 @@ class INTERNAL_BLOCKS:
                     elif type(self._return_) == type(dict())        : self._return_ = [True if list(self._return_.keys()) else False][0]
 
                 else:
-                    if function is None: pass
-                    elif function in ['def', 'class', 'loop', 'try']:
-                        self._error_ = fe.FileErrors( self.error ).initError()
-                        if self._error_ not in [ 'SyntaxError' ]: self.error = None
-                        else: pass
+                    if inter is False:
+                        if function is None: pass
+                        elif function in ['def', 'class', 'loop', 'try']:
+                            self._error_ = fe.FileErrors( self.error ).initError()
+                            if self._error_ not in [ 'SyntaxError' ]: self.error = None
+                            else: pass
+                    else: pass
             else:   self.error = ERRORS( self.line ).ERROR0( self.normal_string )
         else:   self.error = ERRORS( self.line ).ERROR0( self.normal_string )
 

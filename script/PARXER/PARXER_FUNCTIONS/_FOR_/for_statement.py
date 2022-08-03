@@ -23,7 +23,7 @@ class EXTERNAL_FOR_STATEMENT:
         self.analyze                = control_string
         self.lex_par                = lexer_and_parxer
 
-    def FOR_STATEMENT(self, tabulation : int = 1):
+    def FOR_STATEMENT(self, tabulation : int = 1, _type_ : str = 'loop'):
         self.error                  = None
         self.string                 = ''
         self.normal_string          = ''
@@ -54,7 +54,7 @@ class EXTERNAL_FOR_STATEMENT:
                 if self.error is None:
                     if self.active_tab is True:
                         self.get_block, self.value, self.error = end_for_else.INTERNAL_BLOCKS( self.string,
-                                        self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
+                                        self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1, function = _type_ )
 
                         if self.error  is None:
 
@@ -62,7 +62,7 @@ class EXTERNAL_FOR_STATEMENT:
                                 self.store_if_values    = []
                                 self.store_if_values.append( (self.normal_string, True) )
                                 self.if_values, self.error = for_if.INTERNAL_IF_STATEMENT( self.master,
-                                        self.data_base, self.line ).IF_STATEMENT( self.tabulation + 1 )
+                                        self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1, _type_=_type_ )
 
                                 if self.error is None:
                                     self.store_value.append( self.normal_string )
