@@ -14,7 +14,7 @@ from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmt_interpreter as cmt_int
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
 from script.PARXER.LEXER_CONFIGURE                      import numeric_lexer
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement, for_if, for_unless, for_switch
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement, for_if, for_unless, for_switch, for_try
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment, for_begin
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import functions, def_interpreter
 from script.PARXER.PARXER_FUNCTIONS.CLASSES             import classes, class_interpreter
@@ -247,15 +247,12 @@ class ASSEMBLY( ):
 
             elif self.master[ 'function' ] == 'if'      :
 
-                self._return_, self.error = end_else_elif.MAIN_IF( main_string, self.data_base,
-                                                                   self.line ).BOCKS()
+                self._return_, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS()
                 if self.error is None:
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.error = for_if.EXTERNAL_IF_STATEMENT( None,
                                             self.data_base, self.line ).IF_STATEMENT( self._return_, 1)
-                    
-                    #self.error = if_statement.EXTERNAL_IF_STATEMENT( None, self.data_base,
-                    #                                    self.line ).IF_STATEMENT(self._return_, 1 )
+
                     if self.error is None:
                         self.newLine                    = self.line 
                         self.error = if_statement.EXTERNAL_IF_LOOP_STATEMENT( None , self.data_base,
@@ -379,17 +376,27 @@ class ASSEMBLY( ):
             elif self.master[ 'transformation' ] is not None: pass
             elif self.master[ 'try' ] is True:
                 self.data_base[ 'print' ] = []
-                self._, self.error = try_statement.EXTERNAL_TRY_STATEMENT(None,
-                                                    self.data_base, self.line ).TRY_STATEMENT(tabulation = 1)
+                self.newLine                    = self.line 
 
-                if self.data_base[ 'print' ] is not None:
-                    self.list_of_values = self.data_base[ 'print' ]
-                    for i, value in enumerate( self.list_of_values ):
-                        if i < len( self.list_of_values) - 1:
-                            print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
-                        else:
-                            print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
-                else:  pass
+                self.listTransform, self.error = for_try.EXTERNAL_TRY_STATEMENT( None,
+                                            self.data_base, self.newLine ).TRY_STATEMENT( tabulation = 1)
+            
+                if self.error is None:
+                    self._finally_key_, self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT(None,
+                                                        self.data_base, self.newLine ).TRY_STATEMENT(1, self.listTransform)
+                    #self._, self.error = try_statement.EXTERNAL_TRY_STATEMENT(None,
+                    #                                    self.data_base, self.line ).TRY_STATEMENT(tabulation = 1)
+                    if self.error is None:
+                        if self.data_base[ 'print' ] is not None:
+                            self.list_of_values = self.data_base[ 'print' ]
+                            for i, value in enumerate( self.list_of_values ):
+                                if i < len( self.list_of_values) - 1:
+                                    print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
+                                else:
+                                    print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
+                        else:  pass
+                    else: pass
+                else: pass
             else:
                 if   self.data_base[ 'current_func' ]  is not None:
                     self.error = functions.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line ).DEF( 1 )

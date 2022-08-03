@@ -190,7 +190,11 @@ class COMMENT_LOOP_STATEMENT:
         self.data_base              = data_base
         self.analyze                = control_string
        
-    def COMMENT(self, tabulation : int   = 0, loop_list : any   = None):
+    def COMMENT(self, 
+                tabulation  : int   = 0, 
+                loop_list   : any   = None,
+                keyPass     : bool  = False
+                ):
         
         self.error                  = None
         self.string                 = ''
@@ -217,66 +221,70 @@ class COMMENT_LOOP_STATEMENT:
         self.comment_name           = ''
         
         ############################################################################
+        self.keyPass                = keyPass
+        ############################################################################
         
-        for j, _string_ in enumerate(self.loop_list):
+        if self.keyPass is False:
+            for j, _string_ in enumerate(self.loop_list):
+                    
+                self.if_line                        += 1
+                self.line                           += 1
                 
-            self.if_line                        += 1
-            self.line                           += 1
-            
-            self.normal_string, self.active_tab = _string_
-            self.string                         = self.normal_string
+                self.normal_string, self.active_tab = _string_
+                self.string                         = self.normal_string
 
-            if self.active_tab is True:
-                self.get_block, self.value, self.error = end.INTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
+                if self.active_tab is True:
+                    self.get_block, self.value, self.error = end.INTERNAL_BLOCKS( self.string,
+                                        self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
 
-                if self.error  is None:
-                    if self.get_block == 'empty'      :
-                        if self.space <= self.max_emtyLine:
-                            self.space += 1
-                        else:
-                            self.error = ERRORS( self.line ).ERROR4()
-                            break
+                    if self.error  is None:
+                        if self.get_block == 'empty'      :
+                            if self.space <= self.max_emtyLine:
+                                self.space += 1
+                            else:
+                                self.error = ERRORS( self.line ).ERROR4()
+                                break
 
-                    elif self.get_block == 'any'      :
-                        self.store_value.append(self.normal_string)
-                        self.space = 0
+                        elif self.get_block == 'any'      :
+                            self.store_value.append(self.normal_string)
+                            self.space = 0
+                            
+                        if self.data_base[ 'pass' ] is None:
+                            self.comment_storage.append( self.value )
+                        else:pass
+                    else:  break
+                else:
+                    self.get_block, self.value, self.error = end.EXTERNAL_BLOCKS( self.string,
+                                self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation )
+
+                    if self.error is None:
+                        if self.get_block   == 'end:'   :
+                            if self.store_value:
+                                del self.store_value[ : ]
+                                del self.history[ : ]
+                                break
+                            else:
+                                self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ])
+                                break
                         
-                    if self.data_base[ 'pass' ] is None:
-                        self.comment_storage.append( self.value )
-                    else:pass
-                else:  break
-            else:
-                self.get_block, self.value, self.error = end.EXTERNAL_BLOCKS( self.string,
-                            self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation )
-
-                if self.error is None:
-                    if self.get_block   == 'end:'   :
-                        if self.store_value:
-                            del self.store_value[ : ]
-                            del self.history[ : ]
-                            break
-                        else:
-                            self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ])
-                            break
-                    
-                    elif self.get_block == 'save:'  :
-                        if self.locked is False:
-                            self.locked = True
-                            self.comment_name = self.value
-                        else:
-                            self.error = ERRORS( self.line ).ERROR3()
-                            break
-                    
-                    elif self.get_block == 'empty'  :
-                        if self.space <= self.max_emtyLine : self.space += 1
-                        else:
-                            self.error = ERRORS( self.line ).ERROR4()
-                            break
-                else: break
+                        elif self.get_block == 'save:'  :
+                            if self.locked is False:
+                                self.locked = True
+                                self.comment_name = self.value
+                            else:
+                                self.error = ERRORS( self.line ).ERROR3()
+                                break
+                        
+                        elif self.get_block == 'empty'  :
+                            if self.space <= self.max_emtyLine : self.space += 1
+                            else:
+                                self.error = ERRORS( self.line ).ERROR4()
+                                break
+                    else: break
         
-        self.error = COMMENT_TRANSFORMS( self.comment_storage, self.data_base, self.error,
+            self.error = COMMENT_TRANSFORMS( self.comment_storage, self.data_base, self.error,
                                          self.comment_name ).TRANSTORMATION()
+        else: pass 
         
         return self.error
 

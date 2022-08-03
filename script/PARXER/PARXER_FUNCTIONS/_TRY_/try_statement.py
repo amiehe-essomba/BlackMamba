@@ -1,4 +1,4 @@
-
+import cython
 from script                                         import control_string
 from script.STDIN.WinSTDIN                          import stdin
 from script.PARXER.PARXER_FUNCTIONS._TRY_           import end_except_finaly_else
@@ -9,12 +9,17 @@ from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_ import comment
 from script.PARXER.PARXER_FUNCTIONS._IF_            import if_statement
 from script.PARXER.LEXER_CONFIGURE                  import lexer_and_parxer
 from script.LEXER.FUNCTION                          import main
+from script.PARXER.PARXER_FUNCTIONS._FOR_           import end_for_else
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
 try:
     from CythonModules.Windows                      import fileError as fe 
 except ImportError:
     from CythonModules.Linux                        import fileError as fe 
+    
+try:  from CythonModules.Linux                          import loop_for
+except ImportError: from CythonModules.Windows          import loop_for
 
+@cython.cclass
 class EXTERNAL_TRY_STATEMENT:
     def __init__(self, master:any, data_base:dict, line:int):
         self.line                   = line
@@ -541,6 +546,7 @@ class EXTERNAL_TRY_STATEMENT:
 
         return self._finally_key_, self.error
 
+@cython.cclass
 class INTERNAL_TRY_STATEMENT:
     def __init__(self, master:any, data_base:dict, line:int):
         self.line                   = line
@@ -1046,6 +1052,7 @@ class INTERNAL_TRY_STATEMENT:
 
         return self._finally_key_ , self.error
 
+@cython.cclass
 class EXTERNAL_TRY_FOR_STATEMENT:
     def __init__(self, 
                 master      :any, 
@@ -1061,7 +1068,8 @@ class EXTERNAL_TRY_FOR_STATEMENT:
     def TRY_STATEMENT(self, 
                 tabulation  : int   = 1, 
                 loop_list   : list  = None, 
-                _type_      : str   = 'conditional'
+                _type_      : str   = 'conditional',
+                keyPass     : bool  = False
                 ):
         self.error                  = None
         self.locked_error           = []
@@ -1081,6 +1089,7 @@ class EXTERNAL_TRY_FOR_STATEMENT:
         self.active_tab             = None
         self.tabulation             = tabulation
         self.history                = [ 'try' ]
+        self.store_value            = [ 'try' ]
         self.color                  = bm.fg.rbg(255, 199, 0 )
         self.before                 = end_except_finaly_else.CHECK_VALUES( self.data_base ).BEFORE()
         self.finally_key            = False
@@ -1088,19 +1097,22 @@ class EXTERNAL_TRY_FOR_STATEMENT:
         self.except_key             = False
         self.loop_list              = loop_list
         self.next_line              = 0
+        
+        ############################################################################
+        self.keyPass                = keyPass
         self.max_emtyLine           = 5
-
         ############################################################################
 
-        for j, _string_ in enumerate( self.loop_list ):
-            
-            if j != self.next_line:
-                self.if_line                        += 1
-                self.line                           += 1
-                self.normal_string, self.active_tab = _string_
-                self.string                         = self.normal_string
-
-                if self.string:
+        if self.keyPass is False:
+            for j, _string_ in enumerate( self.loop_list ):
+                
+                if j != self.next_line:
+                    self.if_line                        += 1
+                    self.line                           += 1
+                    self.normal_string, self.active_tab = _string_
+                    self.string                         = self.normal_string
+                    
+                    #if self.string:
                     if self.active_tab is True:
 
                         self.get_block, self.value, self.error = end_except_finaly_else.INTERNAL_BLOCKS( self.string,
@@ -1112,63 +1124,71 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append(self.normal_string)
 
-                                self.error = comment.COMMENT_STATEMENT(self.master,
-                                            self.data_base, self.line).COMMENT( self.tabulation + 1)
+                                if self.keyPass is False:
+                                    self.error = comment.COMMENT_STATEMENT(self.master,
+                                                self.data_base, self.line).COMMENT( self.tabulation + 1, keyPass = self.keyPass)
 
-                                if self.error is None:
-                                    #################################################
+                                    if self.error is None:
+                                        #################################################
+                                        self.history.append( 'begin' )
+                                        self.space = 0
+                                        ################################################
+
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                    self.before_init, self.after, self.error)
+                                                self.error = None
+
+                                    else:
+                                        self.locked_error.append(self.error)
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                            self.before_init, self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append(self._error_)
+                                else: 
                                     self.history.append( 'begin' )
                                     self.space = 0
-                                    ################################################
-
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                self.before_init, self.after, self.error)
-                                            self.error = None
-
-                                else:
-                                    self.locked_error.append(self.error)
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                        self.before_init, self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append(self._error_)
 
                             elif self.get_block == 'if:'     :
                                 self.next_line  = j + 1
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append(self.normal_string)
 
-                                self.error = if_statement.INTERNAL_IF_LOOP_STATEMENT( self.master,
-                                            self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                    self.loop_list[ self.next_line ], _type_)
+                                if self.keyPass is False:
+                                    self.error = if_statement.INTERNAL_IF_LOOP_STATEMENT( self.master,
+                                                self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
+                                                                                        self.loop_list[ self.next_line ], _type_)
 
-                                if self.error is None:
-                                    #################################################
+                                    if self.error is None:
+                                        #################################################
+                                        self.history.append( 'if' )
+                                        self.space = 0
+                                        ################################################
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                    self.before_init, self.after, self.error)
+                                                self.error = None
+                                    else:
+                                        self.locked_error.append( self.error )
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init,self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append( self._error_ )
+                                else:
                                     self.history.append( 'if' )
                                     self.space = 0
-                                    ################################################
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                self.before_init, self.after, self.error)
-                                            self.error = None
-                                else:
-                                    self.locked_error.append( self.error )
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init,self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append( self._error_ )
 
                             elif self.get_block == 'try:'    :
                                 
@@ -1176,103 +1196,160 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append( self.normal_string )
 
-                                self._finally_key_, self.error = INTERNAL_TRY_FOR_STATEMENT( self.master,
-                                            self.data_base, self.line ).TRY_STATEMENT( self.tabulation + 1,
-                                                                                    self.loop_list[ self.next_line ], _type_ )
-                                
-                                if self.error is None:
-                                    ###############################
-                                    self.space = 0
-                                    self.history.append( 'try' )
-                                    ###############################
+                                if self.keyPass is False:
+                                    self._finally_key_, self.error = INTERNAL_TRY_FOR_STATEMENT( self.master,
+                                                self.data_base, self.line ).TRY_STATEMENT( self.tabulation + 1,
+                                                                                        self.loop_list[ self.next_line ], _type_ )
                                     
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                self.before_init, self.after, self.error)
-                                            self.error = None
-
-                                else:
-                                    if self._finally_key_ is not True:
-                                        self.locked_error.append( self.error )
-                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(self.before,
-                                                                                            self.after, self.error)
-                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                        self.get_errors.append( self._error_ )
+                                    if self.error is None:
+                                        ###############################
+                                        self.space = 0
+                                        self.history.append( 'try' )
+                                        ###############################
+                                        
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                    self.before_init, self.after, self.error)
+                                                self.error = None
 
                                     else:
-                                        self.locked_error.append( self.error )
-                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                        self.get_errors.append( self._error_ )
+                                        if self._finally_key_ is not True:
+                                            self.locked_error.append( self.error )
+                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(self.before,
+                                                                                                self.after, self.error)
+                                            self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                            self.get_errors.append( self._error_ )
+
+                                        else:
+                                            self.locked_error.append( self.error )
+                                            self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                            self.get_errors.append( self._error_ )
+                                else:
+                                    self.history.append( 'try' )
+                                    self.space = 0
                                             
                             elif self.get_block == 'unless:' :
                                 self.next_line  = j + 1
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append(self.normal_string)
 
-                                self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( self.master,
-                                            self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
-                                                                                        self.loop_list[ self.next_line ])
+                                if self.keyPass is False:
+                                    self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( self.master,
+                                                self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
+                                                                                            self.loop_list[ self.next_line ])
 
-                                if self.error is None:
-                                    #################################
+                                    if self.error is None:
+                                        #################################
+                                        self.history.append( 'unless' )
+                                        self.space = 0
+                                        #################################
+                                        
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                    self.before_init, self.after, self.error)
+                                                self.error = None
+
+                                    else:
+                                        self.locked_error.append(self.error)
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                            self.before_init, self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append(self._error_)
+                                else:
                                     self.history.append( 'unless' )
                                     self.space = 0
-                                    #################################
-                                    
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                self.before_init, self.after, self.error)
-                                            self.error = None
+
+                            elif self.get_block == 'for:'    :
+                                self.next_line  = j + 1
+                                self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'for' )
+                                self.space = 0
+                                
+                                self.var_name       = self.value[ 'variable' ]
+                                self.for_values_init= self.value[ 'value' ]
+                                self.variables      = self.data_base['variables']['vars'].copy()
+                                self._values_       = self.data_base['variables']['values'].copy()
+                                
+                                if self.var_name in self.variables:
+                                    self.idd = self.variables.index( self.var_name )
+                                    self._values_[ self.idd ] = self.for_values_init[ 0 ]
+                                    self.data_base[ 'variables' ][ 'values' ] = self._values_
 
                                 else:
-                                    self.locked_error.append(self.error)
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                        self.before_init, self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append(self._error_)
+                                    self.variables.append( self.var_name )
+                                    self._values_.append( self.for_values_init[ 0 ] )
+                                    self.data_base[ 'variables' ][ 'values' ]   = self._values_
+                                    self.data_base[ 'variables' ][ 'vars' ]     = self.variables
+
+                                if self.keyPass is False:
+                                    self.error  = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init),
+                                                                        self.var_name, True, self.loop_list[ j + 1] )
+                                    if self.error is None:    
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init, self.after, self.error)
+                                                self.error = None
+                                    else: 
+                                        self.locked_error.append(self.error)
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                            self.before_init, self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append(self._error_)
+                                else: pass 
 
                             elif self.get_block == 'switch:' :
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append(self.normal_string)
 
-                                self.error = switch_statement.SWITCH_STATEMENT( self.master,
-                                            self.data_base, self.line ).SWITCH( self.value, self.tabulation + 1)
+                                if self.keyPass is False:
+                                    self.error = switch_statement.SWITCH_STATEMENT( self.master,
+                                                self.data_base, self.line ).SWITCH( self.value, self.tabulation + 1)
 
-                                if self.error is None:
-                                    #################################
+                                    if self.error is None:
+                                        #################################
+                                        self.history.append( 'switch' )
+                                        self.space = 0
+                                        #################################
+
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                    self.before_init, self.after, self.error)
+                                                self.error = None
+
+                                    else:
+                                        self.locked_error.append(self.error)
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                            self.before_init, self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append(self._error_)
+                                else:
                                     self.history.append( 'switch' )
                                     self.space = 0
-                                    #################################
-
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                self.before_init, self.after, self.error)
-                                            self.error = None
-
-                                else:
-                                    self.locked_error.append(self.error)
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                        self.before_init, self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append(self._error_)
 
                             elif self.get_block == 'empty'   :
                                 if self.space <= self.max_emtyLine : self.space += 1
@@ -1284,28 +1361,29 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                 self.before_init = end_except_finaly_else.CHECK_VALUES( self.data_base ).BEFORE()
                                 self.store_value.append( self.normal_string )
 
-                                self.error = self.lex_par.LEXER_AND_PARXER( self.value, self.data_base,
-                                                                self.line ).ANALYZE( _id_ = 1, _type_ = _type_)
-                                if self.error is None:
-                                    self.space = 0
+                                if self.data_base[ 'pass' ] is None:
+                                    self.error = self.lex_par.LEXER_AND_PARXER( self.value, self.data_base,
+                                                                    self.line ).ANALYZE( _id_ = 1, _type_ = _type_)
+                                    if self.error is None:
+                                        self.space = 0
 
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init, self.after, self.error)
-                                            self.error = None
-
-                                else:
-                                    self.locked_error.append( self.error )
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init,self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append( self._error_ )
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init, self.after, self.error)
+                                                self.error = None
+                                    else:
+                                        self.locked_error.append( self.error )
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init,self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append( self._error_ )
+                                else: self.keyPass = True
 
                         else: break
                     else:
@@ -1355,6 +1433,9 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                                         self.active_calculations = True
                                                     else: self.active_calculations = False
                                                 else: self.active_calculations = True
+                                                
+                                        self.data_base[ 'pass' ]    = None
+                                        self.keyPass                = False
 
                                     else:
                                         self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ])
@@ -1379,6 +1460,9 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                                                                 self.before, self.after, self.error)
                                             self.error = None
                                         else:  pass
+                                        
+                                        self.data_base[ 'pass' ]    = None
+                                        self.keyPass                = False
                                     else:
                                         self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ] )
                                         break
@@ -1394,26 +1478,28 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                 self.error = ERRORS( self.line ).ERROR4()
                                 break
                         else: break
-                else: pass
-            else:
-                self.if_line        += 1
-                self.line           += 1
-                self.next_line      = None
+                    #pass
+                else:
+                    self.if_line        += 1
+                    self.line           += 1
+                    self.next_line      = None
 
-        if self.error is None:
-            if self.get_errors:
-                self.error = self.locked_error[ 0 ]
-                if self.finally_key is False :# and self._finally_key_ is None:
-                    self.after = end_except_finaly_else.CHECK_VALUES( self.data_base ).AFTER()
-                    self.error = end_except_finaly_else.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after,
-                                                                                            self.error )
-                else: self._finally_key_ = self.finally_key
-            else: pass
-        else:pass
+            if self.error is None:
+                if self.get_errors:
+                    self.error = self.locked_error[ 0 ]
+                    if self.finally_key is False :# and self._finally_key_ is None:
+                        self.after = end_except_finaly_else.CHECK_VALUES( self.data_base ).AFTER()
+                        self.error = end_except_finaly_else.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after,
+                                                                                                self.error )
+                    else: self._finally_key_ = self.finally_key
+                else: pass
+            else:pass
+        else: pass
 
         ############################################################################
         return self._finally_key_, self.error
 
+@cython.cclass
 class INTERNAL_TRY_FOR_STATEMENT:
     def __init__(self, 
                 master      : any, 
@@ -1428,9 +1514,11 @@ class INTERNAL_TRY_FOR_STATEMENT:
         self.lex_par                = lexer_and_parxer
 
     def TRY_STATEMENT(self, 
-                tabulation  :int, 
-                loop_list   :list, 
-                _type_      : str   = 'conditional'):
+                tabulation  : int, 
+                loop_list   : list, 
+                _type_      : str  = 'conditional',
+                keyPass     : bool = False
+                ):
         
         self.error                  = None
         self.locked_error           = []
@@ -1450,6 +1538,7 @@ class INTERNAL_TRY_FOR_STATEMENT:
         self.active_tab             = None
         self.tabulation             = tabulation
         self.history                = [ 'try' ]
+        self.store_value            = [ 'try' ]
         self.color                  = bm.fg.rbg(0, 255, 255 )
         self.before                 = end_except_finaly_else.CHECK_VALUES( self.data_base ).BEFORE()
         self.finally_key            = False
@@ -1457,19 +1546,22 @@ class INTERNAL_TRY_FOR_STATEMENT:
         self.except_key             = False
         self.loop_list              = loop_list
         self.next_line              = 0
-        self.max_emtyLine           = 5
 
         ############################################################################
+        self.keyPass                = keyPass
+        self.max_emtyLine           = 5
+        ############################################################################
 
-        for j, _string_ in enumerate( self.loop_list ):
+        if self.keyPass is False:
+            for j, _string_ in enumerate( self.loop_list ):
 
-            if j != self.next_line:
-                self.if_line                        += 1
-                self.line                           += 1
-                self.normal_string, self.active_tab = _string_
-                self.string                         = self.normal_string
+                if j != self.next_line:
+                    self.if_line                        += 1
+                    self.line                           += 1
+                    self.normal_string, self.active_tab = _string_
+                    self.string                         = self.normal_string
 
-                if self.string:
+                    #if self.string:
                     if self.active_tab is True:
                         self.get_block, self.value, self.error = end_except_finaly_else.INTERNAL_BLOCKS( self.string,
                                         self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
@@ -1479,65 +1571,73 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append( self.normal_string )
 
-                                self.error = comment.COMMENT_STATEMENT(self.master,
-                                                    self.data_base, self.line).COMMENT( self.tabulation + 1)
+                                if self.keyPass is False:
+                                    self.error = comment.COMMENT_STATEMENT(self.master,
+                                                        self.data_base, self.line).COMMENT( self.tabulation + 1, keyPass = self.keyPass)
 
-                                if self.error is None:
-                                    #################################################
+                                    if self.error is None:
+                                        #################################################
+                                        self.history.append( 'begin' )
+                                        self.space = 0
+                                        ################################################
+
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init, self.after, self.error)
+                                                self.error = None
+
+                                    else:
+                                        self.locked_error.append( self.error )
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init,self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append( self._error_ )
+                                else:
                                     self.history.append( 'begin' )
                                     self.space = 0
-                                    ################################################
-
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init, self.after, self.error)
-                                            self.error = None
-
-                                else:
-                                    self.locked_error.append( self.error )
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init,self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append( self._error_ )
 
                             elif self.get_block ==   'if:'  :
                                 self.next_line  = j + 1
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append(self.normal_string)
 
-                                self.error = if_statement.EXTERNAL_IF_LOOP_STATEMENT(  self.master,
-                                        self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                self.loop_list[ self.next_line], _type_ )
+                                if self.keyPass is False:
+                                    self.error = if_statement.EXTERNAL_IF_LOOP_STATEMENT(  self.master,
+                                            self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
+                                                                                    self.loop_list[ self.next_line], _type_ )
 
-                                if self.error is None:
-                                    #################################################
+                                    if self.error is None:
+                                        #################################################
+                                        self.history.append( 'if' )
+                                        self.space = 0
+                                        ################################################
+                                        
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init, self.after, self.error)
+                                                self.error = None
+
+                                    else:
+                                        self.locked_error.append( self.error )
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init,self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append( self._error_ )
+                                else:
                                     self.history.append( 'if' )
                                     self.space = 0
-                                    ################################################
-                                    
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init, self.after, self.error)
-                                            self.error = None
-
-                                else:
-                                    self.locked_error.append( self.error )
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init,self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append( self._error_ )
 
                             elif self.get_block == 'try:'   :
                                 self.next_line  = j + 1
@@ -1545,101 +1645,158 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append(self.normal_string)
 
-                                self._finally_key_, self.error = EXTERNAL_TRY_FOR_STATEMENT( self.master,
-                                            self.data_base, self.line ).TRY_STATEMENT( self.tabulation + 1,
-                                                                                    self.loop_list[ self.next_line ], _type_ )
-                                if self.error is None:
-                                    ################################
-                                    self.space = 0
-                                    self.history.append( 'try' )
-                                    ################################
-                                    
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init, self.after, self.error)
-                                            self.error = None
-
-                                else:
-                                    if self._finally_key_ is not True:
-                                        self.locked_error.append( self.error )
-                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(self.before,
-                                                                                            self.after, self.error)
-                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                        self.get_errors.append( self._error_ )
+                                if self.keyPass is False:
+                                    self._finally_key_, self.error = EXTERNAL_TRY_FOR_STATEMENT( self.master,
+                                                self.data_base, self.line ).TRY_STATEMENT( self.tabulation + 1,
+                                                                                        self.loop_list[ self.next_line ], _type_ )
+                                    if self.error is None:
+                                        ################################
+                                        self.space = 0
+                                        self.history.append( 'try' )
+                                        ################################
                                         
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init, self.after, self.error)
+                                                self.error = None
+
                                     else:
-                                        self.locked_error.append( self.error )
-                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                        self.get_errors.append( self._error_ )
+                                        if self._finally_key_ is not True:
+                                            self.locked_error.append( self.error )
+                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(self.before,
+                                                                                                self.after, self.error)
+                                            self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                            self.get_errors.append( self._error_ )
+                                            
+                                        else:
+                                            self.locked_error.append( self.error )
+                                            self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                            self.get_errors.append( self._error_ )
+                                else:
+                                    self.history.append( 'try' )
+                                    self.space = 0
                                                 
                             elif self.get_block == 'unless:':
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append(self.normal_string)
 
-                                self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
-                                            self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
-                                                                                        self.loop_list[ self.next_line])
+                                if self.keyPass is False:
+                                    self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
+                                                self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
+                                                                                            self.loop_list[ self.next_line])
 
-                                if self.error is None:
-                                    #################################################
+                                    if self.error is None:
+                                        #################################################
+                                        self.history.append( 'unless' )
+                                        self.space = 0
+                                        ################################################
+                                        
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init, self.after, self.error)
+                                                self.error = None
+
+                                    else:
+                                        self.locked_error.append(self.error)
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                            self.before_init, self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append(self._error_)
+                                else:
                                     self.history.append( 'unless' )
                                     self.space = 0
-                                    ################################################
-                                    
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                            self.before_init, self.after, self.error)
-                                            self.error = None
+
+                            elif self.get_block == 'for:'   :
+                                self.next_line  = j + 1
+                                self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'for' )
+                                self.space = 0
+                                
+                                self.var_name       = self.value[ 'variable' ]
+                                self.for_values_init= self.value[ 'value' ]
+                                self.variables      = self.data_base['variables']['vars'].copy()
+                                self._values_       = self.data_base['variables']['values'].copy()
+                                
+                                if self.var_name in self.variables:
+                                    self.idd = self.variables.index( self.var_name )
+                                    self._values_[ self.idd ] = self.for_values_init[ 0 ]
+                                    self.data_base[ 'variables' ][ 'values' ] = self._values_
 
                                 else:
-                                    self.locked_error.append(self.error)
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                        self.before_init, self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append(self._error_)
+                                    self.variables.append( self.var_name )
+                                    self._values_.append( self.for_values_init[ 0 ] )
+                                    self.data_base[ 'variables' ][ 'values' ]   = self._values_
+                                    self.data_base[ 'variables' ][ 'vars' ]     = self.variables
 
+                                if self.keyPass is False:
+                                    self.error  = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init),
+                                                                        self.var_name, True, self.loop_list[ j + 1] )
+                                    if self.error is None:    
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init, self.after, self.error)
+                                                self.error = None
+                                    else: 
+                                        self.locked_error.append(self.error)
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                            self.before_init, self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append(self._error_)
+                                else: pass 
+                                    
                             elif self.get_block == 'switch:':
                                 self.before_init = end_except_finaly_else.CHECK_VALUES(self.data_base).BEFORE()
                                 self.store_value.append(self.normal_string)
 
-                                self.error = switch_statement.SWITCH_STATEMENT(self.master,
-                                                self.data_base, self.line).SWITCH(self.value, self.tabulation + 1)
+                                if self.keyPass:
+                                    self.error = switch_statement.SWITCH_STATEMENT(self.master,
+                                                    self.data_base, self.line).SWITCH(self.value, self.tabulation + 1)
 
-                                if self.error is None:
-                                    #################################################
+                                    if self.error is None:
+                                        #################################################
+                                        self.history.append( 'switch' )
+                                        self.space = 0
+                                        ################################################
+
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                    self.before_init, self.after, self.error)
+                                                self.error = None
+
+                                    else:
+                                        self.locked_error.append(self.error)
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                            self.before_init, self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append(self._error_)
+                                else:
                                     self.history.append( 'switch' )
                                     self.space = 0
-                                    ################################################
-
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                self.before_init, self.after, self.error)
-                                            self.error = None
-
-                                else:
-                                    self.locked_error.append(self.error)
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                        self.before_init, self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append(self._error_)
 
                             elif self.get_block == 'empty'  :
                                 if self.space <= self.max_emtyLine : self.space += 1
@@ -1650,27 +1807,29 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                 self.before_init = end_except_finaly_else.CHECK_VALUES( self.data_base ).BEFORE()
                                 self.store_value.append( self.normal_string )
 
-                                self.error = self.lex_par.LEXER_AND_PARXER(self.value, self.data_base,
-                                                        self.line).ANALYZE(_id_ = 1, _type_ = _type_)
+                                if self.data_base[ 'pass' ] is None:
+                                    self.error = self.lex_par.LEXER_AND_PARXER(self.value, self.data_base,
+                                                            self.line).ANALYZE(_id_ = 1, _type_ = _type_)
 
-                                if self.error is None:
-                                    self.space = 0
-                                    if self.active_calculations is True: pass
-                                    elif self.active_calculations is False:
-                                        if not self.get_errors: pass
-                                        else:
-                                            self.error = True
-                                            self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                            self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
-                                                                        self.before_init, self.after, self.error)
-                                            self.error = None
-                                else:
-                                    self.locked_error.append( self.error )
-                                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                    if self.error is None:
+                                        self.space = 0
+                                        if self.active_calculations is True: pass
+                                        elif self.active_calculations is False:
+                                            if not self.get_errors: pass
+                                            else:
+                                                self.error = True
+                                                self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                                self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
                                                                             self.before_init, self.after, self.error)
-                                    self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
-                                    self.get_errors.append( self._error_ )
+                                                self.error = None
+                                    else:
+                                        self.locked_error.append( self.error )
+                                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(
+                                                                                self.before_init, self.after, self.error)
+                                        self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
+                                        self.get_errors.append( self._error_ )
+                                else: self.keyPass = True
 
                         else: break
                     else:
@@ -1720,6 +1879,8 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                                     else: self.active_calculations = False
                                                 else: self.active_calculations = True
 
+                                        self.data_base[ 'pass' ]    = None
+                                        self.keyPass                = False
                                     else:
                                         self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ] )
                                         break
@@ -1743,6 +1904,9 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                                 self.before, self.after, self.error)
                                             self.error = None
                                         else: pass
+                                        
+                                        self.data_base[ 'pass' ]    = None
+                                        self.keyPass                = False
                                     else:
                                         self.error = ERRORS(self.line).ERROR2(self.history[-1])
                                         break
@@ -1758,22 +1922,23 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                 self.error = ERRORS(self.line).ERROR4()
                                 break
                         else:  break
-                else: pass
-            else:
-                self.if_line        += 1
-                self.line           += 1
-                self.next_line      = None
+                    #else: pass
+                else:
+                    self.if_line        += 1
+                    self.line           += 1
+                    self.next_line      = None
 
-        if self.error is None:
-            if self.get_errors:
-                self.error = self.locked_error[ 0 ]
-                if self.finally_key is False:
-                    self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
-                    self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(self.before, self.after,
-                                                                                            self.error)
-                else: self._finally_key_ = self.finally_key
-            else: pass
-        else:pass
+            if self.error is None:
+                if self.get_errors:
+                    self.error = self.locked_error[ 0 ]
+                    if self.finally_key is False:
+                        self.after = end_except_finaly_else.CHECK_VALUES(self.data_base).AFTER()
+                        self.error = end_except_finaly_else.CHECK_VALUES(self.data_base).UPDATE(self.before, self.after,
+                                                                                                self.error)
+                    else: self._finally_key_ = self.finally_key
+                else: pass
+            else:pass
+        else: pass
 
         ############################################################################
         

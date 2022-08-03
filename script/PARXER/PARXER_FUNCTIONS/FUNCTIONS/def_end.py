@@ -2,7 +2,6 @@ from script                                     import control_string
 from script.PARXER.LEXER_CONFIGURE              import numeric_lexer, partial_lexer
 from script.PARXER                              import numerical_value
 from script.PARXER.PARXER_FUNCTIONS._TRY_       import end_except_finaly_else
-
 from script.STDIN.LinuxSTDIN                    import bm_configure as bm
 try:
     from CythonModules.Windows                  import fileError as fe

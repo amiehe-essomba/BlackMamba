@@ -3,7 +3,7 @@ from script.STDIN.WinSTDIN                              import  stdin
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import end_except_finaly_else
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_unless
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_if
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_if, for_switch , for_begin, for_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
@@ -71,7 +71,16 @@ class EXTERNAL_TRY_STATEMENT:
 
                         if self.error  is None:
                             if self.get_block   == 'begin:'  :
-                                pass
+                                self.store_value.append(self.normal_string)
+                                self.loop.append( ( self.normal_string, True ) )
+                                self._values_, self.error = for_begin.COMMENT_STATEMENT( self.master, self.data_base, 
+                                                                                        self.line  ).COMMENT( self.tabulation + 1, self.color )
+                                if self.error is None:
+                                    self.history.append( 'begin' )
+                                    self.space = 0
+                                    self.loop.append( self._values_ )
+
+                                else: break 
 
                             elif self.get_block == 'if:'     :
                                 self.store_value.append( self.normal_string )
@@ -114,8 +123,29 @@ class EXTERNAL_TRY_STATEMENT:
 
                                 else:  break
 
+                            elif self.get_block == 'for:'    :
+                                self.store_value.append(self.normal_string)
+                                self.loop.append( ( self.normal_string, True ) )
+                                
+                                loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( self.master,
+                                                            self.data_base, self.line ).FOR_STATEMENT( self.tabulation+1 )
+                                if self.error is None:
+                                    self.history.append( 'for' )
+                                    self.space = 0
+                                    self.loop.append( (loop, tab, self.error) )
+
+                                else: break 
+                            
                             elif self.get_block == 'switch:' :
-                                pass
+                                self.loop.append((self.normal_string, True))
+                                self._values_, self.error = for_switch.SWITCH_STATEMENT( self.master, 
+                                            self.data_base, self.line ).SWITCH( self.value, self.tabulation + 1)
+                                
+                                if self.error is None:
+                                    self.history.append( 'switch' )
+                                    self.space = 0
+                                    self.loop.append( self._values_ )
+                                else:  break
 
                             elif self.get_block == 'empty'   :
                                 if self.space <= self.max_emtyLine :
@@ -341,7 +371,16 @@ class INTERNAL_TRY_STATEMENT:
 
                         if self.error  is None:
                             if self.get_block   == 'begin:' :
-                                pass
+                                self.store_value.append(self.normal_string)
+                                self.loop.append( ( self.normal_string, True ) )
+                                self._values_, self.error = for_begin.COMMENT_STATEMENT( self.master, self.data_base, 
+                                                                                        self.line  ).COMMENT( self.tabulation + 1, self.color )
+                                if self.error is None:
+                                    self.history.append( 'begin' )
+                                    self.space = 0
+                                    self.loop.append( self._values_ )
+
+                                else: break 
 
                             elif self.get_block ==   'if:'  :
                                 self.store_value.append( self.normal_string )
@@ -383,8 +422,29 @@ class INTERNAL_TRY_STATEMENT:
 
                                 else:  break
 
+                            elif self.get_block == 'for:'   :
+                                self.store_value.append(self.normal_string)
+                                self.loop.append( ( self.normal_string, True ) )
+                                
+                                loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( self.master,
+                                                            self.data_base, self.line ).FOR_STATEMENT( self.tabulation+1 )
+                                if self.error is None:
+                                    self.history.append( 'for' )
+                                    self.space = 0
+                                    self.loop.append( (loop, tab, self.error) )
+
+                                else: break 
+
                             elif self.get_block == 'switch:':
-                                pass
+                                self.loop.append((self.normal_string, True))
+                                self._values_, self.error = for_switch.SWITCH_STATEMENT( self.master, 
+                                            self.data_base, self.line ).SWITCH( self.value, self.tabulation + 1)
+                                
+                                if self.error is None:
+                                    self.history.append( 'switch' )
+                                    self.space = 0
+                                    self.loop.append( self._values_ )
+                                else:  break
 
                             elif self.get_block == 'empty'  :
                                 if self.space <= self.max_emtyLine:

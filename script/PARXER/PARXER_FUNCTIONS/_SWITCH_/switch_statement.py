@@ -344,114 +344,86 @@ class SWITCH_LOOP_STATEMENT:
         self.keyPass                = keyPass 
         self.max_emtyLine           = 5
         ############################################################################
-    
-        for j, _string_ in enumerate( self.loop_list ):
-         
-            if j != self.next_line :
-                self.if_line                        += 1
-                self.line                           += 1
-                
-                self.normal_string, self.active_tab = _string_
-                self.string                         = self.normal_string
-                
-                if self.normal_string:
-                    if self.active_tab is True:
-                        self.get_block, self.value, self.error = end_case_default.INTERNAL_BLOCKS( self.string,
-                                        self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1 )
-                        
-                        if self.error  is None:
-                            if self.get_block == 'empty'   :
-                                if self.space <= self.max_emtyLine: 
-                                    self.space += 1
-                                    self.store_value.append(self.normal_string)
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR4()
-                                    break
 
-                            elif self.get_block == 'any'     :
-                                self.store_value.append(self.normal_string)
-                                if self.data_activation is True:
-                                    if self.bool_value is True:
-                                        if self.data_base[ 'pass' ] is None:
-                                            self.error = self.lex_par.LEXER_AND_PARXER( self.value, self.data_base,
-                                                            self.line ).ANALYZE( _id_ = 1, _type_ = _type_)
-                                            if self.error is None:  
-                                                self.space  = 0
-                                                self.break_ = True
-                                            else: break
-                                        else: pass
-                                    else: pass
-                                else:
-                                    self.error = ERRORS( self.if_line ).ERROR6()
-                                    break
-                        else: break
-                    else:
-                        self.get_block, self.value, self.error = end_case_default.EXTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation )
-
-                        if self.error is None:
-                            if   self.get_block == 'end:'       :
-                                if self.store_value:
-                                    del self.store_value[ : ]
-                                    del self.history[ : ]
-                                    del self.boolean_store[ : ]
-                                    
-                                    if self.tabulation == 1:  self.data_base['pass'] = None 
-                                    else: pass
-                                    break
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ])
-                                    break
-
-                            elif self.get_block == 'case:'      :
-                                if self.key_else_activation == None:
-                                    if self.store_value:
-                                        self.history.append( 'case' )
-                                        self.store_value        = []
-                                        self.data_activation    = True
-                                        self.bool_key           = None
-                                 
-                                        self.bool_value = CASE_TREATMENT( self.main_value, self.value, self.data_base,
-                                                                                self.line ).CASE( )
-                                        for _bool_ in self.boolean_store:
-                                            if _bool_ is True:
-                                                self.bool_key = True
-                                                break
-                                            else: self.bool_key = False
-
-                                        if self.bool_key is True:  self.bool_value = False
-                                        else: self.bool_value = self.bool_value
-
-                                        self.boolean_store.append(self.bool_value)
-                                        
-                                        self.data_base[ 'pass' ]    = None
-                                        self.keyPass                = False
-
+        if self.keyPass is False:
+            for j, _string_ in enumerate( self.loop_list ):
+            
+                if j != self.next_line :
+                    self.if_line                        += 1
+                    self.line                           += 1
+                    
+                    self.normal_string, self.active_tab = _string_
+                    self.string                         = self.normal_string
+                    
+                    if self.normal_string:
+                        if self.active_tab is True:
+                            self.get_block, self.value, self.error = end_case_default.INTERNAL_BLOCKS( self.string,
+                                            self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1 )
+                            
+                            if self.error  is None:
+                                if   self.get_block == 'empty'   :
+                                    if self.space <= self.max_emtyLine: 
+                                        self.space += 1
+                                        self.store_value.append(self.normal_string)
                                     else:
-                                        self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ] )
+                                        self.error = ERRORS( self.line ).ERROR4()
                                         break
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR1( 'default' )
-                                    break
 
-                            elif self.get_block == 'default:'   :
-                                if self.index_else < 1:
+                                elif self.get_block == 'any'     :
+                                    self.store_value.append(self.normal_string)
                                     if self.data_activation is True:
+                                        if self.bool_value is True:
+                                            if self.data_base[ 'pass' ] is None:
+                                                self.error = self.lex_par.LEXER_AND_PARXER( self.value, self.data_base,
+                                                                self.line ).ANALYZE( _id_ = 1, _type_ = _type_)
+                                                if self.error is None:  
+                                                    self.space  = 0
+                                                    self.break_ = True
+                                                else: break
+                                            else: pass
+                                        else: pass
+                                    else:
+                                        self.error = ERRORS( self.if_line ).ERROR6()
+                                        break
+                            else: break
+                        else:
+                            self.get_block, self.value, self.error = end_case_default.EXTERNAL_BLOCKS( self.string,
+                                        self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation )
+
+                            if self.error is None:
+                                if   self.get_block == 'end:'       :
+                                    if self.store_value:
+                                        del self.store_value[ : ]
+                                        del self.history[ : ]
+                                        del self.boolean_store[ : ]
+                                        
+                                        if self.tabulation == 1:  self.data_base['pass'] = None 
+                                        else: pass
+                                        break
+                                    else:
+                                        self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ])
+                                        break
+
+                                elif self.get_block == 'case:'      :
+                                    if self.key_else_activation == None:
                                         if self.store_value:
-                                            self.index_else             += 1
-                                            self.key_else_activation    = True
-                                            self.store_value            = []
-                                            self.history.append( 'default' )
-                                            self.bool_key               = None
-                                            
+                                            self.history.append( 'case' )
+                                            self.store_value        = []
+                                            self.data_activation    = True
+                                            self.bool_key           = None
+                                    
+                                            self.bool_value = CASE_TREATMENT( self.main_value, self.value, self.data_base,
+                                                                                    self.line ).CASE( )
                                             for _bool_ in self.boolean_store:
                                                 if _bool_ is True:
                                                     self.bool_key = True
                                                     break
                                                 else: self.bool_key = False
 
-                                            if self.bool_key is True: self.bool_value = False
-                                            else: self.bool_value = True
+                                            if self.bool_key is True:  self.bool_value = False
+                                            else: self.bool_value = self.bool_value
+
+                                            self.boolean_store.append(self.bool_value)
                                             
                                             self.data_base[ 'pass' ]    = None
                                             self.keyPass                = False
@@ -460,31 +432,61 @@ class SWITCH_LOOP_STATEMENT:
                                             self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ] )
                                             break
                                     else:
-                                        self.error = ERRORS( self.line ).ERROR5( 'case' )
+                                        self.error = ERRORS( self.line ).ERROR1( 'default' )
                                         break
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR3( 'default' )
-                                    break
 
-                            elif self.get_block == 'empty'      :
-                                if self.space <= self.max_emtyLine: self.space += 1
+                                elif self.get_block == 'default:'   :
+                                    if self.index_else < 1:
+                                        if self.data_activation is True:
+                                            if self.store_value:
+                                                self.index_else             += 1
+                                                self.key_else_activation    = True
+                                                self.store_value            = []
+                                                self.history.append( 'default' )
+                                                self.bool_key               = None
+                                                
+                                                for _bool_ in self.boolean_store:
+                                                    if _bool_ is True:
+                                                        self.bool_key = True
+                                                        break
+                                                    else: self.bool_key = False
+
+                                                if self.bool_key is True: self.bool_value = False
+                                                else: self.bool_value = True
+                                                
+                                                self.data_base[ 'pass' ]    = None
+                                                self.keyPass                = False
+
+                                            else:
+                                                self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ] )
+                                                break
+                                        else:
+                                            self.error = ERRORS( self.line ).ERROR5( 'case' )
+                                            break
+                                    else:
+                                        self.error = ERRORS( self.line ).ERROR3( 'default' )
+                                        break
+
+                                elif self.get_block == 'empty'      :
+                                    if self.space <= self.max_emtyLine: self.space += 1
+                                    else:
+                                        self.error = ERRORS( self.line ).ERROR4()
+                                        break
+                                
                                 else:
                                     self.error = ERRORS( self.line ).ERROR4()
                                     break
-                            
-                            else:
-                                self.error = ERRORS( self.line ).ERROR4()
-                                break
 
-                        else: break
-                else: pass
-            else:
-                self.if_line        += 1
-                self.line           += 1
-                self.next_line      = None
-        
-        self.after      = end_case_default.CHECK_VALUES( self.data_base ).AFTER()
-        self.error      = end_case_default.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
+                            else: break
+                    else: pass
+                else:
+                    self.if_line        += 1
+                    self.line           += 1
+                    self.next_line      = None
+            
+            self.after      = end_case_default.CHECK_VALUES( self.data_base ).AFTER()
+            self.error      = end_case_default.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
+        else: pass
 
         ############################################################################
 

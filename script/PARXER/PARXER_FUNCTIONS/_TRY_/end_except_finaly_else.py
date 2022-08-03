@@ -1,4 +1,3 @@
-from colorama import Fore, Style, init
 from script                                         import control_string
 from script.PARXER.LEXER_CONFIGURE                  import numeric_lexer
 from script.LEXER                                   import particular_str_selection
@@ -8,18 +7,6 @@ try:
 except ImportError:
     from CythonModules.Linux                        import fileError as fe 
     
-
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
-me = Fore.LIGHTCYAN_EX
-le = Fore.RED
-he = Fore.GREEN
 
 class EXTERNAL_BLOCKS:
     def __init__(self, string: str, normal_string, data_base: dict, line: int):
@@ -86,13 +73,14 @@ class EXTERNAL_BLOCKS:
         self.error                     = None
         self._return_                  = None
         self.exception_names = ['SyntaxError', 'ValueError', 'EOFError', 'OSError',
-                                'KeyError','NameError', 'TypeError',
+                                'KeyError','NameError', 'TypeError', 
                                 'ArithmeticError','IndexError', 'FileModeError',
-                                'OverFlowError', 'AtrributeError','ModuleError',
+                                'OverFlowError', 'AttributeError','ModuleError',
                                 'DomainError','ModuleLoadError', 'FileError',
-                                'FileNotFound','ExceptionNameError', 'EncodingError'
+                                'ExceptionNameError', 'EncodingError', 
                                 'IndentationError', 'ZeroDivisionError', 'DecodingError',
-                                'UnicodeError', 'DirectoryNotFoundError'
+                                'UnicodeError', 'DirectoryNotFoundError', 'FileNotFoundError',
+                                'CircularLoadingError'
                                 ]
 
         self.new_normal_string         = self.normal_string[6 : -1 ]
@@ -378,6 +366,7 @@ class GET_ERROR:
 
         return self.master
 
+"""
 class EXCEPTION_TRANSFORM:
     def __init__(self, master):
         self.master         = master
@@ -411,6 +400,7 @@ class EXCEPTION_TRANSFORM:
 
 
         return self.master
+"""
 
 class CHECK_VALUES:
     def __init__(self, data_base: dict):
@@ -506,33 +496,42 @@ class CHECK_VALUES:
 
 class ERRORS:
     def __init__(self, line: int):
-        self.line           = line
+        self.line       = line
+        self.cyan       = bm.fg.cyan_L
+        self.red        = bm.fg.red_L
+        self.green      = bm.fg.green_L
+        self.yellow     = bm.fg.yellow_L
+        self.magenta    = bm.fg.magenta_M
+        self.white      = bm.fg.white_L
+        self.blue       = bm.fg.blue_L
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white,
+                                                                                                       self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR1(self, string: str = 'else'):
-        error = '{}<< : >> {}is not defined at the {}end. {}line: {}{}'.format(ne, ke, ve, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> {}block. '.format(ke, 'SyntaxError', ae, string, ke) + error
+        error = '{}<< : >> {}is not defined at the {}end. {}line: {}{}'.format(self.red, self.white, self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> {}block. '.format(self.white, 
+                                                                                self.cyan, string, self.white) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR4(self):
-        self.error = '{}{} : {}unexpected an indented block, {}line: {}{}'.format(ie, 'IndentationError',
-                                                                                  ne, we, ke, self.line)
-        return self.error
+        self.error =  fe.FileErrors( 'IndentationError' ).Errors()+'{}unexpected an indented block, {}line: {}{}'.format(self.yellow,
+                                                                                    self.white, self.yellow, self.line )
+        return self.error+self.reset
 
     def ERROR5(self, string:str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : {}<< {} >>. '.format(he, 'ExceptionNameError', ae, string ) + error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'ExceptionNameError' ).Errors()+'{}<< {} >>. '.format( self.cyan, string ) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR6(self, value):
-        error = '{}a tuple(), {}or a string(), {}type. {}line: {}{}'.format(ie, ne, te, we, ke, self.line)
-        self.error = '{}{} : {}<< {} >> {}is not '.format(te, 'TypeError', ae, value, te) + error
+        error = '{}a tuple(), {}or a string(), {}type. {}line: {}{}'.format(self.blue, self.cyan, self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> {}is not '.format(self.magenta, value, self.white) + error
 
-        return self.error
+        return self.error+self.reset

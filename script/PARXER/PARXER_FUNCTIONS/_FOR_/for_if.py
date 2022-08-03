@@ -2,7 +2,7 @@ from script                                             import control_string
 from script.STDIN.WinSTDIN                              import  stdin
 
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_unless, for_begin, for_switch
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_unless, for_begin, for_switch, for_try, for_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
@@ -68,13 +68,13 @@ class EXTERNAL_IF_STATEMENT:
                         if self.error  is None:
                             if self.get_block   == 'begin:'  :
                                 self.store_value.append(self.normal_string)
-                                self.def_starage.append( ( self.normal_string, True ) )
+                                self.loop.append( ( self.normal_string, True ) )
                                 self._values_, self.error = for_begin.COMMENT_STATEMENT( self.master, self.data_base, 
                                                                                         self.line  ).COMMENT( self.tabulation + 1, self.color )
                                 if self.error is None:
                                     self.history.append( 'begin' )
                                     self.space = 0
-                                    self.def_starage.append( self._values_ )
+                                    self.loop.append( self._values_ )
 
                                 else: break 
                             
@@ -93,14 +93,17 @@ class EXTERNAL_IF_STATEMENT:
 
                             elif self.get_block == 'try:'    :
                                 self.store_value.append(self.normal_string)
-                                self.error = try_statement.INTERNAL_TRY_STATEMENT(self.master,
-                                        self.data_base, self.if_line).TRY_STATEMENT( self.tabulation + 1 )
+                                self.loop.append( ( self.normal_string, True ) )
+                                
+                                self._values_, self.error = for_try.INTERNAL_TRY_STATEMENT( self.master,
+                                        self.data_base, self.line ).TRY_STATEMENT( tabulation = self.tabulation + 1)
 
                                 if self.error is None:
                                     self.history.append( 'try' )
                                     self.space = 0
+                                    self.loop.append( self._values_ )
 
-                                else:  break
+                                else: break 
 
                             elif self.get_block == 'unless:' :
                                 self.store_value.append(self.normal_string)
@@ -113,6 +116,19 @@ class EXTERNAL_IF_STATEMENT:
                                     self.loop.append( self._values_ )
 
                                 else:  break
+
+                            elif self.get_block == 'for:'    :
+                                self.store_value.append(self.normal_string)
+                                self.loop.append( ( self.normal_string, True ) )
+                                
+                                loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( self.master,
+                                                            self.data_base, self.line ).FOR_STATEMENT( self.tabulation+1 )
+                                if self.error is None:
+                                    self.history.append( 'for' )
+                                    self.space = 0
+                                    self.loop.append( (loop, tab, self.error) )
+
+                                else: break 
 
                             elif self.get_block == 'switch:' :
                                 self.store_value.append(self.normal_string)
@@ -329,13 +345,13 @@ class INTERNAL_IF_STATEMENT:
                         if self.error  is None:
                             if self.get_block   == 'begin:'     :
                                 self.store_value.append(self.normal_string)
-                                self.def_starage.append( ( self.normal_string, True ) )
+                                self.loop.append( ( self.normal_string, True ) )
                                 self._values_, self.error = for_begin.COMMENT_STATEMENT( self.master, self.data_base, 
                                                                                         self.line  ).COMMENT( self.tabulation + 1, self.color )
                                 if self.error is None:
                                     self.history.append( 'begin' )
                                     self.space = 0
-                                    self.def_starage.append( self._values_ )
+                                    self.loop.append( self._values_ )
 
                                 else: break 
 
@@ -353,14 +369,17 @@ class INTERNAL_IF_STATEMENT:
 
                             elif self.get_block == 'try:'       :
                                 self.store_value.append(self.normal_string)
-                                self.error = try_statement.EXTERNAL_TRY_STATEMENT(self.master,
-                                                    self.data_base,self.if_line).TRY_STATEMENT(self.tabulation + 1)
+                                self.loop.append( ( self.normal_string, True ) )
+                                
+                                self._values_, self.error = for_try.INTERNAL_TRY_STATEMENT( self.master,
+                                        self.data_base, self.line ).TRY_STATEMENT( tabulation = self.tabulation + 1)
 
                                 if self.error is None:
                                     self.history.append( 'try' )
                                     self.space = 0
+                                    self.loop.append( self._values_ )
 
-                                else: break
+                                else: break 
 
                             elif self.get_block == 'unless:'    :
                                 self.store_value.append(self.normal_string)
@@ -375,6 +394,19 @@ class INTERNAL_IF_STATEMENT:
 
                                 else:  break
 
+                            elif self.get_block == 'for:'       :
+                                self.store_value.append(self.normal_string)
+                                self.loop.append( ( self.normal_string, True ) )
+                                
+                                loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( self.master,
+                                                            self.data_base, self.line ).FOR_STATEMENT( self.tabulation+1 )
+                                if self.error is None:
+                                    self.history.append( 'for' )
+                                    self.space = 0
+                                    self.loop.append( (loop, tab, self.error) )
+
+                                else: break 
+    
                             elif self.get_block == 'switch:'    :
                                 self.store_value.append(self.normal_string)
                                 self.loop.append((self.normal_string, True))

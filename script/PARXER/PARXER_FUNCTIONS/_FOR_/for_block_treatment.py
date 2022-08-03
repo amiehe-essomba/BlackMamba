@@ -178,6 +178,7 @@ class TREATMENT:
         
         """
 
+        
         self.error = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init), self.var_name, interpreter, loop_list )
 
         self.after = end_for_else.CHECK_VALUES( self.data_base ).AFTER()
