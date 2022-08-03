@@ -5,7 +5,6 @@ from script.STDIN.WinSTDIN      import stdin
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
 import os
 
-
 ke = bm.fg.rbg(255,255, 0)
 we = bm.fg.white_L
 be = bm.fg.blue_L

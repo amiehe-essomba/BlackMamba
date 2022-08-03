@@ -1,10 +1,10 @@
 import termios, sys, fcntl, tty, os
-from script.STDIN.LinuxSTDIN import bm_configure as bm
 import re 
-from script.LEXER.FUNCTION import main
-from script import  control_string
-from script.PARXER import  parxer_assembly
-from script.DATA_BASE import data_base as db
+from script.STDIN.LinuxSTDIN        import bm_configure as bm
+from script.LEXER.FUNCTION          import main
+from script                         import control_string
+from script.PARXER                  import parxer_assembly
+from script.DATA_BASE               import data_base as db
 
 def readchar():
     fd              = sys.stdin.fileno()
@@ -52,7 +52,6 @@ class STRING:
 
 
         return self.string_concatenate, self.normal_string, self.tab_active, self.error
-
 
 class terminal:
     def __init__( self, DataBase: dict, line: int):
