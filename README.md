@@ -19,6 +19,8 @@
 
 ## Project Description 
 
+##Roadmap
+
 ## Contributing
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
 That's very impotant.
@@ -29,4 +31,4 @@ Please make sure to update tests as appropriate.
 ## Authors and Acknowledgement
 
 ## License 
-This project is licensed under [MIT LICENSE](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
+This project is licensed under [MIT License](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
