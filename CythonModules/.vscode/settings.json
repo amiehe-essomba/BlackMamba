@@ -1,7 +1,5 @@
 {
     "files.exclude": {
-        "**/.pyx": true,
-	"**/.pyx*" : true,
-	"**/.so" : true
+        "**/.pyx": true
     }
 }
