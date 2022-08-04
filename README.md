@@ -18,3 +18,6 @@
 ![try block](/images/try.png)
 
 
+## Licence 
+[MIT]
+(https://choosealicence.com/licence/mit/)
