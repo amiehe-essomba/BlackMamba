@@ -18,13 +18,15 @@
 ![try block](/images/try.png)
 ![while block](/images/while.png)
 
-## contributing
+## Project Description 
+
+## Contributing
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
 That's very impotant.
 
 Please make sure to update tests as appropriate.
 
-## Authors and acknowledgement
+## Authors and Acknowledgement
 
 ## Licence 
 [MIT](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
