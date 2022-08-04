@@ -1939,7 +1939,7 @@ static PyObject *__pyx_codeobj__12;
 /* "NumeriCal.pyx":6
  * 
  * 
- * cdef list String() :             # <<<<<<<<<<<<<<
+ * cdef list  String() :             # <<<<<<<<<<<<<<
  *     cdef :
  *         list type1
  */
@@ -2007,7 +2007,7 @@ static PyObject *__pyx_f_9NumeriCal_String(void) {
   /* "NumeriCal.pyx":6
  * 
  * 
- * cdef list String() :             # <<<<<<<<<<<<<<
+ * cdef list  String() :             # <<<<<<<<<<<<<<
  *     cdef :
  *         list type1
  */

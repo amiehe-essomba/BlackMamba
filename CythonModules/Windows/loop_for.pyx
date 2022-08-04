@@ -1,7 +1,7 @@
 #from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer import NEXT_ANALYZE
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
-from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
+from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
+from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
 
 cdef dict UPDATING(dict base, str name, value):
     cdef :
@@ -138,7 +138,7 @@ cdef class LOOP:
                                     #tabulation     = _string_[ 'tabulation' ]
                                     boolean_value  = _string_[ 'value' ]
                                     
-                                    error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+                                    error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
                                     if error is None: 
                                         if   self.DataBase[ 'break' ] is None: pass 
@@ -158,7 +158,7 @@ cdef class LOOP:
                                 unless_values  = _string_[ 'unless' ]
                                 #tabulation     = _string_[ 'tabulation' ]
                                 boolean_value  = _string_[ 'value' ]
-                                error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
+                                error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
                                         (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )
                                                                                         
                                 if error is None:
@@ -317,7 +317,7 @@ cdef class LOOP:
                                     tabulation     = _string_[ 'tabulation' ]
                                     boolean_value  = _string_[ 'value' ]
                                     
-                                    error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+                                    error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
                                     if error is None: 
                                         if   self.DataBase[ 'break' ] is None: pass 
@@ -337,7 +337,7 @@ cdef class LOOP:
                                 unless_values  = _string_[ 'unless' ]
                                 tabulation     = _string_[ 'tabulation' ]
                                 boolean_value  = _string_[ 'value' ]
-                                error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
+                                error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
                                         (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )
                                                                                         
                                 if error is None:

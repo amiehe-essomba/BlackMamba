@@ -1412,7 +1412,6 @@ static const char __pyx_k_SUB_ANALYZE[] = "SUB_ANALYZE";
 static const char __pyx_k_interpreter[] = "interpreter";
 static const char __pyx_k_IF_STATEMENT[] = "IF_STATEMENT";
 static const char __pyx_k_NEXT_ANALYZE[] = "NEXT_ANALYZE";
-static const char __pyx_k_if_statement[] = "if_statement";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "stringsource";
 static const char __pyx_k_FOR_STATEMENT[] = "FOR_STATEMENT";
@@ -1422,9 +1421,10 @@ static const char __pyx_k_SUB_SUB_ANALYZE[] = "SUB_SUB_ANALYZE";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_UNLESS_STATEMENT[] = "UNLESS_STATEMENT";
-static const char __pyx_k_unless_statement[] = "unless_statement";
+static const char __pyx_k_loop_if_statement[] = "loop_if_statement";
 static const char __pyx_k_pyx_unpickle_LOOP[] = "__pyx_unpickle_LOOP";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_loop_unless_statement[] = "loop_unless_statement";
 static const char __pyx_k_EXTERNAL_FOR_STATEMENT[] = "EXTERNAL_FOR_STATEMENT";
 static const char __pyx_k_INTERNAL_IF_LOOP_STATEMENT[] = "INTERNAL_IF_LOOP_STATEMENT";
 static const char __pyx_k_INTERNAL_UNLESS_FOR_STATEMENT[] = "INTERNAL_UNLESS_FOR_STATEMENT";
@@ -1458,7 +1458,6 @@ static PyObject *__pyx_n_s_for_statement;
 static PyObject *__pyx_n_s_for_values;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_if;
-static PyObject *__pyx_n_s_if_statement;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_index;
 static PyObject *__pyx_n_s_interpreter;
@@ -1468,7 +1467,9 @@ static PyObject *__pyx_n_s_lexer;
 static PyObject *__pyx_n_s_line;
 static PyObject *__pyx_n_s_loop;
 static PyObject *__pyx_n_s_loop_for;
+static PyObject *__pyx_n_s_loop_if_statement;
 static PyObject *__pyx_n_s_loop_list;
+static PyObject *__pyx_n_s_loop_unless_statement;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_new;
@@ -1496,7 +1497,6 @@ static PyObject *__pyx_n_s_tabulation;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_type;
 static PyObject *__pyx_n_s_unless;
-static PyObject *__pyx_n_s_unless_statement;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_value;
 static PyObject *__pyx_n_s_values;
@@ -1523,7 +1523,7 @@ static PyObject *__pyx_codeobj__3;
 /* Late includes */
 
 /* "loop_for.pyx":6
- * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
+ * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
  * 
  * cdef dict UPDATING(dict base, str name, value):             # <<<<<<<<<<<<<<
  *     cdef :
@@ -1596,7 +1596,7 @@ static PyObject *__pyx_f_8loop_for_UPDATING(PyObject *__pyx_v_base, PyObject *__
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "loop_for.pyx":6
- * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
+ * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
  * 
  * cdef dict UPDATING(dict base, str name, value):             # <<<<<<<<<<<<<<
  *     cdef :
@@ -3079,7 +3079,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_LOOP(struct __pyx_obj_8loop_for_LOOP *_
  *                                     #tabulation     = _string_[ 'tabulation' ]
  *                                     boolean_value  = _string_[ 'value' ]             # <<<<<<<<<<<<<<
  * 
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
  */
               __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v__string_, __pyx_n_s_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
@@ -3090,11 +3090,11 @@ static PyObject *__pyx_f_8loop_for_4LOOP_LOOP(struct __pyx_obj_8loop_for_LOOP *_
               /* "loop_for.pyx":141
  *                                     boolean_value  = _string_[ 'value' ]
  * 
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,             # <<<<<<<<<<<<<<
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,             # <<<<<<<<<<<<<<
  *                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
  *                                     if error is None:
  */
-              __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_if_statement); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 141, __pyx_L1_error)
+              __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_loop_if_statement); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 141, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
               __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_INTERNAL_IF_LOOP_STATEMENT); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
@@ -3102,7 +3102,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_LOOP(struct __pyx_obj_8loop_for_LOOP *_
 
               /* "loop_for.pyx":142
  * 
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
  *                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )             # <<<<<<<<<<<<<<
  *                                     if error is None:
  *                                         if   self.DataBase[ 'break' ] is None: pass
@@ -3226,7 +3226,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_LOOP(struct __pyx_obj_8loop_for_LOOP *_
               __pyx_t_3 = 0;
 
               /* "loop_for.pyx":143
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
  *                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
  *                                     if error is None:             # <<<<<<<<<<<<<<
  *                                         if   self.DataBase[ 'break' ] is None: pass
@@ -3354,7 +3354,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_LOOP(struct __pyx_obj_8loop_for_LOOP *_
                 __pyx_L26:;
 
                 /* "loop_for.pyx":143
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
  *                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
  *                                     if error is None:             # <<<<<<<<<<<<<<
  *                                         if   self.DataBase[ 'break' ] is None: pass
@@ -3413,7 +3413,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_LOOP(struct __pyx_obj_8loop_for_LOOP *_
  *                                 unless_values  = _string_[ 'unless' ]
  *                                 #tabulation     = _string_[ 'tabulation' ]
  *                                 boolean_value  = _string_[ 'value' ]             # <<<<<<<<<<<<<<
- *                                 error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
+ *                                 error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
  *                                         (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )
  */
               __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v__string_, __pyx_n_s_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
@@ -3425,11 +3425,11 @@ static PyObject *__pyx_f_8loop_for_4LOOP_LOOP(struct __pyx_obj_8loop_for_LOOP *_
               /* "loop_for.pyx":161
  *                                 #tabulation     = _string_[ 'tabulation' ]
  *                                 boolean_value  = _string_[ 'value' ]
- *                                 error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,             # <<<<<<<<<<<<<<
+ *                                 error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,             # <<<<<<<<<<<<<<
  *                                         (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )
  * 
  */
-              __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_unless_statement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+              __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_loop_unless_statement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_INTERNAL_UNLESS_FOR_STATEMENT); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 161, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_18);
@@ -3437,7 +3437,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_LOOP(struct __pyx_obj_8loop_for_LOOP *_
 
               /* "loop_for.pyx":162
  *                                 boolean_value  = _string_[ 'value' ]
- *                                 error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
+ *                                 error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
  *                                         (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )             # <<<<<<<<<<<<<<
  * 
  *                                 if error is None:
@@ -5551,7 +5551,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
  *                                     tabulation     = _string_[ 'tabulation' ]
  *                                     boolean_value  = _string_[ 'value' ]             # <<<<<<<<<<<<<<
  * 
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
  */
               __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v__string_, __pyx_n_s_value); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 318, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
@@ -5562,11 +5562,11 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
               /* "loop_for.pyx":320
  *                                     boolean_value  = _string_[ 'value' ]
  * 
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,             # <<<<<<<<<<<<<<
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,             # <<<<<<<<<<<<<<
  *                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
  *                                     if error is None:
  */
-              __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_if_statement); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
+              __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_loop_if_statement); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_11);
               __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_INTERNAL_IF_LOOP_STATEMENT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 320, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
@@ -5574,7 +5574,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
 
               /* "loop_for.pyx":321
  * 
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
  *                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )             # <<<<<<<<<<<<<<
  *                                     if error is None:
  *                                         if   self.DataBase[ 'break' ] is None: pass
@@ -5698,7 +5698,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
               __pyx_t_12 = 0;
 
               /* "loop_for.pyx":322
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
  *                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
  *                                     if error is None:             # <<<<<<<<<<<<<<
  *                                         if   self.DataBase[ 'break' ] is None: pass
@@ -5826,7 +5826,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
                 __pyx_L24:;
 
                 /* "loop_for.pyx":322
- *                                     error = if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
+ *                                     error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
  *                                             (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
  *                                     if error is None:             # <<<<<<<<<<<<<<
  *                                         if   self.DataBase[ 'break' ] is None: pass
@@ -5886,7 +5886,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
  *                                 unless_values  = _string_[ 'unless' ]
  *                                 tabulation     = _string_[ 'tabulation' ]             # <<<<<<<<<<<<<<
  *                                 boolean_value  = _string_[ 'value' ]
- *                                 error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
+ *                                 error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
  */
               __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v__string_, __pyx_n_s_tabulation); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 338, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
@@ -5898,7 +5898,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
  *                                 unless_values  = _string_[ 'unless' ]
  *                                 tabulation     = _string_[ 'tabulation' ]
  *                                 boolean_value  = _string_[ 'value' ]             # <<<<<<<<<<<<<<
- *                                 error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
+ *                                 error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
  *                                         (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )
  */
               __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v__string_, __pyx_n_s_value); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 339, __pyx_L1_error)
@@ -5910,11 +5910,11 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
               /* "loop_for.pyx":340
  *                                 tabulation     = _string_[ 'tabulation' ]
  *                                 boolean_value  = _string_[ 'value' ]
- *                                 error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,             # <<<<<<<<<<<<<<
+ *                                 error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,             # <<<<<<<<<<<<<<
  *                                         (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )
  * 
  */
-              __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_unless_statement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 340, __pyx_L1_error)
+              __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_loop_unless_statement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 340, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_INTERNAL_UNLESS_FOR_STATEMENT); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 340, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_18);
@@ -5922,7 +5922,7 @@ static PyObject *__pyx_f_8loop_for_4LOOP_SubLOOP(struct __pyx_obj_8loop_for_LOOP
 
               /* "loop_for.pyx":341
  *                                 boolean_value  = _string_[ 'value' ]
- *                                 error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
+ *                                 error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
  *                                         (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )             # <<<<<<<<<<<<<<
  * 
  *                                 if error is None:
@@ -7918,7 +7918,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_for_values, __pyx_k_for_values, sizeof(__pyx_k_for_values), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_if, __pyx_k_if, sizeof(__pyx_k_if), 0, 0, 1, 1},
-  {&__pyx_n_s_if_statement, __pyx_k_if_statement, sizeof(__pyx_k_if_statement), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_index, __pyx_k_index, sizeof(__pyx_k_index), 0, 0, 1, 1},
   {&__pyx_n_s_interpreter, __pyx_k_interpreter, sizeof(__pyx_k_interpreter), 0, 0, 1, 1},
@@ -7928,7 +7927,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_line, __pyx_k_line, sizeof(__pyx_k_line), 0, 0, 1, 1},
   {&__pyx_n_s_loop, __pyx_k_loop, sizeof(__pyx_k_loop), 0, 0, 1, 1},
   {&__pyx_n_s_loop_for, __pyx_k_loop_for, sizeof(__pyx_k_loop_for), 0, 0, 1, 1},
+  {&__pyx_n_s_loop_if_statement, __pyx_k_loop_if_statement, sizeof(__pyx_k_loop_if_statement), 0, 0, 1, 1},
   {&__pyx_n_s_loop_list, __pyx_k_loop_list, sizeof(__pyx_k_loop_list), 0, 0, 1, 1},
+  {&__pyx_n_s_loop_unless_statement, __pyx_k_loop_unless_statement, sizeof(__pyx_k_loop_unless_statement), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
@@ -7956,7 +7957,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
   {&__pyx_n_s_unless, __pyx_k_unless, sizeof(__pyx_k_unless), 0, 0, 1, 1},
-  {&__pyx_n_s_unless_statement, __pyx_k_unless_statement, sizeof(__pyx_k_unless_statement), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
   {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
@@ -8293,8 +8293,8 @@ if (!__Pyx_RefNanny) {
   /* "loop_for.pyx":2
  * #from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer import NEXT_ANALYZE
  * from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement             # <<<<<<<<<<<<<<
- * from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
- * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
+ * from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
+ * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -8313,42 +8313,42 @@ if (!__Pyx_RefNanny) {
   /* "loop_for.pyx":3
  * #from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer import NEXT_ANALYZE
  * from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
- * from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement             # <<<<<<<<<<<<<<
- * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
+ * from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement             # <<<<<<<<<<<<<<
+ * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
  * 
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_if_statement);
-  __Pyx_GIVEREF(__pyx_n_s_if_statement);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_if_statement);
+  __Pyx_INCREF(__pyx_n_s_loop_if_statement);
+  __Pyx_GIVEREF(__pyx_n_s_loop_if_statement);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_loop_if_statement);
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_script_PARXER_PARXER_FUNCTIONS_2, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_if_statement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_loop_if_statement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_if_statement, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_loop_if_statement, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "loop_for.pyx":4
  * from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
- * from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
- * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement             # <<<<<<<<<<<<<<
+ * from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
+ * from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement             # <<<<<<<<<<<<<<
  * 
  * cdef dict UPDATING(dict base, str name, value):
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_unless_statement);
-  __Pyx_GIVEREF(__pyx_n_s_unless_statement);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_unless_statement);
+  __Pyx_INCREF(__pyx_n_s_loop_unless_statement);
+  __Pyx_GIVEREF(__pyx_n_s_loop_unless_statement);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_loop_unless_statement);
   __pyx_t_2 = __Pyx_Import(__pyx_n_s_script_PARXER_PARXER_FUNCTIONS_3, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_unless_statement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_loop_unless_statement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unless_statement, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_loop_unless_statement, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
@@ -8365,7 +8365,7 @@ if (!__Pyx_RefNanny) {
   /* "loop_for.pyx":1
  * #from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer import NEXT_ANALYZE             # <<<<<<<<<<<<<<
  * from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
- * from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
+ * from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
