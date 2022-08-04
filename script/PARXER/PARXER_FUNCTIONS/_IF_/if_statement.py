@@ -472,15 +472,15 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                                     self.data_base, self.line).TRY_STATEMENT( self.tabulation + 1,
                                                                     self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
                                         if self.error is None:  self.keyPass    = False
+                                        else: break
                                     else:
                                         self.error = try_statement.INTERNAL_TRY_FOR_STATEMENT( self.master,
                                                     self.data_base, self.line).TRY_STATEMENT( self.tabulation + 1,
                                                                     self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
-                                    if self.error is None: pass
-                                    else: break
+                                        if self.error is None: pass
+                                        else: break
 
                                 elif self.get_block == 'unless:' :
-                                    
                                     self.next_line  = j + 1
                                     self.store_value.append( self.normal_string )
                                     self.history.append( 'unless' )
@@ -543,7 +543,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                 elif self.get_block == 'switch:' :
                                     self.next_line  = j + 1
                                     self.store_value.append( self.normal_string )
-                                    self.history.append( 'begin' )
+                                    self.history.append( 'switch' )
                                     self.space = 0
                                     
                                     if self.history[ -1 ] in ['else', 'elif']:
@@ -1150,14 +1150,20 @@ class INTERNAL_IF_LOOP_STATEMENT:
                                                     self.data_base, self.line).TRY_STATEMENT( self.tabulation + 1,
                                                                     self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
                                         if self.error is None:  self.keyPass    = False
+                                        else: break
                                     else:
                                         self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT( self.master,
                                                     self.data_base, self.line).TRY_STATEMENT( self.tabulation + 1,
                                                                     self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
-                                    if self.error is None: pass
-                                    else: break
+                                        if self.error is None: pass
+                                        else: break
 
                                 elif self.get_block == 'unless:':
+                                    self.next_line  = j + 1
+                                    self.store_value.append(self.normal_string)
+                                    self.history.append('unless')
+                                    self.space  = 0
+                                    
                                     if self.history[ -1 ] in [ 'else', 'elif' ]:
                                         if self.bool_value is True:
                                             self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
@@ -1212,7 +1218,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
                                 elif self.get_block == 'switch:':
                                     self.next_line  = j + 1
                                     self.store_value.append( self.normal_string )
-                                    self.history.append( 'begin' )
+                                    self.history.append( 'switch' )
                                     self.space = 0
                                     
                                     if self.history[ -1 ] in ['else', 'elif']:
@@ -1222,7 +1228,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
                                                                                _type_ = _type_, keyPass = self.keyPass )
                                             
                                             if self.error is None: pass
-                                            else: pass
+                                            else: break
                                         else: pass
                                     else: 
                                         self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,

@@ -22,7 +22,7 @@ class EXTERNAL_BLOCKS:
     def BLOCKS(self, 
                tabulation   : int,          # tabulation number
                function     : any  = None,  # function type ('loop', 'conditional', 'def', 'class')
-               inter        : bool = False
+               inter        : bool = False  # interpreter 
                
                ):
         
@@ -154,7 +154,11 @@ class INTERNAL_BLOCKS:
         self.lex_parxer     = numeric_lexer
         self.chars          = self.control.LOWER_CASE()+self.control.UPPER_CASE()+['_']
 
-    def BLOCKS(self, tabulation: int):
+    def BLOCKS(self, 
+            tabulation  : int,
+            function    : any   = None,
+            inter       : bool  = False
+            ):
         self.tabulation     = tabulation
         self.back_end       = self.tabulation - 1
         self._return_       = None
@@ -379,7 +383,7 @@ class INTERNAL_BLOCKS:
 
         return self._return_, self.value, self.error
         
-    def BLOCK_TREATMENT(self, num :int, function : any = None ):
+    def BLOCK_TREATMENT(self, num :int, function : any = None, inter : bool = False ):
         self.error                     = None
         self._return_                  = None
         self.type                      = [ type( int()), type(float()), type(complex())]
@@ -401,11 +405,13 @@ class INTERNAL_BLOCKS:
                     elif type( self._return_ ) == type( str() )                     :   self._return_   = [ True if self._return_ else False ][ 0 ]
                     elif type( self._return_ ) == type( dict() )                    :   self._return_   = [ True if list( self._return_.keys() ) else False][ 0 ]
                 else:
-                    if function is None:    pass
-                    elif function in [ 'def', 'class', 'loop', 'try' ]:
-                        self._error_ = fe.FileErrors( self.error  ).initError()
-                        if self._error_ not in  [ 'SyntaxError' ] : self.error = None
-                        else: pass
+                    if inter is False:
+                        if function is None:    pass
+                        elif function in [ 'def', 'class', 'loop', 'try' ]:
+                            self._error_ = fe.FileErrors( self.error  ).initError()
+                            if self._error_ not in  [ 'SyntaxError' ] : self.error = None
+                            else: pass
+                    else: pass
             else:   self.error = ERRORS( self.line ).ERROR0( self.normal_string )
         else:   self.error = ERRORS( self.line ).ERROR0( self.normal_string )
 
@@ -463,12 +469,15 @@ class MAIN_IF:
         self.num_lex            = numeric_lexer
         self.control            = control_string.STRING_ANALYSE( self.data_base, self.line )
 
-    def BOCKS( self ):
+    def BOCKS( self, typ = 'if' ):
         self.error              = None
         self._return_           = None
         self.type               = [ type(int()), type(float()), type(complex()) ]
+        self.strin              = ''
 
-        self.string, self.error = self.control.DELETE_SPACE( self.master[ 2 : -1 ])
+        if typ == 'if': self.string, self.error = self.control.DELETE_SPACE( self.master[ 2 : -1 ])
+        else:  self.string, self.error = self.control.DELETE_SPACE( self.master[ 5 : -1 ])
+        
         if self.error is None:
             self._return_, self.error = self.num_lex.NUMERCAL_LEXER( self.string, self.data_base,
                                                                      self.line ).LEXER( self.master )

@@ -1,8 +1,8 @@
 from script                                             import control_string
-from script.STDIN.WinSTDIN                              import  stdin
-
+from script.STDIN.WinSTDIN                              import stdin
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_unless, for_begin, for_switch, for_try, for_statement
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_unless, for_begin, for_switch, for_try, for_statement, for_if
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
@@ -14,7 +14,7 @@ try:
 except ImportError:
     from CythonModules.Linux                            import fileError as fe
 
-class EXTERNAL_IF_STATEMENT:
+class EXTERNAL_WHILE_STATEMENT:
     def __init__(self, 
                 master      : any, 
                 data_base   : dict, 
@@ -26,10 +26,10 @@ class EXTERNAL_IF_STATEMENT:
         self.analyze                = control_string
         self.lex_par                = lexer_and_parxer
 
-    def IF_STATEMENT(self, 
+    def WHILE_STATEMENT(self, 
                     bool_value  : bool, 
                     tabulation  : int = 1,
-                    _type_      : str = 'conditional'
+                    _type_      : str = 'loop'
                     ):
         self.error                  = None
         self.string                 = ''
@@ -45,8 +45,8 @@ class EXTERNAL_IF_STATEMENT:
         self.space                  = 0
         self.active_tab             = None
         self.tabulation             = tabulation
-        self.history                = [ 'if' ]
-        self.color                  = bm.fg.rbg(0,255, 0)
+        self.history                = [ 'while' ]
+        self.color                  = bm.fg.rbg(255,100, 200)
         ke                          = bm.fg.rbg(255,255, 0)
         self.loop                   = []
         self.max_emtyLine           = 5
@@ -63,7 +63,7 @@ class EXTERNAL_IF_STATEMENT:
                     if self.active_tab is True:
 
                         self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS( self.string,
-                                        self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1 )
+                                self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1, function = _type_, inter = False )
 
                         if self.error  is None:
                             if self.get_block   == 'begin:'  :
@@ -81,7 +81,7 @@ class EXTERNAL_IF_STATEMENT:
                             elif self.get_block == 'if:'     :
                                 self.store_value.append(self.normal_string)
                                 self.loop.append( ( self.normal_string, True ) )
-                                self._values_, self.error = INTERNAL_IF_STATEMENT( self.master,
+                                self._values_, self.error = for_if.INTERNAL_IF_STATEMENT( self.master,
                                             self.data_base, self.if_line ).IF_STATEMENT( self.value, self.tabulation + 1, _type_ = _type_)
 
                                 if self.error is None:
@@ -162,8 +162,8 @@ class EXTERNAL_IF_STATEMENT:
                         else:  break
 
                     else:
-                        self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function = _type_ )
+                        self.get_block, self.value, self.error = end_for_else.EXTERNAL_BLOCKS(self.string,
+                                        self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation )
 
                         if self.error is None:
                             if   self.get_block == 'end:'  :
@@ -175,37 +175,6 @@ class EXTERNAL_IF_STATEMENT:
                                     break
                                 else:
                                     self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
-                                    break
-
-                            elif self.get_block == 'elif:' :
-                                if self.key_else_activation == None:
-                                    if self.store_value:
-                                        self.history.append( 'elif' )
-                                        self.store_value        = []
-                                        self.loop.append( (self.normal_string, False) )
-
-                                    else:
-                                        self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
-                                        break
-                                else:
-                                    self.error = ERRORS( self.if_line ).ERROR1( 'else' )
-                                    break
-
-                            elif self.get_block == 'else:' :
-                                if self.index_else < 1:
-                                    if self.store_value:
-                                        self.index_else             += 1
-                                        self.key_else_activation    = True
-                                        self.store_value            = []
-                                        self.history.append( 'else' )
-                                        self.loop.append( (self.normal_string, False) )
-
-                                    else:
-                                        self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ] )
-                                        break
-
-                                else:
-                                    self.error = ERRORS( self.if_line ).ERROR3( 'else' )
                                     break
 
                             elif self.get_block == 'empty' :
@@ -225,8 +194,8 @@ class EXTERNAL_IF_STATEMENT:
                     if self.tabulation == 1:  break
 
                     else:
-                        self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS(self.string,
-                                            self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function = _type_  )
+                        self.get_block, self.value, self.error = end_for_else.EXTERNAL_BLOCKS(self.string,
+                                        self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation )
 
                         if self.error is None:
                             if   self.get_block == 'end:'  :
@@ -238,36 +207,6 @@ class EXTERNAL_IF_STATEMENT:
                                     break
                                 else:
                                     self.error = ERRORS( self.if_line ).ERROR2(self.history[ -1 ] )
-                                    break
-
-                            elif self.get_block == 'elif:' :
-                                if self.key_else_activation == None:
-                                    if self.store_value:
-                                        self.history.append( 'elif' )
-                                        self.store_value        = []
-                                        self.loop.append( (self.normal_string, False) )
-
-                                    else:
-                                        self.error = ERRORS(self.if_line).ERROR2(self.history[ -1 ])
-                                        break
-                                else:
-                                    self.error = ERRORS(self.if_line).ERROR1( 'else' )
-                                    break
-
-                            elif self.get_block == 'else:' :
-                                if self.index_else < 1:
-                                    if self.store_value:
-                                        self.index_else             += 1
-                                        self.key_else_activation    = True
-                                        self.store_value            = []
-                                        self.history.append( 'else' )
-                                        self.loop.append( (self.normal_string, False) )
-
-                                    else:
-                                        self.error = ERRORS(self.if_line).ERROR2(self.history[-1])
-                                        break
-                                else:
-                                    self.error = ERRORS(self.if_line).ERROR3( 'else' )
                                     break
 
                             elif self.get_block == 'empty' :
@@ -291,7 +230,7 @@ class EXTERNAL_IF_STATEMENT:
 
         return self.loop , self.error
 
-class INTERNAL_IF_STATEMENT:
+class INTERNAL_WHILE_STATEMENT:
     def __init__(self, 
                 master      :any, 
                 data_base   :dict, 
@@ -306,7 +245,7 @@ class INTERNAL_IF_STATEMENT:
     def IF_STATEMENT(self,
                     bool_value  : bool,
                     tabulation  : int,
-                    _type_      : str = 'conditional'
+                    _type_      : str = 'loop'
                     ):
         self.error                  = None
         self.string                 = ''
@@ -323,7 +262,7 @@ class INTERNAL_IF_STATEMENT:
         self.active_tab             = None
         self.tabulation             = tabulation
         self.history                = [ 'if' ]
-        self.color                  = bm.fg.rbg(0,255, 255)
+        self.color                  = bm.fg.rbg(100, 50, 150)
         ke                          = bm.fg.rbg(255,255,0)
         self.loop                   = []
         self.max_emtyLine           = 5
@@ -339,8 +278,8 @@ class INTERNAL_IF_STATEMENT:
 
                 if self.error is None:
                     if self.active_tab is True:
-                        self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS(self.string,
-                                        self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1)
+                        self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS( self.string,
+                                self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1, function = _type_, inter = False )
 
                         if self.error  is None:
                             if self.get_block   == 'begin:'     :
@@ -358,7 +297,7 @@ class INTERNAL_IF_STATEMENT:
                             elif self.get_block == 'if:'        :
                                 self.store_value.append(self.normal_string)
                                 self.loop.append( (self.normal_string, True) )
-                                self._values_, self.error = EXTERNAL_IF_STATEMENT(  self.master,
+                                self._values_, self.error = for_if.EXTERNAL_IF_STATEMENT(  self.master,
                                         self.data_base, self.if_line).IF_STATEMENT( self.value, self.tabulation + 1, _type_=_type_)
                                 if self.error is None:
                                     self.history.append( 'if' )
@@ -436,8 +375,8 @@ class INTERNAL_IF_STATEMENT:
                         else: break
 
                     else:
-                        self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function=_type_, inter=False )
+                        self.get_block, self.value, self.error = end_for_else.EXTERNAL_BLOCKS(self.string,
+                                        self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation )
 
                         if self.error is None:
                             if self.get_block   == 'end:' :
@@ -449,36 +388,6 @@ class INTERNAL_IF_STATEMENT:
                                     break
                                 else:
                                     self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
-                                    break
-
-                            elif self.get_block == 'elif:':
-                                if self.key_else_activation == None:
-                                    if self.store_value:
-                                        self.history.append( 'elif' )
-                                        self.store_value        = []
-                                        self.loop.append( (self.normal_string, False) )
-
-                                    else:
-                                        self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
-                                        break
-                                else:
-                                    self.error = ERRORS( self.if_line ).ERROR1( 'else' )
-                                    break
-
-                            elif self.get_block == 'else:':
-                                if self.index_else < 1:
-                                    if self.store_value:
-                                        self.index_else             += 1
-                                        self.key_else_activation    = True
-                                        self.store_value            = []
-                                        self.history.append('else')
-                                        self.loop.append( (self.normal_string, False) )
-
-                                    else:
-                                        self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ] )
-                                        break
-                                else:
-                                    self.error = ERRORS( self.if_line ).ERROR3( 'else' )
                                     break
 
                             elif self.get_block == 'empty':
@@ -494,10 +403,9 @@ class INTERNAL_IF_STATEMENT:
                                 break
 
                         else:  break
-
                 else:
-                    self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS(self.string,
-                                self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function=_type_, inter = False )
+                    self.get_block, self.value, self.error = end_for_else.EXTERNAL_BLOCKS(self.string,
+                                        self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation )
 
                     if self.error is None:
                         if self.get_block   == 'end:' :
@@ -509,36 +417,6 @@ class INTERNAL_IF_STATEMENT:
                                 break
                             else:
                                 self.error = ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
-                                break
-
-                        elif self.get_block == 'elif:':
-                            if self.key_else_activation == None:
-                                if self.store_value:
-                                    self.history.append( 'elif' )
-                                    self.store_value            = []
-                                    self.loop.append( (self.normal_string, False) )
-
-                                else:
-                                    self.error = ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
-                                    break
-                            else:
-                                self.error = ERRORS( self.if_line ).ERROR1( 'else' )
-                                break
-
-                        elif self.get_block == 'else:':
-                            if self.index_else < 1:
-                                if self.store_value:
-                                    self.index_else             += 1
-                                    self.key_else_activation    = True
-                                    self.store_value            = []
-                                    self.history.append( 'else' )
-                                    self.loop.append( (self.normal_string, False) )
-
-                                else:
-                                    self.error = ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
-                                    break
-                            else:
-                                self.error = ERRORS( self.if_line ).ERROR3( 'else' )
                                 break
 
                         elif self.get_block == 'empty':

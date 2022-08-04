@@ -9,12 +9,13 @@ from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement, unless_interpreter
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import end_else_elif as _end_else_elif_
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import end_case_default, switch_statement
+from script.PARXER.PARXER_FUNCTIONS.WHILE               import while_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else, for_interpreter
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmt_interpreter as cmt_int
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
 from script.PARXER.LEXER_CONFIGURE                      import numeric_lexer
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement, for_if, for_unless, for_switch, for_try
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement, for_if, for_unless, for_switch, for_try, for_while
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment, for_begin
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import functions, def_interpreter
 from script.PARXER.PARXER_FUNCTIONS.CLASSES             import classes, class_interpreter
@@ -361,6 +362,24 @@ class ASSEMBLY( ):
 
                 else: self.error = self.error
 
+            elif self.master[ 'function' ] == 'while'   :
+    
+                self._return_, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS( typ = 'while')
+                if self.error is None:
+                    self.data_base[ 'print' ] = []
+                    self.listTransform, self.error = for_while.EXTERNAL_WHILE_STATEMENT( None,
+                                            self.data_base, self.line ).WHILE_STATEMENT( self._return_, 1)
+
+                    if self.error is None:
+                        self.newLine                    = self.line 
+                        self.error = while_statement.EXTERNAL_WHILE_LOOP_STATEMENT( None , self.data_base,
+                                            self.newLine ).WHILE_STATEMENT( self._return_, 1, self.listTransform, main_string = main_string )
+                        
+                        if self.error is None:  self.data_base['print'] = []
+                        else: pass 
+                    else: pass
+                else: pass
+            
             else: print(self.master)
 
         else:
