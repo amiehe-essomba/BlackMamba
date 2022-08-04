@@ -12,7 +12,7 @@
 7. while
 8. until
 9. def/func
-10. class
+10.class
 
 ```
 ![try block](/images/try.png)
@@ -22,6 +22,8 @@ pull requests are welcome. Fore major changes, please open an issue first to dis
 That's very impotant.
 
 Please make sure to update tests as appropriate.
+
+## Authors and acknowledgement
 
 ## Licence 
 [MIT](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
