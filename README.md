@@ -16,6 +16,7 @@
 
 ```
 ![try block](/images/try.png)
+![while block](/images/while.png)
 
 ## contributing
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
