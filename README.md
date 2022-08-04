@@ -19,5 +19,4 @@
 
 
 ## Licence 
-[MIT]
-(https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/)
+[MIT](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/)
