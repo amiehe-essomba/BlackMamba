@@ -5,13 +5,15 @@
 1. begin
 2. if/elif/else
 3. unless/else
-4. switch
+4. switch/case/default
 5. try/except/finally
 6. for
 7. while
 8. until
 9. def/func
 10.class
+11.with
+12.from/module/load/as
 
 ```
 ![try block](/images/try.png)
