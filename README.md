@@ -16,8 +16,7 @@
 12.from/module/load/as
 
 ```
-![try block](/images/try.png)
-![while block](/images/while.png)
+![while loop  try statement ](/images/while_try.png)
 
 ## Project Description 
 
