@@ -17,6 +17,9 @@
 ```
 ![try block](/images/try.png)
 
+## contributing
+pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
+That's very impotant.
 
 ## Licence 
 [MIT](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
