@@ -20,4 +20,4 @@
 
 ## Licence 
 [MIT]
-(https://choosealicence.com/licence/mit/)
+(LICENSE)
