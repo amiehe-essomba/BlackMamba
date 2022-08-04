@@ -177,7 +177,7 @@ class INTERNAL_BLOCKS:
                     if   self.normal_string[ : 2 ] == 'if'    :
                         if self.normal_string[ -1 ] == ':':
                             self._value_, self.error = INTERNAL_BLOCKS( self.string, self.normal_string,
-                                                self.data_base, self.line ).BLOCK_TREATMENT( num = 2 )
+                                                self.data_base, self.line ).BLOCK_TREATMENT( num = 2, function = function, inter = inter )
                             if self.error is None:
                                 self._return_   = 'if:'
                                 self.value      = self._value_
@@ -196,7 +196,7 @@ class INTERNAL_BLOCKS:
                     elif self.normal_string[ : 6 ] == 'unless':
                         if self.normal_string[ -1 ] == ':':
                             self._value_, self.error = INTERNAL_BLOCKS( self.string, self.normal_string,
-                                                                       self.data_base, self.line ).BLOCK_TREATMENT( num = 6 )
+                                                                       self.data_base, self.line ).BLOCK_TREATMENT( num = 6, function = function, inter = inter )
                             if self.error is None:
                                 self._return_   = 'unless:'
                                 self.value      = self._value_

@@ -63,7 +63,7 @@ class EXTERNAL_IF_STATEMENT:
                     if self.active_tab is True:
 
                         self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS( self.string,
-                                        self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1 )
+                                self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1, function = _type_, inter = False  )
 
                         if self.error  is None:
                             if self.get_block   == 'begin:'  :
@@ -340,7 +340,7 @@ class INTERNAL_IF_STATEMENT:
                 if self.error is None:
                     if self.active_tab is True:
                         self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS(self.string,
-                                        self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1)
+                                        self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1, function = _type_, inter = False )
 
                         if self.error  is None:
                             if self.get_block   == 'begin:'     :

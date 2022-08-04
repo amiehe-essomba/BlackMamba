@@ -90,6 +90,19 @@ class EXTERNAL_WHILE_STATEMENT:
                                     self.loop.append( self._values_ )
 
                                 else:  break
+                                
+                            elif self.get_block == 'while:'  :
+                                self.store_value.append(self.normal_string)
+                                self.loop.append( ( self.normal_string, True ) )
+                                self._values_, self.error = INTERNAL_WHILE_STATEMENT( self.master,
+                                            self.data_base, self.if_line ).WHILE_STATEMENT( self.value, self.tabulation + 1, _type_ = _type_)
+
+                                if self.error is None:
+                                    self.history.append('while')
+                                    self.space = 0
+                                    self.loop.append( self._values_ )
+
+                                else:  break
 
                             elif self.get_block == 'try:'    :
                                 self.store_value.append(self.normal_string)
@@ -232,9 +245,9 @@ class EXTERNAL_WHILE_STATEMENT:
 
 class INTERNAL_WHILE_STATEMENT:
     def __init__(self, 
-                master      :any, 
-                data_base   :dict, 
-                line        :int
+                master      : any, 
+                data_base   : dict, 
+                line        : int
                 ):
         self.line                   = line
         self.master                 = master
@@ -242,7 +255,7 @@ class INTERNAL_WHILE_STATEMENT:
         self.analyze                = control_string
         self.lex_par                = lexer_and_parxer
 
-    def IF_STATEMENT(self,
+    def WHILE_STATEMENT(self,
                     bool_value  : bool,
                     tabulation  : int,
                     _type_      : str = 'loop'
@@ -262,7 +275,7 @@ class INTERNAL_WHILE_STATEMENT:
         self.active_tab             = None
         self.tabulation             = tabulation
         self.history                = [ 'if' ]
-        self.color                  = bm.fg.rbg(100, 50, 150)
+        self.color                  = bm.fg.rbg(255, 200, 100)
         ke                          = bm.fg.rbg(255,255,0)
         self.loop                   = []
         self.max_emtyLine           = 5
@@ -345,6 +358,19 @@ class INTERNAL_WHILE_STATEMENT:
                                     self.loop.append( (loop, tab, self.error) )
 
                                 else: break 
+    
+                            elif self.get_block == 'while:'  :
+                                self.store_value.append(self.normal_string)
+                                self.loop.append( ( self.normal_string, True ) )
+                                self._values_, self.error = EXTERNAL_WHILE_STATEMENT( self.master,
+                                            self.data_base, self.if_line ).WHILE_STATEMENT( self.value, self.tabulation + 1, _type_ = _type_)
+
+                                if self.error is None:
+                                    self.history.append('while')
+                                    self.space = 0
+                                    self.loop.append( self._values_ )
+
+                                else:  break
     
                             elif self.get_block == 'switch:'    :
                                 self.store_value.append(self.normal_string)

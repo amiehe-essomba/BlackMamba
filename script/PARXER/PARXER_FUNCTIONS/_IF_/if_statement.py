@@ -368,7 +368,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                     _type_          : str   = 'conditional', 
                     keyPass         : bool  = False
                     ):
-        
+  
         self.error                  = None
         self.string                 = ''
         self.normal_string          = ''
@@ -410,7 +410,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                     if self.normal_string:
                         if self.active_tab is True:
                             self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS( self.string,
-                                            self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
+                                            self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1, function = _type_, inter = False  )
                             
                             if self.error  is None:
                                 if self.get_block   == 'begin:'  :
@@ -451,11 +451,13 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                             else: break
                                         else: pass
                                     else: 
-                                        self.error = INTERNAL_IF_LOOP_STATEMENT(self.master,
-                                        self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                    self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
-                                        if self.error is None: pass
-                                        else: break
+                                        if self.bool_value is True:
+                                            self.error = INTERNAL_IF_LOOP_STATEMENT(self.master,
+                                            self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
+                                                                                        self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
+                                            if self.error is None: pass
+                                            else: break
+                                        else: pass
                                                                     
                                 elif self.get_block == 'try:'    :
                                     self.next_line = j + 1
@@ -1089,7 +1091,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
                     if self.string :
                         if self.active_tab is True:
                             self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS(self.string,
-                                            self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation+1 )
+                                            self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation+1, function = _type_, inter = False  )
                         
                             if self.error  is None:
                                 if self.get_block   == 'begin:' :
@@ -1129,11 +1131,13 @@ class INTERNAL_IF_LOOP_STATEMENT:
                                             else: break
                                         else: pass
                                     else: 
-                                        self.error = EXTERNAL_IF_LOOP_STATEMENT(self.master,
-                                        self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                    self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
-                                        if self.error is None: pass
-                                        else: break
+                                        if self.bool_value is True:
+                                            self.error = EXTERNAL_IF_LOOP_STATEMENT(self.master,
+                                            self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
+                                                                                        self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
+                                            if self.error is None: pass
+                                            else: break
+                                        else: pass
                                         
                                 elif self.get_block == 'try:'   :
                                     self.next_line = j + 1

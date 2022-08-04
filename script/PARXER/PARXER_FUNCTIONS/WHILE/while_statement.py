@@ -175,6 +175,21 @@ class EXTERNAL_WHILE_LOOP_STATEMENT:
                                         if self.error is None: pass
                                         else: break
                                                 
+                                    elif self.get_block == 'while:'    :
+                                        self.next_line  = j + 1
+                                        self.store_value.append(self.normal_string)
+                                        self.history.append('while')
+                                        self.space  = 0
+                                        
+                                        if self.data_base[ 'pass' ] is None: pass 
+                                        else: self.keyPass = True
+                                        
+                                        self.error = INTERNAL_WHILE_LOOP_STATEMENT(self.master,
+                                        self.data_base, self.line).WHILE_STATEMENT( self.value, self.tabulation + 1,
+                                                self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass, main_string=main_string )
+                                        if self.error is None: pass
+                                        else: break
+                                                
                                     elif self.get_block == 'switch:' :
                                         self.next_line  = j + 1
                                         self.store_value.append( self.normal_string )
@@ -266,8 +281,7 @@ class EXTERNAL_WHILE_LOOP_STATEMENT:
                     else: break
                     
                 else: break
-
-                
+     
             self.after      = end_else_elif.CHECK_VALUES( self.data_base ).AFTER()
             self.error      = end_else_elif.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
         else: pass
@@ -295,7 +309,8 @@ class INTERNAL_WHILE_LOOP_STATEMENT:
                     tabulation      : int, 
                     loop_list       : any   = None, 
                     _type_          : str   = 'loop', 
-                    keyPass         : bool  = False
+                    keyPass         : bool  = False,
+                    main_string     : str   = ''
                     ):
         
         self.error                  = None
@@ -328,188 +343,221 @@ class INTERNAL_WHILE_LOOP_STATEMENT:
         ############################################################################
 
         if self.keyPass is False:
-            for j, _string_ in enumerate( self.loop_list ):
-                
-                if self.next_line == 0: self.key = True 
-                else:
-                    if self.next_line != j: self.key = True 
-                    else: self.key = False 
-                
-                if self.key == True:
+            while self.bool_value:
+                for j, _string_ in enumerate( self.loop_list ):
                     
-                    self.if_line                        += 1
-                    self.line                           += 1
+                    if self.next_line == 0: self.key = True 
+                    else:
+                        if self.next_line != j: self.key = True 
+                        else: self.key = False 
                     
-                    self.normal_string, self.active_tab     = _string_
-                    self.string                             = self.normal_string
-
-                    if self.string :
-                        if self.active_tab is True:
-                            self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS( self.string,
-                                self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1, function = _type_, inter = True )
+                    if self.key == True:
                         
-                            if self.error  is None:
-                                if self.get_block   == 'begin:' :
-                                    self.next_line  = j + 1
-                                    self.store_value.append( self.normal_string )
-                                    self.history.append( 'begin' )
-                                    self.space = 0
-                                    
-                                    if self.history[ -1 ] in ['else', 'elif']:
-                                        if self.bool_value is True :
+                        self.if_line                        += 1
+                        self.line                           += 1
+                        
+                        self.normal_string, self.active_tab     = _string_
+                        self.string                             = self.normal_string
+
+                        if self.string :
+                            if self.active_tab is True:
+                                self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS( self.string,
+                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1, function = _type_, inter = True )
+                            
+                                if self.error  is None:
+                                    if self.get_block   == 'begin:' :
+                                        self.next_line  = j + 1
+                                        self.store_value.append( self.normal_string )
+                                        self.history.append( 'begin' )
+                                        self.space = 0
+                                        
+                                        if self.history[ -1 ] in ['else', 'elif']:
+                                            if self.bool_value is True :
+                                                self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base, 
+                                                                                self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ]) 
+                                                if self.error is None: pass
+                                                else: pass
+                                            else: pass
+                                        else: 
                                             self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base, 
                                                                             self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ]) 
                                             if self.error is None: pass
-                                            else: pass
-                                        else: pass
-                                    else: 
-                                        self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base, 
-                                                                        self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ]) 
+                                            else: break
+
+                                    elif self.get_block == 'if:'    :
+                                        self.next_line  = j + 1
+                                        self.store_value.append(self.normal_string)
+                                        self.history.append('if')
+                                        self.space  = 0
+                                        
+                                        if self.data_base[ 'pass' ] is None: pass 
+                                        else: self.keyPass = True
+                                        
+                                        self.error = if_statement.EXTERNAL_IF_LOOP_STATEMENT(self.master,
+                                        self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
+                                                                                    self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
+                                        if self.error is None: pass
+                                        else: break
+                                      
+                                    elif self.get_block == 'while:' :
+                                        self.next_line  = j + 1
+                                        self.store_value.append(self.normal_string)
+                                        self.history.append('while')
+                                        self.space  = 0
+                                        
+                                        if self.data_base[ 'pass' ] is None: pass 
+                                        else: self.keyPass = True
+                                        
+                                        self.error = EXTERNAL_WHILE_LOOP_STATEMENT(self.master,
+                                        self.data_base, self.line).WHILE_STATEMENT( self.value, self.tabulation + 1,
+                                                self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass, main_string=main_string )
+                                        if self.error is None: pass
+                                        else: break
+                                            
+                                    elif self.get_block == 'try:'   :
+                                        self.next_line = j + 1
+                                        self.store_value.append( self.normal_string )
+                                        self.history.append( 'try' )
+                                        self.space = 0
+                                        
+                                        if self.data_base[ 'pass' ] is None: pass 
+                                        else: self.keyPass = True
+                                        
+                                        
+                                        self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT( self.master,
+                                                        self.data_base, self.line).TRY_STATEMENT( self.tabulation + 1,
+                                                                        self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
                                         if self.error is None: pass
                                         else: break
 
-                                elif self.get_block == 'if:'    :
-                                    self.next_line  = j + 1
-                                    self.store_value.append(self.normal_string)
-                                    self.history.append('if')
-                                    self.space  = 0
-                                    
-                                    if self.data_base[ 'pass' ] is None: pass 
-                                    else: self.keyPass = True
-                                    
-                                    self.error = if_statement.EXTERNAL_IF_LOOP_STATEMENT(self.master,
-                                    self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
-                                    if self.error is None: pass
-                                    else: break
+                                    elif self.get_block == 'unless:':
                                         
-                                elif self.get_block == 'try:'   :
-                                    self.next_line = j + 1
-                                    self.store_value.append( self.normal_string )
-                                    self.history.append( 'try' )
-                                    self.space = 0
-                                    
-                                    if self.data_base[ 'pass' ] is None: pass 
-                                    else: self.keyPass = True
-                                    
-                                    
-                                    self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT( self.master,
-                                                    self.data_base, self.line).TRY_STATEMENT( self.tabulation + 1,
-                                                                    self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
-                                    if self.error is None: pass
-                                    else: break
+                                        self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
+                                                                self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
+                                                                self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass )
+                                        if self.error is None: pass
+                                        else: break
+                                                
+                                    elif self.get_block == 'for:'   :
+                                        self.next_line  = j + 1
+                                        self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                                        self.store_value.append( self.normal_string )
+                                        self.history.append( 'for' )
+                                        self.space = 0
+                                        
+                                        self.var_name       = self.value[ 'variable' ]
+                                        self.for_values_init= self.value[ 'value' ]
+                                        self.variables      = self.data_base['variables']['vars'].copy()
+                                        self._values_       = self.data_base['variables']['values'].copy()
+                                        
+                                        if self.var_name in self.variables:
+                                            self.idd = self.variables.index( self.var_name )
+                                            self._values_[ self.idd ] = self.for_values_init[ 0 ]
+                                            self.data_base[ 'variables' ][ 'values' ] = self._values_
 
-                                elif self.get_block == 'unless:':
-                                    
-                                    self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master,
-                                                            self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
-                                                            self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass )
-                                    if self.error is None: pass
-                                    else: break
-                                            
-                                elif self.get_block == 'for:'   :
-                                    self.next_line  = j + 1
-                                    self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
-                                    self.store_value.append( self.normal_string )
-                                    self.history.append( 'for' )
-                                    self.space = 0
-                                    
-                                    self.var_name       = self.value[ 'variable' ]
-                                    self.for_values_init= self.value[ 'value' ]
-                                    self.variables      = self.data_base['variables']['vars'].copy()
-                                    self._values_       = self.data_base['variables']['values'].copy()
-                                    
-                                    if self.var_name in self.variables:
-                                        self.idd = self.variables.index( self.var_name )
-                                        self._values_[ self.idd ] = self.for_values_init[ 0 ]
-                                        self.data_base[ 'variables' ][ 'values' ] = self._values_
-
-                                    else:
-                                        self.variables.append( self.var_name )
-                                        self._values_.append( self.for_values_init[ 0 ] )
-                                        self.data_base[ 'variables' ][ 'values' ]   = self._values_
-                                        self.data_base[ 'variables' ][ 'vars' ]     = self.variables
-
-                                    self.error  = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init),
-                                                                            self.var_name, True, self.loop_list[ j + 1] )
-                                    if self.error is None: pass
-                                    else: break
-                                            
-                                elif self.get_block == 'switch:':
-                                    self.next_line  = j + 1
-                                    self.store_value.append( self.normal_string )
-                                    self.history.append( 'switch' )
-                                    self.space = 0
-                                    
-                                    self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
-                                                        self.line ).SWITCH( self.value, self.tabulation + 1, 
-                                                                    self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass )
-                                    if self.error is None: pass
-                                    else: break
-
-                                elif self.get_block == 'empty'  :
-                                    if self.space <= self.max_emtyLine:  self.space += 1
-                                    else:   
-                                        self.error = ERRORS( self.line ).ERROR4()
-                                        break
-
-                                elif self.get_block == 'any'    :
-                                    self.store_value.append( self.normal_string )
-                                    if self.bool_value is True:
-                                        if self.data_base[ 'pass' ] is None:
-                                            self.error = self.lex_par.LEXER_AND_PARXER(self.value, self.data_base,
-                                                        self.line ).ANALYZE( _id_ = 1, _type_ = _type_ )
-                                            if self.error is None:  
-                                                self.space  = 0
-                                                self.break_ = True
-                                            else: break
                                         else:
-                                            self.keyPass    = True
-                                            self.error      = main.SCANNER(self.value, self.data_base,
+                                            self.variables.append( self.var_name )
+                                            self._values_.append( self.for_values_init[ 0 ] )
+                                            self.data_base[ 'variables' ][ 'values' ]   = self._values_
+                                            self.data_base[ 'variables' ][ 'vars' ]     = self.variables
+
+                                        self.error  = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init),
+                                                                                self.var_name, True, self.loop_list[ j + 1] )
+                                        if self.error is None: pass
+                                        else: break
+                                                
+                                    elif self.get_block == 'switch:':
+                                        self.next_line  = j + 1
+                                        self.store_value.append( self.normal_string )
+                                        self.history.append( 'switch' )
+                                        self.space = 0
+                                        
+                                        self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
+                                                            self.line ).SWITCH( self.value, self.tabulation + 1, 
+                                                                        self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass )
+                                        if self.error is None: pass
+                                        else: break
+
+                                    elif self.get_block == 'empty'  :
+                                        if self.space <= self.max_emtyLine:  self.space += 1
+                                        else:   
+                                            self.error = ERRORS( self.line ).ERROR4()
+                                            break
+
+                                    elif self.get_block == 'any'    :
+                                        self.store_value.append( self.normal_string )
+                                        if self.bool_value is True:
+                                            if self.data_base[ 'pass' ] is None:
+                                                self.error = self.lex_par.LEXER_AND_PARXER(self.value, self.data_base,
+                                                            self.line ).ANALYZE( _id_ = 1, _type_ = _type_ )
+                                                if self.error is None:  
+                                                    self.space  = 0
+                                                    self.break_ = True
+                                                else: break
+                                            else:
+                                                self.keyPass    = True
+                                                self.error      = main.SCANNER(self.value, self.data_base,
+                                                                    self.line).SCANNER(_id_ = 1, _type_= _type_, _key_=True)
+                                                if self.error is None:  self.space = 0
+                                                else: break
+                                        else:
+                                            self.error = main.SCANNER(self.value, self.data_base,
                                                                 self.line).SCANNER(_id_ = 1, _type_= _type_, _key_=True)
                                             if self.error is None:  self.space = 0
                                             else: break
-                                    else:
-                                        self.error = main.SCANNER(self.value, self.data_base,
-                                                            self.line).SCANNER(_id_ = 1, _type_= _type_, _key_=True)
-                                        if self.error is None:  self.space = 0
-                                        else: break
-                            else: break 
-                        else:
-                            self.get_block, self.value, self.error = end_for_else.EXTERNAL_BLOCKS(self.string,
-                                        self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation )
-                        
-                            if self.error is None:
-                                if self.get_block   == 'end:' :
-                                    if self.store_value:
-                                        del self.store_value[ : ]
-                                        del self.history[ : ]
-                                        del self.boolean_store[ : ]
-                                        
-                                        if self.tabulation == 1:  self.data_base['pass'] = None 
-                                        else: pass
+                                else: break 
+                            else:
+                                self.get_block, self.value, self.error = end_for_else.EXTERNAL_BLOCKS(self.string,
+                                            self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation )
+                            
+                                if self.error is None:
+                                    if self.get_block   == 'end:' :
+                                        if self.store_value:
+                                            del self.store_value[ : ]
+                                            del self.history[ : ]
+                                            del self.boolean_store[ : ]
+                                            
+                                            if self.tabulation == 1:  self.data_base['pass'] = None 
+                                            else: pass
 
-                                        break
-                                    else:
-                                        self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ])
-                                        break
+                                            break
+                                        else:
+                                            self.error = ERRORS( self.line ).ERROR2( self.history[ -1 ])
+                                            break
 
-                                elif self.get_block == 'empty':
-                                    if self.space <= self.max_emtyLine: self.space += 1
+                                    elif self.get_block == 'empty':
+                                        if self.space <= self.max_emtyLine: self.space += 1
+                                        else:
+                                            self.error = ERRORS( self.line ).ERROR4()
+                                            break
+
                                     else:
                                         self.error = ERRORS( self.line ).ERROR4()
                                         break
 
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR4()
-                                    break
-
-                            else : break
+                                else : break
+                        else: pass
+                    else:
+                        self.if_line        += 1
+                        self.line           += 1
+                        #self.next_line      = None
+                
+                if self.error is None:
+                    if self.data_base[ 'print' ] is not None:
+                        self.list_of_values = self.data_base[ 'print' ]
+                        for i, value in enumerate( self.list_of_values ):
+                            if i < len( self.list_of_values ) - 1:
+                                print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                            else:
+                                print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )             
                     else: pass
-                else:
-                    self.if_line        += 1
-                    self.line           += 1
-                    #self.next_line      = None
+                    self.data_base['print'] = []
+                        
+                    self.bool_value, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS( typ = 'while' )
+                    if self.error is None: pass
+                    else: break
+                    
+                else: break
                 
             self.after = end_else_elif.CHECK_VALUES( self.data_base ).AFTER()
             self.error = end_else_elif.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
