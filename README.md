@@ -28,5 +28,5 @@ Please make sure to update tests as appropriate.
 
 ## Authors and Acknowledgement
 
-## Licence 
-[MIT](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
+## License 
+This project is licensed under [MIT LICENSE](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
