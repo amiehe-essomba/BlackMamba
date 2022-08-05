@@ -18,6 +18,10 @@
 ```
 ```bash
 from module maths load statistics as stats
+from module maths load statistics, math
+from module maths load *
+load module maths, iris
+load module maths as m
 ```
 ![while loop  try statement ](/images/while_try.png)
 
