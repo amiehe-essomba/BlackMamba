@@ -16,6 +16,9 @@
 12.from/module/load/as
 
 ```
+```bash
+from module maths load statistics as stats
+```
 ![while loop  try statement ](/images/while_try.png)
 
 ## Project Description 
