@@ -20,9 +20,11 @@
 ![while loop  try statement ](/images/while_try.png)
 
 ```bash
+from module /path/maths/ load statistics as stats
 from module maths load statistics as stats
 from module maths load statistics, math
 from module maths load *
+load module /path/maths/
 load module maths, iris
 load module maths as m
 ```
