@@ -29,7 +29,7 @@ load module maths, iris
 load module maths as m
 ```
 
-![module load ](/images/module_load.png)
+![module load ](/images/ml.png)
 
 
 ## Project Description 
