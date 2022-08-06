@@ -1,0 +1,3 @@
+*.c linguist-detectable=True
+*.cpp linguist-detectable=True
+*.py linguist-detectable=True
