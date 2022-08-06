@@ -1,3 +1,4 @@
-*.c linguist-detectable=True
-*.cpp linguist-detectable=True
-*.py linguist-detectable=True
+*.c linguist-detectable=true
+*.cpp linguist-detectable=true
+*.py linguist-detectable=true
+*.pyx linguist-detectable=true
