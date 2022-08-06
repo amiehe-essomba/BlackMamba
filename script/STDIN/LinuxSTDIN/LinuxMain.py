@@ -54,7 +54,6 @@ class STRING:
 
         return self.string_concatenate, self.normal_string, self.tab_active, self.error
 
-
 class terminal:
     def __init__( self, DataBase: dict, line: int):
         self.DataBase       = DataBase
@@ -77,6 +76,9 @@ class terminal:
             self.size               = len('>>> : ')
             self.error              = None 
 
+            sys.stdout.write( syntax_highlight( self.input ) ) 
+            sys.stdout.flush()
+            
             while True:
                 
                 self.char           = readchar()
@@ -119,7 +121,7 @@ class terminal:
                         if self.error is None:
                             if self.lexer is not None:
                                 self.num, self.key, self.error = parxer_assembly.ASSEMBLY( self.lexer, self.DataBase,
-                                                                   line).GLOBAL_ASSEMBLY( self.normal_string )
+                                                                   self.line).GLOBAL_ASSEMBLY( self.normal_string )
                                 if self.error is None:
                                     #show( self.clear_input ) 
                                     self.previous_next_line.append( self.input )   
@@ -146,8 +148,7 @@ class terminal:
                 elif self.char == 17: # starting of line (ctrl+Q)
                     self.index = self.length
                     self.input = self.input
-
-                
+               
                 elif self.char == 27:
                     self.next1, self.next2 = ord( sys.stdin.read( 1 )), ord( sys.stdin.read( 1 ))
 

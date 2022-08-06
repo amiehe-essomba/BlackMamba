@@ -61,7 +61,7 @@ class EXTERNAL_TRY_STATEMENT:
             self.if_line    += 1
             
             try:
-                self.string, self.normal_string, self.active_tab, self.error = self.stdin = stdin.STDIN( self.data_base,
+                self.string, self.normal_string, self.active_tab, self.error =  stdin.STDIN( self.data_base,
                                             self.if_line ).STDIN({ '0': ke, '1': self.color }, self.tabulation )
                 if self.error is None:
                     if self.active_tab is True:
@@ -361,7 +361,7 @@ class INTERNAL_TRY_STATEMENT:
             self.if_line    += 1
          
             try:
-                self.string, self.normal_string, self.active_tab, self.error = self.stdin = stdin.STDIN( self.data_base,
+                self.string, self.normal_string, self.active_tab, self.error = stdin.STDIN( self.data_base,
                                             self.if_line ).STDIN({'0': ke, '1': self.color}, self.tabulation )
 
                 if self.error is None:

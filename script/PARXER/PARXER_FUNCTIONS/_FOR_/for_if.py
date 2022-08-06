@@ -1,7 +1,10 @@
 from script                                             import control_string
 from script.STDIN.WinSTDIN                              import  stdin
-
-from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
+####
+from statement                                          import InternalStatement as IS
+from statement                                          import externalIF as eIF
+####
+#from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_unless, for_begin, for_switch, for_try, for_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
@@ -57,13 +60,15 @@ class EXTERNAL_IF_STATEMENT:
             self.if_line    += 1
 
             try:
-                self.string, self.normal_string, self.active_tab, self.error = self.stdin = stdin.STDIN( self.data_base,
+                self.string, self.normal_string, self.active_tab, self.error = stdin.STDIN( self.data_base,
                                             self.if_line ).STDIN({ '0': ke, '1': self.color }, self.tabulation )
                 if self.error is None:
                     if self.active_tab is True:
-
-                        self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS( self.string,
-                                self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1, function = _type_, inter = False  )
+                        self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
+                                data_base=self.data_base, line=self.line).BLOCKS(tabulation = self.tabulation + 1, function = _type_,
+                                                                                 interpreter = False)
+                        #self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS( self.string,
+                        #        self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation + 1, function = _type_, inter = False  )
 
                         if self.error  is None:
                             if self.get_block   == 'begin:'  :
@@ -158,12 +163,15 @@ class EXTERNAL_IF_STATEMENT:
                                                             self.line).SCANNER(_id_ = 1, _type_= _type_, _key_=True)
                                 if self.error is None: self.loop.append( (self.normal_string, True) )
                                 else: break
-
                         else:  break
 
                     else:
-                        self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function = _type_ )
+                        self.get_block, self.value, self.error = eIF.EXTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
+                                                        data_base=self.data_base, line=self.line).BLOCKS(tabulation=self.tabulation,
+                                                        function=_type_, interpreter=False)
+
+                        #self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS( self.string,
+                        #            self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function = _type_ )
 
                         if self.error is None:
                             if   self.get_block == 'end:'  :
@@ -223,10 +231,13 @@ class EXTERNAL_IF_STATEMENT:
 
                 else:
                     if self.tabulation == 1:  break
-
                     else:
-                        self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS(self.string,
-                                            self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function = _type_  )
+                        self.get_block, self.value, self.error = eIF.EXTERNAL_BLOCKS(string=self.string,
+                                                normal_string=self.normal_string, data_base=self.data_base, line=self.line).BLOCKS(
+                                                tabulation=self.tabulation, function=_type_, interpreter=False)
+
+                        #self.get_block, self.value, self.error = end_else_elif.EXTERNAL_BLOCKS(self.string,
+                        #                    self.normal_string, self.data_base, self.if_line ).BLOCKS( self.tabulation, function = _type_  )
 
                         if self.error is None:
                             if   self.get_block == 'end:'  :

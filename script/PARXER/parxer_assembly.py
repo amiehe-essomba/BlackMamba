@@ -2,7 +2,9 @@ from script.PARXER              import numerical_value
 from script.PARXER.VAR_NAME     import get_var_name
 from script.PARXER.PRINT        import show_data
 from script.LEXER.FUNCTION      import print_value
-
+######
+from statement                  import mainStatement as MS
+######
 from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement, if_inter
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
@@ -247,8 +249,9 @@ class ASSEMBLY( ):
                 self.error = ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
 
             elif self.master[ 'function' ] == 'if'      :
-
-                self._return_, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS()
+                #self._return_, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS()
+                self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
+                                line=self.line).MAIN(typ = 'if', opposite = False, interpreter = True, function = None)
                 if self.error is None:
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.error = for_if.EXTERNAL_IF_STATEMENT( None,

@@ -1,4 +1,3 @@
-from tkinter import NONE
 from script                                 import control_string
 from script.PARXER.LEXER_CONFIGURE          import numeric_lexer, partial_lexer
 from script.PARXER                          import numerical_value
