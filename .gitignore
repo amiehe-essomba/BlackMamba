@@ -6,6 +6,9 @@ __pycache__/
 # HTML
 *.html
 
+# C extensions
+*.so
+
 # image
 /images
 
