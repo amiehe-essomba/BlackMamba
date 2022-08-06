@@ -4,14 +4,13 @@
 from script                          import control_string
 from statement.error                 import error as er
 from statement.comment               import externalBlocks
-from statement                       import mainStatement as MS
 
 class EXTERNAL_BLOCKS:
     def __init__(self,
-                 string         : str,          # concatenated string
-                 normal_string  : str,          # normal string
-                 data_base      : dict,         # data base
-                 line           : int           # current line
+                 string         : str,  # concatenated string
+                 normal_string  : str,  # normal string
+                 data_base      : dict, # data base
+                 line           : int   # current line
                  ):
         self.line           = line
         self.string         = string
@@ -19,21 +18,7 @@ class EXTERNAL_BLOCKS:
         self.data_base      = data_base
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
 
-    def BLOCKS(self,
-               tabulation       : int,           # tabulation number
-               function         : any   = None,  # function type ('loop', 'conditional', 'def', 'class', 'try')
-               interpreter      : bool  = False  # interpreter
-               ):
-
-        """
-        handling the external <if> statement.\n
-        < except > < finally > and < end >\n
-        #############################\n
-        :param tabulation:
-        :param function:
-        :param interpreter:
-        :return: {self._return_ : str, self.value : any, self.error : str}
-        """
+    def BLOCKS(self,  tabulation   : int):
         self.tabulation                 = tabulation
         self.back_end                   = self.tabulation - 1
         self._return_                   = None
@@ -52,25 +37,10 @@ class EXTERNAL_BLOCKS:
                         if self.normal_string[ -1 ] == ':':
                             self._return_   = 'end:'
                             self.error      = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(num = 3,
-                                                                                            normal_string=self.normal_string)
+                                                                                            normal_string = self.normal_string)
                         else:
                             if self.normal_string in [ 'end' ]: self.error = er.ERRORS(self.line).ERROR1( 'end' )
                             else: self.error = er.ERRORS(self.line).ERROR4()
-                    elif self.normal_string[ : 4 ] == 'elif'  :
-                        if self.normal_string[ -1 ] == ':':
-                            if self.normal_string[ 4 ] in [ ' ' ]:
-                                self._return_ = 'elif:'
-                                self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
-                                    typ='elif', opposite=False, interpreter=interpreter, function=function)
-                            else:
-                                try:
-                                    if self.normal_string[ 4 ] in [ ' ' ]:  self.error = er.ERRORS(self.line).ERROR1( 'elif' )
-                                    else:
-                                        self._return_ = 'any'
-                                        self.value = self.normal_string
-                                except IndexError:
-                                    self.error = er.ERRORS(self.line).ERROR1( 'elif' )
-                        else:  self.error = er.ERRORS(self.line).ERROR1( 'elif' )
                     elif self.normal_string[ : 4 ] == 'else'  :
                         if self.normal_string[ -1 ] == ':':
                             self._return_ = 'else:'

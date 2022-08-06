@@ -3,16 +3,15 @@ This python module will be used to make a treatment on the
 internal < if statement blocks > like [ if, for, try, unless,
 until, while, begin, switch] in the case of IDE and [ if, for,
 try, unless, until, while, begin, switch, elif, end, default,
- else, except , finally] when the interpreter is running.
+else, except , finally] when the interpreter is running.
 """
 
 from script                                             import control_string
 from script.PARXER.LEXER_CONFIGURE                      import numeric_lexer
-from script.STDIN.LinuxSTDIN                            import bm_configure as bm
-from statement                                          import error as er
+from statement.error                                    import error as er
 from statement.comment                                  import structure
 from statement                                          import mainStatement as MS
-from statement.loop                                     import mainFor
+from loop                                               import mainFor
 from statement.comment                                  import externalBlocks
 try: from CythonModules.Windows                         import fileError as fe
 except ImportError:  from CythonModules.Linux           import fileError as fe
@@ -34,16 +33,23 @@ class INTERNAL_BLOCKS:
         self.chars              = self.control.LOWER_CASE()+self.control.UPPER_CASE()+['_']
 
     def BLOCKS(self, 
-                tabulation      : int,          # tabulation
-                function        : any   = None, # functionn
-                interpreter     : bool  = False # interpreter
+                tabulation      : int,              # tabulation
+                function        : any   = None,     # functionn
+                interpreter     : bool  = False,    # interpreter
                 ):
+        """
+        :param tabulation:
+        :param function:
+        :param interpreter:
+        :return:
+        """
         self.tabulation     = tabulation
         self.back_end       = self.tabulation - 1
         self._return_       = None
         self.error          = None
         self.value          = None
-
+        self.badFunctions   = ['elif', 'else', 'except', 'finally', 'case', 'default', 'func', 'class']
+        self.len            = [4, 4, 6, 7, 4, 7, 4, 5]
         self.string         = self.string[ self.back_end : ]
         self.normal_string  = self.normal_string[ self.back_end : ]
 
@@ -69,7 +75,7 @@ class INTERNAL_BLOCKS:
                             except IndexError: self.error  = er.ERRORS(self.line).ERROR1( 'if' )
                     elif self.normal_string[ : 3 ] == 'for'     :
                         self._return_, self.value, self.error = mainFor.FOR_BLOCK(self.normal_string,
-                                            self.data_base, self.line).FOR( function = function, interpreter = interpreter)
+                                                                                  self.data_base, self.line).FOR( function = function, interpreter = interpreter)
                     elif self.normal_string[ : 6 ] == 'unless'  :
                         if self.normal_string[ -1 ] == ':':
                             if self.normal_string[ 6 ] in [ ' ' ]:
@@ -128,11 +134,28 @@ class INTERNAL_BLOCKS:
                             except IndexError:  self.error = er.ERRORS( self.line ).ERROR1( 'switch' )
                     elif self.normal_string[ : 3 ] == 'try'     :
                         self._return_, self.value, self.error = structure.STRUCT().STRUCT( num = 3,
-                                                                                           normal_tring=self.normal_string)
+                                                                                           normal_string=self.normal_string)
                     elif self.normal_string[ : 5 ] == 'begin'   :
                         self._return_, self.value, self.error = structure.STRUCT().STRUCT( num = 5,
-                                                                                           normal_tring=self.normal_string)
+                                                                                           normal_string=self.normal_string)
                     else:
+                        if self.normal_string[ -1 ] != ':':
+                            if self.normal_string not in self.badFunctions:
+                                for i, num in enumerate(self.len):
+                                    try:
+                                        if self.normal_string[ : num ] in  self.badFunctions:
+                                            if self.normal_string[ num ] in self.chars: pass
+                                            else:
+                                                self.error = er.ERRORS(self.line).ERROR0(self.normal_string)
+                                                break
+                                        else : pass
+                                    except IndexError: continue
+                                if self.error is None:
+                                    self._return_       = 'any'
+                                    self.value          = self.normal_string
+                                else: pass
+                            else:  _, self.error    = self.control.CHECK_NAME(self.normal_string)
+                        else: self.error = er.ERRORS(self.line).ERROR0(self.normal_string)
                         self._return_   = 'any'
                         self.value      = self.normal_string
                 except IndexError:  self.error = er.ERRORS(self.line).ERROR0(self.normal_string)
@@ -146,9 +169,16 @@ class INTERNAL_BLOCKS:
         return self._return_, self.value, self.error
 
     def INTERPRETER_BLOCKS(self,
-                tabulation      : int,          # tabulation
-                function        : any = None    # function type [class, def , loop, try]
+                tabulation      : int,              # tabulation
+                function        : any = None,       # function type [class, def , loop, try]
+                typ             : str = 'if'        # type of structure
                 ):
+        """
+        :param tabulation:
+        :param function:
+        :param typ:
+        :return:
+        """
         self.tabulation     = tabulation
         self.back_end       = self.tabulation - 1
         self._return_       = None
@@ -181,7 +211,7 @@ class INTERNAL_BLOCKS:
                             except IndexError:  self.error = er.ERRORS(self.line).ERROR1('if')
                     elif self.normal_string[ : 3 ] == 'for'         :
                         self._return_, self.value, self.error = mainFor.FOR_BLOCK(self.normal_string,
-                                        self.data_base, self.line).FOR( function=function, interpreter=True)
+                                                                                  self.data_base, self.line).FOR( function=function, interpreter=True)
                     elif self.normal_string[ : 6 ] == 'unless'      :
                         if self.normal_string[-1] == ':':
                             if self.normal_string[6] in [' ']:
@@ -252,59 +282,97 @@ class INTERNAL_BLOCKS:
                                 self.error = er.ERRORS(self.line).ERROR1('switch')
                     elif self.normal_string[ : 3 ] == 'try'         :
                         self._return_, self.value, self.error = structure.STRUCT().STRUCT(num=3,
-                                                                                          normal_tring=self.normal_string)
+                                                                                          normal_string=self.normal_string)
                     elif self.normal_string[ : 5 ] == 'begin'       :
                         self._return_, self.value, self.error = structure.STRUCT().STRUCT(num=5,
-                                                                                          normal_tring=self.normal_string)
+                                                                                          normal_string=self.normal_string)
                     elif self.normal_string[ : 3 ] == 'end'         :
                         if self.normal_string[-1] == ':':
                             self._return_ = 'end:'
                             self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(snum=3,
                                                                                         normal_string=self.normal_string)
                         else:
-                            if self.normal_string in ['end']:
-                                self.error = er.ERRORS(self.line).ERROR1('end')
-                            else:
-                                self.error = er.ERRORS(self.line).ERROR4()
+                            if self.normal_string in ['end']: self.error = er.ERRORS(self.line).ERROR1('end')
+                            else: self.error = er.ERRORS(self.line).ERROR4()
                     elif self.normal_string[ : 4 ] == 'elif'        :
-                        if self.normal_string[ -1 ] == ':':
-                            if self.normal_string[ 4 ] in [ ' ' ]:
-                                self._return_ = 'elif:'
-                                self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
-                                    typ='elif', opposite=False, interpreter=interpreter, function=function)
-                            else:
-                                try:
-                                    if self.normal_string[ 4 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1('elif')
-                                    else:
-                                        self._return_   = 'any'
-                                        self.value      = self.normal_string
-                                except IndexError:
-                                    self.error = er.ERRORS(self.line).ERROR1('elif')
-                        else: self.error = er.ERRORS(self.line).ERROR1('elif')
+                        if typ in [ 'if' ]:
+                            if self.normal_string[ -1 ] == ':':
+                                if self.normal_string[ 4 ] in [ ' ' ]:
+                                    self._return_ = 'elif:'
+                                    self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
+                                        typ='elif', opposite=False, interpreter=interpreter, function=function)
+                                else:
+                                    try:
+                                        if self.normal_string[ 4 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1('elif')
+                                        else:
+                                            self._return_   = 'any'
+                                            self.value      = self.normal_string
+                                    except IndexError:
+                                        self.error = er.ERRORS(self.line).ERROR1('elif')
+                            else: self.error = er.ERRORS(self.line).ERROR1('elif')
+                        else: self.error = er.ERRORS(self.line).ERROR4()
+                    elif self.normal_string[ : 4 ] == 'case'        :
+                        if typ in [ 'switch' ]:
+                            if self.normal_string[ -1 ] == ':':
+                                if self.normal_string[ 4 ] in [ ' ' ]:
+                                    self._return_ = 'case:'
+                                    self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
+                                        typ='case', opposite=False, interpreter=interpreter, function=function)
+                                else:
+                                    try:
+                                        if self.normal_string[ 4 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1('case')
+                                        else:
+                                            self._return_   = 'any'
+                                            self.value      = self.normal_string
+                                    except IndexError:
+                                        self.error = er.ERRORS(self.line).ERROR1('case')
+                            else: self.error = er.ERRORS(self.line).ERROR1('case')
+                        else: self.error = er.ERRORS(self.line).ERROR4()
+                    elif self.normal_string[ : 6 ] == "except"      :
+                        if typ in [ 'try' ]:
+                            if self.normal_string[ -1 ] == ':':
+                                if self.normal_string[ 6 ] in [ ' ' ]:
+                                    self._return_ = 'except:'
+                                    self.value, self.error = structure.STRUCT().EXCEPTIONS( normal_tring=self.normal_string)
+                                else:
+                                    try:
+                                        if self.normal_string[ 6 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1('except')
+                                        else:
+                                            self._return_   = 'any'
+                                            self.value      = self.normal_string
+                                    except IndexError: self.error = er.ERRORS(self.line).ERROR1('except')
+                            else: self.error = er.ERRORS(self.line).ERROR1('except')
+                        else: self.error = er.ERRORS(self.line).ERROR4()
                     elif self.normal_string[ : 4 ] == 'else'        :
-                        if self.normal_string[ -1 ] == ':':
-                            self._return_ = 'else:'
-                            self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL( num=4,
-                                                                                        normal_string=self.normal_string)
-                        else:
-                            if self.normal_string in [ 'else' ]: self.error = er.ERRORS(self.line).ERROR1('else')
-                            else: self.error = er.ERRORS(self.line).ERROR4()
+                        if typ in [ 'if' ]:
+                            if self.normal_string[ -1 ] == ':':
+                                self._return_ = 'else:'
+                                self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL( num=4,
+                                                                                            normal_string=self.normal_string)
+                            else:
+                                if self.normal_string in [ 'else' ]: self.error = er.ERRORS(self.line).ERROR1('else')
+                                else: self.error = er.ERRORS(self.line).ERROR4()
+                        else: self.error = er.ERRORS(self.line).ERROR4()
                     elif self.normal_string[ : 7 ] == 'default'     :
-                        if self.normal_string[ -1 ] == ':':
-                            self._return_ = 'default:'
-                            self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(num=7,
-                                                                                        normal_string=self.normal_string)
-                        else:
-                            if self.normal_string in ['default']: self.error = er.ERRORS(self.line).ERROR1('default')
-                            else: self.error = er.ERRORS(self.line).ERROR4()
+                        if typ in [ 'switch' ]:
+                            if self.normal_string[ -1 ] == ':':
+                                self._return_ = 'default:'
+                                self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(num=7,
+                                                                                            normal_string=self.normal_string)
+                            else:
+                                if self.normal_string in ['default']: self.error = er.ERRORS(self.line).ERROR1('default')
+                                else: self.error = er.ERRORS(self.line).ERROR4()
+                        else: self.error = er.ERRORS(self.line).ERROR4()
                     elif self.normal_string[ : 7 ] == 'finally'     :
-                        if self.normal_string[ -1 ] == ':':
-                            self._return_ = 'finally:'
-                            self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(num=7,
-                                                                                    normal_string=self.normal_string)
-                        else:
-                            if self.normal_string in ['finally']: self.error = er.ERRORS(self.line).ERROR1('finally')
-                            else: self.error = er.ERRORS(self.line).ERROR4()
+                        if typ in [ 'try' ]:
+                            if self.normal_string[ -1 ] == ':':
+                                self._return_ = 'finally:'
+                                self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(num=7,
+                                                                                        normal_string=self.normal_string)
+                            else:
+                                if self.normal_string in ['finally']: self.error = er.ERRORS(self.line).ERROR1('finally')
+                                else: self.error = er.ERRORS(self.line).ERROR4()
+                        else: self.error = er.ERRORS(self.line).ERROR4()
                     else:
                         self._return_   = 'any'
                         self.value      = self.normal_string
