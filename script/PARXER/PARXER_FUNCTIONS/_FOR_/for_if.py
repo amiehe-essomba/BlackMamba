@@ -1,10 +1,8 @@
 from script                                             import control_string
-from script.STDIN.WinSTDIN                              import  stdin
-####
+from script.STDIN.WinSTDIN                              import stdin
 from statement                                          import InternalStatement as IS
 from statement                                          import externalIF as eIF
-####
-#from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
+from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_unless, for_begin, for_switch, for_try, for_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
@@ -12,10 +10,6 @@ from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.LEXER.FUNCTION                              import main
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
-try:
-    from CythonModules.Windows                          import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                            import fileError as fe
 
 class EXTERNAL_IF_STATEMENT:
     def __init__(self, 
@@ -148,7 +142,7 @@ class EXTERNAL_IF_STATEMENT:
                                     self.space += 1
                                     self.loop.append( (self.normal_string, True) )
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR4()
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR4()
                                     break
                             elif self.get_block == 'any'     :
                                 self.store_value.append( self.normal_string )
@@ -171,7 +165,7 @@ class EXTERNAL_IF_STATEMENT:
                                     self.loop.append( (self.normal_string, False) )
                                     break
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
                                     break
                             elif self.get_block == 'elif:' :
                                 if self.key_else_activation == None:
@@ -180,10 +174,10 @@ class EXTERNAL_IF_STATEMENT:
                                         self.store_value        = []
                                         self.loop.append( (self.normal_string, False) )
                                     else:
-                                        self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
+                                        self.error = IfError.ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
                                         break
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR1( 'else' )
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR1( 'else' )
                                     break
                             elif self.get_block == 'else:' :
                                 if self.index_else < 1:
@@ -194,21 +188,21 @@ class EXTERNAL_IF_STATEMENT:
                                         self.history.append( 'else' )
                                         self.loop.append( (self.normal_string, False) )
                                     else:
-                                        self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ] )
+                                        self.error = IfError.ERRORS( self.if_line ).ERROR2( self.history[ -1 ] )
                                         break
 
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR3( 'else' )
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR3( 'else' )
                                     break
                             elif self.get_block == 'empty' :
                                 if self.space <= self.max_emtyLine:
                                     self.space += 1
                                     self.loop.append( (self.normal_string, False) )
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR4()
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR4()
                                     break
                             else:
-                                self.error = ERRORS( self.if_line ).ERROR4()
+                                self.error = IfError.ERRORS( self.if_line ).ERROR4()
                                 break
                         else: break
                 else:
@@ -225,7 +219,7 @@ class EXTERNAL_IF_STATEMENT:
                                     self.loop.append( (self.normal_string, False) )
                                     break
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR2(self.history[ -1 ] )
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR2(self.history[ -1 ] )
                                     break
                             elif self.get_block == 'elif:' :
                                 if self.key_else_activation == None:
@@ -234,10 +228,10 @@ class EXTERNAL_IF_STATEMENT:
                                         self.store_value        = []
                                         self.loop.append( (self.normal_string, False) )
                                     else:
-                                        self.error = ERRORS(self.if_line).ERROR2(self.history[ -1 ])
+                                        self.error = IfError.ERRORS(self.if_line).ERROR2(self.history[ -1 ])
                                         break
                                 else:
-                                    self.error = ERRORS(self.if_line).ERROR1( 'else' )
+                                    self.error = IfError.ERRORS(self.if_line).ERROR1( 'else' )
                                     break
                             elif self.get_block == 'else:' :
                                 if self.index_else < 1:
@@ -248,24 +242,24 @@ class EXTERNAL_IF_STATEMENT:
                                         self.history.append( 'else' )
                                         self.loop.append( (self.normal_string, False) )
                                     else:
-                                        self.error = ERRORS(self.if_line).ERROR2(self.history[-1])
+                                        self.error = IfError.ERRORS(self.if_line).ERROR2(self.history[-1])
                                         break
                                 else:
-                                    self.error = ERRORS(self.if_line).ERROR3( 'else' )
+                                    self.error = IfError.ERRORS(self.if_line).ERROR3( 'else' )
                                     break
                             elif self.get_block == 'empty' :
                                 if self.space <= self.max_emtyLine:
                                     self.space += 1
                                     self.loop.append( (self.normal_string, False) )
                                 else:
-                                    self.error = ERRORS(  self.if_line ).ERROR4()
+                                    self.error = IfError.ERRORS(  self.if_line ).ERROR4()
                                     break
                             else:
                                 self.error = ERRORS( self.if_line ).ERROR4()
                                 break
                         else:  break
             except KeyboardInterrupt:
-                self.error = ERRORS( self.if_line ).ERROR4()
+                self.error = IfError.ERRORS( self.if_line ).ERROR4()
                 break
 
         ############################################################################
@@ -399,7 +393,7 @@ class INTERNAL_IF_STATEMENT:
                                 if self.space <= self.max_emtyLine:
                                     self.space += 1
                                     self.loop.append( self.normal_string )
-                                else:  self.error = ERRORS( self.if_line ).ERROR4()
+                                else:  self.error = IfError.ERRORS( self.if_line ).ERROR4()
                             elif self.get_block == 'any'        :
                                 self.store_value.append(self.normal_string)
                                 self.space = 0
@@ -421,7 +415,7 @@ class INTERNAL_IF_STATEMENT:
                                     self.loop.append( (self.normal_string, False) )
                                     break
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
                                     break
                             elif self.get_block == 'elif:':
                                 if self.key_else_activation == None:
@@ -430,10 +424,10 @@ class INTERNAL_IF_STATEMENT:
                                         self.store_value        = []
                                         self.loop.append( (self.normal_string, False) )
                                     else:
-                                        self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
+                                        self.error = IfError.ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
                                         break
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR1( 'else' )
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR1( 'else' )
                                     break
                             elif self.get_block == 'else:':
                                 if self.index_else < 1:
@@ -445,22 +439,21 @@ class INTERNAL_IF_STATEMENT:
                                         self.loop.append( (self.normal_string, False) )
 
                                     else:
-                                        self.error = ERRORS( self.if_line ).ERROR2( self.history[ -1 ] )
+                                        self.error = IfError.ERRORS( self.if_line ).ERROR2( self.history[ -1 ] )
                                         break
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR3( 'else' )
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR3( 'else' )
                                     break
                             elif self.get_block == 'empty':
                                 if self.space <= self.max_emtyLine:
                                     self.space += 1
                                     self.loop.append( (self.normal_string, False) )
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR4()
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR4()
                                     break
                             else:
-                                self.error = ERRORS( self.if_line ).ERROR4()
+                                self.error = IfError.ERRORS( self.if_line ).ERROR4()
                                 break
-
                         else:  break
                 else:
                     self.get_block, self.value, self.error = eIF.EXTERNAL_BLOCKS(string=self.string,
@@ -475,7 +468,7 @@ class INTERNAL_IF_STATEMENT:
                                 self.loop.append( (self.normal_string, False) )
                                 break
                             else:
-                                self.error = ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
+                                self.error = IfError.ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
                                 break
                         elif self.get_block == 'elif:':
                             if self.key_else_activation == None:
@@ -484,10 +477,10 @@ class INTERNAL_IF_STATEMENT:
                                     self.store_value            = []
                                     self.loop.append( (self.normal_string, False) )
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
                                     break
                             else:
-                                self.error = ERRORS( self.if_line ).ERROR1( 'else' )
+                                self.error = IfError.ERRORS( self.if_line ).ERROR1( 'else' )
                                 break
                         elif self.get_block == 'else:':
                             if self.index_else < 1:
@@ -498,10 +491,10 @@ class INTERNAL_IF_STATEMENT:
                                     self.history.append( 'else' )
                                     self.loop.append( (self.normal_string, False) )
                                 else:
-                                    self.error = ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
+                                    self.error = IfError.ERRORS( self.if_line ).ERROR2(self.history[ -1 ])
                                     break
                             else:
-                                self.error = ERRORS( self.if_line ).ERROR3( 'else' )
+                                self.error = IfError.ERRORS( self.if_line ).ERROR3( 'else' )
                                 break
                         elif self.get_block == 'empty':
                             if self.space <= self.max_emtyLine:
@@ -514,53 +507,10 @@ class INTERNAL_IF_STATEMENT:
                             self.error = ERRORS( self.if_line ).ERROR4()
                             break
                     else:  break
-
             except KeyboardInterrupt:
-                self.error = ERRORS( self.if_line ).ERROR4()
+                self.error = IfError.ERRORS( self.if_line ).ERROR4()
                 break
 
         ############################################################################
 
         return self.loop , self.error
-
-class ERRORS:
-    def __init__(self, line: int):
-        self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
-        self.reset      = bm.init.reset
-
-    def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white,
-                                                                                                       self.cyan, string) + error
-        return self.error+self.reset
-
-    def ERROR1(self, string: str = 'else'):
-        error = '{}is already defined. {}line: {}{}'.format(self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax. {}<< {} >> {}block '.format(self.white,
-                                                                                self.cyan, string, self.green) + error
-        return self.error+self.reset
-
-    def ERROR2(self, string):
-        error = '{}no values {}in the previous statement {}<< {} >> {}block. {}line: {}{}'.format(self.green, self.white, self.cyan, string, self.green,
-                                                                                             self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax '.format( self.white ) + error
-
-        return self.error+self.reset
-
-    def ERROR3(self, string: str = 'else'):
-        error = 'due to {}many {}<< {} >> {}blocks. {}line: {}{}'.format(self.green, self.cyan, string, self.green, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax '.format( self.white ) + error
-
-        return self.error+self.reset
-
-    def ERROR4(self):
-        self.error =  fe.FileErrors( 'IndentationError' ).Errors()+'{}unexpected an indented block, {}line: {}{}'.format(self.yellow,
-                                                                                    self.white, self.yellow, self.line )
-        return self.error+self.reset

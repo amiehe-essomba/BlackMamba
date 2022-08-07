@@ -203,8 +203,7 @@ class terminal:
 
                 if self.index > 0:
                     sys.stdout.write( bm.move_cursor.RIGHT( self.index - self.sub_length ) )
-                else:
-                    pass 
+                else:  pass
 
                 sys.stdout.flush()
             
