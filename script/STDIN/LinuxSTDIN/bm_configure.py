@@ -1,8 +1,8 @@
-from sys import stdout, stdin
-from time import sleep
 import datetime
-from datetime import datetime
-import re
+import re, os, sys
+from   sys         import stdout, stdin
+from   time        import sleep
+from   datetime    import datetime
 
 class fg:
     black       = u"\u001b[30m"
@@ -56,7 +56,12 @@ class init:
 
 class clear:
     clear       = u"\u001b[2J"
-    clearline   = u"\u001b[0K"
+    def line( pos : int ):
+        # 2 = entire line
+        # 1 = from the cursor to start of line
+        # 0 = from the cursor to begenning of line
+        clearline   = u"\u001b[" + f"{pos}" + "K"
+        return clearline
 
 class move_cursor:
     move = u"\u001b[?12h"
@@ -138,10 +143,35 @@ class head:
             sleep( wait )
 
 class remove_ansi_chars:
-    def chars( name : str ):
+    def chars( self, name : str ):
         ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
         return ansi_escape.sub ('', name) 
-    
+
+class read:
+    def readchar(self):
+        fd  = sys.stdin.fileno()
+        ch = ord( sys.stdin.read( 1 ) )
+        return ch
+
+class string:
+    def __init__(self):
+        pass
+    def syntax_highlight( self, name : str ):
+        self.stripped = name.rstrip()
+        return self.stripped + bg.blue_L + " " * ( len( name ) - len( self.stripped ) ) + init.reset
+
+class chars:
+    def ansi_remove_chars( self, name : str ):
+        ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+        return ansi_escape.sub ('', name)
+
+class clean_print:
+    def clean_print(self, string : str):
+        sys.stdout.write(bm.clear.line(2))
+        sys.stdout.write(bm.move_cursor.LEFT(1000))
+        sys.stdout.write(bm.move_cursor.DOWN(1))
+        print('{}\n'.format(string))
+
 class timer:
     def timer():
         def updateClock():

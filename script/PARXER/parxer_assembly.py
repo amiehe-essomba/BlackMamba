@@ -254,8 +254,11 @@ class ASSEMBLY( ):
                                 line=self.line).MAIN(typ = 'if', opposite = False, interpreter = True, function = None)
                 if self.error is None:
                     self.data_base[ 'print' ] = []
-                    self.listTransform, self.error = for_if.EXTERNAL_IF_STATEMENT( None,
-                                            self.data_base, self.line ).IF_STATEMENT( self._return_, 1)
+                    #self.listTransform, self.error = for_if.EXTERNAL_IF_STATEMENT( None,
+                    #                        self.data_base, self.line ).IF_STATEMENT( self._return_, 1)
+                    self.listTransform, self.error = for_if.EXTERNAL_IF_WINDOWS(master=None,data_base=self.data_base,
+                                    line=self.line).TERMINAL(bool_value = self._return_, tabulation=1, _type_='conditional',
+                                    c = bm.fg.rbg(255,255,255) )
 
                     if self.error is None:
                         self.newLine                    = self.line 

@@ -27,8 +27,8 @@ class ERRORS:
         return self.error+self.reset
 
     def ERROR2(self, string):
-        error = '{}no values {}in the previous statement {}<< {} >> {}block. {}line: {}{}'.format(self.green, self.white, self.cyan, string, self.green,
-                                                                                             self.white, self.yellow, self.line)
+        error = '{}no values {}in the previous statement {}<< {} >> {}block. {}line: {}{}'.format(self.green, self.white, self.cyan,
+                                                                        string, self.green,  self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax '.format( self.white ) + error
 
         return self.error+self.reset

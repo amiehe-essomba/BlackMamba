@@ -13,7 +13,6 @@ from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
 from statement                                          import InternalStatement as IS
 from statement                                          import externalIF as eIF
 from updatingDataBase                                   import updating
-    
 try:  from CythonModules.Linux                          import loop_for
 except ImportError: from CythonModules.Windows          import loop_for
 
@@ -34,21 +33,21 @@ class EXTERNAL_IF_LOOP_STATEMENT:
 
     @cython.cfunc
     def IF_STATEMENT(self,
-                    bool_value      : bool, 
-                    tabulation      : int   = 1, 
-                    loop_list       : list  = [],
-                    _type_          : str   = 'conditional', 
-                    keyPass         : bool  = False
+                     bool_value     : bool,                     # boolean value used to activate the calculation
+                     tabulation     : int   = 0,                # tabulation
+                     loop_list      : list  = [],               # all values
+                     _type_         : str   = 'conditional',    # type structure
+                     keyPass        : bool  = False             # if pass function is detected
                     ):
         """
         module analize:
         #########################\n
         if < value >:
-            < instructions >
+            < expressions >
         elif < value >:
-            < instructions >
+            < expressions >
         else:
-            < instructions >
+            < expressions >
         end:\n
         #########################\n
         params
@@ -111,16 +110,17 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                     
                                     if self.history[ -1 ] in ['else', 'elif']:
                                         if self.bool_value is True :
-                                            self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base, 
-                                                                            self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ],
-                                                                                    keyPass = self.keyPass) 
+                                            self.error = comment.COMMENT_LOOP_STATEMENT( master=self.master, data_base=self.data_base,
+                                                                line=self.line ).COMMENT( tabulation=self.tabulation + 1,
+                                                                loop_list=self.loop_list[ j + 1 ], keyPass = self.keyPass)
                                             if self.error is None: pass
                                             else: pass
                                         else: pass
                                     else:
                                         if self.bool_value is True:
-                                            self.error = comment.COMMENT_LOOP_STATEMENT( self.master, self.data_base,
-                                                                            self.line ).COMMENT( self.tabulation + 1,  self.loop_list[ j + 1 ])
+                                            self.error = comment.COMMENT_LOOP_STATEMENT( master=self.master, data_base=self.data_base,
+                                                                line=self.line ).COMMENT( tabulation=self.tabulation + 1,
+                                                                loop_list=self.loop_list[ j + 1 ],  keyPass = self.keyPass)
                                             if self.error is None: pass
                                             else: break
                                         else: pass
@@ -135,17 +135,19 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                     
                                     if self.history[ -1 ] in [ 'elif', 'else' ]:
                                         if self.bool_value is True:
-                                            self.error = INTERNAL_IF_LOOP_STATEMENT ( self.master,
-                                                        self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                    self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
+                                            self.error = INTERNAL_IF_LOOP_STATEMENT ( master=self.master,
+                                                        data_base=self.data_base, line=self.line ).IF_STATEMENT( bool_value=self.value,
+                                                        tabulation=self.tabulation + 1,  loop_list=self.loop_list[ j + 1 ],  _type_ = _type_,
+                                                        keyPass = self.keyPass )
                                             if self.error is None:  self.keyPass    = False
                                             else: break
                                         else: pass
                                     else: 
                                         if self.bool_value is True:
-                                            self.error = INTERNAL_IF_LOOP_STATEMENT(self.master,
-                                            self.data_base, self.line).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                        self.loop_list[ j + 1 ],  _type_ = _type_, keyPass = self.keyPass )
+                                            self.error = INTERNAL_IF_LOOP_STATEMENT ( master=self.master,
+                                                        data_base=self.data_base, line=self.line ).IF_STATEMENT( bool_value=self.value,
+                                                        tabulation=self.tabulation + 1,  loop_list=self.loop_list[ j + 1 ],  _type_ = _type_,
+                                                        keyPass = self.keyPass )
                                             if self.error is None: pass
                                             else: break
                                         else: pass
@@ -160,16 +162,16 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                     
                                     if self.history[ -1 ] in [ 'elif', 'else' ]:
                                         if self.bool_value is True:
-                                            self.error = try_statement.INTERNAL_TRY_FOR_STATEMENT( self.master,
-                                                    self.data_base, self.line).TRY_STATEMENT( self.tabulation + 1,
-                                                                    self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
+                                            self.error = try_statement.INTERNAL_TRY_FOR_STATEMENT( master=self.master,
+                                                    data_base=self.data_base, line=self.line).TRY_STATEMENT( tabulation=self.tabulation + 1,
+                                                                    loop_list=self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
                                         if self.error is None:  self.keyPass    = False
                                         else: break
                                     else:
                                         if self.bool_value is True:
-                                            self.error = try_statement.INTERNAL_TRY_FOR_STATEMENT( self.master,
-                                                        self.data_base, self.line).TRY_STATEMENT( self.tabulation + 1,
-                                                                        self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
+                                            self.error = try_statement.INTERNAL_TRY_FOR_STATEMENT( master=self.master,
+                                                    data_base=self.data_base, line=self.line).TRY_STATEMENT( tabulation=self.tabulation + 1,
+                                                                    loop_list=self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
                                             if self.error is None: pass
                                             else: break
                                         else: pass
@@ -184,17 +186,19 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                     
                                     if self.history[ -1 ] in [ 'else', 'elif' ]:
                                         if self.bool_value is True:
-                                            self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( self.master,
-                                                                self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
-                                                                self.loop_list[ j + 1  ], _type_ = _type_, keyPass = self.keyPass )
+                                            self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( master=self.master,
+                                                                data_base=self.data_base, line=self.line ).UNLESS_STATEMENT( bool_value=self.value,
+                                                                tabulation=self.tabulation + 1,  loop_list=self.loop_list[ j + 1  ],
+                                                                _type_ = _type_, keyPass = self.keyPass )
                                             if self.error is None: self.keyPass    = False
                                             else: break
                                         else: pass  
                                     else:
                                         if self.bool_value is True:
-                                            self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( self.master,
-                                                                    self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
-                                                                    self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass )
+                                            self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( master=self.master,
+                                                                data_base=self.data_base, line=self.line ).UNLESS_STATEMENT( bool_value=self.value,
+                                                                tabulation=self.tabulation + 1,  loop_list=self.loop_list[ j + 1  ],
+                                                                _type_ = _type_, keyPass = self.keyPass )
                                             if self.error is None: pass
                                             else: break
                                         else: pass
@@ -242,18 +246,18 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                     
                                     if self.history[ -1 ] in ['else', 'elif']:
                                         if self.bool_value is True :
-                                            self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
-                                                            self.line ).SWITCH( self.value, self.tabulation + 1, self.loop_list[ j + 1 ],
-                                                                               _type_ = _type_, keyPass = self.keyPass)
+                                            self.error = switch_statement.SWITCH_LOOP_STATEMENT( master=self.master , data_base=self.data_base,
+                                                            line=self.line ).SWITCH( main_values=self.value, tabulation=self.tabulation + 1,
+                                                            loop_list=self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass)
                                             
                                             if self.error is None: pass
                                             else: pass
                                         else: pass
                                     else:
                                         if self.bool_value is True:
-                                            self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
-                                                                self.line ).SWITCH( self.value, self.tabulation + 1, self.loop_list[ j + 1 ],
-                                                                                   _type_ = _type_, keyPass = self.keyPass)
+                                            self.error = switch_statement.SWITCH_LOOP_STATEMENT( master=self.master , data_base=self.data_base,
+                                                            line=self.line ).SWITCH( main_values=self.value, tabulation=self.tabulation + 1,
+                                                            loop_list=self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass)
                                             if self.error is None: pass
                                             else: break
                                         else: pass
@@ -267,8 +271,8 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                     self.space = 0
                                     if self.bool_value is True:
                                         if self.data_base[ 'pass' ] is None:
-                                            self.error = self.lex_par.LEXER_AND_PARXER( self.value, self.data_base,
-                                                            self.line ).ANALYZE( _id_ = 1, _type_ = _type_)
+                                            self.error = self.lex_par.LEXER_AND_PARXER( master=self.value, data_base=self.data_base,
+                                                            line=self.line ).ANALYZE( _id_ = 1, _type_ = _type_)
                                             if self.error is None:  pass
                                             else: break
                                         else: self.keyPass  = True
@@ -382,6 +386,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
         self.analyze                = control_string
         self.lex_par                = lexer_and_parxer
 
+    @cython.cfunc
     def IF_STATEMENT(self,
                     bool_value      : bool, 
                     tabulation      : int, 
@@ -393,11 +398,11 @@ class INTERNAL_IF_LOOP_STATEMENT:
         module analize:
         #########################\n
         if < value >:
-            < instructions >
+            < expressions >
         elif < value >:
-            < instructions >
+            < expressions >
         else:
-            < instructions >
+            < expressions >
         end:\n
         #########################\n
         params
