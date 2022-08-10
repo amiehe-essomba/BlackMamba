@@ -67,14 +67,25 @@ class windows:
         self.length = len(self.input)
         self.index = self.length
         self.sub_length = len('{}{}'.format(bm.fg.yellow_L, bm.init.reset))
-        self.color = False
-        self.tab = 1
-        self.c = 0
-        self.Input = ''
-        self.Index = 0
-        self.col = []
-        self.delete = []
-        self.line = 0
+        self.color      = False
+        self.tab        = 1
+        self.c          = 0
+        self.Input      = ''
+        self.Index      = 0
+        self.col        = []
+        self.delete     = []
+        self.line       = 0
+        self.key        = False
+        self.funcs      = ['if', 'unless', 'switch', 'try', 'while', 'until', 'for', 'begin', 'def', 'class', 'print'
+                           'from', 'load']
+        self.func_colors = [ bm.fg.magenta_M,  bm.fg.magenta_M,  bm.fg.magenta_M, bm.fg.magenta_M,  bm.fg.magenta_M,
+                             bm.fg.magenta_M,  bm.fg.magenta_M, bm.fg.rbg(0, 255, 0), bm.fg.rbg(0, 255, 225),
+                             bm.fg.rbg(225, 225, 0), bm.fg.rbg(195, 20, 195), bm.fg.rbg(20, 195, 125), bm.fg.rbg(20, 195, 125)]
+        self.func_len   = [2, 6, 5, 3]
+
+        self.sub_funcs  = ['pass', 'break', 'continue', 'exit', 'next']
+        self.sub_colors = bm.fg.green_L
+        self.sub_func_len   = [2, 3, 4, 5, 8 ]
 
         sys.stdout.write(syntax_highlight(self.input))
         sys.stdout.flush()
@@ -166,13 +177,84 @@ class windows:
                         self.col.append(len(name))
                     elif self.char in [58]:  # { : }
                         name = bm.fg.rbg(0, 200, 0) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
+                        if self.col:  self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
+                        else:  self.input = self.input[: self.index] + name + self.input[self.index:]
                         self.col.append(len(name))
+                        self.index  += len(name)
+
+                        self.s      = ansi_remove_chars(self.input[self.length:])
+                        self.r      = bm.init.reset
+                        self.newS   = ''
+                        self.cc     = ''
+
+                        for _s_ in [3, 5]:
+                            try:
+                                if self.s[: _s_] in ['try', 'begin']:
+                                    self.idd = self.funcs.index(self.s[: _s_])
+                                    self.cc = self.func_colors[self.idd]
+                                    if self.s[-1] == ':':
+                                        self.newS = self.s[: _s_]
+                                        break
+                                    else:  pass
+                                else:   pass
+                            except IndexError:  pass
+
+                        if self.newS:
+                            name = ''
+                            for _s_ in self.newS:  name += self.cc + _s_ + self.r
+                            if self.key is False: self.ss = len(c + bm.init.reset) * len(self.newS) + len(self.newS)
+                            else:  self.ss = len(name)
+
+                            self.input  = self.input[: self.length] + name + self.input[self.length + self.ss:]
+                            self.index  = len(self.input)
+                            self.key    = True
+                        else:  pass
+                    elif self.char in [32]:
+                        if self.col:
+                            self.input = self.input[: self.index + self.col[-1]] + chr(self.char) + self.input[ self.index + self.col[-1]:]
+                        else:  self.input = self.input[: self.index] + chr(self.char) + self.input[self.index:]
+                        self.s      = ansi_remove_chars(self.input[ self.length : ])
+                        self.r      = bm.init.reset
+                        self.newS   = ''
+                        self.cc     = ''
+
+                        for _s_ in self.func_len:
+                            try:
+                                if self.s[ : _s_] in self.funcs:
+                                    self.idd    = self.funcs.index(  self.s[ : _s_] )
+                                    self.cc     = self.func_colors[ self.idd ]
+                                    if self.s[ _s_ ] in [ ' ' ]:
+                                        self.newS = self.s[ : _s_ ]
+                                        break
+                                    else : pass
+                            except IndexError :  pass
+
+                        if not self.newS:
+                            for _s_ in self.sub_func_len:
+                                try:
+                                    if self.s[: _s_] in self.sub_funcs:
+                                        self.idd    = self.funcs.index(self.s[: _s_])
+                                        self.cc     = self.sub_colors
+                                        self.newS = self.s[: _s_]
+                                        break
+                                except IndexError: pass
+                        else: pass
+
+                        if self.newS :
+                            name = ''
+                            for _s_ in self.newS:
+                                name += self.cc + _s_ + self.r
+                            if self.key is False: self.ss = len(c + bm.init.reset) * len(self.newS) + len(self.newS)
+                            else: self.ss = len(name)
+                            self.input = self.input[: self.length] + name + self.input[self.length + self.ss:]
+                            self.index = len(self.input)
+                            self.key = True
+                        else: pass
+
+                        self._, self.l, self.lc = bm.keyword(master=self.s, color=self.col, str_modified=self.input).keyword(n=self.length)
+                        if self._ is None: pass
+                        else: self.input, self.index, self.col = self._, self.l, self.lc
+
                     elif self.char in [34, 39]:  # { ", ' }
                         name = bm.fg.rbg(200, 150, 100) + chr(self.char) + bm.init.reset
                         if self.col:
@@ -193,17 +275,45 @@ class windows:
                         self.col.append(len(name))
                     else:
                         name = c + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-                        self.index += len(name)
+                        if self.col:  self.input = self.input[ : self.index + self.col[-1]] + name + self.input[self.index + self.col[-1] : ]
+                        else:  self.input = self.input[: self.index] + name + self.input[ self.index : ]
                         self.col.append(len(name))
+                        self.index += len(name)
+
+                        self.s = ansi_remove_chars(self.input[self.length:])
+                        self.r = bm.init.reset
+                        self.newS = ''
+                        self.cc = ''
+
+                        for _s_ in self.sub_func_len:
+                            try:
+                                if self.s[: _s_] in self.sub_funcs:
+                                    self.idd    = self.funcs.index(self.s[: _s_])
+                                    self.cc     = self.sub_colors
+                                    self.newS   = self.s[: _s_]
+                                    break
+                                else:  pass
+                            except IndexError:  pass
+
+                        if self.newS:
+                            name = ''
+                            for _s_ in self.newS:  name += self.cc + _s_ + self.r
+                            if self.key is False: self.ss = len(c + bm.init.reset) * len(self.newS) + len(self.newS)
+                            else: self.ss = len(name)
+
+                            self.input  = self.input[: self.length] + name + self.input[self.length + self.ss:]
+                            self.index  = len(self.input)
+                            self.key    = True
+                        else:  pass
                     self.index += 1
 
                 elif self.char in {10, 13}:  # enter
                     sys.stdout.write(u"\u001b[1000D")
                     self.clear_input = ansi_remove_chars(self.input[self.length:])
+                    f = open('op', 'w')
+                    f.write(self.clear_input)
+                    f.close()
+
                     if self.clear_input:
                         ####################################################################
                         sys.stdout.write(bm.move_cursor.UP(1))
@@ -213,8 +323,8 @@ class windows:
                         sys.stdout.write(bm.move_cursor.DOWN(1))
                         sys.stdout.write(bm.clear.line(2))
                         sys.stdout.write(bm.move_cursor.LEFT(1000))
-                        self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
-                        sys.stdout.write(self.input)
+                        #self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
+                        #sys.stdout.write(self.input)
                         ######################################################################
 
                         self.lexer, self.normal_string, self.error = main.MAIN(self.clear_input, self.data_base, self.line).MAIN()
@@ -237,11 +347,14 @@ class windows:
                             self.error = None
                     else:  pass
 
-                    self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
-                    self.index = self.length
-                    count = 0
-                    self.col = []
+                    self.input  = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
+                    self.index  = self.length
+                    count       = 0
+                    self.col    = []
                     self.delete = []
+                    self.key    = False
+                    self.cc     = ''
+                    self.newS   = ''
 
                 elif self.char == 9:  # tabular
                     self.tabular = '\t'
@@ -253,10 +366,8 @@ class windows:
                 sys.stdout.write(syntax_highlight(self.input))
                 sys.stdout.write(bm.move_cursor.LEFT(1000))
 
-                if self.index > 0:
-                    sys.stdout.write(bm.move_cursor.RIGHT(self.index - self.sub_length))
-                else:
-                    pass
+                if self.index > 0:  sys.stdout.write(bm.move_cursor.RIGHT(self.index - self.sub_length))
+                else:   pass
 
                 sys.stdout.flush()
 
@@ -264,7 +375,6 @@ class windows:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-
             except TypeError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                 print(self._end_of_file_)
@@ -273,6 +383,9 @@ class windows:
                 sys.stdout.flush()
 
 if __name__ == '__main__':
-    os.system('cls')
-    data_base = db.DATA_BASE().STORAGE()
-    windows( data_base).terminal(bm.fg.rbg(255, 255, 255))
+    try:
+        os.system('cls')
+        data_base = db.DATA_BASE().STORAGE()
+        windows( data_base).terminal(bm.fg.rbg(255, 255, 255))
+    except KeyboardInterrupt:  pass
+    except TypeError: pass
