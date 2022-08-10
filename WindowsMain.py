@@ -6,6 +6,7 @@ from script.LEXER.FUNCTION      import main
 from script.PARXER              import parxer_assembly
 from script.DATA_BASE           import data_base as db
 
+
 def readchar():
     fd = sys.stdin.fileno()
     ch = ord(sys.stdin.read(1))
