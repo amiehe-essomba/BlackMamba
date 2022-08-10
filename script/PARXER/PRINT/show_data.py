@@ -62,11 +62,11 @@ class SHOW :
         # print master if key is set on False
         if loop is False:
             #self.string += bm.init.reset
-            if self.key == False: print( '{}\n'.format( self.string ) )
+            if self.key == False:  print( '{}\n'.format( self.string ) )
             else: pass
         else:
             #self.string += bm.init.reset
-            if self.key == False: print( self.string )
+            if self.key == False:  print( self.string )
             else: pass
 
     def PRINT(self):

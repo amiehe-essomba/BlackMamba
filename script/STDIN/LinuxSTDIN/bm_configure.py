@@ -160,17 +160,55 @@ class string:
         self.stripped = name.rstrip()
         return self.stripped + bg.blue_L + " " * ( len( name ) - len( self.stripped ) ) + init.reset
 
+class keyword:
+    def __init__(self, master : str, color : list, str_modified):
+        self.master         = master
+        self.color          = color
+        self.str_modified   = str_modified
+    def keyword(self, n : int = 1):
+        self.s      = ''
+        self.string = ''
+        self.list   = ['in', 'not']
+        self.name   = ''
+        self.space  = 0
+
+        for i, _s_ in enumerate(self.master):
+            self.string += _s_
+            if _s_ not in [ ' ' ]: self.s      += _s_
+            else:
+                self.space += 1
+                try:
+                    if self.s in self.list :
+                        if self.s == 'in':
+                            #print(i , self.space, self.color)
+                            self.len            = self.color[ i-self.space ] * 2
+                            #self.space          -= 1
+                            m1, m2              = sum(self.color[ : (i-self.space-1)]),sum(self.color[ (i-self.space+1) : ])
+                            #print(m1, m2)
+                            c                   = self.color[ i-self.space ]
+                            self.name           = u"\x1b[36;1m"+' '+'i'+u"\x1b[0m"+u"\x1b[36;1mn"+u"\x1b[0m"
+                            self.str_modified   =  self.str_modified[ : n] + self.str_modified[ n : n+m1+self.space] +\
+                                                  self.name + self.str_modified[ n+m1+m2+self.space + c * 2 -1:  ]
+                            self.space          = 0
+                            self.color[i-self.space-1]  = len("\u001b[36;1m"+'i'+"\x1b[0m"+"\u001b[36;1m"+'n'+"\x1b[0m")
+                            self.color[i-self.space]    = len("\u001b[36;1m"+'i'+"\x1b[0m"+"\u001b[36;1m"+'n'+"\x1b[0m")
+                        else:
+                            self.len            = self.color[i - 1] * 3
+                            self.true_len       = len(self.str_modified) - self.len
+                            self.name           = fg.magenta_M + 'n' + init.reset + 'o' + fg.magenta_M + init.reset+fg.magenta_M + 't' + init.reset
+                            self.str_modified   = self.str_modified[: self.true_len] + self.name + self.str_modified[ self.true_len:]
+                            self.space          = 0
+                    else: self.s      = ''
+                except IndexError : pass
+
+        if self.name:  return  self.str_modified, len( self.str_modified ), self.color
+        else: return  None, None, None
+
+
 class chars:
     def ansi_remove_chars( self, name : str ):
         ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
         return ansi_escape.sub ('', name)
-
-class clean_print:
-    def clean_print(self, string : str):
-        sys.stdout.write(bm.clear.line(2))
-        sys.stdout.write(bm.move_cursor.LEFT(1000))
-        sys.stdout.write(bm.move_cursor.DOWN(1))
-        print('{}\n'.format(string))
 
 class timer:
     def timer():

@@ -575,6 +575,7 @@ class EXTERNAL_IF_WINDOWS:
         self.loop                   = []
         self.max_emtyLine           = 5
         self.c                      = bm.fg.rbg(0,255, 0)
+        self.previous_c             = c
 
         ############################################################################
 
@@ -596,10 +597,31 @@ class EXTERNAL_IF_WINDOWS:
                             self.input = self.input[: self.index] + name + self.input[self.index:]
                         self.index += len(name)
                         self.col.append(len(name))
-                    elif self.char in [40, 41, 91, 93, 123, 125]    :  # {(, ),{,}, [, ] }
+                    elif self.char in [40, 41]  :  # ( )
                         name = bm.fg.green_L + chr(self.char) + bm.init.reset
                         if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[self.index + self.col[-1]:]
+                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[
+                                                                                          self.index + self.col[-1]:]
+                        else:
+                            self.input = self.input[: self.index] + name + self.input[self.index:]
+
+                        self.index += len(name)
+                        self.col.append(len(name))
+                    elif self.char in [91, 93]  :  # { }
+                        name = bm.fg.rbg(255, 20, 174) + chr(self.char) + bm.init.reset
+                        if self.col:
+                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[
+                                                                                          self.index + self.col[-1]:]
+                        else:
+                            self.input = self.input[: self.index] + name + self.input[self.index:]
+
+                        self.index += len(name)
+                        self.col.append(len(name))
+                    elif self.char in [123, 125]:  # [, ]
+                        name = bm.fg.rbg(255, 170, 100) + chr(self.char) + bm.init.reset
+                        if self.col:
+                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[
+                                                                                          self.index + self.col[-1]:]
                         else:
                             self.input = self.input[: self.index] + name + self.input[self.index:]
 
@@ -678,7 +700,13 @@ class EXTERNAL_IF_WINDOWS:
                         self.index += len(name)
                         self.col.append(len(name))
                     else:
-                        name = self.c + chr(self.char) + bm.init.reset
+                        self.s = self.clear_input = bm.chars().ansi_remove_chars(name=self.input[self.length:])
+                        _, self._, self.err = self.analyse.BUILD_CON(string=self.clear_input, tabulation=self.tabulation)
+                        name = ''
+                        if self.err is None:
+                            if (self._ - 1 >= 0): name = self.c + chr(self.char) + bm.init.reset
+                            else: name = self.previous_c + chr(self.char) + bm.init.reset
+                        else:  name = self.previous_c + chr(self.char) + bm.init.reset
                         if self.col:
                             self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
                         else:
@@ -732,7 +760,7 @@ class EXTERNAL_IF_WINDOWS:
                                             self.loop.append((self.normal_string, True))
                                             self._values_, self.error = INTERNAL_IF_WINDOWS(master=self.master,
                                                  data_base=self.data_base, line=self.if_line).TERMINAL(
-                                                bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c= self.c)
+                                                bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c= bm.fg.rbg(0,255,0))
 
                                             if self.error is None:
                                                 self.history.append('if')
@@ -1010,7 +1038,7 @@ class INTERNAL_IF_WINDOWS:
         self.loop                   = []
         self.max_emtyLine           = 5
         self.c                      = bm.fg.rbg(0, 255, 255)
-        self.previous_c             = bm.fg.rbg(0, 255, 0)
+        self.previous_c             = c
 
         ############################################################################
 
@@ -1032,10 +1060,28 @@ class INTERNAL_IF_WINDOWS:
                             self.input = self.input[: self.index] + name + self.input[self.index:]
                         self.index += len(name)
                         self.col.append(len(name))
-                    elif self.char in [40, 41, 91, 93, 123, 125]    :  # {(, ),{,}, [, ] }
+                    elif self.char in [40, 41]  :  # ( )
                         name = bm.fg.green_L + chr(self.char) + bm.init.reset
                         if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[self.index + self.col[-1]:]
+                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
+                        else:
+                            self.input = self.input[: self.index] + name + self.input[self.index:]
+
+                        self.index += len(name)
+                        self.col.append(len(name))
+                    elif self.char in [91, 93]  :  # { }
+                        name = bm.fg.rbg(255, 20, 174)  + chr(self.char) + bm.init.reset
+                        if self.col:
+                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
+                        else:
+                            self.input = self.input[: self.index] + name + self.input[self.index:]
+
+                        self.index += len(name)
+                        self.col.append(len(name))
+                    elif self.char in [123, 125]:  # [, ]
+                        name = bm.fg.rbg(255,170, 100 ) + chr(self.char) + bm.init.reset
+                        if self.col:
+                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
                         else:
                             self.input = self.input[: self.index] + name + self.input[self.index:]
 
@@ -1114,11 +1160,17 @@ class INTERNAL_IF_WINDOWS:
                         self.index += len(name)
                         self.col.append(len(name))
                     else:
-                        name = self.c + chr(self.char) + bm.init.reset
+                        self.s = self.clear_input = bm.chars().ansi_remove_chars(name=self.input[self.length:])
+                        _, self._, self.err = self.analyse.BUILD_CON(string=self.clear_input, tabulation=self.tabulation)
+                        name = ''
+                        if self.err is None:
+                            if (self._ - 1 >= 0):  name = self.c + chr(self.char) + bm.init.reset
+                            else:   name = self.previous_c + chr(self.char) + bm.init.reset
+                        else: name = self.previous_c + chr(self.char) + bm.init.reset
+
                         if self.col:
                             self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
+                        else:  self.input = self.input[: self.index] + name + self.input[self.index:]
                         self.index += len(name)
                         self.col.append(len(name))
                     self.index += 1
@@ -1169,7 +1221,7 @@ class INTERNAL_IF_WINDOWS:
                                             self.loop.append((self.normal_string, True))
                                             self._values_, self.error = EXTERNAL_IF_WINDOWS(master=self.master,
                                                  data_base=self.data_base, line=self.if_line).TERMINAL(
-                                                bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=self.c)
+                                                bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=bm.fg.rbg(0,255,255))
 
                                             if self.error is None:
                                                 self.history.append('if')
