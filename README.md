@@ -20,7 +20,7 @@
 
 ![module load ](/images/m1.png)
 
-```sbash
+```python
 from module /path/maths/ load statistics as stats
 from module maths load statistics as stats
 from module maths load statistics, math
