@@ -14,4 +14,4 @@ double def( int n ):
 		b = a
 	}
 	
-	return a
+	return a, b
