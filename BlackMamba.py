@@ -13,6 +13,7 @@ data_from_file  = []
 currunt_file    = os.path.basename(__file__) 
 control         = control_string.STRING_ANALYSE( {}, 1 )
 
+
 try:
     path_library    = 'D:\\black_mamba\\Library\\iris.bm'
     
