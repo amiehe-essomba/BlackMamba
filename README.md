@@ -16,8 +16,9 @@
 12.from/module/load/as
 
 ```
+> loading of a module as not an alias
 
-![while loop  try statement ](/images/while_try.png)
+![module load ](/images/m1.png)
 
 ```bash
 from module /path/maths/ load statistics as stats
@@ -29,13 +30,14 @@ load module maths, iris
 load module maths as m
 ```
 
-![module load ](/images/module_load.png)
+> loading of a module as an alias
+
+![module load ](/images/m2.png)
+
 
 > IF structure
 
 ![module load ](/images/if.png)
-
-![module load ](/images/m1.png)
 
 
 ## Project Description 
