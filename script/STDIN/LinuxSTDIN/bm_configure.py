@@ -204,6 +204,98 @@ class keyword:
         if self.name:  return  self.str_modified, len( self.str_modified ), self.color
         else: return  None, None, None
 
+class words:
+    def __init__(self, string : str, color : str):
+        self.string     = string
+        self.color      = color
+    def alphabetic(self):
+        return list('abcdefghijklmnopqrstuvwxyzTFN')
+
+    def keywords(self):
+        self.newString  = ''
+        self.stringKey  = ''
+        self.active     = False
+        self.ss         = ''
+
+        if      self.string in ['in', 'not']:
+            self.newString  += fg.rbg(255,128,128)+self.string+init.reset
+        elif      self.string in ['True', 'False', 'None']:
+            self.newString  += fg.rbg(204,153,255)+self.string+init.reset
+        elif    self.string in ['pass', 'break', 'continue', 'exit', 'next']:
+            self.newString += fg.rbg(153,204,0) + self.string + init.reset
+        elif    self.string in ['if', 'unless', 'else', 'elif', 'end', 'for', 'switch', 'case', 'default',
+                                   'try', 'except', 'finally', 'while', 'until', 'begin', 'save']:
+            self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
+        elif    self.string in ['from', 'load', 'module', 'as']:
+            self.newString += fg.rbg(225, 50, 20) + self.string + init.reset
+        elif    self.string in ['def', 'class']:
+            self.newString += fg.rbg(0,128,128) + self.string + init.reset
+        else:
+            for i, s in enumerate(self.string):
+
+                if self.active is False:
+                    if s in {'+', '-', '*', '^', '%', '/'}:
+                        self.newString += fg.rbg(255, 0, 0) + s + init.reset
+                    elif s in [str(x) for x in range(10)]:
+                        self.newString += fg.rbg(255, 0, 255) + s + init.reset
+                    elif s in {'(', ')'}:
+                        self.newString += fg.rbg(0, 255, 0) + s + init.reset
+                    elif s in {'{', '}'}:
+                        self.newString += fg.rbg(0, 0, 255) + s + init.reset
+                    elif s in {'[', ']'}:
+                        self.newString += fg.rbg(255, 255, 0) + s + init.reset
+                    elif s in {'<', '>', '=', '!', '|', '&', '?'}:
+                        self.newString += fg.rbg(255, 102, 0) + s + init.reset
+                    elif s in {':'}:
+                        self.newString += fg.rbg(255, 255, 153) + s + init.reset
+                    elif s in {'.'}:
+                        self.newString += fg.rbg(0, 102, 204) + s + init.reset
+                    elif s in {'$'}:
+                        self.newString += fg.rbg(255, 204, 0) + s + init.reset
+                    elif s in {'#'}:
+                        self.newString += fg.rbg(102, 102, 153) + s + init.reset
+                        self.active = True
+                    elif s in {'@'}:
+                        self.newString += fg.rbg(255, 255, 255) + s + init.reset
+                    elif s in {"'", '"'}:
+                        self.newString += fg.rbg(255, 153, 204) + s + init.reset
+                    else:
+                        self.newString += self.color + s + init.reset
+                else: self.newString += fg.rbg(153, 153, 255) + s + init.reset
+
+        return self.newString
+
+    def final(self):
+        self.newS       = ''
+        self.ss         = ''
+        self.active     = False
+
+        for i, s in enumerate( self.string) :
+            if s not in [ ' ' ]:
+                if s in words(None,None).alphabetic():
+                    self.ss += s
+                    if i < len( self.string)-1: pass
+                    else:
+                        if self.ss: self.newS   += words(self.ss, self.color).keywords()
+                        else: pass
+                else:
+                    if self.ss:
+                        self.newS   += words(self.ss, self.color).keywords()
+                        self.newS   += words(s, self.color).keywords()
+                        self.ss     = ''
+                    else :
+                        self.newS   += words(s, self.color).keywords()
+                        self.ss     = ''
+            else:
+                if self.ss :
+                    self.newS   += words(self.ss, self.color).keywords()
+                    self.newS   += ' '
+                    self.ss     = ''
+                else:
+                    self.newS   += ' '
+                    self.ss      = ''
+
+        return self.newS
 
 class chars:
     def ansi_remove_chars( self, name : str ):

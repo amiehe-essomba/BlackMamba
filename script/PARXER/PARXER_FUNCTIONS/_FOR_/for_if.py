@@ -576,6 +576,8 @@ class EXTERNAL_IF_WINDOWS:
         self.max_emtyLine           = 5
         self.c                      = bm.fg.rbg(0,255, 0)
         self.previous_c             = c
+        self.mainString             = ''
+        self.mainIndex              = 0
 
         ############################################################################
 
@@ -588,139 +590,26 @@ class EXTERNAL_IF_WINDOWS:
             self.if_line += 1
             try:
                 self.char = bm.read().readchar()
-                if 32 <= self.char <= 126:
-                    if   self.char in [42, 43, 45, 37, 94, 47]      :  # {+, -, *, /, %, ^}
-                        name = bm.fg.red_L + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [40, 41]  :  # ( )
-                        name = bm.fg.green_L + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[
-                                                                                          self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [91, 93]  :  # { }
-                        name = bm.fg.rbg(255, 20, 174) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[
-                                                                                          self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [123, 125]:  # [, ]
-                        name = bm.fg.rbg(255, 170, 100) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[
-                                                                                          self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [33, 38, 60, 61, 62, 63, 124] :  # {=, !, <, >, ?,|, &}
-                        name = bm.fg.cyan_L + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [36]      :  # { $ }
-                        name = bm.fg.yellow_L + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [35]      :  # { # }
-                        name = bm.fg.rbg(20, 20, 20) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [64]      :  # { @ }
-                        name = bm.fg.rbg(225, 225, 0) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [46]      :  # { . }
-                        name = bm.fg.rbg(0, 255, 0) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [58]      :  # { : }
-                        name = bm.fg.rbg(0, 200, 0) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [34, 39]  :  # { ", ' }
-                        name = bm.fg.rbg(200, 150, 100) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [x for x in range(48, 58)]:
-                        name = bm.fg.magenta + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    else:
-                        self.s = self.clear_input = bm.chars().ansi_remove_chars(name=self.input[self.length:])
-                        _, self._, self.err = self.analyse.BUILD_CON(string=self.clear_input, tabulation=self.tabulation)
-                        name = ''
-                        if self.err is None:
-                            if (self._ - 1 >= 0): name = self.c + chr(self.char) + bm.init.reset
-                            else: name = self.previous_c + chr(self.char) + bm.init.reset
-                        else:  name = self.previous_c + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    self.index += 1
+                if self.char  not in {10, 13}:
+                    self.input      = self.input[: self.index] + chr(self.char) + self.input[self.index:]
+                    self.mainString = self.mainString[: self.mainIndex] + chr(self.char) + self.mainString[  self.mainIndex:]
+                    self.index      += 1
+                    self.mainIndex  += 1
 
                 elif self.char in {10, 13}:  # enter
                     sys.stdout.write(u"\u001b[1000D")
-                    self.clear_input = bm.chars().ansi_remove_chars(name=self.input[self.length:])
+                    self.clear_input = self.mainString
                     if self.clear_input:
-
                         ####################################################################
+                        _, self._, self.err = self.analyse.BUILD_CON(string=self.clear_input,tabulation=self.tabulation)
+                        if self.err is None:
+                            if (self._ -1 )>= 0:
+                                self.input = self.input[: self.length] + bm.words(string=self.mainString,  color=self.c).final()
+                            else:
+                                self.input = self.input[: self.length] + bm.words(string=self.mainString,  color=self.previous_c).final()
+                        else: self.input = self.input[: self.length] + bm.words(string=self.mainString,  color=self.previous_c).final()
+
+                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                         sys.stdout.write(bm.move_cursor.UP(1))
                         sys.stdout.write(bm.clear.line(2))
                         sys.stdout.write(self.input)
@@ -728,12 +617,10 @@ class EXTERNAL_IF_WINDOWS:
                         sys.stdout.write(bm.move_cursor.DOWN(1))
                         sys.stdout.write(bm.clear.line(2))
                         sys.stdout.write(bm.move_cursor.LEFT(1000))
-                        self.input = '{}... {}'.format(bm.fg.yellow_L, bm.init.reset)
-                        sys.stdout.write(self.input)
+
                         ######################################################################
 
-                        self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.clear_input,
-                                                                                    tabulation=self.tabulation)
+                        self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.clear_input, tabulation=self.tabulation)
                         if self.error is None:
                             self.normal_string = self.analyse.BUILD_NON_CON(string=self.clear_input,tabulation=self.tabulation)
                             if self.active_tab is True :
@@ -948,15 +835,14 @@ class EXTERNAL_IF_WINDOWS:
                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                             break
 
-                    #sys.stdout.write(bm.move_cursor.DOWN(pos=1))
                     self.input      = '{}... {}'.format(self.color, bm.init.reset)
                     self.index      = self.length
-                    self.col        = []
-
+                    self.mainString = ''
+                    self.mainIndex  = 0
                 elif self.char == 9:  # tabular
                     self.tabular = '\t'
                     self.input = self.input[: self.index] + self.tabular + self.input[self.index:]
-                    self.index += 4
+                    self.index += 1
 
                 sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                 sys.stdout.write(bm.clear.line(pos=0))
@@ -1039,6 +925,8 @@ class INTERNAL_IF_WINDOWS:
         self.max_emtyLine           = 5
         self.c                      = bm.fg.rbg(0, 255, 255)
         self.previous_c             = c
+        self.mainString             = ''
+        self.mainIndex              = 0
 
         ############################################################################
 
@@ -1051,129 +939,11 @@ class INTERNAL_IF_WINDOWS:
             self.if_line += 1
             try:
                 self.char = bm.read().readchar()
-                if 32 <= self.char <= 126:
-                    if   self.char in [42, 43, 45, 37, 94, 47]      :  # {+, -, *, /, %, ^}
-                        name = bm.fg.red_L + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [40, 41]  :  # ( )
-                        name = bm.fg.green_L + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [91, 93]  :  # { }
-                        name = bm.fg.rbg(255, 20, 174)  + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [123, 125]:  # [, ]
-                        name = bm.fg.rbg(255,170, 100 ) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [33, 38, 60, 61, 62, 63, 124] :  # {=, !, <, >, ?,|, &}
-                        name = bm.fg.cyan_L + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [36]      :  # { $ }
-                        name = bm.fg.yellow_L + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [35]      :  # { # }
-                        name = bm.fg.rbg(20, 20, 20) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [64]      :  # { @ }
-                        name = bm.fg.rbg(225, 225, 0) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [46]      :  # { . }
-                        name = bm.fg.rbg(0, 255, 0) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [58]      :  # { : }
-                        name = bm.fg.rbg(0, 200, 0) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[  self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [34, 39]  :  # { ", ' }
-                        name = bm.fg.rbg(200, 150, 100) + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    elif self.char in [x for x in range(48, 58)]:
-                        name = bm.fg.magenta + chr(self.char) + bm.init.reset
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[self.index + self.col[-1]:]
-                        else:
-                            self.input = self.input[: self.index] + name + self.input[self.index:]
-
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    else:
-                        self.s = self.clear_input = bm.chars().ansi_remove_chars(name=self.input[self.length:])
-                        _, self._, self.err = self.analyse.BUILD_CON(string=self.clear_input, tabulation=self.tabulation)
-                        name = ''
-                        if self.err is None:
-                            if (self._ - 1 >= 0):  name = self.c + chr(self.char) + bm.init.reset
-                            else:   name = self.previous_c + chr(self.char) + bm.init.reset
-                        else: name = self.previous_c + chr(self.char) + bm.init.reset
-
-                        if self.col:
-                            self.input = self.input[: self.index + self.col[-1]] + name + self.input[ self.index + self.col[-1]:]
-                        else:  self.input = self.input[: self.index] + name + self.input[self.index:]
-                        self.index += len(name)
-                        self.col.append(len(name))
-                    self.index += 1
+                if self.char not in {10, 13}:
+                    self.input      = self.input[: self.index] + chr(self.char) + self.input[self.index:]
+                    self.mainString = self.mainString[: self.mainIndex] + chr(self.char) + self.mainString[  self.mainIndex:]
+                    self.index      += 1
+                    self.mainIndex  += 1
 
                 elif self.char in {10, 13}:  # enter
                     sys.stdout.write(u"\u001b[1000D")
@@ -1182,6 +952,16 @@ class INTERNAL_IF_WINDOWS:
 
                     if self.clear_input:
                         ####################################################################
+                        _, self._, self.err = self.analyse.BUILD_CON(string=self.clear_input, tabulation=self.tabulation)
+                        if self.err is None:
+                            if (self._ - 1) >= 0:
+                                self.input = self.input[: self.length] + bm.words(string=self.mainString, color=self.c).final()
+                            else:
+                                self.input = self.input[: self.length] + bm.words(string=self.mainString, color=self.previous_c).final()
+                        else:
+                            self.input = self.input[: self.length] + bm.words(string=self.mainString,  color=self.previous_c).final()
+
+                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                         sys.stdout.write(bm.move_cursor.UP(1))
                         sys.stdout.write(bm.clear.line(2))
                         sys.stdout.write(self.input)
@@ -1189,8 +969,6 @@ class INTERNAL_IF_WINDOWS:
                         sys.stdout.write(bm.move_cursor.DOWN(1))
                         sys.stdout.write(bm.clear.line(2))
                         sys.stdout.write(bm.move_cursor.LEFT(1000))
-                        self.input = '{}... {}'.format(bm.fg.yellow_L, bm.init.reset)
-                        sys.stdout.write(self.input)
                         ######################################################################
 
                         self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.clear_input,
@@ -1227,7 +1005,7 @@ class INTERNAL_IF_WINDOWS:
                                                 self.history.append('if')
                                                 self.space = 0
                                                 self.loop.append(self._values_)
-                                            else: breakpass
+                                            else: break
                                         elif self.get_block == 'try:'       :
                                             self.store_value.append(self.normal_string)
                                             self.loop.append((self.normal_string, True))
@@ -1409,10 +1187,10 @@ class INTERNAL_IF_WINDOWS:
                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                             break
 
-                    #sys.stdout.write(bm.move_cursor.DOWN(pos=1))
                     self.input      = '{}... {}'.format(self.color, bm.init.reset)
                     self.index      = self.length
-                    self.col        = []
+                    self.mainString = ''
+                    self.mainIndex  = 0
 
                 elif self.char == 9:  # tabular
                     self.tabular = '\t'
