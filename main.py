@@ -9,6 +9,7 @@ ke = bm.fg.rbg(255,255, 0)
 we = bm.fg.white_L
 be = bm.fg.blue_L
 
+
 if __name__ == '__main__':
     line = 0
     color = {'0': ke, '1': we}
