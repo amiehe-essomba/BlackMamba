@@ -1,6 +1,8 @@
 import                              random
 import                              math
-import                              os 
+import                              os
+import                              webbrowser
+from                                tkinter     import *
 from os                             import listdir
 from os.path                        import isfile
 from script                         import control_string
@@ -246,6 +248,11 @@ class C_F_I_S:
                                                 self.final_value, self.error = STAT( self._value_, self.value, self.line ).H_MEAN()
                                             elif self._value_[ -1 ] in ['geometric_mean']:
                                                 self.final_value, self.error = STAT( self._value_, self.value, self.line ).G_MEAN()
+                                            elif self._value_[ -1 ] in [ 'License' ]:
+                                                bm.open_graven().open_graven_web()
+                                            elif self._value_[ -1 ] in [ 'help' ]:
+                                                bm.open_graven().openG()
+
                                             else:
                                                 self.type_accepted  = [type(list()), type(tuple()), type(range(1))]
                                                 func = bm.fg.rbg(0, 255, 0   )+' in std( ).' + bm.init.reset 

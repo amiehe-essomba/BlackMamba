@@ -320,8 +320,9 @@ class FUNCTION:
                     if self.error is None: self.function_info[ 'arguments' ]   = self._variable_
                     else: self.error = self.error
                 else: self.function_info[ 'arguments' ] = self.variable
-                
-                self.function_info[ 'function_info' ]['args']           = self.function_info[ 'arguments' ].copy()
+
+                try:  self.function_info[ 'function_info' ]['args']  = self.function_info[ 'arguments' ].copy()
+                except AttributeError:  self.function_info[ 'function_info' ]['args']   = self.function_info[ 'arguments' ]
                 
             else: self.error = self.error
         else: self.error = ERRORS( self.line).ERROR0( main_string )

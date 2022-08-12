@@ -104,7 +104,7 @@ class DATA_BASE:
     def FUNCTIONS(self):
         self.function_name  = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
                                'length', 'range', 'ansi', 'rand', 'GetLine', 'scan', 
-                               'min', 'max', 'fopen', 'floor']
+                               'min', 'max', 'fopen', 'floor', 'License', 'help']
         
         self.function_expressions   = [
             {
@@ -409,6 +409,28 @@ class DATA_BASE:
                                         ('treturn newValue                                                  ', True ),
                                         ('end:                                                              ', False),
                                         ]
+                }
+            },
+            {
+                'License'           : {
+                'type'              : [['any']],
+                'value'             : [None],
+                'arguments'         : [None],
+                'history_of_data'   : [
+                        ('t_std_ * [\"License\", \"License\"]                         ', True),
+                        ('end:                                                       ', False),
+                    ]
+                }
+            },
+            {
+                'help'              : {
+                'type'              : [['any']],
+                'value'             : [None],
+                'arguments'         : [None],
+                'history_of_data'   : [
+                        ('t_std_ * [\"help\", \"help\"]                         ', True),
+                        ('end:                                                  ', False),
+                    ]
                 }
             },
             

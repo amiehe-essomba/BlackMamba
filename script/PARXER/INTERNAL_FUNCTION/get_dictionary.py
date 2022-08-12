@@ -296,7 +296,7 @@ class ERRORS:
     def ERROR2(self, string: str, char:str):
         error = '{}the keyword of value {}<< {} >> {}is not defined. {}line: {}{}'.format(self.white, self.magenta, char, self.yellow,
                                                                                           self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.cyan, string) + error
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
 

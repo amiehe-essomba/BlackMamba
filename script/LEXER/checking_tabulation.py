@@ -34,7 +34,7 @@ class CHECK_TAB:
         self.treatment      = segmentation.SEGMENTATION( self.master, self.long_chaine, self.data_base, self.line )     # segmentation anylises
         self.analyze        = control_string.STRING_ANALYSE( self.data_base, self.line )                                # string controlling function
         self.color          = Fore.CYAN                                                                                 # color
-        self.backslash      = checking_if_backslash.BACKSSLASH( self.master, self.data_base, self.line )                # backslash initialization
+        self.backslash      = checking_if_backslash#.BACKSSLASH( self.master, self.data_base, self.line )                # backslash initialization
         self.comment        = comment_line                                                                              # comment line line initialization
 
     def CHECK_LINE(self,
@@ -63,15 +63,18 @@ class CHECK_TAB:
             # will be call , and string_check takes another value instead "string" value
             # to set comment line it's very easy simple by using < # > as a first character
 
-            self.string_check, self.error = self.comment.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
+            self.string_check, self._, self.error = self.comment.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
             if self.error is None:
-                if self.string_check in [ 'string' ]:
+                if self.string_check in [ 'string', 'stringcomment' ]:
 
                     # in first of all after checking if comment line was or not difined the next step is to control
                     # if the backslash key was set or not to check that i create a function called < BACKSLASH >.
                     # backslash function is used to split the main string.
+                    if self._ is None: pass
+                    else: self.master = self.master[ : self._]
 
-                    self.string_check, self.error             = self.backslash.BACKSLASH( _id_ )
+                    self.string_check, self.error             = self.backslash.BACKSSLASH(master=self.master,
+                                                                data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )
                     if self.error is None:
 
                         # after checking if backslash is defined i rebuild the entire main string
@@ -102,7 +105,7 @@ class CHECK_TAB_FOR_INTERPRETER:
         self.data_base      = data_base                                                                                 # data base where data are stored
         self.error_init     = segmentation.ERROR( self.line )                                                           # errror
         self.analyze        = control_string.STRING_ANALYSE( self.data_base, self.line )                                # string controlling function
-        self.backslash      = checking_if_backslash.BACKSSLASH_FOR_INTERPRETER( self.master, self.data_base, self.line )# backslash initialization
+        self.backslash      = checking_if_backslash#.BACKSSLASH_FOR_INTERPRETER( self.master, self.data_base, self.line )# backslash initialization
         self.comment        = comment_line                                                                              # comment line line initialization
 
     def CHECK_LINE(self,
@@ -132,15 +135,19 @@ class CHECK_TAB_FOR_INTERPRETER:
             # will be call , and string_check takes another value instead "string" value
             # to set comment line it's very easy simple by using < # > as a first character
 
-            self.string_check, self.error = self.comment.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
+            self.string_check, self._, self.error = self.comment.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
             if self.error is None:
-                if self.string_check in [ 'string' ]:
+                if self.string_check in [ 'string', 'stringcomment' ]:
 
                     # in first of all after checking if comment line was or not difined the next step is to control
                     # if the backslash key was set or not to check that i create a function called < BACKSLASH >.
                     # backslash function is used to split the main string.
 
-                    self.string_check, self.error             = self.backslash.BACKSLASH( _id_, MainList )
+                    if self._ is None: pass
+                    else: self.master = self.master[ : self._]
+
+                    self.string_check, self.error             = self.backslash.BACKSSLASH_FOR_INTERPRETER( master=self.master,
+                                                            data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )
                     if self.error is None:
 
                         # after checking if backslash is defined i rebuild the entire main string

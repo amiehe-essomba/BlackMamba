@@ -587,7 +587,6 @@ class EXTERNAL_IF_WINDOWS:
         sys.stdout.flush()
 
         while True:
-            self.if_line += 1
             try:
                 self.char = bm.read().readchar()
                 if self.char  not in {10, 13}:
@@ -597,6 +596,7 @@ class EXTERNAL_IF_WINDOWS:
                     self.mainIndex  += 1
 
                 elif self.char in {10, 13}:  # enter
+                    self.if_line += 1
                     sys.stdout.write(u"\u001b[1000D")
                     self.clear_input = self.mainString
                     if self.clear_input:
@@ -936,7 +936,6 @@ class INTERNAL_IF_WINDOWS:
         sys.stdout.flush()
 
         while True:
-            self.if_line += 1
             try:
                 self.char = bm.read().readchar()
                 if self.char not in {10, 13}:
@@ -946,6 +945,7 @@ class INTERNAL_IF_WINDOWS:
                     self.mainIndex  += 1
 
                 elif self.char in {10, 13}:  # enter
+                    self.if_line += 1
                     sys.stdout.write(u"\u001b[1000D")
                     self.s = self.input
                     self.clear_input = bm.chars().ansi_remove_chars(name=self.input[self.length:])

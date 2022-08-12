@@ -1,3 +1,4 @@
+import  sys, os, re
 from colorama                   import Fore
 from script                     import control_string
 from script.STDIN.WinSTDIN      import stdin
@@ -341,324 +342,397 @@ class SUB_STRING:
         self.close          = SUB_STRING(self.first_char, self.data_base, self.line).GET_CLOSE()                        # the closing opening bracket
         self.storage        = storage[ : ]                                                                              # a storing list
         self.len_storage    = len( self.storage )
-        self.key_break      = False                                                                                     # key used to break while loop
+        self.key_break      = False
+        #######################################################################
+        self.c              = bm.fg.rbg(0, 255, 255)
+        self.input          = '{}... {}'.format(self.c, bm.init.reset)
+        self.length         = len(self.input)
+        self.index          = self.length
+        self.sub_length     = len('{}{}'.format(self.c, bm.init.reset))
+        self.mainString     = ''
+        self.mainIndex      = 0
+        self.max_emtyLine   = 5
+        #######################################################################
+
+        sys.stdout.write(bm.clear.line(2))
+        sys.stdout.write(bm.move_cursor.LEFT(1000))
+        sys.stdout.write(bm.string().syntax_highlight(name=self.input))
+        sys.stdout.flush()
 
         while self.normal_string != self.first_char :
             try:
-                self.string_line += 1
-                if self.storage:
-                    if len( self.storage ) > 1:
-                        if self.storage[-1][-1] not in [',']:  colors = we                                                                                 # changing color
-                        else: colors = color                                                                              # changing color
-                    else:
-                        if len( self.storage[ 0 ] ) == 1: colors = color                                                                              # changing color
-                        else:
-                            if self.storage[ 0 ][- 1] in [',']: colors = color
-                            else: colors = we
-                else: colors = color                                                                                      # changing color
+                self.char = bm.read().readchar()
+                if self.char not in {10, 13}:
+                    self.input      = self.input[: self.index] + chr(self.char) + self.input[self.index:]
+                    self.mainString = self.mainString[: self.mainIndex] + chr(self.char) + self.mainString[  self.mainIndex:]
+                    self.index      += 1
+                    self.mainIndex  += 1
+                else:
+                    self.string_line += 1
+                    sys.stdout.write(u"\u001b[1000D")
+                    self.clear_input = self.mainString
+                    if self.clear_input:
+                        ####################################################################
+                        self.string, self.active_tab, self.error = self.analyze.BUILD_CON(string=self.clear_input,  tabulation=_id_)
+                        if self.error is None:
+                            self.normal_string = self.analyze.BUILD_NON_CON( string=self.clear_input, tabulation=_id_ )
+                            self._ = stdin.STDIN(data_base=self.data_base, line=self.line).ENCODING(string=self.clear_input)
+                            if (self._ - _id_) == 0:
+                                self.input = self.input[: self.length] + bm.words(string=self.mainString, color=color).final()
+                            else:
+                                self.error = ERROR( self.string_line ).ERROR9()
+                                break
+                        else: break
 
-                self.string, self.normal_string, self.active_tab, self.error = self.stdin = stdin.STDIN( self.data_base,
-                                        (self.line + self.string_line) ).STDIN({'0':ie, '1':colors}, _id_ )             # stdin with all rules
-            
-                if self.error is None:
+                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                        sys.stdout.write(bm.move_cursor.UP(1))
+                        sys.stdout.write(bm.clear.line(2))
+                        sys.stdout.write(self.input)
+                        sys.stdout.flush()
+                        sys.stdout.write(bm.move_cursor.DOWN(1))
+                        sys.stdout.write(bm.clear.line(2))
+                        sys.stdout.write(bm.move_cursor.LEFT(1000))
 
-                    if self.active_tab == True :
-                        self.string             = self.string[_id_: ]                                                   # removing '\t' due to tab
-                        self.normal_string      = self.normal_string[_id_ : ]                                           # removing '\t' due to tab
+                        ######################################################################
+                        if self.error is None:
+                            if self.active_tab == True :
+                                self.string             = self.string[_id_: ]                                                   # removing '\t' due to tab
+                                self.normal_string      = self.normal_string[_id_ : ]                                           # removing '\t' due to tab
+                                self.id                 = None
 
-                        try:
-                            self.string_rebuild             = ''                                                        # rebuilding string by using self.normal_string
-                            self.string, self.error         = control_string.STRING_ANALYSE(self.data_base,
-                                                (self.line + self.string_line)).DELETE_SPACE(self.string)               # removing left and right space on string
-                            self.normal_string, self.error  = control_string.STRING_ANALYSE(self.data_base,
-                                                (self.line + self.string_line)).DELETE_SPACE(self.normal_string)        # removing left and right space on string
-                            if self.error is None:
-                                ################################################################################################
-                                # when i got string from the < stdin > i make some verifications before storing it in          #
-                                # self.storage, if the conditions set here were not respected we got an error in function of   #
-                                # the mistakes, i used the <for> loop to check the syntax of each string defined  here         #
-                                # because of the < stdin > we have a lot of input strings .                                    #
-                                # the separtors used here to pass of a line to an another one is the comma < , >               #
-                                ################################################################################################
-                                for i, str_ in enumerate( self.normal_string ):
+                                if '#' in self.string:
+                                    self.id             = self.normal_string.index('#')
+                                    self.normal_string  = self.normal_string[ : self.id ]
+                                    self.id             = self.string.index('#')
+                                    self.string         = self.string[ : self.id ]
+                                else: pass
 
-                                    ############################################################################################
-                                    # in first of all i check here if the all the chars are accpeted by the code it means that #
-                                    # i set a data_base where all accpeted chars are stored then if you a set non accept char  #
-                                    # you will get an error.                                                                   #
-                                    ############################################################################################
+                                try:
+                                    self.string_rebuild             = ''                                                        # rebuilding string by using self.normal_string
+                                    self.string, self.error         = control_string.STRING_ANALYSE(self.data_base,
+                                                        (self.line + self.string_line)).DELETE_SPACE(self.string)               # removing left and right space on string
+                                    self.normal_string, self.error  = control_string.STRING_ANALYSE(self.data_base,
+                                                        (self.line + self.string_line)).DELETE_SPACE(self.normal_string)        # removing left and right space on string
+                                    if self.error is None:
+                                        ################################################################################################
+                                        # when i got string from the < stdin > i make some verifications before storing it in          #
+                                        # self.storage, if the conditions set here were not respected we got an error in function of   #
+                                        # the mistakes, i used the <for> loop to check the syntax of each string defined  here         #
+                                        # because of the < stdin > we have a lot of input strings .                                    #
+                                        # the separtors used here to pass of a line to an another one is the comma < , >               #
+                                        ################################################################################################
+                                        for i, str_ in enumerate( self.normal_string ):
 
-                                    if str_ in self.chars:
-                                        self.string_rebuild += str_
-                                        if len( self.normal_string ) == 1 :
-                                            if str_ in [ ',' ]:
-                                                self.error = ERROR((self.line + self.string_line)).ERROR1(self.normal_string)
-                                                break
-                                            else:
-                                                if self.storage[-1][-1] in [',']:
-                                                    if str_ == self.close:
-                                                        self.error = ERROR((self.line + self.string_line)).ERROR2()
+                                            ############################################################################################
+                                            # in first of all i check here if the all the chars are accpeted by the code it means that #
+                                            # i set a data_base where all accpeted chars are stored then if you a set non accept char  #
+                                            # you will get an error.                                                                   #
+                                            ############################################################################################
+
+                                            if str_ in self.chars:
+                                                self.string_rebuild += str_
+                                                if len( self.normal_string ) == 1 :
+                                                    if str_ in [ ',' ]:
+                                                        self.error = ERROR((self.line + self.string_line)).ERROR1(self.normal_string)
                                                         break
                                                     else:
-                                                        self.storage.append( self.string_rebuild )
-                                                        self.string_rebuild     = ''
-                                                        self.space              = 0
-                                                else:
-                                                    if len( self.storage ) > 1:
-                                                        if str_ == self.close:
-                                                            self.storage.append(self.string_rebuild)
-                                                            self.key_break = True
-                                                            break
-                                                        else:
-                                                            self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                            break
-                                                    else:
-                                                        if len(self.storage[0]) > 1:
+                                                        if self.storage[-1][-1] in [',']:
                                                             if str_ == self.close:
-                                                                self.storage.append(self.string_rebuild)
-                                                                self.key_break = True
+                                                                self.error = ERROR((self.line + self.string_line)).ERROR2()
                                                                 break
                                                             else:
-                                                                self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                break
-                                                        else:
-                                                            self.open   = NUMBER().OPENING( self.close )
-                                                            self.error = ERROR((self.line + self.string_line)).ERROR4( self.open, self.close )
-                                                            break
-
-                                        else:
-                                            if self.normal_string[ 0 ]  not in  [',']   :
-                                                if i < len( self.normal_string ) - 1:
-                                                    if str_ in [',']:
-                                                        self.stest_string, self.error       = self.analyze.DELETE_SPACE(
-                                                                    self.string_rebuild[: - 1])
-
-                                                        if self.error is None:
-                                                            if self.close in self.string_rebuild:
-                                                                self.open   = NUMBER().OPENING( self.close )
-                                                                self.left   = self.normal_string.count( self.open )
-                                                                self.right  = self.normal_string.count( self.close )
-                                                                self.idd    = self.string_rebuild.index( self.close )
-
-                                                                if self.left == self.right:
-                                                                    self.storage.append(self.string_rebuild)
-                                                                    self.string_rebuild     = ''
-                                                                    self.space              = 0
-                                                                else:
-                                                                    self.error = ERROR((self.line + self.string_line)).ERROR0(  self.normal_string)
-                                                                    break
-                                                            else:
-                                                                self.storage.append( self.string_rebuild )
-                                                                self.string_rebuild             = ''
-                                                                self.space                      = 0
-                                                        else:
-                                                            self.error = ERROR((self.line + self.string_line)).ERROR5(  self.normal_string)
-                                                            break
-                                                    else: pass
-                                                else:
-                                                    if str_ in [',']:
-                                                        self.stest_string, self.error = self.analyze.DELETE_RIGTH(  self.string_rebuild[: -1])
-                                                        if self.error is None:
-
-                                                            if self.storage[-1][-1] in [',']:
+                                                                #here
                                                                 self.storage.append( self.string_rebuild )
                                                                 self.string_rebuild     = ''
                                                                 self.space              = 0
-                                                            else:
-                                                                if len( self.storage ) > 1:
-                                                                    self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                        else:
+                                                            if len( self.storage ) > 1:
+                                                                if str_ == self.close:
+                                                                    self.storage.append(self.string_rebuild)
+                                                                    self.key_break = True
                                                                     break
                                                                 else:
-                                                                    if len( self.storage[ 0 ] ) == 1:
+                                                                    self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                    break
+                                                            else:
+                                                                if len(self.storage[0]) > 1:
+                                                                    if str_ == self.close:
+                                                                        self.storage.append(self.string_rebuild)
+                                                                        self.key_break = True
+                                                                        break
+                                                                    else:
+                                                                        self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                        break
+                                                                else:
+                                                                    self.open   = NUMBER().OPENING( self.close )
+                                                                    self.error = ERROR((self.line + self.string_line)).ERROR4( self.open, self.close )
+                                                                    break
+
+                                                else:
+                                                    if self.normal_string[ 0 ]  not in  [',']   :
+                                                        if i < len( self.normal_string ) - 1:
+                                                            if str_ in [',']:
+                                                                self.stest_string, self.error       = self.analyze.DELETE_SPACE(
+                                                                            self.string_rebuild[: - 1])
+
+                                                                if self.error is None:
+                                                                    if self.close in self.string_rebuild:
+                                                                        self.open   = NUMBER().OPENING( self.close )
+                                                                        self.left   = self.normal_string.count( self.open )
+                                                                        self.right  = self.normal_string.count( self.close )
+                                                                        self.idd    = self.string_rebuild.index( self.close )
+
+                                                                        if self.left == self.right:
+                                                                            #here
+                                                                            self.storage.append(self.string_rebuild)
+                                                                            self.string_rebuild = ''
+                                                                            self.space = 0
+                                                                        else:
+                                                                            self.error = ERROR((self.line + self.string_line)).ERROR0(  self.normal_string)
+                                                                            break
+                                                                    else:
+                                                                        #here
+                                                                        self.storage.append(self.string_rebuild)
+                                                                        self.string_rebuild = ''
+                                                                        self.space = 0
+                                                                else:
+                                                                    self.error = ERROR((self.line + self.string_line)).ERROR5(  self.normal_string)
+                                                                    break
+                                                            else: pass
+                                                        else:
+                                                            if str_ in [',']:
+                                                                self.stest_string, self.error = self.analyze.DELETE_RIGTH(  self.string_rebuild[: -1])
+                                                                if self.error is None:
+
+                                                                    if self.storage[-1][-1] in [',']:
+                                                                        #here
                                                                         self.storage.append(self.string_rebuild)
                                                                         self.string_rebuild = ''
                                                                         self.space = 0
                                                                     else:
-                                                                        self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                        break
-                                                        else:
-                                                            self.error = ERROR((self.line + self.string_line)).ERROR5( self.normal_string)
-                                                            break
-
-                                                    else:
-                                                        if str_ ==  self.close:
-                                                            self.open       = NUMBER().OPENING(self.close)
-                                                            self.left       = self.normal_string.count(self.open)
-                                                            self.right      = self.normal_string.count(self.close)
-
-                                                            if self.left != self.right:
-                                                                if self.storage[-1][-1] in [',']:
-
-                                                                    if len( self.string_rebuild ) == 1:
-                                                                        self.error = ERROR((self.line + self.string_line)).ERROR2()
-                                                                        break
-                                                                    else:
-                                                                        self.storage.append(self.string_rebuild)
-                                                                        self.key_break = True
-                                                                        break
-                                                                else:
-                                                                    if len(self.storage) > 1:
-                                                                        self.storage.append(self.string_rebuild)
-                                                                        self.key_break = True
-                                                                        break
-                                                                        #self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                        #break
-                                                                    else:
-                                                                        if len( self.storage[0] ) == 1 :
-                                                                            self.storage.append(self.string_rebuild)
-                                                                            self.key_break = True
-                                                                            break
-
-                                                                        else:
-                                                                            self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                            break
-                                                            else:
-                                                                if self.storage[-1][-1] in [',']:
-                                                                    self.storage.append( self.string_rebuild )
-                                                                    self.string_rebuild     = ''
-                                                                    self.space              = 0
-                                                                else:
-                                                                    if len(self.storage) > 1:
-                                                                        self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                        break
-
-                                                                    else:
-                                                                        if len(self.storage[0]) == 1:
-                                                                            self.storage.append( self.string_rebuild )
-                                                                            self.string_rebuild     = ''
-                                                                            self.space              = 0
-
-                                                                        else:
-                                                                            self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                            break
-
-                                                        else:
-                                                            if self.close in self.string_rebuild:
-                                                                self.open       = NUMBER().OPENING( self.close )
-                                                                self.left       = self.normal_string.count( self.open )
-                                                                self.right      = self.normal_string.count( self.close )
-                                                                self.idd        = self.string_rebuild.index(self.close)
-
-                                                                if self.left == self.right:
-                                                                    if self.storage[-1][-1] in [',']:
-                                                                        self.storage.append( self.string_rebuild )
-                                                                        self.string_rebuild     = ''
-                                                                        self.space              = 0
-
-                                                                    else:
-                                                                        if len(self.storage) > 1:
-                                                                            self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                            break
-                                                                        else:
-                                                                            if len(self.storage[0]) == 1:
-                                                                                self.storage.append(self.string_rebuild)
-                                                                                self.string_rebuild     = ''
-                                                                                self.space              = 0
-                                                                            else:
-                                                                                self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                                break
-
-                                                                else:
-                                                                    if self.storage[-1][-1] in [',']:
-                                                                        self.new_string = self.string_rebuild[: self.idd]
-                                                                        self.new_string, self.error = self.analyze.DELETE_SPACE( self.new_string)
-                                                                        if self.error is None:
-                                                                            self.storage.append(self.string_rebuild)
-                                                                            self.key_break = True
-                                                                            break
-
-                                                                        else:
-                                                                            self.error = ERROR((self.line + self.string_line)).ERROR6()
-                                                                            break
-                                                                    else:
                                                                         if len( self.storage ) > 1:
-                                                                            self.new_string = self.string_rebuild[: self.idd]
-                                                                            self.new_string, self.error = self.analyze.DELETE_SPACE( self.new_string)
-                                                                            if self.error is None:
+                                                                            self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                            break
+                                                                        else:
+                                                                            if len( self.storage[ 0 ] ) == 1:
+                                                                                #here
+                                                                                self.storage.append(self.string_rebuild)
+                                                                                self.string_rebuild = ''
+                                                                                self.space = 0
+                                                                            else:
                                                                                 self.error = ERROR((self.line + self.string_line)).ERROR3()
                                                                                 break
-                                                                            else:
-                                                                                self.error      = None
-                                                                                self.storage.append(self.string_rebuild)
-                                                                                self.key_break  = True
-                                                                                break
+                                                                else:
+                                                                    self.error = ERROR((self.line + self.string_line)).ERROR5( self.normal_string)
+                                                                    break
 
-                                                                        else:
-                                                                            if len(self.storage[0]) == 1:
+                                                            else:
+                                                                if str_ ==  self.close:
+                                                                    self.open       = NUMBER().OPENING(self.close)
+                                                                    self.left       = self.normal_string.count(self.open)
+                                                                    self.right      = self.normal_string.count(self.close)
+
+                                                                    if self.left != self.right:
+                                                                        if self.storage[-1][-1] in [',']:
+
+                                                                            if len( self.string_rebuild ) == 1:
+                                                                                self.error = ERROR((self.line + self.string_line)).ERROR2()
+                                                                                break
+                                                                            else:
                                                                                 self.storage.append(self.string_rebuild)
                                                                                 self.key_break = True
                                                                                 break
-
+                                                                        else:
+                                                                            if len(self.storage) > 1:
+                                                                                self.storage.append(self.string_rebuild)
+                                                                                self.key_break = True
+                                                                                break
+                                                                                #self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                                #break
                                                                             else:
-                                                                                self.stest_string, self.error = self.analyze.DELETE_SPACE(
-                                                                                    self.string_rebuild[: self.idd])
-
-                                                                                if self.error is None:
-                                                                                    self.error = ERROR((self.line +  self.string_line)).ERROR3()
+                                                                                if len( self.storage[0] ) == 1 :
+                                                                                    self.storage.append(self.string_rebuild)
+                                                                                    self.key_break = True
                                                                                     break
                                                                                 else:
-                                                                                    self.error      = None
-                                                                                    self.key_break  = True
-                                                                                    self.storage.append(self.string_rebuild)
+                                                                                    self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                                    break
+                                                                    else:
+                                                                        if self.storage[-1][-1] in [',']:
+                                                                            #here
+                                                                            self.storage.append(self.string_rebuild)
+                                                                            self.string_rebuild = ''
+                                                                            self.space = 0
+                                                                        else:
+                                                                            if len(self.storage) > 1:
+                                                                                self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                                break
+
+                                                                            else:
+                                                                                if len(self.storage[0]) == 1:
+                                                                                    #here
+                                                                                    self.storage.append( self.string_rebuild)
+                                                                                    self.string_rebuild = ''
+                                                                                    self.space = 0
+                                                                                else:
+                                                                                    self.error = ERROR((self.line + self.string_line)).ERROR3()
                                                                                     break
 
-                                                            else:
-                                                                if self.storage[-1][-1] in [',']:
-                                                                    self.storage.append( self.string_rebuild )
-                                                                    self.string_rebuild     = ''
-                                                                    self.space              = 0
-
                                                                 else:
-                                                                    self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                    break
+                                                                    if self.close in self.string_rebuild:
+                                                                        self.open       = NUMBER().OPENING( self.close )
+                                                                        self.left       = self.normal_string.count( self.open )
+                                                                        self.right      = self.normal_string.count( self.close )
+                                                                        self.idd        = self.string_rebuild.index(self.close)
+
+                                                                        if self.left == self.right:
+                                                                            if self.storage[-1][-1] in [',']:
+                                                                                #here
+                                                                                self.storage.append(self.string_rebuild)
+                                                                                self.string_rebuild = ''
+                                                                                self.space = 0
+                                                                            else:
+                                                                                if len(self.storage) > 1:
+                                                                                    self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                                    break
+                                                                                else:
+                                                                                    if len(self.storage[0]) == 1:
+                                                                                        #here
+                                                                                        self.storage.append(  self.string_rebuild)
+                                                                                        self.string_rebuild = ''
+                                                                                        self.space = 0
+                                                                                    else:
+                                                                                        self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                                        break
+
+                                                                        else:
+                                                                            if self.storage[-1][-1] in [',']:
+                                                                                self.new_string = self.string_rebuild[: self.idd]
+                                                                                self.new_string, self.error = self.analyze.DELETE_SPACE( self.new_string)
+                                                                                if self.error is None:
+                                                                                    self.storage.append(self.string_rebuild)
+                                                                                    self.key_break = True
+                                                                                    break
+
+                                                                                else:
+                                                                                    self.error = ERROR((self.line + self.string_line)).ERROR6()
+                                                                                    break
+                                                                            else:
+                                                                                if len( self.storage ) > 1:
+                                                                                    self.new_string = self.string_rebuild[: self.idd]
+                                                                                    self.new_string, self.error = self.analyze.DELETE_SPACE( self.new_string)
+                                                                                    if self.error is None:
+                                                                                        self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                                        break
+                                                                                    else:
+                                                                                        self.error      = None
+                                                                                        self.storage.append(self.string_rebuild)
+                                                                                        self.key_break  = True
+                                                                                        break
+
+                                                                                else:
+                                                                                    if len(self.storage[0]) == 1:
+                                                                                        self.storage.append(self.string_rebuild)
+                                                                                        self.key_break = True
+                                                                                        break
+
+                                                                                    else:
+                                                                                        self.stest_string, self.error = self.analyze.DELETE_SPACE(
+                                                                                            self.string_rebuild[: self.idd])
+
+                                                                                        if self.error is None:
+                                                                                            self.error = ERROR((self.line +  self.string_line)).ERROR3()
+                                                                                            break
+                                                                                        else:
+                                                                                            self.error      = None
+                                                                                            self.key_break  = True
+                                                                                            self.storage.append(self.string_rebuild)
+                                                                                            break
+
+                                                                    else:
+                                                                        if self.storage[-1][-1] in [',']:
+                                                                            #here
+                                                                            self.storage.append(self.string_rebuild)
+                                                                            self.string_rebuild = ''
+                                                                            self.space = 0
+                                                                        else:
+                                                                            self.error = ERROR((self.line + self.string_line)).ERROR3()
+                                                                            break
+                                                    else:
+                                                        self.error = ERROR((self.line + self.string_line)).ERROR1(self.normal_string)
+                                                        break
                                             else:
-                                                self.error = ERROR((self.line + self.string_line)).ERROR1(self.normal_string)
-                                                break
+                                                if self.first_char not in ['"', "'"]:
+                                                    self.error = ERROR( (self.line + self.string_line) ).ERROR7(  self.normal_string, str_)
+                                                    break
+                                                else:  self.string_rebuild += str_
+
+                                        if self.error is None :
+                                            ############################################################################################
+                                            # self.key_break helps us to get out of < for > loop when self.error is None and then      #
+                                            # we break < while> without any problem to get the final string set in this part           #
+                                            ############################################################################################
+                                            if self.key_break == True: break
+                                            else: pass
+                                        else: break
+                                    else: self.error = None
+                                except IndexError:
+                                    ###############################################
+                                    # i've limited the number of lines to 5       #
+                                    ###############################################
+                                    if self.space <= 5:   self.space += 1
                                     else:
-                                        if self.first_char not in ['"', "'"]:
-                                            self.error = ERROR( (self.line + self.string_line) ).ERROR7(  self.normal_string, str_)
-                                            break
-                                        else:  self.string_rebuild += str_
+                                        ############################################################################################
+                                        # an error got if this condition was not sastified, if the code a value bigger than five   #
+                                        # you're going to see this error on your screen                                            #
+                                        ############################################################################################
+                                        self.error = ERROR( (self.line + self.string_line) ).ERROR8()
+                                        break
 
-                                if self.error is None :
-                                    ############################################################################################
-                                    # self.key_break helps us to get out of < for > loop when self.error is None and then      #
-                                    # we break < while> without any problem to get the final string set in this part           #
-                                    ############################################################################################
-                                    if self.key_break == True: break
-                                    else: pass
-                                else: break
-                            else: self.error = None
-                        except IndexError:
-                            ###############################################
-                            # i've limited the number of lines to 5       #
-                            ###############################################
-                            if self.space <= 5:   self.space += 1
                             else:
-                                ############################################################################################
-                                # an error got if this condition was not sastified, if the code a value bigger than five   #
-                                # you're going to see this error on your screen                                            #
-                                ############################################################################################
-                                self.error = ERROR( (self.line + self.string_line) ).ERROR8()
+                                ####################################################################################################
+                                # the error got when self.active that is not True, what does it mean excatly , it means that       #
+                                # before typing something you have to used tab, then when tab is used self.active key gave by the  #
+                                # stdin becomes True, else this value it always False.                                             #
+                                ####################################################################################################
+                                self.error = ERROR( (self.line + self.string_line) ).ERROR9( )
                                 break
+                        else:  break
+                    else :
+                        if self.space <= self.max_emtyLine:  self.space += 1
+                        else:
+                            self.error = ERROR(self.if_line).ERROR9()
+                            break
 
-                    else:
-                        ####################################################################################################
-                        # the error got when self.active that is not True, what does it mean excatly , it means that       #
-                        # before typing something you have to used tab, then when tab is used self.active key gave by the  #
-                        # stdin becomes True, else this value it always False.                                             #
-                        ####################################################################################################
-                        self.error = ERROR( (self.line + self.string_line) ).ERROR9( )
-                        break
-                else:  break
+                    self.input      = '{}... {}'.format(self.c, bm.init.reset)
+                    self.index      = self.length
+                    self.mainString = ''
+                    self.mainIndex  = 0
 
-            except KeyboardInterrupt: break
+                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                sys.stdout.write(bm.clear.line(pos=0))
+                sys.stdout.write(bm.string().syntax_highlight(name=self.input))
+                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+
+                if self.index > 0:  sys.stdout.write(bm.move_cursor.RIGHT(pos=self.index - self.sub_length))
+                else:  pass
+                sys.stdout.flush()
+
+            except KeyboardInterrupt:
+                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
+                print(self._keyboard_)
+                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                break
             except EOFError:  break
+            except TypeError:
+                self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
+                print(self._end_of_file_)
+                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                break
 
         if self.error is None :
             self.string = ''
-            for str_ in self.storage[ self.len_storage : ]:
-                self.string += str_
+            for str_ in self.storage[ self.len_storage : ]:  self.string += str_
         else: pass
 
         return self.string, self.error
