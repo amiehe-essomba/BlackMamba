@@ -6,56 +6,6 @@ from script.LEXER.FUNCTION      import main
 from script.PARXER              import parxer_assembly
 from script.DATA_BASE           import data_base as db
 
-def readchar():
-    fd = sys.stdin.fileno()
-    ch = ord(sys.stdin.read(1))
-    return ch
-
-def syntax_highlight(name: str):
-    stripped = name.rstrip()
-    return stripped + bm.bg.blue_L + " " * (len(name) - len(stripped)) + bm.init.reset
-
-def ansi_remove_chars(name: str):
-    ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-    return ansi_escape.sub('', name)
-
-def show(name: str):
-    try:
-        float_name = float(name)
-        print_name = '\n{}[ {}result{} ] : {}{}{}\n'.format(bm.fg.magenta_M, bm.fg.red_L, bm.fg.magenta_M,
-                                                            bm.fg.green_L, float_name, bm.init.reset)
-        print(print_name)
-
-    except:
-        print_name = '\n\n{}[ {}result{} ] : {}{}\n'.format(bm.fg.magenta_M, bm.fg.red_L, bm.fg.magenta_M,
-                                                            bm.init.reset, name)
-        print(print_name)
-
-def tabular(string: str):
-    count = 0
-    newString = string
-
-    if string:
-        for i, e in enumerate(string):
-            if i == 0:
-                if e == '\t':
-                    count += 1
-                else:
-                    break
-            else:
-                if string[i - 1] == '\t':
-                    count += 1
-                else:
-                    break
-    else:
-        pass
-    if count > 0:
-        newString = string[count:]
-    else:
-        pass
-
-    return newString
-
 class windows:
     def __init__(self, data_base : dict):
         self.data_base  = data_base
@@ -75,18 +25,18 @@ class windows:
         self.mainString = ''
         self.mainIndex  = 0
 
-        sys.stdout.write(syntax_highlight(self.input))
+        sys.stdout.write(bm.string().syntax_highlight(name=self.input))
         sys.stdout.flush()
         while True:
-            self.line += 1
             try:
-                self.char = readchar()
+                self.char = bm.read().readchar()
                 if self.char not in {10, 13}:
                     self.input       = self.input[ : self.index ] + chr( self.char ) + self.input[ self.index : ]
                     self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char ) + self.mainString[ self.mainIndex : ]
                     self.index       += 1
                     self.mainIndex   += 1
                 elif self.char in {10, 13}:  # enter
+                    self.line += 1
                     sys.stdout.write(u"\u001b[1000D")
                     self.clear_input = self.mainString
                     if self.clear_input:
@@ -111,7 +61,6 @@ class windows:
                                 else:
                                     sys.stdout.write(bm.clear.line(2))
                                     sys.stdout.write(bm.move_cursor.LEFT(1000))
-                                    #sys.stdout.write(bm.move_cursor.DOWN(1))
                                     print('{}\n'.format(self.error))
                                     self.error = None
                             else:  pass
@@ -127,7 +76,6 @@ class windows:
                     self.key        = False
                     self.mainString = ''
                     self.mainIndex  = 0
-
                 elif self.char == 9:  # tabular
                     self.tabular = '\t'
                     self.input = self.input[: self.index] + self.tabular + self.input[self.index:]
@@ -135,7 +83,7 @@ class windows:
 
                 sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                 sys.stdout.write(bm.clear.line(0))
-                sys.stdout.write(syntax_highlight(self.input))
+                sys.stdout.write(bm.string().syntax_highlight(name=self.input))
                 sys.stdout.write(bm.move_cursor.LEFT(1000))
 
                 if self.index > 0:  sys.stdout.write(bm.move_cursor.RIGHT(self.index - self.sub_length))
@@ -155,8 +103,10 @@ class windows:
                 sys.stdout.flush()
 
 if __name__ == '__main__':
+
     try:
         os.system('cls')
+        bm.head().head(sys='Windows')
         data_base = db.DATA_BASE().STORAGE()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255))
     except KeyboardInterrupt:  pass
