@@ -16,9 +16,11 @@
 12.from/module/load/as
 
 ```
-> loading of a module as not an alias
+> creating and handling a dictionary
+![module load ](/images/dict.png)
 
-![module load ](/images/m1.png)
+> creating and handling a list
+![module load ](/images/list.png)
 
 ```python
 from module /path/maths/ load statistics as stats
@@ -29,16 +31,14 @@ load module /path/maths/
 load module maths, iris
 load module maths as m
 ```
+> loading a module as not an alias
+![module load ](/images/m1.png)
 
 > loading of a module as an alias
-
 ![module load ](/images/m2.png)
 
-
 > IF structure
-
 ![module load ](/images/if.png)
-
 
 ## Project Description 
 
