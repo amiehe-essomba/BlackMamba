@@ -252,6 +252,10 @@ class C_F_I_S:
                                                 bm.open_graven().open_graven_web()
                                             elif self._value_[ -1 ] in [ 'help' ]:
                                                 bm.open_graven().openG()
+                                            elif self._value_[ -1 ] in [ 'matrix' ]:
+                                                self.final_value, self.error = MATRIX(self._value_[0], self._value_[1],self._value_[2],
+                                                                          self._value_[3], self.line).MATRIX()
+                                                self.data_base['matrix'] = True
 
                                             else:
                                                 self.type_accepted  = [type(list()), type(tuple()), type(range(1))]
@@ -1306,4 +1310,93 @@ class ERRORS:
 
         return self.error+self.reset
 
+    def ERROR28(self,):
+        error = '{}is {}EMPTY. {}line: {}{}'.format(self.white, self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}master '.format(self.cyan) + error
 
+        return self.error + self.reset
+
+    def ERROR29(self, string : str = 'nrow'):
+        error = '{}should be {}positive {}or {}-1. {}line: {}{}'.format(self.white, self.yellow, self.white, self.red,
+                                                                        self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} '.format(self.cyan, string) + error
+
+        return self.error + self.reset
+
+    def ERROR30(self, string : str = 'ncol'):
+        error = '{}cannot be {}negative {}when {}nrow {}is negative. {}line: {}{}'.format(self.white, self.yellow, self.white, self.cyan,
+                                        self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} '.format(self.cyan, string) + error
+
+        return self.error + self.reset
+
+    def ERROR31(self, s= '>'):
+        error = '{}line: {}{}'.format( self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}nrow * ncol {} length( master ) '.format(self.cyan, s) + error
+
+        return self.error + self.reset
+
+    def ERROR32(self, s= 'nrow'):
+        error = '{}and {}reverse is True {}line: {}{}'.format(self.white, self.yellow,  self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} {}is -1 '.format(self.cyan, s, self.red) + error
+
+        return self.error + self.reset
+
+class MATRIX:
+    def __init__(self, master : list, nrow : int , ncol : int, reverse: bool, line: int):
+        self.master     = master
+        self.nrow       = nrow
+        self.ncol       = ncol
+        self.reverse    = reverse
+        self.line       = line
+
+    def MATRIX(self):
+        self.step       = 0
+        self.newList    = []
+        self.prev       = []
+        self.error      = None
+
+        if self.master:
+            if self.nrow > 0:
+                if self.ncol > 0:
+                    if self.nrow * self.ncol == len( self.master):
+                        if self.reverse == False:
+                            self.step = self.ncol
+                            self.prev.append( 0 )
+                            for i in range(self.ncol):
+                                self.prev.append( self.ncol * (i+1) )
+                                self.newList.append( self.master[ self.prev[ i ]: self.prev[ i+1 ]])
+                        else:
+                            self.prev.append(0)
+                            for i in range(self.nrow):
+                                self.ss = []
+                                for j in range( self.ncol ):
+                                    self.prev.append(self.ncol * (j + 1))
+                                    self.ss.append(self.master[self.prev[j]: self.prev[j + 1]][ i ])
+                                self.newList.append( self.ss )
+                    else:
+                        if self.nrow * self.ncol > len( self.master) : self.error = ERRORS( self.line ).ERROR31('>')
+                        else : self.error = ERRORS( self.line ).ERROR31('<')
+                elif self.ncol == -1:
+                    if len( self.master ) == len( self.nrow):
+                        if self.reverse is False:  self.newList.append( self.master )
+                        else: self.error = ERRORS( self.line ).ERROR32( 'ncol')
+                    else:
+                        if self.nrow > len( self.master) : self.error = ERRORS( self.line ).ERROR31('>')
+                        else : self.error = ERRORS( self.line ).ERROR31('<')
+                else: self.error = ERRORS( self.line ).ERROR29( string = 'ncol')
+            elif self.nrow == -1:
+                if self.ncol > 0:
+                    if self.ncol == len( self.master):
+                        if self.reverse is False:
+                            for s in self.master:
+                                self.newList.append([s])
+                        else: self.error = ERRORS( self.line ).ERROR32( 'nrow')
+                    else:
+                        if self.ncol > len( self.master) : self.error = ERRORS( self.line ).ERROR31('>')
+                        else : self.error = ERRORS( self.line ).ERROR31('<')
+                else: self.error = ERRORS( self.line ).ERROR29( string = 'nrow')
+            else: self.error = ERRORS( self.line ).ERROR30( string = 'nrow')
+        else: self.error = ERRORS( self.line ).ERROR28()
+
+        return  self.newList, self.error

@@ -247,10 +247,11 @@ class NUMERICAL:
                             if self._val_ in self.variables:
                                 self.index      = self.variables.index( self._val_ )
                                 self.numeric    = self._values_[ self.index ]
-                            else:
-                                self.error = ERRORS( self.line ).ERROR2( self._val_ )
-                        else:
-                            self.error = ERRORS( self.line ).ERROR2( self._val_ )
+                                if self.data_base['variables']['types'][ self.index ] == FINAL_VALUE(None,None,None,None).MATRIX():
+                                    self.data_base['maxtrix'] = True
+                                else: pass
+                            else: self.error = ERRORS( self.line ).ERROR2( self._val_ )
+                        else: self.error = ERRORS( self.line ).ERROR2( self._val_ )
                     else: self.error = self.error
 
                 else:
@@ -1871,23 +1872,30 @@ class FINAL_VALUE:
         return self._return_
 
     def CONVERSION(self):
-        self._return_  = None
+        self._return_       = None
         self.all_Float      = [ numpy.float16, numpy.float32, numpy.float64 ]
         self.all_Int        = [ numpy.int8, numpy.int16, numpy.int32, numpy.int64 ]
-        if   type( self.master ) == type( int() )       :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
-        elif type( self.master ) == type( float() )     :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
-        elif type( self.master ) == type( bool() )      :   self._return_ = '{}{}boolean(){}'.format(bm.fg.blue, self.cyan, bm.fg.blue)
-        elif type( self.master ) == type( complex() )   :   self._return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
-        elif type( self.master ) == type( list() )      :   self._return_ = '{}{}list(){}'.format(bm.fg.blue, self.yellow , bm.fg.blue)
-        elif type( self.master ) == type( tuple() )     :   self._return_ = '{}{}tuple(){}'.format(bm.fg.blue, self.blue, bm.fg.blue)
-        elif type( self.master ) == type( dict() )      :   self._return_ = '{}{}dictionary(){}'.format( bm.fg.blue, self.magenta, bm.fg.blue)
-        elif type( self.master ) == type( str() )       :   self._return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.rbg(255,140,100 ), bm.fg.blue)
-        elif type( self.master ) == type( range( 1 ) )  :   self._return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
-        elif type( self.master ) == type( None )        :   self._return_ = '{}{}none(){}'.format(bm.fg.blue, self.orange, bm.fg.blue)
-        elif type( self.master ) in self.all_Float      :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
-        elif type( self.master ) in self.all_Int        :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
 
-        return self._return_
+        if self.data_base['matrix'] is None:
+            if   type( self.master ) == type( int() )       :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
+            elif type( self.master ) == type( float() )     :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
+            elif type( self.master ) == type( bool() )      :   self._return_ = '{}{}boolean(){}'.format(bm.fg.blue, self.cyan, bm.fg.blue)
+            elif type( self.master ) == type( complex() )   :   self._return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
+            elif type( self.master ) == type( list() )      :   self._return_ = '{}{}list(){}'.format(bm.fg.blue, self.yellow , bm.fg.blue)
+            elif type( self.master ) == type( tuple() )     :   self._return_ = '{}{}tuple(){}'.format(bm.fg.blue, self.blue, bm.fg.blue)
+            elif type( self.master ) == type( dict() )      :   self._return_ = '{}{}dictionary(){}'.format( bm.fg.blue, self.magenta, bm.fg.blue)
+            elif type( self.master ) == type( str() )       :   self._return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.rbg(255,140,100 ), bm.fg.blue)
+            elif type( self.master ) == type( range( 1 ) )  :   self._return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
+            elif type( self.master ) == type( None )        :   self._return_ = '{}{}none(){}'.format(bm.fg.blue, self.orange, bm.fg.blue)
+            elif type( self.master ) in self.all_Float      :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
+            elif type( self.master ) in self.all_Int        :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
+            else:  self._return_ = 'type not found'
+        else : self._return_   = FINAL_VALUE(None,None, None,None).MATRIX()
+
+        return self._return_+bm.init.reset
+
+    def MATRIX(self):
+        return '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0), bm.fg.blue)+bm.init.reset
 
     def GET_DATA(self, object: any, out_side:bool = True):
         self._return_       = []

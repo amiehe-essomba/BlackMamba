@@ -37,12 +37,19 @@ class SHOW :
 
         # get master type
         self.type       = type( self.master )
-        
-        # calor set in function of the master type
-        self.color      = SHOW( self.type, self.data_base, self.key ).TYPE()
+        self.color      = ''
 
-        # convert master to a string()
-        self.master     = str( self.master )
+        if self.data_base[ 'matrix' ] is None:
+            # calor set in function of the master type
+            self.color      = SHOW( self.type, self.data_base, self.key ).TYPE()
+
+            # convert master to a string()
+            self.master     = str( self.master )
+        else:
+            self.color = self._return_ = bm.fg.rbg(255,165,0)
+            if self.type != type( str()): self.master = SHOW(self.master, self.data_base, self.key).MATRIX()
+            else: self.master     = str( self.master )
+
         self.string2    = '{}{}{}'.format(self.color, self.master, self.reset)
         self.string1    = '{}[{} result{} ]{} : {}'.format( self.blue, self.orange, self.blue,  self.white, self.reset )
 
@@ -121,5 +128,25 @@ class SHOW :
         elif self.master in self.all_Float      :   self._return_ = bm.fg.rbg(0, 255, 0)
         elif self.master in self.all_Int        :   self._return_ = self.red
         else:                                       self._return_ = bm.fg.rbg(255, 0, 0)
-        
+
         return self._return_
+
+    def MATRIX(self):
+        self.s  = '\n['
+
+        if len( self.master ) <= 7:
+            for i,s in enumerate(self.master):
+                if i < len(self.master)-1:
+                    if i == 0:  self.s += f"{s}\n"
+                    else:self.s += f" {s}\n"
+                else: self.s += f" {s}]"
+        else:
+            for i,s in enumerate(self.master[ : 4]):
+                if i == 0: self.s += f"{s}\n"
+                else: self.s += f" {s}\n"
+
+            self.s += ' \n'
+            self.s += f" {self.master[-2]}\n"
+            self.s += f" {self.master[-1]}]"
+
+        return self.s

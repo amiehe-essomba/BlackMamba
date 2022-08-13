@@ -14,11 +14,13 @@ class DATA_BASE:
         self.data_base      = {
         'global_vars'       : {             # dict for variables and theirs values 
             'vars'          : [],           # variables
-            'values'        : []            # values
+            'values'        : [],           # values
+            'types'         : []            # types
             },
         'variables'         : {             # dict containing varaibles and values defined as global 
             'vars'          : [],           # variables
-            'values'        : []            # values 
+            'values'        : [],           # values
+            'types'         : []            # types
             },
         'irene'             : None,         # contoling string(with or without bracket)
         'functions'         : [],           # all functions 
@@ -96,7 +98,8 @@ class DATA_BASE:
         'subclassNames'     : [],           # sub-classes names for the classes
         'empty_values'      : None,         # when defaults values defined in a function and any values was put when running function
         'total_vars'        : None,         # total variables = (local + global) variables
-        'loading'           : False         # for delecting values which sould be printed
+        'loading'           : False,        # for delecting values which sould be printed
+        'matrix'            : None
         }
 
         return self.data_base
@@ -104,7 +107,7 @@ class DATA_BASE:
     def FUNCTIONS(self):
         self.function_name  = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
                                'length', 'range', 'ansi', 'rand', 'GetLine', 'scan', 
-                               'min', 'max', 'fopen', 'floor', 'License', 'help']
+                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix']
         
         self.function_expressions   = [
             {
@@ -433,7 +436,17 @@ class DATA_BASE:
                     ]
                 }
             },
-            
+            {
+                'matrix'            : {
+                'type'              : [['list', 'tuple', 'range'], ['int', 'bool'], ['int', 'bool'], ['bool']],
+                'value'             : [None, None, None, 'False'],
+                'arguments'         : ['master', 'nrow', 'ncol', 'reverse'],
+                'history_of_data': [
+                        ('t_std_ * [master, nrow, ncol, reverse, \"matrix\"]             ', True),
+                        ('end:                                                  ', False),
+                    ]
+                }
+            },
         ]
 
         

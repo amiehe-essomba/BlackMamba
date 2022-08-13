@@ -953,8 +953,10 @@ class INIT:
         
         self.db['global_vars']['vars']                          = []
         self.db['global_vars']['values']                        = []
+        self.db['global_vars']['types']                         = []
         self.db['variables']['values']                          = []
         self.db['variables']['vars']                            = []
+        self.db['variables']['types']                           = []
         self.db['irene']                                        = None 
         self.db['class_names']                                  = []
         self.db['func_names']                                   = []
@@ -1015,6 +1017,7 @@ class INIT:
         self.db['open']['encoding']                             = []
         self.db['open']['nonCloseKey']                          = []
         self.db['loading']                                      = False
+        self.db['matrix']                                       = False
          
 class ERRORS:
     def __init__(self, line):

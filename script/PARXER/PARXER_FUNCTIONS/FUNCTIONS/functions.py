@@ -1,4 +1,4 @@
-import sre_compile
+from script.PARXER                              import numerical_value
 from script.STDIN.WinSTDIN                      import stdin
 from script                                     import control_string
 from script.PARXER.LEXER_CONFIGURE              import numeric_lexer
@@ -90,6 +90,7 @@ class FUNCTION_TREATMENT:
                             if self.error is None:
                                 self.initialize_values      = self.new_data_base[ 'variables' ]
                                 self.data_base[ 'irene' ]   = self.new_data_base[ 'irene' ]
+                                self.data_base[ 'matrix' ]  = self.new_data_base[ 'matrix' ]
                                 self.keyActivation          = False
                                 
                                 if self.new_data_base[ 'return' ] is not None:
@@ -180,6 +181,7 @@ class FUNCTION_TREATMENT:
                                 if self.error is None:
                                     
                                     self.data_base['irene']     = self.new_data_base['irene']
+                                    self.data_base['matrix']    = self.new_data_base['matrix']
                                     self.initialize_values      = self.new_data_base[ 'variables' ]
                                     
                                     if self.new_data_base[ 'return' ] is not None:
@@ -641,6 +643,7 @@ class FUNCTION:
                                 self._values_, self.error = numeric_lexer.NUMERCAL_LEXER( value, self.data_base,
                                                                                         self.line).LEXER( value )
                                 if self.error is None:
+
                                     self._type_         = CHECK_TYPE_OF_DATA( self._values_ ).DATA()
                                     
                                     if 'any' in self.type_of_data[ i ] :
@@ -1666,6 +1669,7 @@ class UPDATE_DATA_BASE:
         self.values             = values
         self.variables          = variables
         self.global_vars        = global_vars
+        self.num_parxer         = numerical_value
 
     def UPDATE(self, data_base:dict):
         self.name_without_values = []
@@ -1675,7 +1679,8 @@ class UPDATE_DATA_BASE:
                 if self.values[ i ] != '@670532821@656188185@670532821@':
                     data_base[ 'variables' ][ 'vars' ].append( vars )
                     data_base[ 'variables' ][ 'values'].append( self.values[ i ] )
-
+                    t = self.num_parxer.FINAL_VALUE(self.values[ i ], data_base, None, []).CONVERSION()
+                    data_base['variables']['types'].append(t)
                 else: self.name_without_values.append( (vars, i) )
         else: pass
 
