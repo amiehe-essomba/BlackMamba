@@ -35,7 +35,7 @@ load module /path/maths/
 load module maths, iris
 load module maths as m
 ```
-> loading a module as not an alia
+> loading a module as not an alias
 
 ![module load ](/images/m1.png)
 
