@@ -1,8 +1,10 @@
 from script         import control_string as ctrl
 from colorama       import Fore, Style
 from script.LEXER   import particular_str_selection as pss
+from script.STDIN.LinuxSTDIN        import bm_configure as bm
 
-
+cdef str MATRIX():
+    return '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0),bm.fg.blue) + bm.init.reset
 cdef list  String() :
     cdef :
         list type1
@@ -177,6 +179,10 @@ cdef tuple NumeriCal( dict DictValue, list variables, list _values_, int line, d
                     if Value in variables:
                         index       = variables.index( Value )
                         numeric     = _values_[ index ]
+                       
+                        if DataBase['variables']['types'][index] == MATRIX():  
+                            DataBase['matrix'] = True 
+                        else: pass
                     else: error     = ERRORS( line ).ERROR2( Value )
                 else: error         = ERRORS( line ).ERROR2( Value )
             else : pass

@@ -882,7 +882,7 @@ struct __pyx_opt_args_9NumeriCal_6ERRORS_ERROR3;
 struct __pyx_opt_args_9NumeriCal_6ERRORS_ERROR4;
 struct __pyx_opt_args_9NumeriCal_6ERRORS_ERROR9;
 
-/* "NumeriCal.pyx":313
+/* "NumeriCal.pyx":319
  *         return error
  * 
  *     cdef str ERROR3(self, str string, str _char_ = 'an integer()' ):             # <<<<<<<<<<<<<<
@@ -894,7 +894,7 @@ struct __pyx_opt_args_9NumeriCal_6ERRORS_ERROR3 {
   PyObject *_char_;
 };
 
-/* "NumeriCal.pyx":319
+/* "NumeriCal.pyx":325
  *         return error
  * 
  *     cdef str ERROR4(self, str string, str _char_ = 'an integer'):             # <<<<<<<<<<<<<<
@@ -906,7 +906,7 @@ struct __pyx_opt_args_9NumeriCal_6ERRORS_ERROR4 {
   PyObject *_char_;
 };
 
-/* "NumeriCal.pyx":349
+/* "NumeriCal.pyx":355
  *         return error
  * 
  *     cdef ERROR9(self, str string = 'float' ):             # <<<<<<<<<<<<<<
@@ -918,7 +918,7 @@ struct __pyx_opt_args_9NumeriCal_6ERRORS_ERROR9 {
   PyObject *string;
 };
 
-/* "NumeriCal.pyx":230
+/* "NumeriCal.pyx":236
  *     return numeric, error
  * 
  * cdef class NUMERICAL:             # <<<<<<<<<<<<<<
@@ -936,7 +936,7 @@ struct __pyx_obj_9NumeriCal_NUMERICAL {
 };
 
 
-/* "NumeriCal.pyx":259
+/* "NumeriCal.pyx":265
  * 
  * 
  * cdef class ERRORS:             # <<<<<<<<<<<<<<
@@ -962,7 +962,7 @@ struct __pyx_obj_9NumeriCal_ERRORS {
 };
 
 
-/* "NumeriCal.pyx":357
+/* "NumeriCal.pyx":363
  * 
  * 
  * cdef class COMPLEX_ANALYZE:             # <<<<<<<<<<<<<<
@@ -977,7 +977,7 @@ struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE {
 };
 
 
-/* "NumeriCal.pyx":405
+/* "NumeriCal.pyx":411
  * 
  * 
  * cdef class FLOAT_ANALYZE:             # <<<<<<<<<<<<<<
@@ -993,7 +993,7 @@ struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE {
 
 
 
-/* "NumeriCal.pyx":230
+/* "NumeriCal.pyx":236
  *     return numeric, error
  * 
  * cdef class NUMERICAL:             # <<<<<<<<<<<<<<
@@ -1007,7 +1007,7 @@ struct __pyx_vtabstruct_9NumeriCal_NUMERICAL {
 static struct __pyx_vtabstruct_9NumeriCal_NUMERICAL *__pyx_vtabptr_9NumeriCal_NUMERICAL;
 
 
-/* "NumeriCal.pyx":259
+/* "NumeriCal.pyx":265
  * 
  * 
  * cdef class ERRORS:             # <<<<<<<<<<<<<<
@@ -1030,7 +1030,7 @@ struct __pyx_vtabstruct_9NumeriCal_ERRORS {
 static struct __pyx_vtabstruct_9NumeriCal_ERRORS *__pyx_vtabptr_9NumeriCal_ERRORS;
 
 
-/* "NumeriCal.pyx":357
+/* "NumeriCal.pyx":363
  * 
  * 
  * cdef class COMPLEX_ANALYZE:             # <<<<<<<<<<<<<<
@@ -1044,7 +1044,7 @@ struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE {
 static struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *__pyx_vtabptr_9NumeriCal_COMPLEX_ANALYZE;
 
 
-/* "NumeriCal.pyx":405
+/* "NumeriCal.pyx":411
  * 
  * 
  * cdef class FLOAT_ANALYZE:             # <<<<<<<<<<<<<<
@@ -1131,39 +1131,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 /* GetBuiltinName.proto */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
-/* DictGetItem.proto */
-#if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
-static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key);
-#define __Pyx_PyObject_Dict_GetItem(obj, name)\
-    (likely(PyDict_CheckExact(obj)) ?\
-     __Pyx_PyDict_GetItem(obj, name) : PyObject_GetItem(obj, name))
-#else
-#define __Pyx_PyDict_GetItem(d, key) PyObject_GetItem(d, key)
-#define __Pyx_PyObject_Dict_GetItem(obj, name)  PyObject_GetItem(obj, name)
-#endif
-
-/* GetItemInt.proto */
-#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
-    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
-               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
-#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
-    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
-                                                              int wraparound, int boundscheck);
-#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
-    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
-                                                              int wraparound, int boundscheck);
-static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
-                                                     int is_list, int wraparound, int boundscheck);
-
 /* PyDictVersioning.proto */
 #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
 #define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
@@ -1211,6 +1178,13 @@ static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_ve
 static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
 #endif
 
+/* PyObjectCall.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
+#else
+#define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
+#endif
+
 /* PyFunctionFastCall.proto */
 #if CYTHON_FAST_PYCALL
 #define __Pyx_PyFunction_FastCall(func, args, nargs)\
@@ -1241,12 +1215,38 @@ static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObje
 #define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
 #endif
 
-/* PyObjectCall.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
+/* DictGetItem.proto */
+#if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
+static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key);
+#define __Pyx_PyObject_Dict_GetItem(obj, name)\
+    (likely(PyDict_CheckExact(obj)) ?\
+     __Pyx_PyDict_GetItem(obj, name) : PyObject_GetItem(obj, name))
 #else
-#define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
+#define __Pyx_PyDict_GetItem(d, key) PyObject_GetItem(d, key)
+#define __Pyx_PyObject_Dict_GetItem(obj, name)  PyObject_GetItem(obj, name)
 #endif
+
+/* GetItemInt.proto */
+#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
+    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
+               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
+#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
+                                                     int is_list, int wraparound, int boundscheck);
 
 /* PyObjectCall2Args.proto */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
@@ -1622,6 +1622,7 @@ static PyTypeObject *__pyx_ptype_9NumeriCal_NUMERICAL = 0;
 static PyTypeObject *__pyx_ptype_9NumeriCal_ERRORS = 0;
 static PyTypeObject *__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE = 0;
 static PyTypeObject *__pyx_ptype_9NumeriCal_FLOAT_ANALYZE = 0;
+static PyObject *__pyx_f_9NumeriCal_MATRIX(void); /*proto*/
 static PyObject *__pyx_f_9NumeriCal_String(void); /*proto*/
 static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *, PyObject *, PyObject *, int, PyObject *); /*proto*/
 static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *, PyObject *, PyObject *, int, PyObject *); /*proto*/
@@ -1637,24 +1638,29 @@ int __pyx_module_is_main_NumeriCal = 0;
 static PyObject *__pyx_builtin_SyntaxError;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_OverflowError;
-static const char __pyx_k_[] = ".";
 static const char __pyx_k_E[] = "E";
 static const char __pyx_k_e[] = "e";
 static const char __pyx_k_i[] = "i";
 static const char __pyx_k_n[] = "n";
-static const char __pyx_k__2[] = "";
-static const char __pyx_k__3[] = "{}{} : {}<< {} >> ";
-static const char __pyx_k__4[] = "-";
+static const char __pyx_k__2[] = ".";
+static const char __pyx_k__3[] = "";
+static const char __pyx_k__4[] = "{}{} : {}<< {} >> ";
+static const char __pyx_k__5[] = "-";
+static const char __pyx_k_bm[] = "bm";
+static const char __pyx_k_fg[] = "fg";
 static const char __pyx_k_is[] = "{}{} : {}<< {} >> {}is ";
 static const char __pyx_k_RED[] = "RED";
 static const char __pyx_k_int[] = "_int_";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_pss[] = "pss";
+static const char __pyx_k_rbg[] = "rbg";
 static const char __pyx_k_BLUE[] = "BLUE";
 static const char __pyx_k_CYAN[] = "CYAN";
 static const char __pyx_k_Fore[] = "Fore";
+static const char __pyx_k_blue[] = "blue";
 static const char __pyx_k_ctrl[] = "ctrl";
 static const char __pyx_k_dict[] = "__dict__";
+static const char __pyx_k_init[] = "init";
 static const char __pyx_k_keys[] = "keys";
 static const char __pyx_k_line[] = "line";
 static const char __pyx_k_list[] = "_list_";
@@ -1668,12 +1674,15 @@ static const char __pyx_k_GREEN[] = "GREEN";
 static const char __pyx_k_Style[] = "Style";
 static const char __pyx_k_float[] = "float";
 static const char __pyx_k_index[] = "index";
+static const char __pyx_k_reset[] = "reset";
 static const char __pyx_k_tuple[] = "_tuple_";
+static const char __pyx_k_types[] = "types";
 static const char __pyx_k_ERRORS[] = "ERRORS";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_line_2[] = "{}line: {}{}";
 static const char __pyx_k_master[] = "master";
+static const char __pyx_k_matrix[] = "matrix";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_script[] = "script";
@@ -1684,6 +1693,7 @@ static const char __pyx_k_MAGENTA[] = "MAGENTA";
 static const char __pyx_k_a_float[] = "a float";
 static const char __pyx_k_complex[] = "complex";
 static const char __pyx_k_float_2[] = "_float_";
+static const char __pyx_k_ndarray[] = "{}{}ndarray(){}";
 static const char __pyx_k_numeric[] = "numeric";
 static const char __pyx_k_DataBase[] = "DataBase";
 static const char __pyx_k_KeyError[] = "KeyError";
@@ -1717,6 +1727,7 @@ static const char __pyx_k_LIGHTBLUE_EX[] = "LIGHTBLUE_EX";
 static const char __pyx_k_LIGHTCYAN_EX[] = "LIGHTCYAN_EX";
 static const char __pyx_k_ListOfValues[] = "ListOfValues";
 static const char __pyx_k_an_integer_2[] = "an integer";
+static const char __pyx_k_bm_configure[] = "bm_configure";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_script_LEXER[] = "script.LEXER";
 static const char __pyx_k_stringsource[] = "stringsource";
@@ -1747,6 +1758,7 @@ static const char __pyx_k_impossible_to_convert[] = "{}{} : {}impossible to conv
 static const char __pyx_k_not_supported_between[] = "{}{} : {}<< {}{}{} >> {}not supported between ";
 static const char __pyx_k_was_not_found_in_line[] = "{}was not found in {}<< {} >>. {}line: {}{}";
 static const char __pyx_k_pyx_unpickle_NUMERICAL[] = "__pyx_unpickle_NUMERICAL";
+static const char __pyx_k_script_STDIN_LinuxSTDIN[] = "script.STDIN.LinuxSTDIN";
 static const char __pyx_k_particular_str_selection[] = "particular_str_selection";
 static const char __pyx_k_ABCDEFGHIJKLMNOPQRSTUVWXYZ[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_";
 static const char __pyx_k_abcdefghijklmnopqrstuvwxyz[] = "abcdefghijklmnopqrstuvwxyz";
@@ -1756,7 +1768,6 @@ static const char __pyx_k_a_tuple_or_a_string_type_line[] = "{}a tuple(), {}or a
 static const char __pyx_k_Incompatible_checksums_s_vs_0x2a[] = "Incompatible checksums (%s vs 0x2aa5fd3 = (DataBase, ListOfValues, _values_, line, variables))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x76[] = "Incompatible checksums (%s vs 0x76e3533 = (ae, be, ge, ie, ke, le, line, me, ne, reset, te, ve, we))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0xaf[] = "Incompatible checksums (%s vs 0xaf4ae68 = (line, master))";
-static PyObject *__pyx_kp_s_;
 static PyObject *__pyx_n_s_ABCDEFGHIJKLMNOPQRSTUVWXYZ;
 static PyObject *__pyx_n_s_BLUE;
 static PyObject *__pyx_n_s_CHAR_SELECTION;
@@ -1800,6 +1811,7 @@ static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_kp_s__2;
 static PyObject *__pyx_kp_s__3;
 static PyObject *__pyx_kp_s__4;
+static PyObject *__pyx_kp_s__5;
 static PyObject *__pyx_kp_s_a_complex;
 static PyObject *__pyx_kp_s_a_float;
 static PyObject *__pyx_kp_s_a_tuple_or_a_string_type_line;
@@ -1807,6 +1819,9 @@ static PyObject *__pyx_n_s_abcdefghijklmnopqrstuvwxyz;
 static PyObject *__pyx_kp_s_an_integer;
 static PyObject *__pyx_kp_s_an_integer_2;
 static PyObject *__pyx_kp_s_and_type_line;
+static PyObject *__pyx_n_s_blue;
+static PyObject *__pyx_n_s_bm;
+static PyObject *__pyx_n_s_bm_configure;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_colorama;
 static PyObject *__pyx_n_s_complex;
@@ -1816,6 +1831,7 @@ static PyObject *__pyx_n_s_ctrl;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_kp_s_due_to_line;
 static PyObject *__pyx_n_s_e;
+static PyObject *__pyx_n_s_fg;
 static PyObject *__pyx_n_s_float;
 static PyObject *__pyx_n_s_float_2;
 static PyObject *__pyx_n_s_format;
@@ -1825,6 +1841,7 @@ static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_kp_s_impossible_to_convert;
 static PyObject *__pyx_n_s_index;
 static PyObject *__pyx_kp_s_infinity_number;
+static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_n_s_int;
 static PyObject *__pyx_kp_s_invalid_syntax_in;
 static PyObject *__pyx_kp_s_invalid_syntax_in_2;
@@ -1837,8 +1854,10 @@ static PyObject *__pyx_kp_s_line_2;
 static PyObject *__pyx_n_s_list;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_master;
+static PyObject *__pyx_n_s_matrix;
 static PyObject *__pyx_n_s_n;
 static PyObject *__pyx_n_s_name;
+static PyObject *__pyx_kp_s_ndarray;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_kp_s_not_supported_between;
 static PyObject *__pyx_n_s_numeric;
@@ -1856,11 +1875,14 @@ static PyObject *__pyx_n_s_pyx_unpickle_ERRORS;
 static PyObject *__pyx_n_s_pyx_unpickle_FLOAT_ANALYZE;
 static PyObject *__pyx_n_s_pyx_unpickle_NUMERICAL;
 static PyObject *__pyx_n_s_pyx_vtable;
+static PyObject *__pyx_n_s_rbg;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
+static PyObject *__pyx_n_s_reset;
 static PyObject *__pyx_n_s_script;
 static PyObject *__pyx_n_s_script_LEXER;
+static PyObject *__pyx_n_s_script_STDIN_LinuxSTDIN;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_string;
@@ -1869,6 +1891,7 @@ static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_kp_s_to_type_line;
 static PyObject *__pyx_n_s_tuple;
 static PyObject *__pyx_n_s_type;
+static PyObject *__pyx_n_s_types;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_values;
 static PyObject *__pyx_n_s_variables;
@@ -1923,22 +1946,182 @@ static PyObject *__pyx_tp_new_9NumeriCal_FLOAT_ANALYZE(PyTypeObject *t, PyObject
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_keys = {0, &__pyx_n_s_keys, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PyList_Type_index = {0, &__pyx_n_s_index, 0, 0, 0};
 static PyObject *__pyx_int_0;
+static PyObject *__pyx_int_165;
+static PyObject *__pyx_int_255;
 static PyObject *__pyx_int_44720083;
 static PyObject *__pyx_int_124663091;
 static PyObject *__pyx_int_183807592;
-static PyObject *__pyx_tuple__5;
-static PyObject *__pyx_tuple__7;
-static PyObject *__pyx_tuple__9;
-static PyObject *__pyx_tuple__11;
-static PyObject *__pyx_codeobj__6;
-static PyObject *__pyx_codeobj__8;
-static PyObject *__pyx_codeobj__10;
-static PyObject *__pyx_codeobj__12;
+static PyObject *__pyx_tuple_;
+static PyObject *__pyx_tuple__6;
+static PyObject *__pyx_tuple__8;
+static PyObject *__pyx_tuple__10;
+static PyObject *__pyx_tuple__12;
+static PyObject *__pyx_codeobj__7;
+static PyObject *__pyx_codeobj__9;
+static PyObject *__pyx_codeobj__11;
+static PyObject *__pyx_codeobj__13;
 /* Late includes */
 
 /* "NumeriCal.pyx":6
+ * from script.STDIN.LinuxSTDIN        import bm_configure as bm
  * 
+ * cdef str MATRIX():             # <<<<<<<<<<<<<<
+ *     return '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0),bm.fg.blue) + bm.init.reset
+ * cdef list  String() :
+ */
+
+static PyObject *__pyx_f_9NumeriCal_MATRIX(void) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("MATRIX", 0);
+
+  /* "NumeriCal.pyx":7
  * 
+ * cdef str MATRIX():
+ *     return '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0),bm.fg.blue) + bm.init.reset             # <<<<<<<<<<<<<<
+ * cdef list  String() :
+ *     cdef :
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_ndarray, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_blue); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rbg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_blue); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_7 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_t_3, __pyx_t_5, __pyx_t_4};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_t_3, __pyx_t_5, __pyx_t_4};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    if (__pyx_t_6) {
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
+    }
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_7, __pyx_t_3);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_8, 2+__pyx_t_7, __pyx_t_4);
+    __pyx_t_3 = 0;
+    __pyx_t_5 = 0;
+    __pyx_t_4 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_8 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (!(likely(PyString_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_8)->tp_name), 0))) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_r = ((PyObject*)__pyx_t_8);
+  __pyx_t_8 = 0;
+  goto __pyx_L0;
+
+  /* "NumeriCal.pyx":6
+ * from script.STDIN.LinuxSTDIN        import bm_configure as bm
+ * 
+ * cdef str MATRIX():             # <<<<<<<<<<<<<<
+ *     return '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0),bm.fg.blue) + bm.init.reset
+ * cdef list  String() :
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("NumeriCal.MATRIX", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "NumeriCal.pyx":8
+ * cdef str MATRIX():
+ *     return '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0),bm.fg.blue) + bm.init.reset
  * cdef list  String() :             # <<<<<<<<<<<<<<
  *     cdef :
  *         list type1
@@ -1956,43 +2139,43 @@ static PyObject *__pyx_f_9NumeriCal_String(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("String", 0);
 
-  /* "NumeriCal.pyx":12
+  /* "NumeriCal.pyx":14
  *         list _return_
  * 
  *     type1 = list( "abcdefghijklmnopqrstuvwxyz" )             # <<<<<<<<<<<<<<
  *     type2 = list( "ABCDEFGHIJKLMNOPQRSTUVWXYZ_" )
  * 
  */
-  __pyx_t_1 = PySequence_List(__pyx_n_s_abcdefghijklmnopqrstuvwxyz); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_n_s_abcdefghijklmnopqrstuvwxyz); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_type1 = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":13
+  /* "NumeriCal.pyx":15
  * 
  *     type1 = list( "abcdefghijklmnopqrstuvwxyz" )
  *     type2 = list( "ABCDEFGHIJKLMNOPQRSTUVWXYZ_" )             # <<<<<<<<<<<<<<
  * 
  *     _return_ = type1 + type2
  */
-  __pyx_t_1 = PySequence_List(__pyx_n_s_ABCDEFGHIJKLMNOPQRSTUVWXYZ); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_n_s_ABCDEFGHIJKLMNOPQRSTUVWXYZ); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_type2 = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":15
+  /* "NumeriCal.pyx":17
  *     type2 = list( "ABCDEFGHIJKLMNOPQRSTUVWXYZ_" )
  * 
  *     _return_ = type1 + type2             # <<<<<<<<<<<<<<
  * 
  *     return _return_
  */
-  __pyx_t_1 = PyNumber_Add(__pyx_v_type1, __pyx_v_type2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_v_type1, __pyx_v_type2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v__return_ = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":17
+  /* "NumeriCal.pyx":19
  *     _return_ = type1 + type2
  * 
  *     return _return_             # <<<<<<<<<<<<<<
@@ -2004,9 +2187,9 @@ static PyObject *__pyx_f_9NumeriCal_String(void) {
   __pyx_r = __pyx_v__return_;
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":6
- * 
- * 
+  /* "NumeriCal.pyx":8
+ * cdef str MATRIX():
+ *     return '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0),bm.fg.blue) + bm.init.reset
  * cdef list  String() :             # <<<<<<<<<<<<<<
  *     cdef :
  *         list type1
@@ -2026,7 +2209,7 @@ static PyObject *__pyx_f_9NumeriCal_String(void) {
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":20
+/* "NumeriCal.pyx":22
  * 
  * 
  * cdef tuple ExpValue ( dict DictValue, list variables, list _values_, int line, dict DataBase ) :             # <<<<<<<<<<<<<<
@@ -2075,7 +2258,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ExpValue", 0);
 
-  /* "NumeriCal.pyx":23
+  /* "NumeriCal.pyx":25
  *     cdef :
  *         str     error
  *         list    operators   = DictValue[ 'operators' ]             # <<<<<<<<<<<<<<
@@ -2084,15 +2267,15 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
   if (unlikely(__pyx_v_DictValue == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 23, __pyx_L1_error)
+    __PYX_ERR(0, 25, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_operators); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_operators); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 25, __pyx_L1_error)
   __pyx_v_operators = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":24
+  /* "NumeriCal.pyx":26
  *         str     error
  *         list    operators   = DictValue[ 'operators' ]
  *         bint    key         = False             # <<<<<<<<<<<<<<
@@ -2101,7 +2284,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
   __pyx_v_key = 0;
 
-  /* "NumeriCal.pyx":25
+  /* "NumeriCal.pyx":27
  *         list    operators   = DictValue[ 'operators' ]
  *         bint    key         = False
  *         str     FirstPart   = DictValue[ 'values' ][ 0 ]             # <<<<<<<<<<<<<<
@@ -2110,18 +2293,18 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
   if (unlikely(__pyx_v_DictValue == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 25, __pyx_L1_error)
+    __PYX_ERR(0, 27, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_values); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_values); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 27, __pyx_L1_error)
   __pyx_v_FirstPart = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":26
+  /* "NumeriCal.pyx":28
  *         bint    key         = False
  *         str     FirstPart   = DictValue[ 'values' ][ 0 ]
  *         list    SecondPart  = DictValue[ 'values' ][ 1 ]             # <<<<<<<<<<<<<<
@@ -2130,18 +2313,18 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
   if (unlikely(__pyx_v_DictValue == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 26, __pyx_L1_error)
+    __PYX_ERR(0, 28, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 28, __pyx_L1_error)
   __pyx_v_SecondPart = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":35
+  /* "NumeriCal.pyx":37
  *         complex numeric1
  *         str     sign
  *         numeric = None             # <<<<<<<<<<<<<<
@@ -2151,19 +2334,19 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
   __Pyx_INCREF(Py_None);
   __pyx_v_numeric = Py_None;
 
-  /* "NumeriCal.pyx":37
+  /* "NumeriCal.pyx":39
  *         numeric = None
  * 
  *     _value_, error = pss.SELECTION( FirstPart, FirstPart, DataBase, line ).CHAR_SELECTION( '.' )             # <<<<<<<<<<<<<<
  * 
  *     if error in [ '', None ]:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_pss); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_pss); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_SELECTION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_SELECTION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -2180,7 +2363,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[5] = {__pyx_t_5, __pyx_v_FirstPart, __pyx_v_FirstPart, __pyx_v_DataBase, __pyx_t_3};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2189,14 +2372,14 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[5] = {__pyx_t_5, __pyx_v_FirstPart, __pyx_v_FirstPart, __pyx_v_DataBase, __pyx_t_3};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(4+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(4+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -2213,12 +2396,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_7, 3+__pyx_t_6, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CHAR_SELECTION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CHAR_SELECTION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -2231,9 +2414,9 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
       __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_kp_s_) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s_);
+  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_kp_s__2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s__2);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -2242,7 +2425,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 37, __pyx_L1_error)
+      __PYX_ERR(0, 39, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -2255,15 +2438,15 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
     __Pyx_INCREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_t_2);
     #else
-    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -2271,7 +2454,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
     __Pyx_GOTREF(__pyx_t_4);
     index = 1; __pyx_t_2 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_2)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
     __pyx_t_8 = NULL;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     goto __pyx_L4_unpacking_done;
@@ -2279,17 +2462,17 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 37, __pyx_L1_error)
+    __PYX_ERR(0, 39, __pyx_L1_error)
     __pyx_L4_unpacking_done:;
   }
-  if (!(likely(PyList_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 37, __pyx_L1_error)
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 39, __pyx_L1_error)
   __pyx_v__value_ = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
   __pyx_v_error = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":39
+  /* "NumeriCal.pyx":41
  *     _value_, error = pss.SELECTION( FirstPart, FirstPart, DataBase, line ).CHAR_SELECTION( '.' )
  * 
  *     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -2298,21 +2481,21 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
   __Pyx_INCREF(__pyx_v_error);
   __pyx_t_9 = __pyx_v_error;
-  __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 41, __pyx_L1_error)
   __pyx_t_12 = (__pyx_t_11 != 0);
   if (!__pyx_t_12) {
   } else {
     __pyx_t_10 = __pyx_t_12;
     goto __pyx_L6_bool_binop_done;
   }
-  __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 41, __pyx_L1_error)
   __pyx_t_10 = __pyx_t_12;
   __pyx_L6_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_12 = (__pyx_t_10 != 0);
   if (__pyx_t_12) {
 
-    /* "NumeriCal.pyx":40
+    /* "NumeriCal.pyx":42
  * 
  *     if error in [ '', None ]:
  *         if   len( _value_ ) == 1 :key = False             # <<<<<<<<<<<<<<
@@ -2321,16 +2504,16 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
     if (unlikely(__pyx_v__value_ == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 40, __pyx_L1_error)
+      __PYX_ERR(0, 42, __pyx_L1_error)
     }
-    __pyx_t_13 = PyList_GET_SIZE(__pyx_v__value_); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_13 = PyList_GET_SIZE(__pyx_v__value_); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 42, __pyx_L1_error)
     __pyx_t_12 = ((__pyx_t_13 == 1) != 0);
     if (__pyx_t_12) {
       __pyx_v_key = 0;
       goto __pyx_L8;
     }
 
-    /* "NumeriCal.pyx":41
+    /* "NumeriCal.pyx":43
  *     if error in [ '', None ]:
  *         if   len( _value_ ) == 1 :key = False
  *         elif len( _value_ ) == 2 :key = True             # <<<<<<<<<<<<<<
@@ -2339,16 +2522,16 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
     if (unlikely(__pyx_v__value_ == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 41, __pyx_L1_error)
+      __PYX_ERR(0, 43, __pyx_L1_error)
     }
-    __pyx_t_13 = PyList_GET_SIZE(__pyx_v__value_); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_t_13 = PyList_GET_SIZE(__pyx_v__value_); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 43, __pyx_L1_error)
     __pyx_t_12 = ((__pyx_t_13 == 2) != 0);
     if (__pyx_t_12) {
       __pyx_v_key = 1;
       goto __pyx_L8;
     }
 
-    /* "NumeriCal.pyx":42
+    /* "NumeriCal.pyx":44
  *         if   len( _value_ ) == 1 :key = False
  *         elif len( _value_ ) == 2 :key = True
  *         else: errorr = ERRORS( line ).ERROR1( FirstPart )             # <<<<<<<<<<<<<<
@@ -2356,12 +2539,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  *         if error in [ '', None ]:
  */
     /*else*/ {
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR1(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_FirstPart); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR1(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_FirstPart); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_errorr = __pyx_t_1;
@@ -2369,7 +2552,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
     }
     __pyx_L8:;
 
-    /* "NumeriCal.pyx":44
+    /* "NumeriCal.pyx":46
  *         else: errorr = ERRORS( line ).ERROR1( FirstPart )
  * 
  *         if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -2378,21 +2561,21 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
     __Pyx_INCREF(__pyx_v_error);
     __pyx_t_9 = __pyx_v_error;
-    __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 46, __pyx_L1_error)
     __pyx_t_11 = (__pyx_t_10 != 0);
     if (!__pyx_t_11) {
     } else {
       __pyx_t_12 = __pyx_t_11;
       goto __pyx_L10_bool_binop_done;
     }
-    __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 46, __pyx_L1_error)
     __pyx_t_12 = __pyx_t_11;
     __pyx_L10_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __pyx_t_11 = (__pyx_t_12 != 0);
     if (__pyx_t_11) {
 
-      /* "NumeriCal.pyx":45
+      /* "NumeriCal.pyx":47
  * 
  *         if error in [ '', None ]:
  *             char1   = FirstPart             # <<<<<<<<<<<<<<
@@ -2402,7 +2585,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
       __Pyx_INCREF(__pyx_v_FirstPart);
       __pyx_v_char1 = __pyx_v_FirstPart;
 
-      /* "NumeriCal.pyx":47
+      /* "NumeriCal.pyx":49
  *             char1   = FirstPart
  * 
  *             if type( SecondPart[ 0 ] ) == type( dict()):             # <<<<<<<<<<<<<<
@@ -2411,20 +2594,20 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
       if (unlikely(__pyx_v_SecondPart == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 47, __pyx_L1_error)
+        __PYX_ERR(0, 49, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 49, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_11) {
 
-        /* "NumeriCal.pyx":48
+        /* "NumeriCal.pyx":50
  * 
  *             if type( SecondPart[ 0 ] ) == type( dict()):
  *                 var = SecondPart[ 0 ][ 'numeric' ][ 0 ]             # <<<<<<<<<<<<<<
@@ -2433,21 +2616,21 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
         if (unlikely(__pyx_v_SecondPart == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 48, __pyx_L1_error)
+          __PYX_ERR(0, 50, __pyx_L1_error)
         }
-        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_numeric); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_numeric); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 50, __pyx_L1_error)
         __pyx_v_var = ((PyObject*)__pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "NumeriCal.pyx":50
+        /* "NumeriCal.pyx":52
  *                 var = SecondPart[ 0 ][ 'numeric' ][ 0 ]
  * 
  *                 if SecondPart[ 0 ][ 'type' ] is None        :             # <<<<<<<<<<<<<<
@@ -2456,11 +2639,11 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
         if (unlikely(__pyx_v_SecondPart == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 50, __pyx_L1_error)
+          __PYX_ERR(0, 52, __pyx_L1_error)
         }
-        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_11 = (__pyx_t_2 == Py_None);
@@ -2468,7 +2651,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
         __pyx_t_12 = (__pyx_t_11 != 0);
         if (__pyx_t_12) {
 
-          /* "NumeriCal.pyx":52
+          /* "NumeriCal.pyx":54
  *                 if SecondPart[ 0 ][ 'type' ] is None        :
  * 
  *                     if variables:             # <<<<<<<<<<<<<<
@@ -2478,31 +2661,31 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
           __pyx_t_12 = (__pyx_v_variables != Py_None)&&(PyList_GET_SIZE(__pyx_v_variables) != 0);
           if (__pyx_t_12) {
 
-            /* "NumeriCal.pyx":53
+            /* "NumeriCal.pyx":55
  * 
  *                     if variables:
  *                         if var in variables:             # <<<<<<<<<<<<<<
  *                             index       = variables.index( var )
  * 
  */
-            __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_v_var, __pyx_v_variables, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
+            __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_v_var, __pyx_v_variables, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
             __pyx_t_11 = (__pyx_t_12 != 0);
             if (__pyx_t_11) {
 
-              /* "NumeriCal.pyx":54
+              /* "NumeriCal.pyx":56
  *                     if variables:
  *                         if var in variables:
  *                             index       = variables.index( var )             # <<<<<<<<<<<<<<
  * 
  *                             if type( _values_[ index ] ) in [ type(int()), type(complex()) ]:
  */
-              __pyx_t_2 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_index, __pyx_v_variables, __pyx_v_var); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_index, __pyx_v_variables, __pyx_v_var); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
-              __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L1_error)
+              __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               __pyx_v_index = __pyx_t_6;
 
-              /* "NumeriCal.pyx":56
+              /* "NumeriCal.pyx":58
  *                             index       = variables.index( var )
  * 
  *                             if type( _values_[ index ] ) in [ type(int()), type(complex()) ]:             # <<<<<<<<<<<<<<
@@ -2511,30 +2694,30 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
               __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_int_0)));
               __pyx_t_2 = ((PyObject *)Py_TYPE(__pyx_int_0));
-              __pyx_t_4 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyComplex_Type))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+              __pyx_t_4 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyComplex_Type))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_t_4)));
               __pyx_t_1 = ((PyObject *)Py_TYPE(__pyx_t_4));
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               if (unlikely(__pyx_v__values_ == Py_None)) {
                 PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 56, __pyx_L1_error)
+                __PYX_ERR(0, 58, __pyx_L1_error)
               }
-              __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+              __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_t_4)));
               __pyx_t_7 = ((PyObject *)Py_TYPE(__pyx_t_4));
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-              __pyx_t_4 = PyObject_RichCompare(((PyObject *)__pyx_t_7), ((PyObject *)__pyx_t_2), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
-              __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
+              __pyx_t_4 = PyObject_RichCompare(((PyObject *)__pyx_t_7), ((PyObject *)__pyx_t_2), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 58, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               if (!__pyx_t_12) {
               } else {
                 __pyx_t_11 = __pyx_t_12;
                 goto __pyx_L17_bool_binop_done;
               }
-              __pyx_t_4 = PyObject_RichCompare(((PyObject *)__pyx_t_7), ((PyObject *)__pyx_t_1), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
-              __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
+              __pyx_t_4 = PyObject_RichCompare(((PyObject *)__pyx_t_7), ((PyObject *)__pyx_t_1), Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 58, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               __pyx_t_11 = __pyx_t_12;
               __pyx_L17_bool_binop_done:;
@@ -2544,7 +2727,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               __pyx_t_12 = (__pyx_t_11 != 0);
               if (__pyx_t_12) {
 
-                /* "NumeriCal.pyx":57
+                /* "NumeriCal.pyx":59
  * 
  *                             if type( _values_[ index ] ) in [ type(int()), type(complex()) ]:
  *                                 string      = FirstPart + operators[ 0 ] + str( _values_[ index ] )             # <<<<<<<<<<<<<<
@@ -2553,31 +2736,31 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
                 if (unlikely(__pyx_v_operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 57, __pyx_L1_error)
+                  __PYX_ERR(0, 59, __pyx_L1_error)
                 }
-                __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_1 = PyNumber_Add(__pyx_v_FirstPart, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+                __pyx_t_1 = PyNumber_Add(__pyx_v_FirstPart, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 if (unlikely(__pyx_v__values_ == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 57, __pyx_L1_error)
+                  __PYX_ERR(0, 59, __pyx_L1_error)
                 }
-                __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 57, __pyx_L1_error)
+                __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+                __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-                if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 57, __pyx_L1_error)
+                if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 59, __pyx_L1_error)
                 __pyx_v_string = ((PyObject*)__pyx_t_2);
                 __pyx_t_2 = 0;
 
-                /* "NumeriCal.pyx":59
+                /* "NumeriCal.pyx":61
  *                                 string      = FirstPart + operators[ 0 ] + str( _values_[ index ] )
  * 
  *                                 if type( _values_[ index ] ) == type( int() ):             # <<<<<<<<<<<<<<
@@ -2586,17 +2769,17 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
                 if (unlikely(__pyx_v__values_ == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 59, __pyx_L1_error)
+                  __PYX_ERR(0, 61, __pyx_L1_error)
                 }
-                __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_7 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_2)), ((PyObject *)Py_TYPE(__pyx_int_0)), Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+                __pyx_t_7 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_2)), ((PyObject *)Py_TYPE(__pyx_int_0)), Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+                __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
                 if (__pyx_t_12) {
 
-                  /* "NumeriCal.pyx":61
+                  /* "NumeriCal.pyx":63
  *                                 if type( _values_[ index ] ) == type( int() ):
  * 
  *                                     try:             # <<<<<<<<<<<<<<
@@ -2612,7 +2795,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __Pyx_XGOTREF(__pyx_t_16);
                     /*try:*/ {
 
-                      /* "NumeriCal.pyx":62
+                      /* "NumeriCal.pyx":64
  * 
  *                                     try:
  *                                         if key is False:             # <<<<<<<<<<<<<<
@@ -2622,19 +2805,19 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       __pyx_t_12 = ((__pyx_v_key == 0) != 0);
                       if (__pyx_t_12) {
 
-                        /* "NumeriCal.pyx":63
+                        /* "NumeriCal.pyx":65
  *                                     try:
  *                                         if key is False:
  *                                             numeric = float( string )             # <<<<<<<<<<<<<<
  *                                         elif key is True:
  *                                             numeric = float( string )
  */
-                        __pyx_t_7 = __Pyx_PyNumber_Float(__pyx_v_string); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 63, __pyx_L20_error)
+                        __pyx_t_7 = __Pyx_PyNumber_Float(__pyx_v_string); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L20_error)
                         __Pyx_GOTREF(__pyx_t_7);
                         __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_7);
                         __pyx_t_7 = 0;
 
-                        /* "NumeriCal.pyx":62
+                        /* "NumeriCal.pyx":64
  * 
  *                                     try:
  *                                         if key is False:             # <<<<<<<<<<<<<<
@@ -2644,7 +2827,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                         goto __pyx_L26;
                       }
 
-                      /* "NumeriCal.pyx":64
+                      /* "NumeriCal.pyx":66
  *                                         if key is False:
  *                                             numeric = float( string )
  *                                         elif key is True:             # <<<<<<<<<<<<<<
@@ -2654,19 +2837,19 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       __pyx_t_12 = ((__pyx_v_key == 1) != 0);
                       if (__pyx_t_12) {
 
-                        /* "NumeriCal.pyx":65
+                        /* "NumeriCal.pyx":67
  *                                             numeric = float( string )
  *                                         elif key is True:
  *                                             numeric = float( string )             # <<<<<<<<<<<<<<
  * 
  *                                         numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()
  */
-                        __pyx_t_7 = __Pyx_PyNumber_Float(__pyx_v_string); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L20_error)
+                        __pyx_t_7 = __Pyx_PyNumber_Float(__pyx_v_string); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L20_error)
                         __Pyx_GOTREF(__pyx_t_7);
                         __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_7);
                         __pyx_t_7 = 0;
 
-                        /* "NumeriCal.pyx":64
+                        /* "NumeriCal.pyx":66
  *                                         if key is False:
  *                                             numeric = float( string )
  *                                         elif key is True:             # <<<<<<<<<<<<<<
@@ -2676,16 +2859,16 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       }
                       __pyx_L26:;
 
-                      /* "NumeriCal.pyx":67
+                      /* "NumeriCal.pyx":69
  *                                             numeric = float( string )
  * 
  *                                         numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()             # <<<<<<<<<<<<<<
  *                                     except (SyntaxError, ValueError) :
  *                                         if key in [ False, True ]:
  */
-                      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L20_error)
+                      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 69, __pyx_L20_error)
                       __Pyx_GOTREF(__pyx_t_7);
-                      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L20_error)
+                      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L20_error)
                       __Pyx_GOTREF(__pyx_t_2);
                       __Pyx_INCREF(__pyx_v_numeric);
                       __Pyx_GIVEREF(__pyx_v_numeric);
@@ -2693,10 +2876,10 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       __Pyx_GIVEREF(__pyx_t_7);
                       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_7);
                       __pyx_t_7 = 0;
-                      __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_2, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L20_error)
+                      __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_2, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 69, __pyx_L20_error)
                       __Pyx_GOTREF(__pyx_t_7);
                       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                      __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_7)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L20_error)
+                      __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_7)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L20_error)
                       __Pyx_GOTREF(__pyx_t_2);
                       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
                       if (likely(__pyx_t_2 != Py_None)) {
@@ -2705,7 +2888,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                         if (unlikely(size != 2)) {
                           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                          __PYX_ERR(0, 67, __pyx_L20_error)
+                          __PYX_ERR(0, 69, __pyx_L20_error)
                         }
                         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                         __pyx_t_7 = PyTuple_GET_ITEM(sequence, 0); 
@@ -2713,22 +2896,22 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                         __Pyx_INCREF(__pyx_t_7);
                         __Pyx_INCREF(__pyx_t_1);
                         #else
-                        __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L20_error)
+                        __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 69, __pyx_L20_error)
                         __Pyx_GOTREF(__pyx_t_7);
-                        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L20_error)
+                        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L20_error)
                         __Pyx_GOTREF(__pyx_t_1);
                         #endif
                         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                       } else {
-                        __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 67, __pyx_L20_error)
+                        __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 69, __pyx_L20_error)
                       }
-                      if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 67, __pyx_L20_error)
+                      if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 69, __pyx_L20_error)
                       __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_7);
                       __pyx_t_7 = 0;
                       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
                       __pyx_t_1 = 0;
 
-                      /* "NumeriCal.pyx":61
+                      /* "NumeriCal.pyx":63
  *                                 if type( _values_[ index ] ) == type( int() ):
  * 
  *                                     try:             # <<<<<<<<<<<<<<
@@ -2749,7 +2932,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
                     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                    /* "NumeriCal.pyx":68
+                    /* "NumeriCal.pyx":70
  * 
  *                                         numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                                     except (SyntaxError, ValueError) :             # <<<<<<<<<<<<<<
@@ -2759,12 +2942,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
                     if (__pyx_t_6) {
                       __Pyx_AddTraceback("NumeriCal.ExpValue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                      if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_1, &__pyx_t_7) < 0) __PYX_ERR(0, 68, __pyx_L22_except_error)
+                      if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_1, &__pyx_t_7) < 0) __PYX_ERR(0, 70, __pyx_L22_except_error)
                       __Pyx_GOTREF(__pyx_t_2);
                       __Pyx_GOTREF(__pyx_t_1);
                       __Pyx_GOTREF(__pyx_t_7);
 
-                      /* "NumeriCal.pyx":69
+                      /* "NumeriCal.pyx":71
  *                                         numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                                     except (SyntaxError, ValueError) :
  *                                         if key in [ False, True ]:             # <<<<<<<<<<<<<<
@@ -2775,27 +2958,27 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                         case 0:
                         case 1:
 
-                        /* "NumeriCal.pyx":70
+                        /* "NumeriCal.pyx":72
  *                                     except (SyntaxError, ValueError) :
  *                                         if key in [ False, True ]:
  *                                             error = ERRORS( line ).ERROR4( string, 'a float' )             # <<<<<<<<<<<<<<
  *                                         else: pass
  *                                     except OverflowError:
  */
-                        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L22_except_error)
+                        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L22_except_error)
                         __Pyx_GOTREF(__pyx_t_4);
-                        __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L22_except_error)
+                        __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L22_except_error)
                         __Pyx_GOTREF(__pyx_t_3);
                         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                         __pyx_t_17.__pyx_n = 1;
                         __pyx_t_17._char_ = __pyx_kp_s_a_float;
-                        __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3), __pyx_v_string, &__pyx_t_17); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L22_except_error)
+                        __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3), __pyx_v_string, &__pyx_t_17); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L22_except_error)
                         __Pyx_GOTREF(__pyx_t_4);
                         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_4));
                         __pyx_t_4 = 0;
 
-                        /* "NumeriCal.pyx":69
+                        /* "NumeriCal.pyx":71
  *                                         numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                                     except (SyntaxError, ValueError) :
  *                                         if key in [ False, True ]:             # <<<<<<<<<<<<<<
@@ -2812,7 +2995,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       goto __pyx_L21_exception_handled;
                     }
 
-                    /* "NumeriCal.pyx":72
+                    /* "NumeriCal.pyx":74
  *                                             error = ERRORS( line ).ERROR4( string, 'a float' )
  *                                         else: pass
  *                                     except OverflowError:             # <<<<<<<<<<<<<<
@@ -2822,29 +3005,29 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_OverflowError);
                     if (__pyx_t_6) {
                       __Pyx_AddTraceback("NumeriCal.ExpValue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_1, &__pyx_t_2) < 0) __PYX_ERR(0, 72, __pyx_L22_except_error)
+                      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_1, &__pyx_t_2) < 0) __PYX_ERR(0, 74, __pyx_L22_except_error)
                       __Pyx_GOTREF(__pyx_t_7);
                       __Pyx_GOTREF(__pyx_t_1);
                       __Pyx_GOTREF(__pyx_t_2);
 
-                      /* "NumeriCal.pyx":73
+                      /* "NumeriCal.pyx":75
  *                                         else: pass
  *                                     except OverflowError:
  *                                         error = ERRORS( line ).ERROR9( 'float' )             # <<<<<<<<<<<<<<
  * 
  *                                 else:
  */
-                      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L22_except_error)
+                      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L22_except_error)
                       __Pyx_GOTREF(__pyx_t_4);
-                      __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L22_except_error)
+                      __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L22_except_error)
                       __Pyx_GOTREF(__pyx_t_3);
                       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                       __pyx_t_18.__pyx_n = 1;
                       __pyx_t_18.string = __pyx_n_s_float;
-                      __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3), &__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L22_except_error)
+                      __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3), &__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L22_except_error)
                       __Pyx_GOTREF(__pyx_t_4);
                       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                      if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 73, __pyx_L22_except_error)
+                      if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 75, __pyx_L22_except_error)
                       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_4));
                       __pyx_t_4 = 0;
                       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -2855,7 +3038,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     goto __pyx_L22_except_error;
                     __pyx_L22_except_error:;
 
-                    /* "NumeriCal.pyx":61
+                    /* "NumeriCal.pyx":63
  *                                 if type( _values_[ index ] ) == type( int() ):
  * 
  *                                     try:             # <<<<<<<<<<<<<<
@@ -2875,7 +3058,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __pyx_L25_try_end:;
                   }
 
-                  /* "NumeriCal.pyx":59
+                  /* "NumeriCal.pyx":61
  *                                 string      = FirstPart + operators[ 0 ] + str( _values_[ index ] )
  * 
  *                                 if type( _values_[ index ] ) == type( int() ):             # <<<<<<<<<<<<<<
@@ -2885,7 +3068,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                   goto __pyx_L19;
                 }
 
-                /* "NumeriCal.pyx":77
+                /* "NumeriCal.pyx":79
  *                                 else:
  * 
  *                                     try:             # <<<<<<<<<<<<<<
@@ -2902,31 +3085,31 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __Pyx_XGOTREF(__pyx_t_14);
                     /*try:*/ {
 
-                      /* "NumeriCal.pyx":78
+                      /* "NumeriCal.pyx":80
  * 
  *                                     try:
  *                                         numeric1        = complex( string )             # <<<<<<<<<<<<<<
  *                                         numeric , error = COMPLEX_ANALYZE( numeric1, line ).COMPLEX()
  * 
  */
-                      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_string); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L31_error)
+                      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_string); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L31_error)
                       __Pyx_GOTREF(__pyx_t_2);
-                      __pyx_t_19 = __Pyx_PyComplex_As___pyx_t_double_complex(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L31_error)
+                      __pyx_t_19 = __Pyx_PyComplex_As___pyx_t_double_complex(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L31_error)
                       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                       __pyx_v_numeric1 = __pyx_t_19;
 
-                      /* "NumeriCal.pyx":79
+                      /* "NumeriCal.pyx":81
  *                                     try:
  *                                         numeric1        = complex( string )
  *                                         numeric , error = COMPLEX_ANALYZE( numeric1, line ).COMPLEX()             # <<<<<<<<<<<<<<
  * 
  *                                     except (SyntaxError, ValueError) :
  */
-                      __pyx_t_2 = __pyx_PyComplex_FromComplex(__pyx_v_numeric1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L31_error)
+                      __pyx_t_2 = __pyx_PyComplex_FromComplex(__pyx_v_numeric1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L31_error)
                       __Pyx_GOTREF(__pyx_t_2);
-                      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L31_error)
+                      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L31_error)
                       __Pyx_GOTREF(__pyx_t_1);
-                      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 79, __pyx_L31_error)
+                      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 81, __pyx_L31_error)
                       __Pyx_GOTREF(__pyx_t_7);
                       __Pyx_GIVEREF(__pyx_t_2);
                       PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2);
@@ -2934,10 +3117,10 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_1);
                       __pyx_t_2 = 0;
                       __pyx_t_1 = 0;
-                      __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L31_error)
+                      __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L31_error)
                       __Pyx_GOTREF(__pyx_t_1);
                       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-                      __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *)((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_1)->__pyx_vtab)->COMPLEX(((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 79, __pyx_L31_error)
+                      __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *)((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_1)->__pyx_vtab)->COMPLEX(((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 81, __pyx_L31_error)
                       __Pyx_GOTREF(__pyx_t_7);
                       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                       if (likely(__pyx_t_7 != Py_None)) {
@@ -2946,7 +3129,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                         if (unlikely(size != 2)) {
                           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                          __PYX_ERR(0, 79, __pyx_L31_error)
+                          __PYX_ERR(0, 81, __pyx_L31_error)
                         }
                         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                         __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
@@ -2954,22 +3137,22 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                         __Pyx_INCREF(__pyx_t_1);
                         __Pyx_INCREF(__pyx_t_2);
                         #else
-                        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L31_error)
+                        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L31_error)
                         __Pyx_GOTREF(__pyx_t_1);
-                        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L31_error)
+                        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L31_error)
                         __Pyx_GOTREF(__pyx_t_2);
                         #endif
                         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
                       } else {
-                        __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 79, __pyx_L31_error)
+                        __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 81, __pyx_L31_error)
                       }
-                      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 79, __pyx_L31_error)
+                      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 81, __pyx_L31_error)
                       __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
                       __pyx_t_1 = 0;
                       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
                       __pyx_t_2 = 0;
 
-                      /* "NumeriCal.pyx":77
+                      /* "NumeriCal.pyx":79
  *                                 else:
  * 
  *                                     try:             # <<<<<<<<<<<<<<
@@ -2990,7 +3173,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
                     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                    /* "NumeriCal.pyx":81
+                    /* "NumeriCal.pyx":83
  *                                         numeric , error = COMPLEX_ANALYZE( numeric1, line ).COMPLEX()
  * 
  *                                     except (SyntaxError, ValueError) :             # <<<<<<<<<<<<<<
@@ -3000,26 +3183,26 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
                     if (__pyx_t_6) {
                       __Pyx_AddTraceback("NumeriCal.ExpValue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 81, __pyx_L33_except_error)
+                      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 83, __pyx_L33_except_error)
                       __Pyx_GOTREF(__pyx_t_7);
                       __Pyx_GOTREF(__pyx_t_2);
                       __Pyx_GOTREF(__pyx_t_1);
 
-                      /* "NumeriCal.pyx":82
+                      /* "NumeriCal.pyx":84
  * 
  *                                     except (SyntaxError, ValueError) :
  *                                         error = ERRORS( line ).ERROR4( string, 'a complex' )             # <<<<<<<<<<<<<<
  *                                     except OverflowError:
  *                                         error = ERRORS( line ).ERROR9( 'complex' )
  */
-                      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 82, __pyx_L33_except_error)
+                      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L33_except_error)
                       __Pyx_GOTREF(__pyx_t_4);
-                      __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L33_except_error)
+                      __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L33_except_error)
                       __Pyx_GOTREF(__pyx_t_3);
                       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                       __pyx_t_17.__pyx_n = 1;
                       __pyx_t_17._char_ = __pyx_kp_s_a_complex;
-                      __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3), __pyx_v_string, &__pyx_t_17); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 82, __pyx_L33_except_error)
+                      __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3), __pyx_v_string, &__pyx_t_17); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L33_except_error)
                       __Pyx_GOTREF(__pyx_t_4);
                       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_4));
@@ -3030,7 +3213,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       goto __pyx_L32_exception_handled;
                     }
 
-                    /* "NumeriCal.pyx":83
+                    /* "NumeriCal.pyx":85
  *                                     except (SyntaxError, ValueError) :
  *                                         error = ERRORS( line ).ERROR4( string, 'a complex' )
  *                                     except OverflowError:             # <<<<<<<<<<<<<<
@@ -3040,29 +3223,29 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_OverflowError);
                     if (__pyx_t_6) {
                       __Pyx_AddTraceback("NumeriCal.ExpValue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_7) < 0) __PYX_ERR(0, 83, __pyx_L33_except_error)
+                      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_7) < 0) __PYX_ERR(0, 85, __pyx_L33_except_error)
                       __Pyx_GOTREF(__pyx_t_1);
                       __Pyx_GOTREF(__pyx_t_2);
                       __Pyx_GOTREF(__pyx_t_7);
 
-                      /* "NumeriCal.pyx":84
+                      /* "NumeriCal.pyx":86
  *                                         error = ERRORS( line ).ERROR4( string, 'a complex' )
  *                                     except OverflowError:
  *                                         error = ERRORS( line ).ERROR9( 'complex' )             # <<<<<<<<<<<<<<
  * 
  *                             else: error = ERRORS( line ).ERROR3( var )
  */
-                      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L33_except_error)
+                      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L33_except_error)
                       __Pyx_GOTREF(__pyx_t_4);
-                      __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L33_except_error)
+                      __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L33_except_error)
                       __Pyx_GOTREF(__pyx_t_3);
                       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                       __pyx_t_18.__pyx_n = 1;
                       __pyx_t_18.string = __pyx_n_s_complex;
-                      __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3), &__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L33_except_error)
+                      __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_3), &__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L33_except_error)
                       __Pyx_GOTREF(__pyx_t_4);
                       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                      if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 84, __pyx_L33_except_error)
+                      if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 86, __pyx_L33_except_error)
                       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_4));
                       __pyx_t_4 = 0;
                       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3073,7 +3256,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     goto __pyx_L33_except_error;
                     __pyx_L33_except_error:;
 
-                    /* "NumeriCal.pyx":77
+                    /* "NumeriCal.pyx":79
  *                                 else:
  * 
  *                                     try:             # <<<<<<<<<<<<<<
@@ -3095,7 +3278,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                 }
                 __pyx_L19:;
 
-                /* "NumeriCal.pyx":56
+                /* "NumeriCal.pyx":58
  *                             index       = variables.index( var )
  * 
  *                             if type( _values_[ index ] ) in [ type(int()), type(complex()) ]:             # <<<<<<<<<<<<<<
@@ -3105,7 +3288,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                 goto __pyx_L16;
               }
 
-              /* "NumeriCal.pyx":86
+              /* "NumeriCal.pyx":88
  *                                         error = ERRORS( line ).ERROR9( 'complex' )
  * 
  *                             else: error = ERRORS( line ).ERROR3( var )             # <<<<<<<<<<<<<<
@@ -3113,12 +3296,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  *                         else: error = ERRORS( line ).ERROR2( var )
  */
               /*else*/ {
-                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 86, __pyx_L1_error)
+                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 88, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_7);
-                __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR3(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_var, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 86, __pyx_L1_error)
+                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR3(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_var, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 88, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
@@ -3126,7 +3309,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               }
               __pyx_L16:;
 
-              /* "NumeriCal.pyx":53
+              /* "NumeriCal.pyx":55
  * 
  *                     if variables:
  *                         if var in variables:             # <<<<<<<<<<<<<<
@@ -3136,7 +3319,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               goto __pyx_L15;
             }
 
-            /* "NumeriCal.pyx":88
+            /* "NumeriCal.pyx":90
  *                             else: error = ERRORS( line ).ERROR3( var )
  * 
  *                         else: error = ERRORS( line ).ERROR2( var )             # <<<<<<<<<<<<<<
@@ -3144,12 +3327,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  *                     else: error = ERRORS( line ).ERROR2( var )
  */
             /*else*/ {
-              __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 88, __pyx_L1_error)
+              __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
-              __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-              __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR2(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_var); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 88, __pyx_L1_error)
+              __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR2(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_var); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
@@ -3157,7 +3340,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             }
             __pyx_L15:;
 
-            /* "NumeriCal.pyx":52
+            /* "NumeriCal.pyx":54
  *                 if SecondPart[ 0 ][ 'type' ] is None        :
  * 
  *                     if variables:             # <<<<<<<<<<<<<<
@@ -3167,7 +3350,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             goto __pyx_L14;
           }
 
-          /* "NumeriCal.pyx":90
+          /* "NumeriCal.pyx":92
  *                         else: error = ERRORS( line ).ERROR2( var )
  * 
  *                     else: error = ERRORS( line ).ERROR2( var )             # <<<<<<<<<<<<<<
@@ -3175,12 +3358,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  * 
  */
           /*else*/ {
-            __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR2(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_var); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
+            __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR2(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_var); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
@@ -3188,7 +3371,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
           }
           __pyx_L14:;
 
-          /* "NumeriCal.pyx":50
+          /* "NumeriCal.pyx":52
  *                 var = SecondPart[ 0 ][ 'numeric' ][ 0 ]
  * 
  *                 if SecondPart[ 0 ][ 'type' ] is None        :             # <<<<<<<<<<<<<<
@@ -3198,7 +3381,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
           goto __pyx_L13;
         }
 
-        /* "NumeriCal.pyx":93
+        /* "NumeriCal.pyx":95
  * 
  * 
  *                 elif SecondPart[ 0 ][ 'type' ] == 'numeric' :             # <<<<<<<<<<<<<<
@@ -3207,30 +3390,30 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
         if (unlikely(__pyx_v_SecondPart == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 93, __pyx_L1_error)
+          __PYX_ERR(0, 95, __pyx_L1_error)
         }
-        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 93, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_n_s_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_n_s_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_numeric, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
+        __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_numeric, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         if (__pyx_t_12) {
 
-          /* "NumeriCal.pyx":95
+          /* "NumeriCal.pyx":97
  *                 elif SecondPart[ 0 ][ 'type' ] == 'numeric' :
  * 
  *                     _value_, error = pss.SELECTION( var, var, DataBase, line).CHAR_SELECTION( '.' )             # <<<<<<<<<<<<<<
  *                     if error in [ '', None ]:
  *                         if len( _value_ ) == 1:
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pss); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pss); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SELECTION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SELECTION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __pyx_t_3 = NULL;
           __pyx_t_6 = 0;
@@ -3247,7 +3430,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_4)) {
             PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_v_var, __pyx_v_var, __pyx_v_DataBase, __pyx_t_1};
-            __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3256,14 +3439,14 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
             PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_v_var, __pyx_v_var, __pyx_v_DataBase, __pyx_t_1};
-            __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           } else
           #endif
           {
-            __pyx_t_5 = PyTuple_New(4+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+            __pyx_t_5 = PyTuple_New(4+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
             if (__pyx_t_3) {
               __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -3280,12 +3463,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_5, 3+__pyx_t_6, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_CHAR_SELECTION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_CHAR_SELECTION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __pyx_t_7 = NULL;
@@ -3298,9 +3481,9 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               __Pyx_DECREF_SET(__pyx_t_4, function);
             }
           }
-          __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_7, __pyx_kp_s_) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s_);
+          __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_7, __pyx_kp_s__2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s__2);
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
@@ -3309,7 +3492,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 95, __pyx_L1_error)
+              __PYX_ERR(0, 97, __pyx_L1_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             if (likely(PyTuple_CheckExact(sequence))) {
@@ -3322,15 +3505,15 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             __Pyx_INCREF(__pyx_t_4);
             __Pyx_INCREF(__pyx_t_7);
             #else
-            __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+            __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
+            __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_5 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+            __pyx_t_5 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __pyx_t_8 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -3338,7 +3521,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             __Pyx_GOTREF(__pyx_t_4);
             index = 1; __pyx_t_7 = __pyx_t_8(__pyx_t_5); if (unlikely(!__pyx_t_7)) goto __pyx_L41_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_7);
-            if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_5), 2) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+            if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_5), 2) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
             __pyx_t_8 = NULL;
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             goto __pyx_L42_unpacking_done;
@@ -3346,17 +3529,17 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             __pyx_t_8 = NULL;
             if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-            __PYX_ERR(0, 95, __pyx_L1_error)
+            __PYX_ERR(0, 97, __pyx_L1_error)
             __pyx_L42_unpacking_done:;
           }
-          if (!(likely(PyList_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 95, __pyx_L1_error)
-          if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 95, __pyx_L1_error)
+          if (!(likely(PyList_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 97, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v__value_, ((PyObject*)__pyx_t_4));
           __pyx_t_4 = 0;
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
           __pyx_t_7 = 0;
 
-          /* "NumeriCal.pyx":96
+          /* "NumeriCal.pyx":98
  * 
  *                     _value_, error = pss.SELECTION( var, var, DataBase, line).CHAR_SELECTION( '.' )
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -3365,21 +3548,21 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
           __Pyx_INCREF(__pyx_v_error);
           __pyx_t_9 = __pyx_v_error;
-          __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
           __pyx_t_10 = (__pyx_t_11 != 0);
           if (!__pyx_t_10) {
           } else {
             __pyx_t_12 = __pyx_t_10;
             goto __pyx_L44_bool_binop_done;
           }
-          __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
+          __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
           __pyx_t_12 = __pyx_t_10;
           __pyx_L44_bool_binop_done:;
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __pyx_t_10 = (__pyx_t_12 != 0);
           if (__pyx_t_10) {
 
-            /* "NumeriCal.pyx":97
+            /* "NumeriCal.pyx":99
  *                     _value_, error = pss.SELECTION( var, var, DataBase, line).CHAR_SELECTION( '.' )
  *                     if error in [ '', None ]:
  *                         if len( _value_ ) == 1:             # <<<<<<<<<<<<<<
@@ -3388,13 +3571,13 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
             if (unlikely(__pyx_v__value_ == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-              __PYX_ERR(0, 97, __pyx_L1_error)
+              __PYX_ERR(0, 99, __pyx_L1_error)
             }
-            __pyx_t_13 = PyList_GET_SIZE(__pyx_v__value_); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 97, __pyx_L1_error)
+            __pyx_t_13 = PyList_GET_SIZE(__pyx_v__value_); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 99, __pyx_L1_error)
             __pyx_t_10 = ((__pyx_t_13 == 1) != 0);
             if (__pyx_t_10) {
 
-              /* "NumeriCal.pyx":98
+              /* "NumeriCal.pyx":100
  *                     if error in [ '', None ]:
  *                         if len( _value_ ) == 1:
  *                             try: pass             # <<<<<<<<<<<<<<
@@ -3407,7 +3590,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                 }
               }
 
-              /* "NumeriCal.pyx":102
+              /* "NumeriCal.pyx":104
  *                                 error = ERRORS( line ).ERROR4( var )
  * 
  *                             if error in ['', None ]:             # <<<<<<<<<<<<<<
@@ -3416,21 +3599,21 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
               __Pyx_INCREF(__pyx_v_error);
               __pyx_t_9 = __pyx_v_error;
-              __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
+              __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
               __pyx_t_11 = (__pyx_t_12 != 0);
               if (!__pyx_t_11) {
               } else {
                 __pyx_t_10 = __pyx_t_11;
                 goto __pyx_L54_bool_binop_done;
               }
-              __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
+              __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
               __pyx_t_10 = __pyx_t_11;
               __pyx_L54_bool_binop_done:;
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
               __pyx_t_11 = (__pyx_t_10 != 0);
               if (__pyx_t_11) {
 
-                /* "NumeriCal.pyx":103
+                /* "NumeriCal.pyx":105
  * 
  *                             if error in ['', None ]:
  *                                 string = FirstPart + operators[ 0 ] + str( int(float( var )) )             # <<<<<<<<<<<<<<
@@ -3439,30 +3622,30 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
                 if (unlikely(__pyx_v_operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 103, __pyx_L1_error)
+                  __PYX_ERR(0, 105, __pyx_L1_error)
                 }
-                __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_7 = PyNumber_Add(__pyx_v_FirstPart, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 103, __pyx_L1_error)
+                __pyx_t_7 = PyNumber_Add(__pyx_v_FirstPart, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 105, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_v_var); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_v_var); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+                __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-                __pyx_t_4 = PyNumber_Add(__pyx_t_7, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+                __pyx_t_4 = PyNumber_Add(__pyx_t_7, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 103, __pyx_L1_error)
+                if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 105, __pyx_L1_error)
                 __pyx_v_string = ((PyObject*)__pyx_t_4);
                 __pyx_t_4 = 0;
 
-                /* "NumeriCal.pyx":105
+                /* "NumeriCal.pyx":107
  *                                 string = FirstPart + operators[ 0 ] + str( int(float( var )) )
  * 
  *                                 try:             # <<<<<<<<<<<<<<
@@ -3478,7 +3661,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                   __Pyx_XGOTREF(__pyx_t_14);
                   /*try:*/ {
 
-                    /* "NumeriCal.pyx":106
+                    /* "NumeriCal.pyx":108
  * 
  *                                 try:
  *                                     if key is False:             # <<<<<<<<<<<<<<
@@ -3488,19 +3671,19 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __pyx_t_11 = ((__pyx_v_key == 0) != 0);
                     if (__pyx_t_11) {
 
-                      /* "NumeriCal.pyx":107
+                      /* "NumeriCal.pyx":109
  *                                 try:
  *                                     if key is False:
  *                                         numeric = float( string )             # <<<<<<<<<<<<<<
  *                                     elif key is True:
  *                                         numeric = float( string )
  */
-                      __pyx_t_4 = __Pyx_PyNumber_Float(__pyx_v_string); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L56_error)
+                      __pyx_t_4 = __Pyx_PyNumber_Float(__pyx_v_string); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L56_error)
                       __Pyx_GOTREF(__pyx_t_4);
                       __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_4);
                       __pyx_t_4 = 0;
 
-                      /* "NumeriCal.pyx":106
+                      /* "NumeriCal.pyx":108
  * 
  *                                 try:
  *                                     if key is False:             # <<<<<<<<<<<<<<
@@ -3510,7 +3693,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       goto __pyx_L62;
                     }
 
-                    /* "NumeriCal.pyx":108
+                    /* "NumeriCal.pyx":110
  *                                     if key is False:
  *                                         numeric = float( string )
  *                                     elif key is True:             # <<<<<<<<<<<<<<
@@ -3520,19 +3703,19 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __pyx_t_11 = ((__pyx_v_key == 1) != 0);
                     if (__pyx_t_11) {
 
-                      /* "NumeriCal.pyx":109
+                      /* "NumeriCal.pyx":111
  *                                         numeric = float( string )
  *                                     elif key is True:
  *                                         numeric = float( string )             # <<<<<<<<<<<<<<
  * 
  *                                     numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()
  */
-                      __pyx_t_4 = __Pyx_PyNumber_Float(__pyx_v_string); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L56_error)
+                      __pyx_t_4 = __Pyx_PyNumber_Float(__pyx_v_string); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L56_error)
                       __Pyx_GOTREF(__pyx_t_4);
                       __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_4);
                       __pyx_t_4 = 0;
 
-                      /* "NumeriCal.pyx":108
+                      /* "NumeriCal.pyx":110
  *                                     if key is False:
  *                                         numeric = float( string )
  *                                     elif key is True:             # <<<<<<<<<<<<<<
@@ -3542,16 +3725,16 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     }
                     __pyx_L62:;
 
-                    /* "NumeriCal.pyx":111
+                    /* "NumeriCal.pyx":113
  *                                         numeric = float( string )
  * 
  *                                     numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()             # <<<<<<<<<<<<<<
  *                                 except ( ValueError, SyntaxError):
  *                                     if key in [ True, False ]:
  */
-                    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L56_error)
+                    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L56_error)
                     __Pyx_GOTREF(__pyx_t_4);
-                    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L56_error)
+                    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L56_error)
                     __Pyx_GOTREF(__pyx_t_2);
                     __Pyx_INCREF(__pyx_v_numeric);
                     __Pyx_GIVEREF(__pyx_v_numeric);
@@ -3559,10 +3742,10 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                     __Pyx_GIVEREF(__pyx_t_4);
                     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_4);
                     __pyx_t_4 = 0;
-                    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L56_error)
+                    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L56_error)
                     __Pyx_GOTREF(__pyx_t_4);
                     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                    __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_4)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L56_error)
+                    __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_4)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L56_error)
                     __Pyx_GOTREF(__pyx_t_2);
                     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                     if (likely(__pyx_t_2 != Py_None)) {
@@ -3571,7 +3754,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       if (unlikely(size != 2)) {
                         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                        __PYX_ERR(0, 111, __pyx_L56_error)
+                        __PYX_ERR(0, 113, __pyx_L56_error)
                       }
                       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                       __pyx_t_4 = PyTuple_GET_ITEM(sequence, 0); 
@@ -3579,22 +3762,22 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       __Pyx_INCREF(__pyx_t_4);
                       __Pyx_INCREF(__pyx_t_7);
                       #else
-                      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L56_error)
+                      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L56_error)
                       __Pyx_GOTREF(__pyx_t_4);
-                      __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 111, __pyx_L56_error)
+                      __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L56_error)
                       __Pyx_GOTREF(__pyx_t_7);
                       #endif
                       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                     } else {
-                      __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 111, __pyx_L56_error)
+                      __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 113, __pyx_L56_error)
                     }
-                    if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 111, __pyx_L56_error)
+                    if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 113, __pyx_L56_error)
                     __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_4);
                     __pyx_t_4 = 0;
                     __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
                     __pyx_t_7 = 0;
 
-                    /* "NumeriCal.pyx":105
+                    /* "NumeriCal.pyx":107
  *                                 string = FirstPart + operators[ 0 ] + str( int(float( var )) )
  * 
  *                                 try:             # <<<<<<<<<<<<<<
@@ -3615,7 +3798,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
                   __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                  /* "NumeriCal.pyx":112
+                  /* "NumeriCal.pyx":114
  * 
  *                                     numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                                 except ( ValueError, SyntaxError):             # <<<<<<<<<<<<<<
@@ -3625,12 +3808,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                   __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError);
                   if (__pyx_t_6) {
                     __Pyx_AddTraceback("NumeriCal.ExpValue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                    if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_7, &__pyx_t_4) < 0) __PYX_ERR(0, 112, __pyx_L58_except_error)
+                    if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_7, &__pyx_t_4) < 0) __PYX_ERR(0, 114, __pyx_L58_except_error)
                     __Pyx_GOTREF(__pyx_t_2);
                     __Pyx_GOTREF(__pyx_t_7);
                     __Pyx_GOTREF(__pyx_t_4);
 
-                    /* "NumeriCal.pyx":113
+                    /* "NumeriCal.pyx":115
  *                                     numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                                 except ( ValueError, SyntaxError):
  *                                     if key in [ True, False ]:             # <<<<<<<<<<<<<<
@@ -3641,27 +3824,27 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                       case 1:
                       case 0:
 
-                      /* "NumeriCal.pyx":114
+                      /* "NumeriCal.pyx":116
  *                                 except ( ValueError, SyntaxError):
  *                                     if key in [ True, False ]:
  *                                         error = ERRORS( line ).ERROR4( string, 'a float' )             # <<<<<<<<<<<<<<
  *                                     else: pass
  *                             else: pass
  */
-                      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L58_except_error)
+                      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 116, __pyx_L58_except_error)
                       __Pyx_GOTREF(__pyx_t_5);
-                      __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L58_except_error)
+                      __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L58_except_error)
                       __Pyx_GOTREF(__pyx_t_1);
                       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
                       __pyx_t_17.__pyx_n = 1;
                       __pyx_t_17._char_ = __pyx_kp_s_a_float;
-                      __pyx_t_5 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_string, &__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L58_except_error)
+                      __pyx_t_5 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_string, &__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 116, __pyx_L58_except_error)
                       __Pyx_GOTREF(__pyx_t_5);
                       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_5));
                       __pyx_t_5 = 0;
 
-                      /* "NumeriCal.pyx":113
+                      /* "NumeriCal.pyx":115
  *                                     numeric, error = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                                 except ( ValueError, SyntaxError):
  *                                     if key in [ True, False ]:             # <<<<<<<<<<<<<<
@@ -3680,7 +3863,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                   goto __pyx_L58_except_error;
                   __pyx_L58_except_error:;
 
-                  /* "NumeriCal.pyx":105
+                  /* "NumeriCal.pyx":107
  *                                 string = FirstPart + operators[ 0 ] + str( int(float( var )) )
  * 
  *                                 try:             # <<<<<<<<<<<<<<
@@ -3700,7 +3883,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                   __pyx_L61_try_end:;
                 }
 
-                /* "NumeriCal.pyx":102
+                /* "NumeriCal.pyx":104
  *                                 error = ERRORS( line ).ERROR4( var )
  * 
  *                             if error in ['', None ]:             # <<<<<<<<<<<<<<
@@ -3710,7 +3893,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                 goto __pyx_L53;
               }
 
-              /* "NumeriCal.pyx":116
+              /* "NumeriCal.pyx":118
  *                                         error = ERRORS( line ).ERROR4( string, 'a float' )
  *                                     else: pass
  *                             else: pass             # <<<<<<<<<<<<<<
@@ -3721,7 +3904,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               }
               __pyx_L53:;
 
-              /* "NumeriCal.pyx":97
+              /* "NumeriCal.pyx":99
  *                     _value_, error = pss.SELECTION( var, var, DataBase, line).CHAR_SELECTION( '.' )
  *                     if error in [ '', None ]:
  *                         if len( _value_ ) == 1:             # <<<<<<<<<<<<<<
@@ -3731,7 +3914,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               goto __pyx_L46;
             }
 
-            /* "NumeriCal.pyx":117
+            /* "NumeriCal.pyx":119
  *                                     else: pass
  *                             else: pass
  *                         else: error = ERRORS( line ).ERROR1( var )             # <<<<<<<<<<<<<<
@@ -3739,12 +3922,12 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  * 
  */
             /*else*/ {
-              __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+              __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
-              __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 117, __pyx_L1_error)
+              __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 119, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-              __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_7)->__pyx_vtab)->ERROR1(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_7), __pyx_v_var); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+              __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_7)->__pyx_vtab)->ERROR1(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_7), __pyx_v_var); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_4));
@@ -3752,7 +3935,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             }
             __pyx_L46:;
 
-            /* "NumeriCal.pyx":96
+            /* "NumeriCal.pyx":98
  * 
  *                     _value_, error = pss.SELECTION( var, var, DataBase, line).CHAR_SELECTION( '.' )
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -3762,7 +3945,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             goto __pyx_L43;
           }
 
-          /* "NumeriCal.pyx":118
+          /* "NumeriCal.pyx":120
  *                             else: pass
  *                         else: error = ERRORS( line ).ERROR1( var )
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -3773,7 +3956,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
           }
           __pyx_L43:;
 
-          /* "NumeriCal.pyx":93
+          /* "NumeriCal.pyx":95
  * 
  * 
  *                 elif SecondPart[ 0 ][ 'type' ] == 'numeric' :             # <<<<<<<<<<<<<<
@@ -3783,7 +3966,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
           goto __pyx_L13;
         }
 
-        /* "NumeriCal.pyx":120
+        /* "NumeriCal.pyx":122
  *                     else: pass
  * 
  *                 elif SecondPart[ 0 ][ 'type' ] == 'complex' :             # <<<<<<<<<<<<<<
@@ -3792,18 +3975,18 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
         if (unlikely(__pyx_v_SecondPart == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 120, __pyx_L1_error)
+          __PYX_ERR(0, 122, __pyx_L1_error)
         }
-        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_type); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_s_type); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 122, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_7, __pyx_n_s_complex, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_7, __pyx_n_s_complex, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 122, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if (__pyx_t_11) {
 
-          /* "NumeriCal.pyx":121
+          /* "NumeriCal.pyx":123
  * 
  *                 elif SecondPart[ 0 ][ 'type' ] == 'complex' :
  *                     try:             # <<<<<<<<<<<<<<
@@ -3819,28 +4002,28 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             __Pyx_XGOTREF(__pyx_t_16);
             /*try:*/ {
 
-              /* "NumeriCal.pyx":122
+              /* "NumeriCal.pyx":124
  *                 elif SecondPart[ 0 ][ 'type' ] == 'complex' :
  *                     try:
  *                         numeric        = complex( var )             # <<<<<<<<<<<<<<
  *                         numeric, error = COMPLEX_ANALYZE(numeric, line).COMPLEX()
  * 
  */
-              __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_var); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 122, __pyx_L65_error)
+              __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_var); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L65_error)
               __Pyx_GOTREF(__pyx_t_7);
               __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_7);
               __pyx_t_7 = 0;
 
-              /* "NumeriCal.pyx":123
+              /* "NumeriCal.pyx":125
  *                     try:
  *                         numeric        = complex( var )
  *                         numeric, error = COMPLEX_ANALYZE(numeric, line).COMPLEX()             # <<<<<<<<<<<<<<
  * 
  *                     except (ValueError, SyntaxError):
  */
-              __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 123, __pyx_L65_error)
+              __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 125, __pyx_L65_error)
               __Pyx_GOTREF(__pyx_t_7);
-              __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L65_error)
+              __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L65_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_INCREF(__pyx_v_numeric);
               __Pyx_GIVEREF(__pyx_v_numeric);
@@ -3848,10 +4031,10 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               __Pyx_GIVEREF(__pyx_t_7);
               PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_7);
               __pyx_t_7 = 0;
-              __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE), __pyx_t_4, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 123, __pyx_L65_error)
+              __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE), __pyx_t_4, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 125, __pyx_L65_error)
               __Pyx_GOTREF(__pyx_t_7);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-              __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *)((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_7)->__pyx_vtab)->COMPLEX(((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_7)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L65_error)
+              __pyx_t_4 = ((struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *)((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_7)->__pyx_vtab)->COMPLEX(((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_7)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L65_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
               if (likely(__pyx_t_4 != Py_None)) {
@@ -3860,7 +4043,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                 if (unlikely(size != 2)) {
                   if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                   else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                  __PYX_ERR(0, 123, __pyx_L65_error)
+                  __PYX_ERR(0, 125, __pyx_L65_error)
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                 __pyx_t_7 = PyTuple_GET_ITEM(sequence, 0); 
@@ -3868,22 +4051,22 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                 __Pyx_INCREF(__pyx_t_7);
                 __Pyx_INCREF(__pyx_t_2);
                 #else
-                __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 123, __pyx_L65_error)
+                __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 125, __pyx_L65_error)
                 __Pyx_GOTREF(__pyx_t_7);
-                __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L65_error)
+                __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L65_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 #endif
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               } else {
-                __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 123, __pyx_L65_error)
+                __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 125, __pyx_L65_error)
               }
-              if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 123, __pyx_L65_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 125, __pyx_L65_error)
               __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_7);
               __pyx_t_7 = 0;
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
               __pyx_t_2 = 0;
 
-              /* "NumeriCal.pyx":121
+              /* "NumeriCal.pyx":123
  * 
  *                 elif SecondPart[ 0 ][ 'type' ] == 'complex' :
  *                     try:             # <<<<<<<<<<<<<<
@@ -3904,7 +4087,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "NumeriCal.pyx":125
+            /* "NumeriCal.pyx":127
  *                         numeric, error = COMPLEX_ANALYZE(numeric, line).COMPLEX()
  * 
  *                     except (ValueError, SyntaxError):             # <<<<<<<<<<<<<<
@@ -3914,26 +4097,26 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError);
             if (__pyx_t_6) {
               __Pyx_AddTraceback("NumeriCal.ExpValue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-              if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_2, &__pyx_t_7) < 0) __PYX_ERR(0, 125, __pyx_L67_except_error)
+              if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_2, &__pyx_t_7) < 0) __PYX_ERR(0, 127, __pyx_L67_except_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_GOTREF(__pyx_t_7);
 
-              /* "NumeriCal.pyx":126
+              /* "NumeriCal.pyx":128
  * 
  *                     except (ValueError, SyntaxError):
  *                         error = ERRORS( line ).ERROR4( var, 'a complex' )             # <<<<<<<<<<<<<<
  * 
  *                     if error in ['', None]:
  */
-              __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L67_except_error)
+              __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L67_except_error)
               __Pyx_GOTREF(__pyx_t_5);
-              __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L67_except_error)
+              __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L67_except_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
               __pyx_t_17.__pyx_n = 1;
               __pyx_t_17._char_ = __pyx_kp_s_a_complex;
-              __pyx_t_5 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_var, &__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L67_except_error)
+              __pyx_t_5 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_var, &__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L67_except_error)
               __Pyx_GOTREF(__pyx_t_5);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_5));
@@ -3946,7 +4129,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             goto __pyx_L67_except_error;
             __pyx_L67_except_error:;
 
-            /* "NumeriCal.pyx":121
+            /* "NumeriCal.pyx":123
  * 
  *                 elif SecondPart[ 0 ][ 'type' ] == 'complex' :
  *                     try:             # <<<<<<<<<<<<<<
@@ -3966,7 +4149,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             __pyx_L70_try_end:;
           }
 
-          /* "NumeriCal.pyx":128
+          /* "NumeriCal.pyx":130
  *                         error = ERRORS( line ).ERROR4( var, 'a complex' )
  * 
  *                     if error in ['', None]:             # <<<<<<<<<<<<<<
@@ -3975,21 +4158,21 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
           __Pyx_INCREF(__pyx_v_error);
           __pyx_t_9 = __pyx_v_error;
-          __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 128, __pyx_L1_error)
+          __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
           __pyx_t_12 = (__pyx_t_10 != 0);
           if (!__pyx_t_12) {
           } else {
             __pyx_t_11 = __pyx_t_12;
             goto __pyx_L74_bool_binop_done;
           }
-          __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 128, __pyx_L1_error)
+          __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_9, Py_None, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
           __pyx_t_11 = __pyx_t_12;
           __pyx_L74_bool_binop_done:;
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __pyx_t_12 = (__pyx_t_11 != 0);
           if (__pyx_t_12) {
 
-            /* "NumeriCal.pyx":129
+            /* "NumeriCal.pyx":131
  * 
  *                     if error in ['', None]:
  *                         string = FirstPart + operators[ 0 ] + str( numeric )             # <<<<<<<<<<<<<<
@@ -3998,24 +4181,24 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
             if (unlikely(__pyx_v_operators == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 129, __pyx_L1_error)
+              __PYX_ERR(0, 131, __pyx_L1_error)
             }
-            __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_2 = PyNumber_Add(__pyx_v_FirstPart, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
+            __pyx_t_2 = PyNumber_Add(__pyx_v_FirstPart, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_v_numeric); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_v_numeric); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+            __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 129, __pyx_L1_error)
+            if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 131, __pyx_L1_error)
             __pyx_v_string = ((PyObject*)__pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "NumeriCal.pyx":131
+            /* "NumeriCal.pyx":133
  *                         string = FirstPart + operators[ 0 ] + str( numeric )
  * 
  *                         try:             # <<<<<<<<<<<<<<
@@ -4031,28 +4214,28 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               __Pyx_XGOTREF(__pyx_t_14);
               /*try:*/ {
 
-                /* "NumeriCal.pyx":132
+                /* "NumeriCal.pyx":134
  * 
  *                         try:
  *                             numeric             = complex( string )             # <<<<<<<<<<<<<<
  *                             numeric, error      = COMPLEX_ANALYZE( numeric, line ).COMPLEX()
  * 
  */
-                __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_string); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 132, __pyx_L76_error)
+                __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_string); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L76_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_4);
                 __pyx_t_4 = 0;
 
-                /* "NumeriCal.pyx":133
+                /* "NumeriCal.pyx":135
  *                         try:
  *                             numeric             = complex( string )
  *                             numeric, error      = COMPLEX_ANALYZE( numeric, line ).COMPLEX()             # <<<<<<<<<<<<<<
  * 
  *                         except (ValueError, SyntaxError):
  */
-                __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L76_error)
+                __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L76_error)
                 __Pyx_GOTREF(__pyx_t_4);
-                __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L76_error)
+                __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 135, __pyx_L76_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_INCREF(__pyx_v_numeric);
                 __Pyx_GIVEREF(__pyx_v_numeric);
@@ -4060,10 +4243,10 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                 __Pyx_GIVEREF(__pyx_t_4);
                 PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_4);
                 __pyx_t_4 = 0;
-                __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE), __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L76_error)
+                __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE), __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L76_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *)((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_4)->__pyx_vtab)->COMPLEX(((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L76_error)
+                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *)((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_4)->__pyx_vtab)->COMPLEX(((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 135, __pyx_L76_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                 if (likely(__pyx_t_7 != Py_None)) {
@@ -4072,7 +4255,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                   if (unlikely(size != 2)) {
                     if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                     else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                    __PYX_ERR(0, 133, __pyx_L76_error)
+                    __PYX_ERR(0, 135, __pyx_L76_error)
                   }
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                   __pyx_t_4 = PyTuple_GET_ITEM(sequence, 0); 
@@ -4080,22 +4263,22 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
                   __Pyx_INCREF(__pyx_t_4);
                   __Pyx_INCREF(__pyx_t_2);
                   #else
-                  __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L76_error)
+                  __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L76_error)
                   __Pyx_GOTREF(__pyx_t_4);
-                  __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L76_error)
+                  __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L76_error)
                   __Pyx_GOTREF(__pyx_t_2);
                   #endif
                   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
                 } else {
-                  __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 133, __pyx_L76_error)
+                  __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 135, __pyx_L76_error)
                 }
-                if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 133, __pyx_L76_error)
+                if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 135, __pyx_L76_error)
                 __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_4);
                 __pyx_t_4 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
                 __pyx_t_2 = 0;
 
-                /* "NumeriCal.pyx":131
+                /* "NumeriCal.pyx":133
  *                         string = FirstPart + operators[ 0 ] + str( numeric )
  * 
  *                         try:             # <<<<<<<<<<<<<<
@@ -4116,7 +4299,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-              /* "NumeriCal.pyx":135
+              /* "NumeriCal.pyx":137
  *                             numeric, error      = COMPLEX_ANALYZE( numeric, line ).COMPLEX()
  * 
  *                         except (ValueError, SyntaxError):             # <<<<<<<<<<<<<<
@@ -4126,26 +4309,26 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError);
               if (__pyx_t_6) {
                 __Pyx_AddTraceback("NumeriCal.ExpValue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_2, &__pyx_t_4) < 0) __PYX_ERR(0, 135, __pyx_L78_except_error)
+                if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_2, &__pyx_t_4) < 0) __PYX_ERR(0, 137, __pyx_L78_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_GOTREF(__pyx_t_4);
 
-                /* "NumeriCal.pyx":136
+                /* "NumeriCal.pyx":138
  * 
  *                         except (ValueError, SyntaxError):
  *                             error = ERRORS( line ).ERROR4( string, 'a complex')             # <<<<<<<<<<<<<<
  * 
  *                     else: pass
  */
-                __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L78_except_error)
+                __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L78_except_error)
                 __Pyx_GOTREF(__pyx_t_5);
-                __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L78_except_error)
+                __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L78_except_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
                 __pyx_t_17.__pyx_n = 1;
                 __pyx_t_17._char_ = __pyx_kp_s_a_complex;
-                __pyx_t_5 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_string, &__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L78_except_error)
+                __pyx_t_5 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_string, &__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L78_except_error)
                 __Pyx_GOTREF(__pyx_t_5);
                 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_5));
@@ -4158,7 +4341,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               goto __pyx_L78_except_error;
               __pyx_L78_except_error:;
 
-              /* "NumeriCal.pyx":131
+              /* "NumeriCal.pyx":133
  *                         string = FirstPart + operators[ 0 ] + str( numeric )
  * 
  *                         try:             # <<<<<<<<<<<<<<
@@ -4178,7 +4361,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
               __pyx_L81_try_end:;
             }
 
-            /* "NumeriCal.pyx":128
+            /* "NumeriCal.pyx":130
  *                         error = ERRORS( line ).ERROR4( var, 'a complex' )
  * 
  *                     if error in ['', None]:             # <<<<<<<<<<<<<<
@@ -4188,7 +4371,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
             goto __pyx_L73;
           }
 
-          /* "NumeriCal.pyx":138
+          /* "NumeriCal.pyx":140
  *                             error = ERRORS( line ).ERROR4( string, 'a complex')
  * 
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -4199,7 +4382,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
           }
           __pyx_L73:;
 
-          /* "NumeriCal.pyx":120
+          /* "NumeriCal.pyx":122
  *                     else: pass
  * 
  *                 elif SecondPart[ 0 ][ 'type' ] == 'complex' :             # <<<<<<<<<<<<<<
@@ -4209,7 +4392,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
         }
         __pyx_L13:;
 
-        /* "NumeriCal.pyx":47
+        /* "NumeriCal.pyx":49
  *             char1   = FirstPart
  * 
  *             if type( SecondPart[ 0 ] ) == type( dict()):             # <<<<<<<<<<<<<<
@@ -4219,7 +4402,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
         goto __pyx_L12;
       }
 
-      /* "NumeriCal.pyx":140
+      /* "NumeriCal.pyx":142
  *                     else: pass
  * 
  *             elif type( SecondPart[ 0 ] ) == type( list() )  :             # <<<<<<<<<<<<<<
@@ -4228,20 +4411,20 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
       if (unlikely(__pyx_v_SecondPart == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 140, __pyx_L1_error)
+        __PYX_ERR(0, 142, __pyx_L1_error)
       }
-      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_SecondPart, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_4)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_7 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_4)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_12) {
 
-        /* "NumeriCal.pyx":141
+        /* "NumeriCal.pyx":143
  * 
  *             elif type( SecondPart[ 0 ] ) == type( list() )  :
  *                 sign        = operators[ 0 ]             # <<<<<<<<<<<<<<
@@ -4250,15 +4433,15 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
         if (unlikely(__pyx_v_operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 141, __pyx_L1_error)
+          __PYX_ERR(0, 143, __pyx_L1_error)
         }
-        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 141, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 141, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 143, __pyx_L1_error)
         __pyx_v_sign = ((PyObject*)__pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "NumeriCal.pyx":142
+        /* "NumeriCal.pyx":144
  *             elif type( SecondPart[ 0 ] ) == type( list() )  :
  *                 sign        = operators[ 0 ]
  *                 operators   = operators[ 1 : ]             # <<<<<<<<<<<<<<
@@ -4267,14 +4450,14 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  */
         if (unlikely(__pyx_v_operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 142, __pyx_L1_error)
+          __PYX_ERR(0, 144, __pyx_L1_error)
         }
-        __pyx_t_7 = __Pyx_PyList_GetSlice(__pyx_v_operators, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyList_GetSlice(__pyx_v_operators, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 144, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF_SET(__pyx_v_operators, ((PyObject*)__pyx_t_7));
         __pyx_t_7 = 0;
 
-        /* "NumeriCal.pyx":140
+        /* "NumeriCal.pyx":142
  *                     else: pass
  * 
  *             elif type( SecondPart[ 0 ] ) == type( list() )  :             # <<<<<<<<<<<<<<
@@ -4284,7 +4467,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
       }
       __pyx_L12:;
 
-      /* "NumeriCal.pyx":44
+      /* "NumeriCal.pyx":46
  *         else: errorr = ERRORS( line ).ERROR1( FirstPart )
  * 
  *         if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4294,7 +4477,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
       goto __pyx_L9;
     }
 
-    /* "NumeriCal.pyx":144
+    /* "NumeriCal.pyx":146
  *                 operators   = operators[ 1 : ]
  * 
  *         else : pass             # <<<<<<<<<<<<<<
@@ -4305,7 +4488,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
     }
     __pyx_L9:;
 
-    /* "NumeriCal.pyx":39
+    /* "NumeriCal.pyx":41
  *     _value_, error = pss.SELECTION( FirstPart, FirstPart, DataBase, line ).CHAR_SELECTION( '.' )
  * 
  *     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4315,7 +4498,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
     goto __pyx_L5;
   }
 
-  /* "NumeriCal.pyx":145
+  /* "NumeriCal.pyx":147
  * 
  *         else : pass
  *     else: pass             # <<<<<<<<<<<<<<
@@ -4326,7 +4509,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
   }
   __pyx_L5:;
 
-  /* "NumeriCal.pyx":147
+  /* "NumeriCal.pyx":149
  *     else: pass
  * 
  *     return numeric, error             # <<<<<<<<<<<<<<
@@ -4334,7 +4517,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_INCREF(__pyx_v_numeric);
   __Pyx_GIVEREF(__pyx_v_numeric);
@@ -4346,7 +4529,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":20
+  /* "NumeriCal.pyx":22
  * 
  * 
  * cdef tuple ExpValue ( dict DictValue, list variables, list _values_, int line, dict DataBase ) :             # <<<<<<<<<<<<<<
@@ -4382,7 +4565,7 @@ static PyObject *__pyx_f_9NumeriCal_ExpValue(PyObject *__pyx_v_DictValue, PyObje
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":150
+/* "NumeriCal.pyx":152
  * 
  * 
  * cdef tuple NumeriCal( dict DictValue, list variables, list _values_, int line, dict DataBase ) :             # <<<<<<<<<<<<<<
@@ -4426,17 +4609,17 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("NumeriCal", 0);
 
-  /* "NumeriCal.pyx":152
+  /* "NumeriCal.pyx":154
  * cdef tuple NumeriCal( dict DictValue, list variables, list _values_, int line, dict DataBase ) :
  *     cdef :
  *         str     error       = ''             # <<<<<<<<<<<<<<
  *         str     Value       = DictValue[ 'numeric' ][ 0 ]
  *         list    TypeOfValue = [ DictValue[ 'type'] ]
  */
-  __Pyx_INCREF(__pyx_kp_s__2);
-  __pyx_v_error = __pyx_kp_s__2;
+  __Pyx_INCREF(__pyx_kp_s__3);
+  __pyx_v_error = __pyx_kp_s__3;
 
-  /* "NumeriCal.pyx":153
+  /* "NumeriCal.pyx":155
  *     cdef :
  *         str     error       = ''
  *         str     Value       = DictValue[ 'numeric' ][ 0 ]             # <<<<<<<<<<<<<<
@@ -4445,18 +4628,18 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
   if (unlikely(__pyx_v_DictValue == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 153, __pyx_L1_error)
+    __PYX_ERR(0, 155, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_numeric); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_numeric); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 153, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 155, __pyx_L1_error)
   __pyx_v_Value = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":154
+  /* "NumeriCal.pyx":156
  *         str     error       = ''
  *         str     Value       = DictValue[ 'numeric' ][ 0 ]
  *         list    TypeOfValue = [ DictValue[ 'type'] ]             # <<<<<<<<<<<<<<
@@ -4465,11 +4648,11 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
   if (unlikely(__pyx_v_DictValue == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 154, __pyx_L1_error)
+    __PYX_ERR(0, 156, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_DictValue, __pyx_n_s_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -4477,26 +4660,26 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
   __pyx_v_TypeOfValue = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":155
+  /* "NumeriCal.pyx":157
  *         str     Value       = DictValue[ 'numeric' ][ 0 ]
  *         list    TypeOfValue = [ DictValue[ 'type'] ]
  *         list    Chars       = String()             # <<<<<<<<<<<<<<
  *         list    Lists       = [ '_int_', '_float_', '_complex_', '_string_', '_list_', '_tuple_' ]
  *         bint    key         = False
  */
-  __pyx_t_1 = __pyx_f_9NumeriCal_String(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9NumeriCal_String(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Chars = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":156
+  /* "NumeriCal.pyx":158
  *         list    TypeOfValue = [ DictValue[ 'type'] ]
  *         list    Chars       = String()
  *         list    Lists       = [ '_int_', '_float_', '_complex_', '_string_', '_list_', '_tuple_' ]             # <<<<<<<<<<<<<<
  *         bint    key         = False
  *         int     index
  */
-  __pyx_t_1 = PyList_New(6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_int);
   __Pyx_GIVEREF(__pyx_n_s_int);
@@ -4519,7 +4702,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
   __pyx_v_Lists = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":157
+  /* "NumeriCal.pyx":159
  *         list    Chars       = String()
  *         list    Lists       = [ '_int_', '_float_', '_complex_', '_string_', '_list_', '_tuple_' ]
  *         bint    key         = False             # <<<<<<<<<<<<<<
@@ -4528,7 +4711,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
   __pyx_v_key = 0;
 
-  /* "NumeriCal.pyx":161
+  /* "NumeriCal.pyx":163
  *         list    data
  *         str     VarName
  *         numeric = None             # <<<<<<<<<<<<<<
@@ -4538,57 +4721,57 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
   __Pyx_INCREF(Py_None);
   __pyx_v_numeric = Py_None;
 
-  /* "NumeriCal.pyx":164
+  /* "NumeriCal.pyx":166
  * 
  * 
  *     if TypeOfValue[ 0 ] in [ None, 'numeric' ]:             # <<<<<<<<<<<<<<
  *         if Value[ 0 ] in Chars:
  *             VarName, error = ctrl.STRING_ANALYSE( DataBase, line).CHECK_NAME( Value )
  */
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_TypeOfValue, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_TypeOfValue, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_numeric, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_numeric, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
   __pyx_t_3 = __pyx_t_4;
   __pyx_L4_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "NumeriCal.pyx":165
+    /* "NumeriCal.pyx":167
  * 
  *     if TypeOfValue[ 0 ] in [ None, 'numeric' ]:
  *         if Value[ 0 ] in Chars:             # <<<<<<<<<<<<<<
  *             VarName, error = ctrl.STRING_ANALYSE( DataBase, line).CHECK_NAME( Value )
  * 
  */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_Value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_Value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_v_Chars, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+    __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_v_Chars, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_3 = (__pyx_t_4 != 0);
     if (__pyx_t_3) {
 
-      /* "NumeriCal.pyx":166
+      /* "NumeriCal.pyx":168
  *     if TypeOfValue[ 0 ] in [ None, 'numeric' ]:
  *         if Value[ 0 ] in Chars:
  *             VarName, error = ctrl.STRING_ANALYSE( DataBase, line).CHECK_NAME( Value )             # <<<<<<<<<<<<<<
  * 
  *             if error in [ '', None ]:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_ctrl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_ctrl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_STRING_ANALYSE); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_STRING_ANALYSE); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_7 = NULL;
       __pyx_t_8 = 0;
@@ -4605,7 +4788,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_DataBase, __pyx_t_5};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4614,14 +4797,14 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_v_DataBase, __pyx_t_5};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       } else
       #endif
       {
-        __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 168, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         if (__pyx_t_7) {
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -4632,12 +4815,12 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_5);
         __pyx_t_5 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CHECK_NAME); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CHECK_NAME); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = NULL;
@@ -4652,7 +4835,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       }
       __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_2, __pyx_v_Value) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_Value);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -4661,7 +4844,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 166, __pyx_L1_error)
+          __PYX_ERR(0, 168, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -4674,15 +4857,15 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         __Pyx_INCREF(__pyx_t_6);
         __Pyx_INCREF(__pyx_t_2);
         #else
-        __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 168, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 168, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -4690,7 +4873,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         __Pyx_GOTREF(__pyx_t_6);
         index = 1; __pyx_t_2 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_2)) goto __pyx_L7_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_2);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 168, __pyx_L1_error)
         __pyx_t_10 = NULL;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L8_unpacking_done;
@@ -4698,17 +4881,17 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_10 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 166, __pyx_L1_error)
+        __PYX_ERR(0, 168, __pyx_L1_error)
         __pyx_L8_unpacking_done:;
       }
-      if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) __PYX_ERR(0, 166, __pyx_L1_error)
-      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 166, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 168, __pyx_L1_error)
       __pyx_v_VarName = ((PyObject*)__pyx_t_6);
       __pyx_t_6 = 0;
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "NumeriCal.pyx":168
+      /* "NumeriCal.pyx":170
  *             VarName, error = ctrl.STRING_ANALYSE( DataBase, line).CHECK_NAME( Value )
  * 
  *             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4717,21 +4900,21 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
       __Pyx_INCREF(__pyx_v_error);
       __pyx_t_11 = __pyx_v_error;
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_11, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_11, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
       __pyx_t_12 = (__pyx_t_4 != 0);
       if (!__pyx_t_12) {
       } else {
         __pyx_t_3 = __pyx_t_12;
         goto __pyx_L10_bool_binop_done;
       }
-      __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_11, Py_None, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_11, Py_None, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
       __pyx_t_3 = __pyx_t_12;
       __pyx_L10_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __pyx_t_12 = (__pyx_t_3 != 0);
       if (__pyx_t_12) {
 
-        /* "NumeriCal.pyx":169
+        /* "NumeriCal.pyx":171
  * 
  *             if error in [ '', None ]:
  *                 Value   = VarName             # <<<<<<<<<<<<<<
@@ -4741,7 +4924,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         __Pyx_INCREF(__pyx_v_VarName);
         __Pyx_DECREF_SET(__pyx_v_Value, __pyx_v_VarName);
 
-        /* "NumeriCal.pyx":168
+        /* "NumeriCal.pyx":170
  *             VarName, error = ctrl.STRING_ANALYSE( DataBase, line).CHECK_NAME( Value )
  * 
  *             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4751,7 +4934,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         goto __pyx_L9;
       }
 
-      /* "NumeriCal.pyx":171
+      /* "NumeriCal.pyx":173
  *                 Value   = VarName
  *             else:
  *                 if Value in Lists: error = ''             # <<<<<<<<<<<<<<
@@ -4759,15 +4942,15 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  * 
  */
       /*else*/ {
-        __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_v_Value, __pyx_v_Lists, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_v_Value, __pyx_v_Lists, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
         __pyx_t_3 = (__pyx_t_12 != 0);
         if (__pyx_t_3) {
-          __Pyx_INCREF(__pyx_kp_s__2);
-          __Pyx_DECREF_SET(__pyx_v_error, __pyx_kp_s__2);
+          __Pyx_INCREF(__pyx_kp_s__3);
+          __Pyx_DECREF_SET(__pyx_v_error, __pyx_kp_s__3);
           goto __pyx_L12;
         }
 
-        /* "NumeriCal.pyx":172
+        /* "NumeriCal.pyx":174
  *             else:
  *                 if Value in Lists: error = ''
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -4780,7 +4963,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       }
       __pyx_L9:;
 
-      /* "NumeriCal.pyx":175
+      /* "NumeriCal.pyx":177
  * 
  * 
  *             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4789,21 +4972,21 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
       __Pyx_INCREF(__pyx_v_error);
       __pyx_t_11 = __pyx_v_error;
-      __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_11, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 175, __pyx_L1_error)
+      __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_11, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 177, __pyx_L1_error)
       __pyx_t_4 = (__pyx_t_12 != 0);
       if (!__pyx_t_4) {
       } else {
         __pyx_t_3 = __pyx_t_4;
         goto __pyx_L14_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_11, Py_None, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 175, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_11, Py_None, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 177, __pyx_L1_error)
       __pyx_t_3 = __pyx_t_4;
       __pyx_L14_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __pyx_t_4 = (__pyx_t_3 != 0);
       if (__pyx_t_4) {
 
-        /* "NumeriCal.pyx":176
+        /* "NumeriCal.pyx":178
  * 
  *             if error in [ '', None ]:
  *                 if variables:             # <<<<<<<<<<<<<<
@@ -4813,47 +4996,107 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         __pyx_t_4 = (__pyx_v_variables != Py_None)&&(PyList_GET_SIZE(__pyx_v_variables) != 0);
         if (__pyx_t_4) {
 
-          /* "NumeriCal.pyx":177
+          /* "NumeriCal.pyx":179
  *             if error in [ '', None ]:
  *                 if variables:
  *                     if Value in variables:             # <<<<<<<<<<<<<<
  *                         index       = variables.index( Value )
  *                         numeric     = _values_[ index ]
  */
-          __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_v_Value, __pyx_v_variables, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 177, __pyx_L1_error)
+          __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_v_Value, __pyx_v_variables, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
           __pyx_t_3 = (__pyx_t_4 != 0);
           if (__pyx_t_3) {
 
-            /* "NumeriCal.pyx":178
+            /* "NumeriCal.pyx":180
  *                 if variables:
  *                     if Value in variables:
  *                         index       = variables.index( Value )             # <<<<<<<<<<<<<<
  *                         numeric     = _values_[ index ]
- *                     else: error     = ERRORS( line ).ERROR2( Value )
+ * 
  */
-            __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_index, __pyx_v_variables, __pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_index, __pyx_v_variables, __pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
+            __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_v_index = __pyx_t_8;
 
-            /* "NumeriCal.pyx":179
+            /* "NumeriCal.pyx":181
  *                     if Value in variables:
  *                         index       = variables.index( Value )
  *                         numeric     = _values_[ index ]             # <<<<<<<<<<<<<<
- *                     else: error     = ERRORS( line ).ERROR2( Value )
- *                 else: error         = ERRORS( line ).ERROR2( Value )
+ * 
+ *                         if DataBase['variables']['types'][index] == MATRIX():
  */
             if (unlikely(__pyx_v__values_ == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 179, __pyx_L1_error)
+              __PYX_ERR(0, 181, __pyx_L1_error)
             }
-            __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v__values_, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "NumeriCal.pyx":177
+            /* "NumeriCal.pyx":183
+ *                         numeric     = _values_[ index ]
+ * 
+ *                         if DataBase['variables']['types'][index] == MATRIX():             # <<<<<<<<<<<<<<
+ *                             DataBase['matrix'] = True
+ *                         else: pass
+ */
+            if (unlikely(__pyx_v_DataBase == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 183, __pyx_L1_error)
+            }
+            __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_DataBase, __pyx_n_s_variables); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_types); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, __pyx_v_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __pyx_f_9NumeriCal_MATRIX(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 183, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            if (__pyx_t_3) {
+
+              /* "NumeriCal.pyx":184
+ * 
+ *                         if DataBase['variables']['types'][index] == MATRIX():
+ *                             DataBase['matrix'] = True             # <<<<<<<<<<<<<<
+ *                         else: pass
+ *                     else: error     = ERRORS( line ).ERROR2( Value )
+ */
+              if (unlikely(__pyx_v_DataBase == Py_None)) {
+                PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+                __PYX_ERR(0, 184, __pyx_L1_error)
+              }
+              if (unlikely(PyDict_SetItem(__pyx_v_DataBase, __pyx_n_s_matrix, Py_True) < 0)) __PYX_ERR(0, 184, __pyx_L1_error)
+
+              /* "NumeriCal.pyx":183
+ *                         numeric     = _values_[ index ]
+ * 
+ *                         if DataBase['variables']['types'][index] == MATRIX():             # <<<<<<<<<<<<<<
+ *                             DataBase['matrix'] = True
+ *                         else: pass
+ */
+              goto __pyx_L18;
+            }
+
+            /* "NumeriCal.pyx":185
+ *                         if DataBase['variables']['types'][index] == MATRIX():
+ *                             DataBase['matrix'] = True
+ *                         else: pass             # <<<<<<<<<<<<<<
+ *                     else: error     = ERRORS( line ).ERROR2( Value )
+ *                 else: error         = ERRORS( line ).ERROR2( Value )
+ */
+            /*else*/ {
+            }
+            __pyx_L18:;
+
+            /* "NumeriCal.pyx":179
  *             if error in [ '', None ]:
  *                 if variables:
  *                     if Value in variables:             # <<<<<<<<<<<<<<
@@ -4863,28 +5106,28 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             goto __pyx_L17;
           }
 
-          /* "NumeriCal.pyx":180
- *                         index       = variables.index( Value )
- *                         numeric     = _values_[ index ]
+          /* "NumeriCal.pyx":186
+ *                             DataBase['matrix'] = True
+ *                         else: pass
  *                     else: error     = ERRORS( line ).ERROR2( Value )             # <<<<<<<<<<<<<<
  *                 else: error         = ERRORS( line ).ERROR2( Value )
  *             else : pass
  */
           /*else*/ {
-            __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR2(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
-            __pyx_t_1 = 0;
+            __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR2(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_Value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
+            __pyx_t_2 = 0;
           }
           __pyx_L17:;
 
-          /* "NumeriCal.pyx":176
+          /* "NumeriCal.pyx":178
  * 
  *             if error in [ '', None ]:
  *                 if variables:             # <<<<<<<<<<<<<<
@@ -4894,28 +5137,28 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
           goto __pyx_L16;
         }
 
-        /* "NumeriCal.pyx":181
- *                         numeric     = _values_[ index ]
+        /* "NumeriCal.pyx":187
+ *                         else: pass
  *                     else: error     = ERRORS( line ).ERROR2( Value )
  *                 else: error         = ERRORS( line ).ERROR2( Value )             # <<<<<<<<<<<<<<
  *             else : pass
  *         else:
  */
         /*else*/ {
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR2(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
-          __pyx_t_1 = 0;
+          __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR2(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_Value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
+          __pyx_t_2 = 0;
         }
         __pyx_L16:;
 
-        /* "NumeriCal.pyx":175
+        /* "NumeriCal.pyx":177
  * 
  * 
  *             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4925,7 +5168,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         goto __pyx_L13;
       }
 
-      /* "NumeriCal.pyx":182
+      /* "NumeriCal.pyx":188
  *                     else: error     = ERRORS( line ).ERROR2( Value )
  *                 else: error         = ERRORS( line ).ERROR2( Value )
  *             else : pass             # <<<<<<<<<<<<<<
@@ -4936,7 +5179,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       }
       __pyx_L13:;
 
-      /* "NumeriCal.pyx":165
+      /* "NumeriCal.pyx":167
  * 
  *     if TypeOfValue[ 0 ] in [ None, 'numeric' ]:
  *         if Value[ 0 ] in Chars:             # <<<<<<<<<<<<<<
@@ -4946,7 +5189,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       goto __pyx_L6;
     }
 
-    /* "NumeriCal.pyx":184
+    /* "NumeriCal.pyx":190
  *             else : pass
  *         else:
  *             data, error = pss.SELECTION( Value, Value, DataBase, line).CHAR_SELECTION( '.' )             # <<<<<<<<<<<<<<
@@ -4954,12 +5197,12 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  *             if error in [ '', None ]:
  */
     /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_pss); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_pss); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_SELECTION); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_SELECTION); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 190, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_5 = NULL;
       __pyx_t_8 = 0;
@@ -4976,23 +5219,23 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_9)) {
         PyObject *__pyx_temp[5] = {__pyx_t_5, __pyx_v_Value, __pyx_v_Value, __pyx_v_DataBase, __pyx_t_6};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       } else
       #endif
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
         PyObject *__pyx_temp[5] = {__pyx_t_5, __pyx_v_Value, __pyx_v_Value, __pyx_v_DataBase, __pyx_t_6};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 4+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       } else
       #endif
       {
-        __pyx_t_7 = PyTuple_New(4+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 184, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(4+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 190, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         if (__pyx_t_5) {
           __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -5009,83 +5252,83 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
         __Pyx_GIVEREF(__pyx_t_6);
         PyTuple_SET_ITEM(__pyx_t_7, 3+__pyx_t_8, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CHAR_SELECTION); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_CHAR_SELECTION); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 190, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = NULL;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
-        __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_9);
-        if (likely(__pyx_t_2)) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_1)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-          __Pyx_INCREF(__pyx_t_2);
+          __Pyx_INCREF(__pyx_t_1);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_9, function);
         }
       }
-      __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_2, __pyx_kp_s_) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s_);
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_1, __pyx_kp_s__2) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__2);
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
-        PyObject* sequence = __pyx_t_1;
+      if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
+        PyObject* sequence = __pyx_t_2;
         Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 184, __pyx_L1_error)
+          __PYX_ERR(0, 190, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
           __pyx_t_9 = PyTuple_GET_ITEM(sequence, 0); 
-          __pyx_t_2 = PyTuple_GET_ITEM(sequence, 1); 
+          __pyx_t_1 = PyTuple_GET_ITEM(sequence, 1); 
         } else {
           __pyx_t_9 = PyList_GET_ITEM(sequence, 0); 
-          __pyx_t_2 = PyList_GET_ITEM(sequence, 1); 
+          __pyx_t_1 = PyList_GET_ITEM(sequence, 1); 
         }
         __Pyx_INCREF(__pyx_t_9);
-        __Pyx_INCREF(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_1);
         #else
-        __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 184, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 190, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
         #endif
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 184, __pyx_L1_error)
+        __pyx_t_7 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 190, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_10 = Py_TYPE(__pyx_t_7)->tp_iternext;
-        index = 0; __pyx_t_9 = __pyx_t_10(__pyx_t_7); if (unlikely(!__pyx_t_9)) goto __pyx_L18_unpacking_failed;
+        index = 0; __pyx_t_9 = __pyx_t_10(__pyx_t_7); if (unlikely(!__pyx_t_9)) goto __pyx_L19_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_9);
-        index = 1; __pyx_t_2 = __pyx_t_10(__pyx_t_7); if (unlikely(!__pyx_t_2)) goto __pyx_L18_unpacking_failed;
-        __Pyx_GOTREF(__pyx_t_2);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_7), 2) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+        index = 1; __pyx_t_1 = __pyx_t_10(__pyx_t_7); if (unlikely(!__pyx_t_1)) goto __pyx_L19_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_1);
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_7), 2) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
         __pyx_t_10 = NULL;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        goto __pyx_L19_unpacking_done;
-        __pyx_L18_unpacking_failed:;
+        goto __pyx_L20_unpacking_done;
+        __pyx_L19_unpacking_failed:;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_10 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 184, __pyx_L1_error)
-        __pyx_L19_unpacking_done:;
+        __PYX_ERR(0, 190, __pyx_L1_error)
+        __pyx_L20_unpacking_done:;
       }
-      if (!(likely(PyList_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 184, __pyx_L1_error)
-      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 184, __pyx_L1_error)
+      if (!(likely(PyList_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 190, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 190, __pyx_L1_error)
       __pyx_v_data = ((PyObject*)__pyx_t_9);
       __pyx_t_9 = 0;
-      __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
-      __pyx_t_2 = 0;
+      __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
+      __pyx_t_1 = 0;
 
-      /* "NumeriCal.pyx":186
+      /* "NumeriCal.pyx":192
  *             data, error = pss.SELECTION( Value, Value, DataBase, line).CHAR_SELECTION( '.' )
  * 
  *             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -5094,21 +5337,21 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
       __Pyx_INCREF(__pyx_v_error);
       __pyx_t_11 = __pyx_v_error;
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_11, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_11, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 192, __pyx_L1_error)
       __pyx_t_12 = (__pyx_t_4 != 0);
       if (!__pyx_t_12) {
       } else {
         __pyx_t_3 = __pyx_t_12;
-        goto __pyx_L21_bool_binop_done;
+        goto __pyx_L22_bool_binop_done;
       }
-      __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_11, Py_None, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+      __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_11, Py_None, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 192, __pyx_L1_error)
       __pyx_t_3 = __pyx_t_12;
-      __pyx_L21_bool_binop_done:;
+      __pyx_L22_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __pyx_t_12 = (__pyx_t_3 != 0);
       if (__pyx_t_12) {
 
-        /* "NumeriCal.pyx":187
+        /* "NumeriCal.pyx":193
  * 
  *             if error in [ '', None ]:
  *                 if   len( data ) == 1  : key = False             # <<<<<<<<<<<<<<
@@ -5117,16 +5360,16 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
         if (unlikely(__pyx_v_data == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-          __PYX_ERR(0, 187, __pyx_L1_error)
+          __PYX_ERR(0, 193, __pyx_L1_error)
         }
-        __pyx_t_13 = PyList_GET_SIZE(__pyx_v_data); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_13 = PyList_GET_SIZE(__pyx_v_data); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 193, __pyx_L1_error)
         __pyx_t_12 = ((__pyx_t_13 == 1) != 0);
         if (__pyx_t_12) {
           __pyx_v_key = 0;
-          goto __pyx_L23;
+          goto __pyx_L24;
         }
 
-        /* "NumeriCal.pyx":188
+        /* "NumeriCal.pyx":194
  *             if error in [ '', None ]:
  *                 if   len( data ) == 1  : key = False
  *                 elif len( data ) == 2  : key = True             # <<<<<<<<<<<<<<
@@ -5135,16 +5378,16 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
         if (unlikely(__pyx_v_data == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-          __PYX_ERR(0, 188, __pyx_L1_error)
+          __PYX_ERR(0, 194, __pyx_L1_error)
         }
-        __pyx_t_13 = PyList_GET_SIZE(__pyx_v_data); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 188, __pyx_L1_error)
+        __pyx_t_13 = PyList_GET_SIZE(__pyx_v_data); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 194, __pyx_L1_error)
         __pyx_t_12 = ((__pyx_t_13 == 2) != 0);
         if (__pyx_t_12) {
           __pyx_v_key = 1;
-          goto __pyx_L23;
+          goto __pyx_L24;
         }
 
-        /* "NumeriCal.pyx":189
+        /* "NumeriCal.pyx":195
  *                 if   len( data ) == 1  : key = False
  *                 elif len( data ) == 2  : key = True
  *                 else: error = ERRORS( line ).ERROR1( Value )             # <<<<<<<<<<<<<<
@@ -5152,20 +5395,20 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  *                 if error in [ '', None ]:
  */
         /*else*/ {
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 189, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR1(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), __pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
-          __pyx_t_1 = 0;
+          __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR1(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), __pyx_v_Value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
+          __pyx_t_2 = 0;
         }
-        __pyx_L23:;
+        __pyx_L24:;
 
-        /* "NumeriCal.pyx":191
+        /* "NumeriCal.pyx":197
  *                 else: error = ERRORS( line ).ERROR1( Value )
  * 
  *                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -5174,21 +5417,21 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_11 = __pyx_v_error;
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_11, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 191, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_11, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
         __pyx_t_4 = (__pyx_t_3 != 0);
         if (!__pyx_t_4) {
         } else {
           __pyx_t_12 = __pyx_t_4;
-          goto __pyx_L25_bool_binop_done;
+          goto __pyx_L26_bool_binop_done;
         }
-        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_11, Py_None, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 191, __pyx_L1_error)
+        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_11, Py_None, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
         __pyx_t_12 = __pyx_t_4;
-        __pyx_L25_bool_binop_done:;
+        __pyx_L26_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_4 = (__pyx_t_12 != 0);
         if (__pyx_t_4) {
 
-          /* "NumeriCal.pyx":192
+          /* "NumeriCal.pyx":198
  * 
  *                 if error in [ '', None ]:
  *                     try:             # <<<<<<<<<<<<<<
@@ -5204,7 +5447,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             __Pyx_XGOTREF(__pyx_t_16);
             /*try:*/ {
 
-              /* "NumeriCal.pyx":193
+              /* "NumeriCal.pyx":199
  *                 if error in [ '', None ]:
  *                     try:
  *                         if key is False:             # <<<<<<<<<<<<<<
@@ -5214,177 +5457,177 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
               __pyx_t_4 = ((__pyx_v_key == 0) != 0);
               if (__pyx_t_4) {
 
-                /* "NumeriCal.pyx":194
+                /* "NumeriCal.pyx":200
  *                     try:
  *                         if key is False:
  *                             if 'e' in Value:             # <<<<<<<<<<<<<<
  *                                 numeric         = float( Value )
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  */
-                __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_e, __pyx_v_Value, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 194, __pyx_L27_error)
+                __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_e, __pyx_v_Value, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 200, __pyx_L28_error)
                 __pyx_t_12 = (__pyx_t_4 != 0);
                 if (__pyx_t_12) {
 
-                  /* "NumeriCal.pyx":195
+                  /* "NumeriCal.pyx":201
  *                         if key is False:
  *                             if 'e' in Value:
  *                                 numeric         = float( Value )             # <<<<<<<<<<<<<<
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                             elif 'E' in Value:
  */
-                  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L27_error)
-                  __Pyx_GOTREF(__pyx_t_1);
-                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
-                  __pyx_t_1 = 0;
+                  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L28_error)
+                  __Pyx_GOTREF(__pyx_t_2);
+                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
+                  __pyx_t_2 = 0;
 
-                  /* "NumeriCal.pyx":196
+                  /* "NumeriCal.pyx":202
  *                             if 'e' in Value:
  *                                 numeric         = float( Value )
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()             # <<<<<<<<<<<<<<
  *                             elif 'E' in Value:
  *                                 numeric         = float( Value )
  */
-                  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L27_error)
-                  __Pyx_GOTREF(__pyx_t_1);
-                  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L27_error)
+                  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L28_error)
                   __Pyx_GOTREF(__pyx_t_2);
+                  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L28_error)
+                  __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_INCREF(__pyx_v_numeric);
                   __Pyx_GIVEREF(__pyx_v_numeric);
-                  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_numeric);
-                  __Pyx_GIVEREF(__pyx_t_1);
-                  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
-                  __pyx_t_1 = 0;
-                  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L27_error)
-                  __Pyx_GOTREF(__pyx_t_1);
-                  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                  __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_1)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L27_error)
+                  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_numeric);
+                  __Pyx_GIVEREF(__pyx_t_2);
+                  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
+                  __pyx_t_2 = 0;
+                  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L28_error)
                   __Pyx_GOTREF(__pyx_t_2);
                   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                  if (likely(__pyx_t_2 != Py_None)) {
-                    PyObject* sequence = __pyx_t_2;
+                  __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_2)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L28_error)
+                  __Pyx_GOTREF(__pyx_t_1);
+                  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                  if (likely(__pyx_t_1 != Py_None)) {
+                    PyObject* sequence = __pyx_t_1;
                     Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
                     if (unlikely(size != 2)) {
                       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                      __PYX_ERR(0, 196, __pyx_L27_error)
+                      __PYX_ERR(0, 202, __pyx_L28_error)
                     }
                     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                    __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
+                    __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
                     __pyx_t_9 = PyTuple_GET_ITEM(sequence, 1); 
-                    __Pyx_INCREF(__pyx_t_1);
+                    __Pyx_INCREF(__pyx_t_2);
                     __Pyx_INCREF(__pyx_t_9);
                     #else
-                    __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L27_error)
-                    __Pyx_GOTREF(__pyx_t_1);
-                    __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 196, __pyx_L27_error)
+                    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L28_error)
+                    __Pyx_GOTREF(__pyx_t_2);
+                    __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 202, __pyx_L28_error)
                     __Pyx_GOTREF(__pyx_t_9);
                     #endif
-                    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                   } else {
-                    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 196, __pyx_L27_error)
+                    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 202, __pyx_L28_error)
                   }
-                  if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 196, __pyx_L27_error)
-                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
-                  __pyx_t_1 = 0;
+                  if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 202, __pyx_L28_error)
+                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
+                  __pyx_t_2 = 0;
                   __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_9));
                   __pyx_t_9 = 0;
 
-                  /* "NumeriCal.pyx":194
+                  /* "NumeriCal.pyx":200
  *                     try:
  *                         if key is False:
  *                             if 'e' in Value:             # <<<<<<<<<<<<<<
  *                                 numeric         = float( Value )
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  */
-                  goto __pyx_L34;
+                  goto __pyx_L35;
                 }
 
-                /* "NumeriCal.pyx":197
+                /* "NumeriCal.pyx":203
  *                                 numeric         = float( Value )
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                             elif 'E' in Value:             # <<<<<<<<<<<<<<
  *                                 numeric         = float( Value )
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  */
-                __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_E, __pyx_v_Value, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 197, __pyx_L27_error)
+                __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_E, __pyx_v_Value, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 203, __pyx_L28_error)
                 __pyx_t_4 = (__pyx_t_12 != 0);
                 if (__pyx_t_4) {
 
-                  /* "NumeriCal.pyx":198
+                  /* "NumeriCal.pyx":204
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                             elif 'E' in Value:
  *                                 numeric         = float( Value )             # <<<<<<<<<<<<<<
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                             else:
  */
-                  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L27_error)
-                  __Pyx_GOTREF(__pyx_t_2);
-                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
-                  __pyx_t_2 = 0;
+                  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L28_error)
+                  __Pyx_GOTREF(__pyx_t_1);
+                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
+                  __pyx_t_1 = 0;
 
-                  /* "NumeriCal.pyx":199
+                  /* "NumeriCal.pyx":205
  *                             elif 'E' in Value:
  *                                 numeric         = float( Value )
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()             # <<<<<<<<<<<<<<
  *                             else:
  *                                 numeric         = int( float( Value ) )
  */
-                  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L27_error)
-                  __Pyx_GOTREF(__pyx_t_2);
-                  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 199, __pyx_L27_error)
+                  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L28_error)
+                  __Pyx_GOTREF(__pyx_t_1);
+                  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 205, __pyx_L28_error)
                   __Pyx_GOTREF(__pyx_t_9);
                   __Pyx_INCREF(__pyx_v_numeric);
                   __Pyx_GIVEREF(__pyx_v_numeric);
                   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_numeric);
-                  __Pyx_GIVEREF(__pyx_t_2);
-                  PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_2);
-                  __pyx_t_2 = 0;
-                  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L27_error)
-                  __Pyx_GOTREF(__pyx_t_2);
+                  __Pyx_GIVEREF(__pyx_t_1);
+                  PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_1);
+                  __pyx_t_1 = 0;
+                  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L28_error)
+                  __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                  __pyx_t_9 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_2)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_2)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 199, __pyx_L27_error)
+                  __pyx_t_9 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_1)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_1)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 205, __pyx_L28_error)
                   __Pyx_GOTREF(__pyx_t_9);
-                  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                   if (likely(__pyx_t_9 != Py_None)) {
                     PyObject* sequence = __pyx_t_9;
                     Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
                     if (unlikely(size != 2)) {
                       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                      __PYX_ERR(0, 199, __pyx_L27_error)
+                      __PYX_ERR(0, 205, __pyx_L28_error)
                     }
                     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                    __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
-                    __pyx_t_1 = PyTuple_GET_ITEM(sequence, 1); 
-                    __Pyx_INCREF(__pyx_t_2);
+                    __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
+                    __pyx_t_2 = PyTuple_GET_ITEM(sequence, 1); 
                     __Pyx_INCREF(__pyx_t_1);
+                    __Pyx_INCREF(__pyx_t_2);
                     #else
-                    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L27_error)
-                    __Pyx_GOTREF(__pyx_t_2);
-                    __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L27_error)
+                    __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L28_error)
                     __Pyx_GOTREF(__pyx_t_1);
+                    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L28_error)
+                    __Pyx_GOTREF(__pyx_t_2);
                     #endif
                     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
                   } else {
-                    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 199, __pyx_L27_error)
+                    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 205, __pyx_L28_error)
                   }
-                  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 199, __pyx_L27_error)
-                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
-                  __pyx_t_2 = 0;
-                  __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
+                  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 205, __pyx_L28_error)
+                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
                   __pyx_t_1 = 0;
+                  __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
+                  __pyx_t_2 = 0;
 
-                  /* "NumeriCal.pyx":197
+                  /* "NumeriCal.pyx":203
  *                                 numeric         = float( Value )
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                             elif 'E' in Value:             # <<<<<<<<<<<<<<
  *                                 numeric         = float( Value )
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  */
-                  goto __pyx_L34;
+                  goto __pyx_L35;
                 }
 
-                /* "NumeriCal.pyx":201
+                /* "NumeriCal.pyx":207
  *                                 numeric, error  = FLOAT_ANALYZE( numeric, line ).FLOAT()
  *                             else:
  *                                 numeric         = int( float( Value ) )             # <<<<<<<<<<<<<<
@@ -5392,27 +5635,27 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  *                             numeric             = float( Value )
  */
                 /*else*/ {
-                  __pyx_t_9 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 201, __pyx_L27_error)
+                  __pyx_t_9 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 207, __pyx_L28_error)
                   __Pyx_GOTREF(__pyx_t_9);
-                  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L27_error)
-                  __Pyx_GOTREF(__pyx_t_1);
+                  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L28_error)
+                  __Pyx_GOTREF(__pyx_t_2);
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
-                  __pyx_t_1 = 0;
+                  __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
+                  __pyx_t_2 = 0;
                 }
-                __pyx_L34:;
+                __pyx_L35:;
 
-                /* "NumeriCal.pyx":193
+                /* "NumeriCal.pyx":199
  *                 if error in [ '', None ]:
  *                     try:
  *                         if key is False:             # <<<<<<<<<<<<<<
  *                             if 'e' in Value:
  *                                 numeric         = float( Value )
  */
-                goto __pyx_L33;
+                goto __pyx_L34;
               }
 
-              /* "NumeriCal.pyx":202
+              /* "NumeriCal.pyx":208
  *                             else:
  *                                 numeric         = int( float( Value ) )
  *                         elif key is True:             # <<<<<<<<<<<<<<
@@ -5422,71 +5665,71 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
               __pyx_t_4 = ((__pyx_v_key == 1) != 0);
               if (__pyx_t_4) {
 
-                /* "NumeriCal.pyx":203
+                /* "NumeriCal.pyx":209
  *                                 numeric         = int( float( Value ) )
  *                         elif key is True:
  *                             numeric             = float( Value )             # <<<<<<<<<<<<<<
  *                             numeric, error      = FLOAT_ANALYZE( numeric, line ).FLOAT()
  * 
  */
-                __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L27_error)
-                __Pyx_GOTREF(__pyx_t_1);
-                __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
-                __pyx_t_1 = 0;
+                __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_v_Value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L28_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
+                __pyx_t_2 = 0;
 
-                /* "NumeriCal.pyx":204
+                /* "NumeriCal.pyx":210
  *                         elif key is True:
  *                             numeric             = float( Value )
  *                             numeric, error      = FLOAT_ANALYZE( numeric, line ).FLOAT()             # <<<<<<<<<<<<<<
  * 
  *                     except ValueError:
  */
-                __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L27_error)
-                __Pyx_GOTREF(__pyx_t_1);
-                __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 204, __pyx_L27_error)
+                __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L28_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 210, __pyx_L28_error)
                 __Pyx_GOTREF(__pyx_t_9);
                 __Pyx_INCREF(__pyx_v_numeric);
                 __Pyx_GIVEREF(__pyx_v_numeric);
                 PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_numeric);
-                __Pyx_GIVEREF(__pyx_t_1);
-                PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_1);
-                __pyx_t_1 = 0;
-                __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L27_error)
-                __Pyx_GOTREF(__pyx_t_1);
+                __Pyx_GIVEREF(__pyx_t_2);
+                PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_2);
+                __pyx_t_2 = 0;
+                __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_FLOAT_ANALYZE), __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L28_error)
+                __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                __pyx_t_9 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_1)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_1)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 204, __pyx_L27_error)
+                __pyx_t_9 = ((struct __pyx_vtabstruct_9NumeriCal_FLOAT_ANALYZE *)((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_2)->__pyx_vtab)->FLOAT(((struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *)__pyx_t_2)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 210, __pyx_L28_error)
                 __Pyx_GOTREF(__pyx_t_9);
-                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 if (likely(__pyx_t_9 != Py_None)) {
                   PyObject* sequence = __pyx_t_9;
                   Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
                   if (unlikely(size != 2)) {
                     if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                     else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                    __PYX_ERR(0, 204, __pyx_L27_error)
+                    __PYX_ERR(0, 210, __pyx_L28_error)
                   }
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
-                  __pyx_t_2 = PyTuple_GET_ITEM(sequence, 1); 
-                  __Pyx_INCREF(__pyx_t_1);
+                  __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
+                  __pyx_t_1 = PyTuple_GET_ITEM(sequence, 1); 
                   __Pyx_INCREF(__pyx_t_2);
+                  __Pyx_INCREF(__pyx_t_1);
                   #else
-                  __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L27_error)
-                  __Pyx_GOTREF(__pyx_t_1);
-                  __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L27_error)
+                  __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L28_error)
                   __Pyx_GOTREF(__pyx_t_2);
+                  __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L28_error)
+                  __Pyx_GOTREF(__pyx_t_1);
                   #endif
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
                 } else {
-                  __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 204, __pyx_L27_error)
+                  __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 210, __pyx_L28_error)
                 }
-                if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 204, __pyx_L27_error)
-                __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
-                __pyx_t_1 = 0;
-                __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
+                if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 210, __pyx_L28_error)
+                __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
                 __pyx_t_2 = 0;
+                __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
+                __pyx_t_1 = 0;
 
-                /* "NumeriCal.pyx":202
+                /* "NumeriCal.pyx":208
  *                             else:
  *                                 numeric         = int( float( Value ) )
  *                         elif key is True:             # <<<<<<<<<<<<<<
@@ -5494,9 +5737,9 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  *                             numeric, error      = FLOAT_ANALYZE( numeric, line ).FLOAT()
  */
               }
-              __pyx_L33:;
+              __pyx_L34:;
 
-              /* "NumeriCal.pyx":192
+              /* "NumeriCal.pyx":198
  * 
  *                 if error in [ '', None ]:
  *                     try:             # <<<<<<<<<<<<<<
@@ -5507,8 +5750,8 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
             __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
             __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
-            goto __pyx_L32_try_end;
-            __pyx_L27_error:;
+            goto __pyx_L33_try_end;
+            __pyx_L28_error:;
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5517,7 +5760,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "NumeriCal.pyx":206
+            /* "NumeriCal.pyx":212
  *                             numeric, error      = FLOAT_ANALYZE( numeric, line ).FLOAT()
  * 
  *                     except ValueError:             # <<<<<<<<<<<<<<
@@ -5527,12 +5770,12 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
             if (__pyx_t_8) {
               __Pyx_AddTraceback("NumeriCal.NumeriCal", __pyx_clineno, __pyx_lineno, __pyx_filename);
-              if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 206, __pyx_L29_except_error)
+              if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_1, &__pyx_t_2) < 0) __PYX_ERR(0, 212, __pyx_L30_except_error)
               __Pyx_GOTREF(__pyx_t_9);
-              __Pyx_GOTREF(__pyx_t_2);
               __Pyx_GOTREF(__pyx_t_1);
+              __Pyx_GOTREF(__pyx_t_2);
 
-              /* "NumeriCal.pyx":207
+              /* "NumeriCal.pyx":213
  * 
  *                     except ValueError:
  *                         if   key is False : error = ERRORS( line ).ERROR4( Value )             # <<<<<<<<<<<<<<
@@ -5541,20 +5784,20 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
               __pyx_t_4 = ((__pyx_v_key == 0) != 0);
               if (__pyx_t_4) {
-                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L29_except_error)
+                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 213, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
-                __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L29_except_error)
+                __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 213, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_6);
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L29_except_error)
+                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 213, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
                 __pyx_t_7 = 0;
-                goto __pyx_L37;
+                goto __pyx_L38;
               }
 
-              /* "NumeriCal.pyx":208
+              /* "NumeriCal.pyx":214
  *                     except ValueError:
  *                         if   key is False : error = ERRORS( line ).ERROR4( Value )
  *                         elif key is True  : error = ERRORS( line ).ERROR4( Value, 'a float' )             # <<<<<<<<<<<<<<
@@ -5563,27 +5806,27 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
               __pyx_t_4 = ((__pyx_v_key == 1) != 0);
               if (__pyx_t_4) {
-                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L29_except_error)
+                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 214, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
-                __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L29_except_error)
+                __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_6);
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
                 __pyx_t_17.__pyx_n = 1;
                 __pyx_t_17._char_ = __pyx_kp_s_a_float;
-                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, &__pyx_t_17); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L29_except_error)
+                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, &__pyx_t_17); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 214, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
                 __pyx_t_7 = 0;
               }
-              __pyx_L37:;
+              __pyx_L38:;
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-              __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
               __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-              goto __pyx_L28_exception_handled;
+              __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+              goto __pyx_L29_exception_handled;
             }
 
-            /* "NumeriCal.pyx":210
+            /* "NumeriCal.pyx":216
  *                         elif key is True  : error = ERRORS( line ).ERROR4( Value, 'a float' )
  * 
  *                     except SyntaxError:             # <<<<<<<<<<<<<<
@@ -5593,12 +5836,12 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError);
             if (__pyx_t_8) {
               __Pyx_AddTraceback("NumeriCal.NumeriCal", __pyx_clineno, __pyx_lineno, __pyx_filename);
-              if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_9) < 0) __PYX_ERR(0, 210, __pyx_L29_except_error)
-              __Pyx_GOTREF(__pyx_t_1);
+              if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_1, &__pyx_t_9) < 0) __PYX_ERR(0, 216, __pyx_L30_except_error)
               __Pyx_GOTREF(__pyx_t_2);
+              __Pyx_GOTREF(__pyx_t_1);
               __Pyx_GOTREF(__pyx_t_9);
 
-              /* "NumeriCal.pyx":211
+              /* "NumeriCal.pyx":217
  * 
  *                     except SyntaxError:
  *                         if   key is False : error = ERRORS( line ).ERROR4( Value )             # <<<<<<<<<<<<<<
@@ -5607,20 +5850,20 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
               __pyx_t_4 = ((__pyx_v_key == 0) != 0);
               if (__pyx_t_4) {
-                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 211, __pyx_L29_except_error)
+                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 217, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
-                __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 211, __pyx_L29_except_error)
+                __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 217, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_6);
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 211, __pyx_L29_except_error)
+                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 217, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
                 __pyx_t_7 = 0;
-                goto __pyx_L40;
+                goto __pyx_L41;
               }
 
-              /* "NumeriCal.pyx":212
+              /* "NumeriCal.pyx":218
  *                     except SyntaxError:
  *                         if   key is False : error = ERRORS( line ).ERROR4( Value )
  *                         elif key is True  : error = ERRORS( line ).ERROR4( Value, 'a float' )             # <<<<<<<<<<<<<<
@@ -5629,27 +5872,27 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
               __pyx_t_4 = ((__pyx_v_key == 1) != 0);
               if (__pyx_t_4) {
-                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 212, __pyx_L29_except_error)
+                __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
-                __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 212, __pyx_L29_except_error)
+                __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 218, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_6);
                 __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
                 __pyx_t_17.__pyx_n = 1;
                 __pyx_t_17._char_ = __pyx_kp_s_a_float;
-                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, &__pyx_t_17); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 212, __pyx_L29_except_error)
+                __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, &__pyx_t_17); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L30_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
                 __pyx_t_7 = 0;
               }
-              __pyx_L40:;
-              __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+              __pyx_L41:;
               __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+              __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-              goto __pyx_L28_exception_handled;
+              goto __pyx_L29_exception_handled;
             }
 
-            /* "NumeriCal.pyx":214
+            /* "NumeriCal.pyx":220
  *                         elif key is True  : error = ERRORS( line ).ERROR4( Value, 'a float' )
  * 
  *                     except OverflowError:             # <<<<<<<<<<<<<<
@@ -5659,40 +5902,40 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_OverflowError);
             if (__pyx_t_8) {
               __Pyx_AddTraceback("NumeriCal.NumeriCal", __pyx_clineno, __pyx_lineno, __pyx_filename);
-              if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 214, __pyx_L29_except_error)
+              if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_1, &__pyx_t_2) < 0) __PYX_ERR(0, 220, __pyx_L30_except_error)
               __Pyx_GOTREF(__pyx_t_9);
-              __Pyx_GOTREF(__pyx_t_2);
               __Pyx_GOTREF(__pyx_t_1);
+              __Pyx_GOTREF(__pyx_t_2);
 
-              /* "NumeriCal.pyx":215
+              /* "NumeriCal.pyx":221
  * 
  *                     except OverflowError:
  *                         error = ERRORS( line ).ERROR9( 'float' )             # <<<<<<<<<<<<<<
  * 
  *                 else: pass
  */
-              __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 215, __pyx_L29_except_error)
+              __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 221, __pyx_L30_except_error)
               __Pyx_GOTREF(__pyx_t_7);
-              __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 215, __pyx_L29_except_error)
+              __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L30_except_error)
               __Pyx_GOTREF(__pyx_t_6);
               __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
               __pyx_t_18.__pyx_n = 1;
               __pyx_t_18.string = __pyx_n_s_float;
-              __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), &__pyx_t_18); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 215, __pyx_L29_except_error)
+              __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), &__pyx_t_18); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 221, __pyx_L30_except_error)
               __Pyx_GOTREF(__pyx_t_7);
               __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-              if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 215, __pyx_L29_except_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 221, __pyx_L30_except_error)
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
               __pyx_t_7 = 0;
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-              __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
               __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-              goto __pyx_L28_exception_handled;
+              __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+              goto __pyx_L29_exception_handled;
             }
-            goto __pyx_L29_except_error;
-            __pyx_L29_except_error:;
+            goto __pyx_L30_except_error;
+            __pyx_L30_except_error:;
 
-            /* "NumeriCal.pyx":192
+            /* "NumeriCal.pyx":198
  * 
  *                 if error in [ '', None ]:
  *                     try:             # <<<<<<<<<<<<<<
@@ -5704,25 +5947,25 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
             __Pyx_XGIVEREF(__pyx_t_16);
             __Pyx_ExceptionReset(__pyx_t_14, __pyx_t_15, __pyx_t_16);
             goto __pyx_L1_error;
-            __pyx_L28_exception_handled:;
+            __pyx_L29_exception_handled:;
             __Pyx_XGIVEREF(__pyx_t_14);
             __Pyx_XGIVEREF(__pyx_t_15);
             __Pyx_XGIVEREF(__pyx_t_16);
             __Pyx_ExceptionReset(__pyx_t_14, __pyx_t_15, __pyx_t_16);
-            __pyx_L32_try_end:;
+            __pyx_L33_try_end:;
           }
 
-          /* "NumeriCal.pyx":191
+          /* "NumeriCal.pyx":197
  *                 else: error = ERRORS( line ).ERROR1( Value )
  * 
  *                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
  *                     try:
  *                         if key is False:
  */
-          goto __pyx_L24;
+          goto __pyx_L25;
         }
 
-        /* "NumeriCal.pyx":217
+        /* "NumeriCal.pyx":223
  *                         error = ERRORS( line ).ERROR9( 'float' )
  * 
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -5731,19 +5974,19 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
         /*else*/ {
         }
-        __pyx_L24:;
+        __pyx_L25:;
 
-        /* "NumeriCal.pyx":186
+        /* "NumeriCal.pyx":192
  *             data, error = pss.SELECTION( Value, Value, DataBase, line).CHAR_SELECTION( '.' )
  * 
  *             if error in [ '', None ]:             # <<<<<<<<<<<<<<
  *                 if   len( data ) == 1  : key = False
  *                 elif len( data ) == 2  : key = True
  */
-        goto __pyx_L20;
+        goto __pyx_L21;
       }
 
-      /* "NumeriCal.pyx":218
+      /* "NumeriCal.pyx":224
  * 
  *                 else: pass
  *             else : pass             # <<<<<<<<<<<<<<
@@ -5752,11 +5995,11 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  */
       /*else*/ {
       }
-      __pyx_L20:;
+      __pyx_L21:;
     }
     __pyx_L6:;
 
-    /* "NumeriCal.pyx":164
+    /* "NumeriCal.pyx":166
  * 
  * 
  *     if TypeOfValue[ 0 ] in [ None, 'numeric' ]:             # <<<<<<<<<<<<<<
@@ -5766,7 +6009,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
     goto __pyx_L3;
   }
 
-  /* "NumeriCal.pyx":220
+  /* "NumeriCal.pyx":226
  *             else : pass
  *     else:
  *         try:             # <<<<<<<<<<<<<<
@@ -5783,71 +6026,71 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       __Pyx_XGOTREF(__pyx_t_14);
       /*try:*/ {
 
-        /* "NumeriCal.pyx":221
+        /* "NumeriCal.pyx":227
  *     else:
  *         try:
  *             numeric         = complex( Value )             # <<<<<<<<<<<<<<
  *             numeric, error  = COMPLEX_ANALYZE( numeric, line ).COMPLEX()
  * 
  */
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L43_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
-        __pyx_t_1 = 0;
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyComplex_Type)), __pyx_v_Value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L44_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
+        __pyx_t_2 = 0;
 
-        /* "NumeriCal.pyx":222
+        /* "NumeriCal.pyx":228
  *         try:
  *             numeric         = complex( Value )
  *             numeric, error  = COMPLEX_ANALYZE( numeric, line ).COMPLEX()             # <<<<<<<<<<<<<<
  * 
  *         except ( ValueError, SyntaxError ): error = ERRORS( line ).ERROR4( Value, 'a complex' )
  */
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L43_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L43_error)
+        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L44_error)
         __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L44_error)
+        __Pyx_GOTREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_v_numeric);
         __Pyx_GIVEREF(__pyx_v_numeric);
-        PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_numeric);
-        __Pyx_GIVEREF(__pyx_t_1);
-        PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
-        __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L43_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *)((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_1)->__pyx_vtab)->COMPLEX(((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L43_error)
+        PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_numeric);
+        __Pyx_GIVEREF(__pyx_t_2);
+        PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
+        __pyx_t_2 = 0;
+        __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9NumeriCal_COMPLEX_ANALYZE), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L44_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (likely(__pyx_t_2 != Py_None)) {
-          PyObject* sequence = __pyx_t_2;
+        __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_COMPLEX_ANALYZE *)((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_2)->__pyx_vtab)->COMPLEX(((struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L44_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (likely(__pyx_t_1 != Py_None)) {
+          PyObject* sequence = __pyx_t_1;
           Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 222, __pyx_L43_error)
+            __PYX_ERR(0, 228, __pyx_L44_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
+          __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
           __pyx_t_9 = PyTuple_GET_ITEM(sequence, 1); 
-          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_2);
           __Pyx_INCREF(__pyx_t_9);
           #else
-          __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L43_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 222, __pyx_L43_error)
+          __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L44_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 228, __pyx_L44_error)
           __Pyx_GOTREF(__pyx_t_9);
           #endif
-          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         } else {
-          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 222, __pyx_L43_error)
+          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 228, __pyx_L44_error)
         }
-        if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 222, __pyx_L43_error)
-        __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_1);
-        __pyx_t_1 = 0;
+        if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 228, __pyx_L44_error)
+        __Pyx_DECREF_SET(__pyx_v_numeric, __pyx_t_2);
+        __pyx_t_2 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_9));
         __pyx_t_9 = 0;
 
-        /* "NumeriCal.pyx":220
+        /* "NumeriCal.pyx":226
  *             else : pass
  *     else:
  *         try:             # <<<<<<<<<<<<<<
@@ -5858,8 +6101,8 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
       __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-      goto __pyx_L48_try_end;
-      __pyx_L43_error:;
+      goto __pyx_L49_try_end;
+      __pyx_L44_error:;
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5868,7 +6111,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "NumeriCal.pyx":224
+      /* "NumeriCal.pyx":230
  *             numeric, error  = COMPLEX_ANALYZE( numeric, line ).COMPLEX()
  * 
  *         except ( ValueError, SyntaxError ): error = ERRORS( line ).ERROR4( Value, 'a complex' )             # <<<<<<<<<<<<<<
@@ -5878,29 +6121,29 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError);
       if (__pyx_t_8) {
         __Pyx_AddTraceback("NumeriCal.NumeriCal", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_9, &__pyx_t_1) < 0) __PYX_ERR(0, 224, __pyx_L45_except_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_GOTREF(__pyx_t_9);
+        if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_9, &__pyx_t_2) < 0) __PYX_ERR(0, 230, __pyx_L46_except_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 224, __pyx_L45_except_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 230, __pyx_L46_except_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L45_except_error)
+        __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L46_except_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_17.__pyx_n = 1;
         __pyx_t_17._char_ = __pyx_kp_s_a_complex;
-        __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, &__pyx_t_17); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 224, __pyx_L45_except_error)
+        __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR4(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), __pyx_v_Value, &__pyx_t_17); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 230, __pyx_L46_except_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
         __pyx_t_7 = 0;
-        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        goto __pyx_L44_exception_handled;
+        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+        goto __pyx_L45_exception_handled;
       }
 
-      /* "NumeriCal.pyx":225
+      /* "NumeriCal.pyx":231
  * 
  *         except ( ValueError, SyntaxError ): error = ERRORS( line ).ERROR4( Value, 'a complex' )
  *         except OverflowError : error = ERRORS( line ).ERROR9( 'complex' )             # <<<<<<<<<<<<<<
@@ -5910,32 +6153,32 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_OverflowError);
       if (__pyx_t_8) {
         __Pyx_AddTraceback("NumeriCal.NumeriCal", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_9, &__pyx_t_2) < 0) __PYX_ERR(0, 225, __pyx_L45_except_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_GOTREF(__pyx_t_9);
+        if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_9, &__pyx_t_1) < 0) __PYX_ERR(0, 231, __pyx_L46_except_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 225, __pyx_L45_except_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 231, __pyx_L46_except_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 225, __pyx_L45_except_error)
+        __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 231, __pyx_L46_except_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_18.__pyx_n = 1;
         __pyx_t_18.string = __pyx_n_s_complex;
-        __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), &__pyx_t_18); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 225, __pyx_L45_except_error)
+        __pyx_t_7 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_6), &__pyx_t_18); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 231, __pyx_L46_except_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 225, __pyx_L45_except_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 231, __pyx_L46_except_error)
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
         __pyx_t_7 = 0;
-        __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-        goto __pyx_L44_exception_handled;
+        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L45_exception_handled;
       }
-      goto __pyx_L45_except_error;
-      __pyx_L45_except_error:;
+      goto __pyx_L46_except_error;
+      __pyx_L46_except_error:;
 
-      /* "NumeriCal.pyx":220
+      /* "NumeriCal.pyx":226
  *             else : pass
  *     else:
  *         try:             # <<<<<<<<<<<<<<
@@ -5947,17 +6190,17 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
       __Pyx_XGIVEREF(__pyx_t_14);
       __Pyx_ExceptionReset(__pyx_t_16, __pyx_t_15, __pyx_t_14);
       goto __pyx_L1_error;
-      __pyx_L44_exception_handled:;
+      __pyx_L45_exception_handled:;
       __Pyx_XGIVEREF(__pyx_t_16);
       __Pyx_XGIVEREF(__pyx_t_15);
       __Pyx_XGIVEREF(__pyx_t_14);
       __Pyx_ExceptionReset(__pyx_t_16, __pyx_t_15, __pyx_t_14);
-      __pyx_L48_try_end:;
+      __pyx_L49_try_end:;
     }
   }
   __pyx_L3:;
 
-  /* "NumeriCal.pyx":228
+  /* "NumeriCal.pyx":234
  * 
  * 
  *     return numeric, error             # <<<<<<<<<<<<<<
@@ -5965,19 +6208,19 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
  * cdef class NUMERICAL:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_numeric);
   __Pyx_GIVEREF(__pyx_v_numeric);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_numeric);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_numeric);
   __Pyx_INCREF(__pyx_v_error);
   __Pyx_GIVEREF(__pyx_v_error);
-  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_error);
-  __pyx_r = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_error);
+  __pyx_r = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":150
+  /* "NumeriCal.pyx":152
  * 
  * 
  * cdef tuple NumeriCal( dict DictValue, list variables, list _values_, int line, dict DataBase ) :             # <<<<<<<<<<<<<<
@@ -6010,7 +6253,7 @@ static PyObject *__pyx_f_9NumeriCal_NumeriCal(PyObject *__pyx_v_DictValue, PyObj
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":239
+/* "NumeriCal.pyx":245
  * 
  * 
  *     def __init__( self, ListOfValues, DataBase, line ):             # <<<<<<<<<<<<<<
@@ -6055,17 +6298,17 @@ static int __pyx_pw_9NumeriCal_9NUMERICAL_1__init__(PyObject *__pyx_v_self, PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_DataBase)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(0, 239, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(0, 245, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_line)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(0, 239, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(0, 245, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 239, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 245, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -6080,7 +6323,7 @@ static int __pyx_pw_9NumeriCal_9NUMERICAL_1__init__(PyObject *__pyx_v_self, PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 239, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 245, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("NumeriCal.NUMERICAL.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6104,14 +6347,14 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL___init__(struct __pyx_obj_9NumeriCal_N
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "NumeriCal.pyx":240
+  /* "NumeriCal.pyx":246
  * 
  *     def __init__( self, ListOfValues, DataBase, line ):
  *         self.ListOfValues           = ListOfValues             # <<<<<<<<<<<<<<
  *         self.DataBase               = DataBase
  *         self.variables              = self.DataBase[ 'variables' ][ 'vars' ]
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_ListOfValues))||((__pyx_v_ListOfValues) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_ListOfValues)->tp_name), 0))) __PYX_ERR(0, 240, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_ListOfValues))||((__pyx_v_ListOfValues) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_ListOfValues)->tp_name), 0))) __PYX_ERR(0, 246, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_ListOfValues;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6120,14 +6363,14 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL___init__(struct __pyx_obj_9NumeriCal_N
   __pyx_v_self->ListOfValues = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":241
+  /* "NumeriCal.pyx":247
  *     def __init__( self, ListOfValues, DataBase, line ):
  *         self.ListOfValues           = ListOfValues
  *         self.DataBase               = DataBase             # <<<<<<<<<<<<<<
  *         self.variables              = self.DataBase[ 'variables' ][ 'vars' ]
  *         self._values_               = self.DataBase[ 'variables' ][ 'values' ]
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_DataBase))||((__pyx_v_DataBase) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_DataBase)->tp_name), 0))) __PYX_ERR(0, 241, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_DataBase))||((__pyx_v_DataBase) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_DataBase)->tp_name), 0))) __PYX_ERR(0, 247, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_DataBase;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6136,7 +6379,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL___init__(struct __pyx_obj_9NumeriCal_N
   __pyx_v_self->DataBase = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":242
+  /* "NumeriCal.pyx":248
  *         self.ListOfValues           = ListOfValues
  *         self.DataBase               = DataBase
  *         self.variables              = self.DataBase[ 'variables' ][ 'vars' ]             # <<<<<<<<<<<<<<
@@ -6145,21 +6388,21 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL___init__(struct __pyx_obj_9NumeriCal_N
  */
   if (unlikely(__pyx_v_self->DataBase == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 242, __pyx_L1_error)
+    __PYX_ERR(0, 248, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->DataBase, __pyx_n_s_variables); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->DataBase, __pyx_n_s_variables); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_vars); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_vars); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 242, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->variables);
   __Pyx_DECREF(__pyx_v_self->variables);
   __pyx_v_self->variables = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":243
+  /* "NumeriCal.pyx":249
  *         self.DataBase               = DataBase
  *         self.variables              = self.DataBase[ 'variables' ][ 'vars' ]
  *         self._values_               = self.DataBase[ 'variables' ][ 'values' ]             # <<<<<<<<<<<<<<
@@ -6168,31 +6411,31 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL___init__(struct __pyx_obj_9NumeriCal_N
  */
   if (unlikely(__pyx_v_self->DataBase == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 243, __pyx_L1_error)
+    __PYX_ERR(0, 249, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->DataBase, __pyx_n_s_variables); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->DataBase, __pyx_n_s_variables); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_s_values); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_s_values); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 243, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_values_);
   __Pyx_DECREF(__pyx_v_self->_values_);
   __pyx_v_self->_values_ = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":244
+  /* "NumeriCal.pyx":250
  *         self.variables              = self.DataBase[ 'variables' ][ 'vars' ]
  *         self._values_               = self.DataBase[ 'variables' ][ 'values' ]
  *         self.line                   = line             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_3;
 
-  /* "NumeriCal.pyx":239
+  /* "NumeriCal.pyx":245
  * 
  * 
  *     def __init__( self, ListOfValues, DataBase, line ):             # <<<<<<<<<<<<<<
@@ -6213,7 +6456,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL___init__(struct __pyx_obj_9NumeriCal_N
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":247
+/* "NumeriCal.pyx":253
  * 
  * 
  *     cpdef CHECK( self ):             # <<<<<<<<<<<<<<
@@ -6246,7 +6489,7 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_CHECK); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_CHECK); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_9NumeriCal_9NUMERICAL_3CHECK)) {
         __Pyx_XDECREF(__pyx_r);
@@ -6263,7 +6506,7 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -6284,7 +6527,7 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
     #endif
   }
 
-  /* "NumeriCal.pyx":251
+  /* "NumeriCal.pyx":257
  *         cdef list KeysOfValues
  * 
  *         KeysOfValues = list( self.ListOfValues.keys() )             # <<<<<<<<<<<<<<
@@ -6293,28 +6536,28 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
  */
   if (unlikely(__pyx_v_self->ListOfValues == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 251, __pyx_L1_error)
+    __PYX_ERR(0, 257, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_self->ListOfValues); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_self->ListOfValues); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_KeysOfValues = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":253
+  /* "NumeriCal.pyx":259
  *         KeysOfValues = list( self.ListOfValues.keys() )
  * 
  *         if 'values' in KeysOfValues:             # <<<<<<<<<<<<<<
  *             return ExpValue( self.ListOfValues, self.variables, self._values_, self.line, self.DataBase )
  *         else:
  */
-  __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_values, __pyx_v_KeysOfValues, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_values, __pyx_v_KeysOfValues, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 259, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
 
-    /* "NumeriCal.pyx":254
+    /* "NumeriCal.pyx":260
  * 
  *         if 'values' in KeysOfValues:
  *             return ExpValue( self.ListOfValues, self.variables, self._values_, self.line, self.DataBase )             # <<<<<<<<<<<<<<
@@ -6330,7 +6573,7 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_4 = __pyx_v_self->DataBase;
     __Pyx_INCREF(__pyx_t_4);
-    __pyx_t_7 = __pyx_f_9NumeriCal_ExpValue(((PyObject*)__pyx_t_2), ((PyObject*)__pyx_t_1), ((PyObject*)__pyx_t_3), __pyx_v_self->line, ((PyObject*)__pyx_t_4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __pyx_t_7 = __pyx_f_9NumeriCal_ExpValue(((PyObject*)__pyx_t_2), ((PyObject*)__pyx_t_1), ((PyObject*)__pyx_t_3), __pyx_v_self->line, ((PyObject*)__pyx_t_4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 260, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6340,7 +6583,7 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
     __pyx_t_7 = 0;
     goto __pyx_L0;
 
-    /* "NumeriCal.pyx":253
+    /* "NumeriCal.pyx":259
  *         KeysOfValues = list( self.ListOfValues.keys() )
  * 
  *         if 'values' in KeysOfValues:             # <<<<<<<<<<<<<<
@@ -6349,7 +6592,7 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
  */
   }
 
-  /* "NumeriCal.pyx":256
+  /* "NumeriCal.pyx":262
  *             return ExpValue( self.ListOfValues, self.variables, self._values_, self.line, self.DataBase )
  *         else:
  *             return NumeriCal( self.ListOfValues, self.variables, self._values_, self.line, self.DataBase )             # <<<<<<<<<<<<<<
@@ -6366,7 +6609,7 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_1 = __pyx_v_self->DataBase;
     __Pyx_INCREF(__pyx_t_1);
-    __pyx_t_2 = __pyx_f_9NumeriCal_NumeriCal(((PyObject*)__pyx_t_7), ((PyObject*)__pyx_t_4), ((PyObject*)__pyx_t_3), __pyx_v_self->line, ((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_9NumeriCal_NumeriCal(((PyObject*)__pyx_t_7), ((PyObject*)__pyx_t_4), ((PyObject*)__pyx_t_3), __pyx_v_self->line, ((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6377,7 +6620,7 @@ static PyObject *__pyx_f_9NumeriCal_9NUMERICAL_CHECK(struct __pyx_obj_9NumeriCal
     goto __pyx_L0;
   }
 
-  /* "NumeriCal.pyx":247
+  /* "NumeriCal.pyx":253
  * 
  * 
  *     cpdef CHECK( self ):             # <<<<<<<<<<<<<<
@@ -6423,7 +6666,7 @@ static PyObject *__pyx_pf_9NumeriCal_9NUMERICAL_2CHECK(struct __pyx_obj_9NumeriC
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("CHECK", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9NumeriCal_9NUMERICAL_CHECK(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9NumeriCal_9NUMERICAL_CHECK(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6440,7 +6683,7 @@ static PyObject *__pyx_pf_9NumeriCal_9NUMERICAL_2CHECK(struct __pyx_obj_9NumeriC
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":232
+/* "NumeriCal.pyx":238
  * cdef class NUMERICAL:
  *     cdef public:
  *         dict DataBase             # <<<<<<<<<<<<<<
@@ -6498,7 +6741,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_8DataBase_2__set__(struct __pyx_obj_9N
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 238, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6548,7 +6791,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_8DataBase_4__del__(struct __pyx_obj_9N
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":233
+/* "NumeriCal.pyx":239
  *     cdef public:
  *         dict DataBase
  *         dict ListOfValues             # <<<<<<<<<<<<<<
@@ -6606,7 +6849,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_12ListOfValues_2__set__(struct __pyx_o
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 233, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 239, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6656,7 +6899,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_12ListOfValues_4__del__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":234
+/* "NumeriCal.pyx":240
  *         dict DataBase
  *         dict ListOfValues
  *         list variables             # <<<<<<<<<<<<<<
@@ -6714,7 +6957,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_9variables_2__set__(struct __pyx_obj_9
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 234, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 240, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6764,7 +7007,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_9variables_4__del__(struct __pyx_obj_9
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":235
+/* "NumeriCal.pyx":241
  *         dict ListOfValues
  *         list variables
  *         list _values_             # <<<<<<<<<<<<<<
@@ -6822,7 +7065,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_8_values__2__set__(struct __pyx_obj_9N
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 241, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6872,7 +7115,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_8_values__4__del__(struct __pyx_obj_9N
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":236
+/* "NumeriCal.pyx":242
  *         list variables
  *         list _values_
  *         int line             # <<<<<<<<<<<<<<
@@ -6902,7 +7145,7 @@ static PyObject *__pyx_pf_9NumeriCal_9NUMERICAL_4line___get__(struct __pyx_obj_9
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6940,7 +7183,7 @@ static int __pyx_pf_9NumeriCal_9NUMERICAL_4line_2__set__(struct __pyx_obj_9Numer
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 242, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
   /* function exit code */
@@ -7286,7 +7529,7 @@ static PyObject *__pyx_pf_9NumeriCal_9NUMERICAL_6__setstate_cython__(struct __py
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":276
+/* "NumeriCal.pyx":282
  * 
  * 
  *     def __init__( self, line ) :             # <<<<<<<<<<<<<<
@@ -7323,7 +7566,7 @@ static int __pyx_pw_9NumeriCal_6ERRORS_1__init__(PyObject *__pyx_v_self, PyObjec
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 276, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 282, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -7334,7 +7577,7 @@ static int __pyx_pw_9NumeriCal_6ERRORS_1__init__(PyObject *__pyx_v_self, PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 276, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 282, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("NumeriCal.ERRORS.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7358,245 +7601,245 @@ static int __pyx_pf_9NumeriCal_6ERRORS___init__(struct __pyx_obj_9NumeriCal_ERRO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "NumeriCal.pyx":277
+  /* "NumeriCal.pyx":283
  * 
  *     def __init__( self, line ) :
  *         self.line    = line             # <<<<<<<<<<<<<<
  *         self.ve      = Fore.LIGHTGREEN_EX
  *         self.ne      = Fore.LIGHTRED_EX
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 283, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
-  /* "NumeriCal.pyx":278
+  /* "NumeriCal.pyx":284
  *     def __init__( self, line ) :
  *         self.line    = line
  *         self.ve      = Fore.LIGHTGREEN_EX             # <<<<<<<<<<<<<<
  *         self.ne      = Fore.LIGHTRED_EX
  *         self.te      = Fore.MAGENTA
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTGREEN_EX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTGREEN_EX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 278, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->ve);
   __Pyx_DECREF(__pyx_v_self->ve);
   __pyx_v_self->ve = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "NumeriCal.pyx":279
+  /* "NumeriCal.pyx":285
  *         self.line    = line
  *         self.ve      = Fore.LIGHTGREEN_EX
  *         self.ne      = Fore.LIGHTRED_EX             # <<<<<<<<<<<<<<
  *         self.te      = Fore.MAGENTA
  *         self.we      = Fore.LIGHTWHITE_EX
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_LIGHTRED_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_LIGHTRED_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 279, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->ne);
   __Pyx_DECREF(__pyx_v_self->ne);
   __pyx_v_self->ne = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":280
+  /* "NumeriCal.pyx":286
  *         self.ve      = Fore.LIGHTGREEN_EX
  *         self.ne      = Fore.LIGHTRED_EX
  *         self.te      = Fore.MAGENTA             # <<<<<<<<<<<<<<
  *         self.we      = Fore.LIGHTWHITE_EX
  *         self.ke      = Fore.LIGHTYELLOW_EX
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_MAGENTA); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_MAGENTA); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 280, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->te);
   __Pyx_DECREF(__pyx_v_self->te);
   __pyx_v_self->te = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "NumeriCal.pyx":281
+  /* "NumeriCal.pyx":287
  *         self.ne      = Fore.LIGHTRED_EX
  *         self.te      = Fore.MAGENTA
  *         self.we      = Fore.LIGHTWHITE_EX             # <<<<<<<<<<<<<<
  *         self.ke      = Fore.LIGHTYELLOW_EX
  *         self.ie      = Fore.LIGHTBLUE_EX
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_LIGHTWHITE_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_LIGHTWHITE_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 281, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->we);
   __Pyx_DECREF(__pyx_v_self->we);
   __pyx_v_self->we = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":282
+  /* "NumeriCal.pyx":288
  *         self.te      = Fore.MAGENTA
  *         self.we      = Fore.LIGHTWHITE_EX
  *         self.ke      = Fore.LIGHTYELLOW_EX             # <<<<<<<<<<<<<<
  *         self.ie      = Fore.LIGHTBLUE_EX
  *         self.ae      = Fore.CYAN
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 282, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTYELLOW_EX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTYELLOW_EX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 282, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->ke);
   __Pyx_DECREF(__pyx_v_self->ke);
   __pyx_v_self->ke = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "NumeriCal.pyx":283
+  /* "NumeriCal.pyx":289
  *         self.we      = Fore.LIGHTWHITE_EX
  *         self.ke      = Fore.LIGHTYELLOW_EX
  *         self.ie      = Fore.LIGHTBLUE_EX             # <<<<<<<<<<<<<<
  *         self.ae      = Fore.CYAN
  *         self.le      = Fore.RED
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 283, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_LIGHTBLUE_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_LIGHTBLUE_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 283, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->ie);
   __Pyx_DECREF(__pyx_v_self->ie);
   __pyx_v_self->ie = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":284
+  /* "NumeriCal.pyx":290
  *         self.ke      = Fore.LIGHTYELLOW_EX
  *         self.ie      = Fore.LIGHTBLUE_EX
  *         self.ae      = Fore.CYAN             # <<<<<<<<<<<<<<
  *         self.le      = Fore.RED
  *         self.be      = Fore.BLUE
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 290, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CYAN); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CYAN); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 284, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 290, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->ae);
   __Pyx_DECREF(__pyx_v_self->ae);
   __pyx_v_self->ae = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "NumeriCal.pyx":285
+  /* "NumeriCal.pyx":291
  *         self.ie      = Fore.LIGHTBLUE_EX
  *         self.ae      = Fore.CYAN
  *         self.le      = Fore.RED             # <<<<<<<<<<<<<<
  *         self.be      = Fore.BLUE
  *         self.ge      = Fore.GREEN
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_RED); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_RED); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 285, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 291, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->le);
   __Pyx_DECREF(__pyx_v_self->le);
   __pyx_v_self->le = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":286
+  /* "NumeriCal.pyx":292
  *         self.ae      = Fore.CYAN
  *         self.le      = Fore.RED
  *         self.be      = Fore.BLUE             # <<<<<<<<<<<<<<
  *         self.ge      = Fore.GREEN
  *         self.me      = Fore.LIGHTCYAN_EX
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_BLUE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_BLUE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 286, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 292, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->be);
   __Pyx_DECREF(__pyx_v_self->be);
   __pyx_v_self->be = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "NumeriCal.pyx":287
+  /* "NumeriCal.pyx":293
  *         self.le      = Fore.RED
  *         self.be      = Fore.BLUE
  *         self.ge      = Fore.GREEN             # <<<<<<<<<<<<<<
  *         self.me      = Fore.LIGHTCYAN_EX
  *         self.reset   = Style.RESET_ALL
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Fore); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_GREEN); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_GREEN); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 287, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 293, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->ge);
   __Pyx_DECREF(__pyx_v_self->ge);
   __pyx_v_self->ge = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":288
+  /* "NumeriCal.pyx":294
  *         self.be      = Fore.BLUE
  *         self.ge      = Fore.GREEN
  *         self.me      = Fore.LIGHTCYAN_EX             # <<<<<<<<<<<<<<
  *         self.reset   = Style.RESET_ALL
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTCYAN_EX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTCYAN_EX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 288, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->me);
   __Pyx_DECREF(__pyx_v_self->me);
   __pyx_v_self->me = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "NumeriCal.pyx":289
+  /* "NumeriCal.pyx":295
  *         self.ge      = Fore.GREEN
  *         self.me      = Fore.LIGHTCYAN_EX
  *         self.reset   = Style.RESET_ALL             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Style); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Style); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_RESET_ALL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_RESET_ALL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 289, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->reset);
   __Pyx_DECREF(__pyx_v_self->reset);
   __pyx_v_self->reset = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":276
+  /* "NumeriCal.pyx":282
  * 
  * 
  *     def __init__( self, line ) :             # <<<<<<<<<<<<<<
@@ -7617,7 +7860,7 @@ static int __pyx_pf_9NumeriCal_6ERRORS___init__(struct __pyx_obj_9NumeriCal_ERRO
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":292
+/* "NumeriCal.pyx":298
  * 
  * 
  *     cdef str ERROR0(self, str string ):             # <<<<<<<<<<<<<<
@@ -7641,210 +7884,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR0(struct __pyx_obj_9NumeriCal_E
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ERROR0", 0);
 
-  /* "NumeriCal.pyx":296
+  /* "NumeriCal.pyx":302
  *             str err, error
  * 
  *         err     = '{}line: {}{}'.format(self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : invalid syntax in {}<< {} >>. '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_line_2, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 296, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_5 = 1;
-    }
-  }
-  #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  } else
-  #endif
-  #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  } else
-  #endif
-  {
-    __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    if (__pyx_t_4) {
-      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
-    }
-    __Pyx_INCREF(__pyx_v_self->we);
-    __Pyx_GIVEREF(__pyx_v_self->we);
-    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_self->we);
-    __Pyx_INCREF(__pyx_v_self->ke);
-    __Pyx_GIVEREF(__pyx_v_self->ke);
-    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_self->ke);
-    __Pyx_GIVEREF(__pyx_t_3);
-    PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_t_3);
-    __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 296, __pyx_L1_error)
-  __pyx_v_err = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "NumeriCal.pyx":297
- * 
- *         err     = '{}line: {}{}'.format(self.we, self.ke, self.line)
- *         error   = '{}{} : invalid syntax in {}<< {} >>. '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset             # <<<<<<<<<<<<<<
- * 
- *         return error
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_invalid_syntax_in, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = NULL;
-  __pyx_t_5 = 0;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_6);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_5 = 1;
-    }
-  }
-  #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->ke, __pyx_n_s_SyntaxError, __pyx_v_self->ae, __pyx_v_string};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-  } else
-  #endif
-  #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->ke, __pyx_n_s_SyntaxError, __pyx_v_self->ae, __pyx_v_string};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-  } else
-  #endif
-  {
-    __pyx_t_3 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    if (__pyx_t_6) {
-      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
-    }
-    __Pyx_INCREF(__pyx_v_self->ke);
-    __Pyx_GIVEREF(__pyx_v_self->ke);
-    PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_5, __pyx_v_self->ke);
-    __Pyx_INCREF(__pyx_n_s_SyntaxError);
-    __Pyx_GIVEREF(__pyx_n_s_SyntaxError);
-    PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_5, __pyx_n_s_SyntaxError);
-    __Pyx_INCREF(__pyx_v_self->ae);
-    __Pyx_GIVEREF(__pyx_v_self->ae);
-    PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_5, __pyx_v_self->ae);
-    __Pyx_INCREF(__pyx_v_string);
-    __Pyx_GIVEREF(__pyx_v_string);
-    PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_5, __pyx_v_string);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 297, __pyx_L1_error)
-  __pyx_v_error = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "NumeriCal.pyx":299
- *         error   = '{}{} : invalid syntax in {}<< {} >>. '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset
- * 
- *         return error             # <<<<<<<<<<<<<<
- * 
- *     cdef str ERROR1(self, str string):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_error);
-  __pyx_r = __pyx_v_error;
-  goto __pyx_L0;
-
-  /* "NumeriCal.pyx":292
- * 
- * 
- *     cdef str ERROR0(self, str string ):             # <<<<<<<<<<<<<<
- *         cdef :
- *             str err, error
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("NumeriCal.ERRORS.ERROR0", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_err);
-  __Pyx_XDECREF(__pyx_v_error);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "NumeriCal.pyx":301
- *         return error
- * 
- *     cdef str ERROR1(self, str string):             # <<<<<<<<<<<<<<
- *         err     = '{}due to {}<< . >> .{}line: {}{}'.format(self.ke, self.ne, self.we, self.ke, self.line)
- *         error   = '{}{} : invalid syntax in {}<< {} >> '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset
- */
-
-static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR1(struct __pyx_obj_9NumeriCal_ERRORS *__pyx_v_self, PyObject *__pyx_v_string) {
-  PyObject *__pyx_v_err = NULL;
-  PyObject *__pyx_v_error = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("ERROR1", 0);
-
-  /* "NumeriCal.pyx":302
- * 
- *     cdef str ERROR1(self, str string):
- *         err     = '{}due to {}<< . >> .{}line: {}{}'.format(self.ke, self.ne, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
- *         error   = '{}{} : invalid syntax in {}<< {} >> '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset
- * 
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_due_to_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_line_2, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -7862,8 +7909,8 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR1(struct __pyx_obj_9NumeriCal_E
   }
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[6] = {__pyx_t_4, __pyx_v_self->ke, __pyx_v_self->ne, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
+    PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7871,50 +7918,45 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR1(struct __pyx_obj_9NumeriCal_E
   #endif
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[6] = {__pyx_t_4, __pyx_v_self->ke, __pyx_v_self->ne, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
+    PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(5+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
     }
-    __Pyx_INCREF(__pyx_v_self->ke);
-    __Pyx_GIVEREF(__pyx_v_self->ke);
-    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_self->ke);
-    __Pyx_INCREF(__pyx_v_self->ne);
-    __Pyx_GIVEREF(__pyx_v_self->ne);
-    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_self->ne);
     __Pyx_INCREF(__pyx_v_self->we);
     __Pyx_GIVEREF(__pyx_v_self->we);
-    PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_self->we);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_self->we);
     __Pyx_INCREF(__pyx_v_self->ke);
     __Pyx_GIVEREF(__pyx_v_self->ke);
-    PyTuple_SET_ITEM(__pyx_t_6, 3+__pyx_t_5, __pyx_v_self->ke);
+    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_self->ke);
     __Pyx_GIVEREF(__pyx_t_3);
-    PyTuple_SET_ITEM(__pyx_t_6, 4+__pyx_t_5, __pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
     __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_err = __pyx_t_1;
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_v_err = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
   /* "NumeriCal.pyx":303
- *     cdef str ERROR1(self, str string):
- *         err     = '{}due to {}<< . >> .{}line: {}{}'.format(self.ke, self.ne, self.we, self.ke, self.line)
- *         error   = '{}{} : invalid syntax in {}<< {} >> '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset             # <<<<<<<<<<<<<<
+ * 
+ *         err     = '{}line: {}{}'.format(self.we, self.ke, self.line)
+ *         error   = '{}{} : invalid syntax in {}<< {} >>. '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_invalid_syntax_in_2, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_invalid_syntax_in, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 303, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -7973,10 +8015,211 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR1(struct __pyx_obj_9NumeriCal_E
   __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 303, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_error = __pyx_t_1;
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_v_error = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
   /* "NumeriCal.pyx":305
+ *         error   = '{}{} : invalid syntax in {}<< {} >>. '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset
+ * 
+ *         return error             # <<<<<<<<<<<<<<
+ * 
+ *     cdef str ERROR1(self, str string):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_error);
+  __pyx_r = __pyx_v_error;
+  goto __pyx_L0;
+
+  /* "NumeriCal.pyx":298
+ * 
+ * 
+ *     cdef str ERROR0(self, str string ):             # <<<<<<<<<<<<<<
+ *         cdef :
+ *             str err, error
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_AddTraceback("NumeriCal.ERRORS.ERROR0", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_err);
+  __Pyx_XDECREF(__pyx_v_error);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "NumeriCal.pyx":307
+ *         return error
+ * 
+ *     cdef str ERROR1(self, str string):             # <<<<<<<<<<<<<<
+ *         err     = '{}due to {}<< . >> .{}line: {}{}'.format(self.ke, self.ne, self.we, self.ke, self.line)
+ *         error   = '{}{} : invalid syntax in {}<< {} >> '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset
+ */
+
+static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR1(struct __pyx_obj_9NumeriCal_ERRORS *__pyx_v_self, PyObject *__pyx_v_string) {
+  PyObject *__pyx_v_err = NULL;
+  PyObject *__pyx_v_error = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("ERROR1", 0);
+
+  /* "NumeriCal.pyx":308
+ * 
+ *     cdef str ERROR1(self, str string):
+ *         err     = '{}due to {}<< . >> .{}line: {}{}'.format(self.ke, self.ne, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
+ *         error   = '{}{} : invalid syntax in {}<< {} >> '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset
+ * 
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_due_to_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[6] = {__pyx_t_4, __pyx_v_self->ke, __pyx_v_self->ne, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[6] = {__pyx_t_4, __pyx_v_self->ke, __pyx_v_self->ne, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_6 = PyTuple_New(5+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    if (__pyx_t_4) {
+      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
+    }
+    __Pyx_INCREF(__pyx_v_self->ke);
+    __Pyx_GIVEREF(__pyx_v_self->ke);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_self->ke);
+    __Pyx_INCREF(__pyx_v_self->ne);
+    __Pyx_GIVEREF(__pyx_v_self->ne);
+    PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_self->ne);
+    __Pyx_INCREF(__pyx_v_self->we);
+    __Pyx_GIVEREF(__pyx_v_self->we);
+    PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_self->we);
+    __Pyx_INCREF(__pyx_v_self->ke);
+    __Pyx_GIVEREF(__pyx_v_self->ke);
+    PyTuple_SET_ITEM(__pyx_t_6, 3+__pyx_t_5, __pyx_v_self->ke);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_6, 4+__pyx_t_5, __pyx_t_3);
+    __pyx_t_3 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_err = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "NumeriCal.pyx":309
+ *     cdef str ERROR1(self, str string):
+ *         err     = '{}due to {}<< . >> .{}line: {}{}'.format(self.ke, self.ne, self.we, self.ke, self.line)
+ *         error   = '{}{} : invalid syntax in {}<< {} >> '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset             # <<<<<<<<<<<<<<
+ * 
+ *         return error
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_invalid_syntax_in_2, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_6 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->ke, __pyx_n_s_SyntaxError, __pyx_v_self->ae, __pyx_v_string};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+    PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->ke, __pyx_n_s_SyntaxError, __pyx_v_self->ae, __pyx_v_string};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  {
+    __pyx_t_3 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    if (__pyx_t_6) {
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
+    }
+    __Pyx_INCREF(__pyx_v_self->ke);
+    __Pyx_GIVEREF(__pyx_v_self->ke);
+    PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_5, __pyx_v_self->ke);
+    __Pyx_INCREF(__pyx_n_s_SyntaxError);
+    __Pyx_GIVEREF(__pyx_n_s_SyntaxError);
+    PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_5, __pyx_n_s_SyntaxError);
+    __Pyx_INCREF(__pyx_v_self->ae);
+    __Pyx_GIVEREF(__pyx_v_self->ae);
+    PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_5, __pyx_v_self->ae);
+    __Pyx_INCREF(__pyx_v_string);
+    __Pyx_GIVEREF(__pyx_v_string);
+    PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_5, __pyx_v_string);
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_error = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "NumeriCal.pyx":311
  *         error   = '{}{} : invalid syntax in {}<< {} >> '.format(self.ke, 'SyntaxError', self.ae, string) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -7984,12 +8227,12 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR1(struct __pyx_obj_9NumeriCal_E
  *     cdef str ERROR2(self, str string ):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 305, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_INCREF(__pyx_v_error);
   __pyx_r = ((PyObject*)__pyx_v_error);
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":301
+  /* "NumeriCal.pyx":307
  *         return error
  * 
  *     cdef str ERROR1(self, str string):             # <<<<<<<<<<<<<<
@@ -8014,7 +8257,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR1(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":307
+/* "NumeriCal.pyx":313
  *         return error
  * 
  *     cdef str ERROR2(self, str string ):             # <<<<<<<<<<<<<<
@@ -8038,16 +8281,16 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ERROR2", 0);
 
-  /* "NumeriCal.pyx":308
+  /* "NumeriCal.pyx":314
  * 
  *     cdef str ERROR2(self, str string ):
  *         err     = '{}was not found. {}line: {}{}'.format(self.ne, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : {}<< {} >> '.format(self.ne, 'NameError', self.ae, string) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_was_not_found_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_was_not_found_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -8064,7 +8307,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->ne, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8073,14 +8316,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->ne, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -8097,7 +8340,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 3+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -8105,14 +8348,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
   __pyx_v_err = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":309
+  /* "NumeriCal.pyx":315
  *     cdef str ERROR2(self, str string ):
  *         err     = '{}was not found. {}line: {}{}'.format(self.ne, self.we, self.ke, self.line)
  *         error   = '{}{} : {}<< {} >> '.format(self.ne, 'NameError', self.ae, string) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__3, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__4, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 315, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -8129,7 +8372,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->ne, __pyx_n_s_NameError, __pyx_v_self->ae, __pyx_v_string};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -8137,13 +8380,13 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->ne, __pyx_n_s_NameError, __pyx_v_self->ae, __pyx_v_string};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -8160,21 +8403,21 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
     __Pyx_INCREF(__pyx_v_string);
     __Pyx_GIVEREF(__pyx_v_string);
     PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_5, __pyx_v_string);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 315, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_error = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":311
+  /* "NumeriCal.pyx":317
  *         error   = '{}{} : {}<< {} >> '.format(self.ne, 'NameError', self.ae, string) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -8182,12 +8425,12 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
  *     cdef str ERROR3(self, str string, str _char_ = 'an integer()' ):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 311, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 317, __pyx_L1_error)
   __Pyx_INCREF(__pyx_v_error);
   __pyx_r = ((PyObject*)__pyx_v_error);
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":307
+  /* "NumeriCal.pyx":313
  *         return error
  * 
  *     cdef str ERROR2(self, str string ):             # <<<<<<<<<<<<<<
@@ -8212,7 +8455,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR2(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":313
+/* "NumeriCal.pyx":319
  *         return error
  * 
  *     cdef str ERROR3(self, str string, str _char_ = 'an integer()' ):             # <<<<<<<<<<<<<<
@@ -8242,16 +8485,16 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
     }
   }
 
-  /* "NumeriCal.pyx":314
+  /* "NumeriCal.pyx":320
  * 
  *     cdef str ERROR3(self, str string, str _char_ = 'an integer()' ):
  *         err     = '{}is not {}{} {}type. {}line: {}{}'.format(self.te, self.ie, _char_, self.te, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : {}<< {} >> '.format(self.te, 'TypeError', self.ae, string) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_is_not_type_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_is_not_type_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -8268,7 +8511,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[8] = {__pyx_t_4, __pyx_v_self->te, __pyx_v_self->ie, __pyx_v__char_, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8277,14 +8520,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[8] = {__pyx_t_4, __pyx_v_self->te, __pyx_v_self->ie, __pyx_v__char_, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(7+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 314, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(7+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -8310,7 +8553,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 6+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -8318,14 +8561,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
   __pyx_v_err = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":315
+  /* "NumeriCal.pyx":321
  *     cdef str ERROR3(self, str string, str _char_ = 'an integer()' ):
  *         err     = '{}is not {}{} {}type. {}line: {}{}'.format(self.te, self.ie, _char_, self.te, self.we, self.ke, self.line)
  *         error   = '{}{} : {}<< {} >> '.format(self.te, 'TypeError', self.ae, string) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__3, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 315, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__4, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -8342,7 +8585,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->te, __pyx_n_s_TypeError, __pyx_v_self->ae, __pyx_v_string};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -8350,13 +8593,13 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->te, __pyx_n_s_TypeError, __pyx_v_self->ae, __pyx_v_string};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 315, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -8373,21 +8616,21 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
     __Pyx_INCREF(__pyx_v_string);
     __Pyx_GIVEREF(__pyx_v_string);
     PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_5, __pyx_v_string);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 315, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_error = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":317
+  /* "NumeriCal.pyx":323
  *         error   = '{}{} : {}<< {} >> '.format(self.te, 'TypeError', self.ae, string) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -8395,12 +8638,12 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
  *     cdef str ERROR4(self, str string, str _char_ = 'an integer'):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 317, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_INCREF(__pyx_v_error);
   __pyx_r = ((PyObject*)__pyx_v_error);
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":313
+  /* "NumeriCal.pyx":319
  *         return error
  * 
  *     cdef str ERROR3(self, str string, str _char_ = 'an integer()' ):             # <<<<<<<<<<<<<<
@@ -8425,7 +8668,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR3(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":319
+/* "NumeriCal.pyx":325
  *         return error
  * 
  *     cdef str ERROR4(self, str string, str _char_ = 'an integer'):             # <<<<<<<<<<<<<<
@@ -8455,16 +8698,16 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
     }
   }
 
-  /* "NumeriCal.pyx":320
+  /* "NumeriCal.pyx":326
  * 
  *     cdef str ERROR4(self, str string, str _char_ = 'an integer'):
  *         err     = '{}to  {}{}() {}type. {}line: {}{}'.format(self.ve, self.ke, _char_, self.ae, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : {}impossible to convert {}<< {} >> '.format(self.ve, 'ValueError', self.we, self.ae, string) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_to_type_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 320, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_to_type_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -8481,7 +8724,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[8] = {__pyx_t_4, __pyx_v_self->ve, __pyx_v_self->ke, __pyx_v__char_, __pyx_v_self->ae, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8490,14 +8733,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[8] = {__pyx_t_4, __pyx_v_self->ve, __pyx_v_self->ke, __pyx_v__char_, __pyx_v_self->ae, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(7+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(7+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -8523,7 +8766,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 6+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -8531,14 +8774,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
   __pyx_v_err = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":321
+  /* "NumeriCal.pyx":327
  *     cdef str ERROR4(self, str string, str _char_ = 'an integer'):
  *         err     = '{}to  {}{}() {}type. {}line: {}{}'.format(self.ve, self.ke, _char_, self.ae, self.we, self.ke, self.line)
  *         error   = '{}{} : {}impossible to convert {}<< {} >> '.format(self.ve, 'ValueError', self.we, self.ae, string) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_impossible_to_convert, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_impossible_to_convert, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -8555,7 +8798,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[6] = {__pyx_t_6, __pyx_v_self->ve, __pyx_n_s_ValueError, __pyx_v_self->we, __pyx_v_self->ae, __pyx_v_string};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -8563,13 +8806,13 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[6] = {__pyx_t_6, __pyx_v_self->ve, __pyx_n_s_ValueError, __pyx_v_self->we, __pyx_v_self->ae, __pyx_v_string};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(5+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(5+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -8589,21 +8832,21 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
     __Pyx_INCREF(__pyx_v_string);
     __Pyx_GIVEREF(__pyx_v_string);
     PyTuple_SET_ITEM(__pyx_t_3, 4+__pyx_t_5, __pyx_v_string);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_error = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":323
+  /* "NumeriCal.pyx":329
  *         error   = '{}{} : {}impossible to convert {}<< {} >> '.format(self.ve, 'ValueError', self.we, self.ae, string) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -8611,12 +8854,12 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
  *     cdef str ERROR5(self, str string , str key ):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 323, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_INCREF(__pyx_v_error);
   __pyx_r = ((PyObject*)__pyx_v_error);
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":319
+  /* "NumeriCal.pyx":325
  *         return error
  * 
  *     cdef str ERROR4(self, str string, str _char_ = 'an integer'):             # <<<<<<<<<<<<<<
@@ -8641,7 +8884,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR4(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":325
+/* "NumeriCal.pyx":331
  *         return error
  * 
  *     cdef str ERROR5(self, str string , str key ):             # <<<<<<<<<<<<<<
@@ -8665,16 +8908,16 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ERROR5", 0);
 
-  /* "NumeriCal.pyx":326
+  /* "NumeriCal.pyx":332
  * 
  *     cdef str ERROR5(self, str string , str key ):
  *         err     = '{}was not found in {}<< {} >>. {}line: {}{}'.format(self.ke, self.ne, string, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : {}<< {} >> '.format(self.ke, 'KeyError', self.ae, key) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_was_not_found_in_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_was_not_found_in_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -8691,7 +8934,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_4, __pyx_v_self->ke, __pyx_v_self->ne, __pyx_v_string, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8700,14 +8943,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_4, __pyx_v_self->ke, __pyx_v_self->ne, __pyx_v_string, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(6+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(6+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 332, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -8730,7 +8973,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 5+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -8738,14 +8981,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
   __pyx_v_err = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":327
+  /* "NumeriCal.pyx":333
  *     cdef str ERROR5(self, str string , str key ):
  *         err     = '{}was not found in {}<< {} >>. {}line: {}{}'.format(self.ke, self.ne, string, self.we, self.ke, self.line)
  *         error   = '{}{} : {}<< {} >> '.format(self.ke, 'KeyError', self.ae, key) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__3, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__4, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -8762,7 +9005,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->ke, __pyx_n_s_KeyError, __pyx_v_self->ae, __pyx_v_key};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -8770,13 +9013,13 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_self->ke, __pyx_n_s_KeyError, __pyx_v_self->ae, __pyx_v_key};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -8793,21 +9036,21 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
     __Pyx_INCREF(__pyx_v_key);
     __Pyx_GIVEREF(__pyx_v_key);
     PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_5, __pyx_v_key);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_error = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":329
+  /* "NumeriCal.pyx":335
  *         error   = '{}{} : {}<< {} >> '.format(self.ke, 'KeyError', self.ae, key) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -8815,12 +9058,12 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
  *     cdef str ERROR6(self, value):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 329, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 335, __pyx_L1_error)
   __Pyx_INCREF(__pyx_v_error);
   __pyx_r = ((PyObject*)__pyx_v_error);
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":325
+  /* "NumeriCal.pyx":331
  *         return error
  * 
  *     cdef str ERROR5(self, str string , str key ):             # <<<<<<<<<<<<<<
@@ -8845,7 +9088,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR5(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":331
+/* "NumeriCal.pyx":337
  *         return error
  * 
  *     cdef str ERROR6(self, value):             # <<<<<<<<<<<<<<
@@ -8869,16 +9112,16 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ERROR6", 0);
 
-  /* "NumeriCal.pyx":332
+  /* "NumeriCal.pyx":338
  * 
  *     cdef str ERROR6(self, value):
  *         err     = '{}a tuple(), {}or a string(), {}type. {}line: {}{}'.format(self.ie, self.ne, self.te, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : {}<< {} >> {}is not {}a list(), '.format(self.te, 'TypeError', self.ae, value, self.te, self.ke) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_a_tuple_or_a_string_type_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_a_tuple_or_a_string_type_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -8895,7 +9138,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_4, __pyx_v_self->ie, __pyx_v_self->ne, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8904,14 +9147,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_4, __pyx_v_self->ie, __pyx_v_self->ne, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(6+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(6+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -8934,7 +9177,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 5+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -8942,14 +9185,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
   __pyx_v_err = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":333
+  /* "NumeriCal.pyx":339
  *     cdef str ERROR6(self, value):
  *         err     = '{}a tuple(), {}or a string(), {}type. {}line: {}{}'.format(self.ie, self.ne, self.te, self.we, self.ke, self.line)
  *         error   = '{}{} : {}<< {} >> {}is not {}a list(), '.format(self.te, 'TypeError', self.ae, value, self.te, self.ke) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_is_not_a_list, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 333, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_is_not_a_list, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -8966,7 +9209,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_6, __pyx_v_self->te, __pyx_n_s_TypeError, __pyx_v_self->ae, __pyx_v_value, __pyx_v_self->te, __pyx_v_self->ke};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -8974,13 +9217,13 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_6, __pyx_v_self->te, __pyx_n_s_TypeError, __pyx_v_self->ae, __pyx_v_value, __pyx_v_self->te, __pyx_v_self->ke};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(6+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(6+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 339, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -9003,21 +9246,21 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
     __Pyx_INCREF(__pyx_v_self->ke);
     __Pyx_GIVEREF(__pyx_v_self->ke);
     PyTuple_SET_ITEM(__pyx_t_3, 5+__pyx_t_5, __pyx_v_self->ke);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 333, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_error = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":335
+  /* "NumeriCal.pyx":341
  *         error   = '{}{} : {}<< {} >> {}is not {}a list(), '.format(self.te, 'TypeError', self.ae, value, self.te, self.ke) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -9025,12 +9268,12 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
  *     cdef ERROR7(self, op, ob1, ob2):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 335, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_error))||((__pyx_v_error) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_error)->tp_name), 0))) __PYX_ERR(0, 341, __pyx_L1_error)
   __Pyx_INCREF(__pyx_v_error);
   __pyx_r = ((PyObject*)__pyx_v_error);
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":331
+  /* "NumeriCal.pyx":337
  *         return error
  * 
  *     cdef str ERROR6(self, value):             # <<<<<<<<<<<<<<
@@ -9055,7 +9298,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR6(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":337
+/* "NumeriCal.pyx":343
  *         return error
  * 
  *     cdef ERROR7(self, op, ob1, ob2):             # <<<<<<<<<<<<<<
@@ -9079,16 +9322,16 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ERROR7", 0);
 
-  /* "NumeriCal.pyx":338
+  /* "NumeriCal.pyx":344
  * 
  *     cdef ERROR7(self, op, ob1, ob2):
  *         err     = '{}<< {}{} >>, {} and {}<< {}{} >>. {}type. {}line: {}{}'.format( self.we, ob1, self.we, self.te, self.we, ob2, self.we, self.te, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : {}<< {}{}{} >> {}not supported between '.format(self.te, 'TypeError', self.ae, self.ke, op, self.ae, self.te) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_and_type_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 338, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_and_type_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -9105,7 +9348,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[12] = {__pyx_t_4, __pyx_v_self->we, __pyx_v_ob1, __pyx_v_self->we, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_ob2, __pyx_v_self->we, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 11+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 11+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9114,14 +9357,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[12] = {__pyx_t_4, __pyx_v_self->we, __pyx_v_ob1, __pyx_v_self->we, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_ob2, __pyx_v_self->we, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 11+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 11+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(11+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(11+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 344, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -9159,7 +9402,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 10+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -9167,14 +9410,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
   __pyx_v_err = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":339
+  /* "NumeriCal.pyx":345
  *     cdef ERROR7(self, op, ob1, ob2):
  *         err     = '{}<< {}{} >>, {} and {}<< {}{} >>. {}type. {}line: {}{}'.format( self.we, ob1, self.we, self.te, self.we, ob2, self.we, self.te, self.we, self.ke, self.line)
  *         error   = '{}{} : {}<< {}{}{} >> {}not supported between '.format(self.te, 'TypeError', self.ae, self.ke, op, self.ae, self.te) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_not_supported_between, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_not_supported_between, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -9191,7 +9434,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[8] = {__pyx_t_6, __pyx_v_self->te, __pyx_n_s_TypeError, __pyx_v_self->ae, __pyx_v_self->ke, __pyx_v_op, __pyx_v_self->ae, __pyx_v_self->te};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -9199,13 +9442,13 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[8] = {__pyx_t_6, __pyx_v_self->te, __pyx_n_s_TypeError, __pyx_v_self->ae, __pyx_v_self->ke, __pyx_v_op, __pyx_v_self->ae, __pyx_v_self->te};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 7+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(7+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(7+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -9231,21 +9474,21 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
     __Pyx_INCREF(__pyx_v_self->te);
     __Pyx_GIVEREF(__pyx_v_self->te);
     PyTuple_SET_ITEM(__pyx_t_3, 6+__pyx_t_5, __pyx_v_self->te);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_error = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":341
+  /* "NumeriCal.pyx":347
  *         error   = '{}{} : {}<< {}{}{} >> {}not supported between '.format(self.te, 'TypeError', self.ae, self.ke, op, self.ae, self.te) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -9257,7 +9500,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
   __pyx_r = __pyx_v_error;
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":337
+  /* "NumeriCal.pyx":343
  *         return error
  * 
  *     cdef ERROR7(self, op, ob1, ob2):             # <<<<<<<<<<<<<<
@@ -9282,7 +9525,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR7(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":343
+/* "NumeriCal.pyx":349
  *         return error
  * 
  *     cdef ERROR8(self, value):             # <<<<<<<<<<<<<<
@@ -9306,16 +9549,16 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ERROR8", 0);
 
-  /* "NumeriCal.pyx":344
+  /* "NumeriCal.pyx":350
  * 
  *     cdef ERROR8(self, value):
  *         err     = '{}<< EMPTY >>. {}line: {}{}'.format( self.te, self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : {}<< {} >> {}is '.format(self.ke, 'SyntaxError', self.ae, value, self.ke) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_EMPTY_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_EMPTY_line, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -9332,7 +9575,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9341,14 +9584,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->te, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(4+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 350, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -9365,7 +9608,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 3+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -9373,14 +9616,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
   __pyx_v_err = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":345
+  /* "NumeriCal.pyx":351
  *     cdef ERROR8(self, value):
  *         err     = '{}<< EMPTY >>. {}line: {}{}'.format( self.te, self.we, self.ke, self.line)
  *         error   = '{}{} : {}<< {} >> {}is '.format(self.ke, 'SyntaxError', self.ae, value, self.ke) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_is, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_is, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 351, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -9397,7 +9640,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[6] = {__pyx_t_6, __pyx_v_self->ke, __pyx_n_s_SyntaxError, __pyx_v_self->ae, __pyx_v_value, __pyx_v_self->ke};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -9405,13 +9648,13 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[6] = {__pyx_t_6, __pyx_v_self->ke, __pyx_n_s_SyntaxError, __pyx_v_self->ae, __pyx_v_value, __pyx_v_self->ke};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 5+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(5+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(5+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -9431,21 +9674,21 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
     __Pyx_INCREF(__pyx_v_self->ke);
     __Pyx_GIVEREF(__pyx_v_self->ke);
     PyTuple_SET_ITEM(__pyx_t_3, 4+__pyx_t_5, __pyx_v_self->ke);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 351, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_error = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":347
+  /* "NumeriCal.pyx":353
  *         error   = '{}{} : {}<< {} >> {}is '.format(self.ke, 'SyntaxError', self.ae, value, self.ke) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -9457,7 +9700,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
   __pyx_r = __pyx_v_error;
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":343
+  /* "NumeriCal.pyx":349
  *         return error
  * 
  *     cdef ERROR8(self, value):             # <<<<<<<<<<<<<<
@@ -9482,7 +9725,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR8(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":349
+/* "NumeriCal.pyx":355
  *         return error
  * 
  *     cdef ERROR9(self, str string = 'float' ):             # <<<<<<<<<<<<<<
@@ -9512,16 +9755,16 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
     }
   }
 
-  /* "NumeriCal.pyx":350
+  /* "NumeriCal.pyx":356
  * 
  *     cdef ERROR9(self, str string = 'float' ):
  *         err     = '{}line: {}{}'.format(self.we, self.ke, self.line)             # <<<<<<<<<<<<<<
  *         error   = '{}{} : {}infinity {}{} {}number. '.format(self.te, 'OverFlowError', self.ke, self.te, string, self.ke) + err + self.reset
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_line_2, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_line_2, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 350, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -9538,7 +9781,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9547,14 +9790,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_self->we, __pyx_v_self->ke, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -9568,7 +9811,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -9576,14 +9819,14 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
   __pyx_v_err = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":351
+  /* "NumeriCal.pyx":357
  *     cdef ERROR9(self, str string = 'float' ):
  *         err     = '{}line: {}{}'.format(self.we, self.ke, self.line)
  *         error   = '{}{} : {}infinity {}{} {}number. '.format(self.te, 'OverFlowError', self.ke, self.te, string, self.ke) + err + self.reset             # <<<<<<<<<<<<<<
  * 
  *         return error
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_infinity_number, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 351, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_infinity_number, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -9600,7 +9843,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_6, __pyx_v_self->te, __pyx_n_s_OverFlowError, __pyx_v_self->ke, __pyx_v_self->te, __pyx_v_string, __pyx_v_self->ke};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -9608,13 +9851,13 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_6, __pyx_v_self->te, __pyx_n_s_OverFlowError, __pyx_v_self->ke, __pyx_v_self->te, __pyx_v_string, __pyx_v_self->ke};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 6+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(6+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(6+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 357, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -9637,21 +9880,21 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
     __Pyx_INCREF(__pyx_v_self->ke);
     __Pyx_GIVEREF(__pyx_v_self->ke);
     PyTuple_SET_ITEM(__pyx_t_3, 5+__pyx_t_5, __pyx_v_self->ke);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 351, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_err); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_self->reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_error = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":353
+  /* "NumeriCal.pyx":359
  *         error   = '{}{} : {}infinity {}{} {}number. '.format(self.te, 'OverFlowError', self.ke, self.te, string, self.ke) + err + self.reset
  * 
  *         return error             # <<<<<<<<<<<<<<
@@ -9663,7 +9906,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
   __pyx_r = __pyx_v_error;
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":349
+  /* "NumeriCal.pyx":355
  *         return error
  * 
  *     cdef ERROR9(self, str string = 'float' ):             # <<<<<<<<<<<<<<
@@ -9688,7 +9931,7 @@ static PyObject *__pyx_f_9NumeriCal_6ERRORS_ERROR9(struct __pyx_obj_9NumeriCal_E
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":260
+/* "NumeriCal.pyx":266
  * 
  * cdef class ERRORS:
  *     cdef public int line             # <<<<<<<<<<<<<<
@@ -9718,7 +9961,7 @@ static PyObject *__pyx_pf_9NumeriCal_6ERRORS_4line___get__(struct __pyx_obj_9Num
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9756,7 +9999,7 @@ static int __pyx_pf_9NumeriCal_6ERRORS_4line_2__set__(struct __pyx_obj_9NumeriCa
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 266, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
   /* function exit code */
@@ -10182,7 +10425,7 @@ static PyObject *__pyx_pf_9NumeriCal_6ERRORS_4__setstate_cython__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":362
+/* "NumeriCal.pyx":368
  *         public int line
  * 
  *     def __init__(self, master, line ):             # <<<<<<<<<<<<<<
@@ -10224,11 +10467,11 @@ static int __pyx_pw_9NumeriCal_15COMPLEX_ANALYZE_1__init__(PyObject *__pyx_v_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_line)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 362, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 368, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 362, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 368, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -10241,7 +10484,7 @@ static int __pyx_pw_9NumeriCal_15COMPLEX_ANALYZE_1__init__(PyObject *__pyx_v_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 362, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 368, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("NumeriCal.COMPLEX_ANALYZE.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -10264,27 +10507,27 @@ static int __pyx_pf_9NumeriCal_15COMPLEX_ANALYZE___init__(struct __pyx_obj_9Nume
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "NumeriCal.pyx":363
+  /* "NumeriCal.pyx":369
  * 
  *     def __init__(self, master, line ):
  *         self.master         = master             # <<<<<<<<<<<<<<
  *         self.line           = line
  * 
  */
-  __pyx_t_1 = __Pyx_PyComplex_As___pyx_t_double_complex(__pyx_v_master); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 363, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyComplex_As___pyx_t_double_complex(__pyx_v_master); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 369, __pyx_L1_error)
   __pyx_v_self->master = __pyx_t_1;
 
-  /* "NumeriCal.pyx":364
+  /* "NumeriCal.pyx":370
  *     def __init__(self, master, line ):
  *         self.master         = master
  *         self.line           = line             # <<<<<<<<<<<<<<
  * 
  *     cdef tuple COMPLEX( self ):
  */
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 364, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 370, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_2;
 
-  /* "NumeriCal.pyx":362
+  /* "NumeriCal.pyx":368
  *         public int line
  * 
  *     def __init__(self, master, line ):             # <<<<<<<<<<<<<<
@@ -10303,7 +10546,7 @@ static int __pyx_pf_9NumeriCal_15COMPLEX_ANALYZE___init__(struct __pyx_obj_9Nume
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":366
+/* "NumeriCal.pyx":372
  *         self.line           = line
  * 
  *     cdef tuple COMPLEX( self ):             # <<<<<<<<<<<<<<
@@ -10327,114 +10570,114 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("COMPLEX", 0);
 
-  /* "NumeriCal.pyx":373
+  /* "NumeriCal.pyx":379
  *             str imag
  * 
  *         real    = str( self.master.real )             # <<<<<<<<<<<<<<
  *         imag    = str( self.master.imag )
  *         error   = ''
  */
-  __pyx_t_1 = PyFloat_FromDouble(__Pyx_CREAL(__pyx_v_self->master)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__Pyx_CREAL(__pyx_v_self->master)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 373, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 379, __pyx_L1_error)
   __pyx_v_real = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":374
+  /* "NumeriCal.pyx":380
  * 
  *         real    = str( self.master.real )
  *         imag    = str( self.master.imag )             # <<<<<<<<<<<<<<
  *         error   = ''
  * 
  */
-  __pyx_t_2 = PyFloat_FromDouble(__Pyx_CIMAG(__pyx_v_self->master)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__Pyx_CIMAG(__pyx_v_self->master)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 380, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 374, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 380, __pyx_L1_error)
   __pyx_v_imag = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "NumeriCal.pyx":375
+  /* "NumeriCal.pyx":381
  *         real    = str( self.master.real )
  *         imag    = str( self.master.imag )
  *         error   = ''             # <<<<<<<<<<<<<<
  * 
  *         if real[ 0 ] in [ '-' ]:
  */
-  __Pyx_INCREF(__pyx_kp_s__2);
-  __pyx_v_error = __pyx_kp_s__2;
+  __Pyx_INCREF(__pyx_kp_s__3);
+  __pyx_v_error = __pyx_kp_s__3;
 
-  /* "NumeriCal.pyx":377
+  /* "NumeriCal.pyx":383
  *         error   = ''
  * 
  *         if real[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
  *             if real[ 1 ] not in [ 'i', 'n' ]:
  *                 if imag[ 0 ] in [ '-' ]:
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_real, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_real, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__5, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 383, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "NumeriCal.pyx":378
+    /* "NumeriCal.pyx":384
  * 
  *         if real[ 0 ] in [ '-' ]:
  *             if real[ 1 ] not in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
  *                 if imag[ 0 ] in [ '-' ]:
  *                     if imag[ 1 ] not in [ 'i', 'n' ]: pass
  */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_real, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 378, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_real, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 378, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 384, __pyx_L1_error)
     if (__pyx_t_3) {
     } else {
       __pyx_t_4 = __pyx_t_3;
       goto __pyx_L5_bool_binop_done;
     }
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 378, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 384, __pyx_L1_error)
     __pyx_t_4 = __pyx_t_3;
     __pyx_L5_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_3 = (__pyx_t_4 != 0);
     if (__pyx_t_3) {
 
-      /* "NumeriCal.pyx":379
+      /* "NumeriCal.pyx":385
  *         if real[ 0 ] in [ '-' ]:
  *             if real[ 1 ] not in [ 'i', 'n' ]:
  *                 if imag[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
  *                     if imag[ 1 ] not in [ 'i', 'n' ]: pass
  *                     else:
  */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 379, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 379, __pyx_L1_error)
+      __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__5, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_4 = (__pyx_t_3 != 0);
       if (__pyx_t_4) {
 
-        /* "NumeriCal.pyx":380
+        /* "NumeriCal.pyx":386
  *             if real[ 1 ] not in [ 'i', 'n' ]:
  *                 if imag[ 0 ] in [ '-' ]:
  *                     if imag[ 1 ] not in [ 'i', 'n' ]: pass             # <<<<<<<<<<<<<<
  *                     else:
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )
  */
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 380, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 386, __pyx_L1_error)
         if (__pyx_t_3) {
         } else {
           __pyx_t_4 = __pyx_t_3;
           goto __pyx_L9_bool_binop_done;
         }
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 380, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 386, __pyx_L1_error)
         __pyx_t_4 = __pyx_t_3;
         __pyx_L9_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10443,7 +10686,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
           goto __pyx_L8;
         }
 
-        /* "NumeriCal.pyx":382
+        /* "NumeriCal.pyx":388
  *                     if imag[ 1 ] not in [ 'i', 'n' ]: pass
  *                     else:
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )             # <<<<<<<<<<<<<<
@@ -10451,23 +10694,23 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
  *                     if imag[ 0 ] in [ 'i', 'n' ]:
  */
         /*else*/ {
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 382, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_t_5.__pyx_n = 1;
           __pyx_t_5.string = __pyx_n_s_complex;
-          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
+          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 382, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 388, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
           __pyx_t_1 = 0;
         }
         __pyx_L8:;
 
-        /* "NumeriCal.pyx":379
+        /* "NumeriCal.pyx":385
  *         if real[ 0 ] in [ '-' ]:
  *             if real[ 1 ] not in [ 'i', 'n' ]:
  *                 if imag[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -10477,7 +10720,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
         goto __pyx_L7;
       }
 
-      /* "NumeriCal.pyx":384
+      /* "NumeriCal.pyx":390
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )
  *                 else :
  *                     if imag[ 0 ] in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -10485,43 +10728,43 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
  *                     else : pass
  */
       /*else*/ {
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 384, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 384, __pyx_L1_error)
+        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
         if (!__pyx_t_4) {
         } else {
           __pyx_t_3 = __pyx_t_4;
           goto __pyx_L12_bool_binop_done;
         }
-        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 384, __pyx_L1_error)
+        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
         __pyx_t_3 = __pyx_t_4;
         __pyx_L12_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_4 = (__pyx_t_3 != 0);
         if (__pyx_t_4) {
 
-          /* "NumeriCal.pyx":385
+          /* "NumeriCal.pyx":391
  *                 else :
  *                     if imag[ 0 ] in [ 'i', 'n' ]:
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )             # <<<<<<<<<<<<<<
  *                     else : pass
  *             else:
  */
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 391, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_t_5.__pyx_n = 1;
           __pyx_t_5.string = __pyx_n_s_complex;
-          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
+          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 385, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 391, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
           __pyx_t_1 = 0;
 
-          /* "NumeriCal.pyx":384
+          /* "NumeriCal.pyx":390
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )
  *                 else :
  *                     if imag[ 0 ] in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -10531,7 +10774,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
           goto __pyx_L11;
         }
 
-        /* "NumeriCal.pyx":386
+        /* "NumeriCal.pyx":392
  *                     if imag[ 0 ] in [ 'i', 'n' ]:
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )
  *                     else : pass             # <<<<<<<<<<<<<<
@@ -10544,7 +10787,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
       }
       __pyx_L7:;
 
-      /* "NumeriCal.pyx":378
+      /* "NumeriCal.pyx":384
  * 
  *         if real[ 0 ] in [ '-' ]:
  *             if real[ 1 ] not in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -10554,7 +10797,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
       goto __pyx_L4;
     }
 
-    /* "NumeriCal.pyx":388
+    /* "NumeriCal.pyx":394
  *                     else : pass
  *             else:
  *                 error = ERRORS( self.line ).ERROR9( 'complex' )             # <<<<<<<<<<<<<<
@@ -10562,23 +10805,23 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
  *             if real[ 0 ] in [ 'i', 'n' ]:
  */
     /*else*/ {
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_5.__pyx_n = 1;
       __pyx_t_5.string = __pyx_n_s_complex;
-      __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 388, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 394, __pyx_L1_error)
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
       __pyx_t_1 = 0;
     }
     __pyx_L4:;
 
-    /* "NumeriCal.pyx":377
+    /* "NumeriCal.pyx":383
  *         error   = ''
  * 
  *         if real[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -10588,7 +10831,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
     goto __pyx_L3;
   }
 
-  /* "NumeriCal.pyx":390
+  /* "NumeriCal.pyx":396
  *                 error = ERRORS( self.line ).ERROR9( 'complex' )
  *         else:
  *             if real[ 0 ] in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -10596,43 +10839,43 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
  *             else:
  */
   /*else*/ {
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_real, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_real, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 396, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 396, __pyx_L1_error)
     if (!__pyx_t_3) {
     } else {
       __pyx_t_4 = __pyx_t_3;
       goto __pyx_L15_bool_binop_done;
     }
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 396, __pyx_L1_error)
     __pyx_t_4 = __pyx_t_3;
     __pyx_L15_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_3 = (__pyx_t_4 != 0);
     if (__pyx_t_3) {
 
-      /* "NumeriCal.pyx":391
+      /* "NumeriCal.pyx":397
  *         else:
  *             if real[ 0 ] in [ 'i', 'n' ]:
  *                 error = ERRORS( self.line ).ERROR9( 'complex' )             # <<<<<<<<<<<<<<
  *             else:
  *                 if imag[ 0] in [ '-' ]:
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_5.__pyx_n = 1;
       __pyx_t_5.string = __pyx_n_s_complex;
-      __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 391, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "NumeriCal.pyx":390
+      /* "NumeriCal.pyx":396
  *                 error = ERRORS( self.line ).ERROR9( 'complex' )
  *         else:
  *             if real[ 0 ] in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -10642,7 +10885,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
       goto __pyx_L14;
     }
 
-    /* "NumeriCal.pyx":393
+    /* "NumeriCal.pyx":399
  *                 error = ERRORS( self.line ).ERROR9( 'complex' )
  *             else:
  *                 if imag[ 0] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -10650,29 +10893,29 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
  *                     else:
  */
     /*else*/ {
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 393, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 393, __pyx_L1_error)
+      __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__5, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 399, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_4 = (__pyx_t_3 != 0);
       if (__pyx_t_4) {
 
-        /* "NumeriCal.pyx":394
+        /* "NumeriCal.pyx":400
  *             else:
  *                 if imag[ 0] in [ '-' ]:
  *                     if imag[ 1 ] not in [ 'i', 'n' ]: pass             # <<<<<<<<<<<<<<
  *                     else:
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )
  */
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 400, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 394, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 400, __pyx_L1_error)
         if (__pyx_t_3) {
         } else {
           __pyx_t_4 = __pyx_t_3;
           goto __pyx_L19_bool_binop_done;
         }
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 394, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 400, __pyx_L1_error)
         __pyx_t_4 = __pyx_t_3;
         __pyx_L19_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10681,7 +10924,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
           goto __pyx_L18;
         }
 
-        /* "NumeriCal.pyx":396
+        /* "NumeriCal.pyx":402
  *                     if imag[ 1 ] not in [ 'i', 'n' ]: pass
  *                     else:
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )             # <<<<<<<<<<<<<<
@@ -10689,23 +10932,23 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
  *                     if imag[ 0 ] in [ 'i', 'n' ]:
  */
         /*else*/ {
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 396, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 396, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 402, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_t_5.__pyx_n = 1;
           __pyx_t_5.string = __pyx_n_s_complex;
-          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 396, __pyx_L1_error)
+          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 396, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 402, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
           __pyx_t_1 = 0;
         }
         __pyx_L18:;
 
-        /* "NumeriCal.pyx":393
+        /* "NumeriCal.pyx":399
  *                 error = ERRORS( self.line ).ERROR9( 'complex' )
  *             else:
  *                 if imag[ 0] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -10715,7 +10958,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
         goto __pyx_L17;
       }
 
-      /* "NumeriCal.pyx":398
+      /* "NumeriCal.pyx":404
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )
  *                 else:
  *                     if imag[ 0 ] in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -10723,43 +10966,43 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
  *                     else: pass
  */
       /*else*/ {
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 398, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_imag, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 404, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 398, __pyx_L1_error)
+        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_i, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 404, __pyx_L1_error)
         if (!__pyx_t_4) {
         } else {
           __pyx_t_3 = __pyx_t_4;
           goto __pyx_L22_bool_binop_done;
         }
-        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 398, __pyx_L1_error)
+        __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_n, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 404, __pyx_L1_error)
         __pyx_t_3 = __pyx_t_4;
         __pyx_L22_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_4 = (__pyx_t_3 != 0);
         if (__pyx_t_4) {
 
-          /* "NumeriCal.pyx":399
+          /* "NumeriCal.pyx":405
  *                 else:
  *                     if imag[ 0 ] in [ 'i', 'n' ]:
  *                         error = ERRORS(self.line).ERROR9('complex')             # <<<<<<<<<<<<<<
  *                     else: pass
  * 
  */
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 405, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 405, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __pyx_t_5.__pyx_n = 1;
           __pyx_t_5.string = __pyx_n_s_complex;
-          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_1 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_2), &__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 405, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 399, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 405, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_1));
           __pyx_t_1 = 0;
 
-          /* "NumeriCal.pyx":398
+          /* "NumeriCal.pyx":404
  *                         error = ERRORS( self.line ).ERROR9( 'complex' )
  *                 else:
  *                     if imag[ 0 ] in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -10769,7 +11012,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
           goto __pyx_L21;
         }
 
-        /* "NumeriCal.pyx":400
+        /* "NumeriCal.pyx":406
  *                     if imag[ 0 ] in [ 'i', 'n' ]:
  *                         error = ERRORS(self.line).ERROR9('complex')
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -10786,7 +11029,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
   }
   __pyx_L3:;
 
-  /* "NumeriCal.pyx":402
+  /* "NumeriCal.pyx":408
  *                     else: pass
  * 
  *         return self.master, error             # <<<<<<<<<<<<<<
@@ -10794,9 +11037,9 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_PyComplex_FromComplex(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyComplex_FromComplex(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -10808,7 +11051,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":366
+  /* "NumeriCal.pyx":372
  *         self.line           = line
  * 
  *     cdef tuple COMPLEX( self ):             # <<<<<<<<<<<<<<
@@ -10831,7 +11074,7 @@ static PyObject *__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX(struct __pyx_obj_9
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":359
+/* "NumeriCal.pyx":365
  * cdef class COMPLEX_ANALYZE:
  *     cdef :
  *         public complex master             # <<<<<<<<<<<<<<
@@ -10861,7 +11104,7 @@ static PyObject *__pyx_pf_9NumeriCal_15COMPLEX_ANALYZE_6master___get__(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_PyComplex_FromComplex(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyComplex_FromComplex(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -10899,7 +11142,7 @@ static int __pyx_pf_9NumeriCal_15COMPLEX_ANALYZE_6master_2__set__(struct __pyx_o
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyComplex_As___pyx_t_double_complex(__pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 359, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyComplex_As___pyx_t_double_complex(__pyx_v_value); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 365, __pyx_L1_error)
   __pyx_v_self->master = __pyx_t_1;
 
   /* function exit code */
@@ -10913,7 +11156,7 @@ static int __pyx_pf_9NumeriCal_15COMPLEX_ANALYZE_6master_2__set__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":360
+/* "NumeriCal.pyx":366
  *     cdef :
  *         public complex master
  *         public int line             # <<<<<<<<<<<<<<
@@ -10943,7 +11186,7 @@ static PyObject *__pyx_pf_9NumeriCal_15COMPLEX_ANALYZE_4line___get__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 366, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -10981,7 +11224,7 @@ static int __pyx_pf_9NumeriCal_15COMPLEX_ANALYZE_4line_2__set__(struct __pyx_obj
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 360, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 366, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
   /* function exit code */
@@ -11294,7 +11537,7 @@ static PyObject *__pyx_pf_9NumeriCal_15COMPLEX_ANALYZE_4__setstate_cython__(stru
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":410
+/* "NumeriCal.pyx":416
  *         public int line
  * 
  *     def __init__(self, master, line ):             # <<<<<<<<<<<<<<
@@ -11336,11 +11579,11 @@ static int __pyx_pw_9NumeriCal_13FLOAT_ANALYZE_1__init__(PyObject *__pyx_v_self,
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_line)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 410, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 416, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 410, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 416, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -11353,7 +11596,7 @@ static int __pyx_pw_9NumeriCal_13FLOAT_ANALYZE_1__init__(PyObject *__pyx_v_self,
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 410, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 416, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("NumeriCal.FLOAT_ANALYZE.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -11376,27 +11619,27 @@ static int __pyx_pf_9NumeriCal_13FLOAT_ANALYZE___init__(struct __pyx_obj_9Numeri
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "NumeriCal.pyx":411
+  /* "NumeriCal.pyx":417
  * 
  *     def __init__(self, master, line ):
  *         self.master         = master             # <<<<<<<<<<<<<<
  *         self.line           = line
  * 
  */
-  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_v_master); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_v_master); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 417, __pyx_L1_error)
   __pyx_v_self->master = __pyx_t_1;
 
-  /* "NumeriCal.pyx":412
+  /* "NumeriCal.pyx":418
  *     def __init__(self, master, line ):
  *         self.master         = master
  *         self.line           = line             # <<<<<<<<<<<<<<
  * 
  *     cdef tuple FLOAT( self ):
  */
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 418, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_2;
 
-  /* "NumeriCal.pyx":410
+  /* "NumeriCal.pyx":416
  *         public int line
  * 
  *     def __init__(self, master, line ):             # <<<<<<<<<<<<<<
@@ -11415,7 +11658,7 @@ static int __pyx_pf_9NumeriCal_13FLOAT_ANALYZE___init__(struct __pyx_obj_9Numeri
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":414
+/* "NumeriCal.pyx":420
  *         self.line           = line
  * 
  *     cdef tuple FLOAT( self ):             # <<<<<<<<<<<<<<
@@ -11437,62 +11680,62 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("FLOAT", 0);
 
-  /* "NumeriCal.pyx":420
+  /* "NumeriCal.pyx":426
  *             str real
  * 
  *         real    = str( self.master )             # <<<<<<<<<<<<<<
  *         error   = ''
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 426, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 420, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 426, __pyx_L1_error)
   __pyx_v_real = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "NumeriCal.pyx":421
+  /* "NumeriCal.pyx":427
  * 
  *         real    = str( self.master )
  *         error   = ''             # <<<<<<<<<<<<<<
  * 
  *         if real[ 0 ] in [ '-' ]:
  */
-  __Pyx_INCREF(__pyx_kp_s__2);
-  __pyx_v_error = __pyx_kp_s__2;
+  __Pyx_INCREF(__pyx_kp_s__3);
+  __pyx_v_error = __pyx_kp_s__3;
 
-  /* "NumeriCal.pyx":423
+  /* "NumeriCal.pyx":429
  *         error   = ''
  * 
  *         if real[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
  *             if real[ 1 ] not in [ 'i', 'n' ]: pass
  *             else:  error = ERRORS( self.line ).ERROR9( )
  */
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_real, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 423, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_real, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 423, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__5, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "NumeriCal.pyx":424
+    /* "NumeriCal.pyx":430
  * 
  *         if real[ 0 ] in [ '-' ]:
  *             if real[ 1 ] not in [ 'i', 'n' ]: pass             # <<<<<<<<<<<<<<
  *             else:  error = ERRORS( self.line ).ERROR9( )
  *         else:
  */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_real, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_real, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 430, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_i, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_i, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 430, __pyx_L1_error)
     if (__pyx_t_3) {
     } else {
       __pyx_t_4 = __pyx_t_3;
       goto __pyx_L5_bool_binop_done;
     }
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_n, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_n, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 430, __pyx_L1_error)
     __pyx_t_4 = __pyx_t_3;
     __pyx_L5_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -11501,7 +11744,7 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
       goto __pyx_L4;
     }
 
-    /* "NumeriCal.pyx":425
+    /* "NumeriCal.pyx":431
  *         if real[ 0 ] in [ '-' ]:
  *             if real[ 1 ] not in [ 'i', 'n' ]: pass
  *             else:  error = ERRORS( self.line ).ERROR9( )             # <<<<<<<<<<<<<<
@@ -11509,21 +11752,21 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
  *             if real[ 0 ] in [ 'i', 'n' ]:
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 425, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 431, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 425, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 431, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 425, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 431, __pyx_L1_error)
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
     }
     __pyx_L4:;
 
-    /* "NumeriCal.pyx":423
+    /* "NumeriCal.pyx":429
  *         error   = ''
  * 
  *         if real[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -11533,7 +11776,7 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
     goto __pyx_L3;
   }
 
-  /* "NumeriCal.pyx":427
+  /* "NumeriCal.pyx":433
  *             else:  error = ERRORS( self.line ).ERROR9( )
  *         else:
  *             if real[ 0 ] in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -11541,41 +11784,41 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
  * 
  */
   /*else*/ {
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_real, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_real, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_i, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 427, __pyx_L1_error)
+    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_i, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 433, __pyx_L1_error)
     if (!__pyx_t_4) {
     } else {
       __pyx_t_3 = __pyx_t_4;
       goto __pyx_L8_bool_binop_done;
     }
-    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_n, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 427, __pyx_L1_error)
+    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_n_s_n, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 433, __pyx_L1_error)
     __pyx_t_3 = __pyx_t_4;
     __pyx_L8_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "NumeriCal.pyx":428
+      /* "NumeriCal.pyx":434
  *         else:
  *             if real[ 0 ] in [ 'i', 'n' ]:
  *                 error = ERRORS( self.line ).ERROR9( )             # <<<<<<<<<<<<<<
  * 
  *             else: pass
  */
-      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 428, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 434, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 428, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9NumeriCal_ERRORS), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 434, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 428, __pyx_L1_error)
+      __pyx_t_2 = ((struct __pyx_vtabstruct_9NumeriCal_ERRORS *)((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1)->__pyx_vtab)->ERROR9(((struct __pyx_obj_9NumeriCal_ERRORS *)__pyx_t_1), NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 434, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 428, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 434, __pyx_L1_error)
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "NumeriCal.pyx":427
+      /* "NumeriCal.pyx":433
  *             else:  error = ERRORS( self.line ).ERROR9( )
  *         else:
  *             if real[ 0 ] in [ 'i', 'n' ]:             # <<<<<<<<<<<<<<
@@ -11585,7 +11828,7 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
       goto __pyx_L7;
     }
 
-    /* "NumeriCal.pyx":430
+    /* "NumeriCal.pyx":436
  *                 error = ERRORS( self.line ).ERROR9( )
  * 
  *             else: pass             # <<<<<<<<<<<<<<
@@ -11598,15 +11841,15 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
   }
   __pyx_L3:;
 
-  /* "NumeriCal.pyx":432
+  /* "NumeriCal.pyx":438
  *             else: pass
  * 
  *         return self.master, error             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->master); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 432, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->master); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 432, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
@@ -11618,7 +11861,7 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "NumeriCal.pyx":414
+  /* "NumeriCal.pyx":420
  *         self.line           = line
  * 
  *     cdef tuple FLOAT( self ):             # <<<<<<<<<<<<<<
@@ -11640,7 +11883,7 @@ static PyObject *__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT(struct __pyx_obj_9Nume
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":407
+/* "NumeriCal.pyx":413
  * cdef class FLOAT_ANALYZE:
  *     cdef :
  *         public float master             # <<<<<<<<<<<<<<
@@ -11670,7 +11913,7 @@ static PyObject *__pyx_pf_9NumeriCal_13FLOAT_ANALYZE_6master___get__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 413, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11708,7 +11951,7 @@ static int __pyx_pf_9NumeriCal_13FLOAT_ANALYZE_6master_2__set__(struct __pyx_obj
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_v_value); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 407, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_v_value); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 413, __pyx_L1_error)
   __pyx_v_self->master = __pyx_t_1;
 
   /* function exit code */
@@ -11722,7 +11965,7 @@ static int __pyx_pf_9NumeriCal_13FLOAT_ANALYZE_6master_2__set__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "NumeriCal.pyx":408
+/* "NumeriCal.pyx":414
  *     cdef :
  *         public float master
  *         public int line             # <<<<<<<<<<<<<<
@@ -11752,7 +11995,7 @@ static PyObject *__pyx_pf_9NumeriCal_13FLOAT_ANALYZE_4line___get__(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11790,7 +12033,7 @@ static int __pyx_pf_9NumeriCal_13FLOAT_ANALYZE_4line_2__set__(struct __pyx_obj_9
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 414, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
   /* function exit code */
@@ -14575,7 +14818,6 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_, __pyx_k_, sizeof(__pyx_k_), 0, 0, 1, 0},
   {&__pyx_n_s_ABCDEFGHIJKLMNOPQRSTUVWXYZ, __pyx_k_ABCDEFGHIJKLMNOPQRSTUVWXYZ, sizeof(__pyx_k_ABCDEFGHIJKLMNOPQRSTUVWXYZ), 0, 0, 1, 1},
   {&__pyx_n_s_BLUE, __pyx_k_BLUE, sizeof(__pyx_k_BLUE), 0, 0, 1, 1},
   {&__pyx_n_s_CHAR_SELECTION, __pyx_k_CHAR_SELECTION, sizeof(__pyx_k_CHAR_SELECTION), 0, 0, 1, 1},
@@ -14619,6 +14861,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 0},
   {&__pyx_kp_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 0},
   {&__pyx_kp_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 0},
+  {&__pyx_kp_s__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 0, 1, 0},
   {&__pyx_kp_s_a_complex, __pyx_k_a_complex, sizeof(__pyx_k_a_complex), 0, 0, 1, 0},
   {&__pyx_kp_s_a_float, __pyx_k_a_float, sizeof(__pyx_k_a_float), 0, 0, 1, 0},
   {&__pyx_kp_s_a_tuple_or_a_string_type_line, __pyx_k_a_tuple_or_a_string_type_line, sizeof(__pyx_k_a_tuple_or_a_string_type_line), 0, 0, 1, 0},
@@ -14626,6 +14869,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_an_integer, __pyx_k_an_integer, sizeof(__pyx_k_an_integer), 0, 0, 1, 0},
   {&__pyx_kp_s_an_integer_2, __pyx_k_an_integer_2, sizeof(__pyx_k_an_integer_2), 0, 0, 1, 0},
   {&__pyx_kp_s_and_type_line, __pyx_k_and_type_line, sizeof(__pyx_k_and_type_line), 0, 0, 1, 0},
+  {&__pyx_n_s_blue, __pyx_k_blue, sizeof(__pyx_k_blue), 0, 0, 1, 1},
+  {&__pyx_n_s_bm, __pyx_k_bm, sizeof(__pyx_k_bm), 0, 0, 1, 1},
+  {&__pyx_n_s_bm_configure, __pyx_k_bm_configure, sizeof(__pyx_k_bm_configure), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_colorama, __pyx_k_colorama, sizeof(__pyx_k_colorama), 0, 0, 1, 1},
   {&__pyx_n_s_complex, __pyx_k_complex, sizeof(__pyx_k_complex), 0, 0, 1, 1},
@@ -14635,6 +14881,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_kp_s_due_to_line, __pyx_k_due_to_line, sizeof(__pyx_k_due_to_line), 0, 0, 1, 0},
   {&__pyx_n_s_e, __pyx_k_e, sizeof(__pyx_k_e), 0, 0, 1, 1},
+  {&__pyx_n_s_fg, __pyx_k_fg, sizeof(__pyx_k_fg), 0, 0, 1, 1},
   {&__pyx_n_s_float, __pyx_k_float, sizeof(__pyx_k_float), 0, 0, 1, 1},
   {&__pyx_n_s_float_2, __pyx_k_float_2, sizeof(__pyx_k_float_2), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
@@ -14644,6 +14891,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_impossible_to_convert, __pyx_k_impossible_to_convert, sizeof(__pyx_k_impossible_to_convert), 0, 0, 1, 0},
   {&__pyx_n_s_index, __pyx_k_index, sizeof(__pyx_k_index), 0, 0, 1, 1},
   {&__pyx_kp_s_infinity_number, __pyx_k_infinity_number, sizeof(__pyx_k_infinity_number), 0, 0, 1, 0},
+  {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_int, __pyx_k_int, sizeof(__pyx_k_int), 0, 0, 1, 1},
   {&__pyx_kp_s_invalid_syntax_in, __pyx_k_invalid_syntax_in, sizeof(__pyx_k_invalid_syntax_in), 0, 0, 1, 0},
   {&__pyx_kp_s_invalid_syntax_in_2, __pyx_k_invalid_syntax_in_2, sizeof(__pyx_k_invalid_syntax_in_2), 0, 0, 1, 0},
@@ -14656,8 +14904,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_list, __pyx_k_list, sizeof(__pyx_k_list), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_master, __pyx_k_master, sizeof(__pyx_k_master), 0, 0, 1, 1},
+  {&__pyx_n_s_matrix, __pyx_k_matrix, sizeof(__pyx_k_matrix), 0, 0, 1, 1},
   {&__pyx_n_s_n, __pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
+  {&__pyx_kp_s_ndarray, __pyx_k_ndarray, sizeof(__pyx_k_ndarray), 0, 0, 1, 0},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_kp_s_not_supported_between, __pyx_k_not_supported_between, sizeof(__pyx_k_not_supported_between), 0, 0, 1, 0},
   {&__pyx_n_s_numeric, __pyx_k_numeric, sizeof(__pyx_k_numeric), 0, 0, 1, 1},
@@ -14675,11 +14925,14 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pyx_unpickle_FLOAT_ANALYZE, __pyx_k_pyx_unpickle_FLOAT_ANALYZE, sizeof(__pyx_k_pyx_unpickle_FLOAT_ANALYZE), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_unpickle_NUMERICAL, __pyx_k_pyx_unpickle_NUMERICAL, sizeof(__pyx_k_pyx_unpickle_NUMERICAL), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
+  {&__pyx_n_s_rbg, __pyx_k_rbg, sizeof(__pyx_k_rbg), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
+  {&__pyx_n_s_reset, __pyx_k_reset, sizeof(__pyx_k_reset), 0, 0, 1, 1},
   {&__pyx_n_s_script, __pyx_k_script, sizeof(__pyx_k_script), 0, 0, 1, 1},
   {&__pyx_n_s_script_LEXER, __pyx_k_script_LEXER, sizeof(__pyx_k_script_LEXER), 0, 0, 1, 1},
+  {&__pyx_n_s_script_STDIN_LinuxSTDIN, __pyx_k_script_STDIN_LinuxSTDIN, sizeof(__pyx_k_script_STDIN_LinuxSTDIN), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_string, __pyx_k_string, sizeof(__pyx_k_string), 0, 0, 1, 1},
@@ -14688,6 +14941,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_to_type_line, __pyx_k_to_type_line, sizeof(__pyx_k_to_type_line), 0, 0, 1, 0},
   {&__pyx_n_s_tuple, __pyx_k_tuple, sizeof(__pyx_k_tuple), 0, 0, 1, 1},
   {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
+  {&__pyx_n_s_types, __pyx_k_types, sizeof(__pyx_k_types), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
   {&__pyx_n_s_variables, __pyx_k_variables, sizeof(__pyx_k_variables), 0, 0, 1, 1},
@@ -14697,9 +14951,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_SyntaxError = __Pyx_GetBuiltinName(__pyx_n_s_SyntaxError); if (!__pyx_builtin_SyntaxError) __PYX_ERR(0, 68, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 68, __pyx_L1_error)
-  __pyx_builtin_OverflowError = __Pyx_GetBuiltinName(__pyx_n_s_OverflowError); if (!__pyx_builtin_OverflowError) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_builtin_SyntaxError = __Pyx_GetBuiltinName(__pyx_n_s_SyntaxError); if (!__pyx_builtin_SyntaxError) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_builtin_OverflowError = __Pyx_GetBuiltinName(__pyx_n_s_OverflowError); if (!__pyx_builtin_OverflowError) __PYX_ERR(0, 74, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -14709,27 +14963,38 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
+  /* "NumeriCal.pyx":7
+ * 
+ * cdef str MATRIX():
+ *     return '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0),bm.fg.blue) + bm.init.reset             # <<<<<<<<<<<<<<
+ * cdef list  String() :
+ *     cdef :
+ */
+  __pyx_tuple_ = PyTuple_Pack(3, __pyx_int_255, __pyx_int_165, __pyx_int_0); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
+
   /* "(tree fragment)":1
  * def __pyx_unpickle_NUMERICAL(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__5 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_NUMERICAL, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__7 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_ERRORS, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__9 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_COMPLEX_ANALYZE, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __pyx_tuple__11 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__11);
-  __Pyx_GIVEREF(__pyx_tuple__11);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_FLOAT_ANALYZE, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_NUMERICAL, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_ERRORS, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_COMPLEX_ANALYZE, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_FLOAT_ANALYZE, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -14742,6 +15007,8 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   __pyx_umethod_PyList_Type_index.type = (PyObject*)&PyList_Type;
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_165 = PyInt_FromLong(165); if (unlikely(!__pyx_int_165)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_255 = PyInt_FromLong(255); if (unlikely(!__pyx_int_255)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_44720083 = PyInt_FromLong(44720083L); if (unlikely(!__pyx_int_44720083)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_124663091 = PyInt_FromLong(124663091L); if (unlikely(!__pyx_int_124663091)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_183807592 = PyInt_FromLong(183807592L); if (unlikely(!__pyx_int_183807592)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -14791,16 +15058,16 @@ static int __Pyx_modinit_type_init_code(void) {
   /*--- Type init code ---*/
   __pyx_vtabptr_9NumeriCal_NUMERICAL = &__pyx_vtable_9NumeriCal_NUMERICAL;
   __pyx_vtable_9NumeriCal_NUMERICAL.CHECK = (PyObject *(*)(struct __pyx_obj_9NumeriCal_NUMERICAL *, int __pyx_skip_dispatch))__pyx_f_9NumeriCal_9NUMERICAL_CHECK;
-  if (PyType_Ready(&__pyx_type_9NumeriCal_NUMERICAL) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9NumeriCal_NUMERICAL) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9NumeriCal_NUMERICAL.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9NumeriCal_NUMERICAL.tp_dictoffset && __pyx_type_9NumeriCal_NUMERICAL.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9NumeriCal_NUMERICAL.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_9NumeriCal_NUMERICAL.tp_dict, __pyx_vtabptr_9NumeriCal_NUMERICAL) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_NUMERICAL, (PyObject *)&__pyx_type_9NumeriCal_NUMERICAL) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9NumeriCal_NUMERICAL) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_9NumeriCal_NUMERICAL.tp_dict, __pyx_vtabptr_9NumeriCal_NUMERICAL) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_NUMERICAL, (PyObject *)&__pyx_type_9NumeriCal_NUMERICAL) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9NumeriCal_NUMERICAL) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
   __pyx_ptype_9NumeriCal_NUMERICAL = &__pyx_type_9NumeriCal_NUMERICAL;
   __pyx_vtabptr_9NumeriCal_ERRORS = &__pyx_vtable_9NumeriCal_ERRORS;
   __pyx_vtable_9NumeriCal_ERRORS.ERROR0 = (PyObject *(*)(struct __pyx_obj_9NumeriCal_ERRORS *, PyObject *))__pyx_f_9NumeriCal_6ERRORS_ERROR0;
@@ -14813,42 +15080,42 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_9NumeriCal_ERRORS.ERROR7 = (PyObject *(*)(struct __pyx_obj_9NumeriCal_ERRORS *, PyObject *, PyObject *, PyObject *))__pyx_f_9NumeriCal_6ERRORS_ERROR7;
   __pyx_vtable_9NumeriCal_ERRORS.ERROR8 = (PyObject *(*)(struct __pyx_obj_9NumeriCal_ERRORS *, PyObject *))__pyx_f_9NumeriCal_6ERRORS_ERROR8;
   __pyx_vtable_9NumeriCal_ERRORS.ERROR9 = (PyObject *(*)(struct __pyx_obj_9NumeriCal_ERRORS *, struct __pyx_opt_args_9NumeriCal_6ERRORS_ERROR9 *__pyx_optional_args))__pyx_f_9NumeriCal_6ERRORS_ERROR9;
-  if (PyType_Ready(&__pyx_type_9NumeriCal_ERRORS) < 0) __PYX_ERR(0, 259, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9NumeriCal_ERRORS) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9NumeriCal_ERRORS.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9NumeriCal_ERRORS.tp_dictoffset && __pyx_type_9NumeriCal_ERRORS.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9NumeriCal_ERRORS.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_9NumeriCal_ERRORS.tp_dict, __pyx_vtabptr_9NumeriCal_ERRORS) < 0) __PYX_ERR(0, 259, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ERRORS, (PyObject *)&__pyx_type_9NumeriCal_ERRORS) < 0) __PYX_ERR(0, 259, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9NumeriCal_ERRORS) < 0) __PYX_ERR(0, 259, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_9NumeriCal_ERRORS.tp_dict, __pyx_vtabptr_9NumeriCal_ERRORS) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ERRORS, (PyObject *)&__pyx_type_9NumeriCal_ERRORS) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9NumeriCal_ERRORS) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
   __pyx_ptype_9NumeriCal_ERRORS = &__pyx_type_9NumeriCal_ERRORS;
   __pyx_vtabptr_9NumeriCal_COMPLEX_ANALYZE = &__pyx_vtable_9NumeriCal_COMPLEX_ANALYZE;
   __pyx_vtable_9NumeriCal_COMPLEX_ANALYZE.COMPLEX = (PyObject *(*)(struct __pyx_obj_9NumeriCal_COMPLEX_ANALYZE *))__pyx_f_9NumeriCal_15COMPLEX_ANALYZE_COMPLEX;
-  if (PyType_Ready(&__pyx_type_9NumeriCal_COMPLEX_ANALYZE) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9NumeriCal_COMPLEX_ANALYZE) < 0) __PYX_ERR(0, 363, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9NumeriCal_COMPLEX_ANALYZE.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9NumeriCal_COMPLEX_ANALYZE.tp_dictoffset && __pyx_type_9NumeriCal_COMPLEX_ANALYZE.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9NumeriCal_COMPLEX_ANALYZE.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_9NumeriCal_COMPLEX_ANALYZE.tp_dict, __pyx_vtabptr_9NumeriCal_COMPLEX_ANALYZE) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_COMPLEX_ANALYZE, (PyObject *)&__pyx_type_9NumeriCal_COMPLEX_ANALYZE) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9NumeriCal_COMPLEX_ANALYZE) < 0) __PYX_ERR(0, 357, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_9NumeriCal_COMPLEX_ANALYZE.tp_dict, __pyx_vtabptr_9NumeriCal_COMPLEX_ANALYZE) < 0) __PYX_ERR(0, 363, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_COMPLEX_ANALYZE, (PyObject *)&__pyx_type_9NumeriCal_COMPLEX_ANALYZE) < 0) __PYX_ERR(0, 363, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9NumeriCal_COMPLEX_ANALYZE) < 0) __PYX_ERR(0, 363, __pyx_L1_error)
   __pyx_ptype_9NumeriCal_COMPLEX_ANALYZE = &__pyx_type_9NumeriCal_COMPLEX_ANALYZE;
   __pyx_vtabptr_9NumeriCal_FLOAT_ANALYZE = &__pyx_vtable_9NumeriCal_FLOAT_ANALYZE;
   __pyx_vtable_9NumeriCal_FLOAT_ANALYZE.FLOAT = (PyObject *(*)(struct __pyx_obj_9NumeriCal_FLOAT_ANALYZE *))__pyx_f_9NumeriCal_13FLOAT_ANALYZE_FLOAT;
-  if (PyType_Ready(&__pyx_type_9NumeriCal_FLOAT_ANALYZE) < 0) __PYX_ERR(0, 405, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9NumeriCal_FLOAT_ANALYZE) < 0) __PYX_ERR(0, 411, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9NumeriCal_FLOAT_ANALYZE.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9NumeriCal_FLOAT_ANALYZE.tp_dictoffset && __pyx_type_9NumeriCal_FLOAT_ANALYZE.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9NumeriCal_FLOAT_ANALYZE.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_9NumeriCal_FLOAT_ANALYZE.tp_dict, __pyx_vtabptr_9NumeriCal_FLOAT_ANALYZE) < 0) __PYX_ERR(0, 405, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_FLOAT_ANALYZE, (PyObject *)&__pyx_type_9NumeriCal_FLOAT_ANALYZE) < 0) __PYX_ERR(0, 405, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9NumeriCal_FLOAT_ANALYZE) < 0) __PYX_ERR(0, 405, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_9NumeriCal_FLOAT_ANALYZE.tp_dict, __pyx_vtabptr_9NumeriCal_FLOAT_ANALYZE) < 0) __PYX_ERR(0, 411, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_FLOAT_ANALYZE, (PyObject *)&__pyx_type_9NumeriCal_FLOAT_ANALYZE) < 0) __PYX_ERR(0, 411, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9NumeriCal_FLOAT_ANALYZE) < 0) __PYX_ERR(0, 411, __pyx_L1_error)
   __pyx_ptype_9NumeriCal_FLOAT_ANALYZE = &__pyx_type_9NumeriCal_FLOAT_ANALYZE;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -15105,7 +15372,7 @@ if (!__Pyx_RefNanny) {
  * from script         import control_string as ctrl
  * from colorama       import Fore, Style             # <<<<<<<<<<<<<<
  * from script.LEXER   import particular_str_selection as pss
- * 
+ * from script.STDIN.LinuxSTDIN        import bm_configure as bm
  */
   __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -15132,7 +15399,7 @@ if (!__Pyx_RefNanny) {
  * from script         import control_string as ctrl
  * from colorama       import Fore, Style
  * from script.LEXER   import particular_str_selection as pss             # <<<<<<<<<<<<<<
- * 
+ * from script.STDIN.LinuxSTDIN        import bm_configure as bm
  * 
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
@@ -15149,15 +15416,36 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
+  /* "NumeriCal.pyx":4
+ * from colorama       import Fore, Style
+ * from script.LEXER   import particular_str_selection as pss
+ * from script.STDIN.LinuxSTDIN        import bm_configure as bm             # <<<<<<<<<<<<<<
+ * 
+ * cdef str MATRIX():
+ */
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_bm_configure);
+  __Pyx_GIVEREF(__pyx_n_s_bm_configure);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_bm_configure);
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_script_STDIN_LinuxSTDIN, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_bm_configure); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_bm, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
   /* "(tree fragment)":1
  * def __pyx_unpickle_NUMERICAL(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9NumeriCal_1__pyx_unpickle_NUMERICAL, NULL, __pyx_n_s_NumeriCal); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_NUMERICAL, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9NumeriCal_1__pyx_unpickle_NUMERICAL, NULL, __pyx_n_s_NumeriCal); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_NUMERICAL, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":11
  *         __pyx_unpickle_NUMERICAL__set_state(<NUMERICAL> __pyx_result, __pyx_state)
@@ -15166,20 +15454,20 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.DataBase = __pyx_state[0]; __pyx_result.ListOfValues = __pyx_state[1]; __pyx_result._values_ = __pyx_state[2]; __pyx_result.line = __pyx_state[3]; __pyx_result.variables = __pyx_state[4]
  *     if len(__pyx_state) > 5 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9NumeriCal_3__pyx_unpickle_ERRORS, NULL, __pyx_n_s_NumeriCal); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_ERRORS, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9NumeriCal_3__pyx_unpickle_ERRORS, NULL, __pyx_n_s_NumeriCal); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_ERRORS, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_COMPLEX_ANALYZE(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9NumeriCal_5__pyx_unpickle_COMPLEX_ANALYZE, NULL, __pyx_n_s_NumeriCal); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_COMPLEX_ANALYZE, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9NumeriCal_5__pyx_unpickle_COMPLEX_ANALYZE, NULL, __pyx_n_s_NumeriCal); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_COMPLEX_ANALYZE, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":11
  *         __pyx_unpickle_COMPLEX_ANALYZE__set_state(<COMPLEX_ANALYZE> __pyx_result, __pyx_state)
@@ -15188,20 +15476,20 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.line = __pyx_state[0]; __pyx_result.master = __pyx_state[1]
  *     if len(__pyx_state) > 2 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9NumeriCal_7__pyx_unpickle_FLOAT_ANALYZE, NULL, __pyx_n_s_NumeriCal); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_FLOAT_ANALYZE, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9NumeriCal_7__pyx_unpickle_FLOAT_ANALYZE, NULL, __pyx_n_s_NumeriCal); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_FLOAT_ANALYZE, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "NumeriCal.pyx":1
  * from script         import control_string as ctrl             # <<<<<<<<<<<<<<
  * from colorama       import Fore, Style
  * from script.LEXER   import particular_str_selection as pss
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -15274,117 +15562,6 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
     return result;
 }
 
-/* DictGetItem */
-#if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
-static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
-    PyObject *value;
-    value = PyDict_GetItemWithError(d, key);
-    if (unlikely(!value)) {
-        if (!PyErr_Occurred()) {
-            if (unlikely(PyTuple_Check(key))) {
-                PyObject* args = PyTuple_Pack(1, key);
-                if (likely(args)) {
-                    PyErr_SetObject(PyExc_KeyError, args);
-                    Py_DECREF(args);
-                }
-            } else {
-                PyErr_SetObject(PyExc_KeyError, key);
-            }
-        }
-        return NULL;
-    }
-    Py_INCREF(value);
-    return value;
-}
-#endif
-
-/* GetItemInt */
-static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
-    PyObject *r;
-    if (!j) return NULL;
-    r = PyObject_GetItem(o, j);
-    Py_DECREF(j);
-    return r;
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
-                                                              CYTHON_NCP_UNUSED int wraparound,
-                                                              CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    Py_ssize_t wrapped_i = i;
-    if (wraparound & unlikely(i < 0)) {
-        wrapped_i += PyList_GET_SIZE(o);
-    }
-    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyList_GET_SIZE(o)))) {
-        PyObject *r = PyList_GET_ITEM(o, wrapped_i);
-        Py_INCREF(r);
-        return r;
-    }
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-#else
-    return PySequence_GetItem(o, i);
-#endif
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
-                                                              CYTHON_NCP_UNUSED int wraparound,
-                                                              CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    Py_ssize_t wrapped_i = i;
-    if (wraparound & unlikely(i < 0)) {
-        wrapped_i += PyTuple_GET_SIZE(o);
-    }
-    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyTuple_GET_SIZE(o)))) {
-        PyObject *r = PyTuple_GET_ITEM(o, wrapped_i);
-        Py_INCREF(r);
-        return r;
-    }
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-#else
-    return PySequence_GetItem(o, i);
-#endif
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
-                                                     CYTHON_NCP_UNUSED int wraparound,
-                                                     CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
-    if (is_list || PyList_CheckExact(o)) {
-        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
-        if ((!boundscheck) || (likely(__Pyx_is_valid_index(n, PyList_GET_SIZE(o))))) {
-            PyObject *r = PyList_GET_ITEM(o, n);
-            Py_INCREF(r);
-            return r;
-        }
-    }
-    else if (PyTuple_CheckExact(o)) {
-        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
-        if ((!boundscheck) || likely(__Pyx_is_valid_index(n, PyTuple_GET_SIZE(o)))) {
-            PyObject *r = PyTuple_GET_ITEM(o, n);
-            Py_INCREF(r);
-            return r;
-        }
-    } else {
-        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
-        if (likely(m && m->sq_item)) {
-            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
-                Py_ssize_t l = m->sq_length(o);
-                if (likely(l >= 0)) {
-                    i += l;
-                } else {
-                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
-                        return NULL;
-                    PyErr_Clear();
-                }
-            }
-            return m->sq_item(o, i);
-        }
-    }
-#else
-    if (is_list || PySequence_Check(o)) {
-        return PySequence_GetItem(o, i);
-    }
-#endif
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-}
-
 /* PyDictVersioning */
 #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
 static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
@@ -15445,6 +15622,26 @@ static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
 #endif
     return __Pyx_GetBuiltinName(name);
 }
+
+/* PyObjectCall */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
+    PyObject *result;
+    ternaryfunc call = Py_TYPE(func)->tp_call;
+    if (unlikely(!call))
+        return PyObject_Call(func, arg, kw);
+    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+        return NULL;
+    result = (*call)(func, arg, kw);
+    Py_LeaveRecursiveCall();
+    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
+        PyErr_SetString(
+            PyExc_SystemError,
+            "NULL result without error in PyObject_Call");
+    }
+    return result;
+}
+#endif
 
 /* PyFunctionFastCall */
 #if CYTHON_FAST_PYCALL
@@ -15588,25 +15785,116 @@ static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, P
 }
 #endif
 
-/* PyObjectCall */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
-    PyObject *result;
-    ternaryfunc call = Py_TYPE(func)->tp_call;
-    if (unlikely(!call))
-        return PyObject_Call(func, arg, kw);
-    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+/* DictGetItem */
+#if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
+static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
+    PyObject *value;
+    value = PyDict_GetItemWithError(d, key);
+    if (unlikely(!value)) {
+        if (!PyErr_Occurred()) {
+            if (unlikely(PyTuple_Check(key))) {
+                PyObject* args = PyTuple_Pack(1, key);
+                if (likely(args)) {
+                    PyErr_SetObject(PyExc_KeyError, args);
+                    Py_DECREF(args);
+                }
+            } else {
+                PyErr_SetObject(PyExc_KeyError, key);
+            }
+        }
         return NULL;
-    result = (*call)(func, arg, kw);
-    Py_LeaveRecursiveCall();
-    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
-        PyErr_SetString(
-            PyExc_SystemError,
-            "NULL result without error in PyObject_Call");
     }
-    return result;
+    Py_INCREF(value);
+    return value;
 }
 #endif
+
+/* GetItemInt */
+static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
+    PyObject *r;
+    if (!j) return NULL;
+    r = PyObject_GetItem(o, j);
+    Py_DECREF(j);
+    return r;
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    Py_ssize_t wrapped_i = i;
+    if (wraparound & unlikely(i < 0)) {
+        wrapped_i += PyList_GET_SIZE(o);
+    }
+    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyList_GET_SIZE(o)))) {
+        PyObject *r = PyList_GET_ITEM(o, wrapped_i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    Py_ssize_t wrapped_i = i;
+    if (wraparound & unlikely(i < 0)) {
+        wrapped_i += PyTuple_GET_SIZE(o);
+    }
+    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyTuple_GET_SIZE(o)))) {
+        PyObject *r = PyTuple_GET_ITEM(o, wrapped_i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
+                                                     CYTHON_NCP_UNUSED int wraparound,
+                                                     CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
+    if (is_list || PyList_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
+        if ((!boundscheck) || (likely(__Pyx_is_valid_index(n, PyList_GET_SIZE(o))))) {
+            PyObject *r = PyList_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    }
+    else if (PyTuple_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
+        if ((!boundscheck) || likely(__Pyx_is_valid_index(n, PyTuple_GET_SIZE(o)))) {
+            PyObject *r = PyTuple_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    } else {
+        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
+        if (likely(m && m->sq_item)) {
+            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
+                Py_ssize_t l = m->sq_length(o);
+                if (likely(l >= 0)) {
+                    i += l;
+                } else {
+                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
+                        return NULL;
+                    PyErr_Clear();
+                }
+            }
+            return m->sq_item(o, i);
+        }
+    }
+#else
+    if (is_list || PySequence_Check(o)) {
+        return PySequence_GetItem(o, i);
+    }
+#endif
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+}
 
 /* PyObjectCall2Args */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
