@@ -37,7 +37,7 @@ class windows:
                     self.mainIndex   += 1
                 elif self.char in {10, 13}:  # enter
                     self.line += 1
-                    sys.stdout.write(u"\u001b[1000D")
+                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     self.clear_input = self.mainString
                     if self.clear_input:
                         ####################################################################
