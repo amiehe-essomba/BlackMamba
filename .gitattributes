@@ -1,5 +1,5 @@
 *.c linguist-detectable=true
 *.cpp linguist-detectable=true
-*.py linguist-detectable=false
+*.py linguist-detectable=true
 *.pyx linguist-detectable=true
 *.bm linguist-detectable=true
