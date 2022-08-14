@@ -71,7 +71,12 @@ class CHECK_TAB:
                     # if the backslash key was set or not to check that i create a function called < BACKSLASH >.
                     # backslash function is used to split the main string.
                     if self._ is None: pass
-                    else: self.master = self.master[ : self._]
+                    else:
+
+                        if self.master[0] in  ['"', "'"] and self.master[-1] == self.master[0]: pass
+                        else:
+                            if self._ is None: pass
+                            else: self.master = self.master[: self._]
 
                     self.string_check, self.error             = self.backslash.BACKSSLASH(master=self.master,
                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )
@@ -143,8 +148,10 @@ class CHECK_TAB_FOR_INTERPRETER:
                     # if the backslash key was set or not to check that i create a function called < BACKSLASH >.
                     # backslash function is used to split the main string.
 
-                    if self._ is None: pass
-                    else: self.master = self.master[ : self._]
+                    if self.master[0] in ['"', "'"] and self.master[-1] == self.master[0]:  pass
+                    else:
+                        if self._ is None: pass
+                        else: self.master = self.master[: self._]
 
                     self.string_check, self.error             = self.backslash.BACKSSLASH_FOR_INTERPRETER( master=self.master,
                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )

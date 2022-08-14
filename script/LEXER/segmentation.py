@@ -4,6 +4,7 @@ from script                     import control_string
 from script.STDIN.WinSTDIN      import stdin
 from script.LEXER               import checking_if_backslash
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
+from script.PARXER.PARXER_FUNCTIONS._IF_ import IfError
 try:
     from CythonModules.Windows  import fileError as fe 
 except ImportError:
@@ -369,7 +370,7 @@ class SUB_STRING:
                     self.mainIndex  += 1
                 else:
                     self.string_line += 1
-                    sys.stdout.write(u"\u001b[1000D")
+                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     self.clear_input = self.mainString
                     if self.clear_input:
                         ####################################################################
@@ -721,13 +722,13 @@ class SUB_STRING:
             except KeyboardInterrupt:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
-                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                self.error = IfError.ERRORS(self.string_line).ERROR4()
                 break
             except EOFError:  break
             except TypeError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                 print(self._end_of_file_)
-                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                self.error = IfError.ERRORS(self.string_line).ERROR4()
                 break
 
         if self.error is None :

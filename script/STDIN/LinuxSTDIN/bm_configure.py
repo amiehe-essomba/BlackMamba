@@ -5,6 +5,7 @@ from   sys         import stdout, stdin
 from   time        import sleep
 from   datetime    import datetime
 from   tkinter     import *
+from script        import control_string
 
 class fg:
     black       = u"\u001b[30m"
@@ -109,7 +110,7 @@ class head:
                 ''
                 ]
 
-        wait    = 0.002
+        wait    = 0.0005
 
         head().tip(block[ 0 ], 0, wait)
         head().tip(block[ 1 ], 1, wait, sys)
@@ -201,6 +202,8 @@ class words:
     def __init__(self, string : str, color : str):
         self.string     = string
         self.color      = color
+        self.analyse    = control_string.STRING_ANALYSE({}, 1)
+
     def alphabetic(self):
         return list('abcdefghijklmnopqrstuvwxyzTFN')
 
@@ -209,6 +212,8 @@ class words:
         self.stringKey  = ''
         self.active     = False
         self.ss         = ''
+        self.count      = 0
+        self.k          = []
 
         if      self.string in ['in', 'not']:
             self.newString  += fg.rbg(255,128,128)+self.string+init.reset
@@ -232,35 +237,44 @@ class words:
         else:
             for i, s in enumerate(self.string):
 
-                if self.active is False:
-                    if s in {'+', '-', '*', '^', '%', '/'}:
-                        self.newString += fg.rbg(255, 0, 0) + s + init.reset
-                    elif s in [str(x) for x in range(10)]:
-                        self.newString += fg.rbg(255, 0, 255) + s + init.reset
-                    elif s in {'(', ')'}:
-                        self.newString += fg.rbg(0, 255, 0) + s + init.reset
-                    elif s in {'{', '}'}:
-                        self.newString += fg.rbg(186,85,211) + s + init.reset
-                    elif s in {'[', ']'}:
-                        self.newString += fg.rbg(255, 255, 0) + s + init.reset
-                    elif s in {'<', '>', '=', '!', '|', '&', '?'}:
-                        self.newString += fg.rbg(255, 102, 0) + s + init.reset
-                    elif s in {':'}:
-                        self.newString += fg.rbg(255, 255, 153) + s + init.reset
-                    elif s in {'.'}:
-                        self.newString += fg.rbg(0, 102, 204) + s + init.reset
-                    elif s in {'$'}:
-                        self.newString += fg.rbg(255, 204, 0) + s + init.reset
-                    elif s in {'#'}:
-                        self.newString += fg.rbg(153, 153, 255) + s + init.reset
-                        self.active = True
-                    elif s in {'@'}:
-                        self.newString += fg.rbg(255, 255, 255) + s + init.reset
-                    elif s in {"'", '"'}:
-                        self.newString += fg.rbg(255, 153, 204) + s + init.reset
-                    else:
-                        self.newString += self.color + s + init.reset
-                else: self.newString += fg.rbg(153, 153, 255) + s + init.reset
+                if self.count % 2 == 0:
+                    if self.active is False:
+                        if s in {'+', '-', '*', '^', '%', '/'}:
+                            self.newString += fg.rbg(255, 0, 0) + s + init.reset
+                        elif s in [str(x) for x in range(10)]:
+                            self.newString += fg.rbg(255, 0, 255) + s + init.reset
+                        elif s in {'(', ')'}:
+                            self.newString += fg.rbg(0, 255, 0) + s + init.reset
+                        elif s in {'{', '}'}:
+                            self.newString += fg.rbg(186,85,211) + s + init.reset
+                        elif s in {'[', ']'}:
+                            self.newString += fg.rbg(255, 255, 0) + s + init.reset
+                        elif s in {'<', '>', '=', '!', '|', '&', '?'}:
+                            self.newString += fg.rbg(255, 102, 0) + s + init.reset
+                        elif s in {':'}:
+                            self.newString += fg.rbg(255, 255, 153) + s + init.reset
+                        elif s in {'.'}:
+                            self.newString += fg.rbg(0, 102, 204) + s + init.reset
+                        elif s in {'$'}:
+                            self.newString += fg.rbg(255, 204, 0) + s + init.reset
+                        elif s in {'#'}:
+                            self.newString += fg.rbg(153, 153, 255) + s + init.reset
+                            if self.string[ 0 ] not in [ "'", '"']: self.active = True
+                            else: self.active = False
+                        elif s in {'@'}:
+                            self.newString += fg.rbg(255, 255, 255) + s + init.reset
+                        elif s in {"'", '"'}:
+                            self.newString += fg.rbg(255, 153, 204) + s + init.reset
+                            self.k.append(s)
+                            self.count += 1
+                        else:  self.newString += self.color + s + init.reset
+                    else: self.newString += fg.rbg(153, 153, 255) + s + init.reset
+                else:
+                    self.newString += fg.rbg(255, 153, 204) + s + init.reset
+                    if self.k[0] == s:
+                        self.count = 0
+                        self.k = []
+                    else: pass
 
         return self.newString
 
@@ -279,6 +293,12 @@ class words:
                         else: pass
                 else:
                     if s in [ '#' ]:
+                        self.ss += s
+                        if i < len(self.string) - 1:  pass
+                        else:
+                            if self.ss:  self.newS += words(self.ss, self.color).keywords()
+                            else:  pass
+                    elif s in ['"', "'"]:
                         self.ss += s
                         if i < len(self.string) - 1:  pass
                         else:
