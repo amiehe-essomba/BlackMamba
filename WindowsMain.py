@@ -95,7 +95,7 @@ class windows:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-            except IndexError:
+            except TypeError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                 print(self._end_of_file_)
                 self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
