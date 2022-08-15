@@ -187,9 +187,11 @@ class remove_ansi_chars:
 
 class read:
     def readchar(self):
-        fd  = sys.stdin.fileno()
-        ch = ord( sys.stdin.read( 1 ) )
-        return ch
+        try:
+            fd  = sys.stdin.fileno()
+            ch = ord( sys.stdin.read( 1 ) )
+            return ch
+        except TypeError: pass
 
 class string:
     def __init__(self):
@@ -242,7 +244,17 @@ class words:
                         if s in {'+', '-', '*', '^', '%', '/'}:
                             self.newString += fg.rbg(255, 0, 0) + s + init.reset
                         elif s in [str(x) for x in range(10)]:
-                            self.newString += fg.rbg(255, 0, 255) + s + init.reset
+                            if i == 0:
+                                try:
+                                    if self.string[ 1 ] in self.analyse.LOWER_CASE()+self.analyse.UPPER_CASE():
+                                        self.newString += self.color + s + init.reset
+                                    else: self.newString += fg.rbg(255, 0, 255) + s + init.reset
+                                except IndexError: self.newString += fg.rbg(255, 0, 255) + s + init.reset
+                            else:
+                                if self.string[i - 1] in self.analyse.LOWER_CASE() + self.analyse.UPPER_CASE():
+                                    self.newString += self.color + s + init.reset
+                                else: self.newString +=fg.rbg(255, 0, 255) + s + init.reset
+
                         elif s in {'(', ')'}:
                             self.newString += fg.rbg(0, 255, 0) + s + init.reset
                         elif s in {'{', '}'}:
@@ -285,7 +297,7 @@ class words:
 
         for i, s in enumerate( self.string) :
             if s not in [ ' ' ]:
-                if s in words(None,None).alphabetic():
+                if s in self.analyse.UPPER_CASE()+self.analyse.LOWER_CASE()+[str(x) for x in range(10)]:
                     self.ss += s
                     if i < len( self.string)-1: pass
                     else:

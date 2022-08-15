@@ -22,6 +22,9 @@ except ImportError:
     from CythonModules.Windows      import making_stat as ms
     from CythonModules.Windows      import fileError as fe 
     from CythonModules.Windows      import bm_statistics as bms
+
+try: from CythonModules.Linux       import help
+except : from CythonModules.Windows import help
     
 from statistics import              variance, stdev, pvariance, pstdev
 
@@ -251,7 +254,7 @@ class C_F_I_S:
                                             elif self._value_[ -1 ] in [ 'License' ]:
                                                 bm.open_graven().open_graven_web()
                                             elif self._value_[ -1 ] in [ 'help' ]:
-                                                bm.open_graven().openG()
+                                                help.HELP('var_name').HELP()
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
                                                 self.final_value, self.error = MATRIX(self._value_[0], self._value_[1],self._value_[2],
                                                                           self._value_[3], self.line).MATRIX()

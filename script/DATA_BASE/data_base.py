@@ -427,11 +427,11 @@ class DATA_BASE:
             },
             {
                 'help'              : {
-                'type'              : [['any']],
+                'type'              : [['string']],
                 'value'             : [None],
-                'arguments'         : [None],
+                'arguments'         : ['arg'],
                 'history_of_data'   : [
-                        ('t_std_ * [\"help\", \"help\"]                         ', True),
+                        ('t_std_ * [ arg, \"help\"]                             ', True),
                         ('end:                                                  ', False),
                     ]
                 }
@@ -451,26 +451,6 @@ class DATA_BASE:
 
         
         return self.function_name, self.function_expressions
-
-class Help:
-    def __init__(self, master : str ):
-        self.master     = master
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
-        self.reset      = bm.init.reset
-        
-    def name( self ):
-        self.String     = ''
-        l1 = "To create a variable, the first char should be in {}[a, b, ..., y, z] {}| {}[A, B, ..., Y, Z].".format(self.red, self.white, 
-                                                                                                                     self.red)+self.reset
-        l2 = "{}country {}= {}'US'".format( self.blue, self.white, self.red )
-        l3 = "{}Country {}= {}'United Kindom'".format( self.blue, self.white, self.red )
-        l3 = ""
 
 
 

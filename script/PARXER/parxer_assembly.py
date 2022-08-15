@@ -2,9 +2,7 @@ from script.PARXER              import numerical_value
 from script.PARXER.VAR_NAME     import get_var_name
 from script.PARXER.PRINT        import show_data
 from script.LEXER.FUNCTION      import print_value
-######
 from statement                  import mainStatement as MS
-######
 from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement, if_inter
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
@@ -292,7 +290,6 @@ class ASSEMBLY( ):
             if   self.master[ 'function' ] is None      :
                 self.error = ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
                 self.data_base['matrix'] = None
-
             elif self.master[ 'function' ] == 'if'      :
                 #self._return_, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS()
                 self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
@@ -323,7 +320,6 @@ class ASSEMBLY( ):
                         else: pass 
                     else: pass
                 else: pass
-
             elif self.master[ 'function' ] == 'unless'  :
                 self._return_, self.error = _end_else_elif_.MAIN_UNLESS(main_string, self.data_base,
                                                                   self.line).BOCKS()
@@ -350,7 +346,6 @@ class ASSEMBLY( ):
                         else: pass 
                     else: pass
                 else: pass
-
             elif self.master[ 'function' ] == 'switch'  :
                 self._return_, self.error = end_case_default.MAIN_SWITCH( main_string, self.data_base,
                                                                   self.line).BOCKS()
@@ -378,7 +373,6 @@ class ASSEMBLY( ):
                     else: pass
                     
                 else: pass
-                
             elif self.master[ 'function' ] == 'for'     :
                 self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
                                                                 self.line ).BOCKS( main_string )
@@ -412,7 +406,6 @@ class ASSEMBLY( ):
                     self.data_base['print'] = []
 
                 else: self.error = self.error
-
             elif self.master[ 'function' ] == 'while'   :
     
                 self._return_, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS( typ = 'while')
@@ -430,7 +423,6 @@ class ASSEMBLY( ):
                         else: pass 
                     else: pass
                 else: pass
-            
             else: print(self.master)
 
         else:
