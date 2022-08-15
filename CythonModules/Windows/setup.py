@@ -15,7 +15,8 @@ setup(
             'arithmetic_analyze.pyx',
             'fileError.pyx',
             'making_arr.pyx',
-            'bm_statistics.pyx'
+            'bm_statistics.pyx',
+            'help.pyx'
             ], 
         annotate = True
         )
