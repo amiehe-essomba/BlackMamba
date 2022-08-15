@@ -1727,7 +1727,6 @@ class CHECK_TYPE_OF_DATA:
         elif self.type == type( str() )         :       self._return_ = 'string'
         elif self.type == type( range( 1 ) )    :       self._return_ = 'range'
         elif self.type == type( None )          :       self._return_ = 'none'
-
         return self._return_
 
     def TYPE(self):

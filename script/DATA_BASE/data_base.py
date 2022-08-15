@@ -449,7 +449,6 @@ class DATA_BASE:
             },
         ]
 
-        
         return self.function_name, self.function_expressions
 
 

@@ -254,7 +254,8 @@ class C_F_I_S:
                                             elif self._value_[ -1 ] in [ 'License' ]:
                                                 bm.open_graven().open_graven_web()
                                             elif self._value_[ -1 ] in [ 'help' ]:
-                                                help.HELP('var_name').HELP()
+                                                help.HELP(self._value_[ 0 ]).HELP()
+
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
                                                 self.final_value, self.error = MATRIX(self._value_[0], self._value_[1],self._value_[2],
                                                                           self._value_[3], self.line).MATRIX()

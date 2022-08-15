@@ -17,7 +17,6 @@ class SHOW :
                                                     # else print is set on False. in the program to print value we need to use
                                                     # | print * something |, else anything will no appear on the screen.
                  ):
-        
         self.master         = master
         self.key            = key
         self.data_base      = data_base

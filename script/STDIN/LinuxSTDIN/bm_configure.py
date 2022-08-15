@@ -229,12 +229,12 @@ class words:
         elif    self.string == 'end':
             if n == 0: self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
             else: self.newString +=  fg.rbg(255,165,0) + self.string + init.reset
-        elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'str',
+        elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'string',
                                 'bool', 'dict', 'any']:
             self.newString += fg.rbg(240,128,128) + self.string + init.reset
         elif    self.string in ['from', 'load', 'module', 'as']:
             self.newString += fg.rbg(225, 50, 20) + self.string + init.reset
-        elif    self.string in ['def', 'class']:
+        elif    self.string in ['def', 'class', 'func']:
             self.newString += fg.rbg(255,165,0) + self.string + init.reset
         else:
             for i, s in enumerate(self.string):
@@ -246,12 +246,12 @@ class words:
                         elif s in [str(x) for x in range(10)]:
                             if i == 0:
                                 try:
-                                    if self.string[ 1 ] in self.analyse.LOWER_CASE()+self.analyse.UPPER_CASE():
+                                    if self.string[ 1 ] in self.analyse.LOWER_CASE()+self.analyse.UPPER_CASE()+['_']:
                                         self.newString += self.color + s + init.reset
                                     else: self.newString += fg.rbg(255, 0, 255) + s + init.reset
                                 except IndexError: self.newString += fg.rbg(255, 0, 255) + s + init.reset
                             else:
-                                if self.string[i - 1] in self.analyse.LOWER_CASE() + self.analyse.UPPER_CASE():
+                                if self.string[i - 1] in self.analyse.LOWER_CASE() + self.analyse.UPPER_CASE()+['_']:
                                     self.newString += self.color + s + init.reset
                                 else: self.newString +=fg.rbg(255, 0, 255) + s + init.reset
 
@@ -297,38 +297,38 @@ class words:
 
         for i, s in enumerate( self.string) :
             if s not in [ ' ' ]:
-                if s in self.analyse.UPPER_CASE()+self.analyse.LOWER_CASE()+[str(x) for x in range(10)]:
+                if s in self.analyse.UPPER_CASE()+self.analyse.LOWER_CASE()+[str(x) for x in range(10)]+['_']:
                     self.ss += s
                     if i < len( self.string)-1: pass
                     else:
-                        if self.ss: self.newS   += words(self.ss, self.color).keywords()
+                        if self.ss: self.newS   += words(self.ss, self.color).keywords(n=n)
                         else: pass
                 else:
                     if s in [ '#' ]:
                         self.ss += s
                         if i < len(self.string) - 1:  pass
                         else:
-                            if self.ss:  self.newS += words(self.ss, self.color).keywords()
+                            if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n)
                             else:  pass
                     elif s in ['"', "'"]:
                         self.ss += s
                         if i < len(self.string) - 1:  pass
                         else:
-                            if self.ss:  self.newS += words(self.ss, self.color).keywords()
+                            if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n)
                             else:  pass
                     else:
                         if self.ss:
-                            self.newS   += words(self.ss, self.color).keywords()
-                            self.newS   += words(s, self.color).keywords()
+                            self.newS   += words(self.ss, self.color).keywords(n=n)
+                            self.newS   += words(s, self.color).keywords(n=n)
                             self.ss     = ''
                         else :
-                            self.newS   += words(s, self.color).keywords()
+                            self.newS   += words(s, self.color).keywords(n=n)
                             self.ss     = ''
             else:
                 if self.ss :
                     if '#' in self.ss: self.ss += ' '
                     else:
-                        self.newS   += words(self.ss, self.color).keywords()
+                        self.newS   += words(self.ss, self.color).keywords(n=n)
                         self.newS   += ' '
                         self.ss     = ''
                 else:

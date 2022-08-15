@@ -45,7 +45,12 @@ class ASSEMBLY( ):
             self.main_value = self.master[ 'all_data' ]
         except: self._if_egal_ = 'comment'
 
-    def ASSEMBLY(self, main_string : str, key: bool = False, interpreter: bool = False, locked: bool = False):
+    def ASSEMBLY(self,
+                 main_string    : str,
+                 key            : bool = False,
+                 interpreter    : bool = False,
+                 locked         : bool = False
+                 ):
         self.error          = None
         self._return_       = None
         self.key_return     = False
