@@ -30,11 +30,15 @@ class windows:
         while True:
             try:
                 self.char = bm.read().readchar()
+
                 if self.char not in {10, 13}:
-                    self.input       = self.input[ : self.index ] + chr( self.char ) + self.input[ self.index : ]
-                    self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char ) + self.mainString[ self.mainIndex : ]
-                    self.index       += 1
-                    self.mainIndex   += 1
+                    if self.char != 12:
+                        self.input       = self.input[ : self.index ] + chr( self.char ) + self.input[ self.index : ]
+                        self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char ) + self.mainString[ self.mainIndex : ]
+                        self.index       += 1
+                        self.mainIndex   += 1
+                    else: os.system('cls')
+                  
                 elif self.char in {10, 13}:  # enter
                     self.line += 1
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
@@ -56,7 +60,7 @@ class windows:
                         if self.error is None :
                             if self.lexer is not None:
                                 self.num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.data_base,
-                                                                           self.line).GLOBAL_ASSEMBLY(self.normal_string)
+                                                                        self.line).GLOBAL_ASSEMBLY(self.normal_string)
                                 if self.error is None:  pass
                                 else:
                                     sys.stdout.write(bm.clear.line(2))
@@ -76,11 +80,12 @@ class windows:
                     self.key        = False
                     self.mainString = ''
                     self.mainIndex  = 0
+                    
                 elif self.char == 9:  # tabular
                     self.tabular = '\t'
                     self.input = self.input[: self.index] + self.tabular + self.input[self.index:]
                     self.index += 1
-
+                            
                 sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                 sys.stdout.write(bm.clear.line(0))
                 sys.stdout.write(bm.string().syntax_highlight(name=self.input))
