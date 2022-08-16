@@ -379,7 +379,7 @@ class CLASS_TREATMENT:
                 self.strFunctions       = [ 'upper', 'lower', 'capitalize', 'empty', 'enumerate', 'split', 'join', 'format', 'index', 'rstrip', 'lstrip',
                                             'count', 'endwith', 'startwith', 'replace', 'size']
                 self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init'] 
-                self.cplxFunctions      = [ 'img', 'real', 'norm' ] 
+                self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
                 self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size'] 
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
                                             'size', 'round', 'rand' ]
@@ -1402,10 +1402,16 @@ class DICTIONARY:
                                                         self._return_ = list( self.master.keys())
                                                     elif self.newValues == 'items': 
                                                         self._return_ = list( self.master.items() )
+                                                    elif self.newValues == 'values': 
+                                                        self.ss = []
+                                                        if self.master:
+                                                            for s in self.master.items():
+                                                                self.ss.append( s[ 1 ] )
+                                                            self._return_ = self.ss.copy()
+                                                        else: self.error = ERRORS( self.line ).ERROR24( )
                                                     elif self.value[ 0 ] is None: 
                                                         self.error = ERRORS( self.line ).ERROR15( self.function, [['type']] )  
-                                                    else :  
-                                                        self.error =  ERRORS( self.line ).ERROR23( self.value[ 0 ] ) 
+                                                    else :  self.error =  ERRORS( self.line ).ERROR23( self.value[ 0 ] ) 
                                                 else: self.error = ERRORS( self.line ).ERROR24( )
                                             else: self.error = ERRORS( self.line ).ERROR3( "name", 'a string()' )
                                         else: pass 
@@ -1438,6 +1444,13 @@ class DICTIONARY:
                                                             self._return_ = list( self.master.keys())
                                                         elif self.newValues == 'items': 
                                                             self._return_ = list( self.master.items() )
+                                                        elif self.newValues == 'values': 
+                                                            self.ss = []
+                                                            if self.master:
+                                                                for s in self.master.items():
+                                                                    self.ss.append( s[ 1 ] )
+                                                                self._return_ = self.ss.copy()
+                                                            else: self.error = ERRORS( self.line ).ERROR24( )
                                                         elif self.arguments[ 0 ] is None: 
                                                             self.error = ERRORS( self.line ).ERROR15( self.function, [['type']] )  
                                                         else :  
@@ -1471,7 +1484,7 @@ class DICTIONARY:
         
         elif self.function in [ 'remove']            :
             if len( self.arguments ) == 1: 
-                if self.arguments[ 0 ] in [ 'name' ]:
+                if self.arguments[ 0 ] in [ 'key' ]:
                     if  self.value[ 0 ] is None: self.error = ERRORS( self.line ).ERROR15( self.function, [['name']] ) 
                     else:
                         if self.master:
@@ -1492,7 +1505,7 @@ class DICTIONARY:
                                                     if self.newValues in list( self.master.keys() ):
                                                         self._return_ = self.master.pop( self.newValues )
                                                     else: self.error = ERRORS( self.line ).ERROR25( self.value[ 0 ] )
-                                                else: self.error = ERRORS( self.line ).ERROR3( "name", 'a string()' )
+                                                else: self.error = ERRORS( self.line ).ERROR3( "key", 'a string()' )
                                             else: pass 
                                         else: self.error = ERRORS( self.line ).ERROR0( mainString )
                                     else: pass
@@ -1501,7 +1514,7 @@ class DICTIONARY:
                                     self.error = ERRORS( self.line ).ERROR26(self.main_dict, self.operator )
                             else: pass
                         else: self.error = ERRORS( self.line ).ERROR24( )
-                elif self.arguments[ 0 ] is None:  self.error = ERRORS( self.line ).ERROR15( self.function, [['name']] )
+                elif self.arguments[ 0 ] is None:  self.error = ERRORS( self.line ).ERROR15( self.function, [['key']] )
                 else:
                     if self.value[ 0 ] is None :
                         if self.master:
@@ -1522,7 +1535,7 @@ class DICTIONARY:
                                                     if self.newValues in list( self.master.keys() ):
                                                         self._return_ = self.master.pop( self.newValues )
                                                     else: self.error = ERRORS( self.line ).ERROR25( self.arguments[ 0 ] )
-                                                else: self.error = ERRORS( self.line ).ERROR3( "name", 'a string()' )
+                                                else: self.error = ERRORS( self.line ).ERROR3( "key", 'a string()' )
                                             else: pass 
                                         else: self.error = ERRORS( self.line ).ERROR0( mainString )
                                     else: pass
