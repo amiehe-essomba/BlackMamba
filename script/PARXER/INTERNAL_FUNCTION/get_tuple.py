@@ -116,7 +116,7 @@ class TUPLE:
         self.numeric            = self.master[ 'numeric' ]
         self._return_           = []
         self.historyOfFunctions = []
-        self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size'] 
+        self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size', 'choice', 'index', 'count'] 
 
         if self.numeric is not None:
             self.tuple_values, self.error = TUPLE( self.master, self.data_base, self.line ).TUPLE()
@@ -133,7 +133,7 @@ class TUPLE:
                 if len( self._names_ ) == 2:
                     self.main_expression = {'numeric': [self.expressions[ 0 ] ], 'type': 'string' }
                     self.tuple_values, self.error = TUPLE(self.main_expression, self.data_base, self.line).TUPLE()
-
+                    
                     if self.error is None:
                         if self._names_[ 1 ] in self.tupleFunctions:
                             if self._names_[ 1 ] != self.expressions[ 1 ]:

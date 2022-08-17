@@ -1,4 +1,3 @@
-from colorama import Fore, init, Back, Style
 from script                         import control_string
 from script.LEXER                   import particular_str_selection
 from script.LEXER                   import main_lexer
@@ -15,14 +14,6 @@ try:
 except ImportError:
     from CythonModules.Linux                        import fileError as fe 
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
 
 class STRING:
     def __init__(self, master: any, data_base : any, line: int):

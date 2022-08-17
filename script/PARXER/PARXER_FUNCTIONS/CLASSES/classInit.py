@@ -1,3 +1,4 @@
+from msilib.schema import Error
 import                                              random
 from script.DATA_BASE                               import data_base as db
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
@@ -380,9 +381,9 @@ class CLASS_TREATMENT:
                                             'count', 'endwith', 'startwith', 'replace', 'size']
                 self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init'] 
                 self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
-                self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size'] 
+                self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size', 'choice', 'index', 'count'] 
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
-                                            'size', 'round', 'rand' ]
+                                            'size', 'round', 'rand', 'choice' ]
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
@@ -464,7 +465,7 @@ class CLASS_TREATMENT:
                                                                                 self.line ).MAIN( def_key = 'indirect' )
                                     if self.error is None: 
                                         self.final_values, self.error = TUPLE( self.DataBase, self.line, self.value,
-                                                                self.name, self.dictionary[ 'functions' ]).TUPLE(self.main_name )
+                                                                self.name, self.dictionary[ 'functions' ]).TUPLE(self.main_name, self.normal_expr )
                                     else: pass    
                                 else: self.error = ERRORS( self.line ).ERROR22( self.name, 'tuple( )' )
                             else: self.error = ERRORS( self.line ).ERROR13( self.main_name, 'class' )
@@ -874,8 +875,8 @@ class STRING:
         self.values         = self.FunctionInfo[ self.function ][ 'value' ] 
         
         if len( self.arguments ) == 1:
-            if self.arguments[ 0 ] == 'separator': 
-                if self.values[ 0 ] is None: self.error = ERRORS( self.line ).ERROR15( self.function, [['separator']] ) 
+            if self.arguments[ 0 ] == 'master': 
+                if self.values[ 0 ] is None: self.error = ERRORS( self.line ).ERROR15( self.function, [['master']] ) 
                 else: 
                     self.dict_value, self.error = self.affectation.AFFECTATION( self.values[ 0 ],
                                                                     self.values[ 0 ], self.DataBase, self.line ).DEEP_CHECKING()
@@ -894,7 +895,7 @@ class STRING:
                                             if self.master:
                                                 self._return_   = tuple( self.master.split( sep = self.newValues ) )
                                             else: self.error = ERRORS( self.line ).ERROR24( 'string' )
-                                        else: self.error = ERRORS( self.line ).ERROR3( 'separator', 'a string()')   
+                                        else: self.error = ERRORS( self.line ).ERROR3( 'master', 'a string()')   
                                     else: pass 
                                 else: self.error = ERRORS( self.line ).ERROR0( mainString ) 
                             else: pass
@@ -924,7 +925,7 @@ class STRING:
                                                 self.newValues = self.final_val[ 0 ]
                                                 if type( self.newValues ) == type( str() ):
                                                     self._return_   =  tuple( self.master.split( sep = self.newValues ) )
-                                                else: self.error = ERRORS( self.line ).ERROR3( 'separator', 'a string()')   
+                                                else: self.error = ERRORS( self.line ).ERROR3( 'master', 'a string()')   
                                             else: pass 
                                         else: self.error = ERRORS( self.line ).ERROR0( mainString ) 
                                     else: pass
@@ -945,7 +946,7 @@ class STRING:
         self.values         = self.FunctionInfo[ self.function ][ 'value' ] 
         
         if len( self.arguments ) == 1:
-            if self.arguments[ 0 ] == 'separator': 
+            if self.arguments[ 0 ] == 'master': 
                 if self.values[ 0 ] is None: self.error = ERRORS( self.line ).ERROR15( self.function, [['master']] ) 
                 else: 
                     self.dict_value, self.error = self.affectation.AFFECTATION( self.values[ 0 ],
@@ -1018,7 +1019,7 @@ class STRING:
         self.values         = self.FunctionInfo[ self.function ][ 'value' ] 
         
         if len( self.arguments ) == 1:
-            if self.arguments[ 0 ] == 'separator': 
+            if self.arguments[ 0 ] == 'master': 
                 if self.values[ 0 ] is None: self.error = ERRORS( self.line ).ERROR15( self.function, [['master']] ) 
                 else: 
                     self.dict_value, self.error = self.affectation.AFFECTATION( self.values[ 0 ],
@@ -1607,6 +1608,12 @@ class LIST:
             self._return_ = []
             self.idd =  self.DataBase[ 'variables' ][ 'vars' ].index( mainName )
             self.DataBase[ 'variables' ][ 'values' ][ self.idd ] = []
+        elif self.function in [ 'choice']            :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = random.choice( self.master )
+                else: self.error = ERRORS( self.line ).ERROR24( 'list / tuple' )    
+            else: self.error = ERRORS( self.line ).ERROR14( self.function )
         elif self.function in [ 'enumerate' ]        :
             if None in self.arguments:
                 if self.master:
@@ -1640,13 +1647,13 @@ class LIST:
                                                     self.DataBase,self.line).ANALYSE( mainString )
                                         if self.error is None:
                                             if   self.function in [ 'count', 'index' ]:
-                                                if type( self.final_val[ 0 ] ) == type( str() ):
+                                                try:
                                                     if self.function in [ 'count' ]:
                                                         self._return_ = self.master.count( self.final_val[ 0 ] )
                                                     else: 
                                                         try: self._return_ = self.master.index( self.final_val[ 0 ] )
                                                         except ValueError : self.error = ERRORS( self.line ).ERROR27( self.value[ 0 ] )
-                                                else: self.error = ERRORS( self.line ).ERROR3( "master", 'a string()')
+                                                except ValueError: self.error = ERRORS( self.line ).ERROR27( self.value[ 0 ] )
                                             elif self.function in [ 'remove' ]:
                                                 if type( self.final_val[ 0 ] ) == type( int() ):
                                                     try: 
@@ -1708,13 +1715,14 @@ class LIST:
                                                             self.DataBase, self.line).ANALYSE( mainString )
                                         if self.error is None:
                                             if   self.function in [ 'count', 'index' ]  :
-                                                if type( self.final_val[ 0 ] ) == type( str() ):
+                                                #if type( self.final_val[ 0 ] ) == type( str() ):
+                                                try:
                                                     if self.function in [ 'count' ]:
                                                         self._return_ = self.master.count( self.final_val[ 0 ] )
                                                     else: 
                                                         try: self._return_ = self.master.index( self.final_val[ 0 ] )
                                                         except ValueError : self.error = ERRORS( self.line ).ERROR27( self.arguments[ 0 ] )
-                                                else: self.error = ERRORS( self.line ).ERROR3( "master", 'a string()')
+                                                except ValueError : self.error = ERRORS( self.line ).ERROR27( self.value[ 0 ] )
                                             elif self.function in [ 'remove' ]          :
                                                 if type( self.final_val[ 0 ] ) == type( int() ):
                                                     try: 
@@ -2153,7 +2161,59 @@ class LIST:
                                                     self.idd = self.DataBase['variables'][ 'vars' ].index( mainName )
                                                     self.DataBase['variables'][ 'values' ][ self.idd ] = self._return_ 
                                             else: self.error = ERRORS( self.line ).ERROR30()
-                                        else: self.error = ERRORS( self.line ).ERROR3( "numeric" )   
+                                        elif type( self.newValues ) == type( tuple() ):
+                                            try:
+                                                if len( self.newValues ) == 2:
+                                                    self.n, self.m = self.newValues[0], self.newValues[1]
+                                                    if type( self.n ) == type( int() ):                 
+                                                        if type(self.m) == type( int() ):
+                                                            if self.n > 0:
+                                                                if  abs( self.m ) > 0:
+                                                                    self.matrix = []
+                                                                    for i in range( abs( self.n ) ):
+                                                                        if typ == 'normal':
+                                                                            if  self.m > 0:  self.matrix.append( random.randint( 0, self.m ) )
+                                                                            else:  self.matrix.append( random.randint( self.m, 0 ) )
+                                                                        else: self.error = ERRORS( self.line ).ERROR3( )
+                                                                    
+                                                                    if self.error is None:
+                                                                        self._return_   = self.matrix
+                                                                        if mainName == 'list.': pass 
+                                                                        else:
+                                                                            self.idd = self.DataBase['variables'][ 'vars' ].index( mainName )
+                                                                            self.DataBase['variables'][ 'values' ][ self.idd ] = self._return_
+                                                                    else: pass
+                                                                else: self.error = ERRORS( self.line ).ERROR30( s= 'max_num')
+                                                            else: self.error = ERRORS( self.line ).ERROR47( ) 
+                                                        elif type(self.m) == type( tuple() ):
+                                                            if self.n > 0:
+                                                                if len(self.m) == 2: 
+                                                                    if type(self.m[0]) == type( int() ):
+                                                                        if type(self.m[1]) == type(int()):
+                                                                            if self.m[0] != self.m[1]: 
+                                                                                self.matrix = []
+                                                                                for i in range( abs( self.n ) ):
+                                                                                    if typ == 'normal':
+                                                                                        self.matrix.append( random.randint( min(self.m), max(self.m) ) )
+                                                                                    else: self.error = ERRORS( self.line ).ERROR3( )
+                                                                                
+                                                                                if self.error is None:
+                                                                                    self._return_   = self.matrix
+                                                                                    if mainName == 'list.': pass 
+                                                                                    else:
+                                                                                        self.idd = self.DataBase['variables'][ 'vars' ].index( mainName )
+                                                                                        self.DataBase['variables'][ 'values' ][ self.idd ] = self._return_
+                                                                                else: pass
+                                                                            else: self.error = ERRORS( self.line ).ERROR48( )
+                                                                        else: self.error = ERRORS( self.line ).ERROR3( "max_num2" )
+                                                                    else: self.error = ERRORS( self.line ).ERROR3( "max_num1" )
+                                                                else: self.error = ERRORS( self.line ).ERROR29( "max_num" )
+                                                            else: self.error = ERRORS( self.line ).ERROR47( ) 
+                                                        else: self.error = ERRORS( self.line ).ERROR3( "max_num" ) 
+                                                    else: self.error = ERRORS( self.line ).ERROR3( "max_step" ) 
+                                                else : self.error = ERRORS( self.line ).ERROR29( "numeric" )
+                                            except IndexError : pass
+                                        else: self.error = ERRORS( self.line ).ERROR49( "numeric" )  
                                     else: pass
                                 else: self.error = ERRORS( self.line ).ERROR0( mainString )
                             else: pass
@@ -2177,7 +2237,7 @@ class LIST:
                                                     self.DataBase,self.line).ANALYSE( mainString )
                                     if self.error is None:
                                         self.newValues = self.final_val[ 0 ]
-                                        if type( self.newValues ) == type( int() ):
+                                        if   type( self.newValues ) == type( int() ):
                                             if abs( self.newValues ) > 0:
                                                 self.matrix = []
                                                 for i in range( abs( self.newValues ) ):
@@ -2197,7 +2257,59 @@ class LIST:
                                                     self.idd = self.DataBase['variables'][ 'vars' ].index( mainName )
                                                     self.DataBase['variables'][ 'values' ][ self.idd ] = self._return_ 
                                             else: self.error = ERRORS( self.line ).ERROR30()
-                                        else: self.error = ERRORS( self.line ).ERROR3( "numeric" )   
+                                        elif type( self.newValues ) == type( tuple() ):
+                                            try:
+                                                if len( self.newValues ) == 2:
+                                                    self.n, self.m = self.newValues[0], self.newValues[1]
+                                                    if type( self.n ) == type( int() ):                 
+                                                        if type(self.m) == type( int() ):
+                                                            if self.n > 0:
+                                                                if  abs( self.m ) > 0:
+                                                                    self.matrix = []
+                                                                    for i in range( abs( self.n ) ):
+                                                                        if typ == 'normal':
+                                                                            if  self.m > 0:  self.matrix.append( random.randint( 0, self.m ) )
+                                                                            else:  self.matrix.append( random.randint( self.m, 0 ) )
+                                                                        else: self.error = ERRORS( self.line ).ERROR3( )
+                                                                    
+                                                                    if self.error is None:
+                                                                        self._return_   = self.matrix
+                                                                        if mainName == 'list.': pass 
+                                                                        else:
+                                                                            self.idd = self.DataBase['variables'][ 'vars' ].index( mainName )
+                                                                            self.DataBase['variables'][ 'values' ][ self.idd ] = self._return_
+                                                                    else: pass
+                                                                else: self.error = ERRORS( self.line ).ERROR30( s= 'max_num')
+                                                            else: self.error = ERRORS( self.line ).ERROR47( ) 
+                                                        elif type(self.m) == type( tuple() ):
+                                                            if self.n > 0:
+                                                                if len(self.m) == 2: 
+                                                                    if type(self.m[0]) == type( int() ):
+                                                                        if type(self.m[1]) == type(int()):
+                                                                            if self.m[0] != self.m[1]: 
+                                                                                self.matrix = []
+                                                                                for i in range( abs( self.n ) ):
+                                                                                    if typ == 'normal':
+                                                                                        self.matrix.append( random.randint( min(self.m), max(self.m) ) )
+                                                                                    else: self.error = ERRORS( self.line ).ERROR3( )
+                                                                                
+                                                                                if self.error is None:
+                                                                                    self._return_   = self.matrix
+                                                                                    if mainName == 'list.': pass 
+                                                                                    else:
+                                                                                        self.idd = self.DataBase['variables'][ 'vars' ].index( mainName )
+                                                                                        self.DataBase['variables'][ 'values' ][ self.idd ] = self._return_
+                                                                                else: pass
+                                                                            else: self.error = ERRORS( self.line ).ERROR48( )
+                                                                        else: self.error = ERRORS( self.line ).ERROR3( "max_num2" )
+                                                                    else: self.error = ERRORS( self.line ).ERROR3( "max_num1" )
+                                                                else: self.error = ERRORS( self.line ).ERROR29( "max_num" )
+                                                            else: self.error = ERRORS( self.line ).ERROR47( ) 
+                                                        else: self.error = ERRORS( self.line ).ERROR3( "max_num" ) 
+                                                    else: self.error = ERRORS( self.line ).ERROR3( "max_step" ) 
+                                                else : self.error = ERRORS( self.line ).ERROR29( "numeric" )
+                                            except IndexError : pass
+                                        else: self.error = ERRORS( self.line ).ERROR49( "numeric" )   
                                     else: pass
                                 else: self.error = ERRORS( self.line ).ERROR0( mainString )
                             else: pass
@@ -2223,8 +2335,12 @@ class TUPLE:
         self.FunctionInfo   = FunctionInfo[ 0 ]
         self.line           = line
         self.DataBase       = DataBase
+        self.lexer          = main_lexer
+        self.selection      = particular_str_selection
+        self.numeric        = numerical_value
+        self.affectation    = check_if_affectation
         
-    def TUPLE( self, mainName: str = '' ):
+    def TUPLE( self, mainName: str = '', mainString : str = '' ):
         self.error          = None 
         self._return_       = ''
         self.arguments      = self.FunctionInfo[ self.function ][ 'arguments' ] 
@@ -2254,7 +2370,141 @@ class TUPLE:
                     self._return_ = tuple( self._return_ )
                 else: self.error = ERRORS( self.line ).ERROR24( 'tuple' )    
             else: self.error = ERRORS( self.line ).ERROR14( self.function )  
-              
+        elif self.function in [ 'choice']            :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = random.choice( self.master )
+                else: self.error = ERRORS( self.line ).ERROR24( 'list / tuple' )    
+            else: self.error = ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in ['count', 'index']     :
+            if len( self.arguments ) == 1: 
+                if self.arguments[ 0 ] in [ 'master' ]:
+                    if  self.value[ 0 ] is None: self.error = ERRORS( self.line ).ERROR15( self.function, [['master']] ) 
+                    else:
+                        self.dict_value, self.error = self.affectation.AFFECTATION(self.value[ 0 ],
+                                                                self.value[ 0 ], self.DataBase, self.line ).DEEP_CHECKING()
+                        if self.error is None:
+                            if 'operator' not in list( self.dict_value.keys() ): 
+                                self.lex, self.error = self.lexer.FINAL_LEXER( mainString, self.DataBase,
+                                                                            self.line).FINAL_LEXER( self.dict_value, _type_ = None )
+                                if self.error is None: 
+                                    self.all_data = self.lex[ 'all_data' ]
+                                    if self.all_data is not None:
+                                        self.final_val, self.error = self.numeric.NUMERICAL(self.lex,
+                                                    self.DataBase,self.line).ANALYSE( mainString )
+                                        if self.error is None:
+                                            if   self.function in [ 'count', 'index' ]:
+                                                try:
+                                                    if self.function in [ 'count' ]:
+                                                        self._return_ = self.master.count( self.final_val[ 0 ] )
+                                                    else: 
+                                                        try: self._return_ = self.master.index( self.final_val[ 0 ] )
+                                                        except ValueError : self.error = ERRORS( self.line ).ERROR27( self.value[ 0 ], 'tuple' )
+                                                except ValueError: self.error = ERRORS( self.line ).ERROR27( self.value[ 0 ], 'tuple' )
+                                            elif self.function in [ 'remove' ]:
+                                                if type( self.final_val[ 0 ] ) == type( int() ):
+                                                    try: 
+                                                        del self.master[ self.final_val[ 0 ] ]
+                                                        self._return_ = self.master[ : ]
+                                                    except IndexError : self.error = ERRORS( self.line ).ERROR28( )
+                                                else: self.error = ERRORS( self.line ).ERROR3( "master" )
+                                            elif self.function in [ 'insert' ]:
+                                                if type( self.final_val[ 0 ] ) == type( tuple() ):
+                                                    try: 
+                                                        if len( self.final_val[ 0 ] ) == 2:
+                                                            if type( self.final_val[ 0 ][ 0 ] ) == type( int() ) :
+                                                                self.master.insert( self.final_val[ 0 ][ 0 ], self.final_val[ 0 ][ 1 ] )
+                                                                self._return_ = self.master[ : ]
+                                                            else: self.error = ERRORS( self.line ).ERROR3( "master[ 0 ]" )
+                                                        else: self.error = ERRORS( self.line ).ERROR29()
+                                                    except IndexError : self.error = ERRORS( self.line ).ERROR28( )
+                                                else: self.error = ERRORS( self.line ).ERROR3( "master", 'a tuple()' )
+                                            elif self.function in [ 'add'    ]:
+                                                self.master.append( self.final_val[ 0 ] )
+                                                self._return_ = self.master[ : ]
+                                            elif self.function in [ 'round'  ]:
+                                                self.new = self.master[ : ]
+                                                if type( self.final_val[ 0 ] ) == type( int() ) :
+                                                    if self.final_val[ 0 ] >= 0:
+                                                        if self.master:
+                                                            for i in range( len( self.master)):
+                                                                if type( self.master[ i ]) in [ type(int()), type(float()), type(bool())]:
+                                                                    self.new.append( round( self.master[ i ], self.final_val[0]) )
+                                                                else: 
+                                                                    self.master = self.new
+                                                                    self.error = ERRORS( self.line ).ERROR35( i )
+                                                                    break
+                                                            self._return_ = self.new
+                                                            
+                                                        else: self.error = ERRORS( self.line ).ERROR24( 'list')
+                                                    else: self.error = ERRORS( self.line ).ERROR34( 'master')
+                                                else: self.error = ERRORS( self.line ).ERROR3( 'master' )
+                                        else: pass
+                                    else: self.error = ERRORS( self.line ).ERROR0( mainString )
+                                else: pass 
+                            else: 
+                                self.operator = self.dict_value[ 'operator' ]
+                                self.error = ERRORS( self.line ).ERROR26(self.main_dict, self.operator )
+                        else: pass
+                elif self.arguments[ 0 ] is None:  self.error = ERRORS( self.line ).ERROR15( self.function, [['master']] )
+                else:
+                    if self.value[ 0 ] is None :
+                        self.dict_value, self.error = self.affectation.AFFECTATION(self.arguments[ 0 ],
+                                                                self.arguments[ 0 ], self.DataBase, self.line ).DEEP_CHECKING()
+                        if self.error is None:
+                            if 'operator' not in list( self.dict_value.keys() ): 
+                                self.lex, self.error = self.lexer.FINAL_LEXER( mainString, self.DataBase,
+                                                                            self.line).FINAL_LEXER( self.dict_value, _type_ = None )
+                                if self.error is None: 
+                                    self.all_data = self.lex[ 'all_data' ]
+                                    if self.all_data is not None:
+                                        self.final_val, self.error = self.numeric.NUMERICAL(self.lex,
+                                                            self.DataBase, self.line).ANALYSE( mainString )
+                                        if self.error is None:
+                                            if   self.function in [ 'count', 'index' ]  :
+                                                try:
+                                                    if self.function in [ 'count' ]:
+                                                        self._return_ = self.master.count( self.final_val[ 0 ] )
+                                                    else: 
+                                                        try: self._return_ = self.master.index( self.final_val[ 0 ] )
+                                                        except ValueError : self.error = ERRORS( self.line ).ERROR27( self.arguments[ 0 ], 'tuple' )
+                                                except ValueError: self.error = ERRORS( self.line ).ERROR27( self.value[ 0 ], 'tuple' )
+                                            elif self.function in [ 'remove' ]          :
+                                                if type( self.final_val[ 0 ] ) == type( int() ):
+                                                    try: 
+                                                        del self.master[ self.final_val[ 0 ] ]
+                                                        self._return_ = self.master[ : ]
+                                                    except IndexError : self.error = ERRORS( self.line ).ERROR28( )
+                                                else: self.error = ERRORS( self.line ).ERROR3( "master" )
+                                            elif self.function in [ 'add' ]             :
+                                                self.master.append( self.final_val[ 0 ] )
+                                                self._return_ = self.master[ : ]
+                                            elif self.function in [ 'round'  ]          :
+                                                self.new = []
+                                                if type( self.final_val[ 0 ] ) == type( int() ) :
+                                                    if self.final_val[ 0 ] >= 0:
+                                                        if self.master:
+                                                            for i in range( len( self.master)):
+                                                                if type( self.master[ i ]) in [ type(int()), type(float()), type(bool())]:
+                                                                    self.new.append( round( self.master[ i ], self.final_val[0]) )
+                                                                else: 
+                                                                    self.master = self.new
+                                                                    self.error = ERRORS( self.line ).ERROR35( i )
+                                                                    break
+                                                            self._return_ = self.new
+                                                            
+                                                        else: self.error = ERRORS( self.line ).ERROR24( 'list')
+                                                    else: self.error = ERRORS( self.line ).ERROR34( 'master')
+                                                else: self.error = ERRORS( self.line ).ERROR3( 'master' )
+                                        else: pass
+                                else: pass 
+                            else: 
+                                self.operator = self.dict_value[ 'operator' ]
+                                self.error = ERRORS( self.line ).ERROR26(self.main_dict, self.operator )
+                        else: pass
+                    else: ERRORS( self.line ).ERROR11( self.function, self.arguments[ 0 ] )
+            else: self.error = ERRORS( self.line ).ERROR12( self.function, 1)                   
+             
         return self._return_, self.error  
     
 class CPLX:
@@ -2285,7 +2535,14 @@ class CPLX:
                 self.img  = self.master.imag 
                 self._return_ = (self.real ** 2 + self.img ** 2) ** (0.5)   
             else: self.error = ERRORS( self.line ).ERROR14( self.function )  
-              
+        elif self.function in [ 'conj' ]      :
+            if None in self.arguments: 
+                img = self.master.imag
+                real= self.master.real 
+                c = str(real) + '-' + str(img) + 'j'
+                self._return_ = complex( c )
+            else: self.error = ERRORS( self.line ).ERROR14( self.function )
+        
         return self._return_, self.error 
    
 class READFILE:
@@ -2854,8 +3111,8 @@ class ERRORS:
 
         return self.error+self.reset 
     
-    def ERROR27(self, string: str ): #
-        error = '{}was not found in the {}list. {}line: {}{}'.format(self.white, self.yellow, self.white, self.yellow, self.line)
+    def ERROR27(self, string: str, s : str='list' ): #
+        error = '{}was not found in the {}{}. {}line: {}{}'.format(self.white, self.yellow, s, self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}<< {} >> '.format(self.cyan , string) + error
 
         return self.error+self.reset
@@ -2866,16 +3123,16 @@ class ERRORS:
 
         return self.error+self.reset
     
-    def ERROR29(self): #
+    def ERROR29(self, s : str = 'master'): #
         error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}length( {}master{} ) {}!= {}2. '.format(self.cyan, self.red, self.cyan, self.white, 
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}length( {}{}{} ) {}!= {}2. '.format(self.cyan, self.red, s, self.cyan, self.white, 
                                                                 self.cyan) + error
 
         return self.error+self.reset
     
-    def ERROR30(self): #
+    def ERROR30(self, s : str = 'numeric'): #
         error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}abs( {}numeric{} ) {}is lower than {}0. '.format(self.cyan, self.red, self.cyan, self.white, 
+        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}abs( {}{}{} ) {}is lower than {}0. '.format(self.cyan, self.red, s, self.cyan, self.white, 
                                                                 self.cyan) + error
 
         return self.error+self.reset
@@ -2990,7 +3247,31 @@ class ERRORS:
         self.error = fe.FileErrors( 'NameError' ).Errors() +'{}The module {}{} '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
+
+    def ERROR47(self, s: str = 'max_step'):
+        error = '{}cannot be {}<= 0. {}line: {}{}'.format(self.white, self.red,  self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'ValueError' ).Errors() +'{}{} '.format(self.cyan, s) + error
+
+        return self.error+self.reset
+
+    def ERROR48(self, s1: str = 'max_num1', s2 : str = 'max_num2'):
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'ValueError' ).Errors() +'{}{} {}== {}{} '.format(self.cyan, s1, self.red, self.cyan, s2) + error
+
+        return self.error+self.reset
+
+    def ERROR49(self, value : str = 'master'):
+        error = '{}a tuple(), {}or {}an integer(), {}type. {}line: {}{}'.format(self.blue, self.white, self.red, self.yellow, self.white,
+                                                                                self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> {}is not '.format(self.cyan, value, self.white) + error
+        return self.error+self.reset
     
+    def ERROR50(self, value : str = 'master'):
+        error = '{}a tuple(), {}or {}a list(), {}type. {}line: {}{}'.format(self.blue, self.white, self.yellow, self.yellow, self.white,
+                                                                                self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> {}is not '.format(self.cyan, value, self.white) + error
+        return self.error+self.reset
+         
 class DB:
     functionNames, functions = db.DATA_BASE().FUNCTIONS()
     class_data_base = {

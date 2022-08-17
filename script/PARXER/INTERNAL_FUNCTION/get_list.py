@@ -199,7 +199,7 @@ class LIST:
         self._return_               = []
         self.historyOfFunctions     = []
         self.listFunctions          = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
-                                        'size', 'round', 'rand' ]
+                                        'size', 'round', 'rand', 'choice' ]
 
         if self.numeric is not None:
             self.list_values, self.info, self._all_data_, self.error = LIS_OPTIONS( self.numeric, self.master,
