@@ -10,7 +10,7 @@ cdef class HELP:
         cdef:
             list string, lists
             str ss, s, color, s0, s1, s2, s3, s4
-            str d,d1, d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d0
+            str d,d1, d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d0,d15,d16,d17
       
         if self.argument in [ 'var_name', 'class_name', 'function_name']:
             s      = bm.fg.rbg(255,0,0)+chr(176)+bm.init.reset
@@ -163,9 +163,11 @@ cdef class HELP:
             d10= s + ' {}tuple              {}= {}creating a tuple{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), bm.fg.rbg(255,255,0), bm.init.reset)
             d11= s + ' {}tuple_functions    {}= {}tuple functions{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), bm.fg.rbg(255,255,0), bm.init.reset)
             d12= s + ' {}string             {}= {}creating a string{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), bm.fg.rbg(255,255,0), bm.init.reset)
-            d13 = s + ' {}str_functions      {}= {}string functions{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), bm.fg.rbg(255,255,0), bm.init.reset)
-           
-            lists = [d1,d2,d3,d4,d5, d6,d7,d8,d9,d10,d11, d12,d13]
+            d13= s + ' {}str_functions      {}= {}string functions{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), bm.fg.rbg(255,255,0), bm.init.reset)
+            d14= s + ' {}random             {}= {}random function{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), bm.fg.rbg(255,255,0), bm.init.reset)
+            d15= s + ' {}string_format      {}= {}random function{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), bm.fg.rbg(255,255,0), bm.init.reset)
+
+            lists = [d1,d2,d3,d4,d5, d6,d7,d8,d9,d10,d11, d12,d13,d14, d15]
             for d in lists:
                 print(d)
 
@@ -266,11 +268,11 @@ cdef class HELP:
             d5 = s + ' {}index         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
             d1 = '{}'.format(bm.words(string="[].remove( master = -1 )", color=bm.fg.rbg(255,255,255)).final())
             d6 = s + ' {}remove        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
-            d1 = '{}'.format(bm.words(string="[].random( numeric = 100 )", color=bm.fg.rbg(255,255,255)).final())
+            d1 = '{}'.format(bm.words(string="[].random( numeric = 100 ), [].random(numeric = (max_step, max_num))", color=bm.fg.rbg(255,255,255)).final())
             d7 = s + ' {}random        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
             d1 = '{}'.format(bm.words(string="[].rand( numeric = 100 )", color=bm.fg.rbg(255,255,255)).final())
             d8 = s + ' {}rand          {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
-            d1 = '{}'.format(bm.words(string="[].enumerate( numeric = 100 )", color=bm.fg.rbg(255,255,255)).final())
+            d1 = '{}'.format(bm.words(string="[].enumerate()", color=bm.fg.rbg(255,255,255)).final())
             d9 = s + ' {}enumerate     {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
             d1 = '{}'.format(bm.words(string="[].sorted( reverse = True )", color=bm.fg.rbg(255,255,255)).final())
             d10= s + ' {}sorted        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
@@ -284,8 +286,103 @@ cdef class HELP:
             d14= s + ' {}empty         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
             d1 = '{}'.format(bm.words(string="[].size()", color=bm.fg.rbg(255,255,255)).final())
             d15= s + ' {}size          {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="[].choice()", color=bm.fg.rbg(255,255,255)).final())
+            d16= s + ' {}choice        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
             
-            lists = [d0,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15 ]
+            lists = [d0,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16 ]
+            for d in lists:
+                print(d)
+
+        elif self.argument == 'string_functions':
+            s  = bm.fg.rbg(255,0,0)+chr(176)+bm.init.reset
+            s1 = '| ' + " string functions  |"
+            print(chr(45) * len(s1))
+            print(f'{s1}')
+            print(chr(45) * len(s1))
+            d1 = '{}'.format(bm.words(string="''.replace( oldStr = 'a', newStr = 'b')", color=bm.fg.rbg(255,255,255)).final())
+            d0 = s + ' {}replace       {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.split( master = 'a' )", color=bm.fg.rbg(255,255,255)).final())
+            d2 = s + ' {}split         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.count( master = 'a' )", color=bm.fg.rbg(255,255,255)).final())
+            d3 = s + ' {}count         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.index( master = 'a' )", color=bm.fg.rbg(255,255,255)).final())
+            d4 = s + ' {}index         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.endwith( master = 'a' )", color=bm.fg.rbg(255,255,255)).final())
+            d5 = s + ' {}endwith       {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.startwith( master = 'a' )", color=bm.fg.rbg(255,255,255)).final())
+            d6 = s + ' {}startwith     {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.join( master = ('a', 'b') )", color=bm.fg.rbg(255,255,255)).final())
+            d7 = s + ' {}join          {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.format(master = {'1':1, '2':6})", color=bm.fg.rbg(255,255,255)).final())
+            d17= s + ' {}format        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.lower()", color=bm.fg.rbg(255,255,255)).final())
+            d8 = s + ' {}lower         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.upper( )", color=bm.fg.rbg(255,255,255)).final())
+            d9 = s + ' {}upper         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.enumerate()", color=bm.fg.rbg(255,255,255)).final())
+            d10= s + ' {}enumerate     {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.capitalize()", color=bm.fg.rbg(255,255,255)).final())
+            d11= s + ' {}capitalize    {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.init()", color=bm.fg.rbg(255,255,255)).final())
+            d12= s + ' {}init          {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.size()", color=bm.fg.rbg(255,255,255)).final())
+            d13= s + ' {}size         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="[].empty()", color=bm.fg.rbg(255,255,255)).final())
+            d14= s + ' {}empty         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.rstrip()", color=bm.fg.rbg(255,255,255)).final())
+            d15= s + ' {}rstrip        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.lstrip()", color=bm.fg.rbg(255,255,255)).final())
+            d16= s + ' {}lstrip        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="''.center()", color=bm.fg.rbg(255,255,255)).final())
+            d16= s + ' {}center        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            
+            lists = [d0,d2,d3,d4,d5,d6,d7, d17, d8,d9,d10,d11,d12,d13,d14,d15, d16 ]
+            for d in lists:
+                print(d)
+
+        elif self.argument == 'tuple_functions':
+            s  = bm.fg.rbg(255,0,0)+chr(176)+bm.init.reset
+            s1 = '| ' + " tuple functions  |"
+            print(chr(45) * len(s1))
+            print(f'{s1}')
+            print(chr(45) * len(s1))
+            d1 = '{}'.format(bm.words(string="[].count( master = 'string' )", color=bm.fg.rbg(255,255,255)).final())
+            d3 = s + ' {}count         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="[].index( master = 's' )", color=bm.fg.rbg(255,255,255)).final())
+            d5 = s + ' {}index         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="[].enumerate()", color=bm.fg.rbg(255,255,255)).final())
+            d9 = s + ' {}enumerate     {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="[].init()", color=bm.fg.rbg(255,255,255)).final())
+            d11= s + ' {}init          {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="[].empty()", color=bm.fg.rbg(255,255,255)).final())
+            d14= s + ' {}empty         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="[].size()", color=bm.fg.rbg(255,255,255)).final())
+            d15= s + ' {}size          {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            d1 = '{}'.format(bm.words(string="[].choice()", color=bm.fg.rbg(255,255,255)).final())
+            d16= s + ' {}choice        {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            
+            lists = [d3,d5,d9,d11,d15,d16 ]
+            for d in lists:
+                print(d)
+        
+        elif self.argument == 'complex_functions':
+            s  = bm.fg.rbg(255,0,0)+chr(176)+bm.init.reset
+            s1 = '| ' + " complex functions  |"
+            print(chr(45) * len(s1))
+            print(f'{s1}')
+            print(chr(45) * len(s1))
+            d0 = '{}'.format(bm.words(string="c = 1+2j", color=bm.fg.rbg(255,255,255)).final())
+            d2 = ' '
+            d1 = '{}'.format(bm.words(string="c.norm()", color=bm.fg.rbg(255,255,255)).final())
+            d3 = s + ' {}norm         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="c.img()", color=bm.fg.rbg(255,255,255)).final())
+            d5 = s + ' {}img         {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="c.real()", color=bm.fg.rbg(255,255,255)).final())
+            d9 = s + ' {}real     {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255),  d1, bm.init.reset)
+            d1 = '{}'.format(bm.words(string="c.conj()", color=bm.fg.rbg(255,255,255)).final())
+            d11= s + ' {}conj          {}: {}{}'.format(bm.fg.cyan_L, bm.fg.rbg(255,255,255), d1,  bm.init.reset)
+            
+            lists = [d0, d2, d3,d5,d9,d11]
             for d in lists:
                 print(d)
 
