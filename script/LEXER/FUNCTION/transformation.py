@@ -1,14 +1,12 @@
 import                              random
 import                              math
 import                              os
-import                              webbrowser
 from                                tkinter     import *
 from os                             import listdir
 from os.path                        import isfile
 from script                         import control_string
 from script.LEXER                   import particular_str_selection
 from script.PARXER.LEXER_CONFIGURE  import numeric_lexer
-from script.PARXER.PRINT            import show_data
 from script.MATHS                   import arithmetic_object as arr
 from script.PARXER                  import numerical_value
 from script.DATA_BASE               import ansi
@@ -25,8 +23,11 @@ except ImportError:
 
 try: from CythonModules.Linux       import help
 except : from CythonModules.Windows import help
+
+try: from CythonModules.Linux       import Tuple
+except : from CythonModules.Windows import Tuple
     
-from statistics import              variance, stdev, pvariance, pstdev
+from statistics                     import variance, stdev, pvariance, pstdev
 
 class C_F_I_S:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -100,11 +101,7 @@ class C_F_I_S:
                                             except (ValueError, TypeError):
                                                 self.error = ERRORS( self.line ).ERROR2( self.value, 'a list', func )
                                         elif function in [ '_tuple_'   ]    :
-                                            try:
-                                                self.final_value = tuple( self._value_ )
-                                            except (ValueError, TypeError):
-                                                func = bm.fg.rbg(0, 255, 0   )+' in tuple( ).' + bm.init.reset 
-                                                self.error = ERRORS( self.line ).ERROR2( self.value, 'a tuple', func )
+                                            self.final_value, self.error = Tuple.Tuple( self.line ).Tuple(Obj = self._value_, String=self.value )                                       
                                         elif function in [ '_sqrt_'    ]    :
                                             func = bm.fg.rbg(0, 255, 0   )+' in sqrt( ).' + bm.init.reset 
                                             if type( self._value_ ) in [type(float()), type(int()), type(bool())]:

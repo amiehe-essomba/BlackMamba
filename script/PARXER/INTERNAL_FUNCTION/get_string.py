@@ -40,19 +40,15 @@ class STRING:
         self.string             = self.main_dict[1 : -1]
         self.all_string, self.string_data, self.string_info, self.error = STRING( self.string, self.data_base,
                                                         self.line ).LOOKING_IF_BRACKET()
-        if not self.string_data:
-            self._return_ = str( self.string )
+        if not self.string_data: self._return_ = str( self.string )
         else:
             for i, string in enumerate( self.string_data ):
                 self._string_ , self.error = self.control.DELETE_SPACE( string[ 1 : -1 ] )
                 if self.error is None:
                     self.final_val, self.error = self.numeric_lex.NUMERCAL_LEXER(self._string_, self.data_base,
                                                                 self.line ).LEXER( string )
-                    if self.error is None:
-                        self.string_data[ i ] = str( self.final_val )
-                    else:
-                        self.error = self.error
-                        break
+                    if self.error is None:  self.string_data[ i ] = str( self.final_val )
+                    else: break
                 else:
                     self.error = None
                     self.string_data[ i ] = ''

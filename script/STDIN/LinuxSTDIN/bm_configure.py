@@ -230,7 +230,7 @@ class words:
             if n == 0: self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
             else: self.newString +=  fg.rbg(255,165,0) + self.string + init.reset
         elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'string',
-                                'bool', 'dict', 'any']:
+                                'bool', 'dict', 'any', 'dictionary']:
             self.newString += fg.rbg(240,128,128) + self.string + init.reset
         elif    self.string in ['from', 'load', 'module', 'as']:
             self.newString += fg.rbg(225, 50, 20) + self.string + init.reset

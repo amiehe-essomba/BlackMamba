@@ -1,12 +1,10 @@
-from colorama import Fore, init, Back, Style
-from script                         import control_string
-from script.LEXER                   import particular_str_selection
-from script.LEXER                   import main_lexer
-from script.LEXER                   import check_if_affectation
-from script.PARXER                  import numerical_value
-from script.STDIN.WinSTDIN          import stdin
-from script.LEXER.FUNCTION          import main
-from script.STDIN.LinuxSTDIN        import bm_configure as bm
+from script                                         import control_string
+from script.LEXER                                   import particular_str_selection
+from script.LEXER                                   import main_lexer
+from script.LEXER                                   import check_if_affectation
+from script.PARXER                                  import numerical_value
+from script.LEXER.FUNCTION                          import main
+from script.STDIN.LinuxSTDIN                        import bm_configure as bm
 from script.PARXER.INTERNAL_FUNCTION                import get_list
 from script.PARXER.PARXER_FUNCTIONS.CLASSES         import classInit 
 try:
@@ -14,14 +12,6 @@ try:
 except ImportError:
     from CythonModules.Linux                        import fileError as fe
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
 
 class TUPLE:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -72,39 +62,30 @@ class TUPLE:
                                                     if type( self.final_val[ 0 ]) not in [ type( list() ), type( dict() )]:
                                                         self._return_.append( self.final_val[ 0 ] )
                                                     else:
-                                                        if type( self.final_val ) == type( list() ):
+                                                        if type( self.final_val[0] ) == type( list() ):
                                                             self.error = ERRORS( self.line ).ERROR8( 'a list' )
                                                             break
                                                         else:
                                                             self.error = ERRORS(self.line).ERROR8('a dictionary' )
                                                             break
-                                                else:
-                                                    self.error = self.error
-                                                    break
+                                                else: break
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR0( self.main_dict )
                                                 break
-                                        else:
-                                            self.error = self.error
-                                            break
+                                        else:  break
                                     else:
                                         self.operator = self.dict_value[ 'operator' ]
                                         self.error = ERRORS( self.line ).ERROR0(self.main_dict, self.operator )
                                         break
-                                else:
-                                    self.error = self.error
-                                    break
+                                else: break
                             else:
                                 self.error = ERRORS( self.line ).ERROR1( self.main_dict, ':' )
                                 break
-                        else:
-                            self.error = self.error
-                            break
+                        else:  break
                     else:
                         self.error = ERRORS( self.line ).ERROR0( self.main_dict )
                         break
-            else:
-                self.error = self.error
+            else: pass
         else:
             self.error = None
             self._return_ = tuple( self._return_ )
@@ -184,52 +165,52 @@ class ERRORS:
         return self.error+self.reset
 
     def ERROR1(self, string: str, char: str):
-        error = '{}due to {}<< {} >>. {}line: {}{}'.format(ke, ne, char, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}due to {}<< {} >>. {}line: {}{}'.format( self.white, self.red, char, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR2(self, string: str, char:str):
-        error = '{}the {}keyword {}of value {}<< {} >> {}is not defined. {}line: {}{}'.format(ke, ie, ke, ve, char, ke,
-                                                                                                    we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}the {}keyword {}of value {}<< {} >> {}is not defined. {}line: {}{}'.format( self.white, self.yellow, self.white, self.red, char, self.white,
+                                                                                               self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR3(self, string: str, char1: str = 'keyword', char2:str='value', char: str = None):
-        error = '{}{} {}is not defined for the {}{} {}<< {} >>. {}line: {}{}'.format(ne, char, ke, ve, char2, te, char,
-                                                                                we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}{} {}is not defined for the {}{} {}<< {} >>. {}line: {}{}'.format(self.red, char, self.white, self.green, char2, self.magenta, char,
+                                                                                self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR4(self, string: str, char: str):
-        error = '{}due to the fact that {}<< {} >> {}is {}EMPTY. {}line: {}{}'.format(ke, ne, char, ke, ve,
-                                                                                                    we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}due to the fact that {}<< {} >> {}is {}EMPTY. {}line: {}{}'.format( self.white, self.red, char, self.white, self.yellow,
+                                                                                                    self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR5(self, string: str, char: str):
-        error = '{}keyword {}<< {} >> {}is repeated. {}line: {}{}'.format(ke, ie, char, ke, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}keyword {}<< {} >> {}is repeated. {}line: {}{}'.format(self.white, self.red, char, self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR6(self, string: str, char: str):
-        error = '{}argument {}<< {} >> {}is repeated. {}line: {}{}'.format(ke, te, char, ke, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}argument {}<< {} >> {}is repeated. {}line: {}{}'.format(self.white, self.red, char, self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR7(self, char: str, func = 'get( )'):
-        error = '{}<< {} >>. {}line: {}{}'.format(ne, char,  we, ke, self.line)
-        self.error = '{}{} : {}<< {} >> {}has not attributed '.format(ae, 'AttributeError', te, func, ae) + error
+        error = '{}<< {} >>. {}line: {}{}'.format(self.red, char,  self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'AttributeError' ).Errors()+'{}<< {} >> {}has not attributed '.format(self.cyan, func, self.white) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR8(self, string: str = 'a list'):
-        error = '{}{}. {}line: {}{}'.format(ie, string, we, ke, self.line)
-        self.error = '{}{} : {}tuple {}object cannot contains '.format(te, 'TypeError', ae, we) + error
+        error = '{}{}. {}line: {}{}'.format(self.yellow, string, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}tuple {}object cannot contain '.format(self.cyan, self.white) + error
 
-        return self.error
+        return self.error+self.reset
