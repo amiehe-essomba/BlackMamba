@@ -16,7 +16,8 @@ setup(
             'fileError.pyx',
             'making_arr.pyx',
             'bm_statistics.pyx',
-            'help.pyx'
+            'help.pyx',
+            'Tuple.pyx'
             ], 
         annotate = True
         )
