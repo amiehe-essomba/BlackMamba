@@ -115,4 +115,4 @@ if __name__ == '__main__':
         data_base = db.DATA_BASE().STORAGE()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255))
     except KeyboardInterrupt:  pass
-    except IndexError: pass
+    except TypeError: pass
