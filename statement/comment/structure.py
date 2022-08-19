@@ -19,7 +19,9 @@ class STRUCT:
 
     def STRUCT(self,
                num          : int = 3,
-               normal_string: str = ''
+               normal_string: str = '',
+               tabulation   : int = 1,
+               split        : bool= True
                ):
         """
         used to handle the < begin> and < try> statement\n.
@@ -41,8 +43,12 @@ class STRUCT:
         :param normal_tring:
         :return:
         """
-
+        self.tabulation         = tabulation
+        self.back_end           = self.tabulation - 1
         self.normal_string      = normal_string
+        if split is True : pass 
+        else: self.normal_string = self.normal_string[ self.back_end : ]
+             
         self.error              = None
         self._return_           = None
         self.key                = None
@@ -78,7 +84,11 @@ class STRUCT:
 
         return self._return_, self.value, self.error
 
-    def EXCEPTIONS(self, normal_string : str = ''):
+    def EXCEPTIONS(self, 
+                normal_string   : str = '',
+                tabulation      : int = 1,
+                split           : bool= True
+                ):
 
         """
         This module was creatd for handling all exceptions type to avoid any type of
@@ -105,10 +115,14 @@ class STRUCT:
         :return:
         """
 
+        self.tabulation         = tabulation
+        self.back_end           = self.tabulation - 1
+        self.normal_string      = normal_string
+        if split is True: pass 
+        else: self.normal_string= normal_string[ self.back_end : ]
         self.error              = None
         self._return_           = None
-        self.normal_string      = normal_string
-
+     
         self.exception_names    = [
             'SyntaxError', 'ValueError', 'EOFError', 'OSError', 'KeyError', 'NameError'    ,
             'TypeError', 'ArithmeticError', 'IndexError', 'FileModeError',  'OverFlowError',
@@ -134,7 +148,7 @@ class STRUCT:
                                 if self.error is None:  self.all_exceptions[ i ] = self.name
                                 else:  break
                             else:
-                                self.error = ERRORS(self.line).ERROR0(self.new_normal_string)
+                                self.error = te.ERRORSERRORS(self.line).ERROR0(self.new_normal_string)
                                 break
 
                         if self.error is None:
