@@ -6,6 +6,8 @@ Returns:
     no returned values
 """
 
+from urllib.parse import parse_qs
+from xml.dom.expatbuilder import parseFragmentString
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
 import numpy
 
@@ -63,12 +65,13 @@ class SHOW :
                 self.string2 = '{}"'.format(self.color) + '{}"'.format( self.color )
         else: pass
 
+        self.string2 = LineFeed(self.string2, self.type)
         self.string = self.string1 + self.string2
 
         # print master if key is set on False
         if loop is False:
             #self.string += bm.init.reset
-            if self.key == False:  print( '{}{}\n'.format( self.string, bm.init.reset ) )
+            if self.key == False:  print( '{}{}\n'.format(self.string, bm.init.reset ) )
             else: pass
         else:
             #self.string += bm.init.reset
@@ -149,3 +152,15 @@ class SHOW :
             self.s += f" {self.master[-1]}]"
 
         return self.s
+
+def LineFeed( string : str, typ : any):
+    if typ == type(str()):
+        if '\n' in string:
+            if '\n' == string[0]: pass 
+            else: string = '\n'+string 
+        else: pass 
+    else: pass
+    
+    return string
+    
+    

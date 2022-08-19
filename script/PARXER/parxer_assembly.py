@@ -433,7 +433,8 @@ class ASSEMBLY( ):
         else:
             if   self.master[ 'begin'  ] is True:
                 self.newLine                   = self.line 
-                self.listTransform, self.error = for_begin.COMMENT_STATEMENT( None, self.data_base, self.newLine  ).COMMENT( tabulation = 1, color = bm.fg.rbg(255,255,255) )
+                #self.listTransform, self.error = for_begin.COMMENT_STATEMENT( None, self.data_base, self.newLine  ).COMMENT( tabulation = 1, color = bm.fg.rbg(255,255,255) )
+                self.listTransform, self.error = for_begin.COMMENT_WINDOWS( None, self.data_base, self.newLine  ).COMMENT( tabulation = 1, c = bm.fg.rbg(255,255,255) )
                 if self.error is None:
                     self.error = cmt.COMMENT_LOOP_STATEMENT( None, self.data_base, self.newLine ).COMMENT( 1, self.listTransform ) 
                 else: pass              

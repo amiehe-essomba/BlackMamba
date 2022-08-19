@@ -544,7 +544,8 @@ class EXTERNAL_IF_WINDOWS:
         :param c:
         :return:
         """
-
+        ######################################################
+        
         self.color          = bm.fg.rbg(255,255,0)
         self.input          = '{}... {}'.format(self.color, bm.init.reset)
         self.length         = len(self.input)
@@ -554,7 +555,6 @@ class EXTERNAL_IF_WINDOWS:
         self.Input          = ''
         self.Index          = 0
         self.col            = []
-        self.if_line        = 0
         self.error          = None
         self.if_line        = self.line
         self.tabulation     = tabulation
@@ -597,7 +597,7 @@ class EXTERNAL_IF_WINDOWS:
 
                 elif self.char in {10, 13}:  # enter
                     self.if_line += 1
-                    sys.stdout.write(u"\u001b[1000D")
+                    sys.stdout.write(bm.move_cursor.LEFT(1000))
                     self.clear_input = self.mainString
                     if self.clear_input:
                         ####################################################################
@@ -621,6 +621,7 @@ class EXTERNAL_IF_WINDOWS:
                         ######################################################################
 
                         self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.clear_input, tabulation=self.tabulation)
+                        
                         if self.error is None:
                             self.normal_string = self.analyse.BUILD_NON_CON(string=self.clear_input,tabulation=self.tabulation)
                             if self.active_tab is True :
@@ -666,7 +667,7 @@ class EXTERNAL_IF_WINDOWS:
                                                 self.history.append('try')
                                                 self.space = 0
                                                 self.loop.append(self._values_)
-                                            else: breakpass
+                                            else: break
                                         elif self.get_block == 'unless:'    :
                                             self.store_value.append(self.normal_string)
                                             self.loop.append((self.normal_string, True))
@@ -769,7 +770,7 @@ class EXTERNAL_IF_WINDOWS:
                                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                                             break
                                     else:
-                                        self.error = ERRORS(self.if_line).ERROR4()
+                                        self.error = IfError.ERRORS(self.if_line).ERROR4()
                                         break
                                 else:  break
                         else:
@@ -824,7 +825,7 @@ class EXTERNAL_IF_WINDOWS:
                                         self.error = IfError.ERRORS(self.if_line).ERROR4()
                                         break
                                 else:
-                                    self.error = ERRORS(self.if_line).ERROR4()
+                                    self.error = IfError.ERRORS(self.if_line).ERROR4()
                                     break
                             else: break
                     else:
@@ -1018,7 +1019,7 @@ class INTERNAL_IF_WINDOWS:
                                                 self.history.append('try')
                                                 self.space = 0
                                                 self.loop.append(self._values_)
-                                            else: breakpass
+                                            else: break
                                         elif self.get_block == 'unless:'    :
                                             self.store_value.append(self.normal_string)
                                             self.loop.append((self.normal_string, True))
@@ -1121,7 +1122,7 @@ class INTERNAL_IF_WINDOWS:
                                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                                             break
                                     else:
-                                        self.error = ERRORS(self.if_line).ERROR4()
+                                        self.error = IfError.ERRORS(self.if_line).ERROR4()
                                         break
                                 else:  break
                         else:
@@ -1176,7 +1177,7 @@ class INTERNAL_IF_WINDOWS:
                                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                                             break
                                     else:
-                                        self.error = ERRORS(self.if_line).ERROR4()
+                                        self.error = IfError.ERRORS(self.if_line).ERROR4()
                                         break
                                 else:  break
                     else:
