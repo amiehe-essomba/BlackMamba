@@ -209,7 +209,7 @@ class words:
     def alphabetic(self):
         return list('abcdefghijklmnopqrstuvwxyzTFN')
 
-    def keywords(self, n:int=0):
+    def keywords(self, n:int=0, locked: bool = False):
         self.newString  = ''
         self.stringKey  = ''
         self.active     = False
@@ -217,123 +217,146 @@ class words:
         self.count      = 0
         self.k          = []
 
-        if      self.string in ['in', 'not']:
-            self.newString  += fg.rbg(255,128,128)+self.string+init.reset
-        elif      self.string in ['True', 'False', 'None']:
-            self.newString  += fg.rbg(204,153,255)+self.string+init.reset
-        elif    self.string in ['pass', 'break', 'continue', 'exit', 'next']:
-            self.newString += fg.rbg(153,204,0) + self.string + init.reset
-        elif    self.string in ['if', 'unless', 'else', 'elif', 'for', 'switch', 'case', 'default',
-                                   'try', 'except', 'finally', 'while', 'until', 'begin', 'save']:
-            self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
-        elif    self.string == 'end':
-            if n == 0: self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
-            else: self.newString +=  fg.rbg(255,165,0) + self.string + init.reset
-        elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'string',
-                                'bool', 'dict', 'any', 'dictionary']:
-            self.newString += fg.rbg(240,128,128) + self.string + init.reset
-        elif    self.string in ['from', 'load', 'module', 'as']:
-            self.newString += fg.rbg(225, 50, 20) + self.string + init.reset
-        elif    self.string in ['def', 'class', 'func']:
-            self.newString += fg.rbg(255,165,0) + self.string + init.reset
-        else:
-            for i, s in enumerate(self.string):
-
-                if self.count % 2 == 0:
-                    if self.active is False:
-                        if s in {'+', '-', '*', '^', '%', '/'}:
-                            self.newString += fg.rbg(255, 0, 0) + s + init.reset
-                        elif s in [str(x) for x in range(10)]:
-                            if i == 0:
-                                try:
-                                    if self.string[ 1 ] in self.analyse.LOWER_CASE()+self.analyse.UPPER_CASE()+['_']:
+        if locked is False:
+            if      self.string in ['in', 'not']:
+                self.newString  += fg.rbg(255,128,128)+self.string+init.reset
+            elif      self.string in ['True', 'False', 'None']:
+                self.newString  += fg.rbg(204,153,255)+self.string+init.reset
+            elif    self.string in ['pass', 'break', 'continue', 'exit', 'next']:
+                self.newString += fg.rbg(153,204,0) + self.string + init.reset
+            elif    self.string in ['if', 'unless', 'else', 'elif', 'for', 'switch', 'case', 'default',
+                                       'try', 'except', 'finally', 'while', 'until', 'begin', 'save']:
+                self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
+            elif    self.string == 'end':
+                if n == 0: self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
+                else: self.newString +=  fg.rbg(255,165,0) + self.string + init.reset
+            elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'string',
+                                    'bool', 'dict', 'any', 'dictionary']:
+                self.newString += fg.rbg(240,128,128) + self.string + init.reset
+            elif    self.string in ['from', 'load', 'module', 'as']:
+                self.newString += fg.rbg(225, 50, 20) + self.string + init.reset
+            elif    self.string in ['def', 'class', 'func']:
+                self.newString += fg.rbg(255,165,0) + self.string + init.reset
+            else:
+                for i, s in enumerate(self.string):
+                    if self.count % 2 == 0:
+                        if self.active is False:
+                            if s in {'+', '-', '*', '^', '%', '/'}:
+                                self.newString += fg.rbg(255, 0, 0) + s + init.reset
+                            elif s in [str(x) for x in range(10)]:
+                                if i == 0:
+                                    try:
+                                        if self.string[ 1 ] in self.analyse.LOWER_CASE()+self.analyse.UPPER_CASE()+['_']:
+                                            self.newString += self.color + s + init.reset
+                                        else: self.newString += fg.rbg(255, 0, 255) + s + init.reset
+                                    except IndexError: self.newString += fg.rbg(255, 0, 255) + s + init.reset
+                                else:
+                                    if self.string[i - 1] in self.analyse.LOWER_CASE() + self.analyse.UPPER_CASE()+['_']:
                                         self.newString += self.color + s + init.reset
-                                    else: self.newString += fg.rbg(255, 0, 255) + s + init.reset
-                                except IndexError: self.newString += fg.rbg(255, 0, 255) + s + init.reset
-                            else:
-                                if self.string[i - 1] in self.analyse.LOWER_CASE() + self.analyse.UPPER_CASE()+['_']:
-                                    self.newString += self.color + s + init.reset
-                                else: self.newString +=fg.rbg(255, 0, 255) + s + init.reset
+                                    else: self.newString +=fg.rbg(255, 0, 255) + s + init.reset
 
-                        elif s in {'(', ')'}:
-                            self.newString += fg.rbg(0, 255, 0) + s + init.reset
-                        elif s in {'{', '}'}:
-                            self.newString += fg.rbg(186,85,211) + s + init.reset
-                        elif s in {'[', ']'}:
-                            self.newString += fg.rbg(255, 255, 0) + s + init.reset
-                        elif s in {'<', '>', '=', '!', '|', '&', '?'}:
-                            self.newString += fg.rbg(255, 102, 0) + s + init.reset
-                        elif s in {':'}:
-                            self.newString += fg.rbg(255, 255, 153) + s + init.reset
-                        elif s in {'.'}:
-                            self.newString += fg.rbg(0, 102, 204) + s + init.reset
-                        elif s in {'$'}:
-                            self.newString += fg.rbg(255, 204, 0) + s + init.reset
-                        elif s in {'#'}:
-                            self.newString += fg.rbg(153, 153, 255) + s + init.reset
-                            if self.string[ 0 ] not in [ "'", '"']: self.active = True
-                            else: self.active = False
-                        elif s in {'@'}:
-                            self.newString += fg.rbg(255, 255, 255) + s + init.reset
-                        elif s in {"'", '"'}:
-                            self.newString += fg.rbg(255, 153, 204) + s + init.reset
-                            self.k.append(s)
-                            self.count += 1
-                        else:  self.newString += self.color + s + init.reset
-                    else: self.newString += fg.rbg(153, 153, 255) + s + init.reset
-                else:
-                    self.newString += fg.rbg(255, 153, 204) + s + init.reset
-                    if self.k[0] == s:
-                        self.count = 0
-                        self.k = []
-                    else: pass
+                            elif s in {'(', ')'}:
+                                self.newString += fg.rbg(0, 255, 0) + s + init.reset
+                            elif s in {'{', '}'}:
+                                self.newString += fg.rbg(186,85,211) + s + init.reset
+                            elif s in {'[', ']'}:
+                                self.newString += fg.rbg(255, 255, 0) + s + init.reset
+                            elif s in {'<', '>', '=', '!', '|', '&', '?'}:
+                                self.newString += fg.rbg(255, 102, 0) + s + init.reset
+                            elif s in {':'}:
+                                self.newString += fg.rbg(255, 255, 153) + s + init.reset
+                            elif s in {'.'}:
+                                self.newString += fg.rbg(0, 102, 204) + s + init.reset
+                            elif s in {'$'}:
+                                self.newString += fg.rbg(255, 204, 0) + s + init.reset
+                            elif s in {'#'}:
+                                self.newString += fg.rbg(153, 153, 255) + s + init.reset
+                                if self.string[ 0 ] not in [ "'", '"']: self.active = True
+                                else: self.active = False
+                            elif s in {'@'}:
+                                self.newString += fg.rbg(255, 255, 255) + s + init.reset
+                            elif s in {"'", '"'}:
+                                self.newString += fg.rbg(255, 153, 204) + s + init.reset
+                                self.k.append(s)
+                                self.count += 1
+                            else:  self.newString += self.color + s + init.reset
+                        else: self.newString += fg.rbg(153, 153, 255) + s + init.reset
+                    else:
+                        self.newString += fg.rbg(255, 153, 204) + s + init.reset
+                        if self.k[0] == s:
+                            self.count = 0
+                            self.k = []
+                        else: pass
+        else: self.newString = self.color + self.string + init.reset
 
         return self.newString
 
-    def final(self, n:int=0):
+    def final(self, n:int=0, locked : bool = False):
         self.newS       = ''
         self.ss         = ''
         self.active     = False
 
-        for i, s in enumerate( self.string) :
-            if s not in [ ' ' ]:
-                if s in self.analyse.UPPER_CASE()+self.analyse.LOWER_CASE()+[str(x) for x in range(10)]+['_']:
-                    self.ss += s
-                    if i < len( self.string)-1: pass
+        if locked is False:
+            for i, s in enumerate( self.string) :
+                if s not in [ ' ' ]:
+                    if s in self.analyse.UPPER_CASE()+self.analyse.LOWER_CASE()+[str(x) for x in range(10)]+['_']:
+                        self.ss += s
+                        if i < len( self.string)-1: pass
+                        else:
+                            if self.ss: self.newS   += words(self.ss, self.color).keywords(n=n)
+                            else: pass
                     else:
-                        if self.ss: self.newS   += words(self.ss, self.color).keywords(n=n)
-                        else: pass
+                        if s in [ '#', '\t' ]:
+                            self.ss += s
+                            if i < len(self.string) - 1:  pass
+                            else:
+                                if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n)
+                                else:  pass
+                        elif s in ['"', "'"]:
+                            self.ss += s
+                            if i < len(self.string) - 1:  pass
+                            else:
+                                if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n)
+                                else:  pass
+                        elif s in ['\t']:
+                            self.ss += s
+                            if i < len(self.string) - 1:  pass
+                            else:
+                                if self.ss:
+                                    self.newS += words(self.ss, self.color).keywords(n=n)
+                                else:  pass
+                        else:
+                            if self.ss:
+                                if '#' in self.ss:
+                                    self.ss += s
+                                    if i < len(self.string) - 1: pass
+                                    else:
+                                        if self.ss:
+                                            self.newS += words(self.ss, self.color).keywords(n=n)
+                                        else:  pass
+                                else:
+                                    self.newS   += words(self.ss, self.color).keywords(n=n)
+                                    self.newS   += words(s, self.color).keywords(n=n)
+                                    self.ss     = ''
+                            else :
+                                self.newS   += words(s, self.color).keywords(n=n)
+                                self.ss     = ''
                 else:
-                    if s in [ '#' ]:
-                        self.ss += s
-                        if i < len(self.string) - 1:  pass
+                    if self.ss :
+                        if '#' in self.ss:
+                            self.ss += ' '
+                            if i < len(self.string) - 1:  pass
+                            else:
+                                if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n)
+                                else:  pass
                         else:
-                            if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n)
-                            else:  pass
-                    elif s in ['"', "'"]:
-                        self.ss += s
-                        if i < len(self.string) - 1:  pass
-                        else:
-                            if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n)
-                            else:  pass
-                    else:
-                        if self.ss:
                             self.newS   += words(self.ss, self.color).keywords(n=n)
-                            self.newS   += words(s, self.color).keywords(n=n)
+                            self.newS   += ' '
                             self.ss     = ''
-                        else :
-                            self.newS   += words(s, self.color).keywords(n=n)
-                            self.ss     = ''
-            else:
-                if self.ss :
-                    if '#' in self.ss: self.ss += ' '
                     else:
-                        self.newS   += words(self.ss, self.color).keywords(n=n)
                         self.newS   += ' '
-                        self.ss     = ''
-                else:
-                    self.newS   += ' '
-                    self.ss      = ''
+                        self.ss      = ''
+        else:  self.newS = words(self.string, self.color).keywords(n=n, locked=locked)
 
         return self.newS
 
