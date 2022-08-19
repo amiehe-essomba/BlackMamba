@@ -17,7 +17,8 @@ setup(
             'making_arr.pyx',
             'bm_statistics.pyx',
             'help.pyx',
-            'Tuple.pyx'
+            'Tuple.pyx',
+            'if_statement.pyx'
             ], 
         annotate = True
         )
