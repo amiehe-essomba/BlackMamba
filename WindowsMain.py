@@ -100,7 +100,7 @@ class windows:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-            except TypeError:
+            except KeyError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                 print(self._end_of_file_)
                 self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
@@ -115,4 +115,4 @@ if __name__ == '__main__':
         data_base = db.DATA_BASE().STORAGE()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255))
     except KeyboardInterrupt:  pass
-    except TypeError: pass
+    except KeyError: pass
