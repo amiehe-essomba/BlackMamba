@@ -13,10 +13,10 @@ class windows:
 
     def terminal(self, c: str = ''):
 
-        self.input      = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
+        self.input      = '{}>>>{} {}'.format(bm.fg.yellow_L, c, bm.init.reset)
         self.length     = len(self.input)
         self.index      = self.length
-        self.sub_length = len('{}{}'.format(bm.fg.yellow_L, bm.init.reset))
+        self.sub_length = len('{}{}{}'.format(bm.fg.yellow_L, c, bm.init.reset))
         self.tab        = 1
         self.Input      = ''
         self.Index      = 0
@@ -30,7 +30,6 @@ class windows:
         while True:
             try:
                 self.char = bm.read().readchar()
-
                 if self.char not in {10, 13}:
                     if self.char != 12:
                         self.input       = self.input[ : self.index ] + chr( self.char ) + self.input[ self.index : ]
@@ -38,7 +37,7 @@ class windows:
                         self.index       += 1
                         self.mainIndex   += 1
                     else: os.system('cls')
-                  
+
                 elif self.char in {10, 13}:  # enter
                     self.line += 1
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
@@ -75,7 +74,7 @@ class windows:
                             self.error = None
                     else:  pass
 
-                    self.input      = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
+                    self.input      = '{}>>>{} {}'.format(bm.fg.yellow_L, c, bm.init.reset)
                     self.index      = self.length
                     self.key        = False
                     self.mainString = ''
@@ -100,7 +99,7 @@ class windows:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-            except KeyError:
+            except IndentationError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                 print(self._end_of_file_)
                 self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
@@ -112,7 +111,7 @@ if __name__ == '__main__':
     try:
         os.system('cls')
         bm.head().head(sys='Windows')
-        data_base = db.DATA_BASE().STORAGE()
+        data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255))
     except KeyboardInterrupt:  pass
-    except KeyError: pass
+    except IndentationError: pass
