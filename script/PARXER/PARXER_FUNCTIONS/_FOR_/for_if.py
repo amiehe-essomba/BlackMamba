@@ -574,7 +574,7 @@ class EXTERNAL_IF_WINDOWS:
         self.history                = ['if']
         self.loop                   = []
         self.max_emtyLine           = 5
-        self.c                      = bm.fg.rbg(0,255, 0)
+        self.c                      = c
         self.previous_c             = c
         self.mainString             = ''
         self.mainIndex              = 0
@@ -635,9 +635,9 @@ class EXTERNAL_IF_WINDOWS:
                                         if   self.get_block == 'begin:'     :
                                             self.store_value.append(self.normal_string)
                                             self.loop.append((self.normal_string, True))
-                                            self._values_, self.error = for_begin.COMMENT_STATEMENT(master=self.master,
+                                            self._values_, self.error = for_begin.COMMENT_WINDOWS(master=self.master,
                                                         data_base=self.data_base,
-                                                        line=self.if_line).COMMENT( tabulation=self.tabulation + 1, color=self.color)
+                                                        line=self.if_line).COMMENT( tabulation=self.tabulation+1, c=c)
                                             if self.error is None:
                                                 self.history.append('begin')
                                                 self.space = 0
@@ -648,7 +648,7 @@ class EXTERNAL_IF_WINDOWS:
                                             self.loop.append((self.normal_string, True))
                                             self._values_, self.error = INTERNAL_IF_WINDOWS(master=self.master,
                                                  data_base=self.data_base, line=self.if_line).TERMINAL(
-                                                bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c= bm.fg.rbg(0,255,0))
+                                                bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c= c)
 
                                             if self.error is None:
                                                 self.history.append('if')
@@ -774,8 +774,7 @@ class EXTERNAL_IF_WINDOWS:
                                         break
                                 else:  break
                         else:
-                            self.normal_string = self.analyse.BUILD_NON_CON(string=self.clear_input,
-                                                                            tabulation=self.tabulation)
+                            self.normal_string = self.analyse.BUILD_NON_CON(string=self.clear_input,  tabulation=self.tabulation)
                             self.get_block, self.value, self.error = eIF.EXTERNAL_BLOCKS(string=self.string,
                                         normal_string=self.normal_string,  data_base=self.data_base,
                                         line=self.if_line).BLOCKS(  tabulation=self.tabulation, function=_type_,
@@ -924,7 +923,7 @@ class INTERNAL_IF_WINDOWS:
         self.history                = ['if']
         self.loop                   = []
         self.max_emtyLine           = 5
-        self.c                      = bm.fg.rbg(0, 255, 255)
+        self.c                      = c
         self.previous_c             = c
         self.mainString             = ''
         self.mainIndex              = 0
@@ -989,7 +988,7 @@ class INTERNAL_IF_WINDOWS:
                                             self.loop.append((self.normal_string, True))
                                             self._values_, self.error = for_begin.COMMENT_STATEMENT(master=self.master,
                                                         data_base=self.data_base,
-                                                        line=self.if_line).COMMENT( tabulation=self.tabulation + 1, color=self.color)
+                                                        line=self.if_line).COMMENT( tabulation=self.tabulation + 1, color=c)
                                             if self.error is None:
                                                 self.history.append('begin')
                                                 self.space = 0
@@ -1000,7 +999,7 @@ class INTERNAL_IF_WINDOWS:
                                             self.loop.append((self.normal_string, True))
                                             self._values_, self.error = EXTERNAL_IF_WINDOWS(master=self.master,
                                                  data_base=self.data_base, line=self.if_line).TERMINAL(
-                                                bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=bm.fg.rbg(0,255,255))
+                                                bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=c)
 
                                             if self.error is None:
                                                 self.history.append('if')

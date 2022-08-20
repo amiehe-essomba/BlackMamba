@@ -227,7 +227,7 @@ class COMMENT_WINDOWS:
         self.if_line        = self.line
         
         ############################################################################
-        self.c                      = bm.fg.rbg(0,0,0)
+        self.c                      = bm.fg.rbg(153, 153, 255)
         self.previous_c             = c
         self.mainString             = ''
         self.mainIndex              = 0
@@ -343,9 +343,9 @@ class COMMENT_WINDOWS:
                         else:
                             if self.tabulation == 1:  break
                             else:
+                                self.normal_string = self.analyse.BUILD_NON_CON(string=self.clear_input,tabulation=self.tabulation)
                                 self.get_block, self.value, self.error = externalCmt.EXTERNAL_BLOCKS(normal_string=self.normal_string,
                                                                     data_base=self.data_base, line=self.line).BLOCKS(tabulation=self.tabulation)
-
                                 if self.error is None:
                                     if   self.get_block == 'end:'    :
                                         if self.store_value:

@@ -1,6 +1,7 @@
 import                              random
 import                              math
 import                              os
+import                              numpy as np
 from                                tkinter     import *
 from os                             import listdir
 from os.path                        import isfile
@@ -255,7 +256,15 @@ class C_F_I_S:
 
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
                                                 self.final_value, self.error = MATRIX(self._value_[0], self._value_[1],self._value_[2],
-                                                                          self._value_[3], self.line).MATRIX()
+                                                                          self._value_[3], self.line).MATRIX(self._value_[5])
+
+                                                if self.error is None:
+                                                    if self._value_[4] is None:  self.final_value = np.array( self.final_value )
+                                                    else:
+                                                        if self._value_[4] == 'sum':
+                                                            self.final_value = np.array( self.final_value ).sum(axis=0)
+                                                        else: pass
+                                                else: pass
                                                 self.data_base['matrix'] = True
 
                                             else:
@@ -500,8 +509,7 @@ class C_F_I_S:
                                         elif    self._values_[ 0 ] == 'round'   : self.final_value = round( self._values_[ 1 ][ 0 ], self._values_[ 1 ][ 1 ])
                                     except TypeError: pass
                                     except ZeroDivisionError: pass
-                                    except ValueError: pass 
-                                    
+                                    except ValueError: pass
                                 else: self.error = ERRORS( self.line ).ERROR4( self.normal_string )
 
                             else: pass
@@ -1115,7 +1123,7 @@ class STAT:
         return self.final_value, self.error
     
 class ERRORS:
-    def __init__(self, line):
+    def __init__(self, line: int):
         self.line       = line
         self.cyan       = bm.fg.cyan_L
         self.red        = bm.fg.red_L
@@ -1339,7 +1347,13 @@ class ERRORS:
 
     def ERROR32(self, s= 'nrow'):
         error = '{}and {}reverse is True {}line: {}{}'.format(self.white, self.yellow,  self.white, self.yellow, self.line)
-        self.error = fe.FileErrors('ValueError').Errors() + '{}{} {}is -1 '.format(self.cyan, s, self.red) + error
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} {}is {}-1 '.format(self.cyan, s, self.white, self.red) + error
+
+        return self.error + self.reset
+
+    def ERROR33(self, s= 'axis', ss = ''):
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} {}>= {}{} '.format(self.cyan, s, self.white, self.red, ss) + error
 
         return self.error + self.reset
 
@@ -1351,7 +1365,7 @@ class MATRIX:
         self.reverse    = reverse
         self.line       = line
 
-    def MATRIX(self):
+    def MATRIX(self, axis: any):
         self.step       = 0
         self.newList    = []
         self.prev       = []
@@ -1361,26 +1375,52 @@ class MATRIX:
             if self.nrow > 0:
                 if self.ncol > 0:
                     if self.nrow * self.ncol == len( self.master):
-                        if self.reverse == False:
+                        if self.reverse is False:
                             self.step = self.ncol
                             self.prev.append( 0 )
-                            for i in range(self.ncol):
-                                self.prev.append( self.ncol * (i+1) )
-                                self.newList.append( self.master[ self.prev[ i ]: self.prev[ i+1 ]])
+                            if axis is None:
+                                for i in range(self.nrow):
+                                    self.prev.append( self.ncol * (i+1) )
+                                    self.newList.append( self.master[ self.prev[ i ]: self.prev[ i+1 ]])
+                            else:
+                                for i in range(self.nrow):
+                                    try:
+                                        self.prev.append( self.ncol * (i+1) )
+                                        self.newList.append( self.master[ self.prev[ i ]: self.prev[ i+1 ]][axis])
+                                    except IndexError:
+                                        self.error = ERRORS( self.line ).ERROR33(ss='ncol')
+                                        break
                         else:
-                            self.prev.append(0)
-                            for i in range(self.nrow):
-                                self.ss = []
-                                for j in range( self.ncol ):
-                                    self.prev.append(self.ncol * (j + 1))
-                                    self.ss.append(self.master[self.prev[j]: self.prev[j + 1]][ i ])
-                                self.newList.append( self.ss )
+                            if axis is None:
+                                for i in range(self.nrow):
+                                    self.ss     = []
+                                    self.w      = 0
+                                    for j in range( self.ncol ):
+                                        self.w = self.nrow * j + i
+                                        self.ss.append(self.master[ self.w ])
+                                    self.newList.append( self.ss )
+                            else:
+                                for i in range(self.nrow):
+                                    self.ss     = []
+                                    self.w      = 0
+                                    for j in range( self.ncol ):
+                                        self.w = self.nrow * j + i
+                                        self.ss.append(self.master[ self.w ])
+                                    try: self.newList.append( self.ss[axis] )
+                                    except IndexError :
+                                        self.error = ERRORS(self.line).ERROR33(ss='ncol')
+                                        break
                     else:
                         if self.nrow * self.ncol > len( self.master) : self.error = ERRORS( self.line ).ERROR31('>')
                         else : self.error = ERRORS( self.line ).ERROR31('<')
                 elif self.ncol == -1:
-                    if len( self.master ) == len( self.nrow):
-                        if self.reverse is False:  self.newList.append( self.master )
+                    if len( self.master ) == self.nrow:
+                        if self.reverse is False:
+                            if axis is None:  self.newList.append( self.master )
+                            else:
+                                try:self.newList.append( self.master[axis] )
+                                except IndexError: self.error = ERRORS( self.line ).ERROR33(ss='length( master )')
+
                         else: self.error = ERRORS( self.line ).ERROR32( 'ncol')
                     else:
                         if self.nrow > len( self.master) : self.error = ERRORS( self.line ).ERROR31('>')
@@ -1390,8 +1430,13 @@ class MATRIX:
                 if self.ncol > 0:
                     if self.ncol == len( self.master):
                         if self.reverse is False:
-                            for s in self.master:
-                                self.newList.append([s])
+                            if axis is None:
+                                for s in self.master:
+                                    self.newList.append([s])
+                            else:
+                                try: self.newList.append([self.master[axis]])
+                                except IndexError: self.error = ERRORS( self.line ).ERROR33(ss='length( master )')
+
                         else: self.error = ERRORS( self.line ).ERROR32( 'nrow')
                     else:
                         if self.ncol > len( self.master) : self.error = ERRORS( self.line ).ERROR31('>')

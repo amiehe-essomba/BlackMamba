@@ -1,4 +1,5 @@
 from script.STDIN.WinSTDIN                      import stdin
+from script.DATA_BASE                           import data_base as db
 from script                                     import control_string
 from script.PARXER.PARXER_FUNCTIONS._FOR_       import end_for_else
 from script.PARXER.PARXER_FUNCTIONS._IF_        import if_inter
@@ -109,7 +110,7 @@ class EXTERNAL_DEF_STATEMENT:
                                         self.NewLIST    = stdin.STDIN(self.data_base, self.line ).GROUPBY(self.tabulation, self.loop_list[self.next_line : ],
                                                                                                         index = 'int')
                                         
-                                        self.db = functions.DB.func_data_base
+                                        self.db = db.DATA_BASE().STORAGE().copy()#functions.DB.func_data_base
                                         self.lexer, _, self.error = main.MAIN(self.value, self.db, self.line).MAIN( _type_ = 'def' )
                                         if self.error is None:
                                             self.error = INTERNAL_DEF_STATEMENT( None, self.db, self.line ).DEF( self.tabulation+1, 

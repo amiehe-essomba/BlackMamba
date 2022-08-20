@@ -5,10 +5,8 @@
 Returns:
     no returned values
 """
-
-from urllib.parse import parse_qs
-from xml.dom.expatbuilder import parseFragmentString
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
+from    urllib.parse import parse_qs
+from    script.STDIN.LinuxSTDIN    import bm_configure as bm
 import numpy
 
 class SHOW :
@@ -40,16 +38,11 @@ class SHOW :
         self.type       = type( self.master )
         self.color      = ''
 
-        if self.data_base[ 'matrix' ] is None:
-            # calor set in function of the master type
-            self.color      = SHOW( self.type, self.data_base, self.key ).TYPE()
+        # calor set in function of the master type
+        self.color      = SHOW( self.type, self.data_base, self.key ).TYPE()
 
-            # convert master to a string()
-            self.master     = str( self.master )
-        else:
-            self.color = self._return_ = bm.fg.rbg(255,165,0)
-            if self.type != type( str()): self.master = SHOW(self.master, self.data_base, self.key).MATRIX()
-            else: self.master     = str( self.master )
+        # convert master to a string()
+        self.master     = str( self.master )
 
         self.string2    = '{}{}{}'.format(self.color, self.master, self.reset)
         self.string1    = '{}[{} result{} ]{} : {}'.format( self.blue, self.orange, self.blue,  self.white, self.reset )
@@ -129,32 +122,13 @@ class SHOW :
         elif self.master == type( range(2) )    :   self._return_ = self.green
         elif self.master in self.all_Float      :   self._return_ = bm.fg.rbg(0, 255, 0)
         elif self.master in self.all_Int        :   self._return_ = self.red
+        elif self.master == type(numpy.array([0])): self._return_ = bm.fg.rbg(255,165,0)
         else:                                       self._return_ = bm.fg.rbg(255, 0, 0)
 
         return self._return_
 
-    def MATRIX(self):
-        self.s  = '\n['
-
-        if len( self.master ) <= 7:
-            for i,s in enumerate(self.master):
-                if i < len(self.master)-1:
-                    if i == 0:  self.s += f"{s}\n"
-                    else:self.s += f" {s}\n"
-                else: self.s += f" {s}]"
-        else:
-            for i,s in enumerate(self.master[ : 4]):
-                if i == 0: self.s += f"{s}\n"
-                else: self.s += f" {s}\n"
-
-            self.s += ' \n'
-            self.s += f" {self.master[-2]}\n"
-            self.s += f" {self.master[-1]}]"
-
-        return self.s
-
 def LineFeed( string : str, typ : any):
-    if typ == type(str()):
+    if typ in [type(str()), type(numpy.array([0]))]:
         if '\n' in string:
             if '\n' == string[0]: pass 
             else: string = '\n'+string 

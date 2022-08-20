@@ -953,10 +953,8 @@ class INIT:
         
         self.db['global_vars']['vars']                          = []
         self.db['global_vars']['values']                        = []
-        self.db['global_vars']['types']                         = []
         self.db['variables']['values']                          = []
         self.db['variables']['vars']                            = []
-        self.db['variables']['types']                           = []
         self.db['irene']                                        = None 
         self.db['class_names']                                  = []
         self.db['func_names']                                   = []

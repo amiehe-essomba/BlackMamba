@@ -49,10 +49,10 @@ class MAIN:
                     self.final_value, self.error = self.lex.FINAL_LEXER( self.new_string, self.data_base,
                                         self.line ).FINAL_LEXER( self.value, _type_=_type_, _key_ = _key_,
                                                             def_key = def_key, class_key = class_key )
-                    
+
                     if self.error is None:
                         self.lexer = self.final_value
-                        
+
                         if self.final_value[ 'class' ] is not None:
                             self.error = MAIN( self.new_string, self.data_base, self.line ).CLASS( self.final_value )
 
@@ -87,9 +87,6 @@ class MAIN:
                         elif self.final_value[ 'print' ] is not None:
                             self.data_base['print'].append( self.final_value['print'] )
 
-                        elif self.final_value[ 'transformation' ] not in [ None, ' ', '']:
-                            self.data_base[ 'transformation' ]  = self.final_value[ 'transformation' ]
-
                         elif self.final_value[ 'sub_print' ] is not None:
                             self.data_base[ 'sub_print' ] = self.final_value[ 'sub_print' ]
 
@@ -108,7 +105,13 @@ class MAIN:
                             self.data_base[ 'next' ] =  self.final_value[ 'next' ]
                         elif self.final_value[ 'break' ] is not None:
                             self.data_base[ 'exit' ] =  self.final_value[ 'exit' ]
-                            
+                        else:
+                            try:
+                                if self.final_value['transformation'] not in [ None, ' ', '']:
+                                    self.data_base['transformation'] = self.final_value['transformation']
+                                else:  pass
+                            except ValueError:
+                                self.data_base['transformation'] = self.final_value['transformation']
                     else: pass
                 else: pass
             else: self.lexer = None

@@ -37,8 +37,6 @@ class ASSEMBLY( ):
         self._values_       = self.data_base[ 'variables' ][ 'values' ]
         self.global_vars    = self.data_base[ 'global_vars' ][ 'vars' ]
         self.global_values  = self.data_base[ 'global_vars' ][ 'values' ]
-        self._types_        = self.data_base[ 'variables' ][ 'types' ]
-        self._global_types_ = self.data_base[ 'global_vars' ][ 'types' ]
         
         try:
             self._if_egal_  = self.master[ 'if_egal' ]
@@ -95,28 +93,19 @@ class ASSEMBLY( ):
                             if   type( self.var_names[ i ] ) == type( str() )   :
                                 if self.var_names[ i ] in self.variables:
                                     if type( self._return_[ i ] ) == type( str() ):
-                                        #self._return_[ i ] = '"'+self._return_[ i ]+'"'
                                         try:
                                             if '"' in self._return_[ i ][ 0 ]: pass
-                                            else: pass#self._return_[ i ] = self._return_[ i ]
+                                            else: pass
                                         except IndexError: pass
                                     else: pass
 
                                     self.idd = self.variables.index( self.var_names[ i ] )
                                     self._values_[ self.idd ] = self._return_[ i ]
-                                    if self.data_base['matrix'] is None:
-                                        self._types_[ self.idd ] == self.num_parxer.FINAL_VALUE( self._return_[ i ], self.data_base,
-                                                                   self.line, [] ).CONVERSION()
-                                    else: self._types_[ self.idd ] == self.num_parxer.FINAL_VALUE(None, None, None, None).MATRIX()
 
                                     if self.global_vars:
                                         if self.var_names[ i ] in self.global_vars:
                                             self.idd = self.global_vars.index( self.var_names[ i ] )
                                             self.global_values[ self.idd ] = self._return_[ i ]
-                                            if self.data_base['matrix'] is None:
-                                                self._global_types_[self.idd] == self.num_parxer.FINAL_VALUE(self._return_[i],
-                                                                self.data_base, self.line, []).CONVERSION()
-                                            else:  self._global_types_[self.idd] == self.num_parxer.FINAL_VALUE(None, None, None,  None).MATRIX()
                                         else: pass
                                     else:pass
 
@@ -124,32 +113,19 @@ class ASSEMBLY( ):
                                     if type( self._return_[ i ] ) == type( str() ):
                                         try:
                                             if '"' in self._return_[ i ][ 0 ]: pass
-                                            else: pass #self._return_[ i ] = '"'+self._return_[ i ]+'"'
-                                            #self._return_[ i ] = self._return_[ i ]
+                                            else: pass
                                         except IndexError: pass
                                     else: pass
 
                                     self.variables.append( self.var_names[ i ] )
                                     self._values_.append( self._return_[ i ] )
-                                    if self.data_base['matrix'] is None:
-                                        t = self.num_parxer.FINAL_VALUE( self._return_[ i ], self.data_base,
-                                                                   self.line, [] ).CONVERSION()
-                                        self._types_.append(t)
-                                    else:
-                                        t = self.num_parxer.FINAL_VALUE(None, None, None, None).MATRIX()
-                                        self._types_.append(t)
 
                                     if self.global_vars:
                                         if self.var_names[ i ] in self.global_vars:
                                             self.idd = self.global_vars.index( self.var_names[ i ] )
                                             self.global_values[ self.idd ] = self._return_[ i ]
-                                            if self.data_base['matrix'] is None:
-                                                self._global_types_[self.idd] == self.num_parxer.FINAL_VALUE(self._return_[i],
-                                                                                        self.data_base, self.line, []).CONVERSION()
-                                            else:  self._global_types_[self.idd] == self.num_parxer.FINAL_VALUE(None, None, None,  None).MATRIX()
                                         else: pass
                                     else: pass
-
                             elif type( self.var_names[ i ] ) == type( list() )  :
 
                                 self._name_ = self.var_names[ i ][ 0 ][ 'name' ]
@@ -158,7 +134,7 @@ class ASSEMBLY( ):
                                 if type( self._return_[ i ] ) == type( str() ):
                                     try:
                                         if '"' in self._return_[ 0 ][ i ]: pass
-                                        else: pass # self._return_[ i ] = '"' + self._return_[ i ] + '"'
+                                        else: pass
                                     except IndexError: pass
                                 else: pass
 
@@ -189,22 +165,12 @@ class ASSEMBLY( ):
                                         self.error = ERRORS( self.line ).ERROR1( self.__value__, 'a list()')
                                         break
 
-                                if self.data_base['matrix'] is None:
-                                    self._types_[self.idd] == self.num_parxer.FINAL_VALUE(self._values_[ self.idd ],
-                                                             self.data_base, self.line, []).CONVERSION()
-                                else:  self._types_[self.idd] == self.num_parxer.FINAL_VALUE(None, None, None,  None).MATRIX()
-
                                 if self.global_vars:
                                     if self._name_ in self.global_vars:
                                         self._idd_ = self.global_vars.index( self._name_ )
                                         self.global_values[ self._idd_ ] = self._values_[ self.idd ]
-                                        if self.data_base['matrix'] is None:
-                                            self._global_types_[self._idd_] == self.num_parxer.FINAL_VALUE(self._values_[ self.idd ],
-                                                              self.data_base, self.line, []).CONVERSION()
-                                        else:  self._global_types_[self._idd_] == self.num_parxer.FINAL_VALUE(None, None, None,  None).MATRIX()
                                     else: pass
                                 else: pass
-
                             elif type( self.var_names[ i ] ) == type( dict() )  :
                                 self._name_         = self.var_names[ i ][ 'name' ]
                                 self._keys_         = self.var_names[ i ][ 'keys' ]
@@ -213,7 +179,6 @@ class ASSEMBLY( ):
                                     try:
                                         if '"' in self._return_[ 0 ][ i ]: pass
                                         else: pass
-                                        #self._return_[ i ] = '"' + self._return_[ i ] + '"'
                                     except IndexError: pass
                                 else: pass
 
@@ -237,43 +202,30 @@ class ASSEMBLY( ):
                                         else:
                                             self.__value__[_in_] = self._return_[ i ]
 
-                                if self.data_base['matrix'] is None:
-                                    self._types_[self.idd] == self.num_parxer.FINAL_VALUE(self._values_[ self.idd ],
-                                                             self.data_base, self.line, []).CONVERSION()
-                                else:  self._types_[self.idd] == self.num_parxer.FINAL_VALUE(None, None, None,  None).MATRIX()
-
                                 if self.global_vars:
                                     if self._name_ in self.global_vars:
                                         self._idd_ = self.global_vars.index( self._name_ )
                                         self.global_values[ self._idd_ ] = self._values_[ self.idd ]
-                                        if self.data_base['matrix'] is None:
-                                            self._global_types_[self._idd_] == self.num_parxer.FINAL_VALUE(self._values_[ self.idd ],
-                                                              self.data_base, self.line, []).CONVERSION()
-                                        else:  self._global_types_[self._idd_] == self.num_parxer.FINAL_VALUE(None, None, None,  None).MATRIX()
                                     else: pass
                                 else: pass
 
                         self.data_base[ 'variables' ]   = {
                             'vars'                      : self.variables,
                             'values'                    : self._values_,
-                            'types'                     : self._types_
                         }
-
                         self.data_base[ 'global_vars' ] = {
                             'vars'                      : self.global_vars,
                             'values'                    : self.global_values,
-                            'types'                     : self._global_types_
                         }
                         self.data_base['matrix'] = None
                     else:
                         self.error = ERRORS( self.line ).ERROR2( self.data_base[ 'assigment' ] )
                         self.data_base[ 'no_printed_values' ]   = []
                         self.data_base[ 'assigment' ]           = None
-                        self.data_base[ 'matrix' ]              = None
                 else: pass
             else: pass
 
-        return self.error  #self._return_, self.key_return, self.error
+        return self.error
 
     def GLOBAL_ASSEMBLY(self, main_string: str, interpreter: bool = False):
         self._return_           = None

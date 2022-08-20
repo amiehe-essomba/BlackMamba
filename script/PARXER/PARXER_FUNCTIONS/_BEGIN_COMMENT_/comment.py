@@ -304,32 +304,24 @@ class COMMENT_TRANSFORMS:
 
             if self.name is None: pass
             else:
-                self.vars   = self.data_base[ 'variables' ][ 'vars' ]
-                self.values = self.data_base[ 'variables' ][ 'values' ]
-                self.types  = self.data_base[ 'variables' ][ 'types' ]
+                self.vars       = self.data_base[ 'variables' ][ 'vars' ]
+                self.values     = self.data_base[ 'variables' ][ 'values' ]
                 self.func_name  = self.data_base['current_func']
 
                 if self.name in self.vars:
                     self.idd = self.vars.index( self.name )
                     self.values[ self.idd ]     = self.long_chaine
-                    self.types[ self.index ]    = self.num_parxer.FINAL_VALUE( master=self.long_chaine, data_base=self.data_base,
-                                                                   line=1, logical=[] ).CONVERSION() 
                 else:
                     self.vars.append( self.name )
                     self.values.append( self.long_chaine )
-                    self.s = self.num_parxer.FINAL_VALUE( master=self.long_chaine, data_base=self.data_base,
-                                                                   line=1, logical=[]  ).CONVERSION()
-                    self.types.append(self.s)
 
                 self.data_base[ 'variables' ][ 'vars' ]     = self.vars
                 self.data_base[ 'variables' ][ 'values' ]   = self.values
-                self.data_base[ 'variables' ][ 'types' ]    = self.types
-              
+
                 if self.func_name is not None:
                     self.idd = self.self.data_base['func_names'].index( self.func_name )
                     self.self.data_base['functions'][self.idd]['function_info']['description'] = self.long_chaine
                 else: pass
-
         else: pass
 
         return self.error

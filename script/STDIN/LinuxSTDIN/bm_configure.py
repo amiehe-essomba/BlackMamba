@@ -306,7 +306,7 @@ class words:
                             if self.ss: self.newS   += words(self.ss, self.color).keywords(n=n)
                             else: pass
                     else:
-                        if s in [ '#', '\t' ]:
+                        if s in [ '#' ]:
                             self.ss += s
                             if i < len(self.string) - 1:  pass
                             else:
@@ -318,13 +318,7 @@ class words:
                             else:
                                 if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n)
                                 else:  pass
-                        elif s in ['\t']:
-                            self.ss += s
-                            if i < len(self.string) - 1:  pass
-                            else:
-                                if self.ss:
-                                    self.newS += words(self.ss, self.color).keywords(n=n)
-                                else:  pass
+
                         else:
                             if self.ss:
                                 if '#' in self.ss:

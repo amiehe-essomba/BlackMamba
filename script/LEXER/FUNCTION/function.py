@@ -178,15 +178,12 @@ class FUNCTION:
                                                     else:
                                                         self.error = ERRORS( self.line ).ERROR0( val )
                                                         break
-
                                                 else:
                                                     self.error = self.error
                                                     break
-
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR0( val )
                                                 break
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( val )
                                             break
@@ -214,11 +211,9 @@ class FUNCTION:
                                                             self.data_storage.append( None )
                                                             self.variable.append( self.name )
                                                             self._type_.append( [ 'any' ] )
-
                                                         else:
                                                             self.error = ERRORS( self.line ).ERROR4( self.val_ )
                                                             break
-
                                                     else:
                                                         self.error = ERRORS( self.line ).ERROR0( val )
                                                         break
@@ -253,53 +248,41 @@ class FUNCTION:
                                                                             self.data_storage.append( None )
                                                                             self.variable.append( self.name )
                                                                             self._type_.append( self.type )
-
                                                                         else:
                                                                             self.error = self.error = ERRORS( self.line ).ERROR4( self.val_ )                                      
                                                                             break
-
                                                                     else:
                                                                         self.error  = ERRORS( self.line ).ERROR0( val )
                                                                         break
-
-                                                                else: break 
-                                                
-                                                            else: break 
-                                                                
+                                                                else: break
+                                                            else: break
                                                         else: 
                                                             self.error = ERRORS( self.line ).ERROR0( val )
                                                             break
                                                     else:
                                                         self.error = ERRORS( self.line ).ERROR5( val )
                                                         break
-
                                                 else:
                                                     self.error = ERRORS( self.line ).ERROR0( val )
-                                                    break                       
-                                                        
+                                                    break
                                             else:
                                                 self.error  = ERRORS( self.line ).ERROR0( val )
                                                 break
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( val )
                                             break
-
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( val )
                                         break
-
                                 else:
                                     self.error = ERRORS( self.line ).ERROR0( val )
                                     break
-
                         else: pass
                     else:
                         self.error = None
                         self.data_storage.append( None )
                         self.variable.append( None )
                         self._type_.append( 'any' )
-
                 else: pass
 
                 self.function_info[ 'value' ]       = self.data_storage

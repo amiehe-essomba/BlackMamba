@@ -1,3 +1,4 @@
+import                              numpy as np
 from script                         import control_string
 from script.LEXER                   import particular_str_selection
 from script.LEXER                   import main_lexer
@@ -398,8 +399,9 @@ class LIS_OPTIONS:
                                         if self.error is None:
                                             self.all_value[ i ] = self.num
                                             _type_ = type( self.num )
-                                            if _type_ == type( int() ):
-                                                if self.type in [ type( list() ), type( tuple() ), type( range(1)), type(str()) ]:
+                                            if   _type_ == type( int() )    :
+                                                if self.type in [ type( list() ), type( tuple() ), type( range(1)),
+                                                                  type(str()), type(np.array([0])) ]:
                                                     if self.num < len( object1 ):
                                                         try:
                                                             object1 = object1[ self.num ]
@@ -420,8 +422,7 @@ class LIS_OPTIONS:
                                                 else:
                                                     self.error = ERRORS( self.line ).ERROR9( object1 )
                                                     break
-
-                                            elif _type_ == type( str() ):
+                                            elif _type_ == type( str() )    :
                                                 if self.type == type( dict() ):
                                                     if self.num in list( object1.keys() ):
                                                         object1 = object1[ self.num ]
@@ -441,13 +442,11 @@ class LIS_OPTIONS:
                                                 else:
                                                     self.error = ERRORS( self.line ).ERROR10( value, 'a dictionary()' )
                                                     break
-
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR11( value )
                                                 break
                                         else: break
                                 else: break
-
                             elif len( self.dot ) == 2:
                                 for j in range( 2 ):
                                     self._name_, self.error = self.control.DELETE_SPACE(self.dot[ j ])
@@ -491,7 +490,8 @@ class LIS_OPTIONS:
 
                                         _type_1 = type( self.num1 )
                                         if _type_1 == type( int() ) :
-                                            if self.type in [ type( list() ), type( tuple()), type( range( 1 ) ), type(str())  ]:
+                                            if self.type in [ type( list() ), type( tuple()), type( range( 1 ) ),
+                                                              type(str()) , type( np.array([0]) ) ]:
                                                 self.len = len( object1 )
 
                                                 if self.case ==   '1':
@@ -502,6 +502,9 @@ class LIS_OPTIONS:
                                                         else:
                                                             if self.type == type( list() ):
                                                                 self.error = ERRORS( self.line ).ERROR8()
+                                                                break
+                                                            elif self.type == type(np.array([0])):
+                                                                self.error = ERRORS(self.line).ERROR8('ndarray')
                                                                 break
                                                             else:
                                                                 self.error = ERRORS(self.line).ERROR8('tuple')
@@ -514,10 +517,12 @@ class LIS_OPTIONS:
                                                             if self.type == type( list() ):
                                                                 self.error = ERRORS(self.line).ERROR8()
                                                                 break
+                                                            elif self.type == type(np.array([0])):
+                                                                self.error = ERRORS(self.line).ERROR8('ndarray')
+                                                                break
                                                             else:
                                                                 self.error = ERRORS(self.line).ERROR8('tuple')
                                                                 break
-
                                                 elif self.case == '2':
                                                     if self.num1 >= 0:
                                                         if self.num1 <= self.len:
@@ -526,6 +531,9 @@ class LIS_OPTIONS:
                                                         else:
                                                             if self.type == type(list()):
                                                                 self.error = ERRORS(self.line).ERROR8()
+                                                                break
+                                                            elif self.type == type(np.array([0])):
+                                                                self.error = ERRORS(self.line).ERROR8('ndarray')
                                                                 break
                                                             else:
                                                                 self.error = ERRORS(self.line).ERROR8('tuple')
@@ -546,14 +554,15 @@ class LIS_OPTIONS:
                                                             if self.type == type(list()):
                                                                 self.error = ERRORS(self.line).ERROR8()
                                                                 break
+                                                            elif self.type == type(np.array([0])):
+                                                                self.error = ERRORS(self.line).ERROR8('ndarray')
+                                                                break
                                                             else:
                                                                 self.error = ERRORS(self.line).ERROR8('tuple')
                                                                 break
-
                                                 elif self.case == '3':
                                                     self.dot[ 0 ] = 0
                                                     self.dot[ 1 ] = self.len
-
                                                 elif self.case == '4':
                                                     _type_2 = type( self.num2 )
                                                     if _type_2 == type( int() ):
@@ -591,24 +600,40 @@ class LIS_OPTIONS:
                                                         break
 
                                                 if self.error is None:
-                                                    if object1:
-                                                        try:
-                                                            object1 = object1[self.dot[0] : self.dot[1]]
-                                                            self.all_value[ i ] = [ x for x in range(self.dot[0], self.dot[1])]
-
-                                                        except IndexError:
-                                                            if self.type == type( list() ):
+                                                    try:
+                                                        if object1:
+                                                            try:
+                                                                object1 = object1[self.dot[0] : self.dot[1]]
+                                                                self.all_value[ i ] = [ x for x in range(self.dot[0], self.dot[1])]
+                                                            except IndexError:
+                                                                if self.type == type( list() ):
+                                                                    self.error = ERRORS(self.line).ERROR8()
+                                                                    break
+                                                                elif self.type == type( np.array([0]) ):
+                                                                    self.error = ERRORS(self.line).ERROR8('ndarray')
+                                                                    break
+                                                                else:
+                                                                    self.error = ERRORS(self.line).ERROR8('tuple')
+                                                                    break
+                                                        else:
+                                                            if self.type == type(list()):
                                                                 self.error = ERRORS(self.line).ERROR8()
+                                                                break
+                                                            elif self.type == type(np.array([0])):
+                                                                self.error = ERRORS(self.line).ERROR8('ndarray')
                                                                 break
                                                             else:
                                                                 self.error = ERRORS(self.line).ERROR8('tuple')
                                                                 break
-                                                    else:
-                                                        if self.type == type(list()):
-                                                            self.error = ERRORS(self.line).ERROR8()
-                                                            break
+                                                    except ValueError:
+                                                        if object1.all():
+                                                            try:
+                                                                object1 = object1[self.dot[0]: self.dot[1]]
+                                                                self.all_value[i] = [x for x in range(self.dot[0], self.dot[1])]
+                                                            except IndexError:
+                                                                self.error = ERRORS(self.line).ERROR8('ndarray')
                                                         else:
-                                                            self.error = ERRORS(self.line).ERROR8('tuple')
+                                                            self.error = ERRORS(self.line).ERROR8('ndarray')
                                                             break
                                                 else: break
                                             else:
@@ -617,11 +642,8 @@ class LIS_OPTIONS:
                                         else:
                                             self.error = ERRORS( self.line ).ERROR10( self.first )
                                             break
-                                    else:
-                                        self.error = self.error
-                                        break
-
-                                else:break
+                                    else:  break
+                                else: break
                             else:
                                 self.error = ERRORS( self.line ).ERROR0( value )
                                 break

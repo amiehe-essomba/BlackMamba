@@ -14,13 +14,11 @@ class DATA_BASE:
         self.data_base      = {
         'global_vars'       : {             # dict for variables and theirs values 
             'vars'          : [],           # variables
-            'values'        : [],           # values
-            'types'         : []            # types
+            'values'        : []            # values
             },
         'variables'         : {             # dict containing varaibles and values defined as global 
             'vars'          : [],           # variables
-            'values'        : [],           # values
-            'types'         : []            # types
+            'values'        : []           # values
             },
         'irene'             : None,         # contoling string(with or without bracket)
         'functions'         : [],           # all functions 
@@ -107,7 +105,7 @@ class DATA_BASE:
     def FUNCTIONS(self):
         self.function_name  = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
                                'length', 'range', 'ansi', 'rand', 'GetLine', 'scan', 
-                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix']
+                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1']
         
         self.function_expressions   = [
             {
@@ -438,11 +436,12 @@ class DATA_BASE:
             },
             {
                 'matrix'            : {
-                'type'              : [['list', 'tuple', 'range'], ['int', 'bool'], ['int', 'bool'], ['bool']],
-                'value'             : [None, None, None, 'False'],
-                'arguments'         : ['master', 'nrow', 'ncol', 'reverse'],
+                'type'              : [['list', 'tuple', 'range'], ['int', 'bool'], ['int', 'bool'], ['bool'],
+                                       ['string', 'none'], ['int', 'none']],
+                'value'             : [None, None, None, 'False', 'None', 'None'],
+                'arguments'         : ['master', 'nrow', 'ncol', 'reverse', 'ctype', 'axis'],
                 'history_of_data': [
-                        ('t_std_ * [master, nrow, ncol, reverse, \"matrix\"]             ', True),
+                        ('t_std_ * [master, nrow, ncol, reverse, ctype, axis, \"matrix\"]             ', True),
                         ('end:                                                  ', False),
                     ]
                 }

@@ -1679,8 +1679,6 @@ class UPDATE_DATA_BASE:
                 if self.values[ i ] != '@670532821@656188185@670532821@':
                     data_base[ 'variables' ][ 'vars' ].append( vars )
                     data_base[ 'variables' ][ 'values'].append( self.values[ i ] )
-                    t = self.num_parxer.FINAL_VALUE(self.values[ i ], data_base, None, []).CONVERSION()
-                    data_base['variables']['types'].append(t)
                 else: self.name_without_values.append( (vars, i) )
         else: pass
 
