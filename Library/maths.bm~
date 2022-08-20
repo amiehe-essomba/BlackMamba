@@ -359,7 +359,7 @@ class statistics:
 end:
 
 class math:
-	def sorted( master : list, reverse : bool = False) : 
-		return master.sorted(reverse = reverse)
+	def sorted( master : list) : 
+		return master.sorted()
 	end:
 end:

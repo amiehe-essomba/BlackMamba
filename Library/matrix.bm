@@ -1,0 +1,16 @@
+
+class ndarray:
+	def initialize(master:list/tuple/range, nrow:int, ncol:int):
+		self.master	= master
+		self.nrow	= nrow
+		self.ncol	= ncol
+	end:
+	
+	def array( reverse: bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, None, axis, 'matrix']
+	end: 
+	
+	def sum( reverse : bool = False, ctype : string = 'sum', axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, ctype, axis, 'matrix'] 
+	end:
+end:			
