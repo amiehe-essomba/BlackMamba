@@ -133,10 +133,10 @@ class INTERNAL_BLOCKS:
                                     self.value = self.normal_string
                             except IndexError:  self.error = er.ERRORS( self.line ).ERROR1( 'switch' )
                     elif self.normal_string[ : 3 ] == 'try'     :
-                        self._return_, self.value, self.error = structure.STRUCT().STRUCT( num = 3,
+                        self._return_, self.value, self.error = structure.STRUCT(data_base=self.data_base, line=self.line).STRUCT( num = 3,
                                                             normal_string=self.normal_string, tabulation=self.tabulation, split = True)
                     elif self.normal_string[ : 5 ] == 'begin'   :
-                        self._return_, self.value, self.error = structure.STRUCT().STRUCT( num = 5,
+                        self._return_, self.value, self.error = structure.STRUCT(data_base=self.data_base, line=self.line).STRUCT( num = 5,
                                                             normal_string=self.normal_string, tabulation=self.tabulation, split = True)
                     else:
                         if self.normal_string[ -1 ] != ':':
@@ -281,15 +281,15 @@ class INTERNAL_BLOCKS:
                             except IndexError:
                                 self.error = er.ERRORS(self.line).ERROR1('switch')
                     elif self.normal_string[ : 3 ] == 'try'         :
-                        self._return_, self.value, self.error = structure.STRUCT().STRUCT(num=3,
+                        self._return_, self.value, self.error = structure.STRUCT(data_base=self.data_base, line=self.line).STRUCT(num=3,
                                                         normal_string=self.normal_string, tabulation=self.tabulation, split = True)
                     elif self.normal_string[ : 5 ] == 'begin'       :
-                        self._return_, self.value, self.error = structure.STRUCT().STRUCT(num=5,
+                        self._return_, self.value, self.error = structure.STRUCT(data_base=self.data_base, line=self.line).STRUCT(num=5,
                                                         normal_string=self.normal_string, tabulation=self.tabulation, split = True)
                     elif self.normal_string[ : 3 ] == 'end'         :
                         if self.normal_string[-1] == ':':
                             self._return_ = 'end:'
-                            self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(snum=3,
+                            self.error = externalBlocks.EXTERNAL(data_base=self.data_base, line=self.line).EXTERNAL(snum=3,
                                                             normal_string=self.normal_string, tabulation=self.tabulation, split=True)
                         else:
                             if self.normal_string in ['end']: self.error = er.ERRORS(self.line).ERROR1('end')
@@ -299,7 +299,7 @@ class INTERNAL_BLOCKS:
                             if self.normal_string[ -1 ] == ':':
                                 if self.normal_string[ 4 ] in [ ' ' ]:
                                     self._return_ = 'elif:'
-                                    self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
+                                    self.value, self.error = MS.MAIN(master=self.normal_string, data_base=self.data_base, line=self.line).MAIN(
                                         typ='elif', opposite=False, interpreter=True, function=function)
                                 else:
                                     try:
@@ -358,7 +358,7 @@ class INTERNAL_BLOCKS:
                         if typ in [ 'switch' ]:
                             if self.normal_string[ -1 ] == ':':
                                 self._return_ = 'default:'
-                                self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(num=7,
+                                self.error = externalBlocks.EXTERNAL(data_base=self.data_base, line=self.line).EXTERNAL(num=7,
                                                                 normal_string=self.normal_string, tabulation=self.tabulation, split=True)
                             else:
                                 if self.normal_string in ['default']: self.error = er.ERRORS(self.line).ERROR1('default')
