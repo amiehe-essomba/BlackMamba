@@ -51,6 +51,11 @@ load module maths as m
 
 ![comment](/images/comment.png)
 
+> creating a ndarray
+
+![matrix](/images/matrix.png)
+
+
 ## Project Description 
 
 ## Roadmap
