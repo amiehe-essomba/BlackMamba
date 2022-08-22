@@ -224,6 +224,8 @@ class words:
                 self.newString  += fg.rbg(204,153,255)+self.string+init.reset
             elif    self.string in ['pass', 'break', 'continue', 'exit', 'next']:
                 self.newString += fg.rbg(153,204,0) + self.string + init.reset
+            elif    self.string in ['and', 'or', 'only']:
+                self.newString += fg.rbg(255, 102, 0) + self.string + init.reset
             elif    self.string in ['if', 'unless', 'else', 'elif', 'for', 'switch', 'case', 'default',
                                        'try', 'except', 'finally', 'while', 'until', 'begin', 'save']:
                 self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
@@ -231,7 +233,7 @@ class words:
                 if n == 0: self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
                 else: self.newString +=  fg.rbg(255,165,0) + self.string + init.reset
             elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'string',
-                                    'bool', 'dict', 'any', 'dictionary']:
+                                    'bool', 'dict', 'any', 'dictionary', 'self']:
                 self.newString += fg.rbg(240,128,128) + self.string + init.reset
             elif    self.string in ['from', 'load', 'module', 'as']:
                 self.newString += fg.rbg(225, 50, 20) + self.string + init.reset
@@ -287,6 +289,7 @@ class words:
                             self.count = 0
                             self.k = []
                         else: pass
+
         else: self.newString = self.color + self.string + init.reset
 
         return self.newString

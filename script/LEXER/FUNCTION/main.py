@@ -35,7 +35,7 @@ class MAIN:
         else:
             self.new_string, self.error = self.tab.CHECK_TAB_FOR_INTERPRETER( self.master, self.master,
                                                              self.data_base, self.line).CHECK_LINE(_id_, MainList)
-                                                             
+
         if self.error is None:
             self.new_string = self.new_string
 
@@ -134,7 +134,6 @@ class MAIN:
                 self.index = self.data_base[ 'class_names' ].index( self.name )
                 self.data_base[ 'classes' ][ self.index ] = self._value_
                 #self.data_base[ 'classes' ][ self.index ][ self.name ] = self._value_
-                
 
             else:
                 self.data_base[ 'current_class' ] = self.final_value[ 'class' ][ 'class_name' ]

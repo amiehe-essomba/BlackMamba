@@ -36,7 +36,7 @@ class FUNCTION_INIT:
                                 9, 6, 7, 12, 9, 6, 8, 5, 5, 9, 8, 8, 10, 6, 8, 5, 5, 5, 5, 8]
         self.sub_function   = [ 'if', 'def', 'for', 'try', 'while', 'class', 'switch',
                                'global', 'return' 'unless', 'until', 'begin', 'delete', 'print', '_int_', '_float_',
-                                '_string_', '_complex_' ]
+                                '_string_', '_complex_', 'lambda' ]
         self.break_function = [ 'break', 'exit', 'pass', 'continue', 'next' ]
         self.anotherfunc    = [ 'elif', 'else', 'case', 'default', 'finally', 'except', 'end' ]
         self.lambda_        = [ 'lambda' ]
@@ -100,17 +100,13 @@ class FUNCTION_INIT:
 
                     self.key_bracket = True
 
-                else:
-                    self.initialize = self.initialize
-
+                else:  self.initialize = self.initialize
             else:
                 if str_ in [']', ')', '}'] and self.key_bracket is None:
                     self.open = self.number.OPENING(str_)
                     self.error = self.string_error.ERROR_TREATMENT2(self.long_chaine, str_)
                     break
-
-                else:
-                    pass
+                else:  pass
 
             if self.initialize[0] is not None:
                 if self.initialize[0] == '(':
@@ -126,12 +122,10 @@ class FUNCTION_INIT:
                     if self.str_id == False:
                         self.left, self.rigth = 1, 0
                         self.str_id = True
-
                     else:
                         if self.rigth <= 1:
                             self.rigth = self.rigth + str_.count('"')
                             self.left = self.left
-
                         else:
                             self.error = self.string_error.ERROR_TREATMENT3(self.long_chaine)
                             break
@@ -140,12 +134,10 @@ class FUNCTION_INIT:
                     if self.str_id_ == False:
                         self.left, self.rigth = 1, 0
                         self.str_id_ = True
-
                     else:
                         if self.rigth <= 1:
                             self.rigth = self.rigth + str_.count("'")
                             self.left = self.left
-
                         else:
                             self.error = self.string_error.ERROR_TREATMENT3(self.long_chaine)
                             break
@@ -194,6 +186,10 @@ class FUNCTION_INIT:
                                         self.function_type.append( self.string )
                                         self.string = ''
 
+                                    elif self.string in [ 'lambda' ]:
+                                        self.function_type.append( self.string )
+                                        self.string = ''
+
                                     elif self.string in [ 'pass' ]:
                                         self.function_type.append( self.string )
                                         self.string = ''
@@ -234,12 +230,10 @@ class FUNCTION_INIT:
                                         break
 
                                     else:
-
                                         if self.master[ -1 ] in [ ':' ]:
                                             if self.string not in [ 'try', 'begin' ]:
                                                 self.function_type.append( self.string )
                                                 self.string = ''
-
                                             else:
                                                 k = i + 1
                                                 self.next = self.master[ k : - 1]
@@ -252,19 +246,15 @@ class FUNCTION_INIT:
                                                     self.function_type.append( self.string )
                                                     self.error = None
                                                     break
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR1( self.master )
                                             break
-
                                 else:
                                     self.error = ERRORS( self.line ).ERROR0( self.master )
                                     break
-
                             else:
                                 self.error = ERRORS( self.line ).ERROR0( self.master )
                                 break
-
                         else:
                             if self.function_type:
                                 if self.function_type[ 0 ] in self.break_function + self.anotherfunc:
@@ -272,7 +262,6 @@ class FUNCTION_INIT:
                                     break
                                 else: self.string += str_
                             else: self.string += str_
-
                     else:
                         self.string += str_
                         if i < len( self.master ) - 1:
@@ -288,12 +277,10 @@ class FUNCTION_INIT:
                                                         self.function_type.append( self.string )
                                                         self.stop = True
                                                         break
-
                                                     else:
                                                         self.error = ERRORS( self.line ).ERROR3( self.master, self.string )
                                                         break
                                                 except IndexError: pass
-
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR3( self.master, self.string[: self.count[ j ]] )
                                                 break
@@ -327,7 +314,7 @@ class FUNCTION_INIT:
                                                                 '_list_', '_tuple_', '_dictionary_', '_boolean_',
                                                                 '_sum_', '_rang_', '__ansii__', '__show__', '__rand__',
                                                                 '_get_line_', '_mean_', '__scan__','_max_', '_min_', '_var_', 
-                                                                '_std_', '__open__', '__maths__']:
+                                                                '_std_', '__open__', '__maths__', 'lambda']:
                                         self.data.append( self.string )
 
                                     elif self.function_type[ 0 ] in self.break_function+self.anotherfunc:
@@ -341,19 +328,15 @@ class FUNCTION_INIT:
                                         if self.error is None:
                                             if self.string not in self.function:
                                                 self.data.append( self.string )
-
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR0( self.master )
                                                 break
-
                                         else:
                                             if self.data: self.error = None
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR0( self.master )
                                                 break
-
-                                else:
-                                    self.data.append( self.string )
+                                else:  self.data.append( self.string )
                 else: break
 
         return  self.data, self.function_type, self.error

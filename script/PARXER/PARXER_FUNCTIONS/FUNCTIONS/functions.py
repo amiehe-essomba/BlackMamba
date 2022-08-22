@@ -20,6 +20,7 @@ from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
 
+import  numpy as np
 try:  from CythonModules.Windows                        import fileError as fe 
 except ImportError:  from CythonModules.Linux           import fileError as fe 
 try:  from CythonModules.Linux                          import loop_for
@@ -615,20 +616,16 @@ class FUNCTION:
                             else: pass
                     else:
                         for i, value in enumerate( self.values ):
-                            if value is None:
-                                self.emty_values.append( (self.arguments[ i ], i ) )
-                            else:
-                                pass
+                            if value is None: self.emty_values.append( (self.arguments[ i ], i ) )
+                            else: pass
 
                         if self.emty_values:
                             self.error = ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
                         else: pass
 
         else:
-            if self.external_vars:
-                self.error = ERRORS(self.line).ERROR11( self.function_name, self.external_vars[0] )
-            elif self.computed_values:
-                self.error = ERRORS(self.line).ERROR12(self.function_name, 0 )
+            if self.external_vars:  self.error = ERRORS(self.line).ERROR11( self.function_name, self.external_vars[0] )
+            elif self.computed_values:  self.error = ERRORS(self.line).ERROR12(self.function_name, 0 )
             else: pass
 
         if self.error is None:
@@ -665,10 +662,9 @@ class FUNCTION:
                                                 self.str_type   = CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
                                                 if x < len( self.type_of_data[ i ] ) - 1:
                                                     self.list_types += self.str_type + ', or '
-                                                else:
-                                                    self.list_types += self.str_type
+                                                else:  self.list_types += self.str_type
                                                     
-                                            self.error = ERRORS( self.line ).ERROR3( value, self.list_types, self.func)
+                                            self.error = ERRORS( self.line ).ERROR3( self.arguments[i], self.list_types, self.func)
                                             break
                                         else: self.values[ i ] = self._values_ 
                                 else: break
@@ -1676,10 +1672,15 @@ class UPDATE_DATA_BASE:
 
         if self.variables:
             for i, vars in enumerate( self.variables ):
-                if self.values[ i ] != '@670532821@656188185@670532821@':
+                if type(self.values[ i ]) == type(np.array([])):
                     data_base[ 'variables' ][ 'vars' ].append( vars )
                     data_base[ 'variables' ][ 'values'].append( self.values[ i ] )
-                else: self.name_without_values.append( (vars, i) )
+                else:
+                    if self.values[ i ] != '@670532821@656188185@670532821@':
+                        data_base['variables']['vars'].append(vars)
+                        data_base['variables']['values'].append(self.values[i])
+                    else: self.name_without_values.append( (vars, i) )
+
         else: pass
 
         self.global_variables   = self.global_vars[ 'vars' ].copy()
@@ -1687,10 +1688,15 @@ class UPDATE_DATA_BASE:
 
         if self.global_values:
             for i , value in enumerate( self.global_values ):
-                if value not in [ '@670532821@656188@656188185@' ]:
-                    data_base[ 'variables'] [ 'vars' ].append( self.global_variables[ i ] )
-                    data_base[ 'variables' ][ 'values' ].append( value )
-                else: pass
+                if type(self.values[i]) == type(np.array([])):
+                    data_base['variables']['vars'].append(self.global_variables[i])
+                    data_base['variables']['values'].append(value)
+                else:
+                    if value not in [ '@670532821@656188@656188185@' ]:
+                        data_base[ 'variables'] [ 'vars' ].append( self.global_variables[ i ] )
+                        data_base[ 'variables' ][ 'values' ].append( value )
+                    else: pass
+
         else: pass
 
         if self.name_without_values: data_base[ 'empty_values' ] = self.name_without_values
@@ -1725,6 +1731,8 @@ class CHECK_TYPE_OF_DATA:
         elif self.type == type( str() )         :       self._return_ = 'string'
         elif self.type == type( range( 1 ) )    :       self._return_ = 'range'
         elif self.type == type( None )          :       self._return_ = 'none'
+        elif self.type == type(np.array([1]))   :       self._return_ = 'ndarray'
+
         return self._return_
 
     def TYPE(self):
@@ -1740,7 +1748,7 @@ class CHECK_TYPE_OF_DATA:
         elif self.value == 'string' :           self._return_ = '{}a string(){}'.format(bm.fg.cyan, bm.init.reset)
         elif self.value == 'range'  :           self._return_ = '{}a range(){}'.format(bm.fg.green_L, bm.init.reset)
         elif self.value == 'none'   :           self._return_ = '{}a none(){}'.format(bm.fg.rbg(252, 127, 0 ), bm.init.reset)
-
+        elif self.value == 'ndarray':            self._return_ = '{}ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
 
         return self._return_ 
     

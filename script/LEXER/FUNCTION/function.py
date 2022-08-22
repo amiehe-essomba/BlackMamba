@@ -323,7 +323,7 @@ class FUNCTION:
 
     def TYPE(self, string: str):
         self.string, self.error = self.control.DELETE_SPACE( string )
-        self.type   = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range']
+        self.type   = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray']
         self.error  = None
 
         if self.error is None :

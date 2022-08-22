@@ -29,7 +29,7 @@ class FUNCTION:
         self.first          = [ 'if', 'def', 'for', 'try', 'while', 'class', 'switch',
                                 'unless', 'until', 'break', 'exit', 'pass', 'continue',
                                 'next', 'begin']
-        self.second         = [ 'return', 'global', 'delete', 'print', '_int_', '_float_', '_string_', '_complex_',
+        self.second         = [ 'return', 'global', 'delete', 'print', '_int_', '_float_', '_string_', '_complex_','lambda',
                                 '_list_', '_tuple_', '_dictionary_', '_boolean_', '_sqrt_', '_length_', '_sum_', '_rang_',
                                 '__ansii__', '__show__', '__rand__', '_get_line_', '_mean_', '__scan__','_max_', '_min_',
                                 '_var_', '_std_', '__open__', '__maths__']

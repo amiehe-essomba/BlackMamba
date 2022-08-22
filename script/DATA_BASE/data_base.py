@@ -166,7 +166,7 @@ class DATA_BASE:
                 },
             {
                 'list'              : {
-                'type'              : [ ['list', 'tuple', 'range', 'dict'] ],
+                'type'              : [ ['list', 'tuple', 'range', 'dict', 'ndarray'] ],
                 'value'             : [ '()' ],
                 'arguments'         : [ 'input' ],
                 'history_of_data'   : [

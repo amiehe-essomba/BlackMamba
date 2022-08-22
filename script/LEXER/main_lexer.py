@@ -310,6 +310,7 @@ class FINAL_LEXER:
             'return'            : None,
             'delete'            : None,
             'global'            : None,
+            'lambda'            : None,
             'if_egal'           : None,
             'continue'          : None,
             'all_data'          : None,

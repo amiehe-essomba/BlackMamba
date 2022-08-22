@@ -84,8 +84,7 @@ class ARITHMETICS:
 
             for val in self.result:
                 self.sum += val
-            self.result = self.sum
-            
+            self.result = self.su
         elif self.get_type1 in self.type1 and self.get_type2 in [type( list() )]            :
             if self.get_type1 == type( int() ):
                 self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).SousListInt( object1, inv = True )
@@ -96,7 +95,6 @@ class ARITHMETICS:
             elif self.get_type1 == type( complex() ):
                 self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).SousListCPLX( object1, inv = True )
             else: self.error = ERROR( self.line ).ERROR2( object1, object2)
-        
         elif self.get_type1 in [type( list() )] and self.get_type2 in self.type1            :
             if self.get_type2 == type( int() ):
                 self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).SousListInt( object2, inv = False )
@@ -107,7 +105,6 @@ class ARITHMETICS:
             elif self.get_type2 == type( complex() ):
                 self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).SousListCPLX( object2, inv = False )
             else: self.error = ERROR( self.line ).ERROR2( object1, object2)
-        
         elif self.get_type1 in [type( list() )] and self.get_type2 in [type( list() )]      :
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).SousListList( object2[ : ], inv = False )
         elif self.get_type2 in self.type3 and self.get_type1 in [ type( list() ) ]          :

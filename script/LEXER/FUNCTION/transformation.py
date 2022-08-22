@@ -13,7 +13,6 @@ from script.PARXER                  import numerical_value
 from script.DATA_BASE               import ansi
 from random                         import randint
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
-
 try:
     from CythonModules.Linux        import making_stat as ms
     from CythonModules.Linux        import fileError as fe 
@@ -21,13 +20,12 @@ except ImportError:
     from CythonModules.Windows      import making_stat as ms
     from CythonModules.Windows      import fileError as fe 
     from CythonModules.Windows      import bm_statistics as bms
-
 try: from CythonModules.Linux       import help
 except : from CythonModules.Windows import help
-
 try: from CythonModules.Linux       import Tuple
 except : from CythonModules.Windows import Tuple
-    
+try: from CythonModules.Windows     import arithmetic_analyze as aa
+except: from CythonModules.Linux    import arithmetic_analyze as aa
 from statistics                     import variance, stdev, pvariance, pstdev
 
 class C_F_I_S:
@@ -60,7 +58,7 @@ class C_F_I_S:
                                                                                     self.line ).LEXER( self.value )
                                 if self.error is None:
                                     self.type =  [ type( int() ), type( float() ), type( complex()), type( str() ),
-                                                   type( bool()), type(list()), type(tuple()), type(dict()), type(range(1)) ]
+                                            type( bool()), type(list()), type(tuple()), type(dict()), type(range(1)), type(np.array([])) ]
                                     if type( self._value_ ) in self.type:
                                         if   function in [ '_int_'     ]    :
                                             try:
@@ -98,7 +96,13 @@ class C_F_I_S:
                                         elif function in [ '_list_'    ]    :
                                             func = bm.fg.rbg(0, 255, 0   )+' in list( ).' + bm.init.reset 
                                             try:
-                                                self.final_value = list( self._value_ )
+                                                if type(self._value_) == self.type[-1]:
+                                                    self.final_value = []
+                                                    self.shape = self._value_.shape
+                                                    for i in range(self.shape[0]):
+                                                        self.final_value.append(list(self._value_[i]))
+                                                else:
+                                                    self.final_value = list( self._value_ )
                                             except (ValueError, TypeError):
                                                 self.error = ERRORS( self.line ).ERROR2( self.value, 'a list', func )
                                         elif function in [ '_tuple_'   ]    :
@@ -253,20 +257,25 @@ class C_F_I_S:
                                                 bm.open_graven().open_graven_web()
                                             elif self._value_[ -1 ] in [ 'help' ]:
                                                 help.HELP(self._value_[ 0 ]).HELP()
-
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
+                                                self.typ = [type(list()), type(tuple()), type(range(1))]
+                                                if type(self._value_[0]) == type(list()): pass
+                                                else: self._value_[0] = list(self._value_[0])
+
                                                 self.final_value, self.error = MATRIX(self._value_[0], self._value_[1],self._value_[2],
-                                                                          self._value_[3], self.line).MATRIX(self._value_[5])
+                                                                          self._value_[3], self.line).MATRIX(self._value_[5], ctype=self._value_[4])
 
                                                 if self.error is None:
+                                                    self.func = bm.fg.rbg(0, 255, 0) + ' in {}( ).'.format( self._value_[4] ) + bm.init.reset
                                                     if self._value_[4] is None:  self.final_value = np.array( self.final_value )
                                                     else:
-                                                        if self._value_[4] == 'sum':
-                                                            self.final_value = np.array( self.final_value ).sum(axis=0)
-                                                        else: pass
+                                                        if self._value_[4] == 'sorted':
+                                                            self.final_value = np.sort( self.final_value )
+                                                        else:
+                                                            self.final_value, self.error = R(self.final_value, self._value_, self.line).R()
                                                 else: pass
-                                                self.data_base['matrix'] = True
 
+                                                self.data_base['matrix'] = True
                                             else:
                                                 self.type_accepted  = [type(list()), type(tuple()), type(range(1))]
                                                 func = bm.fg.rbg(0, 255, 0   )+' in std( ).' + bm.init.reset 
@@ -357,13 +366,9 @@ class C_F_I_S:
                                                                 self.final_value, self.error = ms.GetValue( list( self._value_), self.line).mean( len( self._value_) )
                                                                 if self.error == '': self.error = None
                                                                 else: pass
-                                                      
-                                                    else:
-                                                        self.error = ERRORS(self.line).ERROR11(self.value, func = func )
-                                                else:
-                                                    self.error = ERRORS( self.line ).ERROR11( self.value, func=func )
-                                            else:
-                                                self.error = ERRORS( self.line ).ERROR13( self.value, func=func )
+                                                    else:  self.error = ERRORS(self.line).ERROR11(self.value, func = func )
+                                                else: self.error = ERRORS( self.line ).ERROR11( self.value, func=func )
+                                            else:  self.error = ERRORS( self.line ).ERROR13( self.value, func=func )
                                         elif function in [ '_rang_'    ]    :
                                             if len( self._value_ ) == 3:
                                                 self.start, self.end, self.step = self._value_
@@ -436,8 +441,7 @@ class C_F_I_S:
                                 self.value = value
                                 self._value_, self.error = self.lex_par.NUMERCAL_LEXER(self.value,
                                                                     self.data_base, self.line).LEXER(  self.value )
-                                if self.error is None:
-                                    self._values_.append( self._value_ )
+                                if self.error is None: self._values_.append( self._value_ )
                                 else: break
 
                             if self.error is None:
@@ -479,7 +483,7 @@ class C_F_I_S:
                                         self.final_value = random.randint( self.__value__[ 0 ], self.__value__[ 1 ] )
                                     elif self.__type__ == 'norm':
                                         self.final_value = random.random()
-                                elif function == '__maths__':
+                                elif function == '__maths__'    :
                                     try:
                                         if      self._values_[ 0 ] == 'sin'     : self.final_value = math.sin( self._values_[ 1 ] )
                                         elif    self._values_[ 0 ] == 'cos'     : self.final_value = math.cos( self._values_[ 1 ] )
@@ -511,9 +515,7 @@ class C_F_I_S:
                                     except ZeroDivisionError: pass
                                     except ValueError: pass
                                 else: self.error = ERRORS( self.line ).ERROR4( self.normal_string )
-
                             else: pass
-                       
                         else:self.error = ERRORS( self.line ).ERROR4( self.normal_string )
                     else: self.error = self.error
                 else: self.error = ERRORS( self.line ).ERROR0( self.normal_string )
@@ -1202,11 +1204,16 @@ class ERRORS:
         return self.error+self.reset
 
     def ERROR10(self, type1: any, type2: any, func :str = ''):
-        type1 = numerical_value.FINAL_VALUE( type1, {}, self.line, None ).CONVERSION()
-        type2 = numerical_value.FINAL_VALUE( type2, {}, self.line, None ).CONVERSION()
-        error = '{}unsupported operand between {}<< {}{} >> {} and {}<< {}{} >>. {}line: {}{}'.format(self.yellow, self.white, type1, self.white,
-                                                    self.yellow, self.white, type2, self.white,  self.white, self.yellow, self.line )
-        self.error = fe.FileErrors( 'ArithmeticError' ).Errors()  + error + func
+        typ11 = numerical_value.FINAL_VALUE( type1, {}, self.line, None ).CONVERSION()
+        typ22 = numerical_value.FINAL_VALUE( type2, {}, self.line, None ).CONVERSION()
+
+        typ1, typ2 = ERRORS(self.line).ERROR34(type1, type2)
+
+        self.error = '{}unsupported operand between {}<< {}{} : {} >> {} and {}<< {}{} : {} >>. {}line: {}{}'.format(
+                        self.yellow, self.white, typ11, self.white, typ1, self.yellow, self.white, typ22, self.white, typ2,
+                        self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ArithmeticError').Errors() + self.error + func
+
         return self.error+self.reset 
 
     def ERROR11(self, string: str, func:str = ''):
@@ -1357,6 +1364,39 @@ class ERRORS:
 
         return self.error + self.reset
 
+    def ERROR34(self, object1 : any, object2: any):
+
+        if type(object1) in [type(list()), type(tuple())]:
+            if len(object1) < 4:  result1 = object1
+            else:
+                if type(object1) in [type(list())]:
+                    result1 = f'[{object1[0]}, {object1[1]}, ....., {object1[-2]}, {object1[-1]}]'
+                else:
+                    result1 = f'({object1[0]}, {object1[1]}, ....., {object1[-2]}, {object1[-1]})'
+        elif type(object1) == type(str()):
+            if object1:
+                if len(object1) < 6: result1 = object1
+                else:  result1 = object1[: 2] + ' ... ' + object1[-2:]
+            else:  result1 = object1
+        else:  result1 = object1
+
+        if type(object2) in [type(list()), type(tuple())]:
+            if len(object2) < 4:  result2 = object2
+            else:
+                if type(object2) in [type(list())]:
+                    result2 = f'[{object2[0]}, {object2[1]}, ....., {object2[-2]}, {object2[-1]}]'
+                else:
+                    result2 = f'({object2[0]}, {object2[1]}, ....., {object2[-2]}, {object2[-1]})'
+        elif type(object2) == type(str()):
+            if object2:
+                if len(object2) < 6:  result2 = object2
+                else:
+                    result2 = object2[: 2] + ' ... ' + object2[-2:]
+            else:  result2 = object2
+        else: result2 = object2
+
+        return result1, result2
+
 class MATRIX:
     def __init__(self, master : list, nrow : int , ncol : int, reverse: bool, line: int):
         self.master     = master
@@ -1365,11 +1405,12 @@ class MATRIX:
         self.reverse    = reverse
         self.line       = line
 
-    def MATRIX(self, axis: any):
+    def MATRIX(self, axis: any, ctype: str='sum'):
         self.step       = 0
         self.newList    = []
         self.prev       = []
         self.error      = None
+        self.type       = [type(int()), type(float()), type(bool())]
 
         if self.master:
             if self.nrow > 0:
@@ -1381,12 +1422,14 @@ class MATRIX:
                             if axis is None:
                                 for i in range(self.nrow):
                                     self.prev.append( self.ncol * (i+1) )
-                                    self.newList.append( self.master[ self.prev[ i ]: self.prev[ i+1 ]])
+                                    self.ms = self.master[self.prev[i]: self.prev[i + 1]]
+                                    self.newList.append(self.ms)
                             else:
                                 for i in range(self.nrow):
                                     try:
                                         self.prev.append( self.ncol * (i+1) )
-                                        self.newList.append( self.master[ self.prev[ i ]: self.prev[ i+1 ]][axis])
+                                        self.ms = self.master[ self.prev[ i ]: self.prev[ i+1 ]][axis]
+                                        self.newList.append( self.ms )
                                     except IndexError:
                                         self.error = ERRORS( self.line ).ERROR33(ss='ncol')
                                         break
@@ -1406,6 +1449,7 @@ class MATRIX:
                                     for j in range( self.ncol ):
                                         self.w = self.nrow * j + i
                                         self.ss.append(self.master[ self.w ])
+
                                     try: self.newList.append( self.ss[axis] )
                                     except IndexError :
                                         self.error = ERRORS(self.line).ERROR33(ss='ncol')
@@ -1416,11 +1460,10 @@ class MATRIX:
                 elif self.ncol == -1:
                     if len( self.master ) == self.nrow:
                         if self.reverse is False:
-                            if axis is None:  self.newList.append( self.master )
+                            if axis is None: self.newList.append( self.master )
                             else:
-                                try:self.newList.append( self.master[axis] )
+                                try:  self.newList.append( self.master[axis] )
                                 except IndexError: self.error = ERRORS( self.line ).ERROR33(ss='length( master )')
-
                         else: self.error = ERRORS( self.line ).ERROR32( 'ncol')
                     else:
                         if self.nrow > len( self.master) : self.error = ERRORS( self.line ).ERROR31('>')
@@ -1434,9 +1477,8 @@ class MATRIX:
                                 for s in self.master:
                                     self.newList.append([s])
                             else:
-                                try: self.newList.append([self.master[axis]])
+                                try:  self.newList.append([self.master[axis]])
                                 except IndexError: self.error = ERRORS( self.line ).ERROR33(ss='length( master )')
-
                         else: self.error = ERRORS( self.line ).ERROR32( 'nrow')
                     else:
                         if self.ncol > len( self.master) : self.error = ERRORS( self.line ).ERROR31('>')
@@ -1446,3 +1488,123 @@ class MATRIX:
         else: self.error = ERRORS( self.line ).ERROR28()
 
         return  self.newList, self.error
+
+class R:
+    def __init__(self, master : list, _value_ : list, line : int):
+        self.master     = master
+        self.line       = line
+        self._value_    = _value_
+    def R(self):
+        self.error      = None
+        self.type       = [type(list()), type(tuple()), type(range(1))]
+        self.func       = bm.fg.rbg(0, 255, 0) + ' in {}( ).'.format(self._value_[4]) + bm.init.reset
+        self.master_inv = None
+        self.master_v   = []
+
+        if   self._value_[4] == 'sum':
+            if self._value_[5] is None:
+                for x, _value_ in enumerate(self.master):
+                    if type(_value_) in self.type:
+                        self._, self.error = ms.GetValue(list(_value_), self.line).sum()
+                        if not self.error:
+                            self.error = None
+                            self.master[x] = self._
+                        else:  break
+                    else:
+                        self.error = ERRORS(self.line).ERROR13(_value_, self.func)
+                        break
+                if self.error is None:  self.master = np.array(self.master)
+                else:  pass
+            else:  self.master, self.error = ms.GetValue(self.master, self.line).sum()
+        elif self._value_[4] in ['ndim']:
+            self.master = list(np.array(self.master).shape)
+        elif self._value_[4] in ['std', 'var']:
+            if self._value_[5] is None:
+                for x, _value_ in enumerate(self.master):
+                    if type(_value_) in self.type:
+                        self._, self.error = ms.GetValue(list(_value_), self.line).var_std(
+                            self._value_[4], _type_='sam', ob_type='list')
+                        if not self.error:
+                            self.error = None
+                            self.master[x] = self._
+                        else:  break
+                    else:
+                        self.error = ERRORS(self.line).ERROR13(_value_, self.func)
+                        break
+                if self.error is None: self.master = np.array(self.master)
+                else: pass
+            else:
+                self.master, self.error = ms.GetValue(self.master, self.line).var_std(
+                    self._value_[4], _type_='sam', ob_type='list')
+        elif self._value_[4] in ['pstd', 'pvar']:
+            if self._value_[5] is None:
+                for x, _value_ in enumerate(self.master):
+                    if type(_value_) in self.type:
+                        self._, self.error = ms.GetValue(list(_value_), self.line).var_std(
+                            self._value_[4], _type_='pop', ob_type='list')
+                        if not self.error:
+                            self.error = None
+                            self.master[x] = self._
+                        else:  break
+                    else:
+                        self.error = ERRORS(self.line).ERROR13(_value_, self.func)
+                        break
+                if self.error is None: self.master = np.array(self.master)
+                else: pass
+            else:
+                self.master, self.error = ms.GetValue(self.master, self.line).var_std(
+                    self._value_[4], _type_='pop', ob_type='list')
+        elif self._value_[4] == 'mean':
+            if self._value_[5] is None:
+                for x, _value_ in enumerate(self.master):
+                    if type(_value_) in self.type:
+                        self._, self.error = ms.GetValue(list(_value_), self.line).mean(len(_value_))
+                        if not self.error:
+                            self.error = None
+                            self.master[x] = self._
+                        else:  break
+                    else:
+                        self.error = ERRORS(self.line).ERROR13(_value_, self.func)
+                        break
+                if self.error is None:  self.master = np.array(self.master)
+                else:  pass
+            else:  self.master, self.error = ms.GetValue(self.master, self.line).mean(len(self.master))
+        elif self._value_[4] in ['min', 'max']:
+            if self._value_[5] is None:
+                for x, _value_ in enumerate(self.master):
+                    if type(_value_) in self.type:
+                        self._, self.error = ms.GetValue(list(_value_), self.line).min_max(self._value_[4])
+                        if not self.error:
+                            self.error = None
+                            self.master[x] = self._
+                        else:  break
+                    else:
+                        self.error = ERRORS(self.line).ERROR13(_value_, self.func)
+                        break
+                if self.error is None:  self.master = np.array(self.master)
+                else:  pass
+            else:  self.master, self.error = ms.GetValue(self.master, self.line).min_max(self._value_[4])
+        elif self._value_[4] in ['cov', 'cor', 'linearR']:
+            if self._value_[3] is True: self._value_[3] = False
+            else: self._value_[3] = True
+
+            self.ss = []
+            if self._value_[5] is None:
+                for x in range(len(self.master)):
+                    self.master_inv, self.error = MATRIX(self._value_[0], self._value_[1], self._value_[2],
+                                        self._value_[3], self.line).MATRIX(x, ctype=self._value_[4])
+                    self.master_v   = []
+                    for y in range(len(self.master_inv)):
+                        self._val_ = [self.master_inv, self.master[y], self._value_[4], "pop", self._value_[4]]
+                        self.s, self.error = STAT(self._val_, '', self.line).COV_CORR_LINEAR()
+                        if self.error is None: self.master_v.append(self.s)
+                        else: break
+                    if self.error is None: self.ss.append(self.master_v)
+                    else: break
+                if self.error is None: self.master = np.array(self.ss)
+                else: pass
+            else:
+                self._value_ = [self.master, self.master_inv, self._value_[4], "pop", self._value_[4]]
+                self.master, self.error = STAT(self._value_, '', self.line).COV_CORR_LINEAR()
+
+        return self.master, self.error
