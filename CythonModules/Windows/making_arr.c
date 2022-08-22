@@ -10158,7 +10158,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
  * 		if len( self.listOfValue ) == len( Index ):
  * 			if self.listOfValue:             # <<<<<<<<<<<<<<
  * 				for i in range( len( self.listOfValue ) ):
- * 					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :
+ * 					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :
  */
     __pyx_t_10 = (__pyx_v_self->listOfValue != Py_None)&&(PyList_GET_SIZE(__pyx_v_self->listOfValue) != 0);
     if (__pyx_t_10) {
@@ -10167,7 +10167,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
  * 		if len( self.listOfValue ) == len( Index ):
  * 			if self.listOfValue:
  * 				for i in range( len( self.listOfValue ) ):             # <<<<<<<<<<<<<<
- * 					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :
+ * 					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :
  * 						if inv is False:
  */
       __pyx_t_1 = __pyx_v_self->listOfValue;
@@ -10185,7 +10185,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
         /* "making_arr.pyx":307
  * 			if self.listOfValue:
  * 				for i in range( len( self.listOfValue ) ):
- * 					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :             # <<<<<<<<<<<<<<
+ * 					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :             # <<<<<<<<<<<<<<
  * 						if inv is False:
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
  */
@@ -10195,7 +10195,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
         }
         __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_v_type1, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 307, __pyx_L1_error)
+        __pyx_t_12 = (__Pyx_PySequence_ContainsTF(((PyObject *)Py_TYPE(__pyx_t_1)), __pyx_v_type1, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 307, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_13 = (__pyx_t_12 != 0);
         if (__pyx_t_13) {
@@ -10209,7 +10209,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
         }
         __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_Index, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_13 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_v_type1, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 307, __pyx_L1_error)
+        __pyx_t_13 = (__Pyx_PySequence_ContainsTF(((PyObject *)Py_TYPE(__pyx_t_1)), __pyx_v_type1, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 307, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_12 = (__pyx_t_13 != 0);
         __pyx_t_10 = __pyx_t_12;
@@ -10218,7 +10218,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
 
           /* "making_arr.pyx":308
  * 				for i in range( len( self.listOfValue ) ):
- * 					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :
+ * 					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :
  * 						if inv is False:             # <<<<<<<<<<<<<<
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
  * 						else:
@@ -10227,7 +10227,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
           if (__pyx_t_10) {
 
             /* "making_arr.pyx":309
- * 					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :
+ * 					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :
  * 						if inv is False:
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )             # <<<<<<<<<<<<<<
  * 						else:
@@ -10254,7 +10254,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
 
             /* "making_arr.pyx":308
  * 				for i in range( len( self.listOfValue ) ):
- * 					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :
+ * 					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :
  * 						if inv is False:             # <<<<<<<<<<<<<<
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
  * 						else:
@@ -10266,7 +10266,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
  * 						else:
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )             # <<<<<<<<<<<<<<
- * 					elif self.listOfValue[ i ] in type2  and Index[ i ] in type2 :
+ * 					elif type(self.listOfValue[ i ]) in type2  and type(Index[ i ]) in type2 :
  * 						if inv is False:
  */
           /*else*/ {
@@ -10294,7 +10294,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
           /* "making_arr.pyx":307
  * 			if self.listOfValue:
  * 				for i in range( len( self.listOfValue ) ):
- * 					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :             # <<<<<<<<<<<<<<
+ * 					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :             # <<<<<<<<<<<<<<
  * 						if inv is False:
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
  */
@@ -10304,7 +10304,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
         /* "making_arr.pyx":312
  * 						else:
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
- * 					elif self.listOfValue[ i ] in type2  and Index[ i ] in type2 :             # <<<<<<<<<<<<<<
+ * 					elif type(self.listOfValue[ i ]) in type2  and type(Index[ i ]) in type2 :             # <<<<<<<<<<<<<<
  * 						if inv is False:
  * 							final.append( DIFF( self.listOfValue[ i ] , Index[ i ] ) )
  */
@@ -10314,7 +10314,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
         }
         __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_v_type2, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
+        __pyx_t_12 = (__Pyx_PySequence_ContainsTF(((PyObject *)Py_TYPE(__pyx_t_1)), __pyx_v_type2, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_13 = (__pyx_t_12 != 0);
         if (__pyx_t_13) {
@@ -10328,7 +10328,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
         }
         __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_Index, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_13 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_v_type2, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
+        __pyx_t_13 = (__Pyx_PySequence_ContainsTF(((PyObject *)Py_TYPE(__pyx_t_1)), __pyx_v_type2, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_12 = (__pyx_t_13 != 0);
         __pyx_t_10 = __pyx_t_12;
@@ -10337,7 +10337,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
 
           /* "making_arr.pyx":313
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
- * 					elif self.listOfValue[ i ] in type2  and Index[ i ] in type2 :
+ * 					elif type(self.listOfValue[ i ]) in type2  and type(Index[ i ]) in type2 :
  * 						if inv is False:             # <<<<<<<<<<<<<<
  * 							final.append( DIFF( self.listOfValue[ i ] , Index[ i ] ) )
  * 						else:
@@ -10346,7 +10346,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
           if (__pyx_t_10) {
 
             /* "making_arr.pyx":314
- * 					elif self.listOfValue[ i ] in type2  and Index[ i ] in type2 :
+ * 					elif type(self.listOfValue[ i ]) in type2  and type(Index[ i ]) in type2 :
  * 						if inv is False:
  * 							final.append( DIFF( self.listOfValue[ i ] , Index[ i ] ) )             # <<<<<<<<<<<<<<
  * 						else:
@@ -10375,7 +10375,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
 
             /* "making_arr.pyx":313
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
- * 					elif self.listOfValue[ i ] in type2  and Index[ i ] in type2 :
+ * 					elif type(self.listOfValue[ i ]) in type2  and type(Index[ i ]) in type2 :
  * 						if inv is False:             # <<<<<<<<<<<<<<
  * 							final.append( DIFF( self.listOfValue[ i ] , Index[ i ] ) )
  * 						else:
@@ -10417,7 +10417,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
           /* "making_arr.pyx":312
  * 						else:
  * 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
- * 					elif self.listOfValue[ i ] in type2  and Index[ i ] in type2 :             # <<<<<<<<<<<<<<
+ * 					elif type(self.listOfValue[ i ]) in type2  and type(Index[ i ]) in type2 :             # <<<<<<<<<<<<<<
  * 						if inv is False:
  * 							final.append( DIFF( self.listOfValue[ i ] , Index[ i ] ) )
  */
@@ -10475,7 +10475,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
  * 		if len( self.listOfValue ) == len( Index ):
  * 			if self.listOfValue:             # <<<<<<<<<<<<<<
  * 				for i in range( len( self.listOfValue ) ):
- * 					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :
+ * 					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :
  */
       goto __pyx_L4;
     }
@@ -10537,7 +10537,7 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
  * 
  * 		if not error:             # <<<<<<<<<<<<<<
  * 			error = None
- * 			if ob_type == 'list' : return self.listOfValue[ : ], error
+ * 			if ob_type == 'list' : return final, error
  */
   __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_error); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 324, __pyx_L1_error)
   __pyx_t_12 = ((!__pyx_t_10) != 0);
@@ -10547,8 +10547,8 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
  * 
  * 		if not error:
  * 			error = None             # <<<<<<<<<<<<<<
- * 			if ob_type == 'list' : return self.listOfValue[ : ], error
- * 			else: return tuple( self.listOfValue[ : ] ), error
+ * 			if ob_type == 'list' : return final, error
+ * 			else: return tuple( final ), error
  */
     __Pyx_INCREF(Py_None);
     __Pyx_DECREF_SET(__pyx_v_error, Py_None);
@@ -10556,51 +10556,38 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
     /* "making_arr.pyx":326
  * 		if not error:
  * 			error = None
- * 			if ob_type == 'list' : return self.listOfValue[ : ], error             # <<<<<<<<<<<<<<
- * 			else: return tuple( self.listOfValue[ : ] ), error
+ * 			if ob_type == 'list' : return final, error             # <<<<<<<<<<<<<<
+ * 			else: return tuple( final ), error
  * 		else: return None, error
  */
     __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_v_ob_type, __pyx_n_s_list, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 326, __pyx_L1_error)
     __pyx_t_10 = (__pyx_t_12 != 0);
     if (__pyx_t_10) {
       __Pyx_XDECREF(__pyx_r);
-      if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 326, __pyx_L1_error)
-      }
-      __pyx_t_7 = __Pyx_PyList_GetSlice(__pyx_v_self->listOfValue, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 326, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_GIVEREF(__pyx_t_7);
-      PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_7);
+      __Pyx_INCREF(__pyx_v_final);
+      __Pyx_GIVEREF(__pyx_v_final);
+      PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_final);
       __Pyx_INCREF(__pyx_v_error);
       __Pyx_GIVEREF(__pyx_v_error);
-      PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_error);
+      PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_error);
+      __pyx_r = __pyx_t_7;
       __pyx_t_7 = 0;
-      __pyx_r = __pyx_t_4;
-      __pyx_t_4 = 0;
       goto __pyx_L0;
     }
 
     /* "making_arr.pyx":327
  * 			error = None
- * 			if ob_type == 'list' : return self.listOfValue[ : ], error
- * 			else: return tuple( self.listOfValue[ : ] ), error             # <<<<<<<<<<<<<<
+ * 			if ob_type == 'list' : return final, error
+ * 			else: return tuple( final ), error             # <<<<<<<<<<<<<<
  * 		else: return None, error
  * 
  */
     /*else*/ {
       __Pyx_XDECREF(__pyx_r);
-      if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 327, __pyx_L1_error)
-      }
-      __pyx_t_4 = __Pyx_PyList_GetSlice(__pyx_v_self->listOfValue, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_7 = PyList_AsTuple(((PyObject*)__pyx_t_4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
+      __pyx_t_7 = PyList_AsTuple(__pyx_v_final); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_7);
@@ -10619,13 +10606,13 @@ static PyObject *__pyx_f_10making_arr_10Arithmetic_SousListList(struct __pyx_obj
  * 
  * 		if not error:             # <<<<<<<<<<<<<<
  * 			error = None
- * 			if ob_type == 'list' : return self.listOfValue[ : ], error
+ * 			if ob_type == 'list' : return final, error
  */
   }
 
   /* "making_arr.pyx":328
- * 			if ob_type == 'list' : return self.listOfValue[ : ], error
- * 			else: return tuple( self.listOfValue[ : ] ), error
+ * 			if ob_type == 'list' : return final, error
+ * 			else: return tuple( final ), error
  * 		else: return None, error             # <<<<<<<<<<<<<<
  * 
  * 	cpdef MulListFloat( self , float  Index, str ob_type = 'list')						:

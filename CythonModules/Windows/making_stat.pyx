@@ -64,8 +64,10 @@ cdef Linear_R(list X, list Y, str ob_type = 'list', int line = 0, str _type_ = '
                 avgX, error   = GetValue( X, line ).mean( length, ob_type )
 
                 if not error:
-                    beta    = covXY / varX
-                    alpha   = avgY - beta * avgX
+                    try:
+                        beta    = covXY / varX
+                        alpha   = avgY - beta * avgX
+                    except ZeroDivisionError: error = ERRORS(line).ERROR6(func=func)
                 else: error += func
             else : error += func
         else: error += func
@@ -109,7 +111,9 @@ cdef CoefXY(list X, list Y, str ob_type = 'list', int line = 0, str _type_ = 'po
 
             covXY, error  = CovXY( X, Y, ob_type, line, _type_)
             if not error:
-                coefXY   =  covXY / coefXY
+                try:
+                    coefXY   =  covXY / coefXY
+                except ZeroDivisionError: error = ERRORS(line).ERROR6(func=func)
             else:
                 error += func 
                 coefXY = 0.0
@@ -117,7 +121,6 @@ cdef CoefXY(list X, list Y, str ob_type = 'list', int line = 0, str _type_ = 'po
     else: error += func
 
     return coefXY, error
-
 
 
 cdef class GetValue:
@@ -614,7 +617,7 @@ cdef class GetValue:
     cpdef std_error(self, str ob_type = 'list', str _type_ = 'pop'):
         cdef:
             int length
-            float stdX
+            double stdX = 0.0
           
         func    = bm.fg.rbg(0, 255, 0   ) + ' in {}( ).'.format( 'std_error' ) + bm.init.reset 
         value   = 0.0
@@ -629,7 +632,6 @@ cdef class GetValue:
                 else:
                     try:  result = stdX / sqrt(length-1)
                     except ZeroDivisionError: result = stdX / sqrt(length)
-
             else: pass
         else: error = ERRORS( self.line ).ERROR2( ob_type, func )
         
@@ -639,7 +641,7 @@ cdef class GetValue:
         cdef:
             float avgX
             int   length
-            float stdX
+            double stdX = 0.0
             float m2, m3
           
         func    = bm.fg.rbg(0, 255, 0   ) + ' in {}( ).'.format( 'skewness' ) + bm.init.reset 
@@ -818,7 +820,7 @@ cdef class ERRORS:
         typ11 = aa.FINAL_VALUE( [], {}, self.line, [] ).CONVERSION( typ1 )
         typ22 = aa.FINAL_VALUE( [], {}, self.line, [] ).CONVERSION( typ2 )
 
-        typ1, typ2  = ERRORS( self.line ).TYPE( typ1, typ2)
+        typ1, typ2  = ERRORS( self.line ).TYPE( typ1, typ2 )
 
         error = '{}unsupported operand between {}<< {}{} : {} >> {} and {}<< {}{} : {} >>. {}line: {}{}'.format(self.yellow_l, self.white_l, typ11, self.white_l, typ1,
                                 self.yellow_l, self.white_l, typ22, self.white_l, typ2, self.white_l, self.yellow_l, self.line )
@@ -854,7 +856,7 @@ cdef class ERRORS:
 
     cdef str ERROR6(self, str func = ''):
         error = '{}line : {}{}'.format(self.white_l, self.yellow_l, self.line)
-        error = fe.FileErrors( 'ZeroDivisionError' ).Errors() + '{}division by 0.0. '.format( self.yellow_L) + error + func
+        error = fe.FileErrors( 'ZeroDivisionError' ).Errors() + '{}division by 0.0. '.format( self.yellow_l) + error + func
 
         return error+ self.reset
     
@@ -868,7 +870,9 @@ cdef class ERRORS:
         cdef:
             result1 
             result2 
-        
+
+        result1  = ''
+        result2  = ''
         if type( object1 ) in [ type( list() ), type( tuple()) ]:
             if len( object1 ) < 4 : result1 = object1
             else: 
@@ -878,7 +882,7 @@ cdef class ERRORS:
                     result1 = f'({object1[0]}, {object1[1]}, ....., {object1[-2]}, {object1[-1]})'
         elif type( object1 ) == type( str() ):
             if object1:
-                if len( object1 ) < 6: pass 
+                if len( object1 ) < 6: result1 = object1
                 else:
                     result1 = object1[ : 2 ] + ' ... ' + object1[ -2: ]
             else: pass 
@@ -893,7 +897,7 @@ cdef class ERRORS:
                     result2 = f'({object2[0]}, {object2[1]}, ....., {object2[-2]}, {object2[-1]})'
         elif type( object2 ) == type( str() ):
             if object2:
-                if len( object2 ) < 6: pass 
+                if len( object2 ) < 6: result2 = object2
                 else:
                     result2 = object2[ : 2 ] + ' ... ' + object2[ -2 : ]
             else: pass
