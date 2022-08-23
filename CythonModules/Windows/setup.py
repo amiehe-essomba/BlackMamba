@@ -18,7 +18,9 @@ setup(
             'bm_statistics.pyx',
             'help.pyx',
             'Tuple.pyx',
-            'if_statement.pyx'
+            'if_statement.pyx',
+            'array_to_list.pyx',
+            'test.pyx'
             ], 
         annotate = True
         )
