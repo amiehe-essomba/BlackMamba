@@ -4,13 +4,111 @@ class ndarray:
 		self.master	= master
 		self.nrow	= nrow
 		self.ncol	= ncol
+		self.dim	= [nrow, ncol]
 	end:
 	
 	def array( reverse: bool = False, axis : none/int=None):
 		_std_ * [master, nrow, ncol, reverse, None, axis, 'matrix']
 	end: 
 	
-	def sum( reverse : bool = False, ctype : string = 'sum', axis : none/int=None ):
-		_std_ * [master, nrow, ncol, reverse, ctype, axis, 'matrix'] 
+	def sum( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'sum', axis, 'matrix'] 
+	end:
+	
+	def mean( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'mean', axis, 'matrix']
+	end:
+	
+	def std( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'std', axis, 'matrix']
+	end:
+	
+	def pstd( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'pstd', axis, 'matrix']
+	end:
+	
+	def var( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'var', axis, 'matrix']
+	end:
+	
+	def pvar( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'pvar', axis, 'matrix']
+	end:
+	
+	def sqrt( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'sqrt', axis, 'matrix']
+	end:
+	
+	def square( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'square', axis, 'matrix']
+	end:
+		
+	def sorted( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'sorted', axis, 'matrix']
+	end:
+	
+	def cov( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'cov', axis, 'matrix']
+	end:
+	
+	def cor( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'cor', axis, 'matrix']
+	end:
+	
+	def linearR( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'linearR', axis, 'matrix']
+	end:
+	
+	def min( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'min', axis, 'matrix']
+	end:
+	
+	def max( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'max', axis, 'matrix']
+	end:
+	
+	def ndim( reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'ndim', axis, 'matrix']
+	end:
+	
+	def quantile( numeric : float, reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'quantile', axis, numeric, 'matrix']
+	end:
+	
+	def median( reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'median', axis, 'matrix']
+	end:
+	
+	def sum_square( reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'sum_square', axis,'matrix']
+	end:
+	
+	def grouped( reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'grouped', axis, 'matrix']
+	end:
+	
+	def cms( reverse : bool = False, axis : none/int=None):
+		# coefficient of momental skewness
+		_std_ * [master, nrow, ncol, reverse, 'cms', axis, 'matrix']
+	end:
+	
+	def round( max_float:int/bool, reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'round', axis, max_float, 'matrix']
+	end:
+	
+	def kurtosis( reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'kurtosis', axis, 'matrix']
+	end:
+	
+	def iquantile( reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'iquantile', axis, 'matrix']
+	end:
+	
+	def Q1( reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'Q1', axis, 'matrix']
+	end:
+	
+	def Q3( reverse : bool = False, axis : none/int=None):
+		_std_ * [master, nrow, ncol, reverse, 'Q3', axis, 'matrix']
 	end:
 end:			
