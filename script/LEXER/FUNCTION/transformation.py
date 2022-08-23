@@ -5,6 +5,7 @@ import                              numpy as np
 from                                tkinter     import *
 from os                             import listdir
 from os.path                        import isfile
+from statistics                     import variance, stdev, pvariance, pstdev
 from script                         import control_string
 from script.LEXER                   import particular_str_selection
 from script.PARXER.LEXER_CONFIGURE  import numeric_lexer
@@ -26,7 +27,9 @@ try: from CythonModules.Linux       import Tuple
 except : from CythonModules.Windows import Tuple
 try: from CythonModules.Windows     import arithmetic_analyze as aa
 except: from CythonModules.Linux    import arithmetic_analyze as aa
-from statistics                     import variance, stdev, pvariance, pstdev
+try: from CythonModules.Windows     import array_to_list as atl
+except: from CythonModules.Linux    import array_to_list as atl
+
 
 class C_F_I_S:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -97,12 +100,8 @@ class C_F_I_S:
                                             func = bm.fg.rbg(0, 255, 0   )+' in list( ).' + bm.init.reset 
                                             try:
                                                 if type(self._value_) == self.type[-1]:
-                                                    self.final_value = []
-                                                    self.shape = self._value_.shape
-                                                    for i in range(self.shape[0]):
-                                                        self.final_value.append(list(self._value_[i]))
-                                                else:
-                                                    self.final_value = list( self._value_ )
+                                                    self.final_value = atl.ndarray(list(self._value_), self.line).List()
+                                                else:  self.final_value = list( self._value_ )
                                             except (ValueError, TypeError):
                                                 self.error = ERRORS( self.line ).ERROR2( self.value, 'a list', func )
                                         elif function in [ '_tuple_'   ]    :
@@ -686,12 +685,12 @@ class STAT:
             if self._value_[ 0 ]:
                 if self._value_[ 2 ] == 'quantiles':
                     if 0 < self._value_[ 1 ]: pass 
-                    else: self.error = ERRORS( self.line ).ERROR25( self._value_[ 1 ], func=func )
+                    else: self.error = ERRORS( self.line ).ERROR25( 'numeric', func=func )
                 else:
                     if 0 < self._value_[ 1 ] <= 1.0: pass 
                     else:
-                        if 0 <=  self._value_[ 1 ]: self.error = ERRORS( self.line ).ERROR25( self._value_[ 1 ], func=func ) 
-                        else:  self.error = ERRORS( self.line ).ERROR26( self._value_[ 1 ], func=func ) 
+                        if self._value_[ 1 ] < 1.0: self.error = ERRORS( self.line ).ERROR25( 'numeric', func=func ) 
+                        else:  self.error = ERRORS( self.line ).ERROR26( 'numeric', func=func ) 
                 
                 if self.error is None:
                     if type(self._value_[ 0 ]) in [type(range(1))]: 
@@ -1314,7 +1313,7 @@ class ERRORS:
         
     def ERROR26(self, num: any, func :str = ''):
         
-        error = '{}cannot be bigger than 10. {}line: {}{}'.format(self.yellow, self.white, self.yellow, self.line)
+        error = '{}cannot be bigger than 1.0. {}line: {}{}'.format(self.yellow, self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'ValueError' ).Errors() + '{}<< {} >> '.format(self.cyan, num) + error + func
 
         return self.error+self.reset
@@ -1606,5 +1605,109 @@ class R:
             else:
                 self._value_ = [self.master, self.master_inv, self._value_[4], "pop", self._value_[4]]
                 self.master, self.error = STAT(self._value_, '', self.line).COV_CORR_LINEAR()
-
+        elif self._value_[4] in ['quantile']:
+            if self._value_[5] is None:
+                for x in range(len(self.master)):
+                    self._val_ = [self.master[x], self._value_[6], self._value_[4]]
+                    self.s, self.error = STAT( self._val_, "", self.line ).QUANTILE()
+                    
+                    if self.error is None: self.master[x] = self.s
+                    else: break
+                    
+                if self.error is None: self.master = np.array(self.master)
+                else: pass
+            else:
+                self._val_ = [self.master, self._value_[6], self._value_[4]]  
+                self.master, self.error = STAT( self._val_, "", self.line ).QUANTILE()        
+        elif self._value_[4] in ['iquantile']:
+            if self._value_[5] is None:
+                for x in range(len(self.master)):
+                    self._val_ = [self.master[x], 'pop', self._value_[4]]
+                    self.s, self.error = STAT( self._val_, "", self.line ).IQUANTILE()
+                    
+                    if self.error is None: self.master[x] = self.s
+                    else: break
+                    
+                if self.error is None: self.master = np.array(self.master)
+                else: pass
+            else:
+                self._val_ = [self.master, "pop", self._value_[4]]  
+                self.master, self.error = STAT( self._val_, "", self.line ).IQUANTILE()
+        elif self._value_[4] in ['kurtosis']:
+            if self._value_[5] is None:
+                for x in range(len(self.master)):
+                    self._val_ = [self.master[x], 'pop', self._value_[4]]
+                    self.s, self.error = STAT( self._val_, "", self.line ).KURTOSIS()
+                    
+                    if self.error is None: self.master[x] = self.s
+                    else: break
+                    
+                if self.error is None: self.master = np.array(self.master)
+                else: pass
+            else:
+                self._val_ = [self.master, "pop", self._value_[4]]  
+                self.master, self.error = STAT( self._val_, "", self.line ).KURTOSIS()
+        elif self._value_[4] in ['sum_square']:
+            if self._value_[5] is None:
+                for x in range(len(self.master)):
+                    self._val_ = [self.master[x], self._value_[4]]
+                    self.s, self.error = STAT( self._val_, "", self.line ).SUM_SQUARE()
+                    
+                    if self.error is None: self.master[x] = self.s
+                    else: break
+                    
+                if self.error is None: self.master = np.array(self.master)
+                else: pass
+            else:
+                self._val_ = [self.master, self._value_[4]]  
+                self.master, self.error = STAT( self._val_, "", self.line ).SUM_SQUARE()      
+        elif self._value_[4] in ['grouped']:
+            if self._value_[5] is None:
+                for x in range(len(self.master)):
+                    self._val_ = [self.master[x], self._value_[4]]
+                    self.s, self.error = STAT( self._val_, "", self.line ).GROUPED()
+    
+                    if self.error is None: self.master[x] =self.s
+                    else: break
+                    
+                if self.error is None: pass # self.master = np.array(self.master, dtype=object)
+                else: pass
+            else:
+                self._val_ = [self.master, self._value_[4]]  
+                self.master, self.error = STAT( self._val_, "", self.line ).GROUPED()
+        elif self._value_[4] in ['Q1', 'Q3']:
+            if self._value_[5] is None:
+                for x in range(len(self.master)):
+                    self._val_ = [self.master[x], self._value_[4], self._value_[4]]
+                    self.s, self.error = STAT( self._val_, "", self.line ).Q1_Q3()
+                    
+                    if self.error is None: self.master[x] = self.s
+                    else: break
+                    
+                if self.error is None: self.master = np.array(self.master)
+                else: pass
+            else:
+                self._val_ = [self.master, self._value_[4], self._value_[4]]  
+                self.master, self.error = STAT( self._val_, "", self.line ).Q1_Q3()         
+        elif self._value_[4] in ['round']:
+            if self._value_[5] is None:
+                
+                for x in range(len(self.master)):
+                    if self.master[x]:
+                        for y in range(len(self.master[x])):
+                            if type(self.master[x][y]) in [type(float())]:
+                                self.master[x][y] = round(self.master[x][y], self._value_[6])
+                            else: pass
+                    else: break
+                
+                if self.error is None: self.master = np.array(self.master)
+                else: pass
+            else:  
+                for x in range(len(self.master)):
+                    if type(self.master[x]) in [type(float())]:
+                        self.master[x] = round(self.master[x],self._value_[6]) 
+                    else: pass
+                
+                self.master = np.array(self.master)
+                             
         return self.master, self.error
