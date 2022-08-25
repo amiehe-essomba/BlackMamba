@@ -1,25 +1,22 @@
-from script.PARXER                              import numerical_value
-from script.STDIN.WinSTDIN                      import stdin
-from script                                     import control_string
-from script.PARXER.LEXER_CONFIGURE              import numeric_lexer
-from script.PARXER.PARXER_FUNCTIONS._FOR_       import end_for_else
-from script.LEXER.FUNCTION                      import function
-from script.PARXER.PARXER_FUNCTIONS._FOR_       import for_if, for_begin, for_statement, for_switch, for_unless,  for_try
-from script.PARXER.INTERNAL_FUNCTION            import get_list
-from script.LEXER.FUNCTION                      import main
-from script.PARXER.LEXER_CONFIGURE              import lexer_and_parxer
-from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import def_end
-from script.PARXER.PARXER_FUNCTIONS._IF_        import if_statement
-from script.LEXER.FUNCTION                      import print_value
-from script.DATA_BASE                           import data_base as db
-from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import def_if
+from script.STDIN.WinSTDIN                              import stdin
+from script                                             import control_string
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_if, for_begin, for_statement, for_switch, for_unless,  for_try
+from script.PARXER.INTERNAL_FUNCTION                    import get_list
+from script.LEXER.FUNCTION                              import main
+from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
+from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import def_end
+from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
+from script.LEXER.FUNCTION                              import print_value
+from script.DATA_BASE                                   import data_base as db
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
 from script.PARXER                                      import module_load_treatment  as mlt
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
-
+from src.functions                                      import error as er
+from src.functions                                      import function, loading, set_openfile, updating_data
 import  numpy as np
 try:  from CythonModules.Windows                        import fileError as fe 
 except ImportError:  from CythonModules.Linux           import fileError as fe 
@@ -58,8 +55,7 @@ class FUNCTION_TREATMENT:
         self.initialize_values      = None
         
         
-        if   self.function_name in self.data_base[ 'func_names' ]   :
-            
+        if   self.function_name in self.data_base[ 'func_names' ]   :  
             self.data_base[ 'assigment' ] = self.function_name+'( )'
             self.function_location      = self.data_base[ 'func_names' ].index( self.function_name )
             self.function_info          = self.data_base[ 'functions' ][ self.function_location ]
@@ -68,11 +64,11 @@ class FUNCTION_TREATMENT:
 
             if self.error is None:
 
-                self._return_,  self.error = FUNCTION( self.dictionary[ 'functions' ]  ,
+                self._return_,  self.error = function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name )
 
                 if self.error is None:
-                    self._new_data_base_, self.error  = FUNCTION( [ self.function_info ], self.data_base,
+                    self._new_data_base_, self.error  = function.FUNCTION( [ self.function_info ], self.data_base,
                                                     self.line).INIT_FUNCTION( self.normal_expression, self._return_ )
 
                     if self.error is None:
@@ -109,7 +105,7 @@ class FUNCTION_TREATMENT:
 
                                         self.new_data_base[ 'print' ]   = []
                                     else: pass
-                                    UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
+                                    updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
 
                                 else:
                                     if self.new_data_base[ 'sub_print' ] is None:
@@ -135,14 +131,14 @@ class FUNCTION_TREATMENT:
                                                 if self.function_name == 'initialize': pass 
                                                 else: self.data_base[ 'no_printed_values' ].append( None )
                                             
-                                        UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
+                                        updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
                                     else:
                                         self.data_base[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
-                                        UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
+                                        updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
                             else: pass
                         else:
                             self.empty_values = self.new_data_base[ 'empty_values' ]
-                            self.error = ERRORS( self.line ).ERROR15( self.function_name, self.empty_values )
+                            self.error = er.ERRORS( self.line ).ERROR15( self.function_name, self.empty_values )
                             
                     else: pass
                 else: pass
@@ -157,11 +153,11 @@ class FUNCTION_TREATMENT:
                                                                        self.line ).MAIN( def_key = 'indirect' )
 
             if self.error is None:
-                self._return_,  self.error = FUNCTION( self.dictionary[ 'functions' ]  ,
+                self._return_,  self.error =function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name )
 
                 if self.error is None:
-                    self._new_data_base_, self.error  = FUNCTION( [ self.function_info ], self.data_base,
+                    self._new_data_base_, self.error  = function.FUNCTION( [ self.function_info ], self.data_base,
                                                     self.line).INIT_FUNCTION( self.normal_expression, self._return_ )
 
                     if self.error is None:
@@ -202,7 +198,7 @@ class FUNCTION_TREATMENT:
                                             self.new_data_base['print'] = []
                                         else: pass
                                         
-                                        UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
+                                        updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
 
                                     else:
                                         if self.new_data_base[ 'sub_print' ] is None:
@@ -227,29 +223,29 @@ class FUNCTION_TREATMENT:
                                                 if self.keyActivation is True: 
                                                     if self.function_name == 'fopen': 
                                                         self.data_base[ 'no_printed_values' ].append( None )
-                                                        self.error = SET_OPEN_FILE( self.new_data_base[ 'open' ], self.data_base, self.line).SET_OPEN()
+                                                        self.error = set_openfile.SET_OPEN_FILE( self.new_data_base[ 'open' ], self.data_base, self.line).SET_OPEN()
                                                         #self.data_base[ 'open' ] = self.new_data_base[ 'open' ]
                                                     else: pass
                                                 else: 
                                                     if self.function_name == 'initialize': pass 
                                                     else: self.data_base[ 'no_printed_values' ].append( None )
                                                 
-                                            UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
+                                            updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
                                         else:
                                             self.data_base[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
                 
-                                            UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
+                                            updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
                                 else: pass
                             else:
                                 self.empty_values = self.new_data_base[ 'empty_values' ]
-                                self.error = ERRORS( self.line ).ERROR15( self.function_name, self.empty_values ) 
-                        except KeyError: self.error = ERRORS( self.line ).ERROR13( self.function_name )
+                                self.error = er.ERRORS( self.line ).ERROR15( self.function_name, self.empty_values ) 
+                        except KeyError: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
                     else: pass
                 else: pass
             else: pass
        
         else: 
-            self.mod = LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
+            self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
     
             if self.mod['key'] is True: 
                 
@@ -259,20 +255,20 @@ class FUNCTION_TREATMENT:
                                                                        self.line ).MAIN( def_key = 'indirect' )
                 
                 if self.error is None: 
-                    self._return_,  self.error = FUNCTION( self.dictionary[ 'functions' ]  ,
+                    self._return_,  self.error = function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name ) 
                     if self.error is None:
-                        self._new_data_base_, self.error  = FUNCTION( [ self.function_info ], self.data_base,
+                        self._new_data_base_, self.error  = function.FUNCTION( [ self.function_info ], self.data_base,
                                                     self.line).INIT_FUNCTION( self.normal_expression, self._return_ )
 
                         if self.error is None:
                             self.new_data_base              = self._new_data_base_[ 'data_base' ]
                             self.new_data_base              = FUNCTION_TREATMENT( self.master, self.data_base, self.line ).INIT_FUNCTION(initialize_data,
                                                                                                     self.new_data_base, self.function_name, lib = True)
-                            LOAD(self.data_base['modulesImport']['func_names'][self.mod['id1']], self.function_name).INITIALIZE(self.new_data_base, 
+                            loading.LOAD(self.data_base['modulesImport']['func_names'][self.mod['id1']], self.function_name).INITIALIZE(self.new_data_base, 
                                               self.data_base['modulesImport']['functions'][self.mod['id1']])
                             self.n = self.data_base['modulesImport']['fileNames'].index(_main_)
-                            LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
+                            loading.LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
                             self.new_data_base[ 'print' ]   = []
                             
                             try:
@@ -303,7 +299,7 @@ class FUNCTION_TREATMENT:
                                                 self.new_data_base['print'] = []
                                             else: pass
                                             
-                                            UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
+                                            updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
 
                                         else:
                                             if self.new_data_base[ 'sub_print' ] is None:
@@ -327,7 +323,7 @@ class FUNCTION_TREATMENT:
                                                     if self.keyActivation is True: 
                                                         if self.function_name == 'fopen': 
                                                             self.data_base[ 'no_printed_values' ].append( None )
-                                                            self.error = SET_OPEN_FILE( self.new_data_base[ 'open' ], 
+                                                            self.error = set_openfile.SET_OPEN_FILE( self.new_data_base[ 'open' ], 
                                                                                        self.data_base, self.line).SET_OPEN()
                                                        
                                                         else: pass
@@ -335,21 +331,21 @@ class FUNCTION_TREATMENT:
                                                         if self.function_name == 'initialize': pass 
                                                         else: self.data_base[ 'no_printed_values' ].append( None )
                                                     
-                                                UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
+                                                updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
                                             else:
                                                 self.data_base[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
                     
-                                                UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
+                                                updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
                                     else: pass
                                 else:
                                     self.empty_values = self.new_data_base[ 'empty_values' ]
-                                    self.error = ERRORS( self.line ).ERROR15( self.function_name, self.empty_values ) 
-                            except KeyError: self.error = ERRORS( self.line ).ERROR13( self.function_name )
+                                    self.error = er.ERRORS( self.line ).ERROR15( self.function_name, self.empty_values ) 
+                            except KeyError: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
                         else: pass 
                     else: pass
                 else: pass
                 
-            else: self.error = ERRORS( self.line ).ERROR13( self.function_name )
+            else: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
 
         return self.final_values, self.data_base[ 'no_printed_values' ], self.initialize_values, self.error
 
@@ -452,7 +448,7 @@ class FUNCTION_TREATMENT:
 
                 self.new_data_base[ 'print' ]   = []
             else: pass
-            UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
+            updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
 
         else:
             if self.new_data_base[ 'sub_print' ] is None:
@@ -476,261 +472,11 @@ class FUNCTION_TREATMENT:
                     if self.keyActivation is True: pass
                     else: self.data_base[ 'no_printed_values' ].append( None )
                     
-                UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
+                updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
             else:
                 self.data_base[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
-                UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
+                updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
       
-class FUNCTION:
-    def __init__(self, 
-                master      :list, 
-                data_base   :dict, 
-                line        :int
-                ):
-        self.master             = master[ 0 ]
-        self.line               = line
-        self.data_base          = data_base
-        self.global_vars        = self.data_base[ 'global_vars' ]
-
-    def INIT_FUNCTION(self, main_string: str, info_data: dict):
-        self.error              = None
-        ###########################################################################
-        self.keys               = list( self.master.keys() )
-        self.function_name      = self.keys[ 0 ]
-
-        self.get_informations   = self.master[ self.function_name ]
-        self.type_of_data       = self.get_informations[ 'type' ][ : ]
-        self.arguments          = self.get_informations[ 'arguments' ][ : ]
-        self.values             = self.get_informations[ 'value' ][ : ]
-        self.int_values         = self.values[ : ]
-        self.emty_values        = []
-
-        ###########################################################################
-        self.computed_values    = info_data[ 'values_computed' ]
-        self.external_vars      = info_data[ 'vars' ]
-        self.external_values    = info_data[ 'values' ]
-        self.location           = info_data[ 'location' ]
-
-        self.lenght_exernal     = len( self.computed_values )
-        self.lenght_internal    = len( self.arguments )
-        self.sub_length         = 0
-
-        for value in self.values:
-            if value is not None: self.sub_length += 1
-            else: pass
-
-        self.difference         = self.lenght_internal - self.sub_length
-
-        ###########################################################################
-        self.function_names, self.function_expr  = db.DATA_BASE().FUNCTIONS()
-        self.def_data_base      =  db.DATA_BASE().STORAGE().copy()
-
-        if self.arguments:
-            if self.external_vars:
-                self.check_arguments = []
-                for args in self.external_vars:
-                    if not  self.check_arguments:
-                        self.check_arguments.append( args )
-                    else:
-                        if args not in self.check_arguments:
-                            self.check_arguments.append( args )
-                        else:
-                            self.error = ERRORS( self.line ).ERROR16( self.function_name, args )
-                            break
-
-                if self.error is None:
-                    if self.lenght_exernal <= self.lenght_internal:
-                        for w, vars in enumerate( self.external_vars ):
-                            if vars in self.arguments :
-                                self.idd    = self.arguments.index( vars )
-                                self.values[ self.idd ] = self.computed_values[ self.location[ w ] ]
-
-                            else:
-                                self.error  = ERRORS(self.line).ERROR11(self.function_name, vars)
-
-                        if self.error is None:
-                            if self.lenght_exernal == len( self.external_vars ): pass
-                            else:
-                                loc             = self.location[ : ]
-                                self.location   = sorted( loc, reverse = True )
-                                for i in self.location:
-                                    del self.computed_values[ i ]
-
-                                for value in self.computed_values:
-                                    if None in self.values:
-                                        self.index = self.values.index( None )
-                                        self.values[ self.index ] = value
-                                    else: pass
-
-                            for i, value in enumerate( self.values ):
-                                if value is None:
-                                    self.emty_values.append( ( self.arguments[ i ], i ) )
-                                else: pass
-
-                            if self.emty_values:
-                                self.error = ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
-                            else: pass
-                        else: self.error = self.error
-
-                    else:
-                        self.error = ERRORS(self.line).ERROR12(self.function_name, self.lenght_internal)
-                else: self.error = self.error
-
-            else:
-                if self.computed_values:
-                    if self.lenght_internal == 1 :
-                        if self.arguments[ 0 ] is None:
-                            self.error = ERRORS(self.line).ERROR14( self.function_name )
-                        else:
-                            if self.lenght_exernal == 1:
-                                for s, value in enumerate( self.computed_values ):
-                                    self.values[ s ] = value
-                            else:
-                                self.error = ERRORS(self.line).ERROR12(self.function_name, self.lenght_internal)
-                    else:
-                        if self.lenght_internal >= self.lenght_exernal:
-                            try:
-                                for s, value in enumerate( self.computed_values ):
-                                    self.values[ s ] = value
-
-                                for i, value in enumerate( self.values ):
-                                    if value is None:
-                                        self.emty_values.append( ( self.arguments[ i ], i ) )
-                                    else: pass
-                                if self.emty_values:
-                                    self.error = ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
-                                else : pass
-                            except IndexError: pass
-
-                        else:
-                            self.error = ERRORS(self.line).ERROR12( self.function_name, self.lenght_internal )
-                else:
-                    if self.lenght_internal == 1:
-                        if self.arguments[ 0 ] is None:
-                            del self.values[ 0 ]
-                            del self.arguments[ 0 ]
-
-                        else:
-                            if self.values[ 0 ] is None:
-                                self.error = ERRORS(self.line).ERROR15(self.function_name, [(self.arguments[0],0) ])
-                            else: pass
-                    else:
-                        for i, value in enumerate( self.values ):
-                            if value is None: self.emty_values.append( (self.arguments[ i ], i ) )
-                            else: pass
-
-                        if self.emty_values:
-                            self.error = ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
-                        else: pass
-
-        else:
-            if self.external_vars:  self.error = ERRORS(self.line).ERROR11( self.function_name, self.external_vars[0] )
-            elif self.computed_values:  self.error = ERRORS(self.line).ERROR12(self.function_name, 0 )
-            else: pass
-
-        if self.error is None:
-            self.list_types = ''
-            self.func = bm.fg.rbg(0,255,0)+' in {}( ).'.format(self.function_name)+bm.init.reset
-            if self.values:
-                for i, value in enumerate( self.values ):
-                    self.error = CHECK_TYPE_OF_DATA( self.type_of_data[ i ] ).CHECK_TYPE( self.line, self.arguments[ i ], self.function_name )
-                    if self.error is None:
-                        if type( value ) == type( str() ):
-                            if value not in [ None, '@670532821@656188185@670532821@']:
-                                self._values_, self.error = numeric_lexer.NUMERCAL_LEXER( value, self.data_base,
-                                                                                        self.line).LEXER( value )
-                                if self.error is None:
-
-                                    self._type_         = CHECK_TYPE_OF_DATA( self._values_ ).DATA()
-                                    
-                                    if 'any' in self.type_of_data[ i ] :
-                                        if len( self.type_of_data[ i ] ) == 1: self.values[ i ]    = self._values_ 
-                                        else: 
-                                            for x, _typ_ in enumerate( self.type_of_data[ i ] ):
-                                                if _typ_ == 'any': pass 
-                                                else:
-                                                    self.str_type   = CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
-                                                    if x < len( self.type_of_data[ i ] ) - 1:
-                                                        self.list_types += self.str_type + ', '
-                                                    else:
-                                                        self.list_types += 'or ' + self.str_type
-                                            self.error = ERRORS( self.line ).ERROR18( self.list_types, self.func )
-                                            break
-                                    else:
-                                        if self._type_ not in self.type_of_data[ i ]:
-                                            for x, _typ_ in enumerate( self.type_of_data[ i ] ):
-                                                self.str_type   = CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
-                                                if x < len( self.type_of_data[ i ] ) - 1:
-                                                    self.list_types += self.str_type + ', or '
-                                                else:  self.list_types += self.str_type
-                                                    
-                                            self.error = ERRORS( self.line ).ERROR3( self.arguments[i], self.list_types, self.func)
-                                            break
-                                        else: self.values[ i ] = self._values_ 
-                                else: break
-                            else: self.values[ i ] = '@670532821@656188185@670532821@'
-                        else: pass
-                    else: break
-            else: pass
-
-            if self.error is None:
-                UPDATE_DATA_BASE( self.values, self.arguments, self.global_vars ).UPDATE( self.def_data_base )
-
-            else: pass
-        else: pass
-
-        self._return_     = {
-            'data_base'         : self.def_data_base,
-            'vars'              : self.arguments,
-            'values'            : self.int_values
-        }
-
-        return  self._return_, self.error
-
-    def DOUBLE_INIT_FUNCTION(self, main_string: str, function_name: str):
-        self.error              = None
-        self.function_name      = function_name
-
-        self.get_informations   = self.master[ self.function_name ]
-        self.type_of_data       = self.get_informations[ 'type' ]
-        self.arguments          = self.get_informations[ 'arguments' ]
-        self.values             = self.get_informations[ 'value' ]
-        self.new_list_of_data   = []
-        self.location           = []
-
-        if len( self.arguments ) == 1:
-            if self.arguments[ 0 ] is None:
-                del self.arguments[ 0 ]
-                del self.values[ 0 ]
-            else: pass
-        else: pass
-
-        if self.values:
-            self.decrement = 0
-            for i, value in enumerate( self.values ):
-                if value is not None:
-                    if self.error is None:
-                        self.new_list_of_data.append( value )
-                        self.location.append( i )
-                    else: break
-
-                else:
-                    self.new_list_of_data.append( self.arguments[ i - self.decrement ] )
-                    self.values[ i ]    = self.arguments[ i - self.decrement ]
-                    del self.arguments[ i - self.decrement ]
-                    self.decrement += 1
-
-        else: pass
-
-        self._return_ = {
-            'values_computed'   : self.new_list_of_data,
-            'values'            : self.values,
-            'vars'              : self.arguments,
-            'location'          : self.location
-        }
-
-        return self._return_,  self.error
-
 class EXTERNAL_DEF_STATEMENT:
     def __init__(self, 
                 master      : any, 
@@ -789,7 +535,7 @@ class EXTERNAL_DEF_STATEMENT:
                             if class_key is False: pass 
                             else: 
                                 if self.get_block not in [ 'empty', 'any' ]:
-                                    self.error = ERRORS( self.line ).ERROR20( self.get_block[ : -1 ] )
+                                    self.error = er.ERRORS( self.line ).ERROR20( self.get_block[ : -1 ] )
                                     break
                                 else: pass
                             if self.error is None:
@@ -875,7 +621,7 @@ class EXTERNAL_DEF_STATEMENT:
                                         self.space += 1
                                         self.def_starage.append( ( self.normal_string, True ) )
                                     else:
-                                        self.error = ERRORS(self.line).ERROR10()
+                                        self.error = er.ERRORS(self.line).ERROR10()
                                         break
                                 
                                 elif self.get_block == 'any'    :
@@ -902,7 +648,7 @@ class EXTERNAL_DEF_STATEMENT:
                                                 mlt.INIT(self.db).INIT()
                                                                
                                             else: 
-                                                self.error = ERRORS( self.line ).ERROR22( self.db['func_names'][ 0 ] )
+                                                self.error = er.ERRORS( self.line ).ERROR22( self.db['func_names'][ 0 ] )
                                                 break
                                         else: break
                                     else: break
@@ -922,7 +668,7 @@ class EXTERNAL_DEF_STATEMENT:
 
                                     break
                                 else:
-                                    self.error = ERRORS( self.line ).ERROR17( self.history[ -1 ] )
+                                    self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
                                     break
 
                             elif self.get_block == 'empty'  :
@@ -930,11 +676,11 @@ class EXTERNAL_DEF_STATEMENT:
                                     self.space += 1
                                     self.def_starage.append( ( self.normal_string, False ) )
                                 else:
-                                    self.error = ERRORS( self.line ).ERROR10()
+                                    self.error = er.ERRORS( self.line ).ERROR10()
                                     break
 
                             else:
-                                self.error = ERRORS( self.line ).ERROR10()
+                                self.error = er.ERRORS( self.line ).ERROR10()
                                 break
 
                         else: break
@@ -955,7 +701,7 @@ class EXTERNAL_DEF_STATEMENT:
                                     self.def_starage.append( ( self.normal_string, False ) )
                                     break
                                 else:
-                                    self.error = ERRORS( self.line ).ERROR17( self.history[ -1 ] )
+                                    self.error =er. ERRORS( self.line ).ERROR17( self.history[ -1 ] )
                                     break
 
                             elif self.get_block == 'empty'  :
@@ -963,17 +709,17 @@ class EXTERNAL_DEF_STATEMENT:
                                     self.space += 1
                                     self.def_starage.append((self.normal_string, False))
                                 else:
-                                    self.error = ERRORS(self.line).ERROR10()
+                                    self.error = er.ERRORS(self.line).ERROR10()
                                     break
 
                             else:
-                                self.error = ERRORS(self.line).ERROR10()
+                                self.error = er.ERRORS(self.line).ERROR10()
                                 break
 
                         else: break
 
             except KeyboardInterrupt:
-                self.error = ERRORS(self.line).ERROR10()
+                self.error = er.ERRORS(self.line).ERROR10()
                 break
 
         EXTERNAL_DEF_STATEMENT( self.master, self.data_base, self.line ).UPDATE_FUNCTION( self.def_starage, self.subFunc )
@@ -1049,7 +795,7 @@ class INTERNAL_DEF_STATEMENT:
                             if class_key is False: pass 
                             else: 
                                 if self.get_block not in [ 'empty', 'any' ]:
-                                    self.error = ERRORS( self.line ).ERROR20( self.get_block[ : -1 ] )
+                                    self.error = er.ERRORS( self.line ).ERROR20( self.get_block[ : -1 ] )
                                     break
                                 else: pass
                             if self.error is None:
@@ -1136,7 +882,7 @@ class INTERNAL_DEF_STATEMENT:
                                         self.space += 1
                                         self.def_starage.append( ( self.normal_string, True ) )
                                     else:
-                                        self.error = ERRORS(self.line).ERROR10()
+                                        self.error = er.ERRORS(self.line).ERROR10()
                                         break
                                 
                                 elif self.get_block == 'any'    :
@@ -1147,10 +893,10 @@ class INTERNAL_DEF_STATEMENT:
                                 elif self.get_block == 'def:'   :
                                     self.val, self.error =  self.analyze.DELETE_SPACE( self.value[3:-1] )
                                     if self.error is None: 
-                                        self.error = ERRORS( self.line ).ERROR23( self.val )
+                                        self.error = er.ERRORS( self.line ).ERROR23( self.val )
                                         break
                                     else: 
-                                        self.error = ERRORS( self.line ).ERROR0( self.value )
+                                        self.error = er.ERRORS( self.line ).ERROR0( self.value )
                                         break
                             else:break
                         else: break
@@ -1168,7 +914,7 @@ class INTERNAL_DEF_STATEMENT:
 
                                     break
                                 else:
-                                    self.error = ERRORS( self.line ).ERROR17( self.history[ -1 ] )
+                                    self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
                                     break
 
                             elif self.get_block == 'empty'  :
@@ -1176,11 +922,11 @@ class INTERNAL_DEF_STATEMENT:
                                     self.space += 1
                                     self.def_starage.append( ( self.normal_string, False ) )
                                 else:
-                                    self.error = ERRORS( self.line ).ERROR10()
+                                    self.error = er.ERRORS( self.line ).ERROR10()
                                     break
 
                             else:
-                                self.error = ERRORS( self.line ).ERROR10()
+                                self.error = er.ERRORS( self.line ).ERROR10()
                                 break
 
                         else: break
@@ -1201,7 +947,7 @@ class INTERNAL_DEF_STATEMENT:
                                     self.def_starage.append( ( self.normal_string, False ) )
                                     break
                                 else:
-                                    self.error = ERRORS( self.line ).ERROR17( self.history[ -1 ] )
+                                    self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
                                     break
 
                             elif self.get_block == 'empty'  :
@@ -1209,17 +955,17 @@ class INTERNAL_DEF_STATEMENT:
                                     self.space += 1
                                     self.def_starage.append((self.normal_string, False))
                                 else:
-                                    self.error = ERRORS(self.line).ERROR10()
+                                    self.error = er.ERRORS(self.line).ERROR10()
                                     break
 
                             else:
-                                self.error = ERRORS(self.line).ERROR10()
+                                self.error = er.ERRORS(self.line).ERROR10()
                                 break
 
                         else: break
 
             except KeyboardInterrupt:
-                self.error = ERRORS(self.line).ERROR10()
+                self.error = er.ERRORS(self.line).ERROR10()
                 break
 
         EXTERNAL_DEF_STATEMENT( self.master, self.data_base, self.line ).UPDATE_FUNCTION( self.def_starage, {} )
@@ -1438,7 +1184,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                         elif self.get_block == 'empty'   :
                             if self.space <= 2: self.space += 1
                             else:
-                                self.error = ERRORS( self.line ).ERROR10()
+                                self.error = er.ERRORS( self.line ).ERROR10()
                                 break
 
                     else: break
@@ -1454,14 +1200,14 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                 del self.history[ : ]
                                 break
                             else:
-                                self.error = ERRORS(self.line).ERROR17( self.history[ -1 ] )
+                                self.error = er.ERRORS(self.line).ERROR17( self.history[ -1 ] )
                                 break
 
                         elif self.get_block == 'empty'  :
                             if self.space <= 2:
                                 self.space += 1
                             else:
-                                self.error = ERRORS( self.line ).ERROR10()
+                                self.error = er.ERRORS( self.line ).ERROR10()
                                 break
                     else: break
             else:
@@ -1624,7 +1370,7 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                         elif self.get_block == 'empty'   :
                             if self.space <= 2: self.space += 1
                             else:
-                                self.error = ERRORS( self.line ).ERROR10()
+                                self.error = er.ERRORS( self.line ).ERROR10()
                                 break
                     else: break
                 else:
@@ -1638,14 +1384,14 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                                 del self.history[ : ]
                                 break
                             else:
-                                self.error = ERRORS(self.line).ERROR17( self.history[ -1 ] )
+                                self.error = er.ERRORS(self.line).ERROR17( self.history[ -1 ] )
                                 break
 
                         elif self.get_block == 'empty'  :
                             if self.space <= 2:
                                 self.space += 1
                             else:
-                                self.error = ERRORS( self.line ).ERROR10()
+                                self.error = er.ERRORS( self.line ).ERROR10()
                                 break
 
                     else: break
@@ -1656,391 +1402,11 @@ class INTERNAL_DEF_LOOP_STATEMENT:
 
         return self.error
 
-class UPDATE_DATA_BASE:
-    def __init__(self, 
-                values      : any, 
-                variables   : any, 
-                global_vars : dict
-                ):
-        self.values             = values
-        self.variables          = variables
-        self.global_vars        = global_vars
-        self.num_parxer         = numerical_value
 
-    def UPDATE(self, data_base:dict):
-        self.name_without_values = []
 
-        if self.variables:
-            for i, vars in enumerate( self.variables ):
-                if type(self.values[ i ]) == type(np.array([])):
-                    data_base[ 'variables' ][ 'vars' ].append( vars )
-                    data_base[ 'variables' ][ 'values'].append( self.values[ i ] )
-                else:
-                    if self.values[ i ] != '@670532821@656188185@670532821@':
-                        data_base['variables']['vars'].append(vars)
-                        data_base['variables']['values'].append(self.values[i])
-                    else: self.name_without_values.append( (vars, i) )
 
-        else: pass
 
-        self.global_variables   = self.global_vars[ 'vars' ].copy()
-        self.global_values      = self.global_vars[ 'values' ].copy()
 
-        if self.global_values:
-            for i , value in enumerate( self.global_values ):
-                if type(self.values[i]) == type(np.array([])):
-                    data_base['variables']['vars'].append(self.global_variables[i])
-                    data_base['variables']['values'].append(value)
-                else:
-                    if value not in [ '@670532821@656188@656188185@' ]:
-                        data_base[ 'variables'] [ 'vars' ].append( self.global_variables[ i ] )
-                        data_base[ 'variables' ][ 'values' ].append( value )
-                    else: pass
 
-        else: pass
-
-        if self.name_without_values: data_base[ 'empty_values' ] = self.name_without_values
-        else: pass
-
-        data_base[ 'total_vars' ] = self.variables
-
-    def INITIALIZATION( self, data_base:dict, info:dict ):
-        self.values                             = info[ 'values' ]
-        self.arguments                          = info[ 'vars' ]
-
-        data_base[ 'variables' ][ 'vars' ]      = self.arguments
-        data_base[ 'variables' ][ 'values' ]    = self.values
-        data_base[ 'empty_values' ]             = None
-        data_base[ 'sub_print' ]                = []
-
-class CHECK_TYPE_OF_DATA:
-    def __init__(self, value : any ):
-        self.value          = value
-
-    def DATA(self):
-        self._return_                           = ''
-        self.type                               = type( self.value )
-
-        if  self.type  == type( int() )         :       self._return_ = 'int'
-        elif self.type == type( float() )       :       self._return_ = 'float'
-        elif self.type == type( bool() )        :       self._return_ = 'bool'
-        elif self.type == type( complex() )     :       self._return_ = 'cplx'
-        elif self.type == type( dict() )        :       self._return_ = 'dict'
-        elif self.type == type( list() )        :       self._return_ = 'list'
-        elif self.type == type( tuple() )       :       self._return_ = 'tuple'
-        elif self.type == type( str() )         :       self._return_ = 'string'
-        elif self.type == type( range( 1 ) )    :       self._return_ = 'range'
-        elif self.type == type( None )          :       self._return_ = 'none'
-        elif self.type == type(np.array([1]))   :       self._return_ = 'ndarray'
-
-        return self._return_
-
-    def TYPE(self):
-        self._return_               = ''
-        
-        if   self.value == 'int'    :           self._return_ = '{}an integer(){}'.format(bm.fg.red_L, bm.init.reset)
-        elif self.value == 'float'  :           self._return_ = '{}a float(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
-        elif self.value == 'bool'   :           self._return_ = '{}a boolean(){}'.format(bm.fg.cyan_L, bm.init.reset)
-        elif self.value == 'cplx'   :           self._return_ = '{}a complex(){}'.format(bm.fg.blue, bm.init.reset)
-        elif self.value == 'list'   :           self._return_ = '{}a list(){}'.format(bm.fg.rbg(255,255,0), bm.init.reset)
-        elif self.value == 'tuple'  :           self._return_ = '{}a tuple(){}'.format(bm.fg.blue_L, bm.init.reset)
-        elif self.value == 'dict'   :           self._return_ = '{}a dictionary(){}'.format(bm.fg.magenta_M, bm.init.reset)
-        elif self.value == 'string' :           self._return_ = '{}a string(){}'.format(bm.fg.cyan, bm.init.reset)
-        elif self.value == 'range'  :           self._return_ = '{}a range(){}'.format(bm.fg.green_L, bm.init.reset)
-        elif self.value == 'none'   :           self._return_ = '{}a none(){}'.format(bm.fg.rbg(252, 127, 0 ), bm.init.reset)
-        elif self.value == 'ndarray':            self._return_ = '{}ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
-
-        return self._return_ 
-    
-    def CHECK_TYPE( self , line: int, name: str, func_name: str):
-        self.lists      = []
-        self.error      = None
-        
-        if self.value:
-            for value in self.value:
-                if not self.lists: self.lists.append( value )
-                else:
-                    if value not in self.lists: self.lists.append( value )
-                    else:
-                        func        = bm.fg.rbg(0,255,0)+' in {}( )'.format( func_name )+bm.init.reset 
-                        self.error  = ERRORS( line ).ERROR19( name,  value, func )
-                        break
-        else: pass
-                
-        return self.error 
-
-class SET_OPEN_FILE:
-    def __init__(self,
-                master      : dict, 
-                DataBase    : dict, 
-                line        : int
-                ):
-        self.DataBase       = DataBase 
-        self.master         = master 
-        self.line           = line 
-        
-    def SET_OPEN(self):
-        self.name           = self.master['name'][0]
-        self.file           = self.master['file'][0]
-        self.action         = self.master['action'][0]
-        self.status         = self.master['status'][0]
-        self.encoding       = self.master['encoding'][0]
-        self.nonCloseKey    = self.master['nonCloseKey'][0]
-        self.error          = None
-        
-        if not self.DataBase['open']['name']:
-            self.DataBase['open']['name'].append( self.name )
-            self.DataBase['open']['file'].append( self.file )
-            self.DataBase['open']['action'].append( self.action )
-            self.DataBase['open']['status'].append( self.status )
-            self.DataBase['open']['encoding'].append( self.encoding )
-            self.DataBase['open']['nonCloseKey'].append( self.nonCloseKey )
-        else:
-            if self.name in self.DataBase['open']['nonCloseKey']: self.error = ERRORS( self.line ).ERROR21( self.name )
-            else:
-                self.DataBase['open']['name'].append( self.name )
-                self.DataBase['open']['file'].append( self.file )
-                self.DataBase['open']['action'].append( self.action )
-                self.DataBase['open']['status'].append( self.status )
-                self.DataBase['open']['encoding'].append( self.encoding )
-                self.DataBase['open']['nonCloseKey'].append( self.name )
-        
-        return self.error
-
-class LOAD:
-    def __init__(self, 
-                moduleLoadNames : list, 
-                funcName        : str
-                ):
-        self.moduleLoadNames        = moduleLoadNames 
-        self.funcName               = funcName
-        
-    def LOAD(self):
-        self.key        = False 
-        self.id1        = 0
-        self.id2        = 0
-        
-        for i, mod in enumerate(self.moduleLoadNames):
-            if self.key is False: pass 
-            else: break 
-            
-            if mod: 
-                for j, sub_mod in enumerate(mod):
-                    if sub_mod == self.funcName:
-                        self.key = True
-                        self.id1 = i
-                        self.id2 = j
-                        break 
-                    else: pass
-            else: pass
-        
-        return {'key' : self.key, 'id1' : self.id1, 'id2' : self.id2}
-
-    def INITIALIZE(self, 
-                new_data_base   : dict, 
-                functions       : list
-                ):
-        
-        for i, name in enumerate(self.moduleLoadNames):
-            if name != self.funcName:
-                if name in new_data_base['func_names']:
-                    self.index = new_data_base['func_names'].index(name)
-                    new_data_base['functions'][self.index] = functions[i]
-                else:
-                    new_data_base['functions'].append(functions[i]) 
-                    new_data_base['func_names'].append(name) 
-            else: pass
-       
-    def GLOBAL_VARS(self, 
-                    db  : dict, 
-                    var : dict, 
-                    n   : int, 
-                    typ : str = 'def'
-                    ):
-        
-        self.vars, self.val = var['vars'][ n ], var['values'][n]
-
-        if typ == 'def':
-            if self.vars:
-                for i, name in enumerate(self.vars) :
-                    if name in db['variables']['vars']: pass 
-                    else:
-                        db['variables']['vars'].append( name )
-                        db['variables']['values'].append(self.val[i])
-            else: pass
-        else:
-            if self.vars:
-                for i, name in enumerate(self.vars) :
-                    if name in db['global_vars']['vars']: pass 
-                    else:
-                        db['global_vars']['vars'].append( name )
-                        db['global_vars']['values'].append(self.val[i])
-            else: pass
          
-class ERRORS:
-    def __init__(self, line):
-        self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
-        self.reset      = bm.init.reset
 
-    def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)     
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white,self.cyan, string) + error
-
-        return self.error+self.reset
-
-    def ERROR1(self, string: str):
-        error = '{}due to {}<< . >> .{}line: {}{}'.format(self.white, self.red, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white,self.cyan, string) + error
-
-        return self.error+self.reset
-
-    def ERROR2(self, string: str):
-        error = '{}was not found. line: {}{}'.format(self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'NameError' ).Errors()+'{}<< {} >> '.format(self.cyan, string) + error
-
-        return self.error+self.reset
-
-    def ERROR3(self, string: str, _char_ = 'an integer()', func = '' ):
-        error = '{}is not {}{} {}type. {}line: {}{}'.format(self.white, self.blue, _char_, self.yellow, self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> '.format(self.cyan, string) + error + func
-
-        return self.error+self.reset
-
-    def ERROR4(self, string: str, _char_ = 'an integer'):
-        error = '{}to  {}{}() {}type. {}line: {}{}'.format(self.white, self.blue, _char_, self.yellow, self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}impossible to convert {}<< {} >> '.format(self.white,self.cyan, string) + error
-
-        return self.error+self.reset
-
-    def ERROR5(self, string: str, key: str):
-        error = '{}was not found in {}<< {} >>. {}line: {}{}'.format(self.white, self.red, string, self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'KeyError' ).Errors()+'{}<< {} >> '.format(self.cyan, key) + error
-
-        return self.error+self.reset
-
-    def ERROR6(self, value):
-        error = '{}a tuple(), {}or a string(), {}type. {}line: {}{}'.format(self.blue, self.cyan, self.yellow, self.white, self.yeloow, self.line)
-        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> {}is not {}a list(), '.format(self.cyan, value, self.white, self.yellow) + error
-        return self.error+self.reset
-
-    def ERROR7(self, op, ob1, ob2):
-        error = '{}<< {}{} >>, {} and {}<< {}{} >>. {}type. {}line: {}{}'.format(self.white, ob1, self.white, 
-                                                self.white, self.white, ob2, self.whie, self.yellow, self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {}{}{} >> {}not supported between '.format(self.cyan, self.yellow,
-                                                                                                             op, self.cyan, self.white) + error
-        return self.error+self.reset
-
-    def ERROR8(self, value):
-        error = '{}<< EMPTY >>. {}line: {}{}'.format( self.yellow, self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'SyntaxError' ).Errors()+'{}<< {} >> {}is '.format(self.cyan, value, self.white) + error
-        return self.error+self.reset
-
-    def ERROR9(self, string: str = 'float' ):
-        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'OverFlowError' ).Errors()+'infinity {}{} {}number. '.format(self.magenta, string, self.white) + error
-        return self.error+self.reset
-
-    def ERROR10(self):
-        self.error =  fe.FileErrors( 'IndentationError' ).Errors()+'{}unexpected an indented block, {}line: {}{}'.format(self.yellow,
-                                                                                                        self.white, self.yellow, self.line )
-        return self.error+self.reset
-
-    def ERROR11(self, string: str, key: str):
-        error = '{}has not {}<< {} >> {}as argument. {}line: {}{}'.format(self.white, self.red, key, self.magenta, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'KeyError' ).Errors()+'{}<< {}( ) >> '.format(self.cyan, string ) + error
-        return self.error+self.reset
-
-    def ERROR12(self, string: str, pos1: int):
-        char = ''
-        if pos1 > 1:
-            char = 'arguments'
-        else:
-            char = 'argument'
-
-        error = '{}takes {}<< {} >> {}{}. {}line: {}{}'.format(self.white, self.red, pos1, self.yellow, char, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}<< {}( ) >> '.format(self.cyan, string ) + error
-        return self.error+self.reset
-
-    def ERROR13(self, string:str):
-        error = '{}was not found. {}line: {}{}'.format(self.green,  self.white, self.yellow, self.line )
-        self.error = fe.FileErrors( 'NameError' ).Errors()+'{}function name {}ERROR. {}<< {} >> '.format(self.white, self.yellow, self.cyan, string) + error
-
-        return self.error+self.reset
-
-    def ERROR14(self, string: str):
-        error = '{}takes {}no arguments. {}line: {}{}'.format(self.white, self.green, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}<< {}( ) >> '.format(self.cyan, string) + error
-
-        return self.error+self.reset
-
-    def ERROR15(self, string: str, value: list):
-        self.list = []
-        self.len = len( value )
-        if self.len <= 1:
-            self._string_ = 'argument'
-        else:
-            self._string_ = 'arguments'
-
-        for _value_ in value:
-            self.list.append( _value_[ 0 ] )
-
-        error = '{}missing {}<< {} >> {}required {}: {}{}. {}line: {}{}'.format(self.green, self.red, self.len, self.white, self._string_, self.blue,
-                                                                            self.list,  self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}in {}<< {}( ) >>, '.format(self.white, self.cyan, string) + error
-        return self.error+self.reset 
-
-    def ERROR16(self, string: str,key: str):
-        error = '{}duplicated keyword argument {}<< {} >>. {}line: {}{}'.format(self.white, self.red, key, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}<< {}( ) >> '.format(self.cyan, string) + error
-
-        return self.error+self.reset
-
-    def ERROR17(self, string):
-        error = '{}no values {}in the previous statement {}<< {} >> {}block. {}line: {}{}'.format(self.green, self.white, self.cyan, string, self.white,
-                                                                                            self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax. '.format( self.white ) + error
-        return self.error+self.reset
-    
-    def ERROR18(self, string: str, func: str = ''):
-        error = '{}with {}{}. {}line: {}{}'.format(self.white, self.cyan, string, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'AttributeError' ).Errors()+'{}could not associate {}any() {}type '.format( self.white, self.yellow, 
-                                                                                                              self.white ) + error + func
-        return self.error+self.reset
-
-
-    def ERROR19(self, name: str, key: str, func : str = ''):
-        error = '{}duplicated {}<< {} >> {}type {}for the argument {}{}. {}line: {}{}'.format(self.white, self.red, key, self.green, self.white, self.cyan, name,
-                                                                                          self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+ error + func
-
-        return self.error+self.reset
-    
-    def ERROR20(self, func: str = '' ):
-        error = '{}{} {}cannot be defined in {}intialize( ) {}function. {}line: {}{}'.format(self.red, func, self.white, self.red, self.green,
-                                                                                             self.white, self.yellow, self.line )
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+ error 
-
-        return self.error+self.reset
-    
-    def ERROR21(self, name: str):
-        error = '{}before {}new opening. {}line: {}{}'.format(self.white, self.cyan, self.white, self.yellow, self.line)        
-        self.error = fe.FileErrors( 'FileError' ).Errors() + '{}close {}{} '.format(self.white, self.red, name) + error
-
-        return self.error+self.reset
-    
-    def ERROR22( self, string ):
-        error = '{}already exits. {}line: {}{}'.format(self.yellow, self.white, self.yellow,self.line)
-        self.error = fe.FileErrors('NameError').Errors() + '{}the function name {}{} '.format(self.white, self.red, string,) + error
-        return self.error + self.reset
-    
-    def ERROR23( self, string ):
-        error = '{}cannot be {}a function. {}line: {}{}'.format(self.white, self.yellow, self.white, self.yellow,self.line)
-        self.error = fe.FileErrors('SyntaxError').Errors() + '{}The subfunction {}{} '.format(self.white,  self.red, string) + error
-        return self.error + self.reset

@@ -880,11 +880,11 @@ class INTERNAL_IF_WINDOWS:
         self.analyse        = control_string.STRING_ANALYSE(self.data_base, self.line)
 
     def TERMINAL(self,
-                 bool_value : bool,
-                 tabulation : int,
-                 _type_     : str = 'conditional',
-                 c          : str = ''
-                 ):
+                bool_value : bool,
+                tabulation : int,
+                _type_     : str = 'conditional',
+                c          : str = ''
+            ):
 
         """
         :param bool_value:
@@ -946,7 +946,7 @@ class INTERNAL_IF_WINDOWS:
 
                 elif self.char in {10, 13}:  # enter
                     self.if_line += 1
-                    sys.stdout.write(u"\u001b[1000D")
+                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     self.s = self.input
                     self.clear_input = bm.chars().ansi_remove_chars(name=self.input[self.length:])
 

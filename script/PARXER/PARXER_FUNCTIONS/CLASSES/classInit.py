@@ -1,3 +1,4 @@
+from imp import load_dynamic
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import error as er
@@ -6,7 +7,9 @@ from src.classes.Chars                              import Char
 from src.classes.Lists                              import Lists
 from src.classes.Cplx                               import cplx 
 from src.classes.Tuples                             import Tuples
-from src.classes.Unions                             import union                                  
+from src.classes.Unions                             import union    
+from src.functions                                  import loading as load         
+from src.functions                                  import function                 
 
     
 class CLASS_TREATMENT:
@@ -137,10 +140,10 @@ class CLASS_TREATMENT:
                                             self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
                                                                                                     self.line ).MAIN( def_key = 'indirect' )
                                             if self.error is None: 
-                                                self._return_, self.error = func.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
+                                                self._return_, self.error = function.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
                                                                                         self.line ).DOUBLE_INIT_FUNCTION( self.normal_expr, self.name )
                                                 if self.error is None:
-                                                    self._new_data_base_, self.error = func.FUNCTION( self.my_function[ 1 ], self.DataBase,
+                                                    self._new_data_base_, self.error = function.FUNCTION( self.my_function[ 1 ], self.DataBase,
                                                                     self.line).INIT_FUNCTION( self.normal_expr, self._return_ )
                                                     if self.error is None: 
                                                         self.new_data_base           = self._new_data_base_[ 'data_base' ]
@@ -221,11 +224,11 @@ class CLASS_TREATMENT:
                                                                             self.line ).MAIN( def_key = 'indirect' )
                         
                         if self.error is None:
-                            self._return_, self.error = func.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
+                            self._return_, self.error = function.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
                                                                 self.line ).DOUBLE_INIT_FUNCTION( self.normal_expr, 'initialize' )
                         
                             if self.error is None:
-                                self._new_data_base_, self.error = func.FUNCTION( [ self.function_init ], self.DataBase,
+                                self._new_data_base_, self.error = function.FUNCTION( [ self.function_init ], self.DataBase,
                                                         self.line).INIT_FUNCTION( self.normal_expr, self._return_ )
                                 if self.error is None:
                                     self.new_data_base1          = self._new_data_base_[ 'data_base' ]
@@ -276,10 +279,10 @@ class CLASS_TREATMENT:
                                                         self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
                                                                                                 self.line ).MAIN( def_key = 'indirect' )
                                                         if self.error is None:
-                                                            self._return_, self.error = func.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
+                                                            self._return_, self.error = function.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
                                                                                     self.line ).DOUBLE_INIT_FUNCTION( self.normal_expr, self.name )
                                                             if self.error is None:
-                                                                self._new_data_base_, self.error = func.FUNCTION( self.my_function[ 1 ] , self.DataBase,
+                                                                self._new_data_base_, self.error = function.FUNCTION( self.my_function[ 1 ] , self.DataBase,
                                                                                 self.line).INIT_FUNCTION( self.normal_expr, self._return_ )
                                                                 
                                                                 if self.error is None:
@@ -537,7 +540,7 @@ class CLASS_TREATMENT:
                 self.sub_expr  = self.master[ 'expressions' ][ 1 ]
                 
                 if self.main_name not in self.DataBase['modulesImport']['fileNames']: 
-                    self.mod = func.LOAD(self.DataBase['modulesImport']['mainClassNames'], self.main_name).LOAD()
+                    self.mod = load.LOAD(self.DataBase['modulesImport']['mainClassNames'], self.main_name).LOAD()
                     if self.mod['key'] is False:
                         self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
                                                                        self.DataBase, self.line ).TREATMENT( )                    
@@ -573,7 +576,7 @@ class CLASS_TREATMENT:
                     else: 
                         self.n1 = self.DataBase['modulesImport']['fileNames'].index( self.main_name )
                         self.new_main_name = self.DataBase['modulesImport']['alias'][ self.n1 ][self.main_name]
-                        self.mod = func.LOAD(self.DataBase['modulesImport']['class_names'], self.new_main_name).LOAD()
+                        self.mod = load.LOAD(self.DataBase['modulesImport']['class_names'], self.new_main_name).LOAD()
                         if self.mod['key'] is True: 
                             self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
                                                                         self.DataBase, self.line ).TREATMENT( loading = True, idd1 = self.mod['id1'],
@@ -592,7 +595,7 @@ class CLASS_TREATMENT:
                     if self.mod['key'] is True: 
                         self.db = self.DataBase.copy()
                         self.n   = self.DataBase['modulesImport']['fileNames'].index(self.main_name)
-                        func.LOAD(None, None).GLOBAL_VARS(self.db, self.DataBase['modulesImport']['variables'], self.n, typ = 'class')
+                        load.LOAD(None, None).GLOBAL_VARS(self.db, self.DataBase['modulesImport']['variables'], self.n, typ = 'class')
                         self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
                                             self.db, self.line ).TREATMENT( self.main_name+'.', loading = True, idd1 = self.mod['id1'], 
                                                                                  idd2 = self.mod['id2'] )
@@ -656,7 +659,7 @@ class CLASS_TREATMENT:
                             self.mod = loading.LOAD(self.DataBase['modulesImport'][ 'modulesLoadC' ], self.sub_sub_name).LOAD( 'class_names' )
                             self.n   = self.DataBase['modulesImport']['fileNames'].index(self.main_name)
                          
-                            func.LOAD(None, None).GLOBAL_VARS(self.DataBase, self.DataBase['modulesImport']['variables'], self.n, typ = 'class')
+                            load.LOAD(None, None).GLOBAL_VARS(self.DataBase, self.DataBase['modulesImport']['variables'], self.n, typ = 'class')
                             
                             self.master['names']        = self.master['names'][2 : ]
                             self.master['expressions']  = self.master['expressions'][ 2 :]
