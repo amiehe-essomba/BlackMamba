@@ -1,5 +1,6 @@
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import error as er 
+from src.functions                                  import updating_data
 from script.LEXER.FUNCTION                          import print_value
 
 class RUN_FUNCTION:
@@ -56,7 +57,7 @@ class RUN_FUNCTION:
 
                         self.new_data_base[ 'print' ]   = []
                     else: pass
-                    func.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
+                    updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
                                                             self._new_data_base_ )
                 else:
                     
@@ -86,11 +87,11 @@ class RUN_FUNCTION:
                                 if self.functionName == 'initialize': pass 
                                 else: self.DataBase[ 'no_printed_values' ].append( None )
                             
-                        func.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
+                        updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
                                                             self._new_data_base_ )
                     else:
                         self.DataBase[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
-                        func.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base,
+                        updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base,
                                                         self._new_data_base_)
             else: pass
         else:   
