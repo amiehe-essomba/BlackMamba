@@ -1,14 +1,14 @@
-from script                         import control_string
-from script.LEXER                   import particular_str_selection
-from script.LEXER                   import main_lexer
-from script.LEXER                   import check_if_affectation
-from script.PARXER                  import numerical_value
-from script.STDIN.WinSTDIN          import stdin
-from script.PARXER.LEXER_CONFIGURE  import numeric_lexer
-from script.STDIN.LinuxSTDIN        import bm_configure as bm
-from script.LEXER.FUNCTION          import main
+from script                                         import control_string
+from script.LEXER                                   import particular_str_selection
+from script.LEXER                                   import main_lexer
+from script.LEXER                                   import check_if_affectation
+from script.PARXER                                  import numerical_value
+from script.PARXER.LEXER_CONFIGURE                  import numeric_lexer
+from script.STDIN.LinuxSTDIN                        import bm_configure as bm
+from script.LEXER.FUNCTION                          import main
 from script.PARXER.INTERNAL_FUNCTION                import get_list
-from script.PARXER.PARXER_FUNCTIONS.CLASSES         import classInit 
+from src.classes.Chars                              import Char
+from src.classes                                    import error as er  
 try:
     from CythonModules.Windows                      import fileError as fe 
 except ImportError:
@@ -119,7 +119,7 @@ class STRING:
                                                                             self.line ).MAIN( def_key = 'indirect' )
                                 if self.error is None: 
                                     self.name = self._names_[ 1 ]
-                                    self._return_, self.error = classInit.STRING( self.data_base, self.line, self.dict_values,
+                                    self._return_, self.error = Char.STRING( self.data_base, self.line, self.dict_values,
                                                                         self.name, self.dictionary[ 'functions' ]).STR( 'string', main_string)
                                     if self.error is None:
                                         if self.params[ 1 ] is None : pass
@@ -129,8 +129,8 @@ class STRING:
                                     else: pass                                                       
                                 else: pass    
                             
-                            else: self.error = classInit.ERRORS( self.line ).ERROR22( self._names_[ 1 ] )
-                        else: self.error = classInit.ERRORS( self.line ).ERROR22( self._names_[ 1 ] )
+                            else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ] )
+                        else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ] )
                     else:  pass
                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
             else: self.error = ERRORS( self.line ).ERROR0( main_string )

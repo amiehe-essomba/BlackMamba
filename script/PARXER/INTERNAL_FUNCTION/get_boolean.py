@@ -12,10 +12,8 @@ class BOOLEAN:
         self.main_dict          = self.master[ 'numeric' ][ 0 ]
         self._return_           = None
 
-        if self.main_dict == 'True':
-            self._return_ = True
-        elif self.main_dict == 'False':
-            self._return_ = False
+        if self.main_dict == 'True': self._return_ = True
+        elif self.main_dict == 'False':  self._return_ = False
 
         return self._return_, self.error
 
@@ -24,9 +22,7 @@ class BOOLEAN:
         self.numeric            = self.master[ 'numeric' ]
         self._return_           = None
 
-        if self.numeric is not None:
-            self._return_, self.error = BOOLEAN( self.master, self.data_base, self.line ).BOOLEAN()
-        else:
-            pass
+        if self.numeric is not None: self._return_, self.error = BOOLEAN( self.master, self.data_base, self.line ).BOOLEAN()
+        else: pass
 
         return self._return_, self.error

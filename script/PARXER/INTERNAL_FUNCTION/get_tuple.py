@@ -6,7 +6,8 @@ from script.PARXER                                  import numerical_value
 from script.LEXER.FUNCTION                          import main
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
 from script.PARXER.INTERNAL_FUNCTION                import get_list
-from script.PARXER.PARXER_FUNCTIONS.CLASSES         import classInit 
+from src.classes.Tuples                             import Tuples
+from src.classes                                    import error as er        
 try:
     from CythonModules.Windows                      import fileError as fe 
 except ImportError:
@@ -128,7 +129,7 @@ class TUPLE:
                                                                             self.line ).MAIN( def_key = 'indirect' )
                                 if self.error is None: 
                                     self.name = self._names_[ 1 ]
-                                    self._return_, self.error = classInit.TUPLE( self.data_base, self.line, self.tuple_values,
+                                    self._return_, self.error = Tuples.TUPLE( self.data_base, self.line, self.tuple_values,
                                                                         self.name, self.dictionary[ 'functions' ]).TUPLE( 'tuple' )
                                     if self.error is None:
                                         if self.params[ 1 ] is None : pass
@@ -138,8 +139,8 @@ class TUPLE:
                                     else: pass                                                       
                                 else: pass    
                             
-                            else: self.error = classInit.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'tuple()' )
-                        else: self.error = classInit.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'tuple()' )
+                            else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'tuple()' )
+                        else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'tuple()' )
                     else:  pass
                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
             else: self.error = ERRORS( self.line ).ERROR0( main_string )

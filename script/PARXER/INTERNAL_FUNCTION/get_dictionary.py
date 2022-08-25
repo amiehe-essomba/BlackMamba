@@ -1,14 +1,14 @@
-from script                     import control_string
-from script.LEXER               import particular_str_selection
-from script.LEXER               import main_lexer
-from script.LEXER               import check_if_affectation
-from script.PARXER              import numerical_value
-from script.STDIN.WinSTDIN      import stdin
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
-from script.LEXER.FUNCTION      import main
-
+from script                                         import control_string
+from script.LEXER                                   import particular_str_selection
+from script.LEXER                                   import main_lexer
+from script.LEXER                                   import check_if_affectation
+from script.PARXER                                  import numerical_value
+from script.STDIN.LinuxSTDIN                        import bm_configure as bm
+from script.LEXER.FUNCTION                          import main
 from script.PARXER.INTERNAL_FUNCTION                import get_list
-from script.PARXER.PARXER_FUNCTIONS.CLASSES         import classInit
+
+from src.classes.Unions                             import union
+from src.classes                                    import error as er
 try:
     from CythonModules.Windows                      import fileError as fe 
 except ImportError:
@@ -173,7 +173,7 @@ class DICTIONARY:
                                                                             self.line ).MAIN( def_key = 'indirect' )
                                 if self.error is None: 
                                     self.name = self._names_[ 1 ]
-                                    self._return_, self.error = classInit.DICTIONARY( self.data_base, self.line, self.dict_values,
+                                    self._return_, self.error = union.DICTIONARY( self.data_base, self.line, self.dict_values,
                                                                         self.name, self.dictionary[ 'functions' ]).DICT( 'dictionary', main_string)
                                     if self.error is None:
                                         if self.params[ 1 ] is None : pass
@@ -183,8 +183,8 @@ class DICTIONARY:
                                     else: pass                                                       
                                 else: pass    
                             
-                            else: self.error = classInit.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'dictionary()' )
-                        else: self.error = classInit.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'dictionry()' )
+                            else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'dictionary()' )
+                        else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'dictionry()' )
                     else: pass
                 else:  self.error = ERRORS( self.line ).ERROR0( main_string )
             else: self.error = ERRORS( self.line ).ERROR0( main_string )

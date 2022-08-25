@@ -4,15 +4,15 @@ from script.LEXER                   import particular_str_selection
 from script.LEXER                   import main_lexer
 from script.LEXER                   import check_if_affectation
 from script.PARXER                  import numerical_value
-from script.STDIN.WinSTDIN          import stdin
+from src.classes.Lists              import Lists
+from src.classes                    import error as er
 from script.PARXER.LEXER_CONFIGURE  import numeric_lexer
 from script.LEXER.FUNCTION          import main
-from script.PARXER.PARXER_FUNCTIONS.CLASSES         import classInit 
-from script.STDIN.LinuxSTDIN                        import bm_configure as bm
+from script.STDIN.LinuxSTDIN        import bm_configure as bm
 try:
-    from CythonModules.Windows                      import fileError as fe 
+    from CythonModules.Windows      import fileError as fe 
 except ImportError:
-    from CythonModules.Linux                        import fileError as fe 
+    from CythonModules.Linux        import fileError as fe 
 
 
 class LIST:
@@ -231,7 +231,7 @@ class LIST:
                                                                             self.line ).MAIN( def_key = 'indirect' )
                                 if self.error is None: 
                                     self.name = self._names_[ 1 ]
-                                    self._return_, self.error = classInit.LIST( self.data_base, self.line, self.list_values,
+                                    self._return_, self.error = Lists.LIST( self.data_base, self.line, self.list_values,
                                                                         self.name, self.dictionary[ 'functions' ]).LIST( 'list.', main_string)
                                     if self.error is None:
                                         if self.params[ 1 ] is None : pass
@@ -240,8 +240,8 @@ class LIST:
                                                                     self.line ).ARGUMENT_LIST( self._return_, self.params[ 1 ], function = True )
                                     else: pass                                                       
                                 else: pass    
-                            else: self.error = classInit.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'list()' )
-                        else: self.error = classInit.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'list()' )
+                            else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'list()' )
+                        else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'list()' )
                     else:  pass
                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
             else: self.error = ERRORS( self.line ).ERROR0( main_string )
