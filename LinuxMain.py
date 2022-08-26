@@ -6,7 +6,7 @@ from script                         import control_string
 from script.PARXER                  import parxer_assembly
 from script.DATA_BASE               import data_base as db
 
-
+#New Linux IDE
 
 def readchar():
     fd              = sys.stdin.fileno()
