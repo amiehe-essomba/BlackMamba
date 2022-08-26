@@ -6,6 +6,7 @@ from script                         import control_string
 from script.PARXER                  import parxer_assembly
 from script.DATA_BASE               import data_base as db
 
+
 def readchar():
     fd              = sys.stdin.fileno()
     old_settings    = termios.tcgetattr( fd )
