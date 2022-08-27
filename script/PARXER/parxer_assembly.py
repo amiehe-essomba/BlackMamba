@@ -1,8 +1,8 @@
-from script.PARXER              import numerical_value
-from script.PARXER.VAR_NAME     import get_var_name
-from script.PARXER.PRINT        import show_data
-from script.LEXER.FUNCTION      import print_value
-from statement                  import mainStatement as MS
+from script.PARXER                                      import numerical_value
+from script.PARXER.VAR_NAME                             import get_var_name
+from script.PARXER.PRINT                                import show_data
+from script.LEXER.FUNCTION                              import print_value
+from statement                                          import mainStatement as MS
 from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement, if_inter
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
@@ -21,6 +21,9 @@ from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import functions, def_in
 from script.PARXER.PARXER_FUNCTIONS.CLASSES             import classes, class_interpreter
 from script.PARXER                                      import module_load_treatment 
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
+from src.modulesLoading                                 import modules, moduleMain 
+#
+from src.functions.windows                              import windowsDef as WD
 try:
     from CythonModules.Windows                          import fileError as fe 
 except ImportError:
@@ -419,7 +422,9 @@ class ASSEMBLY( ):
                 else: pass
             else:
                 if   self.data_base[ 'current_func' ]  is not None:
-                    self.error = functions.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line ).DEF( 1 )
+                    self.error = WD.EXTERNAL_DEF_WINDOWS(data_base=self.data_base, 
+                                        line=self.line).TERMINAL(tabulation=1, c=bm.fg.rbg(255,255,255) )
+                    #self.error = functions.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line ).DEF( 1 )
                     if self.error is None: pass
                     else: pass
                 elif self.data_base[ 'current_class' ] is not None:
@@ -429,10 +434,10 @@ class ASSEMBLY( ):
                     else: pass
                 elif self.data_base[ 'importation' ]   is not None:
                     self.modules = self.data_base[ 'importation' ] 
-                    self.dataS, self.info, self.error = module_load_treatment.TREATMENT( self.modules, self.data_base, 
+                    self.dataS, self.info, self.error = moduleMain.TREATMENT( self.modules, self.data_base, 
                                                                                         self.line ).MODULE_MAIN( main_string )
                     if self.error is None:
-                        self.error = module_load_treatment.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
+                        self.error = modules.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
                         if self.error is None:
                             self.error = module_load_treatment.CLASSIFICATION( self.data_base, self.line ).CLASSIFICATION( self.data_base[ 'modulesImport' ], 
                                                                                     info = self.data_base[ 'importation' ])
@@ -617,8 +622,7 @@ class ASSEMBLY( ):
                     self.error = def_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line ).DEF( tabulation = 1, 
                                                                         loop_list = self.listTransform )
                     if self.error is None: pass
-                    else: pass
-                    
+                    else: pass                   
                 elif self.data_base[ 'current_class' ] is not None:
                     self.NewLIST                    = stdin.STDIN(self.data_base, self.line ).GROUPBY(1, MainList)
                     self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
@@ -629,20 +633,16 @@ class ASSEMBLY( ):
                     self.error = class_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES(  tabulation = 1, 
                                                                         loop_list = self.listTransform )
                     if self.error is None: pass
-                    else: pass
-                     
+                    else: pass                    
                 elif self.data_base[ 'importation' ]   is not None:
                     self.modules = self.data_base[ 'importation' ] 
-                    self.dataS, self.info, self.error = module_load_treatment.TREATMENT( self.modules, self.data_base, 
+                    self.dataS, self.info, self.error = moduleMain.TREATMENT( self.modules, self.data_base, 
                                                                     self.line ).MODULE_MAIN( main_string, baseFileName = baseFileName )
                     if self.error is None:
-                        self.error = module_load_treatment.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
+                        self.error = modules.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
                         if self.error is None:
                             self.error = module_load_treatment.CLASSIFICATION( self.data_base, self.line ).CLASSIFICATION( self.data_base[ 'modulesImport' ], 
-                                                                                    baseFileName = baseFileName, info = self.data_base[ 'importation' ])
-                            #print(self.data_base['modulesImport']['mainFuncNames'], self.data_base['modulesImport']['fileNames'])
-                            #print(self.data_base['modulesImport']['variables'])
-                           
+                                                                                    baseFileName = baseFileName, info = self.data_base[ 'importation' ])                    
                         else: pass
                     else: pass
                     self.data_base[ 'importation' ] = None
@@ -674,8 +674,7 @@ class ASSEMBLY( ):
 
         if self.active_function == 'all_data':
             if   self.master[ 'function' ] is None      :
-                self.error = ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
-            
+                self.error = ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )         
             elif self.master[ 'function' ] == 'if'      :
     
                 self._return_, self.error = end_else_elif.MAIN_IF( main_string, self.data_base,
@@ -689,7 +688,6 @@ class ASSEMBLY( ):
                     self.listTransform ,self.error  = if_inter.EXTERNAL_IF_STATEMENT( None, self.data_base,
                                                                          self.line ).IF_STATEMENT(1, self.NewLIST )
                 else: pass
-                
             elif self.master[ 'function' ] == 'for'     :
                 self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
                                                                 self.line ).BOCKS( main_string )
@@ -704,8 +702,7 @@ class ASSEMBLY( ):
                     
                     self.listTransform = for_interpreter.EXTERNAL_FOR_STATEMENT( None, self.data_base,
                                                                          self.line ).FOR_STATEMENT(1, self.NewLIST )
-                else : pass
-            
+                else : pass         
             else: pass 
             
         else:
@@ -720,8 +717,7 @@ class ASSEMBLY( ):
                 self.error = def_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line ).DEF( tabulation = 1, 
                                                                     loop_list = self.listTransform )
                 if self.error is None: pass
-                else: pass
-                
+                else: pass     
             elif self.data_base[ 'current_class' ] is not None:
                 self.NewLIST                    = stdin.STDIN(self.data_base, self.line ).GROUPBY(1, MainList)
                 self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
@@ -732,15 +728,14 @@ class ASSEMBLY( ):
                 self.error = class_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES(  tabulation = 1, 
                                                                     loop_list = self.listTransform )
                 if self.error is None: pass
-                else: pass
-                    
+                else: pass           
             elif self.data_base[ 'importation' ]   is not None:
                 self.data_base[ 'loading' ]    = True
                 self.modules = self.data_base[ 'importation' ] 
-                self.dataS, self.info, self.error = module_load_treatment.TREATMENT( self.modules, self.data_base, 
+                self.dataS, self.info, self.error = moduleMain.TREATMENT( self.modules, self.data_base, 
                                                                                     self.line ).MODULE_MAIN( main_string )
                 if self.error is None:
-                    self.error = module_load_treatment.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
+                    self.error = modules.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
                     if self.error is None:
                         self.error = module_load_treatment.CLASSIFICATION( self.data_base, self.line ).CLASSIFICATION( self.data_base[ 'modulesImport' ], 
                                                                                 info = self.data_base[ 'importation' ])

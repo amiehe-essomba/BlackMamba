@@ -855,13 +855,11 @@ class EXTERNAL_IF_WINDOWS:
 
             except KeyboardInterrupt:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
-                print(self._keyboard_)
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 
             except TypeError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
-                print(self._end_of_file_)
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 
@@ -1195,7 +1193,7 @@ class INTERNAL_IF_WINDOWS:
                 elif self.char == 9:  # tabular
                     self.tabular = '\t'
                     self.input = self.input[: self.index] + self.tabular + self.input[self.index:]
-                    self.index += 4
+                    self.index += 1
 
                 sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                 sys.stdout.write(bm.clear.line(pos=0))
@@ -1208,13 +1206,11 @@ class INTERNAL_IF_WINDOWS:
 
             except KeyboardInterrupt:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
-                print(self._keyboard_)
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 
             except TypeError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
-                print(self._end_of_file_)
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 

@@ -1,449 +1,9 @@
-import os
-from os                         import listdir
-from os.path                    import isfile, join
-
-from requests import delete
-
 from script.LEXER.FUNCTION      import main
 from script.PARXER              import parxer_assembly
-from script                     import control_string
-from script.LEXER               import main_lexer
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
 from script.DATA_BASE           import data_base as db
-try:
-    from CythonModules.Windows  import fileError as fe 
-except ImportError:
-    from CythonModules.Linux    import fileError as fe 
+from src.modulesLoading         import error as er
 
-class TREATMENT:
-    def __init__(self, 
-                master      : dict, 
-                data_base   : dict, 
-                line        : int 
-                ):
-        self.line               = line
-        self.master             = master
-        self.data_base          = data_base
 
-        self.control            = control_string.STRING_ANALYSE( self.data_base, self.line )
-        self.lex                = main_lexer
-        self.control            = control_string.STRING_ANALYSE( {}, self.line )
-        self.module             = self.master['module']
-        self.path               = self.master['path']
-        self.alias              = self.master['alias']
-        self.module_load        = self.master['module_load']
-        self.module_main        = self.master['module_main']
-        self.currently_path     = os.getcwd()
-        self.termios            = '.bm'
-        
-        try:
-            self.path_library       = '/media/amiehe/KEY/black_mamba/Library'
-            self.currently_listdir  = listdir(self.currently_path)
-            self.library            = listdir(self.path_library)
-        except FileNotFoundError:
-            self.path_library       = 'D:\\black_mamba\\Library'
-            self.currently_listdir  = listdir(self.currently_path)
-            self.library            = listdir(self.path_library)
-
-    def MODULE_MAIN(self, mainString: str, baseFileName : str = ''):
-        self.error                  = None
-        self.key_directory          = []
-        self.storage_module         = None 
-        self.check                  =  []
-         
-        if self.path is None:
-            if not self.data_base['modulesImport']['TrueFileNames']['names']:
-                self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
-                self.data_base['modulesImport']['TrueFileNames']['path'].append(None)
-                self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
-            else:
-                if self.module_main[0] in self.data_base['modulesImport']['TrueFileNames']['names']:
-                    self.idd = self.data_base['modulesImport']['TrueFileNames']['names'].index(self.module_main[0])
-                    if self.data_base['modulesImport']['TrueFileNames']['path'][self.idd] is None: pass 
-                    else:
-                        self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
-                        self.data_base['modulesImport']['TrueFileNames']['path'].append(None)
-                        self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
-                else: 
-                    self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
-                    self.data_base['modulesImport']['TrueFileNames']['path'].append(None)
-                    self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
-            
-            if self.alias is None:
-                if self.module_load is None:
-                    for module in self.module_main:
-                        self.module_name    = module + self.termios
-                        if self.module_name in self.currently_listdir:
-                            if isfile( self.module_name ) is True: 
-                                if self.module_name != baseFileName:
-                                    self.key_directory.append( 'current' )
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR8( self.module_name )
-                                    break
-                            else: self.error = ERRORS( self.line ).ERROR2( self.module_name )
-                        else:
-                            if self.module_name in self.library:
-                                if isfile( path= self.path_library+'/'+self.module_name ) is True: 
-                                    if self.module_name != baseFileName:
-                                        self.key_directory.append( 'library' )
-                                    else:
-                                        self.error = ERRORS( self.line ).ERROR8( self.module_name )
-                                        break
-                                else: self.error = ERRORS( self.line ).ERROR2( self.module_name )
-                            else:
-                                self.error = ERRORS( self.line ).ERROR1( self.module_name )
-                                break
-                       
-                    if self.error is None:
-                        self.len_module_main    = len( self.module_main )
-                        self.value              = []
-                        self.storage_module     = dict()
-
-                        for i in range( self.len_module_main ):
-                            self.module_name = ''
-                            if not self.check:
-                                self.module_name    = self.module_main[ i ] + self.termios
-                                self.check.append( self.module_main[ i ] )
-                            else:
-                                if  self.module_main[ i ] in self.check:
-                                    self.error = ERRORS( self.line ).ERROR5( self.module_main[ i ]+self.termios ) 
-                                    del self.check
-                                    break
-                                else:
-                                    self.module_name    = self.module_main[ i ] + self.termios
-                                    self.check.append( self.module_main[ i ] ) 
-                            
-                            if self.error is None:
-                                if self.key_directory[ i ] == 'current':
-                                    self.data_from_file = []
-                            
-                                    with open(file=self.module_name, mode='r') as file:
-                                        for line in file.readlines():
-                                            
-                                            if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                            else: pass
-                                            self.data_from_file.append( line )
-                                    self.storage_module[ self.module_main[ i ] ] = self.data_from_file.copy()
-                                else:
-                                    self.data_from_file = []
-                                    try:
-                                        self.path_library += '/' + self.module_name
-                                        with open(file=self.path_library, mode='r') as file:
-                                            for line in file.readlines():
-                                                if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                                else: pass
-                                                self.data_from_file.append( line )
-                                        self.storage_module[ self.module_main[ i ] ] = self.data_from_file   
-                                        self.path_library = '/media/amiehe/KEY/black_mamba/Library'
-                                    except FileNotFoundError:
-                                        self.path_library = 'D:\\black_mamba\\Library'
-                                        self.path_library += '/' + self.module_name
-                                        with open(file=self.path_library, mode='r') as file:
-                                            for line in file.readlines():
-                                                if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                                else: pass
-                                                self.data_from_file.append( line )
-                                               
-                                        self.storage_module[ self.module_main[ i ] ] = self.data_from_file   
-                            else: pass
-                    else: pass
-
-                else:
-                    for module in self.module_main:
-                        self.module_name = module + self.termios
-                        
-                        if   self.module_name in self.currently_listdir:
-                            if isfile( self.module_name ) == True: 
-                                if self.module_name != baseFileName:
-                                    self.key_directory = 'current'
-                                else: 
-                                    self.error = ERRORS( self.line ).ERROR8( self.module_name )
-                                    break
-                            else: 
-                                self.error = ERRORS( self.line ).ERROR2( self.module_name )
-                                break
-                        elif self.module_name in self.library:
-                            if isfile( path= self.path_library+'/'+self.module_name ) is True: 
-                                if self.module_name != baseFileName:
-                                    self.key_directory = 'library'
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR8( self.module_name )
-                                    break
-                            else: 
-                                self.error = ERRORS( self.line ).ERROR2( self.module_name )
-                                break
-                        else:        
-                            self.error = ERRORS( self.line ).ERROR1( module )
-                            break
-                        
-                    if self.error is None: 
-                        self.len_module_main    = len( self.module_main )
-                        self.value              = []
-                        self.storage_module     = dict()
-
-                        for i in range( self.len_module_main ):
-                            self.module_name = ''
-                            if not self.check:
-                                self.module_name    = self.module_main[ i ] + self.termios
-                                self.check.append( self.module_main[ i ] )
-                            else:
-                                if self.module_main[ i ] not in self.check:
-                                    self.module_name    = self.module_main[ i ] + self.termios
-                                    self.check.append( self.module_main[ i ] )
-                                else: 
-                                    self.error = ERRORS( self.line ).ERROR5( self.module_main[ i ], 'module')
-                                    del self.check
-                                    break
-                            
-                            if self.error is None:
-                                if self.key_directory[ i ] == 'current':
-                                    self.data_from_file = []
-                            
-                                    with open(file=self.module_name, mode='r') as file:
-                                        for line in file.readlines():
-                                            if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                            else: pass
-                                            self.data_from_file.append( line )
-                                            
-                                    self.storage_module[ self.module_main[ i ] ] = self.data_from_file
-                                else:
-                                    self.data_from_file = []
-                                    self.path_library += '/' + self.module_name
-                                    with open(file=self.path_library, mode='r') as file:
-                                        for line in file.readlines():
-                                            if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                            else: pass
-                                            self.data_from_file.append( line )
-                                            
-                                    self.storage_module[ self.module_main[ i ] ] = self.data_from_file      
-                            else: pass          
-                    else: pass
-            else:
-                for module in self.module_main:
-                    self.module_name = module + self.termios
-                    
-                    if   self.module_name in self.currently_listdir:
-                        if isfile( self.module_name ) == True: self.key_directory = 'current'
-                        else: 
-                            self.error = ERRORS( self.line ).ERROR2( self.module_name )
-                            break
-                    elif self.module_name in self.library:
-                        if isfile( path= self.path_library+'/'+self.module_name ) is True: self.key_directory = 'library'
-                        else: 
-                            self.error = ERRORS( self.line ).ERROR2( self.module_name )
-                            break
-                    else:
-                        self.error = ERRORS( self.line ).ERROR1( module )
-                        break
-                    
-                if self.error is None: 
-                    self.len_module_main    = len( self.module_main )
-                    self.value              = []
-                    self.storage_module     = dict()
-
-                    for i in range( self.len_module_main ):
-                        self.module_name    = self.module_main[ i ] + self.termios
-                        if self.key_directory[ i ] == 'current':
-                            self.data_from_file = []
-                        
-                            with open(file=self.module_name, mode='r') as file:
-                                for line in file.readlines():
-                                    if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                    else: pass
-                                    self.data_from_file.append( line )
-                            self.storage_module[ self.module_main[ i ] ] = self.data_from_file
-                        else:
-                            self.data_from_file = []
-                            self.path_library += '/' + self.module_name
-                            with open(file=self.path_library, mode='r') as file:
-                                for line in file.readlines():
-                                    if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                    else: pass
-                                    self.data_from_file.append( line )
-                                    
-                            self.storage_module[ self.module_main[ i ] ] = self.data_from_file
-                else: pass
-        
-        else:
-            self.path           = self.path[ 0 ]
-            self.listfir_path   = None
-            
-            if not self.data_base['modulesImport']['TrueFileNames']['names']:
-                self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
-                self.data_base['modulesImport']['TrueFileNames']['path'].append(self.path)
-                self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
-            else:
-                if self.module_main[0] in self.data_base['modulesImport']['TrueFileNames']['names']:
-                    self.idd = self.data_base['modulesImport']['TrueFileNames']['names'].index(self.module_main[0])
-                    if self.data_base['modulesImport']['TrueFileNames']['path'][self.idd] is not None: pass 
-                    else:
-                        self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
-                        self.data_base['modulesImport']['TrueFileNames']['path'].append(self.path)
-                        self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
-                else: 
-                    self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
-                    self.data_base['modulesImport']['TrueFileNames']['path'].append(self.path)
-                    self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
-            
-            try:
-                try:
-                    self.listfir_path = listdir( self.path )
-                except OSError : 
-                    try:
-                        self._sr            = '{}{}'.format('\\','\\')
-                        self.newpath        = self.path.replace( '/', self._sr )
-                        self.newpath        = self.newpath[ 2 : -2 ]
-                        self.listfir_path   = listdir( self.newpath )
-                        
-                    except OSError: self.error = ERRORS( self.line ).ERROR7( self.path )
-
-                for module in self.module_main:
-                    self.module_name = module + self.termios
-                    
-                    if   self.module_name in self.currently_listdir:
-                        if isfile( self.path+self.module_name ) == True: self.key_directory = 'current'
-                        else: 
-                            self.error = ERRORS( self.line ).ERROR2( self.module_name )
-                            break
-                    elif self.module_name in self.library:
-                        if isfile( path= self.path_library+'/'+self.module_name ) is True: self.key_directory = 'library'
-                        else: 
-                            print(isfile(self.module_name))
-                            self.error = ERRORS( self.line ).ERROR2( self.module_name )
-                            break
-                    else:        
-                        self.error = ERRORS( self.line ).ERROR1( module )
-                        break
-                    
-                if self.error is None: 
-                    self.len_module_main    = len( self.module_main )
-                    self.value              = []
-                    self.storage_module     = dict()
-
-                    for i in range( self.len_module_main ):
-                        self.module_name    = self.module_main[ i ] + self.termios
-                        if self.key_directory[ i ] == 'current':
-                            self.data_from_file = []
-                            self.newPath = self.path+self.module_name
-                            with open(file=self.newPath, mode='r') as file:
-                                for line in file.readlines():
-                                    if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                    else: pass
-                                    self.data_from_file.append( line )
-                                    
-                            self.storage_module[ self.module_main[ i ] ] = self.data_from_file
-                        else:
-                            self.data_from_file = []
-                            self.path_library += '/' + self.module_name
-                            with open(file=self.path_library, mode='r') as file:
-                                for line in file.readlines():
-                                    if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                    else: pass
-                                    self.data_from_file.append( line )
-                                    
-                            self.storage_module[ self.module_main[ i ] ] = self.data_from_file.copy()
-                             
-                else: pass
-            except FileNotFoundError: self.error = ERRORS( self.line ).ERROR6( self.path )
-            except EOFError: self.error = ERRORS( self.line ).ERROR7( self.path )
-                
-        self.info = {
-            'alias'         : self.alias,
-            'module_load'   : self.module_load,
-            'module_main'   : self.module_main
-        }
-        
-        self.data_base['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line
-        return self.storage_module, self.info, self.error 
-
-class MODULES:
-    def __init__(self, DataBase: dict, line : int, values: dict, modulesLoad : dict ):
-        self.DataBase           = DataBase
-        self.modulesLoad        = modulesLoad
-        self.values             = values
-        self.line               = line
-    
-    def LOAD(self):
-        self.error              = None
-        self.alias              = self.modulesLoad[ 'alias' ]
-        self.moduleMain         = self.modulesLoad[ 'module_main' ]
-        self.modules            = self.modulesLoad[ 'module_load' ]
-        
-        self.fileNames          = self.DataBase[ 'modulesImport' ][ 'fileNames' ]
-        self.expressions        = self.DataBase[ 'modulesImport' ][ 'expressions' ]
-        self.moduleNames        = self.DataBase[ 'modulesImport' ][ 'moduleNames' ]
-        self.check              = []
-        
-        if self.alias is None:
-            if self.modules is None:
-                if not self.fileNames:
-                    for name in self.moduleMain:
-                        self.expressions.append( self.values[ name ] )
-                        self.fileNames.append( name )
-                else:
-                    for name in self.moduleMain:
-                        if name not in self.moduleNames:
-                            self.expressions.append( self.values[ name ] )
-                            self.fileNames.append( name )
-                        else: 
-                            self.idd = self.fileNames.index( name )
-                            self.expressions[ self.idd ] = self.values[ name ] 
-                
-            else:
-                for v in self.modules:
-                    if not self.check: self.check.append(v)
-                    else:
-                        if v in self.check:
-                            self.error = ERRORS( self.line ).ERROR5( v, 'module' )
-                            break
-                        else: self.check.append(v)
-                        
-                if self.error is None:          
-                    if not self.fileNames:
-                        self.fileNames.append( self.moduleMain[ 0 ] )
-                        self.moduleNames.append( self.modules )
-                        self.expressions.append( self.values[ self.moduleMain[ 0 ] ] )
-                    else:
-                        if self.moduleMain[ 0 ] in self.fileNames:
-                            self.idd = self.fileNames.index( self.moduleMain[ 0 ] )
-                            self.moduleNames[ self.idd ] = self.modules
-                            self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
-                        else:
-                            self.fileNames.append( self.moduleMain[ 0 ] )
-                            self.moduleNames.append( self.modules )
-                            self.expressions.append( self.values[ self.moduleMain[ 0 ] ] )
-                else: pass
-        else:
-            if self.modules is None:
-                if not self.fileNames:
-                    self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
-                    self.fileNames.append( self.alias )
-                else:
-                    if self.alias not in self.moduleNames:
-                        self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
-                        self.fileNames.append( self.alias )
-                    else: 
-                        self.idd = self.fileNames.index( self.alias )
-                        self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
-           
-            else:
-                if not self.fileNames:
-                    self.fileNames.append( self.alias )
-                    self.moduleNames.append( self.modules )
-                    self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
-                else:
-                    if self.alias in self.fileNames:
-                        self.idd = self.fileNames.index( self.alias )
-                        self.moduleNames[ self.idd ] = self.modules
-                        self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
-                    else:
-                        self.fileNames.append( self.alias )
-                        self.moduleNames.append( self.modules )
-                        self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
-
-        self.DataBase['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line
-        return self.error 
-   
 class CLASSIFICATION:
     def __init__(self, DataBase: dict, line: int):
         self.DataBase   = DataBase
@@ -540,7 +100,7 @@ class CLASSIFICATION:
                             if mod != '*':
                                 if mod in self.db[ 'class_names' ]:  self.idd += 1
                                 else: 
-                                    self.error = ERRORS( self.line ).ERROR9( name, mod )
+                                    self.error =  er.ERRORS( self.line ).ERROR9( name, mod )
                                     break
                             else:
                                 self.idd += 1
@@ -549,7 +109,7 @@ class CLASSIFICATION:
                         if self.error is None:
                             if self.idd != 0: pass 
                             else: 
-                                self.error = ERRORS( self.line ).ERROR10( name  )
+                                self.error =  er.ERRORS( self.line ).ERROR10( name  )
                                 break
                         else: break
                     
@@ -636,7 +196,7 @@ class CLASSIFICATION:
                                 if mod in self.db[ 'func_names' ]:
                                     self.idd += 1
                                 else: 
-                                    self.error = ERRORS( self.line ).ERROR9( name+".bm", mod )
+                                    self.error =  er.ERRORS( self.line ).ERROR9( name+".bm", mod )
                                     break
                             else: 
                                 self.idd += 1
@@ -645,7 +205,7 @@ class CLASSIFICATION:
                         if self.error is None:
                             if self.idd != 0: pass 
                             else: 
-                                self.error = ERRORS( self.line ).ERROR10( name+".bm"  )
+                                self.error =  er.ERRORS( self.line ).ERROR10( name+".bm"  )
                                 break
                         else: break
                     
@@ -738,7 +298,7 @@ class CLASSIFICATION:
                                     self.idd += 1
                                     self.class_.append(mod)
                                 else: 
-                                    self.error = ERRORS( self.line ).ERROR9( name+".bm", mod )
+                                    self.error =  er.ERRORS( self.line ).ERROR9( name+".bm", mod )
                                     break
                             else:
                                 self.idd +=1
@@ -747,7 +307,7 @@ class CLASSIFICATION:
                         if self.error is None:
                             if self.idd != 0: pass 
                             else: 
-                                self.error = ERRORS( self.line ).ERROR10( name+".bm"  )
+                                self.error =  er.ERRORS( self.line ).ERROR10( name+".bm"  )
                                 break
                         else: break
                     
@@ -839,7 +399,7 @@ class CLASSIFICATION:
                     del self.data1
                     del self.data2
             
-            else: self.error = ERRORS( self.line ).ERROR11( info['module_main'][0] )
+            else: self.error =  er.ERRORS( self.line ).ERROR11( info['module_main'][0] )
 
         else: 
             for i, name in enumerate(self.DataBase['modulesImport']['TrueFileNames']['names']):
@@ -861,88 +421,6 @@ class CLASSIFICATION:
          
         return self.error 
       
-class DB:
-    functionNames, functions = db.DATA_BASE().FUNCTIONS()
-  
-    globalDataBase          = {
-        'global_vars'       : {
-            'vars'          : [],
-            'values'        : []
-            },
-        'variables'         : {
-            'vars'          : [],
-            'values'        : []
-            },
-        'irene'             : None,
-        'functions'         : [],
-        'classes'           : [],
-        'class_names'       : [],
-        'func_names'        : [],
-        'loop_for'          : [],
-        'loop_while'        : [],
-        'loop_until'        : [],
-        'continue'          : None, 
-        'next'              : None,
-        'pass'              : None,
-        'break'             : None,
-        'exit'              : None,
-        'try'               : None,
-        'begin'             : None,
-        'if'                : [],
-        'switch'            : [],
-        'unless'            : [],
-        'return'            : {
-            'def'           : [],
-            'class'         : []
-            },
-        'print'             : [],
-        'sub_print'         : None,
-        'current_func'      : None,
-        'current_class'     : None,
-        'transformation'    : None,
-        'no_printed_values' : [],
-        'line'              : None,
-        'encoding'          : None,
-        'importation'       : None,
-        'LIB'               : {
-            'func_names'    : functionNames,
-            'functions'     : functions,
-            'class_names'   : [],
-            'classes'       : []
-            },
-        'modulesImport'     : {
-            'moduleNames'   : [],
-            'fileNames'     : [],
-            'expressions'   : [],
-            'variables'     : {
-                'vars'      : [],
-                'values'    : []
-            },
-            'classes'       : [],
-            'class_names'   : [],
-            'functions'     : [],
-            'func_names'    : [],
-            'mainFuncNames' : [],
-            'mainClassNames': [],
-            'modules'       : [],
-            'modulesLoadC'  : [],
-            'modulesLoadF'  : [],
-            'init'          : []
-        },
-        'open'              : {        
-            'name'          : [],          
-            'file'          : [],          
-            'action'        : [],         
-            'status'        : [],       
-            'encoding'      : [],     
-            'nonCloseKey'   : []
-        },
-        'globalIndex'       : None,
-        'starter'           : 0,
-        'subFunctionNames'  : [],
-        'subclassNames'     : []
-    }
-
 class INIT:
     def __init__(self, db):
         self.db = db
@@ -1016,95 +494,7 @@ class INIT:
         self.db['open']['nonCloseKey']                          = []
         self.db['loading']                                      = False
         self.db['matrix']                                       = False
-         
-class ERRORS:
-    def __init__(self, line):
-        self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
-        self.reset      = bm.init.reset
-
-    def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
-
-        return self.error+self.reset
-
-    def ERROR1(self, string: str):
-        error = '{}was not found. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ModuleLoadError' ).Errors() + '{}module {}{} '.format( self.white, self.cyan, string) + error
-
-        return self.error+self.reset
-    
-    def ERROR2(self, string: str):
-        error = '{}is not a file. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'FileError' ).Errors() +'{}{} '.format(self.cyan, string) + error
-        
-        return self.error+self.reset
-        
-    def ERROR3(self, string: str):
-        error = '{}is not {} a BLACK MAMBA {}file. {}line: {}{}'.format(self.white, self.red,
-                                                                        self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ModuleError' ).Errors() +'{}{} '.format(self.cyan, string) + error
-
-        return self.error+self.reset
-    
-    def ERROR4(self, string: str):
-        error = '{}was not found. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'FileNotFoundError' ).Errors() + '{}file {}{} '.format( self.white, self.cyan, string) + error
-
-        return self.error+self.reset
-    
-    def ERROR5(self, string: str, typ = 'file'):
-        error = '{}{}. {}line: {}{}'.format(self.red, string, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}duplicated {}{} '.format( self.white, self.cyan, typ) + error
-
-        return self.error+self.reset
-
-    def ERROR6(self, string: str):
-        error = '{}was not found. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'DirectoryNotFoundError' ).Errors() + '{}directory {}{} '.format( self.white, self.cyan, string) + error
-
-        return self.error+self.reset
-    
-    def ERROR7(self, string: str):
-        error = '{}is incorrect. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'OSError' ).Errors() + '{}directory path {}{} '.format( self.white, self.cyan, string) + error
-
-        return self.error+self.reset
-    
-    def ERROR8(self, string: str):
-        error = '{}is not already {}open. {}line: {}{}'.format(self.white, self.red, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ModuleError' ).Errors() +'{}The module {}{} '.format(self.white, self.cyan, string) + error
-
-        return self.error+self.reset
-    
-    def ERROR9(self, string: str, mod: str):
-        error = '{}has not {}{} {}as a module. {}line: {}{}'.format(self.white, self.red, mod, self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ModuleLoadError' ).Errors() +'{}The file {}{} '.format(self.white, self.cyan, string) + error
-
-        return self.error+self.reset
-    
-    def ERROR10(self, string: str):
-        error = '{}have been found in the file {}{}. {}line: {}{}'.format(self.white, self.red, string, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ModuleLoadError' ).Errors() +'{}Any modules '.format(self.white ) + error
-
-        return self.error+self.reset
-    
-    def ERROR11(self, mod: list):
-        error = '{}has not any modules to load. {}line: {}{}'.format(self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ModuleLoadError' ).Errors() +'{}The file {}{} '.format(self.white, self.cyan, mod ) + error
-
-        return self.error+self.reset
-    
-    def ERROR12(self, string: str):
-        error = '{}is already {}open. {}line: {}{}'.format(self.white, self.red, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'ModuleLoadError' ).Errors() + '{}The module {}{} '.format( self.white, self.cyan, string) + error
-
-        return self.error+self.reset
-    
+        self.db['historyOfErrors']['fileName']                  = []
+        self.db['historyOfErrors']['classes']                   = []
+        self.db['historyOfErrors']['functions']                 = []
+        self.db['historyOfErrors']['line']                      = []

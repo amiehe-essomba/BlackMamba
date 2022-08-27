@@ -23,6 +23,8 @@ from src.functions                                      import error as er
 from functions                                          import internalDef as ID
 from statement.comment                                  import externalCmt
 from src.functions.windows                              import updatingDef as UD
+from script                                             import control_string
+
 
 class INTERNAL_DEF:
     def __init__(self, 
@@ -47,6 +49,11 @@ class INTERNAL_DEF:
         self.store_value        = store_value
         # counting empty line 
         self.space              = space
+        #canceling def 
+        self.def_cancel         = False
+        #contriling string
+        self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
+
        
     def DEF( self, 
             tabulation  : int,                  # tabulation for indentation
@@ -134,8 +141,8 @@ class INTERNAL_DEF:
                                 elif self.get_block == 'if:'    :
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
-                                    
-                                    self._values_, self.error =  for_if.INTERNAL_IF_STATEMENT(master=self.master,
+
+                                    self._values_, self.error =  for_if.INTERNAL_IF_WINDOWS(master=self.master,
                                                 data_base=self.data_base, line=self.if_line).TERMINAL(bool_value=self.value,
                                                     tabulation=self.tabulation + 1, _type_=_type_, c=c)
 
@@ -223,6 +230,7 @@ class INTERNAL_DEF:
                                 del self.store_value[ : ]
                                 del self.history[ : ]
                                 self.def_starage.append( ( self.normal_string, False ) )
+                                self.def_cancel = True
                                 break
                             else:
                                 self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
@@ -256,6 +264,7 @@ class INTERNAL_DEF:
                                 del self.store_value[ : ]
                                 del self.history[ : ]
                                 self.def_starage.append( ( self.normal_string, False ) )
+                                self.def_cancel = True
                                 break
                             else:
                                 self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
@@ -275,5 +284,4 @@ class INTERNAL_DEF:
                             break
                     else: break
                     
-        return self.error          
-                    
+        return self.def_cancel, self.error          

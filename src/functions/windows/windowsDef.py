@@ -11,6 +11,8 @@ from script.STDIN.LinuxSTDIN                            import bm_configure as b
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
 from src.functions.windows                              import updatingDef as UD
 from src.functions.windows                              import externalDef as ED
+from script                                             import control_string
+
 
 class EXTERNAL_DEF_WINDOWS:
     def __init__(self, 
@@ -20,6 +22,8 @@ class EXTERNAL_DEF_WINDOWS:
         
         self.line               = line
         self.data_base          = data_base
+        #contriling string
+        self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
 
     def TERMINAL( self, 
             tabulation  : int,  
@@ -54,6 +58,8 @@ class EXTERNAL_DEF_WINDOWS:
         self.previous_c         = c
         self.mainString         = ''
         self.mainIndex          = 0
+        self.def_cancel         = False
+
         ##########################################################
         
         # struc for sub-function
@@ -69,7 +75,6 @@ class EXTERNAL_DEF_WINDOWS:
         sys.stdout.flush()
 
         while True :
-         
             try:
                 self.char = bm.read().readchar()
                 if self.char not in {10, 13}:
@@ -87,7 +92,8 @@ class EXTERNAL_DEF_WINDOWS:
                     if self.mainString:
                         ####################################################################
                         # syntaxis color 
-                        self.input = self.input[: self.length] + bm.words(string=self.mainString, color=self.c).final()
+
+                        self.input = self.input[: self.length] + bm.words(string=self.mainString, color=self.c).final(n=1)
                         
                         #moving cursor left
                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
@@ -108,13 +114,17 @@ class EXTERNAL_DEF_WINDOWS:
                         ######################################################################
                         
                         #calling the main module DEF 
-                        self.error = ED.EXTERNAL_DEF(master=self.mainString, data_base = self.data_base, line=self.if_line,
+
+                        self.def_cancel, self.error = ED.EXTERNAL_DEF(master=self.mainString, data_base = self.data_base, line=self.if_line,
                             history=self.history, store_value=self.store_value, space=self.space).DEF(  tabulation=self.tabulation, 
                             def_starage=self.def_starage, subFunc=self.subFunc, class_name=class_name,
                             class_key=class_key, c=c, function=function, _type_=_type_ )
                         
                         #break while loop if error is not None
-                        if self.error is None: pass 
+
+                        if self.error is None: 
+                            if self.def_cancel is True : break 
+                            else: pass
                         else: break
                     else:
                         # if no string
@@ -152,14 +162,12 @@ class EXTERNAL_DEF_WINDOWS:
                 sys.stdout.flush()
             
             except KeyboardInterrupt:
-                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
-                print(self._keyboard_)
+                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset+bm.init.reset
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 
-            except TypeError:
-                self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
-                print(self._end_of_file_)
+            except IndexError:
+                self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset+bm.init.reset
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
         
