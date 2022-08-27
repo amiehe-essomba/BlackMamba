@@ -27,6 +27,7 @@ from src.functions                                      import error as er
 from functions                                          import internalDef as ID
 from statement.comment                                  import externalCmt
 from src.functions.windows                              import subWindows as SW
+from script                                             import control_string
 
 class EXTERNAL_DEF:
     def __init__(self, 
@@ -35,7 +36,7 @@ class EXTERNAL_DEF:
             line        : int ,
             history     : list,
             store_value : list,
-            space       : int        
+            space       : int,    
             ):
         
         # main string
@@ -50,6 +51,10 @@ class EXTERNAL_DEF:
         self.store_value        = store_value
         # counting empty line 
         self.space              = space
+        #canceling def 
+        self.def_cancel         = False
+        #contriling string
+        self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
 
     def DEF( self, 
             tabulation  : int,                  # tabulation for indentation
@@ -143,10 +148,10 @@ class EXTERNAL_DEF:
                                     self.def_starage.append( ( self.normal_string, True ) )
                                     
                                     # calling if module
-                                    self._values_, self.error =  for_if.INTERNAL_IF_STATEMENT(master=self.master,
+                                    self._values_, self.error =  for_if.INTERNAL_IF_WINDOWS(master=self.master,
                                                 data_base=self.data_base, line=self.if_line).TERMINAL(bool_value=self.value,
                                                     tabulation=self.tabulation + 1, _type_=_type_, c=c)
-
+                                    
                                     if self.error is None:
                                         self.history.append( 'if' )
                                         self.space = 0
@@ -261,6 +266,7 @@ class EXTERNAL_DEF:
                                 del self.store_value[ : ]
                                 del self.history[ : ]
                                 self.def_starage.append( ( self.normal_string, False ) )
+                                self.def_cancel = True
                                 break
                             else:
                                 self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
@@ -282,6 +288,7 @@ class EXTERNAL_DEF:
                 if self.tabulation == 1: break
                 else:
                     # if tabulation is false ( not indentation)
+                    self.error = None
                     self.normal_string = self.analyse.BUILD_NON_CON(string=self.master,tabulation=self.tabulation)
                     
                     self.get_block, self.value, self.error = externalCmt.EXTERNAL_BLOCKS(normal_string=self.normal_string,
@@ -294,6 +301,7 @@ class EXTERNAL_DEF:
                                 del self.store_value[ : ]
                                 del self.history[ : ]
                                 self.def_starage.append( ( self.normal_string, False ) )
+                                self.def_cancel = True
                                 break
                             else:
                                 self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
@@ -311,5 +319,5 @@ class EXTERNAL_DEF:
                             self.error = er.ERRORS( self.line ).ERROR10()
                             break
                     else: break
-            
-             
+        
+        return self.def_cancel, self.error
