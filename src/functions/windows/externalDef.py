@@ -56,6 +56,7 @@ class EXTERNAL_DEF:
         #contriling string
         self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
 
+
     def DEF( self, 
             tabulation  : int,                  # tabulation for indentation
             def_starage : list,                 # function data storage 

@@ -24,6 +24,7 @@ class INTERNAL_DEF_WINDOWS:
         #contriling string
         self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
 
+
     def TERMINAL( self, 
             tabulation  : int,  
             class_name  : str   = '' , 
@@ -59,6 +60,7 @@ class INTERNAL_DEF_WINDOWS:
         self.mainIndex          = 0
         self.subFunc            = {}
         self.def_cancel         = False
+
         ##########################################################
                
         sys.stdout.write(bm.clear.line(2))
@@ -84,6 +86,7 @@ class INTERNAL_DEF_WINDOWS:
                     if self.mainString:
                         ####################################################################
                         # syntaxis color 
+
                         self.input = self.input[: self.length] + bm.words(string=self.mainString, color=self.c).final(n=1)
                         
                         #moving cursor left
@@ -105,12 +108,14 @@ class INTERNAL_DEF_WINDOWS:
                         ######################################################################
                         
                         #calling the main module DEF 
+
                         self.def_cancel, self.error = ID.INTERNAL_DEF(master=self.mainString, data_base = self.data_base, line=self.if_line,
                             history=self.history, store_value=self.store_value, space=self.space).DEF(  tabulation=self.tabulation, 
                             def_starage=self.def_starage, class_name=class_name, class_key=class_key, c=c, function=function,
                             _type_=_type_ )
                             
                         #break while loop if error is not None
+
                         if self.error is None: 
                             if self.def_cancel is True: break 
                             else: pass
