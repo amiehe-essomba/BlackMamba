@@ -97,7 +97,13 @@ class DATA_BASE:
         'empty_values'      : None,         # when defaults values defined in a function and any values was put when running function
         'total_vars'        : None,         # total variables = (local + global) variables
         'loading'           : False,        # for delecting values which sould be printed
-        'matrix'            : None
+        'matrix'            : None,         # for ndarray
+        'historyOfErrors'   :{
+            'fileName'      : [],           # name of file.bm
+            'classes'       : [],           # classes
+            'functions'     : [],           # functions
+            'line'          : []            # line
+        }
         }
 
         return self.data_base
