@@ -1,6 +1,6 @@
 ############################################
 # Main IDE for windows called when BM      #  
-# is running un windows sys                #
+# is running in windows sys                #
 ############################################
 # created by : amiehe-essomba              #
 # updating by: amiehe-essomba              #
