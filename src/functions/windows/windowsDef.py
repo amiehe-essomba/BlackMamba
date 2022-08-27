@@ -121,7 +121,6 @@ class EXTERNAL_DEF_WINDOWS:
                             class_key=class_key, c=c, function=function, _type_=_type_ )
                         
                         #break while loop if error is not None
-
                         if self.error is None: 
                             if self.def_cancel is True : break 
                             else: pass
