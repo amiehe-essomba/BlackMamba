@@ -26,7 +26,7 @@
 ![module load ](/images/list.png)
 
 
-```python
+```bash
 from module /path/maths/ load statistics as stats
 from module maths load statistics as stats
 from module maths load statistics, math
