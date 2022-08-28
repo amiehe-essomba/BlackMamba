@@ -1,5 +1,5 @@
 ############################################
-# DEF function IDE                         #
+# sub-class IDE                            #
 ############################################
 # created by : amiehe-essomba              #
 # updating by: amiehe-essomba              #
@@ -9,28 +9,30 @@
 import os, sys
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
-from src.functions.windows                              import updatingDef as UD
-from src.functions.windows                              import internalDef as ID
 from script                                             import control_string
+from src.classes                                        import updatingClasses as UC
+from src.classes.windows                                import internalClass as IC
 
-class INTERNAL_DEF_WINDOWS:
+
+class INTERNAL_CLASS_WINDOWS:
     def __init__(self, 
-                data_base   : dict, 
-                line        : int
-                ):
-    
+            data_base   : dict, 
+            line        : int,
+            extra       : dict
+            ):
+        
         self.line               = line
+        # main data base
         self.data_base          = data_base
+        # external data containig certain informatios regarding classes  
+        self.extra              = extra
         #contriling string
         self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
 
     def TERMINAL( self, 
             tabulation  : int,  
-            class_name  : str   = '' , 
-            class_key   : bool  = False,
             c           : str   = '',
-            function    : str   = 'def',
-            _type_      : str   = 'def'
+            _type_      : str   = 'class'
             ):
         
         self.if_line            = 0
@@ -40,9 +42,11 @@ class INTERNAL_DEF_WINDOWS:
         self.space              = 0
         self.active_tab         = None
         self.tabulation         = tabulation
-        self.history            = [ 'def' ]
-        self.def_starage        = []
+        self.history            = [ 'class' ]
+        self.class_starage      = []
         self.store_value        = []
+        self.classes_before     = self.data_base[ 'classes' ][ : ]
+        self.names_before       = self.data_base[ 'class_names' ][ : ]
       
         ##########################################################
         self.color              = bm.fg.rbg(255,255,0)
@@ -57,10 +61,13 @@ class INTERNAL_DEF_WINDOWS:
         self.previous_c         = c
         self.mainString         = ''
         self.mainIndex          = 0
-        self.subFunc            = {}
-        self.def_cancel         = False
+        self.class_cancel       = False
         ##########################################################
-               
+        
+        # struc for sub-class
+        self._subClass_     = {}
+        ##########################################################
+        
         sys.stdout.write(bm.clear.line(2))
         sys.stdout.write(bm.move_cursor.LEFT(1000))
         sys.stdout.write(bm.string().syntax_highlight(name = self.input))
@@ -105,14 +112,13 @@ class INTERNAL_DEF_WINDOWS:
                         ######################################################################
                         
                         #calling the main module DEF 
-                        self.def_cancel, self.error = ID.INTERNAL_DEF(master=self.mainString, data_base = self.data_base, line=self.if_line,
-                            history=self.history, store_value=self.store_value, space=self.space).DEF(  tabulation=self.tabulation, 
-                            def_starage=self.def_starage, class_name=class_name, class_key=class_key, c=c, function=function,
-                            _type_=_type_ )
-                            
+                        self.class_cancel, self.error = IC.INTERNAL_CLASS(master=self.mainString, data_base = self.data_base, line=self.if_line,
+                            extra=self.extra, history=self.history, store_value=self.store_value, space=self.space).CLASS(  tabulation=self.tabulation, 
+                            class_starage=self.class_starage,  c=c,  _type_=_type_ )
+                        
                         #break while loop if error is not None
                         if self.error is None: 
-                            if self.def_cancel is True: break 
+                            if self.class_cancel is True : break 
                             else: pass
                         else: break
                     else:
@@ -120,7 +126,7 @@ class INTERNAL_DEF_WINDOWS:
                         if self.space <= self.max_emtyLine:
                             self.space += 1
                             self.mainString = self.analyse.BUILD_NON_CON(string=self.mainString,tabulation=self.tabulation)
-                            self.def_starage.append((self.mainString, False))
+                            self.class_starage.append((self.mainString, False))
                         else:
                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                             break
@@ -151,16 +157,18 @@ class INTERNAL_DEF_WINDOWS:
                 sys.stdout.flush()
             
             except KeyboardInterrupt:
-                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
+                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset+bm.init.reset
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 
-            except TypeError:
-                self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
+            except IndexError:
+                self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset+bm.init.reset
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
         
-        # updating function 
-        UD.UPDATING(self.data_base ).UPDATE_FUNCTION( self.def_starage, self.subFunc )
+        if self.error is None:  UC.UPDATING( self.data_base, self.line, {} ).UPDATE_CLASS( self.class_starage )
+        else:
+            self.data_base[ 'classes' ]     = self.classes_before
+            self.data_base[ 'class_names' ] = self.names_before
         
         return self.error

@@ -66,10 +66,12 @@ class TREATMENT:
         if self.path is None:
             # if not path 
             if not self.data_base['modulesImport']['TrueFileNames']['names']:
+                # adding module main
                 self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
                 self.data_base['modulesImport']['TrueFileNames']['path'].append(None)
                 self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
             else:
+                # updating module main
                 if self.module_main[0] in self.data_base['modulesImport']['TrueFileNames']['names']:
                     self.idd = self.data_base['modulesImport']['TrueFileNames']['names'].index(self.module_main[0])
                     if self.data_base['modulesImport']['TrueFileNames']['path'][self.idd] is None: pass 
@@ -299,7 +301,7 @@ class TREATMENT:
         else:
             self.path           = self.path[ 0 ]
             self.listfir_path   = None
-            
+            # 
             if not self.data_base['modulesImport']['TrueFileNames']['names']:
                 self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
                 self.data_base['modulesImport']['TrueFileNames']['path'].append(self.path)
@@ -318,10 +320,12 @@ class TREATMENT:
                     self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
             
             try:
-                try:
+                try: 
+                    # get path Linux and macOs
                     self.listfir_path = listdir( self.path )
                 except OSError : 
                     try:
+                        # building new path for windows when getting OSError
                         self._sr            = '{}{}'.format('\\','\\')
                         self.newpath        = self.path.replace( '/', self._sr )
                         self.newpath        = self.newpath[ 2 : -2 ]
@@ -330,17 +334,19 @@ class TREATMENT:
                     except OSError: self.error =  er.ERRORS( self.line ).ERROR7( self.path )
 
                 for module in self.module_main:
+                    # building file with an extension
                     self.module_name = module + self.termios
                     
                     if   self.module_name in self.currently_listdir:
+                        # checking if file in the current directory
                         if isfile( self.path+self.module_name ) == True: self.key_directory = 'current'
                         else: 
                             self.error =  er.ERRORS( self.line ).ERROR2( self.module_name )
                             break
                     elif self.module_name in self.library:
+                        # checking if file in the Lib directory
                         if isfile( path= self.path_library+'/'+self.module_name ) is True: self.key_directory = 'library'
                         else: 
-                            print(isfile(self.module_name))
                             self.error =  er.ERRORS( self.line ).ERROR2( self.module_name )
                             break
                     else:        
@@ -350,40 +356,49 @@ class TREATMENT:
                 if self.error is None: 
                     self.len_module_main    = len( self.module_main )
                     self.value              = []
+                    # storing module initialized
                     self.storage_module     = dict()
 
                     for i in range( self.len_module_main ):
                         self.module_name    = self.module_main[ i ] + self.termios
                         if self.key_directory[ i ] == 'current':
+                            # current directory
                             self.data_from_file = []
                             self.newPath = self.path+self.module_name
+                            # opening , reading and storing values in data_from_file
                             with open(file=self.newPath, mode='r') as file:
                                 for line in file.readlines():
                                     if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
                                     else: pass
                                     self.data_from_file.append( line )
-                                    
+                            
+                            # storing values in a dictionary     
                             self.storage_module[ self.module_main[ i ] ] = self.data_from_file
                         else:
+                            # Lib directory
                             self.data_from_file = []
                             self.path_library += '/' + self.module_name
+                            # opening , reading and storing values in data_from_file
                             with open(file=self.path_library, mode='r') as file:
                                 for line in file.readlines():
                                     if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
                                     else: pass
                                     self.data_from_file.append( line )
-                                    
+                            
+                            # storing values in a dictionary  
                             self.storage_module[ self.module_main[ i ] ] = self.data_from_file.copy()
-                             
                 else: pass
             except FileNotFoundError: self.error =  er.ERRORS( self.line ).ERROR6( self.path )
             except EOFError: self.error =  er.ERRORS( self.line ).ERROR7( self.path )
-                
+        
+        # final configuration for loading module
         self.info = {
             'alias'         : self.alias,
             'module_load'   : self.module_load,
             'module_main'   : self.module_main
         }
         
+        # updating GteLine() 
         self.data_base['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line
+        
         return self.storage_module, self.info, self.error 

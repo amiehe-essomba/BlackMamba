@@ -3,7 +3,7 @@
 # ############################################
 # from module iris load iris as i            #
 #                                            #
-# created by : amiehe-essomba                #
+# created by :  amiehe-essomba               #
 # updating by : amiehe-essomba               #
 ############################################## 
 
@@ -87,10 +87,12 @@ class MODULES:
                     self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
                     self.fileNames.append( self.alias )
                 else:
+                    # adding new alias
                     if self.alias not in self.moduleNames:
                         self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
                         self.fileNames.append( self.alias )
                     else: 
+                        # updating alias already load before 
                         self.idd = self.fileNames.index( self.alias )
                         self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
            
@@ -101,15 +103,18 @@ class MODULES:
                     self.moduleNames.append( self.modules )
                     self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
                 else:
+                    # adding new alias
                     if self.alias in self.fileNames:
                         self.idd = self.fileNames.index( self.alias )
                         self.moduleNames[ self.idd ] = self.modules
                         self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
                     else:
+                        # updating alias already load before 
                         self.fileNames.append( self.alias )
                         self.moduleNames.append( self.modules )
                         self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
 
+        # initialize line for GetLine() function 
         self.DataBase['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line
         
         return self.error 

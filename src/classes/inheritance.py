@@ -1,8 +1,9 @@
 from src.classes                                    import error as er 
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
-from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
+#from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import run_func
 from script.LEXER.FUNCTION                          import main
+from src.functions                                  import function
 
 
 class INHERITANCE:
@@ -28,6 +29,7 @@ class INHERITANCE:
             self.functions          = self.main_body[ 'functions' ] 
             self.main_initialize    = self.main_body[ 'init_function' ]
             
+            print(self.my_class)
             if self.main_initialize  is None: pass
             else:
                 self.function_init          = self.main_initialize[ 'function' ][ 1 ][ 0 ]
@@ -42,10 +44,10 @@ class INHERITANCE:
                 self.lexer, self.normal_expression, self.error = main.MAIN( self.int_expression, self.dictionary,
                                                                     self.line ).MAIN( def_key = 'indirect' )
                 if self.error is None:
-                    self._return_, self.error = func.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
+                    self._return_, self.error = function.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
                                                         self.line ).DOUBLE_INIT_FUNCTION( mainString, 'initialize' )
                     if self.error is None:
-                        self.__newBase__, self.error = func.FUNCTION( [ self.function_init ], self.DataBase,
+                        self.__newBase__, self.error = function.FUNCTION( [ self.function_init ], self.DataBase,
                                                 self.line).INIT_FUNCTION( mainString, self._return_ )
                         if self.error is None:
                             self.newBase           = self.__newBase__[ 'data_base' ]

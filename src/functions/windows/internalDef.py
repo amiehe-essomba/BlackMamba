@@ -53,7 +53,6 @@ class INTERNAL_DEF:
         self.def_cancel         = False
         #contriling string
         self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
-
        
     def DEF( self, 
             tabulation  : int,                  # tabulation for indentation
@@ -79,7 +78,6 @@ class INTERNAL_DEF:
         self.tabulation         = tabulation    # counting indentation 
         self.max_emtyLine       = 5             # max line for empty line
         self.def_starage        = def_starage   # history of values 
-        self.store_value        = []            # canceling def when any command was not typed
         
         ##########################################################
         
@@ -141,7 +139,7 @@ class INTERNAL_DEF:
                                 elif self.get_block == 'if:'    :
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
-
+                                    
                                     self._values_, self.error =  for_if.INTERNAL_IF_WINDOWS(master=self.master,
                                                 data_base=self.data_base, line=self.if_line).TERMINAL(bool_value=self.value,
                                                     tabulation=self.tabulation + 1, _type_=_type_, c=c)
@@ -267,7 +265,7 @@ class INTERNAL_DEF:
                                 self.def_cancel = True
                                 break
                             else:
-                                self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
+                                self.error = er.ERRORS( self.line ).ERROR17( self.history[ -1 ])
                                 break
                         # empty line
                         elif self.get_block == 'empty'  :
@@ -283,5 +281,6 @@ class INTERNAL_DEF:
                             self.error = er.ERRORS( self.line ).ERROR10()
                             break
                     else: break
+                
+        return self.def_cancel,  self.error          
                     
-        return self.def_cancel, self.error          
