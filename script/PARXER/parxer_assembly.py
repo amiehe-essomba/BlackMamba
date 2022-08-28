@@ -24,6 +24,7 @@ from script.STDIN.LinuxSTDIN                            import bm_configure as b
 from src.modulesLoading                                 import modules, moduleMain 
 #
 from src.functions.windows                              import windowsDef as WD
+from src.classes.windows                                import windowsClass as WC
 try:
     from CythonModules.Windows                          import fileError as fe 
 except ImportError:
@@ -429,7 +430,9 @@ class ASSEMBLY( ):
                     else: pass
                 elif self.data_base[ 'current_class' ] is not None:
                     
-                    self.error = classes.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES( 1 )
+                    #self.error = classes.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES( 1 )
+                    self.error = WC.EXTERNAL_CLASS_WINDOWS(data_base=self.data_base, 
+                                        line=self.line, extra=self.master['class']).TERMINAL(tabulation=1, c=bm.fg.rbg(255,255,255) )
                     if self.error is None: pass
                     else: pass
                 elif self.data_base[ 'importation' ]   is not None:

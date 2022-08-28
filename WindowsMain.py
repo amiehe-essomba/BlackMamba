@@ -1,6 +1,6 @@
 ############################################
 # Main IDE for windows called when BM      #  
-# is running in windows sys                #
+# is running un windows sys                #
 ############################################
 # created by : amiehe-essomba              #
 # updating by: amiehe-essomba              #
@@ -29,6 +29,7 @@ class windows:
         self.key        = False         # key
         self.mainString = ''            # String used in BM
         self.mainIndex  = 0             # String index
+        self.cursor     = []
     
         sys.stdout.write(bm.string().syntax_highlight(name=self.input))
         sys.stdout.flush()
@@ -78,7 +79,8 @@ class windows:
                                 # running parser 
                                 self.num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.data_base,
                                                                         self.line).GLOBAL_ASSEMBLY(self.normal_string)
-                                if self.error is None:  pass
+                                if self.error is None:
+                                    self.cursor.append(bm.get_cursor_pos.pos)   
                                 else:
                                     sys.stdout.write(bm.clear.line(2))
                                     sys.stdout.write(bm.move_cursor.LEFT(1000))
@@ -120,7 +122,7 @@ class windows:
 
                 # flush
                 sys.stdout.flush()
-
+                   
             #keyboardInterrupt
             except KeyboardInterrupt:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset+bm.init.reset

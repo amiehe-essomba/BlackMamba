@@ -20,7 +20,9 @@ class EXTERNAL_DEF_WINDOWS:
             line        : int
             ):
         
+        # current line 
         self.line               = line
+        # main data base
         self.data_base          = data_base
         #contriling string
         self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
@@ -59,7 +61,6 @@ class EXTERNAL_DEF_WINDOWS:
         self.mainString         = ''
         self.mainIndex          = 0
         self.def_cancel         = False
-
         ##########################################################
         
         # struc for sub-function
@@ -92,7 +93,6 @@ class EXTERNAL_DEF_WINDOWS:
                     if self.mainString:
                         ####################################################################
                         # syntaxis color 
-
                         self.input = self.input[: self.length] + bm.words(string=self.mainString, color=self.c).final(n=1)
                         
                         #moving cursor left
@@ -114,7 +114,6 @@ class EXTERNAL_DEF_WINDOWS:
                         ######################################################################
                         
                         #calling the main module DEF 
-
                         self.def_cancel, self.error = ED.EXTERNAL_DEF(master=self.mainString, data_base = self.data_base, line=self.if_line,
                             history=self.history, store_value=self.store_value, space=self.space).DEF(  tabulation=self.tabulation, 
                             def_starage=self.def_starage, subFunc=self.subFunc, class_name=class_name,

@@ -65,6 +65,17 @@ class clear:
         # 0 = from the cursor to begenning of line
         clearline   = u"\u001b[" + f"{pos}" + "K"
         return clearline
+    def screen(pos : int ):
+        # 0 = clears from cursor until end of screen,
+        # 1 = clears from cursor to beginning of screen
+        # 2 = clears entire screen
+        clearScreen = u"\u001b[ " + f"{pos}" + "J"
+        return clearScreen 
+
+class get_cursor_pos:
+    pos     = u"\u001b[6n"
+    save    = u"\u001b[{s}"
+    rest    = u"\u001b[{u}"     
 
 class move_cursor:
     move = u"\u001b[?12h"
@@ -93,8 +104,8 @@ class cursor_pos:
         return f"\u001b[{y};{x}H"
 
 class line:
-    nextline = "\u001b[1E"
-    prevline = "\u001b[1F"
+    nextline = u"\u001b[1E"
+    prevline = u"\u001b[1F"
 
 class head:
     
@@ -233,12 +244,14 @@ class words:
                 if n == 0: self.newString +=  fg.rbg(51, 102, 255) + self.string + init.reset
                 else: self.newString +=  fg.rbg(255,165,0) + self.string + init.reset
             elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'string',
-                                    'bool', 'dict', 'any', 'dictionary', 'self', 'return']:
+                                    'bool', 'dict', 'any', 'self', 'return']:
                 self.newString += fg.rbg(240,128,128) + self.string + init.reset
             elif    self.string in ['from', 'load', 'module', 'as']:
                 self.newString += fg.rbg(225, 50, 20) + self.string + init.reset
             elif    self.string in ['def', 'class', 'func']:
                 self.newString += fg.rbg(255,165,0) + self.string + init.reset
+            elif    self.string in ['initialize', 'integer', 'dictionary', 'set', 'get', 'random', 'object']:
+                self.newString += fg.rbg(25,165,200) + self.string + init.reset
             else:
                 for i, s in enumerate(self.string):
                     if self.count % 2 == 0:
