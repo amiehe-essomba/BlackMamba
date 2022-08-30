@@ -69,7 +69,7 @@ class clear:
         # 0 = clears from cursor until end of screen,
         # 1 = clears from cursor to beginning of screen
         # 2 = clears entire screen
-        clearScreen = u"\u001b[ " + f"{pos}" + "J"
+        clearScreen = u"\u001b[" + f"{pos}" + "J"
         return clearScreen 
 
 class get_cursor_pos:
@@ -106,6 +106,10 @@ class cursor_pos:
 class line:
     nextline = u"\u001b[1E"
     prevline = u"\u001b[1F"
+
+class save:
+    save    = u"\u001b[s"
+    restore = u"\u001b[u"
 
 class head:
     
@@ -250,7 +254,7 @@ class words:
                 self.newString += fg.rbg(225, 50, 20) + self.string + init.reset
             elif    self.string in ['def', 'class', 'func']:
                 self.newString += fg.rbg(255,165,0) + self.string + init.reset
-            elif    self.string in ['initialize', 'integer', 'dictionary', 'set', 'get', 'random', 'object']:
+            elif    self.string in ['initialize', 'integer', 'dictionary', 'set', 'get', 'object', 'settings']:
                 self.newString += fg.rbg(25,165,200) + self.string + init.reset
             else:
                 for i, s in enumerate(self.string):
