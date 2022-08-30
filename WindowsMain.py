@@ -7,11 +7,12 @@
 ############################################
 
 import sys, os
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
-from script                     import control_string
 from script.LEXER.FUNCTION      import main
-from script.PARXER              import parxer_assembly
 from script.DATA_BASE           import data_base as db
+from script                     import control_string
+from script.PARXER              import parxer_assembly
+from script.STDIN.LinuxSTDIN    import bm_configure as bm
+
 
 class windows:
     def __init__(self, data_base : dict):
@@ -21,6 +22,7 @@ class windows:
     def terminal(self, c: str = ''):
 
         self.input      = '{}>>>{} {}'.format(bm.fg.yellow_L, c, bm.init.reset)
+        self.main_input = '{}>>>{} {}'.format(bm.fg.yellow_L, c, bm.init.reset)
         self.length     = len(self.input)
         self.index      = self.length
         self.sub_length = len('{}{}{}'.format(bm.fg.yellow_L, c, bm.init.reset))
@@ -30,8 +32,10 @@ class windows:
         self.mainString = ''            # String used in BM
         self.mainIndex  = 0             # String index
         self.cursor     = []
-    
+        
+        
         sys.stdout.write(bm.string().syntax_highlight(name=self.input))
+        #sys.stdout.write(bm.save.save)
         sys.stdout.flush()
         
         while True:
@@ -43,7 +47,10 @@ class windows:
                         self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char ) + self.mainString[ self.mainIndex : ]
                         self.index       += 1
                         self.mainIndex   += 1
-                    else: os.system('cls')
+                    else: 
+                        #os.system('cls')
+                        sys.stdout.write(bm.clear.screen(pos=2))
+                        sys.stdout.write(bm.save.restore)
 
                 elif self.char in {10, 13}:  # enter
                     self.line += 1
@@ -79,8 +86,7 @@ class windows:
                                 # running parser 
                                 self.num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.data_base,
                                                                         self.line).GLOBAL_ASSEMBLY(self.normal_string)
-                                if self.error is None:
-                                    self.cursor.append(bm.get_cursor_pos.pos)   
+                                if self.error is None: self.cursor.append(bm.get_cursor_pos.pos)   
                                 else:
                                     sys.stdout.write(bm.clear.line(2))
                                     sys.stdout.write(bm.move_cursor.LEFT(1000))
@@ -95,7 +101,7 @@ class windows:
                     else:  pass
 
                     # initialization 
-                    self.input      = '{}>>>{} {}'.format(bm.fg.yellow_L, c, bm.init.reset)
+                    self.input      = self.main_input
                     self.index      = self.length
                     self.key        = False
                     self.mainString = ''
@@ -140,6 +146,7 @@ if __name__ == '__main__':
 
     try:
         os.system('cls')
+        sys.stdout.write(bm.save.save)
         bm.head().head(sys='Windows')
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255))
