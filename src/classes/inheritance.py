@@ -29,7 +29,7 @@ class INHERITANCE:
             self.functions          = self.main_body[ 'functions' ] 
             self.main_initialize    = self.main_body[ 'init_function' ]
             
-            print(self.my_class)
+            #print(self.my_class)
             if self.main_initialize  is None: pass
             else:
                 self.function_init          = self.main_initialize[ 'function' ][ 1 ][ 0 ]
