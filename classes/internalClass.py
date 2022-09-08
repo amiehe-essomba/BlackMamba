@@ -35,44 +35,46 @@ class INTERNAL_BLOCKS:
 
             if self.error is None:
                 try:
-                    if   self.normal_string[ : 3 ]  == 'def'     :
-                        if self.normal_string[ -1 ] == ':':
-                            if self.normal_string[ 3 ] in [ ' ' ]:
-                                self.value = self.normal_string
-                                self._return_, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
-                                                    self.data_base, self.line).BLOCK_TREATMENT( num = 3, function='def')
-                            else:
-                                try:
-                                    if self.normal_string[ 3 ] in [' ']:  self.error = er.ERRORS(self.line).ERROR1( 'def' )
-                                    else:
-                                        self._return_   = 'any'
-                                        self.value      = self.normal_string
-                                except IndexError: self.error = er.ERRORS(self.line).ERROR1( 'def' )
-                        else:   self.error = ERRORS(self.line).ERROR1( 'def' )
-                    elif self.normal_string[ : 5 ]  == 'class'   :
-                        if self.normal_string[ -1 ] == ':':
-                            if self.normal_string[ 5 ] in [ ' ' ]:
-                                self.value = self.normal_string
-                                self._return_, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
-                                                                self.data_base, self.line).BLOCK_TREATMENT(num=5, function='class')
-                            else:
-                                try:
-                                    if self.normal_string[ 5 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1( 'class' )
-                                    else:
-                                        self._return_ = 'any'
-                                        self.value = self.normal_string
-                                except IndexError:  self.error = er.ERRORS(self.line).ERROR1( 'class' )
-                        else: self.error = ERRORS(self.line).ERROR1( 'class' )
-                    elif self.normal_string[ : 3 ]  == 'end'     :
-                        if loop is True:
-                            if self.normal_string[-1] == ':':
-                                self._return_ = 'end:'
-                                self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(snum=3, normal_string=self.normal_string)
-                            else:
-                                if self.normal_string in ['end']:  self.error = er.ERRORS(self.line).ERROR1('end')
-                                else:  self.error = er.ERRORS(self.line).ERROR4()
-                        else:  self.error = er.ERRORS(self.line).ERROR4()
-                    else: self.error      = er.ERRORS( self.line ).ERROR4()
+                    if self.normal_string[ 0 ] != '#':
+                        if   self.normal_string[ : 3 ]  == 'def'     :
+                            if self.normal_string[ -1 ] == ':':
+                                if self.normal_string[ 3 ] in [ ' ' ]:
+                                    self.value = self.normal_string
+                                    self._return_, self.error = INTERNAL_BLOCKS(self.normal_string,
+                                                        self.data_base, self.line).BLOCK_TREATMENT( num = 3, function='def')
+                                else:
+                                    try:
+                                        if self.normal_string[ 3 ] in [' ']:  self.error = er.ERRORS(self.line).ERROR1( 'def' )
+                                        else:
+                                            self._return_   = 'any'
+                                            self.value      = self.normal_string
+                                    except IndexError: self.error = er.ERRORS(self.line).ERROR1( 'def' )
+                            else:   self.error = er.ERRORS(self.line).ERROR1( 'def' )
+                        elif self.normal_string[ : 5 ]  == 'class'   :
+                            if self.normal_string[ -1 ] == ':':
+                                if self.normal_string[ 5 ] in [ ' ' ]:
+                                    self.value = self.normal_string
+                                    self._return_, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
+                                                                    self.data_base, self.line).BLOCK_TREATMENT(num=5, function='class')
+                                else:
+                                    try:
+                                        if self.normal_string[ 5 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1( 'class' )
+                                        else:
+                                            self._return_ = 'any'
+                                            self.value = self.normal_string
+                                    except IndexError:  self.error = er.ERRORS(self.line).ERROR1( 'class' )
+                            else: self.error = er.ERRORS(self.line).ERROR1( 'class' )
+                        elif self.normal_string[ : 3 ]  == 'end'     :
+                            if loop is True:
+                                if self.normal_string[-1] == ':':
+                                    self._return_ = 'end:'
+                                    self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(snum=3, normal_string=self.normal_string)
+                                else:
+                                    if self.normal_string in ['end']:  self.error = er.ERRORS(self.line).ERROR1('end')
+                                    else:  self.error = er.ERRORS(self.line).ERROR4()
+                            else:  self.error = er.ERRORS(self.line).ERROR4()
+                        else: self.error      = er.ERRORS( self.line ).ERROR4()
+                    else:  self._return_ = 'comment_line'
                 except IndexError:  self.error = er.ERRORS( self.line ).ERROR0( self.normal_string )
             else:
                 self._return_   = 'empty'
@@ -98,6 +100,6 @@ class INTERNAL_BLOCKS:
         self.new_normal_string, self.error  = self.control.DELETE_SPACE( self.new_normal_string )
 
         if self.error is None:  self._return_ = function+':'
-        else: self.error = ERRORS( self.line ).ERROR0( self.normal_string )
+        else: self.error = er.ERRORS( self.line ).ERROR0( self.normal_string )
 
         return self._return_, self.error
