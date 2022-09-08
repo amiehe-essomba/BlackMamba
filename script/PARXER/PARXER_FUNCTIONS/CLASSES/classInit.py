@@ -540,6 +540,7 @@ class CLASS_TREATMENT:
                 
                 if self.main_name not in self.DataBase['modulesImport']['fileNames']: 
                     self.mod = load.LOAD(self.DataBase['modulesImport']['mainClassNames'], self.main_name).LOAD()
+                    
                     if self.mod['key'] is False:
                         self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
                                                                        self.DataBase, self.line ).TREATMENT( )                    

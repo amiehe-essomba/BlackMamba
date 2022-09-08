@@ -58,6 +58,7 @@ class C_F_I_S:
                             if self.error is None:
                                 self._value_, self.error = self.lex_par.NUMERCAL_LEXER( self.value, self.data_base,
                                                                                     self.line ).LEXER( self.value )
+                              
                                 if self.error is None:
                                     self.type =  [ type( int() ), type( float() ), type( complex()), type( str() ),
                                             type( bool()), type(list()), type(tuple()), type(dict()), type(range(1)), type(np.array([])) ]
@@ -256,6 +257,7 @@ class C_F_I_S:
                                             elif self._value_[ -1 ] in [ 'help' ]:
                                                 help.HELP(self._value_[ 0 ]).HELP()
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
+                                                
                                                 self.typ = [type(list()), type(tuple()), type(range(1))]
                                                 if type(self._value_[0]) == type(list()): pass
                                                 else: self._value_[0] = list(self._value_[0])
