@@ -10,13 +10,23 @@
 from src.modulesLoading             import error as er
 
 class MODULES:
-    def __init__(self, DataBase: dict, line : int, values: dict, modulesLoad : dict ):
+    def __init__(self,
+            DataBase    : dict,
+            line        : int,
+            values      : dict,
+            modulesLoad : dict
+            ) -> None:
+
+        # main data base
         self.DataBase           = DataBase
+        # dictionary from moduleMain
         self.modulesLoad        = modulesLoad
+        # value
         self.values             = values
+        # current line
         self.line               = line
     
-    def LOAD(self):
+    def LOAD(self) -> str :
         # error
         self.error              = None
         # when alias is created
@@ -50,8 +60,7 @@ class MODULES:
                             self.fileNames.append( name )
                         else: 
                             self.idd = self.fileNames.index( name )
-                            self.expressions[ self.idd ] = self.values[ name ] 
-                
+                            self.expressions[ self.idd ] = self.values[ name ]
             else:
                 # in this case, modules were selected
                 for v in self.modules:

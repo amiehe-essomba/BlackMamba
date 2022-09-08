@@ -18,7 +18,8 @@ class INTERNAL_CLASS_WINDOWS:
     def __init__(self, 
             data_base   : dict, 
             line        : int,
-            extra       : dict
+            extra       : dict,
+            term        : str
             ):
         
         self.line               = line
@@ -26,6 +27,8 @@ class INTERNAL_CLASS_WINDOWS:
         self.data_base          = data_base
         # external data containig certain informatios regarding classes  
         self.extra              = extra
+        # terminal name 
+        self.term               = term
         #contriling string
         self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
 
@@ -54,6 +57,8 @@ class INTERNAL_CLASS_WINDOWS:
         self.length             = len(self.input)
         self.index              = self.length
         self.sub_length         = len('{}{}'.format( self.color, bm.init.reset))
+        # root of input 
+        self.main_input         = '{}... {}'.format(self.color, bm.init.reset)
         self.Input              = ''
         self.Index              = 0
         self.max_emtyLine       = 5
@@ -66,6 +71,8 @@ class INTERNAL_CLASS_WINDOWS:
         
         # struc for sub-class
         self._subClass_     = {}
+        # false if clean line is not activated else true
+        self.clear_line = False 
         ##########################################################
         
         sys.stdout.write(bm.clear.line(2))
@@ -77,10 +84,21 @@ class INTERNAL_CLASS_WINDOWS:
             try:
                 self.char = bm.read().readchar()
                 if self.char not in {10, 13}:
-                    self.input      = self.input[: self.index] + chr(self.char) + self.input[self.index:]
-                    self.mainString = self.mainString[: self.mainIndex] + chr(self.char) + self.mainString[  self.mainIndex:]
-                    self.index      += 1
-                    self.mainIndex  += 1
+                    # clear entire line
+                    if self.char == 12:
+                        # move cursor left 
+                        self.error = IfError.ERRORS(self.if_line).ERROR4()
+                        break
+                    # clear entire screen
+                    elif self.char == 19:
+                        self.error = IfError.ERRORS(self.if_line).ERROR4()
+                        break
+                    # write char
+                    else:
+                        self.input       = self.input[ : self.index ] + chr( self.char ) + self.input[ self.index : ]
+                        self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char ) + self.mainString[ self.mainIndex : ]
+                        self.index       += 1
+                        self.mainIndex   += 1
                     
                 elif self.char in {10, 13}:
                     self.if_line += 1
@@ -90,31 +108,40 @@ class INTERNAL_CLASS_WINDOWS:
                 
                     if self.mainString:
                         ####################################################################
-                        # syntaxis color 
-                        self.input = self.input[: self.length] + bm.words(string=self.mainString, color=self.c).final(n=1)
-                        
-                        #moving cursor left
-                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                        # moving cursor up
-                        sys.stdout.write(bm.move_cursor.UP(1))
-                        # clear entire line
-                        sys.stdout.write(bm.clear.line(2))
-                        # write the new string
-                        sys.stdout.write(self.input)
-                        # flush
-                        sys.stdout.flush()
-                        # moving cursor down
-                        sys.stdout.write(bm.move_cursor.DOWN(1))
-                        # clear entire line
-                        sys.stdout.write(bm.clear.line(2))
-                        # movin cursor left
-                        sys.stdout.write(bm.move_cursor.LEFT(1000))
+                        if self.term == 'orion':
+                            # Syntaxis color 
+                            self.input = self.input[: self.length] + bm.words(string=self.mainString, color=bm.fg.white_L).final(n=1)
+                            #moving cursor left
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                            # moving cursor up
+                            sys.stdout.write(bm.move_cursor.UP(1))
+                            # clear entire line
+                            sys.stdout.write(bm.clear.line(2))
+                            # write the new string
+                            sys.stdout.write(self.input)
+                            # flush
+                            sys.stdout.flush()
+                            # moving cursor down
+                            sys.stdout.write(bm.move_cursor.DOWN(1))
+                            # clear entire line
+                            sys.stdout.write(bm.clear.line(2))
+                            # movin cursor left
+                            sys.stdout.write(bm.move_cursor.LEFT(1000))
+                        else:
+                            # move cursor left
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                            # clear entire line 
+                            sys.stdout.write(bm.clear.line(2))
+                            # write input 
+                            sys.stdout.write(self.input)
+                            # move left again 
+                            sys.stdout.write(bm.move_cursor.LEFT(1000))
                         ######################################################################
                         
                         #calling the main module DEF 
                         self.class_cancel, self.error = IC.INTERNAL_CLASS(master=self.mainString, data_base = self.data_base, line=self.if_line,
                             extra=self.extra, history=self.history, store_value=self.store_value, space=self.space).CLASS(  tabulation=self.tabulation, 
-                            class_starage=self.class_starage,  c=c,  _type_=_type_ )
+                            class_starage=self.class_starage,  c=c,  _type_=_type_, term=self.term )
                         
                         #break while loop if error is not None
                         if self.error is None: 
@@ -131,11 +158,11 @@ class INTERNAL_CLASS_WINDOWS:
                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                             break
                     
-                    self.input      = '{}... {}'.format(self.color, bm.init.reset)
+                    self.input      = self.main_input
                     self.index      = self.length
                     self.mainString = ''
-                    self.mainIndex  = 0
-                    
+                    self.mainIndex  = 0                    
+                
                 # tabular   
                 elif self.char == 9:  
                     self.tabular = '\t'
@@ -157,12 +184,10 @@ class INTERNAL_CLASS_WINDOWS:
                 sys.stdout.flush()
             
             except KeyboardInterrupt:
-                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset+bm.init.reset
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 
             except IndexError:
-                self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset+bm.init.reset
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
         

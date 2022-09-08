@@ -19,15 +19,20 @@
 ###########################################################
 
 
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_if, for_begin, for_statement, for_switch, for_unless,  for_try
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement, for_try
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import WindowsIF as wIF
 from script.LEXER.FUNCTION                              import main
 from script.DATA_BASE                                   import data_base as db
 from script.PARXER                                      import module_load_treatment  as mlt
 from src.functions                                      import error as er
 from functions                                          import internalDef as ID
 from statement.comment                                  import externalCmt
-from src.functions.windows                              import subWindows as SW
+from src.functions.windows                              import subWindowsDef as SWD
 from script                                             import control_string
+from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import WindowsUnless as wU
+from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
+from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
+from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
 
 class EXTERNAL_DEF:
     def __init__(self, 
@@ -64,11 +69,12 @@ class EXTERNAL_DEF:
             class_key   : bool  = False,        # class key , set on True when using in class
             c           : str   = '',           # color inside def
             function    : str   = 'def',        # function type
-            _type_      : str   = 'def'         # type 
+            _type_      : str   = 'def',        # type 
+            term        : str   = ''
             ):
         
         #########################################################
-        self.if_line            = 0             # counting 
+        self.if_line            = self.line     # counting
         self.error              = None          # error 
         self.string             = ''            # concatented string
         self.normal_string      = ''            # normal string
@@ -103,7 +109,6 @@ class EXTERNAL_DEF:
                                         func_name=self.data_base[ 'current_func' ], loop = False )
                                         
                         if self.error is None:
-                            
                             # only in class, when initialize function if defined
                             if class_key is False: pass 
                             else: 
@@ -116,10 +121,9 @@ class EXTERNAL_DEF:
                                 if self.get_block   == 'begin:' :
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
-                                    
                                     # calling begin module
-                                    self._values_, self.error = for_begin.COMMENT_STATEMENT(master=self.master,
-                                            data_base=self.data_base,  line=self.if_line).COMMENT( tabulation=self.tabulation + 1, color=c)
+                                    self._values_, self.error = begin.COMMENT_WINDOWS(data_base=self.data_base,
+                                                   line=self.line, term=term).COMMENT( tabulation=self.tabulation + 1, c=c)
                                     
                                     if self.error is None:
                                         # storing data 
@@ -148,9 +152,8 @@ class EXTERNAL_DEF:
                                     self.def_starage.append( ( self.normal_string, True ) )
                                     
                                     # calling if module
-                                    self._values_, self.error =  for_if.INTERNAL_IF_WINDOWS(master=self.master,
-                                                data_base=self.data_base, line=self.if_line).TERMINAL(bool_value=self.value,
-                                                    tabulation=self.tabulation + 1, _type_=_type_, c=c)
+                                    self._values_, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
+                                            bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c)
                                     
                                     if self.error is None:
                                         self.history.append( 'if' )
@@ -163,8 +166,8 @@ class EXTERNAL_DEF:
                                     self.def_starage.append( ( self.normal_string, True ) )
                                     
                                     # calling unless modules
-                                    self._values_, self.error = for_unless.INTERNAL_UNLESS_STATEMENT( self.master,
-                                                    self.data_base, self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1 )
+                                    self._values_, self.error = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
+                                            bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
 
                                     if self.error is None:
                                         #storing data 
@@ -190,13 +193,26 @@ class EXTERNAL_DEF:
 
                                     else: break                                          
                                 # switch statement
+                                elif self.get_block == 'while:' :
+                                    self.store_value.append(self.normal_string)
+                                    self.def_starage.append((self.normal_string, True))
+                                    # calling while module
+                                    self._values_, self.error = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base,
+                                            line=self.if_line, term=term).TERMINAL(  bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=c)
+
+                                    if self.error is None:
+                                        self.history.append('while')
+                                        self.space = 0
+                                        self.def_starage.append(self._values_)
+                                    else:  break
                                 elif self.get_block == 'switch:':
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
                                     
                                     # calling switch module
-                                    self._values_, self.error = for_switch.SWITCH_STATEMENT( self.master,
-                                            self.data_base, self.line ).SWITCH( self.value, self.tabulation + 1 )
+                                    self._values_, self.error = WSw.EXTERNAL_SWITCH_WINDOWS(data_base=self.data_base,
+                                                        line=self.if_line, term=term).TERMINAL(  bool_value=self.value,
+                                                            tabulation=self.tabulation + 1, _type_=_type_, c=c)
 
                                     if self.error is None:
                                         # data storage
@@ -229,7 +245,7 @@ class EXTERNAL_DEF:
                                     self.lexer, _, self.error = main.MAIN(self.value, self.db, self.line).MAIN( _type_ = 'def' )
                                     if self.error is None:
                                         # calling the sub-function 
-                                        self.error = SW.INTERNAL_DEF_WINDOWS(data_base=self.db, line=self.line).TERMINAL( tabulation=self.tabulation+1, 
+                                        self.error = SWD.INTERNAL_DEF_WINDOWS(data_base=self.db, line=self.line,term=term).TERMINAL( tabulation=self.tabulation+1, 
                                                 class_name=class_name, class_key=class_key, function=function, _type_=_type_, c=c)
                                                                                                                     
                                         if self.error is None: 
@@ -250,11 +266,14 @@ class EXTERNAL_DEF:
                                                 break
                                         else: break
                                     else: break
+                                elif self.get_block == 'comment_line':
+                                    self.store_value.append(self.normal_string)
+                                    self.space = 0
+                                    self.def_starage.append((self.normal_string, True))
                             else:break
                         else: break
                     else: break
                 else:
-                    
                     # if tabulation is false ( not indentation)
                     self.get_block, self.value, self.error = externalCmt.EXTERNAL_BLOCKS(normal_string=self.normal_string,
                                 data_base=self.data_base, line=self.line).BLOCKS(tabulation=self.tabulation)

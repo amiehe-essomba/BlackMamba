@@ -1,16 +1,28 @@
+##############################################
+# modules importation                        #
+# ############################################
+# from module iris load iris as i            #
+#                                            #
+# created by :  amiehe-essomba               #
+# updating by : amiehe-essomba               #
+##############################################
+
 import os
 from os                         import listdir
 from os.path                    import isfile
+from pathlib                    import Path
 from script                     import control_string
 from script.LEXER               import main_lexer
 from src.modulesLoading         import error as er
+from src.modulesLoading         import build_abs_Lib_path as bpath
 
 class TREATMENT:
     def __init__(self, 
             master      : dict, 
             data_base   : dict, 
-            line        : int 
-            ):
+            line        : int,
+            system      : str = 'windows'
+            ) -> None:
         
         # current line in the main IDE
         self.line               = line
@@ -18,6 +30,8 @@ class TREATMENT:
         self.master             = master
         # main data base 
         self.data_base          = data_base
+        # system name
+        self.system             = system
         # controling string module 
         self.control            = control_string.STRING_ANALYSE( self.data_base, self.line )
         # lexer module 
@@ -36,25 +50,20 @@ class TREATMENT:
         self.currently_path     = os.getcwd()
         # BM extension 
         self.termios            = '.bm'
-        
-        try:
-            # case of Linux or macOs 
-            # path Library in orthers terms where the Lib is located 
-            self.path_library       = '/media/amiehe/KEY/black_mamba/Library'
-            # get elements from current directory
-            self.currently_listdir  = listdir(self.currently_path)
-            # get modules from the library path 
-            self.library            = listdir(self.path_library)
-        except FileNotFoundError:
-            # case of windows
-            # path Library
-            self.path_library       = 'D:\\black_mamba\\Library'
-            # get elements from current directory 
-            self.currently_listdir  = listdir(self.currently_path)
-            # get modules from the library path 
-            self.library            = listdir(self.path_library)
+        # get relative path
+        self.relative_path      = Path(__file__).resolve().parents[2]
+        # path Library in orthers words where the Lib is located
+        self.path_library  = bpath.Lib_Path( root = self.relative_path, sys = self.system).getPath()
+        # get elements from current directory
+        self.currently_listdir = listdir(self.currently_path)
+        # get modules from the library path
+        self.library = listdir(self.path_library)
 
-    def MODULE_MAIN(self, mainString: str, baseFileName : str = ''):
+    def MODULE_MAIN(self,
+                mainString: str,
+                baseFileName : str = ''
+                ) -> tuple:
+
         # error init
         self.error                  = None
         # directory key init
@@ -102,7 +111,10 @@ class TREATMENT:
                         else:
                             # checking  if module_name is in the Lib
                             if self.module_name in self.library:
-                                if isfile( path= self.path_library+'/'+self.module_name ) is True: 
+                                self.lib_path = bpath.Lib_Path( root = self.relative_path,
+                                              sys = self.system).getFile_in_Path( self.module_name)
+
+                                if isfile( path=self.lib_path ) is True:
                                     # current or Lib directory is checking here 
                                     if self.module_name != baseFileName:  self.key_directory.append( 'library' )
                                     else:
@@ -144,44 +156,25 @@ class TREATMENT:
                                     # reading modules loading and storing theirs values in storage_module
                                     with open(file=self.module_name, mode='r') as file:
                                         for line in file.readlines():
-                                            
-                                            if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
+                                            if line[-1] == '\n': line = line[ : -1 ]
                                             else: pass
                                             self.data_from_file.append( line )
                                     self.storage_module[ self.module_main[ i ] ] = self.data_from_file.copy()
                                 else:
                                     # case of Lib directory 
                                     self.data_from_file = []
-                                    try:
-                                        # case of Linux of macOs 
-                                        # building path 
-                                        self.path_library += '/' + self.module_name
-                                        # opening and reading file from Lib 
-                                        with open(file=self.path_library, mode='r') as file:
-                                            for line in file.readlines():
-                                                if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                                else: pass
-                                                self.data_from_file.append( line )
-                                        self.storage_module[ self.module_main[ i ] ] = self.data_from_file   
-                                        self.path_library = '/media/amiehe/KEY/black_mamba/Library'
-                                    except FileNotFoundError:
-                                        # case of Windows 
-                                        # Lib Path 
-                                        self.path_library = 'D:\\black_mamba\\Library'
-                                        # building path 
-                                        self.path_library += '/' + self.module_name
-                                        # opening and reading file from Lib 
-                                        with open(file=self.path_library, mode='r') as file:
-                                            for line in file.readlines():
-                                                if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                                else: pass
-                                                self.data_from_file.append( line )
-                                        
-                                        # storing value 
-                                        self.storage_module[ self.module_main[ i ] ] = self.data_from_file   
+                                    self.lib_path = bpath.Lib_Path(root=self.relative_path,
+                                                                   sys=self.system).getFile_in_Path(self.module_name)
+                                    # reading the opening file
+                                    with open(file=self.lib_path, mode='r') as file:
+                                        for line in file.readlines():
+                                            if line[ -1 ] == '\n':  line = line[ : -1]
+                                            else:  pass
+                                            # storing each line in data_from_file
+                                            self.data_from_file.append( line )
+                                    self.storage_module[ self.module_main[ i ] ] = self.data_from_file
                             else: pass
                     else: pass
-
                 else:
                     for module in self.module_main:
                         # building extension
@@ -189,7 +182,7 @@ class TREATMENT:
                         
                         if   self.module_name in self.currently_listdir:
                             if isfile( self.module_name ) == True: 
-                                if self.module_name != baseFileName:  self.key_directory = 'current'
+                                if self.module_name != baseFileName:  self.key_directory.append( 'current' )
                                 else: 
                                     self.error =  er.ERRORS( self.line ).ERROR8( self.module_name )
                                     break
@@ -197,9 +190,11 @@ class TREATMENT:
                                 self.error =  er.ERRORS( self.line ).ERROR2( self.module_name )
                                 break
                         elif self.module_name in self.library:
-                            if isfile( path= self.path_library+'/'+self.module_name ) is True: 
+                            self.lib_path = bpath.Lib_Path(root=self.relative_path,
+                                                           sys=self.system).getFile_in_Path(self.module_name)
+                            if isfile( path= self.lib_path) is True:
                                 if self.module_name != baseFileName:
-                                    self.key_directory = 'library'
+                                    self.key_directory.append('library')
                                 else:
                                     self.error =  er.ERRORS( self.line ).ERROR8( self.module_name )
                                     break
@@ -235,20 +230,19 @@ class TREATMENT:
                             
                                     with open(file=self.module_name, mode='r') as file:
                                         for line in file.readlines():
-                                            if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
+                                            if line[-1] == '\n': line = line[ : -1 ]
                                             else: pass
                                             self.data_from_file.append( line )
-                                            
                                     self.storage_module[ self.module_main[ i ] ] = self.data_from_file
                                 else:
                                     self.data_from_file = []
-                                    self.path_library += '/' + self.module_name
-                                    with open(file=self.path_library, mode='r') as file:
+                                    self.lib_path = bpath.Lib_Path(root=self.relative_path,
+                                                                   sys=self.system).getFile_in_Path(self.module_name)
+                                    with open(file=self.lib_path, mode='r') as file:
                                         for line in file.readlines():
-                                            if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
+                                            if line[-1] == '\n': line = line[ : -1]
                                             else: pass
                                             self.data_from_file.append( line )
-                                            
                                     self.storage_module[ self.module_main[ i ] ] = self.data_from_file      
                             else: pass          
                     else: pass
@@ -257,12 +251,14 @@ class TREATMENT:
                     self.module_name = module + self.termios
                     
                     if   self.module_name in self.currently_listdir:
-                        if isfile( self.module_name ) == True: self.key_directory = 'current'
+                        if isfile( self.module_name ) == True: self.key_directory.append( 'current' )
                         else: 
                             self.error =  er.ERRORS( self.line ).ERROR2( self.module_name )
                             break
                     elif self.module_name in self.library:
-                        if isfile( path= self.path_library+'/'+self.module_name ) is True: self.key_directory = 'library'
+                        self.lib_path = bpath.Lib_Path(root=self.relative_path,
+                                                       sys=self.system).getFile_in_Path(self.module_name)
+                        if isfile( path= self.lib_path ) is True: self.key_directory.append( 'library' )
                         else: 
                             self.error =  er.ERRORS( self.line ).ERROR2( self.module_name )
                             break
@@ -279,46 +275,52 @@ class TREATMENT:
                         self.module_name    = self.module_main[ i ] + self.termios
                         if self.key_directory[ i ] == 'current':
                             self.data_from_file = []
-                        
                             with open(file=self.module_name, mode='r') as file:
                                 for line in file.readlines():
-                                    if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
+                                    if line[-1] == '\n': line = line[ : -1]
                                     else: pass
                                     self.data_from_file.append( line )
                             self.storage_module[ self.module_main[ i ] ] = self.data_from_file
                         else:
                             self.data_from_file = []
-                            self.path_library += '/' + self.module_name
-                            with open(file=self.path_library, mode='r') as file:
+                            self.lib_path = bpath.Lib_Path(root=self.relative_path,
+                                                           sys=self.system).getFile_in_Path(self.module_name)
+                            with open(file=self.lib_path, mode='r') as file:
                                 for line in file.readlines():
-                                    if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
+                                    if line[-1] == '\n': line = line[ : -1 ]
                                     else: pass
                                     self.data_from_file.append( line )
-                                    
                             self.storage_module[ self.module_main[ i ] ] = self.data_from_file
                 else: pass
-        
         else:
             self.path           = self.path[ 0 ]
             self.listfir_path   = None
-            # 
+            # if any modules were not defined 
             if not self.data_base['modulesImport']['TrueFileNames']['names']:
+                # module name 
                 self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
+                # module location
                 self.data_base['modulesImport']['TrueFileNames']['path'].append(self.path)
+                # line 
                 self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
             else:
+                # if module_main[0] is not found 
                 if self.module_main[0] in self.data_base['modulesImport']['TrueFileNames']['names']:
+                    # updationg the module already load 
                     self.idd = self.data_base['modulesImport']['TrueFileNames']['names'].index(self.module_main[0])
                     if self.data_base['modulesImport']['TrueFileNames']['path'][self.idd] is not None: pass 
                     else:
                         self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
                         self.data_base['modulesImport']['TrueFileNames']['path'].append(self.path)
                         self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
+                # if module_main[0] is found 
                 else: 
+                    # storing the module name
                     self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
+                    # storing the module mocation 
                     self.data_base['modulesImport']['TrueFileNames']['path'].append(self.path)
+                    # storing the line 
                     self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
-            
             try:
                 try: 
                     # get path Linux and macOs
@@ -330,29 +332,20 @@ class TREATMENT:
                         self.newpath        = self.path.replace( '/', self._sr )
                         self.newpath        = self.newpath[ 2 : -2 ]
                         self.listfir_path   = listdir( self.newpath )
-                        
                     except OSError: self.error =  er.ERRORS( self.line ).ERROR7( self.path )
 
                 for module in self.module_main:
                     # building file with an extension
                     self.module_name = module + self.termios
-                    
                     if   self.module_name in self.currently_listdir:
                         # checking if file in the current directory
-                        if isfile( self.path+self.module_name ) == True: self.key_directory = 'current'
-                        else: 
-                            self.error =  er.ERRORS( self.line ).ERROR2( self.module_name )
-                            break
-                    elif self.module_name in self.library:
-                        # checking if file in the Lib directory
-                        if isfile( path= self.path_library+'/'+self.module_name ) is True: self.key_directory = 'library'
+                        if isfile( self.path+self.module_name ) == True: self.key_directory.append( 'current' )
                         else: 
                             self.error =  er.ERRORS( self.line ).ERROR2( self.module_name )
                             break
                     else:        
                         self.error =  er.ERRORS( self.line ).ERROR1( module )
                         break
-                    
                 if self.error is None: 
                     self.len_module_main    = len( self.module_main )
                     self.value              = []
@@ -368,30 +361,23 @@ class TREATMENT:
                             # opening , reading and storing values in data_from_file
                             with open(file=self.newPath, mode='r') as file:
                                 for line in file.readlines():
-                                    if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
+                                    if line[-1] == '\n': line = line[ : -1]
                                     else: pass
                                     self.data_from_file.append( line )
-                            
-                            # storing values in a dictionary     
+                            # storing values in a dictionary
                             self.storage_module[ self.module_main[ i ] ] = self.data_from_file
                         else:
-                            # Lib directory
-                            self.data_from_file = []
-                            self.path_library += '/' + self.module_name
-                            # opening , reading and storing values in data_from_file
-                            with open(file=self.path_library, mode='r') as file:
-                                for line in file.readlines():
-                                    if line[-1] == '\n': line, _ = self.control.DELETE_SPACE( line[:-1] )
-                                    else: pass
-                                    self.data_from_file.append( line )
-                            
-                            # storing values in a dictionary  
-                            self.storage_module[ self.module_main[ i ] ] = self.data_from_file.copy()
+                            self.error = er.ERRORS(self.line).ERROR2(self.module_name)
+                            break
                 else: pass
             except FileNotFoundError: self.error =  er.ERRORS( self.line ).ERROR6( self.path )
             except EOFError: self.error =  er.ERRORS( self.line ).ERROR7( self.path )
         
-        # final configuration for loading module
+        # final configuration for loading modules which contains
+        # * the alias for connecting main module to an alias
+        # * the modules load which come from the main module
+        # * the main module name
+
         self.info = {
             'alias'         : self.alias,
             'module_load'   : self.module_load,
