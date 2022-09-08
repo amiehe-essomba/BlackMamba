@@ -142,7 +142,7 @@ class EXTERNAL_DEF_LINUX:
         while True:
             try:
                 # get input
-                self.char = readchar()
+                self.char = readchar.readchar()
                 # breaking loop while with the keyboardError
                 if self.char == 3:
                     self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
@@ -155,17 +155,17 @@ class EXTERNAL_DEF_LINUX:
                     # have a look on ansi char           #
                     ######################################
                     # building input
-                    self.input = self.input[: self.index + self.last] + chr(self.char) + self.input[ self.index + self.last:]
+                    self.input  = self.input[: self.index + self.last] + chr(self.char) + self.input[ self.index + self.last:]
                     # building s
-                    self.s = self.s[: self.I] + chr(self.char) + self.s[self.I:]
+                    self.s      = self.s[: self.I] + chr(self.char) + self.s[self.I:]
                     # building string
                     self.string = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
                     # increasing index of a step = 1
                     self.index += 1
                     # increasing I of a step = 1
-                    self.I += 1
+                    self.I     += 1
                     # increasing I_S of step = 1
-                    self.I_S += 1
+                    self.I_S   += 1
                     # storing char in get
                     self.get.append(self.char)
                 # moving cursor up, down, left, reight
@@ -179,40 +179,36 @@ class EXTERNAL_DEF_LINUX:
                                     try:
                                         # without indentation
                                         if 32 <= self.get[self.I - 1] <= 126:
-                                            self.I -= 1
+                                            self.I     -= 1
                                             self.index += 1
-                                            self.last -= 2
-                                            self.I_S -= 1
+                                            self.last  -= 2
+                                            self.I_S   -= 1
                                         # when identation is detected
                                         elif self.get[self.I - 1] == 9:
-                                            self.I -= 4
+                                            self.I     -= 4
                                             self.index += 4
-                                            self.last -= 8
-                                            self.I_S -= 4
-                                    except IndexError:
-                                        pass
-                                else:
-                                    pass
+                                            self.last  -= 8
+                                            self.I_S  -= 4
+                                    except IndexError: pass
+                                else:   pass
                             # move cursor to right
                             elif next2 == 67:
                                 if self.I < len(self.s):
                                     try:
                                         # without indentation
                                         if 32 <= self.get[self.I] <= 126:
-                                            self.I += 1
+                                            self.I     += 1
                                             self.index -= 1
-                                            self.last += 2
-                                            self.I_S += 1
+                                            self.last  += 2
+                                            self.I_S   += 1
                                         # when identation is detected
                                         elif self.get[self.I] == 9:
-                                            self.I += 4
+                                            self.I     += 4
                                             self.index -= 4
-                                            self.last += 8
-                                            self.I_S += 4
-                                    except IndexError:
-                                        pass
-                                else:
-                                    pass
+                                            self.last  += 8
+                                            self.I_S   += 4
+                                    except IndexError: pass
+                                else: pass
                             # get the previous value stored in the list
                             elif next2 == 65:  # up
                                 if self.liste:
@@ -221,30 +217,28 @@ class EXTERNAL_DEF_LINUX:
                                         self.idd -= 1
                                         if len(self.liste) >= abs(self.idd):
                                             # previous input
-                                            self.input = self.liste[self.idd]
+                                            self.input      = self.liste[self.idd]
                                             # previous s
-                                            self.s = self.sub_liste[self.idd]
+                                            self.s          = self.sub_liste[self.idd]
                                             # previous string
-                                            self.string = self.string_tabular[self.idd]
+                                            self.string     = self.string_tabular[self.idd]
                                             # restoring the prvious get of s
-                                            self.get = self.memory[self.idd]
+                                            self.get        = self.memory[self.idd]
                                             # restoring cursor position in the input
-                                            self.index = self.tabular[self.idd]
+                                            self.index      = self.tabular[self.idd]
                                             # restoring cursor position in s
-                                            self.I = self.sub_tabular[self.idd]
+                                            self.I          = self.sub_tabular[self.idd]
                                             # restoring cursor position in string
-                                            self.I_S = self.string_tab[self.idd]
+                                            self.I_S        = self.string_tab[self.idd]
                                             # restoring the value of last
-                                            self.last = self.last_tabular[self.idd]
+                                            self.last       = self.last_tabular[self.idd]
                                             # restoring remove_tab from index
                                             self.remove_tab = self.remove_tabular[self.idd]
-                                        else:
-                                            self.idd += 1
+                                        else:  self.idd += 1
                                     except IndexError:
                                         # any changes here when local IndexError is detected
                                         pass
-                                else:
-                                    pass
+                                else: pass
                             # get the next value stored in the list
                             elif next2 == 66:
                                 if self.liste:
@@ -253,35 +247,31 @@ class EXTERNAL_DEF_LINUX:
                                         self.idd += 1
                                         # next input
                                         if len(self.liste) > self.idd:
-                                            self.input = self.liste[self.idd]
+                                            self.input  = self.liste[self.idd]
                                             # next s
-                                            self.s = self.sub_liste[self.idd]
+                                            self.s      = self.sub_liste[self.idd]
                                             # next string
                                             self.string = self.string_tabular[self.idd]
                                             # restoring the prvious get of s
-                                            self.get = self.memory[self.idd]
+                                            self.get    = self.memory[self.idd]
                                             # restoring cursor position in the input
-                                            self.index = self.tabular[self.idd]
+                                            self.index  = self.tabular[self.idd]
                                             # restoring cursor position in s
-                                            self.I = self.sub_tabular[self.idd]
+                                            self.I      = self.sub_tabular[self.idd]
                                             # restoring cursor position in string
-                                            self.I_S = self.string_tab[self.idd]
+                                            self.I_S    = self.string_tab[self.idd]
                                             # restoring the value of last
-                                            self.last = self.last_tabular[self.idd]
+                                            self.last   = self.last_tabular[self.idd]
                                             # restoring remove_tab from index
                                             self.remove_tab = self.remove_tabular[self.idd]
-                                        else:
-                                            self.idd -= 1
+                                        else: self.idd -= 1
                                     except IndexError:
                                         # any changes here when local IndexError is detected
                                         pass
-                                else:
-                                    pass
-                        except IndexError:
-                            pass
-                    else:
-                        pass
-                    # delecting char
+                                else: pass
+                        except IndexError: pass
+                    else: pass
+                # delecting char
                 elif self.char == 127       :
                     # if s is not empty
                     if self.s:
@@ -311,54 +301,49 @@ class EXTERNAL_DEF_LINUX:
                                         # decreasing index of -1
                                         self.index -= 1
                                         # building s
-                                        self.s = self.s[: self.I - 1] + self.s[self.I:]
+                                        self.s      = self.s[: self.I - 1] + self.s[self.I:]
                                         # decreating I of -1
-                                        self.I -= 1
+                                        self.I     -= 1
                                         # delecting the value in get associated to the index I-1
                                         del self.get[self.I]
 
                                     # building string
-                                    self.string = self.string[: self.I_S - 1] + self.string[self.I_S:]
+                                    self.string    = self.string[: self.I_S - 1] + self.string[self.I_S:]
                                     # decreasing I_S of -1
-                                    self.I_S -= 1
+                                    self.I_S      -= 1
                                     # set key of True
-                                    self.key = True
-                                else:
-                                    pass
+                                    self.key       = True
+                                else:  pass
 
                                 # if key is False it means s has not indentation
                                 if self.key is False:
                                     # building input
-                                    self.input = self.input[: self.index + self.last - self.name] + self.input[
+                                    self.input  = self.input[: self.index + self.last - self.name] + self.input[
                                                                                                     self.index + self.last:]
                                     # decreasing index of -name with name = 1
                                     self.index -= self.name
                                     # building s
-                                    self.s = self.s[: self.I - 1] + self.s[self.I:]
+                                    self.s      = self.s[: self.I - 1] + self.s[self.I:]
                                     # building string
                                     self.string = self.string[: self.I_S - 1] + self.string[self.I_S:]
                                     # decreasing I and I_S of -1
-                                    self.I -= 1
-                                    self.I_S -= 1
-                                else:
-                                    pass
-                            else:
-                                pass
-                        except IndexError:
-                            pass
-                    else:
-                        pass
+                                    self.I     -= 1
+                                    self.I_S   -= 1
+                                else:  pass
+                            else: pass
+                        except IndexError: pass
+                    else:   pass
                 # indentation
                 elif self.char == 9         :
 
-                    self.tt = '    '
-                    self.input = self.input[: self.index + self.last] + str(self.tt) + self.input[ self.index + self.last:]
-                    self.s = self.s[: self.I] + str(self.tt) + self.s[self.I:]
+                    self.tt          = '    '
+                    self.input       = self.input[: self.index + self.last] + str(self.tt) + self.input[ self.index + self.last:]
+                    self.s           = self.s[: self.I] + str(self.tt) + self.s[self.I:]
                     # string takes the true value of char
-                    self.string = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
-                    self.index += 4
-                    self.I += 4
-                    self.I_S += 1
+                    self.string      = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
+                    self.index      += 4
+                    self.I          += 4
+                    self.I_S        += 1
 
                     for i in range(4):
                         self.get.append(self.char)
@@ -374,57 +359,55 @@ class EXTERNAL_DEF_LINUX:
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
 
                     # initialization block
-                    self.input = self.main_input
-                    self.index = self.length
-                    self.s = ''
+                    self.input  = self.main_input
+                    self.index  = self.length
+                    self.s      = ''
                     self.string = ''
-                    self.I = 0
-                    self.I_S = 0
-                    self.get = []
-                    self.idd = 0
-                    self.last = 0
+                    self.I      = 0
+                    self.I_S    = 0
+                    self.get    = []
+                    self.idd    = 0
+                    self.last   = 0
                     self.remove_tab = 0
-                    # move cursor at end of line
+                # move cursor at end of line
                 elif self.char == 4         :
                     while self.I < len(self.s):
                         try:
                             # without indentation
                             if 32 <= self.get[self.I] <= 126:
-                                self.I += 1
+                                self.I     += 1
                                 self.index -= 1
-                                self.last += 2
-                                self.I_S += 1
+                                self.last  += 2
+                                self.I_S   += 1
                             # when identation is detected
                             elif self.get[self.I] == 9:
-                                self.I += 4
+                                self.I     += 4
                                 self.index -= 4
-                                self.last += 8
-                                self.I_S += 4
-                        except IndexError:
-                            pass
-                        # move cursor at the beginning of line
+                                self.last  += 8
+                                self.I_S   += 4
+                        except IndexError: pass
+                # move cursor at the beginning of line
                 elif self.char == 17        :
                     while self.I > 0:
                         try:
                             # without indentation
                             if 32 <= self.get[self.I - 1] <= 126:
-                                self.I -= 1
+                                self.I     -= 1
                                 self.index += 1
-                                self.last -= 2
-                                self.I_S -= 1
+                                self.last  -= 2
+                                self.I_S   -= 1
                             # when identation is detected
                             elif self.get[self.I - 1] == 9:
-                                self.I -= 4
+                                self.I     -= 4
                                 self.index += 4
-                                self.last -= 8
-                                self.I_S -= 4
-                        except IndexError:
-                            pass
-                        # clear entire screen and restore cursor position
+                                self.last  -= 8
+                                self.I_S   -= 4
+                        except IndexError:  pass
+                # clear entire screen and restore cursor position
                 elif self.char == 19        :
                     sys.stdout.write(bm.clear.screen(pos=2))
                     sys.stdout.write(bm.save.restore)
-                    # End-Of-File Error
+                # End-Of-File Error
                 elif self.char == 26        :
                     self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                     print(self._end_of_file_)
@@ -435,10 +418,8 @@ class EXTERNAL_DEF_LINUX:
                     # move cursor of left
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     # print the final input with its transformations
-                    if self.term == 'orion':
-                        print(self.main_input + bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final())
-                    else:
-                        print(self.main_input + bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                    if self.term == 'orion':  print(self.main_input + bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final())
+                    else: print(self.main_input + bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
 
                     # storing input
                     self.liste.append(self.input)
@@ -461,48 +442,38 @@ class EXTERNAL_DEF_LINUX:
 
                     if self.string:
                         # calling the main module DEF
-                        self.def_cancel, self.error = ED.EXTERNAL_DEF(master=self.mainString, data_base=self.data_base,
-                                                                      line=self.if_line, history=self.history,
-                                                                      store_value=self.store_value,
-                                                                      space=self.space).DEF(tabulation=self.tabulation,
-                                                                                            def_starage=self.def_starage,
-                                                                                            subFunc=self.subFunc,
-                                                                                            class_name=class_name,
-                                                                                            class_key=class_key, c=c,
-                                                                                            function=function,
-                                                                                            _type_=_type_,
-                                                                                            term=self.term)
+                        self.def_cancel, self.error = ED.EXTERNAL_DEF(master=self.string, data_base=self.data_base,
+                                    ine=self.if_line, history=self.history,  store_value=self.store_value, space=self.space).DEF(tabulation=self.tabulation,
+                                    def_starage=self.def_starage, subFunc=self.subFunc, class_name=class_name,  class_key=class_key, c=c, function=function,
+                                    _type_=_type_, term=self.term)
+                                    
                         # break while loop if error is not None
                         if self.error is None:
-                            if self.def_cancel is True:
-                                break
-                            else:
-                                pass
-                        else:
-                            break
+                            if self.def_cancel is True:  break
+                            else:  pass
+                        else: break
                     else:
                         # if no string
                         if self.space <= self.max_emtyLine:
                             self.space += 1
-                            self.mainString = self.analyse.BUILD_NON_CON(string=self.mainString,
-                                                                         tabulation=self.tabulation)
-                            self.def_starage.append((self.mainString, False))
+                            self.string = self.analyse.BUILD_NON_CON(string=self.string, tabulation=self.tabulation)
+                            self.def_starage.append((self.string, False))
                         else:
                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                             break
 
                     # initialization block
-                    self.input = self.main_input
-                    self.index = self.length
-                    self.s = ''
+                    self.input  = self.main_input
+                    self.index  = self.length
+                    self.s      = ''
                     self.string = ''
-                    self.I = 0
-                    self.I_S = 0
-                    self.get = []
-                    self.idd = 0
-                    self.last = 0
+                    self.I      = 0
+                    self.I_S    = 0
+                    self.get    = []
+                    self.idd    = 0
+                    self.last   = 0
                     self.remove_tab = 0
-                    # move cursor on left
+                # move cursor on left
                 sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                 # clear entire line
                 sys.stdout.write(bm.clear.line(pos=0))
