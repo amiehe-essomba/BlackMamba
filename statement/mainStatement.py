@@ -56,7 +56,7 @@ class MAIN:
                 self._return_, self.error = numeric_lexer.NUMERCAL_LEXER(self.string, self.data_base,
                                                                                     self.line).LEXER(self.master)
                 if self.error is None:
-                    if typ == 'case': pass
+                    if typ in [ 'switch', 'case' ]: pass
                     else:
                         if   type(self._return_) == type(bool())    : pass
                         elif type(self._return_) in self.type       :

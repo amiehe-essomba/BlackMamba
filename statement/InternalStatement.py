@@ -50,6 +50,7 @@ class INTERNAL_BLOCKS:
         self.value          = None
         self.badFunctions   = ['elif', 'else', 'except', 'finally', 'case', 'default', 'func', 'class']
         self.len            = [4, 4, 6, 7, 4, 7, 4, 5]
+
         self.string         = self.string[ self.back_end : ]
         self.normal_string  = self.normal_string[ self.back_end : ]
 
@@ -108,6 +109,7 @@ class INTERNAL_BLOCKS:
                         if self.normal_string[ -1 ] == ':':
                             if self.normal_string[ 5 ] in [ ' ' ]:
                                 self._return_ = 'while:'
+
                                 self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
                                     typ='while', opposite=False, interpreter=interpreter, function=function)
                             else:  self.error = er.ERRORS(self.line).ERROR5(self.normal_string)
