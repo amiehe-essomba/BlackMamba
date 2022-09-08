@@ -1,7 +1,8 @@
-from script.PARXER          import numerical_value as nv
-from colorama               import Fore, Style
-from script.MATHS           import mathematics
-from CythonModules.Linux    import NumeriCal  as nc
+from script.PARXER                      import numerical_value as nv
+from colorama                           import Fore, Style
+from script.MATHS                       import mathematics
+from CythonModules.Linux                import NumeriCal  as nc
+from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
 
 
 cdef class ARITHMETIC:
@@ -549,7 +550,7 @@ cdef class FINAL_VALUE:
         public list logical
         public int  line 
 
-    def __init__(self, master, DataBase, line, logical ):
+    def __init__(self, master, DataBase, line, logical):
         self.master         = master
         self.logical        = logical
         self.line           = line
@@ -602,21 +603,21 @@ cdef class FINAL_VALUE:
         if type( self.master ) == type( list() ):  return _return_, number, error
         else: return tuple( _return_ ), number, error
 
-    cdef str CONVERSION( self, master_init ):
+    cpdef CONVERSION( self, master_init ):
         cdef str _return_
         
-        if   type( master_init ) == type( int() )       :   _return_ = '{}{}integer(){}'.format(color.be, color.ne, color.be)
-        elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(color.be, color.ve, color.be)
-        elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(color.be, color.ae, color.be)
-        elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(color.be, color.me, color.be)
-        elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(color.be, color.ke, color.be)
-        elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(color.be, color.ie, color.be)
-        elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( color.be, color.te, color.be)
-        elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(color.be, color.be, color.be)
-        elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(color.be, color.ge, color.be)
-        elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(color.be, color.le, color.be)
+        if   type( master_init ) == type( int() )       :   _return_ = '{}{}integer(){}'.format(bm.fg.blue, bm.fg.red_L, bm.fg.blue)
+        elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
+        elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
+        elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan_L, bm.fg.blue)
+        elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(bm.fg.blue, bm.fg.yellow_L, bm.fg.blue)
+        elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(bm.fg.blue, bm.fg.blue_L, bm.fg.blue)
+        elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.magenta, bm.fg.blue)
+        elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.blue, bm.fg.blue)
+        elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green, bm.fg.blue)
+        elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(bm.fg.blue, bm.fg.red, bm.fg.blue)
 
-        return _return_ + color.reset
+        return _return_ + bm.init.reset
 
 
 cdef class color:

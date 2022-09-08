@@ -4,8 +4,10 @@ import             re, os, sys
 from   sys         import stdout, stdin
 from   time        import sleep
 from   datetime    import datetime
-from   tkinter     import *
 from script        import control_string
+try:
+    from   tkinter     import *
+except ModuleNotFoundError: pass
 
 class fg:
     black       = u"\u001b[30m"

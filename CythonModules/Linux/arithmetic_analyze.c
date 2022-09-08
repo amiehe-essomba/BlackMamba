@@ -914,7 +914,7 @@ struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE;
 struct __pyx_obj_18arithmetic_analyze_color;
 struct __pyx_opt_args_18arithmetic_analyze_11FINAL_VALUE_GET_DATA;
 
-/* "arithmetic_analyze.pyx":558
+/* "arithmetic_analyze.pyx":559
  *         self.DataBase       = DataBase
  * 
  *     cdef GET_DATA( self , _object_, bint out_side = True) :             # <<<<<<<<<<<<<<
@@ -926,7 +926,7 @@ struct __pyx_opt_args_18arithmetic_analyze_11FINAL_VALUE_GET_DATA {
   int out_side;
 };
 
-/* "arithmetic_analyze.pyx":7
+/* "arithmetic_analyze.pyx":8
  * 
  * 
  * cdef class ARITHMETIC:             # <<<<<<<<<<<<<<
@@ -946,7 +946,7 @@ struct __pyx_obj_18arithmetic_analyze_ARITHMETIC {
 };
 
 
-/* "arithmetic_analyze.pyx":221
+/* "arithmetic_analyze.pyx":222
  * 
  * 
  * cdef class ARRITHMETIC_DEEP_CHECKING:             # <<<<<<<<<<<<<<
@@ -964,7 +964,7 @@ struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING {
 };
 
 
-/* "arithmetic_analyze.pyx":545
+/* "arithmetic_analyze.pyx":546
  * 
  * 
  * cdef class FINAL_VALUE:             # <<<<<<<<<<<<<<
@@ -981,7 +981,7 @@ struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE {
 };
 
 
-/* "arithmetic_analyze.pyx":622
+/* "arithmetic_analyze.pyx":623
  * 
  * 
  * cdef class color:             # <<<<<<<<<<<<<<
@@ -1006,7 +1006,7 @@ struct __pyx_obj_18arithmetic_analyze_color {
 
 
 
-/* "arithmetic_analyze.pyx":7
+/* "arithmetic_analyze.pyx":8
  * 
  * 
  * cdef class ARITHMETIC:             # <<<<<<<<<<<<<<
@@ -1020,7 +1020,7 @@ struct __pyx_vtabstruct_18arithmetic_analyze_ARITHMETIC {
 static struct __pyx_vtabstruct_18arithmetic_analyze_ARITHMETIC *__pyx_vtabptr_18arithmetic_analyze_ARITHMETIC;
 
 
-/* "arithmetic_analyze.pyx":221
+/* "arithmetic_analyze.pyx":222
  * 
  * 
  * cdef class ARRITHMETIC_DEEP_CHECKING:             # <<<<<<<<<<<<<<
@@ -1035,7 +1035,7 @@ struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING {
 static struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *__pyx_vtabptr_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING;
 
 
-/* "arithmetic_analyze.pyx":545
+/* "arithmetic_analyze.pyx":546
  * 
  * 
  * cdef class FINAL_VALUE:             # <<<<<<<<<<<<<<
@@ -1045,7 +1045,7 @@ static struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *_
 
 struct __pyx_vtabstruct_18arithmetic_analyze_FINAL_VALUE {
   PyObject *(*GET_DATA)(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *, PyObject *, struct __pyx_opt_args_18arithmetic_analyze_11FINAL_VALUE_GET_DATA *__pyx_optional_args);
-  PyObject *(*CONVERSION)(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *, PyObject *);
+  PyObject *(*CONVERSION)(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *, PyObject *, int __pyx_skip_dispatch);
 };
 static struct __pyx_vtabstruct_18arithmetic_analyze_FINAL_VALUE *__pyx_vtabptr_18arithmetic_analyze_FINAL_VALUE;
 
@@ -1555,7 +1555,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
 static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *__pyx_v_self, PyObject *__pyx_v_MainString); /* proto*/
 static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_INIT(struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *__pyx_v_self, PyObject *__pyx_v_MainString); /* proto*/
 static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v__object_, struct __pyx_opt_args_18arithmetic_analyze_11FINAL_VALUE_GET_DATA *__pyx_optional_args); /* proto*/
-static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UNUSED struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_master_init); /* proto*/
+static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UNUSED struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_master_init, int __pyx_skip_dispatch); /* proto*/
 
 /* Module declarations from 'arithmetic_analyze' */
 static PyTypeObject *__pyx_ptype_18arithmetic_analyze_ARITHMETIC = 0;
@@ -1582,27 +1582,23 @@ static const char __pyx_k__6[] = "==";
 static const char __pyx_k__7[] = ">=";
 static const char __pyx_k__8[] = "<=";
 static const char __pyx_k__9[] = "!=";
-static const char __pyx_k_ae[] = "ae";
-static const char __pyx_k_be[] = "be";
-static const char __pyx_k_ge[] = "ge";
-static const char __pyx_k_ie[] = "ie";
-static const char __pyx_k_ke[] = "ke";
-static const char __pyx_k_le[] = "le";
-static const char __pyx_k_me[] = "me";
+static const char __pyx_k_bm[] = "bm";
+static const char __pyx_k_fg[] = "fg";
 static const char __pyx_k_nc[] = "nc";
-static const char __pyx_k_ne[] = "ne";
 static const char __pyx_k_nv[] = "nv";
-static const char __pyx_k_te[] = "te";
-static const char __pyx_k_ve[] = "ve";
 static const char __pyx_k_RED[] = "RED";
 static const char __pyx_k__10[] = "<";
 static const char __pyx_k__11[] = ">";
 static const char __pyx_k_new[] = "__new__";
+static const char __pyx_k_red[] = "red";
 static const char __pyx_k_BLUE[] = "BLUE";
 static const char __pyx_k_CYAN[] = "CYAN";
 static const char __pyx_k_Fore[] = "Fore";
 static const char __pyx_k_TYPE[] = "TYPE";
+static const char __pyx_k_blue[] = "blue";
+static const char __pyx_k_cyan[] = "cyan";
 static const char __pyx_k_dict[] = "__dict__";
+static const char __pyx_k_init[] = "init";
 static const char __pyx_k_line[] = "line";
 static const char __pyx_k_list[] = "{}{}list(){}";
 static const char __pyx_k_main[] = "__main__";
@@ -1616,7 +1612,9 @@ static const char __pyx_k_Style[] = "Style";
 static const char __pyx_k_Value[] = "Value";
 static const char __pyx_k_color[] = "color";
 static const char __pyx_k_float[] = "{}{}float(){}";
+static const char __pyx_k_green[] = "green";
 static const char __pyx_k_range[] = "range";
+static const char __pyx_k_red_L[] = "red_L";
 static const char __pyx_k_reset[] = "reset";
 static const char __pyx_k_tuple[] = "{}{}tuple(){}";
 static const char __pyx_k_ERROR7[] = "ERROR7";
@@ -1624,6 +1622,8 @@ static const char __pyx_k_ERROR8[] = "ERROR8";
 static const char __pyx_k_ERRORS[] = "ERRORS";
 static const char __pyx_k_Values[] = "Values";
 static const char __pyx_k_append[] = "append";
+static const char __pyx_k_blue_L[] = "blue_L";
+static const char __pyx_k_cyan_L[] = "cyan_L";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_master[] = "master";
@@ -1636,14 +1636,17 @@ static const char __pyx_k_values[] = "values";
 static const char __pyx_k_MAGENTA[] = "MAGENTA";
 static const char __pyx_k_boolean[] = "{}{}boolean(){}";
 static const char __pyx_k_complex[] = "{}{}complex(){}";
+static const char __pyx_k_green_L[] = "green_L";
 static const char __pyx_k_integer[] = "{}{}integer(){}";
 static const char __pyx_k_logical[] = "logical";
+static const char __pyx_k_magenta[] = "magenta";
 static const char __pyx_k_range_2[] = "{}{}range(){}";
 static const char __pyx_k_DataBase[] = "DataBase";
 static const char __pyx_k_colorama[] = "colorama";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_pyx_type[] = "__pyx_type";
 static const char __pyx_k_setstate[] = "__setstate__";
+static const char __pyx_k_yellow_L[] = "yellow_L";
 static const char __pyx_k_NumeriCal[] = "NumeriCal";
 static const char __pyx_k_RESET_ALL[] = "RESET_ALL";
 static const char __pyx_k_TypeError[] = "TypeError";
@@ -1652,6 +1655,7 @@ static const char __pyx_k_operators[] = "operators";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_ARITHMETIC[] = "ARITHMETIC";
+static const char __pyx_k_CONVERSION[] = "CONVERSION";
 static const char __pyx_k_IndexError[] = "IndexError";
 static const char __pyx_k_dictionary[] = "{}{}dictionary(){}";
 static const char __pyx_k_pyx_result[] = "__pyx_result";
@@ -1662,6 +1666,7 @@ static const char __pyx_k_PickleError[] = "PickleError";
 static const char __pyx_k_mathematics[] = "mathematics";
 static const char __pyx_k_LIGHTBLUE_EX[] = "LIGHTBLUE_EX";
 static const char __pyx_k_LIGHTCYAN_EX[] = "LIGHTCYAN_EX";
+static const char __pyx_k_bm_configure[] = "bm_configure";
 static const char __pyx_k_calculations[] = "calculations";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_script_MATHS[] = "script.MATHS";
@@ -1682,6 +1687,7 @@ static const char __pyx_k_pyx_unpickle_color[] = "__pyx_unpickle_color";
 static const char __pyx_k_ArithmeticOperators[] = "ArithmeticOperators";
 static const char __pyx_k_CythonModules_Linux[] = "CythonModules.Linux";
 static const char __pyx_k_pyx_unpickle_ARITHMETIC[] = "__pyx_unpickle_ARITHMETIC";
+static const char __pyx_k_script_STDIN_LinuxSTDIN[] = "script.STDIN.LinuxSTDIN";
 static const char __pyx_k_pyx_unpickle_FINAL_VALUE[] = "__pyx_unpickle_FINAL_VALUE";
 static const char __pyx_k_ARRITHMETIC_DEEP_CHECKING[] = "ARRITHMETIC_DEEP_CHECKING";
 static const char __pyx_k_pyx_unpickle_ARRITHMETIC_DEEP[] = "__pyx_unpickle_ARRITHMETIC_DEEP_CHECKING";
@@ -1695,6 +1701,7 @@ static PyObject *__pyx_n_s_ARRITHMETIC_DEEP_CHECKING;
 static PyObject *__pyx_n_s_ArithmeticOperators;
 static PyObject *__pyx_n_s_BLUE;
 static PyObject *__pyx_n_s_CHECK;
+static PyObject *__pyx_n_s_CONVERSION;
 static PyObject *__pyx_n_s_CYAN;
 static PyObject *__pyx_n_s_CythonModules_Linux;
 static PyObject *__pyx_n_s_DataBase;
@@ -1735,38 +1742,41 @@ static PyObject *__pyx_kp_s__6;
 static PyObject *__pyx_kp_s__7;
 static PyObject *__pyx_kp_s__8;
 static PyObject *__pyx_kp_s__9;
-static PyObject *__pyx_n_s_ae;
 static PyObject *__pyx_n_s_append;
 static PyObject *__pyx_n_s_arithmetic_analyze;
-static PyObject *__pyx_n_s_be;
+static PyObject *__pyx_n_s_blue;
+static PyObject *__pyx_n_s_blue_L;
+static PyObject *__pyx_n_s_bm;
+static PyObject *__pyx_n_s_bm_configure;
 static PyObject *__pyx_kp_s_boolean;
 static PyObject *__pyx_n_s_calculations;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_color;
 static PyObject *__pyx_n_s_colorama;
 static PyObject *__pyx_kp_s_complex;
+static PyObject *__pyx_n_s_cyan;
+static PyObject *__pyx_n_s_cyan_L;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_kp_s_dictionary;
 static PyObject *__pyx_n_s_enumerate;
+static PyObject *__pyx_n_s_fg;
 static PyObject *__pyx_kp_s_float;
 static PyObject *__pyx_n_s_format;
-static PyObject *__pyx_n_s_ge;
 static PyObject *__pyx_n_s_getstate;
-static PyObject *__pyx_n_s_ie;
+static PyObject *__pyx_n_s_green;
+static PyObject *__pyx_n_s_green_L;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_kp_s_integer;
-static PyObject *__pyx_n_s_ke;
-static PyObject *__pyx_n_s_le;
 static PyObject *__pyx_n_s_line;
 static PyObject *__pyx_kp_s_list;
 static PyObject *__pyx_n_s_logical;
+static PyObject *__pyx_n_s_magenta;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_master;
 static PyObject *__pyx_n_s_mathematics;
-static PyObject *__pyx_n_s_me;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_nc;
-static PyObject *__pyx_n_s_ne;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_kp_s_none;
 static PyObject *__pyx_n_s_numerical_value;
@@ -1785,6 +1795,8 @@ static PyObject *__pyx_n_s_pyx_unpickle_color;
 static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_kp_s_range_2;
+static PyObject *__pyx_n_s_red;
+static PyObject *__pyx_n_s_red_L;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
@@ -1792,17 +1804,17 @@ static PyObject *__pyx_n_s_reset;
 static PyObject *__pyx_n_s_return;
 static PyObject *__pyx_n_s_script_MATHS;
 static PyObject *__pyx_n_s_script_PARXER;
+static PyObject *__pyx_n_s_script_STDIN_LinuxSTDIN;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_kp_s_string;
 static PyObject *__pyx_kp_s_stringsource;
-static PyObject *__pyx_n_s_te;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_kp_s_tuple;
 static PyObject *__pyx_n_s_type;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_values;
-static PyObject *__pyx_n_s_ve;
+static PyObject *__pyx_n_s_yellow_L;
 static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_18arithmetic_analyze_ARITHMETIC *__pyx_v_self, PyObject *__pyx_v_master, PyObject *__pyx_v_DataBase, PyObject *__pyx_v_Value, PyObject *__pyx_v_ArithmeticOperators, PyObject *__pyx_v_line); /* proto */
 static PyObject *__pyx_pf_18arithmetic_analyze_10ARITHMETIC_2CHECK(struct __pyx_obj_18arithmetic_analyze_ARITHMETIC *__pyx_v_self, PyObject *__pyx_v_MainString); /* proto */
 static PyObject *__pyx_pf_18arithmetic_analyze_10ARITHMETIC_6master___get__(struct __pyx_obj_18arithmetic_analyze_ARITHMETIC *__pyx_v_self); /* proto */
@@ -1839,6 +1851,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_4line_2__se
 static PyObject *__pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_2__reduce_cython__(struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_4__setstate_cython__(struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE___init__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_master, PyObject *__pyx_v_DataBase, PyObject *__pyx_v_line, PyObject *__pyx_v_logical); /* proto */
+static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_2CONVERSION(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_master_init); /* proto */
 static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_6master___get__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self); /* proto */
 static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_6master_2__set__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_6master_4__del__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self); /* proto */
@@ -1850,8 +1863,8 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_7logical_2__set__(struct 
 static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_7logical_4__del__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4line___get__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self); /* proto */
 static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4line_2__set__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_2__reduce_cython__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4__setstate_cython__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4__reduce_cython__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_6__setstate_cython__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_18arithmetic_analyze_5color___init__(struct __pyx_obj_18arithmetic_analyze_color *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_18arithmetic_analyze_5color_2ve___get__(struct __pyx_obj_18arithmetic_analyze_color *__pyx_v_self); /* proto */
 static int __pyx_pf_18arithmetic_analyze_5color_2ve_2__set__(struct __pyx_obj_18arithmetic_analyze_color *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
@@ -1919,7 +1932,7 @@ static PyObject *__pyx_codeobj__18;
 static PyObject *__pyx_codeobj__20;
 /* Late includes */
 
-/* "arithmetic_analyze.pyx":19
+/* "arithmetic_analyze.pyx":20
  *         list calculation
  * 
  *     def __init__( self, master, DataBase, Value, ArithmeticOperators, line ):             # <<<<<<<<<<<<<<
@@ -1970,29 +1983,29 @@ static int __pyx_pw_18arithmetic_analyze_10ARITHMETIC_1__init__(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_DataBase)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 1); __PYX_ERR(0, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 1); __PYX_ERR(0, 20, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_Value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 2); __PYX_ERR(0, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 2); __PYX_ERR(0, 20, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ArithmeticOperators)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 3); __PYX_ERR(0, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 3); __PYX_ERR(0, 20, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_line)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 4); __PYX_ERR(0, 19, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 4); __PYX_ERR(0, 20, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 19, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 20, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
       goto __pyx_L5_argtuple_error;
@@ -2011,7 +2024,7 @@ static int __pyx_pw_18arithmetic_analyze_10ARITHMETIC_1__init__(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 19, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 20, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("arithmetic_analyze.ARITHMETIC.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2034,24 +2047,24 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "arithmetic_analyze.pyx":20
+  /* "arithmetic_analyze.pyx":21
  * 
  *     def __init__( self, master, DataBase, Value, ArithmeticOperators, line ):
  *         self.line                       = line             # <<<<<<<<<<<<<<
  *         self.Value                      = Value
  *         self.master                     = master
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
-  /* "arithmetic_analyze.pyx":21
+  /* "arithmetic_analyze.pyx":22
  *     def __init__( self, master, DataBase, Value, ArithmeticOperators, line ):
  *         self.line                       = line
  *         self.Value                      = Value             # <<<<<<<<<<<<<<
  *         self.master                     = master
  *         self.numeric                    = []
  */
-  if (!(likely(PyList_CheckExact(__pyx_v_Value))||((__pyx_v_Value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_Value)->tp_name), 0))) __PYX_ERR(0, 21, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_Value))||((__pyx_v_Value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_Value)->tp_name), 0))) __PYX_ERR(0, 22, __pyx_L1_error)
   __pyx_t_2 = __pyx_v_Value;
   __Pyx_INCREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -2060,14 +2073,14 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_
   __pyx_v_self->Value = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":22
+  /* "arithmetic_analyze.pyx":23
  *         self.line                       = line
  *         self.Value                      = Value
  *         self.master                     = master             # <<<<<<<<<<<<<<
  *         self.numeric                    = []
  *         self.DataBase                   = DataBase
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_t_2 = __pyx_v_master;
   __Pyx_INCREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -2076,14 +2089,14 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_
   __pyx_v_self->master = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":23
+  /* "arithmetic_analyze.pyx":24
  *         self.Value                      = Value
  *         self.master                     = master
  *         self.numeric                    = []             # <<<<<<<<<<<<<<
  *         self.DataBase                   = DataBase
  *         self.calculation                = []
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->numeric);
@@ -2091,14 +2104,14 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_
   __pyx_v_self->numeric = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":24
+  /* "arithmetic_analyze.pyx":25
  *         self.master                     = master
  *         self.numeric                    = []
  *         self.DataBase                   = DataBase             # <<<<<<<<<<<<<<
  *         self.calculation                = []
  *         self.ArithmeticOperators        = ArithmeticOperators
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_DataBase))||((__pyx_v_DataBase) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_DataBase)->tp_name), 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_DataBase))||((__pyx_v_DataBase) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_DataBase)->tp_name), 0))) __PYX_ERR(0, 25, __pyx_L1_error)
   __pyx_t_2 = __pyx_v_DataBase;
   __Pyx_INCREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -2107,14 +2120,14 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_
   __pyx_v_self->DataBase = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":25
+  /* "arithmetic_analyze.pyx":26
  *         self.numeric                    = []
  *         self.DataBase                   = DataBase
  *         self.calculation                = []             # <<<<<<<<<<<<<<
  *         self.ArithmeticOperators        = ArithmeticOperators
  * 
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->calculation);
@@ -2122,14 +2135,14 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_
   __pyx_v_self->calculation = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":26
+  /* "arithmetic_analyze.pyx":27
  *         self.DataBase                   = DataBase
  *         self.calculation                = []
  *         self.ArithmeticOperators        = ArithmeticOperators             # <<<<<<<<<<<<<<
  * 
  *     cpdef CHECK( self, str MainString ):
  */
-  if (!(likely(PyList_CheckExact(__pyx_v_ArithmeticOperators))||((__pyx_v_ArithmeticOperators) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_ArithmeticOperators)->tp_name), 0))) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_ArithmeticOperators))||((__pyx_v_ArithmeticOperators) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_ArithmeticOperators)->tp_name), 0))) __PYX_ERR(0, 27, __pyx_L1_error)
   __pyx_t_2 = __pyx_v_ArithmeticOperators;
   __Pyx_INCREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -2138,7 +2151,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_
   __pyx_v_self->ArithmeticOperators = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":19
+  /* "arithmetic_analyze.pyx":20
  *         list calculation
  * 
  *     def __init__( self, master, DataBase, Value, ArithmeticOperators, line ):             # <<<<<<<<<<<<<<
@@ -2158,7 +2171,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC___init__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":28
+/* "arithmetic_analyze.pyx":29
  *         self.ArithmeticOperators        = ArithmeticOperators
  * 
  *     cpdef CHECK( self, str MainString ):             # <<<<<<<<<<<<<<
@@ -2223,7 +2236,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_CHECK); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_CHECK); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_18arithmetic_analyze_10ARITHMETIC_3CHECK)) {
         __Pyx_XDECREF(__pyx_r);
@@ -2240,7 +2253,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_MainString);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -2261,7 +2274,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
     #endif
   }
 
-  /* "arithmetic_analyze.pyx":36
+  /* "arithmetic_analyze.pyx":37
  *             str     historyOfOperators
  *             str     sign
  *             bint    key = False             # <<<<<<<<<<<<<<
@@ -2270,7 +2283,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
   __pyx_v_key = 0;
 
-  /* "arithmetic_analyze.pyx":40
+  /* "arithmetic_analyze.pyx":41
  * 
  * 
  *         error               = ''             # <<<<<<<<<<<<<<
@@ -2280,7 +2293,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
   __Pyx_INCREF(__pyx_kp_s_);
   __pyx_v_error = __pyx_kp_s_;
 
-  /* "arithmetic_analyze.pyx":41
+  /* "arithmetic_analyze.pyx":42
  * 
  *         error               = ''
  *         historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -2290,7 +2303,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
   __Pyx_INCREF(__pyx_kp_s_);
   __pyx_v_historyOfOperators = __pyx_kp_s_;
 
-  /* "arithmetic_analyze.pyx":43
+  /* "arithmetic_analyze.pyx":44
  *         historyOfOperators  = ''
  * 
  *         for i, operators in enumerate( self.ArithmeticOperators ):             # <<<<<<<<<<<<<<
@@ -2302,9 +2315,9 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 44, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_operators, __pyx_t_2);
@@ -2312,7 +2325,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
     __pyx_v_i = __pyx_t_5;
     __pyx_t_5 = (__pyx_t_5 + 1);
 
-    /* "arithmetic_analyze.pyx":44
+    /* "arithmetic_analyze.pyx":45
  * 
  *         for i, operators in enumerate( self.ArithmeticOperators ):
  *             if operators is None:             # <<<<<<<<<<<<<<
@@ -2323,31 +2336,31 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
     __pyx_t_8 = (__pyx_t_7 != 0);
     if (__pyx_t_8) {
 
-      /* "arithmetic_analyze.pyx":45
+      /* "arithmetic_analyze.pyx":46
  *         for i, operators in enumerate( self.ArithmeticOperators ):
  *             if operators is None:
  *                 _return_, error = nv.TYPE( self.master, self.Value[ i ][ 0 ], self.DataBase, self.line ,             # <<<<<<<<<<<<<<
  *                                                                 self.Value[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                 if error in [ '', None ]:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_nv); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_nv); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (unlikely(__pyx_v_self->Value == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 45, __pyx_L1_error)
+        __PYX_ERR(0, 46, __pyx_L1_error)
       }
-      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
 
-      /* "arithmetic_analyze.pyx":46
+      /* "arithmetic_analyze.pyx":47
  *             if operators is None:
  *                 _return_, error = nv.TYPE( self.master, self.Value[ i ][ 0 ], self.DataBase, self.line ,
  *                                                                 self.Value[ i ][ 0 ][ 'type' ] ).TYPE( MainString )             # <<<<<<<<<<<<<<
@@ -2356,14 +2369,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
       if (unlikely(__pyx_v_self->Value == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 46, __pyx_L1_error)
+        __PYX_ERR(0, 47, __pyx_L1_error)
       }
-      __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 46, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_11, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 46, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_11, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_t_12, __pyx_n_s_type); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 46, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_t_12, __pyx_n_s_type); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_12 = NULL;
@@ -2381,7 +2394,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_9)) {
         PyObject *__pyx_temp[6] = {__pyx_t_12, __pyx_v_self->master, __pyx_t_10, __pyx_v_self->DataBase, __pyx_t_4, __pyx_t_11};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -2392,7 +2405,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
         PyObject *__pyx_temp[6] = {__pyx_t_12, __pyx_v_self->master, __pyx_t_10, __pyx_v_self->DataBase, __pyx_t_4, __pyx_t_11};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -2401,7 +2414,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
       } else
       #endif
       {
-        __pyx_t_14 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         if (__pyx_t_12) {
           __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -2421,12 +2434,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         __pyx_t_10 = 0;
         __pyx_t_4 = 0;
         __pyx_t_11 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 46, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_3 = NULL;
@@ -2441,7 +2454,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
       }
       __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_3, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_MainString);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
@@ -2450,7 +2463,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 45, __pyx_L1_error)
+          __PYX_ERR(0, 46, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -2463,15 +2476,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         __Pyx_INCREF(__pyx_t_9);
         __Pyx_INCREF(__pyx_t_3);
         #else
-        __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_14 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_14 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 46, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_15 = Py_TYPE(__pyx_t_14)->tp_iternext;
@@ -2479,7 +2492,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         __Pyx_GOTREF(__pyx_t_9);
         index = 1; __pyx_t_3 = __pyx_t_15(__pyx_t_14); if (unlikely(!__pyx_t_3)) goto __pyx_L6_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_3);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         goto __pyx_L7_unpacking_done;
@@ -2487,24 +2500,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 45, __pyx_L1_error)
+        __PYX_ERR(0, 46, __pyx_L1_error)
         __pyx_L7_unpacking_done:;
       }
 
-      /* "arithmetic_analyze.pyx":45
+      /* "arithmetic_analyze.pyx":46
  *         for i, operators in enumerate( self.ArithmeticOperators ):
  *             if operators is None:
  *                 _return_, error = nv.TYPE( self.master, self.Value[ i ][ 0 ], self.DataBase, self.line ,             # <<<<<<<<<<<<<<
  *                                                                 self.Value[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                 if error in [ '', None ]:
  */
-      if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 45, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_9);
       __pyx_t_9 = 0;
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "arithmetic_analyze.pyx":47
+      /* "arithmetic_analyze.pyx":48
  *                 _return_, error = nv.TYPE( self.master, self.Value[ i ][ 0 ], self.DataBase, self.line ,
  *                                                                 self.Value[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -2513,21 +2526,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
       __Pyx_INCREF(__pyx_v_error);
       __pyx_t_16 = __pyx_v_error;
-      __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 48, __pyx_L1_error)
       __pyx_t_17 = (__pyx_t_7 != 0);
       if (!__pyx_t_17) {
       } else {
         __pyx_t_8 = __pyx_t_17;
         goto __pyx_L9_bool_binop_done;
       }
-      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 48, __pyx_L1_error)
       __pyx_t_8 = __pyx_t_17;
       __pyx_L9_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __pyx_t_17 = (__pyx_t_8 != 0);
       if (__pyx_t_17) {
 
-        /* "arithmetic_analyze.pyx":48
+        /* "arithmetic_analyze.pyx":49
  *                                                                 self.Value[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                 if error in [ '', None ]:
  *                     self.numeric.append( _return_ )             # <<<<<<<<<<<<<<
@@ -2536,11 +2549,11 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
         if (unlikely(__pyx_v_self->numeric == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-          __PYX_ERR(0, 48, __pyx_L1_error)
+          __PYX_ERR(0, 49, __pyx_L1_error)
         }
-        __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 48, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 49, __pyx_L1_error)
 
-        /* "arithmetic_analyze.pyx":47
+        /* "arithmetic_analyze.pyx":48
  *                 _return_, error = nv.TYPE( self.master, self.Value[ i ][ 0 ], self.DataBase, self.line ,
  *                                                                 self.Value[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -2550,7 +2563,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         goto __pyx_L8;
       }
 
-      /* "arithmetic_analyze.pyx":49
+      /* "arithmetic_analyze.pyx":50
  *                 if error in [ '', None ]:
  *                     self.numeric.append( _return_ )
  *                 else: break             # <<<<<<<<<<<<<<
@@ -2562,7 +2575,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
       }
       __pyx_L8:;
 
-      /* "arithmetic_analyze.pyx":44
+      /* "arithmetic_analyze.pyx":45
  * 
  *         for i, operators in enumerate( self.ArithmeticOperators ):
  *             if operators is None:             # <<<<<<<<<<<<<<
@@ -2572,7 +2585,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
       goto __pyx_L5;
     }
 
-    /* "arithmetic_analyze.pyx":52
+    /* "arithmetic_analyze.pyx":53
  * 
  *             else:
  *                 if len( self.Value[ i ] ) >  len( operators )  :             # <<<<<<<<<<<<<<
@@ -2582,17 +2595,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
     /*else*/ {
       if (unlikely(__pyx_v_self->Value == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 52, __pyx_L1_error)
+        __PYX_ERR(0, 53, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_19 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
+      __pyx_t_19 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 53, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_20 = PyObject_Length(__pyx_v_operators); if (unlikely(__pyx_t_20 == ((Py_ssize_t)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
+      __pyx_t_20 = PyObject_Length(__pyx_v_operators); if (unlikely(__pyx_t_20 == ((Py_ssize_t)-1))) __PYX_ERR(0, 53, __pyx_L1_error)
       __pyx_t_17 = ((__pyx_t_19 > __pyx_t_20) != 0);
       if (__pyx_t_17) {
 
-        /* "arithmetic_analyze.pyx":53
+        /* "arithmetic_analyze.pyx":54
  *             else:
  *                 if len( self.Value[ i ] ) >  len( operators )  :
  *                     length  = len( self.Value[ i ] )             # <<<<<<<<<<<<<<
@@ -2601,15 +2614,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
         if (unlikely(__pyx_v_self->Value == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 53, __pyx_L1_error)
+          __PYX_ERR(0, 54, __pyx_L1_error)
         }
-        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_20 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_20 == ((Py_ssize_t)-1))) __PYX_ERR(0, 53, __pyx_L1_error)
+        __pyx_t_20 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_20 == ((Py_ssize_t)-1))) __PYX_ERR(0, 54, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_v_length = __pyx_t_20;
 
-        /* "arithmetic_analyze.pyx":55
+        /* "arithmetic_analyze.pyx":56
  *                     length  = len( self.Value[ i ] )
  * 
  *                     for j in range( length ) :             # <<<<<<<<<<<<<<
@@ -2621,31 +2634,31 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
           __pyx_v_j = __pyx_t_22;
 
-          /* "arithmetic_analyze.pyx":56
+          /* "arithmetic_analyze.pyx":57
  * 
  *                     for j in range( length ) :
  *                         _return_, error = nv.TYPE( self.master, self.Value[ i ][ j ], self.DataBase, self.line ,             # <<<<<<<<<<<<<<
  *                                                                 self.Value[ i ][ j ][ 'type' ] ).TYPE( MainString )
  * 
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_nv); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 56, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_nv); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 57, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 56, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 57, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           if (unlikely(__pyx_v_self->Value == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 56, __pyx_L1_error)
+            __PYX_ERR(0, 57, __pyx_L1_error)
           }
-          __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 56, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 57, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_9, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 56, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_9, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 57, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 56, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 57, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
 
-          /* "arithmetic_analyze.pyx":57
+          /* "arithmetic_analyze.pyx":58
  *                     for j in range( length ) :
  *                         _return_, error = nv.TYPE( self.master, self.Value[ i ][ j ], self.DataBase, self.line ,
  *                                                                 self.Value[ i ][ j ][ 'type' ] ).TYPE( MainString )             # <<<<<<<<<<<<<<
@@ -2654,14 +2667,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
           if (unlikely(__pyx_v_self->Value == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 57, __pyx_L1_error)
+            __PYX_ERR(0, 58, __pyx_L1_error)
           }
-          __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 57, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 58, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_10, __pyx_n_s_type); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_10, __pyx_n_s_type); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __pyx_t_10 = NULL;
@@ -2679,7 +2692,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_14)) {
             PyObject *__pyx_temp[6] = {__pyx_t_10, __pyx_v_self->master, __pyx_t_11, __pyx_v_self->DataBase, __pyx_t_9, __pyx_t_4};
-            __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_23, 5+__pyx_t_23); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_23, 5+__pyx_t_23); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -2690,7 +2703,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
             PyObject *__pyx_temp[6] = {__pyx_t_10, __pyx_v_self->master, __pyx_t_11, __pyx_v_self->DataBase, __pyx_t_9, __pyx_t_4};
-            __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_23, 5+__pyx_t_23); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_23, 5+__pyx_t_23); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -2699,7 +2712,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           } else
           #endif
           {
-            __pyx_t_12 = PyTuple_New(5+__pyx_t_23); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 56, __pyx_L1_error)
+            __pyx_t_12 = PyTuple_New(5+__pyx_t_23); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 57, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             if (__pyx_t_10) {
               __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -2719,12 +2732,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __pyx_t_11 = 0;
             __pyx_t_9 = 0;
             __pyx_t_4 = 0;
-            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_12, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_12, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           }
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 57, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 58, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_3 = NULL;
@@ -2739,7 +2752,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           }
           __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_14, __pyx_t_3, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_MainString);
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
@@ -2748,7 +2761,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 56, __pyx_L1_error)
+              __PYX_ERR(0, 57, __pyx_L1_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             if (likely(PyTuple_CheckExact(sequence))) {
@@ -2761,15 +2774,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_INCREF(__pyx_t_14);
             __Pyx_INCREF(__pyx_t_3);
             #else
-            __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 56, __pyx_L1_error)
+            __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 57, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
-            __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+            __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 56, __pyx_L1_error)
+            __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 57, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __pyx_t_15 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -2777,7 +2790,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_GOTREF(__pyx_t_14);
             index = 1; __pyx_t_3 = __pyx_t_15(__pyx_t_12); if (unlikely(!__pyx_t_3)) goto __pyx_L14_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_3);
-            if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_12), 2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+            if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_12), 2) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
             __pyx_t_15 = NULL;
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             goto __pyx_L15_unpacking_done;
@@ -2785,24 +2798,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_15 = NULL;
             if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-            __PYX_ERR(0, 56, __pyx_L1_error)
+            __PYX_ERR(0, 57, __pyx_L1_error)
             __pyx_L15_unpacking_done:;
           }
 
-          /* "arithmetic_analyze.pyx":56
+          /* "arithmetic_analyze.pyx":57
  * 
  *                     for j in range( length ) :
  *                         _return_, error = nv.TYPE( self.master, self.Value[ i ][ j ], self.DataBase, self.line ,             # <<<<<<<<<<<<<<
  *                                                                 self.Value[ i ][ j ][ 'type' ] ).TYPE( MainString )
  * 
  */
-          if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 57, __pyx_L1_error)
           __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_14);
           __pyx_t_14 = 0;
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_3));
           __pyx_t_3 = 0;
 
-          /* "arithmetic_analyze.pyx":59
+          /* "arithmetic_analyze.pyx":60
  *                                                                 self.Value[ i ][ j ][ 'type' ] ).TYPE( MainString )
  * 
  *                         if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -2811,21 +2824,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
           __Pyx_INCREF(__pyx_v_error);
           __pyx_t_16 = __pyx_v_error;
-          __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+          __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
           __pyx_t_7 = (__pyx_t_8 != 0);
           if (!__pyx_t_7) {
           } else {
             __pyx_t_17 = __pyx_t_7;
             goto __pyx_L17_bool_binop_done;
           }
-          __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+          __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
           __pyx_t_17 = __pyx_t_7;
           __pyx_L17_bool_binop_done:;
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
           __pyx_t_7 = (__pyx_t_17 != 0);
           if (__pyx_t_7) {
 
-            /* "arithmetic_analyze.pyx":60
+            /* "arithmetic_analyze.pyx":61
  * 
  *                         if error in [ '', None ]:
  *                             if j != length - 1:             # <<<<<<<<<<<<<<
@@ -2835,7 +2848,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __pyx_t_7 = ((__pyx_v_j != (__pyx_v_length - 1)) != 0);
             if (__pyx_t_7) {
 
-              /* "arithmetic_analyze.pyx":61
+              /* "arithmetic_analyze.pyx":62
  *                         if error in [ '', None ]:
  *                             if j != length - 1:
  *                                 self.numeric.append( [ _return_ ] )             # <<<<<<<<<<<<<<
@@ -2844,17 +2857,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               if (unlikely(__pyx_v_self->numeric == Py_None)) {
                 PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-                __PYX_ERR(0, 61, __pyx_L1_error)
+                __PYX_ERR(0, 62, __pyx_L1_error)
               }
-              __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
+              __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_INCREF(__pyx_v__return_);
               __Pyx_GIVEREF(__pyx_v__return_);
               PyList_SET_ITEM(__pyx_t_2, 0, __pyx_v__return_);
-              __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 61, __pyx_L1_error)
+              __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 62, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-              /* "arithmetic_analyze.pyx":62
+              /* "arithmetic_analyze.pyx":63
  *                             if j != length - 1:
  *                                 self.numeric.append( [ _return_ ] )
  *                                 self.calculation.append( operators[ j ] )             # <<<<<<<<<<<<<<
@@ -2863,14 +2876,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               if (unlikely(__pyx_v_self->calculation == Py_None)) {
                 PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-                __PYX_ERR(0, 62, __pyx_L1_error)
+                __PYX_ERR(0, 63, __pyx_L1_error)
               }
-              __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
-              __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->calculation, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 62, __pyx_L1_error)
+              __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->calculation, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 63, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-              /* "arithmetic_analyze.pyx":60
+              /* "arithmetic_analyze.pyx":61
  * 
  *                         if error in [ '', None ]:
  *                             if j != length - 1:             # <<<<<<<<<<<<<<
@@ -2880,7 +2893,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               goto __pyx_L19;
             }
 
-            /* "arithmetic_analyze.pyx":64
+            /* "arithmetic_analyze.pyx":65
  *                                 self.calculation.append( operators[ j ] )
  *                             else:
  *                                 self.calculation.append( [ _return_ ] )             # <<<<<<<<<<<<<<
@@ -2890,19 +2903,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             /*else*/ {
               if (unlikely(__pyx_v_self->calculation == Py_None)) {
                 PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-                __PYX_ERR(0, 64, __pyx_L1_error)
+                __PYX_ERR(0, 65, __pyx_L1_error)
               }
-              __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+              __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_INCREF(__pyx_v__return_);
               __Pyx_GIVEREF(__pyx_v__return_);
               PyList_SET_ITEM(__pyx_t_2, 0, __pyx_v__return_);
-              __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->calculation, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 64, __pyx_L1_error)
+              __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->calculation, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 65, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             }
             __pyx_L19:;
 
-            /* "arithmetic_analyze.pyx":59
+            /* "arithmetic_analyze.pyx":60
  *                                                                 self.Value[ i ][ j ][ 'type' ] ).TYPE( MainString )
  * 
  *                         if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -2912,7 +2925,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             goto __pyx_L16;
           }
 
-          /* "arithmetic_analyze.pyx":65
+          /* "arithmetic_analyze.pyx":66
  *                             else:
  *                                 self.calculation.append( [ _return_ ] )
  *                         else : break             # <<<<<<<<<<<<<<
@@ -2926,7 +2939,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         }
         __pyx_L13_break:;
 
-        /* "arithmetic_analyze.pyx":67
+        /* "arithmetic_analyze.pyx":68
  *                         else : break
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -2935,21 +2948,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 67, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
         __pyx_t_8 = (__pyx_t_17 != 0);
         if (!__pyx_t_8) {
         } else {
           __pyx_t_7 = __pyx_t_8;
           goto __pyx_L21_bool_binop_done;
         }
-        __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 67, __pyx_L1_error)
+        __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
         __pyx_t_7 = __pyx_t_8;
         __pyx_L21_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_8 = (__pyx_t_7 != 0);
         if (__pyx_t_8) {
 
-          /* "arithmetic_analyze.pyx":68
+          /* "arithmetic_analyze.pyx":69
  * 
  *                     if error in [ '', None ]:
  *                         for string in self.calculation:             # <<<<<<<<<<<<<<
@@ -2958,49 +2971,49 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
           if (unlikely(__pyx_v_self->calculation == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-            __PYX_ERR(0, 68, __pyx_L1_error)
+            __PYX_ERR(0, 69, __pyx_L1_error)
           }
           __pyx_t_2 = __pyx_v_self->calculation; __Pyx_INCREF(__pyx_t_2); __pyx_t_20 = 0;
           for (;;) {
             if (__pyx_t_20 >= PyList_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_20); __Pyx_INCREF(__pyx_t_3); __pyx_t_20++; if (unlikely(0 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
+            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_20); __Pyx_INCREF(__pyx_t_3); __pyx_t_20++; if (unlikely(0 < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
             #else
-            __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_20); __pyx_t_20++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_20); __pyx_t_20++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
             __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "arithmetic_analyze.pyx":69
+            /* "arithmetic_analyze.pyx":70
  *                     if error in [ '', None ]:
  *                         for string in self.calculation:
  *                             if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                                 historyOfOperators += string
  *                             else: pass
  */
-            __pyx_t_3 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 69, __pyx_L1_error)
+            __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 70, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
+            __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 70, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             if (__pyx_t_8) {
 
-              /* "arithmetic_analyze.pyx":70
+              /* "arithmetic_analyze.pyx":71
  *                         for string in self.calculation:
  *                             if type( string ) == type( str() ):
  *                                 historyOfOperators += string             # <<<<<<<<<<<<<<
  *                             else: pass
  * 
  */
-              __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 70, __pyx_L1_error)
+              __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 71, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_14);
-              if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 70, __pyx_L1_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 71, __pyx_L1_error)
               __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_14));
               __pyx_t_14 = 0;
 
-              /* "arithmetic_analyze.pyx":69
+              /* "arithmetic_analyze.pyx":70
  *                     if error in [ '', None ]:
  *                         for string in self.calculation:
  *                             if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -3010,7 +3023,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               goto __pyx_L25;
             }
 
-            /* "arithmetic_analyze.pyx":71
+            /* "arithmetic_analyze.pyx":72
  *                             if type( string ) == type( str() ):
  *                                 historyOfOperators += string
  *                             else: pass             # <<<<<<<<<<<<<<
@@ -3021,7 +3034,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             }
             __pyx_L25:;
 
-            /* "arithmetic_analyze.pyx":68
+            /* "arithmetic_analyze.pyx":69
  * 
  *                     if error in [ '', None ]:
  *                         for string in self.calculation:             # <<<<<<<<<<<<<<
@@ -3031,29 +3044,29 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           }
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "arithmetic_analyze.pyx":73
+          /* "arithmetic_analyze.pyx":74
  *                             else: pass
  * 
  *                         _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                                 historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                         if error  in [ '', None ]:
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 73, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 74, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
 
-          /* "arithmetic_analyze.pyx":74
+          /* "arithmetic_analyze.pyx":75
  * 
  *                         _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,
  *                                                                 historyOfOperators, self.line ).MATHS_OPERATIONS( )             # <<<<<<<<<<<<<<
  *                         if error  in [ '', None ]:
  *                             self.numeric.append( _return_ )
  */
-          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __pyx_t_9 = NULL;
           __pyx_t_13 = 0;
@@ -3070,7 +3083,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_12)) {
             PyObject *__pyx_temp[5] = {__pyx_t_9, __pyx_t_3, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_4};
-            __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 73, __pyx_L1_error)
+            __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 74, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3080,7 +3093,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
             PyObject *__pyx_temp[5] = {__pyx_t_9, __pyx_t_3, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_4};
-            __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 73, __pyx_L1_error)
+            __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 74, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3088,7 +3101,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           } else
           #endif
           {
-            __pyx_t_11 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 73, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 74, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             if (__pyx_t_9) {
               __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -3105,12 +3118,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             PyTuple_SET_ITEM(__pyx_t_11, 3+__pyx_t_13, __pyx_t_4);
             __pyx_t_3 = 0;
             __pyx_t_4 = 0;
-            __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_11, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 73, __pyx_L1_error)
+            __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_11, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 74, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           }
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 74, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __pyx_t_14 = NULL;
@@ -3125,7 +3138,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           }
           __pyx_t_2 = (__pyx_t_14) ? __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_14) : __Pyx_PyObject_CallNoArg(__pyx_t_12);
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
@@ -3134,7 +3147,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 73, __pyx_L1_error)
+              __PYX_ERR(0, 74, __pyx_L1_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             if (likely(PyTuple_CheckExact(sequence))) {
@@ -3147,15 +3160,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_INCREF(__pyx_t_12);
             __Pyx_INCREF(__pyx_t_14);
             #else
-            __pyx_t_12 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 73, __pyx_L1_error)
+            __pyx_t_12 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 74, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_14 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 73, __pyx_L1_error)
+            __pyx_t_14 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 74, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             #endif
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_11 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 73, __pyx_L1_error)
+            __pyx_t_11 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 74, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __pyx_t_15 = Py_TYPE(__pyx_t_11)->tp_iternext;
@@ -3163,7 +3176,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_GOTREF(__pyx_t_12);
             index = 1; __pyx_t_14 = __pyx_t_15(__pyx_t_11); if (unlikely(!__pyx_t_14)) goto __pyx_L26_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_14);
-            if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 2) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
+            if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 2) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
             __pyx_t_15 = NULL;
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             goto __pyx_L27_unpacking_done;
@@ -3171,24 +3184,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __pyx_t_15 = NULL;
             if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-            __PYX_ERR(0, 73, __pyx_L1_error)
+            __PYX_ERR(0, 74, __pyx_L1_error)
             __pyx_L27_unpacking_done:;
           }
 
-          /* "arithmetic_analyze.pyx":73
+          /* "arithmetic_analyze.pyx":74
  *                             else: pass
  * 
  *                         _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                                 historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                         if error  in [ '', None ]:
  */
-          if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 73, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 74, __pyx_L1_error)
           __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_12);
           __pyx_t_12 = 0;
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_14));
           __pyx_t_14 = 0;
 
-          /* "arithmetic_analyze.pyx":75
+          /* "arithmetic_analyze.pyx":76
  *                         _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,
  *                                                                 historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                         if error  in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -3197,21 +3210,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
           __Pyx_INCREF(__pyx_v_error);
           __pyx_t_16 = __pyx_v_error;
-          __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
+          __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
           __pyx_t_17 = (__pyx_t_7 != 0);
           if (!__pyx_t_17) {
           } else {
             __pyx_t_8 = __pyx_t_17;
             goto __pyx_L29_bool_binop_done;
           }
-          __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
+          __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
           __pyx_t_8 = __pyx_t_17;
           __pyx_L29_bool_binop_done:;
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
           __pyx_t_17 = (__pyx_t_8 != 0);
           if (__pyx_t_17) {
 
-            /* "arithmetic_analyze.pyx":76
+            /* "arithmetic_analyze.pyx":77
  *                                                                 historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                         if error  in [ '', None ]:
  *                             self.numeric.append( _return_ )             # <<<<<<<<<<<<<<
@@ -3220,23 +3233,23 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
             if (unlikely(__pyx_v_self->numeric == Py_None)) {
               PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-              __PYX_ERR(0, 76, __pyx_L1_error)
+              __PYX_ERR(0, 77, __pyx_L1_error)
             }
-            __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 76, __pyx_L1_error)
+            __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 77, __pyx_L1_error)
 
-            /* "arithmetic_analyze.pyx":77
+            /* "arithmetic_analyze.pyx":78
  *                         if error  in [ '', None ]:
  *                             self.numeric.append( _return_ )
  *                             self.calculations   = []             # <<<<<<<<<<<<<<
  *                             historyOfOperators  = ''
  *                         else : break
  */
-            __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+            __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
-            if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_2) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+            if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_2) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "arithmetic_analyze.pyx":78
+            /* "arithmetic_analyze.pyx":79
  *                             self.numeric.append( _return_ )
  *                             self.calculations   = []
  *                             historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -3246,7 +3259,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_INCREF(__pyx_kp_s_);
             __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-            /* "arithmetic_analyze.pyx":75
+            /* "arithmetic_analyze.pyx":76
  *                         _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,
  *                                                                 historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                         if error  in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -3256,7 +3269,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             goto __pyx_L28;
           }
 
-          /* "arithmetic_analyze.pyx":79
+          /* "arithmetic_analyze.pyx":80
  *                             self.calculations   = []
  *                             historyOfOperators  = ''
  *                         else : break             # <<<<<<<<<<<<<<
@@ -3268,7 +3281,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           }
           __pyx_L28:;
 
-          /* "arithmetic_analyze.pyx":67
+          /* "arithmetic_analyze.pyx":68
  *                         else : break
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -3278,7 +3291,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           goto __pyx_L20;
         }
 
-        /* "arithmetic_analyze.pyx":80
+        /* "arithmetic_analyze.pyx":81
  *                             historyOfOperators  = ''
  *                         else : break
  *                     else: break             # <<<<<<<<<<<<<<
@@ -3290,7 +3303,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         }
         __pyx_L20:;
 
-        /* "arithmetic_analyze.pyx":52
+        /* "arithmetic_analyze.pyx":53
  * 
  *             else:
  *                 if len( self.Value[ i ] ) >  len( operators )  :             # <<<<<<<<<<<<<<
@@ -3300,7 +3313,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         goto __pyx_L11;
       }
 
-      /* "arithmetic_analyze.pyx":82
+      /* "arithmetic_analyze.pyx":83
  *                     else: break
  * 
  *                 elif len( self.Value[ i ] ) == len( operators )  :             # <<<<<<<<<<<<<<
@@ -3309,31 +3322,31 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
       if (unlikely(__pyx_v_self->Value == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 82, __pyx_L1_error)
+        __PYX_ERR(0, 83, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_20 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_20 == ((Py_ssize_t)-1))) __PYX_ERR(0, 82, __pyx_L1_error)
+      __pyx_t_20 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_20 == ((Py_ssize_t)-1))) __PYX_ERR(0, 83, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_19 = PyObject_Length(__pyx_v_operators); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 82, __pyx_L1_error)
+      __pyx_t_19 = PyObject_Length(__pyx_v_operators); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 83, __pyx_L1_error)
       __pyx_t_17 = ((__pyx_t_20 == __pyx_t_19) != 0);
       if (__pyx_t_17) {
 
-        /* "arithmetic_analyze.pyx":83
+        /* "arithmetic_analyze.pyx":84
  * 
  *                 elif len( self.Value[ i ] ) == len( operators )  :
  *                     if type( operators[ 0 ] ) == type( list() ): sign  = '+'             # <<<<<<<<<<<<<<
  *                     else:
  *                         if len( operators ) == 1: sign   = operators[ 0 ]
  */
-        __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 84, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_12 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_2)), ((PyObject *)Py_TYPE(__pyx_t_14)), Py_EQ); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_12 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_2)), ((PyObject *)Py_TYPE(__pyx_t_14)), Py_EQ); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 84, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-        __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         if (__pyx_t_17) {
           __Pyx_INCREF(__pyx_kp_s__2);
@@ -3341,7 +3354,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           goto __pyx_L31;
         }
 
-        /* "arithmetic_analyze.pyx":85
+        /* "arithmetic_analyze.pyx":86
  *                     if type( operators[ 0 ] ) == type( list() ): sign  = '+'
  *                     else:
  *                         if len( operators ) == 1: sign   = operators[ 0 ]             # <<<<<<<<<<<<<<
@@ -3349,18 +3362,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  *                             key = False
  */
         /*else*/ {
-          __pyx_t_19 = PyObject_Length(__pyx_v_operators); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 85, __pyx_L1_error)
+          __pyx_t_19 = PyObject_Length(__pyx_v_operators); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 86, __pyx_L1_error)
           __pyx_t_17 = ((__pyx_t_19 == 1) != 0);
           if (__pyx_t_17) {
-            __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 85, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 86, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 85, __pyx_L1_error)
+            if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 86, __pyx_L1_error)
             __Pyx_XDECREF_SET(__pyx_v_sign, ((PyObject*)__pyx_t_12));
             __pyx_t_12 = 0;
             goto __pyx_L32;
           }
 
-          /* "arithmetic_analyze.pyx":87
+          /* "arithmetic_analyze.pyx":88
  *                         if len( operators ) == 1: sign   = operators[ 0 ]
  *                         else:
  *                             key = False             # <<<<<<<<<<<<<<
@@ -3370,7 +3383,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           /*else*/ {
             __pyx_v_key = 0;
 
-            /* "arithmetic_analyze.pyx":88
+            /* "arithmetic_analyze.pyx":89
  *                         else:
  *                             key = False
  *                             for string in operators:             # <<<<<<<<<<<<<<
@@ -3381,26 +3394,26 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __pyx_t_12 = __pyx_v_operators; __Pyx_INCREF(__pyx_t_12); __pyx_t_19 = 0;
               __pyx_t_24 = NULL;
             } else {
-              __pyx_t_19 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_v_operators); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 88, __pyx_L1_error)
+              __pyx_t_19 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_v_operators); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 89, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
-              __pyx_t_24 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 88, __pyx_L1_error)
+              __pyx_t_24 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 89, __pyx_L1_error)
             }
             for (;;) {
               if (likely(!__pyx_t_24)) {
                 if (likely(PyList_CheckExact(__pyx_t_12))) {
                   if (__pyx_t_19 >= PyList_GET_SIZE(__pyx_t_12)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_14 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_19); __Pyx_INCREF(__pyx_t_14); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+                  __pyx_t_14 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_19); __Pyx_INCREF(__pyx_t_14); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
                   #else
-                  __pyx_t_14 = PySequence_ITEM(__pyx_t_12, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 88, __pyx_L1_error)
+                  __pyx_t_14 = PySequence_ITEM(__pyx_t_12, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 89, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_14);
                   #endif
                 } else {
                   if (__pyx_t_19 >= PyTuple_GET_SIZE(__pyx_t_12)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_14 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_19); __Pyx_INCREF(__pyx_t_14); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+                  __pyx_t_14 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_19); __Pyx_INCREF(__pyx_t_14); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
                   #else
-                  __pyx_t_14 = PySequence_ITEM(__pyx_t_12, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 88, __pyx_L1_error)
+                  __pyx_t_14 = PySequence_ITEM(__pyx_t_12, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 89, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_14);
                   #endif
                 }
@@ -3410,7 +3423,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   PyObject* exc_type = PyErr_Occurred();
                   if (exc_type) {
                     if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                    else __PYX_ERR(0, 88, __pyx_L1_error)
+                    else __PYX_ERR(0, 89, __pyx_L1_error)
                   }
                   break;
                 }
@@ -3419,22 +3432,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_14);
               __pyx_t_14 = 0;
 
-              /* "arithmetic_analyze.pyx":89
+              /* "arithmetic_analyze.pyx":90
  *                             key = False
  *                             for string in operators:
  *                                 if type( string ) == type( list( ) ):             # <<<<<<<<<<<<<<
  *                                     key = True
  *                                     break
  */
-              __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 89, __pyx_L1_error)
+              __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 90, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_14);
-              __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_14)), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+              __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_14)), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-              __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
+              __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               if (__pyx_t_17) {
 
-                /* "arithmetic_analyze.pyx":90
+                /* "arithmetic_analyze.pyx":91
  *                             for string in operators:
  *                                 if type( string ) == type( list( ) ):
  *                                     key = True             # <<<<<<<<<<<<<<
@@ -3443,7 +3456,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
                 __pyx_v_key = 1;
 
-                /* "arithmetic_analyze.pyx":91
+                /* "arithmetic_analyze.pyx":92
  *                                 if type( string ) == type( list( ) ):
  *                                     key = True
  *                                     break             # <<<<<<<<<<<<<<
@@ -3452,7 +3465,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
                 goto __pyx_L34_break;
 
-                /* "arithmetic_analyze.pyx":89
+                /* "arithmetic_analyze.pyx":90
  *                             key = False
  *                             for string in operators:
  *                                 if type( string ) == type( list( ) ):             # <<<<<<<<<<<<<<
@@ -3461,7 +3474,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               }
 
-              /* "arithmetic_analyze.pyx":88
+              /* "arithmetic_analyze.pyx":89
  *                         else:
  *                             key = False
  *                             for string in operators:             # <<<<<<<<<<<<<<
@@ -3472,7 +3485,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __pyx_L34_break:;
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-            /* "arithmetic_analyze.pyx":92
+            /* "arithmetic_analyze.pyx":93
  *                                     key = True
  *                                     break
  *                             if key is False: sign = operators[ 0 ]             # <<<<<<<<<<<<<<
@@ -3481,15 +3494,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
             __pyx_t_17 = ((__pyx_v_key == 0) != 0);
             if (__pyx_t_17) {
-              __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 92, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 93, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
-              if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 92, __pyx_L1_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 93, __pyx_L1_error)
               __Pyx_XDECREF_SET(__pyx_v_sign, ((PyObject*)__pyx_t_12));
               __pyx_t_12 = 0;
               goto __pyx_L36;
             }
 
-            /* "arithmetic_analyze.pyx":93
+            /* "arithmetic_analyze.pyx":94
  *                                     break
  *                             if key is False: sign = operators[ 0 ]
  *                             else: sign = ''             # <<<<<<<<<<<<<<
@@ -3506,7 +3519,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         }
         __pyx_L31:;
 
-        /* "arithmetic_analyze.pyx":95
+        /* "arithmetic_analyze.pyx":96
  *                             else: sign = ''
  * 
  *                     if sign in [ '-' ]: self.calculations.append( sign )             # <<<<<<<<<<<<<<
@@ -3515,18 +3528,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
         __Pyx_INCREF(__pyx_v_sign);
         __pyx_t_16 = __pyx_v_sign;
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_8 = ((__pyx_t_17 != 0) != 0);
         if (__pyx_t_8) {
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 96, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
-          __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_v_sign); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 95, __pyx_L1_error)
+          __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_v_sign); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 96, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           goto __pyx_L37;
         }
 
-        /* "arithmetic_analyze.pyx":96
+        /* "arithmetic_analyze.pyx":97
  * 
  *                     if sign in [ '-' ]: self.calculations.append( sign )
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -3537,7 +3550,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         }
         __pyx_L37:;
 
-        /* "arithmetic_analyze.pyx":98
+        /* "arithmetic_analyze.pyx":99
  *                     else: pass
  * 
  *                     length = len( self.Value[ i ] )             # <<<<<<<<<<<<<<
@@ -3546,26 +3559,26 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
         if (unlikely(__pyx_v_self->Value == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 98, __pyx_L1_error)
+          __PYX_ERR(0, 99, __pyx_L1_error)
         }
-        __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 98, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 99, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_19 = PyObject_Length(__pyx_t_12); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 98, __pyx_L1_error)
+        __pyx_t_19 = PyObject_Length(__pyx_t_12); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 99, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __pyx_v_length = __pyx_t_19;
 
-        /* "arithmetic_analyze.pyx":100
+        /* "arithmetic_analyze.pyx":101
  *                     length = len( self.Value[ i ] )
  * 
  *                     if len( operators ) == 1:             # <<<<<<<<<<<<<<
  * 
  *                         try:
  */
-        __pyx_t_19 = PyObject_Length(__pyx_v_operators); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 100, __pyx_L1_error)
+        __pyx_t_19 = PyObject_Length(__pyx_v_operators); if (unlikely(__pyx_t_19 == ((Py_ssize_t)-1))) __PYX_ERR(0, 101, __pyx_L1_error)
         __pyx_t_8 = ((__pyx_t_19 == 1) != 0);
         if (__pyx_t_8) {
 
-          /* "arithmetic_analyze.pyx":102
+          /* "arithmetic_analyze.pyx":103
  *                     if len( operators ) == 1:
  * 
  *                         try:             # <<<<<<<<<<<<<<
@@ -3581,45 +3594,45 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_XGOTREF(__pyx_t_27);
             /*try:*/ {
 
-              /* "arithmetic_analyze.pyx":103
+              /* "arithmetic_analyze.pyx":104
  * 
  *                         try:
  *                             _return_, error   = nv.TYPE( self.master, self.Values[ i ][ 0 ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                                         self.Values[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                             if error in [ '', None ]:
  */
-              __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_nv); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 103, __pyx_L39_error)
+              __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_nv); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 104, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_14);
-              __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 103, __pyx_L39_error)
+              __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 104, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_11);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-              __pyx_t_14 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Values); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 103, __pyx_L39_error)
+              __pyx_t_14 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Values); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 104, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_14);
-              __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L39_error)
+              __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-              __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 103, __pyx_L39_error)
+              __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 104, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-              __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L39_error)
+              __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_4);
 
-              /* "arithmetic_analyze.pyx":104
+              /* "arithmetic_analyze.pyx":105
  *                         try:
  *                             _return_, error   = nv.TYPE( self.master, self.Values[ i ][ 0 ], self.DataBase, self.line,
  *                                                                         self.Values[ i ][ 0 ][ 'type' ] ).TYPE( MainString )             # <<<<<<<<<<<<<<
  *                             if error in [ '', None ]:
  *                                 self.calculations.append( [ _return_ ] )
  */
-              __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Values); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L39_error)
+              __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Values); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 104, __pyx_L39_error)
+              __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 105, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-              __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_9, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L39_error)
+              __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_9, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-              __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_s_type); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 104, __pyx_L39_error)
+              __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_s_type); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 105, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               __pyx_t_3 = NULL;
@@ -3637,7 +3650,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               #if CYTHON_FAST_PYCALL
               if (PyFunction_Check(__pyx_t_11)) {
                 PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_self->master, __pyx_t_14, __pyx_v_self->DataBase, __pyx_t_4, __pyx_t_9};
-                __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L39_error)
+                __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L39_error)
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -3648,7 +3661,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               #if CYTHON_FAST_PYCCALL
               if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
                 PyObject *__pyx_temp[6] = {__pyx_t_3, __pyx_v_self->master, __pyx_t_14, __pyx_v_self->DataBase, __pyx_t_4, __pyx_t_9};
-                __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L39_error)
+                __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L39_error)
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -3657,7 +3670,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               } else
               #endif
               {
-                __pyx_t_10 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 103, __pyx_L39_error)
+                __pyx_t_10 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 if (__pyx_t_3) {
                   __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -3677,12 +3690,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __pyx_t_14 = 0;
                 __pyx_t_4 = 0;
                 __pyx_t_9 = 0;
-                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L39_error)
+                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
               }
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-              __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 104, __pyx_L39_error)
+              __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 105, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_11);
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               __pyx_t_2 = NULL;
@@ -3697,7 +3710,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               }
               __pyx_t_12 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_11, __pyx_t_2, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_v_MainString);
               __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-              if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 104, __pyx_L39_error)
+              if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 105, __pyx_L39_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
               if ((likely(PyTuple_CheckExact(__pyx_t_12))) || (PyList_CheckExact(__pyx_t_12))) {
@@ -3706,7 +3719,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 if (unlikely(size != 2)) {
                   if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                   else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                  __PYX_ERR(0, 103, __pyx_L39_error)
+                  __PYX_ERR(0, 104, __pyx_L39_error)
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                 if (likely(PyTuple_CheckExact(sequence))) {
@@ -3719,15 +3732,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __Pyx_INCREF(__pyx_t_11);
                 __Pyx_INCREF(__pyx_t_2);
                 #else
-                __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 103, __pyx_L39_error)
+                __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 104, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_11);
-                __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L39_error)
+                __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 #endif
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               } else {
                 Py_ssize_t index = -1;
-                __pyx_t_10 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 103, __pyx_L39_error)
+                __pyx_t_10 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                 __pyx_t_15 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -3735,7 +3748,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __Pyx_GOTREF(__pyx_t_11);
                 index = 1; __pyx_t_2 = __pyx_t_15(__pyx_t_10); if (unlikely(!__pyx_t_2)) goto __pyx_L47_unpacking_failed;
                 __Pyx_GOTREF(__pyx_t_2);
-                if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_10), 2) < 0) __PYX_ERR(0, 103, __pyx_L39_error)
+                if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_10), 2) < 0) __PYX_ERR(0, 104, __pyx_L39_error)
                 __pyx_t_15 = NULL;
                 __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                 goto __pyx_L48_unpacking_done;
@@ -3743,24 +3756,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                 __pyx_t_15 = NULL;
                 if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-                __PYX_ERR(0, 103, __pyx_L39_error)
+                __PYX_ERR(0, 104, __pyx_L39_error)
                 __pyx_L48_unpacking_done:;
               }
 
-              /* "arithmetic_analyze.pyx":103
+              /* "arithmetic_analyze.pyx":104
  * 
  *                         try:
  *                             _return_, error   = nv.TYPE( self.master, self.Values[ i ][ 0 ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                                         self.Values[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                             if error in [ '', None ]:
  */
-              if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 103, __pyx_L39_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 104, __pyx_L39_error)
               __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_11);
               __pyx_t_11 = 0;
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_2));
               __pyx_t_2 = 0;
 
-              /* "arithmetic_analyze.pyx":105
+              /* "arithmetic_analyze.pyx":106
  *                             _return_, error   = nv.TYPE( self.master, self.Values[ i ][ 0 ], self.DataBase, self.line,
  *                                                                         self.Values[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -3769,54 +3782,54 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               __Pyx_INCREF(__pyx_v_error);
               __pyx_t_16 = __pyx_v_error;
-              __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 105, __pyx_L39_error)
+              __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 106, __pyx_L39_error)
               __pyx_t_7 = (__pyx_t_17 != 0);
               if (!__pyx_t_7) {
               } else {
                 __pyx_t_8 = __pyx_t_7;
                 goto __pyx_L50_bool_binop_done;
               }
-              __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 105, __pyx_L39_error)
+              __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 106, __pyx_L39_error)
               __pyx_t_8 = __pyx_t_7;
               __pyx_L50_bool_binop_done:;
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
               __pyx_t_7 = (__pyx_t_8 != 0);
               if (__pyx_t_7) {
 
-                /* "arithmetic_analyze.pyx":106
+                /* "arithmetic_analyze.pyx":107
  *                                                                         self.Values[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                             if error in [ '', None ]:
  *                                 self.calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  * 
  *                                 for string in self.calculations:
  */
-                __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 106, __pyx_L39_error)
+                __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 107, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_12);
-                __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L39_error)
+                __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_INCREF(__pyx_v__return_);
                 __Pyx_GIVEREF(__pyx_v__return_);
                 PyList_SET_ITEM(__pyx_t_2, 0, __pyx_v__return_);
-                __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 106, __pyx_L39_error)
+                __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 107, __pyx_L39_error)
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-                /* "arithmetic_analyze.pyx":108
+                /* "arithmetic_analyze.pyx":109
  *                                 self.calculations.append( [ _return_ ] )
  * 
  *                                 for string in self.calculations:             # <<<<<<<<<<<<<<
  *                                     if type( string ) == type( str() ):
  *                                         historyOfOperators += string
  */
-                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L39_error)
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
                   __pyx_t_12 = __pyx_t_2; __Pyx_INCREF(__pyx_t_12); __pyx_t_19 = 0;
                   __pyx_t_24 = NULL;
                 } else {
-                  __pyx_t_19 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 108, __pyx_L39_error)
+                  __pyx_t_19 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 109, __pyx_L39_error)
                   __Pyx_GOTREF(__pyx_t_12);
-                  __pyx_t_24 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 108, __pyx_L39_error)
+                  __pyx_t_24 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 109, __pyx_L39_error)
                 }
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 for (;;) {
@@ -3824,17 +3837,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     if (likely(PyList_CheckExact(__pyx_t_12))) {
                       if (__pyx_t_19 >= PyList_GET_SIZE(__pyx_t_12)) break;
                       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_19); __Pyx_INCREF(__pyx_t_2); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 108, __pyx_L39_error)
+                      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_19); __Pyx_INCREF(__pyx_t_2); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 109, __pyx_L39_error)
                       #else
-                      __pyx_t_2 = PySequence_ITEM(__pyx_t_12, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L39_error)
+                      __pyx_t_2 = PySequence_ITEM(__pyx_t_12, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L39_error)
                       __Pyx_GOTREF(__pyx_t_2);
                       #endif
                     } else {
                       if (__pyx_t_19 >= PyTuple_GET_SIZE(__pyx_t_12)) break;
                       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                      __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_19); __Pyx_INCREF(__pyx_t_2); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 108, __pyx_L39_error)
+                      __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_19); __Pyx_INCREF(__pyx_t_2); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 109, __pyx_L39_error)
                       #else
-                      __pyx_t_2 = PySequence_ITEM(__pyx_t_12, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L39_error)
+                      __pyx_t_2 = PySequence_ITEM(__pyx_t_12, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L39_error)
                       __Pyx_GOTREF(__pyx_t_2);
                       #endif
                     }
@@ -3844,7 +3857,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                       PyObject* exc_type = PyErr_Occurred();
                       if (exc_type) {
                         if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                        else __PYX_ERR(0, 108, __pyx_L39_error)
+                        else __PYX_ERR(0, 109, __pyx_L39_error)
                       }
                       break;
                     }
@@ -3853,35 +3866,35 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_2);
                   __pyx_t_2 = 0;
 
-                  /* "arithmetic_analyze.pyx":109
+                  /* "arithmetic_analyze.pyx":110
  * 
  *                                 for string in self.calculations:
  *                                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                                         historyOfOperators += string
  *                                     else: pass
  */
-                  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L39_error)
+                  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L39_error)
                   __Pyx_GOTREF(__pyx_t_2);
-                  __pyx_t_11 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 109, __pyx_L39_error)
+                  __pyx_t_11 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 110, __pyx_L39_error)
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 109, __pyx_L39_error)
+                  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 110, __pyx_L39_error)
                   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
                   if (__pyx_t_7) {
 
-                    /* "arithmetic_analyze.pyx":110
+                    /* "arithmetic_analyze.pyx":111
  *                                 for string in self.calculations:
  *                                     if type( string ) == type( str() ):
  *                                         historyOfOperators += string             # <<<<<<<<<<<<<<
  *                                     else: pass
  * 
  */
-                    __pyx_t_11 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 110, __pyx_L39_error)
+                    __pyx_t_11 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 111, __pyx_L39_error)
                     __Pyx_GOTREF(__pyx_t_11);
-                    if (!(likely(PyString_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 110, __pyx_L39_error)
+                    if (!(likely(PyString_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 111, __pyx_L39_error)
                     __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_11));
                     __pyx_t_11 = 0;
 
-                    /* "arithmetic_analyze.pyx":109
+                    /* "arithmetic_analyze.pyx":110
  * 
  *                                 for string in self.calculations:
  *                                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -3891,7 +3904,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     goto __pyx_L54;
                   }
 
-                  /* "arithmetic_analyze.pyx":111
+                  /* "arithmetic_analyze.pyx":112
  *                                     if type( string ) == type( str() ):
  *                                         historyOfOperators += string
  *                                     else: pass             # <<<<<<<<<<<<<<
@@ -3902,7 +3915,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   }
                   __pyx_L54:;
 
-                  /* "arithmetic_analyze.pyx":108
+                  /* "arithmetic_analyze.pyx":109
  *                                 self.calculations.append( [ _return_ ] )
  * 
  *                                 for string in self.calculations:             # <<<<<<<<<<<<<<
@@ -3912,29 +3925,29 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 }
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-                /* "arithmetic_analyze.pyx":113
+                /* "arithmetic_analyze.pyx":114
  *                                     else: pass
  * 
  *                                 _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                                     historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                                 if error  in [ '', None ]:
  */
-                __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L39_error)
+                __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L39_error)
+                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L39_error)
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_2);
 
-                /* "arithmetic_analyze.pyx":114
+                /* "arithmetic_analyze.pyx":115
  * 
  *                                 _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,
  *                                                                     historyOfOperators, self.line ).MATHS_OPERATIONS( )             # <<<<<<<<<<<<<<
  *                                 if error  in [ '', None ]:
  *                                     self.numeric.append( _return_ )
  */
-                __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 114, __pyx_L39_error)
+                __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 115, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_9);
                 __pyx_t_4 = NULL;
                 __pyx_t_13 = 0;
@@ -3951,7 +3964,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 #if CYTHON_FAST_PYCALL
                 if (PyFunction_Check(__pyx_t_10)) {
                   PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_t_2, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_9};
-                  __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 113, __pyx_L39_error)
+                  __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 114, __pyx_L39_error)
                   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
                   __Pyx_GOTREF(__pyx_t_11);
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3961,7 +3974,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 #if CYTHON_FAST_PYCCALL
                 if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
                   PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_t_2, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_9};
-                  __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 113, __pyx_L39_error)
+                  __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 114, __pyx_L39_error)
                   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
                   __Pyx_GOTREF(__pyx_t_11);
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3969,7 +3982,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 } else
                 #endif
                 {
-                  __pyx_t_14 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 113, __pyx_L39_error)
+                  __pyx_t_14 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 114, __pyx_L39_error)
                   __Pyx_GOTREF(__pyx_t_14);
                   if (__pyx_t_4) {
                     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -3986,12 +3999,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   PyTuple_SET_ITEM(__pyx_t_14, 3+__pyx_t_13, __pyx_t_9);
                   __pyx_t_2 = 0;
                   __pyx_t_9 = 0;
-                  __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_14, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 113, __pyx_L39_error)
+                  __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_14, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 114, __pyx_L39_error)
                   __Pyx_GOTREF(__pyx_t_11);
                   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
                 }
                 __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L39_error)
+                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 115, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
                 __pyx_t_11 = NULL;
@@ -4006,7 +4019,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 }
                 __pyx_t_12 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_10);
                 __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-                if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 114, __pyx_L39_error)
+                if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 115, __pyx_L39_error)
                 __Pyx_GOTREF(__pyx_t_12);
                 __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                 if ((likely(PyTuple_CheckExact(__pyx_t_12))) || (PyList_CheckExact(__pyx_t_12))) {
@@ -4015,7 +4028,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   if (unlikely(size != 2)) {
                     if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                     else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                    __PYX_ERR(0, 113, __pyx_L39_error)
+                    __PYX_ERR(0, 114, __pyx_L39_error)
                   }
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                   if (likely(PyTuple_CheckExact(sequence))) {
@@ -4028,15 +4041,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_INCREF(__pyx_t_10);
                   __Pyx_INCREF(__pyx_t_11);
                   #else
-                  __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L39_error)
+                  __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L39_error)
                   __Pyx_GOTREF(__pyx_t_10);
-                  __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 113, __pyx_L39_error)
+                  __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 114, __pyx_L39_error)
                   __Pyx_GOTREF(__pyx_t_11);
                   #endif
                   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                 } else {
                   Py_ssize_t index = -1;
-                  __pyx_t_14 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 113, __pyx_L39_error)
+                  __pyx_t_14 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 114, __pyx_L39_error)
                   __Pyx_GOTREF(__pyx_t_14);
                   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                   __pyx_t_15 = Py_TYPE(__pyx_t_14)->tp_iternext;
@@ -4044,7 +4057,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_GOTREF(__pyx_t_10);
                   index = 1; __pyx_t_11 = __pyx_t_15(__pyx_t_14); if (unlikely(!__pyx_t_11)) goto __pyx_L55_unpacking_failed;
                   __Pyx_GOTREF(__pyx_t_11);
-                  if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 113, __pyx_L39_error)
+                  if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 114, __pyx_L39_error)
                   __pyx_t_15 = NULL;
                   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
                   goto __pyx_L56_unpacking_done;
@@ -4052,24 +4065,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
                   __pyx_t_15 = NULL;
                   if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-                  __PYX_ERR(0, 113, __pyx_L39_error)
+                  __PYX_ERR(0, 114, __pyx_L39_error)
                   __pyx_L56_unpacking_done:;
                 }
 
-                /* "arithmetic_analyze.pyx":113
+                /* "arithmetic_analyze.pyx":114
  *                                     else: pass
  * 
  *                                 _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                                     historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                                 if error  in [ '', None ]:
  */
-                if (!(likely(PyString_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 113, __pyx_L39_error)
+                if (!(likely(PyString_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 114, __pyx_L39_error)
                 __Pyx_DECREF_SET(__pyx_v__return_, __pyx_t_10);
                 __pyx_t_10 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_11));
                 __pyx_t_11 = 0;
 
-                /* "arithmetic_analyze.pyx":115
+                /* "arithmetic_analyze.pyx":116
  *                                 _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,
  *                                                                     historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                                 if error  in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4078,21 +4091,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
                 __Pyx_INCREF(__pyx_v_error);
                 __pyx_t_16 = __pyx_v_error;
-                __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 115, __pyx_L39_error)
+                __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 116, __pyx_L39_error)
                 __pyx_t_17 = (__pyx_t_8 != 0);
                 if (!__pyx_t_17) {
                 } else {
                   __pyx_t_7 = __pyx_t_17;
                   goto __pyx_L58_bool_binop_done;
                 }
-                __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 115, __pyx_L39_error)
+                __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 116, __pyx_L39_error)
                 __pyx_t_7 = __pyx_t_17;
                 __pyx_L58_bool_binop_done:;
                 __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
                 __pyx_t_17 = (__pyx_t_7 != 0);
                 if (__pyx_t_17) {
 
-                  /* "arithmetic_analyze.pyx":116
+                  /* "arithmetic_analyze.pyx":117
  *                                                                     historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                                 if error  in [ '', None ]:
  *                                     self.numeric.append( _return_ )             # <<<<<<<<<<<<<<
@@ -4101,23 +4114,23 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
                   if (unlikely(__pyx_v_self->numeric == Py_None)) {
                     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-                    __PYX_ERR(0, 116, __pyx_L39_error)
+                    __PYX_ERR(0, 117, __pyx_L39_error)
                   }
-                  __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 116, __pyx_L39_error)
+                  __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 117, __pyx_L39_error)
 
-                  /* "arithmetic_analyze.pyx":117
+                  /* "arithmetic_analyze.pyx":118
  *                                 if error  in [ '', None ]:
  *                                     self.numeric.append( _return_ )
  *                                     self.calculations   = []             # <<<<<<<<<<<<<<
  *                                     historyOfOperators  = ''
  *                                 else : break
  */
-                  __pyx_t_12 = PyList_New(0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 117, __pyx_L39_error)
+                  __pyx_t_12 = PyList_New(0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 118, __pyx_L39_error)
                   __Pyx_GOTREF(__pyx_t_12);
-                  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_12) < 0) __PYX_ERR(0, 117, __pyx_L39_error)
+                  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_12) < 0) __PYX_ERR(0, 118, __pyx_L39_error)
                   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-                  /* "arithmetic_analyze.pyx":118
+                  /* "arithmetic_analyze.pyx":119
  *                                     self.numeric.append( _return_ )
  *                                     self.calculations   = []
  *                                     historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -4127,7 +4140,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_INCREF(__pyx_kp_s_);
                   __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-                  /* "arithmetic_analyze.pyx":115
+                  /* "arithmetic_analyze.pyx":116
  *                                 _return_ , error  = mathematics.MAGIC_MATH_BASE( self.calculations, self.DataBase,
  *                                                                     historyOfOperators, self.line ).MATHS_OPERATIONS( )
  *                                 if error  in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4137,7 +4150,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   goto __pyx_L57;
                 }
 
-                /* "arithmetic_analyze.pyx":119
+                /* "arithmetic_analyze.pyx":120
  *                                     self.calculations   = []
  *                                     historyOfOperators  = ''
  *                                 else : break             # <<<<<<<<<<<<<<
@@ -4149,7 +4162,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 }
                 __pyx_L57:;
 
-                /* "arithmetic_analyze.pyx":105
+                /* "arithmetic_analyze.pyx":106
  *                             _return_, error   = nv.TYPE( self.master, self.Values[ i ][ 0 ], self.DataBase, self.line,
  *                                                                         self.Values[ i ][ 0 ][ 'type' ] ).TYPE( MainString )
  *                             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4159,7 +4172,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 goto __pyx_L49;
               }
 
-              /* "arithmetic_analyze.pyx":120
+              /* "arithmetic_analyze.pyx":121
  *                                     historyOfOperators  = ''
  *                                 else : break
  *                             else : break             # <<<<<<<<<<<<<<
@@ -4171,7 +4184,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               }
               __pyx_L49:;
 
-              /* "arithmetic_analyze.pyx":102
+              /* "arithmetic_analyze.pyx":103
  *                     if len( operators ) == 1:
  * 
  *                         try:             # <<<<<<<<<<<<<<
@@ -4194,7 +4207,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "arithmetic_analyze.pyx":122
+            /* "arithmetic_analyze.pyx":123
  *                             else : break
  * 
  *                         except TypeError:             # <<<<<<<<<<<<<<
@@ -4204,47 +4217,47 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
             if (__pyx_t_13) {
               __Pyx_AddTraceback("arithmetic_analyze.ARITHMETIC.CHECK", __pyx_clineno, __pyx_lineno, __pyx_filename);
-              if (__Pyx_GetException(&__pyx_t_12, &__pyx_t_11, &__pyx_t_10) < 0) __PYX_ERR(0, 122, __pyx_L41_except_error)
+              if (__Pyx_GetException(&__pyx_t_12, &__pyx_t_11, &__pyx_t_10) < 0) __PYX_ERR(0, 123, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_GOTREF(__pyx_t_11);
               __Pyx_GOTREF(__pyx_t_10);
 
-              /* "arithmetic_analyze.pyx":123
+              /* "arithmetic_analyze.pyx":124
  * 
  *                         except TypeError:
  *                             _return_, error =  ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ 0 ],             # <<<<<<<<<<<<<<
  *                                                             operators[ 0 ], self.DataBase, self.line ).INIT( MainString )
  * 
  */
-              __pyx_t_14 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Values); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 123, __pyx_L41_except_error)
+              __pyx_t_14 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Values); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 124, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_14);
-              __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 123, __pyx_L41_except_error)
+              __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 124, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-              __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_9, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 123, __pyx_L41_except_error)
+              __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_9, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 124, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-              /* "arithmetic_analyze.pyx":124
+              /* "arithmetic_analyze.pyx":125
  *                         except TypeError:
  *                             _return_, error =  ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ 0 ],
  *                                                             operators[ 0 ], self.DataBase, self.line ).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                             if error in [ None, '' ]:
  */
-              __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 124, __pyx_L41_except_error)
+              __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_operators, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 125, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_9);
-              __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L41_except_error)
+              __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_2);
 
-              /* "arithmetic_analyze.pyx":123
+              /* "arithmetic_analyze.pyx":124
  * 
  *                         except TypeError:
  *                             _return_, error =  ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ 0 ],             # <<<<<<<<<<<<<<
  *                                                             operators[ 0 ], self.DataBase, self.line ).INIT( MainString )
  * 
  */
-              __pyx_t_4 = PyTuple_New(5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L41_except_error)
+              __pyx_t_4 = PyTuple_New(5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_INCREF(__pyx_v_self->master);
               __Pyx_GIVEREF(__pyx_v_self->master);
@@ -4261,18 +4274,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __pyx_t_14 = 0;
               __pyx_t_9 = 0;
               __pyx_t_2 = 0;
-              __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L41_except_error)
+              __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-              /* "arithmetic_analyze.pyx":124
+              /* "arithmetic_analyze.pyx":125
  *                         except TypeError:
  *                             _return_, error =  ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ 0 ],
  *                                                             operators[ 0 ], self.DataBase, self.line ).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                             if error in [ None, '' ]:
  */
-              __pyx_t_4 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_2)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_2), __pyx_v_MainString); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L41_except_error)
+              __pyx_t_4 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_2)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_2), __pyx_v_MainString); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L41_except_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               if (likely(__pyx_t_4 != Py_None)) {
@@ -4281,7 +4294,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 if (unlikely(size != 2)) {
                   if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                   else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                  __PYX_ERR(0, 123, __pyx_L41_except_error)
+                  __PYX_ERR(0, 124, __pyx_L41_except_error)
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                 __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
@@ -4289,30 +4302,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __Pyx_INCREF(__pyx_t_2);
                 __Pyx_INCREF(__pyx_t_9);
                 #else
-                __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L41_except_error)
+                __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 123, __pyx_L41_except_error)
+                __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 124, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_9);
                 #endif
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               } else {
-                __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 123, __pyx_L41_except_error)
+                __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 124, __pyx_L41_except_error)
               }
 
-              /* "arithmetic_analyze.pyx":123
+              /* "arithmetic_analyze.pyx":124
  * 
  *                         except TypeError:
  *                             _return_, error =  ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ 0 ],             # <<<<<<<<<<<<<<
  *                                                             operators[ 0 ], self.DataBase, self.line ).INIT( MainString )
  * 
  */
-              if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 123, __pyx_L41_except_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 124, __pyx_L41_except_error)
               __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_2);
               __pyx_t_2 = 0;
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_9));
               __pyx_t_9 = 0;
 
-              /* "arithmetic_analyze.pyx":126
+              /* "arithmetic_analyze.pyx":127
  *                                                             operators[ 0 ], self.DataBase, self.line ).INIT( MainString )
  * 
  *                             if error in [ None, '' ]:             # <<<<<<<<<<<<<<
@@ -4321,13 +4334,13 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               __Pyx_INCREF(__pyx_v_error);
               __pyx_t_16 = __pyx_v_error;
-              __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 126, __pyx_L41_except_error)
+              __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 127, __pyx_L41_except_error)
               if (!__pyx_t_7) {
               } else {
                 __pyx_t_17 = __pyx_t_7;
                 goto __pyx_L63_bool_binop_done;
               }
-              __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 126, __pyx_L41_except_error)
+              __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 127, __pyx_L41_except_error)
               __pyx_t_8 = (__pyx_t_7 != 0);
               __pyx_t_17 = __pyx_t_8;
               __pyx_L63_bool_binop_done:;
@@ -4335,42 +4348,42 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __pyx_t_8 = (__pyx_t_17 != 0);
               if (__pyx_t_8) {
 
-                /* "arithmetic_analyze.pyx":127
+                /* "arithmetic_analyze.pyx":128
  * 
  *                             if error in [ None, '' ]:
  *                                 self.calculations.append( [ _return_[ 0 ] ])             # <<<<<<<<<<<<<<
  *                                 for string in self.calculations:
  *                                     if type( string ) == type( str() ):
  */
-                __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L41_except_error)
+                __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_4);
-                __pyx_t_9 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 127, __pyx_L41_except_error)
+                __pyx_t_9 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 128, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_9);
-                __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L41_except_error)
+                __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_GIVEREF(__pyx_t_9);
                 PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_9);
                 __pyx_t_9 = 0;
-                __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_4, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 127, __pyx_L41_except_error)
+                __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_4, __pyx_t_2); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 128, __pyx_L41_except_error)
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-                /* "arithmetic_analyze.pyx":128
+                /* "arithmetic_analyze.pyx":129
  *                             if error in [ None, '' ]:
  *                                 self.calculations.append( [ _return_[ 0 ] ])
  *                                 for string in self.calculations:             # <<<<<<<<<<<<<<
  *                                     if type( string ) == type( str() ):
  *                                         historyOfOperators += string
  */
-                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L41_except_error)
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
                   __pyx_t_4 = __pyx_t_2; __Pyx_INCREF(__pyx_t_4); __pyx_t_19 = 0;
                   __pyx_t_24 = NULL;
                 } else {
-                  __pyx_t_19 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L41_except_error)
+                  __pyx_t_19 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L41_except_error)
                   __Pyx_GOTREF(__pyx_t_4);
-                  __pyx_t_24 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 128, __pyx_L41_except_error)
+                  __pyx_t_24 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 129, __pyx_L41_except_error)
                 }
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 for (;;) {
@@ -4378,17 +4391,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     if (likely(PyList_CheckExact(__pyx_t_4))) {
                       if (__pyx_t_19 >= PyList_GET_SIZE(__pyx_t_4)) break;
                       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_19); __Pyx_INCREF(__pyx_t_2); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 128, __pyx_L41_except_error)
+                      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_19); __Pyx_INCREF(__pyx_t_2); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 129, __pyx_L41_except_error)
                       #else
-                      __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L41_except_error)
+                      __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L41_except_error)
                       __Pyx_GOTREF(__pyx_t_2);
                       #endif
                     } else {
                       if (__pyx_t_19 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
                       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                      __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_19); __Pyx_INCREF(__pyx_t_2); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 128, __pyx_L41_except_error)
+                      __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_19); __Pyx_INCREF(__pyx_t_2); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 129, __pyx_L41_except_error)
                       #else
-                      __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L41_except_error)
+                      __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L41_except_error)
                       __Pyx_GOTREF(__pyx_t_2);
                       #endif
                     }
@@ -4398,7 +4411,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                       PyObject* exc_type = PyErr_Occurred();
                       if (exc_type) {
                         if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                        else __PYX_ERR(0, 128, __pyx_L41_except_error)
+                        else __PYX_ERR(0, 129, __pyx_L41_except_error)
                       }
                       break;
                     }
@@ -4407,35 +4420,35 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_2);
                   __pyx_t_2 = 0;
 
-                  /* "arithmetic_analyze.pyx":129
+                  /* "arithmetic_analyze.pyx":130
  *                                 self.calculations.append( [ _return_[ 0 ] ])
  *                                 for string in self.calculations:
  *                                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                                         historyOfOperators += string
  *                                     else: pass
  */
-                  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L41_except_error)
+                  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L41_except_error)
                   __Pyx_GOTREF(__pyx_t_2);
-                  __pyx_t_9 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 129, __pyx_L41_except_error)
+                  __pyx_t_9 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 130, __pyx_L41_except_error)
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 129, __pyx_L41_except_error)
+                  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 130, __pyx_L41_except_error)
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
                   if (__pyx_t_8) {
 
-                    /* "arithmetic_analyze.pyx":130
+                    /* "arithmetic_analyze.pyx":131
  *                                 for string in self.calculations:
  *                                     if type( string ) == type( str() ):
  *                                         historyOfOperators += string             # <<<<<<<<<<<<<<
  *                                     else: pass
  * 
  */
-                    __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 130, __pyx_L41_except_error)
+                    __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 131, __pyx_L41_except_error)
                     __Pyx_GOTREF(__pyx_t_9);
-                    if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 130, __pyx_L41_except_error)
+                    if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 131, __pyx_L41_except_error)
                     __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_9));
                     __pyx_t_9 = 0;
 
-                    /* "arithmetic_analyze.pyx":129
+                    /* "arithmetic_analyze.pyx":130
  *                                 self.calculations.append( [ _return_[ 0 ] ])
  *                                 for string in self.calculations:
  *                                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -4445,7 +4458,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     goto __pyx_L67;
                   }
 
-                  /* "arithmetic_analyze.pyx":131
+                  /* "arithmetic_analyze.pyx":132
  *                                     if type( string ) == type( str() ):
  *                                         historyOfOperators += string
  *                                     else: pass             # <<<<<<<<<<<<<<
@@ -4456,7 +4469,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   }
                   __pyx_L67:;
 
-                  /* "arithmetic_analyze.pyx":128
+                  /* "arithmetic_analyze.pyx":129
  *                             if error in [ None, '' ]:
  *                                 self.calculations.append( [ _return_[ 0 ] ])
  *                                 for string in self.calculations:             # <<<<<<<<<<<<<<
@@ -4466,29 +4479,29 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 }
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-                /* "arithmetic_analyze.pyx":133
+                /* "arithmetic_analyze.pyx":134
  *                                     else: pass
  * 
  *                                 _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,             # <<<<<<<<<<<<<<
  *                                                     self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  */
-                __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_2);
-                __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_14);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_2);
 
-                /* "arithmetic_analyze.pyx":134
+                /* "arithmetic_analyze.pyx":135
  * 
  *                                 _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,
  *                                                     self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()             # <<<<<<<<<<<<<<
  * 
  *                                 if error [ None, '' ]:
  */
-                __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L41_except_error)
+                __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 __pyx_t_28 = NULL;
                 __pyx_t_13 = 0;
@@ -4505,7 +4518,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 #if CYTHON_FAST_PYCALL
                 if (PyFunction_Check(__pyx_t_14)) {
                   PyObject *__pyx_temp[5] = {__pyx_t_28, __pyx_t_2, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_3};
-                  __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
                   __Pyx_GOTREF(__pyx_t_9);
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4515,7 +4528,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 #if CYTHON_FAST_PYCCALL
                 if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
                   PyObject *__pyx_temp[5] = {__pyx_t_28, __pyx_t_2, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_3};
-                  __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
                   __Pyx_GOTREF(__pyx_t_9);
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4523,7 +4536,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 } else
                 #endif
                 {
-                  __pyx_t_29 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  __pyx_t_29 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __Pyx_GOTREF(__pyx_t_29);
                   if (__pyx_t_28) {
                     __Pyx_GIVEREF(__pyx_t_28); PyTuple_SET_ITEM(__pyx_t_29, 0, __pyx_t_28); __pyx_t_28 = NULL;
@@ -4540,12 +4553,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   PyTuple_SET_ITEM(__pyx_t_29, 3+__pyx_t_13, __pyx_t_3);
                   __pyx_t_2 = 0;
                   __pyx_t_3 = 0;
-                  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_29, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_29, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __Pyx_GOTREF(__pyx_t_9);
                   __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
                 }
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-                __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 134, __pyx_L41_except_error)
+                __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 135, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_14);
                 __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
                 __pyx_t_9 = NULL;
@@ -4560,7 +4573,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 }
                 __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_14);
                 __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-                if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L41_except_error)
+                if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
                 if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -4569,7 +4582,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   if (unlikely(size != 2)) {
                     if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                     else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                    __PYX_ERR(0, 133, __pyx_L41_except_error)
+                    __PYX_ERR(0, 134, __pyx_L41_except_error)
                   }
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                   if (likely(PyTuple_CheckExact(sequence))) {
@@ -4582,15 +4595,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_INCREF(__pyx_t_14);
                   __Pyx_INCREF(__pyx_t_9);
                   #else
-                  __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __Pyx_GOTREF(__pyx_t_14);
-                  __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __Pyx_GOTREF(__pyx_t_9);
                   #endif
                   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                 } else {
                   Py_ssize_t index = -1;
-                  __pyx_t_29 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  __pyx_t_29 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __Pyx_GOTREF(__pyx_t_29);
                   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                   __pyx_t_15 = Py_TYPE(__pyx_t_29)->tp_iternext;
@@ -4598,7 +4611,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_GOTREF(__pyx_t_14);
                   index = 1; __pyx_t_9 = __pyx_t_15(__pyx_t_29); if (unlikely(!__pyx_t_9)) goto __pyx_L68_unpacking_failed;
                   __Pyx_GOTREF(__pyx_t_9);
-                  if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_29), 2) < 0) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_29), 2) < 0) __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __pyx_t_15 = NULL;
                   __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
                   goto __pyx_L69_unpacking_done;
@@ -4606,37 +4619,37 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
                   __pyx_t_15 = NULL;
                   if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-                  __PYX_ERR(0, 133, __pyx_L41_except_error)
+                  __PYX_ERR(0, 134, __pyx_L41_except_error)
                   __pyx_L69_unpacking_done:;
                 }
 
-                /* "arithmetic_analyze.pyx":133
+                /* "arithmetic_analyze.pyx":134
  *                                     else: pass
  * 
  *                                 _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,             # <<<<<<<<<<<<<<
  *                                                     self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  */
-                if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 133, __pyx_L41_except_error)
+                if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 134, __pyx_L41_except_error)
                 __Pyx_DECREF_SET(__pyx_v__return_, __pyx_t_14);
                 __pyx_t_14 = 0;
                 __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_9));
                 __pyx_t_9 = 0;
 
-                /* "arithmetic_analyze.pyx":136
+                /* "arithmetic_analyze.pyx":137
  *                                                     self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  *                                 if error [ None, '' ]:             # <<<<<<<<<<<<<<
  *                                     self.numeric.append( _return_ )
  *                                     self.calculations   = []
  */
-                __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_error, __pyx_tuple__4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L41_except_error)
+                __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_error, __pyx_tuple__4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L41_except_error)
                 __Pyx_GOTREF(__pyx_t_4);
-                __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 136, __pyx_L41_except_error)
+                __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 137, __pyx_L41_except_error)
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                 if (__pyx_t_8) {
 
-                  /* "arithmetic_analyze.pyx":137
+                  /* "arithmetic_analyze.pyx":138
  * 
  *                                 if error [ None, '' ]:
  *                                     self.numeric.append( _return_ )             # <<<<<<<<<<<<<<
@@ -4645,23 +4658,23 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
                   if (unlikely(__pyx_v_self->numeric == Py_None)) {
                     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-                    __PYX_ERR(0, 137, __pyx_L41_except_error)
+                    __PYX_ERR(0, 138, __pyx_L41_except_error)
                   }
-                  __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 137, __pyx_L41_except_error)
+                  __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 138, __pyx_L41_except_error)
 
-                  /* "arithmetic_analyze.pyx":138
+                  /* "arithmetic_analyze.pyx":139
  *                                 if error [ None, '' ]:
  *                                     self.numeric.append( _return_ )
  *                                     self.calculations   = []             # <<<<<<<<<<<<<<
  *                                     historyOfOperators  = ''
  *                                 else: break
  */
-                  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L41_except_error)
+                  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L41_except_error)
                   __Pyx_GOTREF(__pyx_t_4);
-                  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_4) < 0) __PYX_ERR(0, 138, __pyx_L41_except_error)
+                  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_4) < 0) __PYX_ERR(0, 139, __pyx_L41_except_error)
                   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-                  /* "arithmetic_analyze.pyx":139
+                  /* "arithmetic_analyze.pyx":140
  *                                     self.numeric.append( _return_ )
  *                                     self.calculations   = []
  *                                     historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -4671,7 +4684,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   __Pyx_INCREF(__pyx_kp_s_);
                   __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-                  /* "arithmetic_analyze.pyx":136
+                  /* "arithmetic_analyze.pyx":137
  *                                                     self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  *                                 if error [ None, '' ]:             # <<<<<<<<<<<<<<
@@ -4681,7 +4694,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   goto __pyx_L70;
                 }
 
-                /* "arithmetic_analyze.pyx":140
+                /* "arithmetic_analyze.pyx":141
  *                                     self.calculations   = []
  *                                     historyOfOperators  = ''
  *                                 else: break             # <<<<<<<<<<<<<<
@@ -4693,7 +4706,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 }
                 __pyx_L70:;
 
-                /* "arithmetic_analyze.pyx":126
+                /* "arithmetic_analyze.pyx":127
  *                                                             operators[ 0 ], self.DataBase, self.line ).INIT( MainString )
  * 
  *                             if error in [ None, '' ]:             # <<<<<<<<<<<<<<
@@ -4703,7 +4716,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 goto __pyx_L62;
               }
 
-              /* "arithmetic_analyze.pyx":141
+              /* "arithmetic_analyze.pyx":142
  *                                     historyOfOperators  = ''
  *                                 else: break
  *                             else: break             # <<<<<<<<<<<<<<
@@ -4727,7 +4740,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             goto __pyx_L41_except_error;
             __pyx_L41_except_error:;
 
-            /* "arithmetic_analyze.pyx":102
+            /* "arithmetic_analyze.pyx":103
  *                     if len( operators ) == 1:
  * 
  *                         try:             # <<<<<<<<<<<<<<
@@ -4753,7 +4766,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __pyx_L46_try_end:;
           }
 
-          /* "arithmetic_analyze.pyx":100
+          /* "arithmetic_analyze.pyx":101
  *                     length = len( self.Value[ i ] )
  * 
  *                     if len( operators ) == 1:             # <<<<<<<<<<<<<<
@@ -4763,7 +4776,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           goto __pyx_L38;
         }
 
-        /* "arithmetic_analyze.pyx":144
+        /* "arithmetic_analyze.pyx":145
  * 
  *                     else:
  *                         for j in range( length ):             # <<<<<<<<<<<<<<
@@ -4776,7 +4789,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
             __pyx_v_j = __pyx_t_22;
 
-            /* "arithmetic_analyze.pyx":145
+            /* "arithmetic_analyze.pyx":146
  *                     else:
  *                         for j in range( length ):
  *                             if type( self.Value[ i ][ j ] ) == type( dict() ) :             # <<<<<<<<<<<<<<
@@ -4785,47 +4798,47 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
             if (unlikely(__pyx_v_self->Value == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 145, __pyx_L1_error)
+              __PYX_ERR(0, 146, __pyx_L1_error)
             }
-            __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 145, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 146, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 145, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 146, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 145, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 146, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_12 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_11)), ((PyObject *)Py_TYPE(__pyx_t_10)), Py_EQ); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 145, __pyx_L1_error)
+            __pyx_t_12 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_11)), ((PyObject *)Py_TYPE(__pyx_t_10)), Py_EQ); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 146, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 145, __pyx_L1_error)
+            __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             if (__pyx_t_8) {
 
-              /* "arithmetic_analyze.pyx":146
+              /* "arithmetic_analyze.pyx":147
  *                         for j in range( length ):
  *                             if type( self.Value[ i ][ j ] ) == type( dict() ) :
  *                                 _return_, error = nv.TYPE( self.master, self.Value[ i ][ j ] , self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                             self.Value[ i ][ j ][ 'type' ]  ).TYPE( MainString )
  * 
  */
-              __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nv); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 146, __pyx_L1_error)
+              __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nv); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 147, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_11);
-              __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+              __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
               if (unlikely(__pyx_v_self->Value == Py_None)) {
                 PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 146, __pyx_L1_error)
+                __PYX_ERR(0, 147, __pyx_L1_error)
               }
-              __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 146, __pyx_L1_error)
+              __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 147, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_11);
-              __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 146, __pyx_L1_error)
+              __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 147, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-              __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 146, __pyx_L1_error)
+              __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 147, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_11);
 
-              /* "arithmetic_analyze.pyx":147
+              /* "arithmetic_analyze.pyx":148
  *                             if type( self.Value[ i ][ j ] ) == type( dict() ) :
  *                                 _return_, error = nv.TYPE( self.master, self.Value[ i ][ j ] , self.DataBase, self.line,
  *                                                             self.Value[ i ][ j ][ 'type' ]  ).TYPE( MainString )             # <<<<<<<<<<<<<<
@@ -4834,14 +4847,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               if (unlikely(__pyx_v_self->Value == Py_None)) {
                 PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 147, __pyx_L1_error)
+                __PYX_ERR(0, 148, __pyx_L1_error)
               }
-              __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 147, __pyx_L1_error)
+              __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 148, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_14);
-              __pyx_t_29 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 147, __pyx_L1_error)
+              __pyx_t_29 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_29)) __PYX_ERR(0, 148, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_29);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-              __pyx_t_14 = __Pyx_PyObject_Dict_GetItem(__pyx_t_29, __pyx_n_s_type); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 147, __pyx_L1_error)
+              __pyx_t_14 = __Pyx_PyObject_Dict_GetItem(__pyx_t_29, __pyx_n_s_type); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 148, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_DECREF(__pyx_t_29); __pyx_t_29 = 0;
               __pyx_t_29 = NULL;
@@ -4859,7 +4872,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               #if CYTHON_FAST_PYCALL
               if (PyFunction_Check(__pyx_t_4)) {
                 PyObject *__pyx_temp[6] = {__pyx_t_29, __pyx_v_self->master, __pyx_t_9, __pyx_v_self->DataBase, __pyx_t_11, __pyx_t_14};
-                __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_23, 5+__pyx_t_23); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 146, __pyx_L1_error)
+                __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_23, 5+__pyx_t_23); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 147, __pyx_L1_error)
                 __Pyx_XDECREF(__pyx_t_29); __pyx_t_29 = 0;
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -4870,7 +4883,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               #if CYTHON_FAST_PYCCALL
               if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
                 PyObject *__pyx_temp[6] = {__pyx_t_29, __pyx_v_self->master, __pyx_t_9, __pyx_v_self->DataBase, __pyx_t_11, __pyx_t_14};
-                __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_23, 5+__pyx_t_23); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 146, __pyx_L1_error)
+                __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_23, 5+__pyx_t_23); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 147, __pyx_L1_error)
                 __Pyx_XDECREF(__pyx_t_29); __pyx_t_29 = 0;
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -4879,7 +4892,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               } else
               #endif
               {
-                __pyx_t_3 = PyTuple_New(5+__pyx_t_23); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
+                __pyx_t_3 = PyTuple_New(5+__pyx_t_23); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 if (__pyx_t_29) {
                   __Pyx_GIVEREF(__pyx_t_29); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_29); __pyx_t_29 = NULL;
@@ -4899,12 +4912,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __pyx_t_9 = 0;
                 __pyx_t_11 = 0;
                 __pyx_t_14 = 0;
-                __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 146, __pyx_L1_error)
+                __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 147, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               }
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-              __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
+              __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
               __pyx_t_10 = NULL;
@@ -4919,7 +4932,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               }
               __pyx_t_12 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_10, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_MainString);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 147, __pyx_L1_error)
+              if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 148, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               if ((likely(PyTuple_CheckExact(__pyx_t_12))) || (PyList_CheckExact(__pyx_t_12))) {
@@ -4928,7 +4941,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 if (unlikely(size != 2)) {
                   if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                   else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                  __PYX_ERR(0, 146, __pyx_L1_error)
+                  __PYX_ERR(0, 147, __pyx_L1_error)
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                 if (likely(PyTuple_CheckExact(sequence))) {
@@ -4941,15 +4954,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __Pyx_INCREF(__pyx_t_4);
                 __Pyx_INCREF(__pyx_t_10);
                 #else
-                __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+                __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_4);
-                __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 146, __pyx_L1_error)
+                __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 147, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 #endif
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               } else {
                 Py_ssize_t index = -1;
-                __pyx_t_3 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
+                __pyx_t_3 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                 __pyx_t_15 = Py_TYPE(__pyx_t_3)->tp_iternext;
@@ -4957,7 +4970,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __Pyx_GOTREF(__pyx_t_4);
                 index = 1; __pyx_t_10 = __pyx_t_15(__pyx_t_3); if (unlikely(!__pyx_t_10)) goto __pyx_L74_unpacking_failed;
                 __Pyx_GOTREF(__pyx_t_10);
-                if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_3), 2) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
+                if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_3), 2) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
                 __pyx_t_15 = NULL;
                 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                 goto __pyx_L75_unpacking_done;
@@ -4965,24 +4978,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __pyx_t_15 = NULL;
                 if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-                __PYX_ERR(0, 146, __pyx_L1_error)
+                __PYX_ERR(0, 147, __pyx_L1_error)
                 __pyx_L75_unpacking_done:;
               }
 
-              /* "arithmetic_analyze.pyx":146
+              /* "arithmetic_analyze.pyx":147
  *                         for j in range( length ):
  *                             if type( self.Value[ i ][ j ] ) == type( dict() ) :
  *                                 _return_, error = nv.TYPE( self.master, self.Value[ i ][ j ] , self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                             self.Value[ i ][ j ][ 'type' ]  ).TYPE( MainString )
  * 
  */
-              if (!(likely(PyString_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 146, __pyx_L1_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 147, __pyx_L1_error)
               __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_4);
               __pyx_t_4 = 0;
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_10));
               __pyx_t_10 = 0;
 
-              /* "arithmetic_analyze.pyx":149
+              /* "arithmetic_analyze.pyx":150
  *                                                             self.Value[ i ][ j ][ 'type' ]  ).TYPE( MainString )
  * 
  *                                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -4991,21 +5004,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               __Pyx_INCREF(__pyx_v_error);
               __pyx_t_16 = __pyx_v_error;
-              __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 149, __pyx_L1_error)
+              __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 150, __pyx_L1_error)
               __pyx_t_7 = (__pyx_t_17 != 0);
               if (!__pyx_t_7) {
               } else {
                 __pyx_t_8 = __pyx_t_7;
                 goto __pyx_L77_bool_binop_done;
               }
-              __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 149, __pyx_L1_error)
+              __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 150, __pyx_L1_error)
               __pyx_t_8 = __pyx_t_7;
               __pyx_L77_bool_binop_done:;
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
               __pyx_t_7 = (__pyx_t_8 != 0);
               if (__pyx_t_7) {
 
-                /* "arithmetic_analyze.pyx":150
+                /* "arithmetic_analyze.pyx":151
  * 
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:             # <<<<<<<<<<<<<<
@@ -5015,7 +5028,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __pyx_t_7 = ((__pyx_v_j != (__pyx_v_length - 1)) != 0);
                 if (__pyx_t_7) {
 
-                  /* "arithmetic_analyze.pyx":151
+                  /* "arithmetic_analyze.pyx":152
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:
  *                                         try:             # <<<<<<<<<<<<<<
@@ -5031,57 +5044,57 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     __Pyx_XGOTREF(__pyx_t_25);
                     /*try:*/ {
 
-                      /* "arithmetic_analyze.pyx":152
+                      /* "arithmetic_analyze.pyx":153
  *                                     if j != length - 1:
  *                                         try:
  *                                             self.calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                                             if self.calculations[ 0 ] == '-':
  *                                                 self.calculations.append( operators[ j + 1 ] )
  */
-                      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 152, __pyx_L80_error)
+                      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 153, __pyx_L80_error)
                       __Pyx_GOTREF(__pyx_t_12);
-                      __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 152, __pyx_L80_error)
+                      __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 153, __pyx_L80_error)
                       __Pyx_GOTREF(__pyx_t_10);
                       __Pyx_INCREF(__pyx_v__return_);
                       __Pyx_GIVEREF(__pyx_v__return_);
                       PyList_SET_ITEM(__pyx_t_10, 0, __pyx_v__return_);
-                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 152, __pyx_L80_error)
+                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 153, __pyx_L80_error)
                       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-                      /* "arithmetic_analyze.pyx":153
+                      /* "arithmetic_analyze.pyx":154
  *                                         try:
  *                                             self.calculations.append( [ _return_ ] )
  *                                             if self.calculations[ 0 ] == '-':             # <<<<<<<<<<<<<<
  *                                                 self.calculations.append( operators[ j + 1 ] )
  *                                             else:
  */
-                      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 153, __pyx_L80_error)
+                      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 154, __pyx_L80_error)
                       __Pyx_GOTREF(__pyx_t_10);
-                      __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_10, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 153, __pyx_L80_error)
+                      __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_10, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 154, __pyx_L80_error)
                       __Pyx_GOTREF(__pyx_t_12);
                       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                      __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_12, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 153, __pyx_L80_error)
+                      __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_12, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 154, __pyx_L80_error)
                       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                       if (__pyx_t_7) {
 
-                        /* "arithmetic_analyze.pyx":154
+                        /* "arithmetic_analyze.pyx":155
  *                                             self.calculations.append( [ _return_ ] )
  *                                             if self.calculations[ 0 ] == '-':
  *                                                 self.calculations.append( operators[ j + 1 ] )             # <<<<<<<<<<<<<<
  *                                             else:
  *                                                 self.calculations.append( operators[ j + 1 ] )
  */
-                        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 154, __pyx_L80_error)
+                        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 155, __pyx_L80_error)
                         __Pyx_GOTREF(__pyx_t_12);
                         __pyx_t_30 = (__pyx_v_j + 1);
-                        __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_t_30, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 154, __pyx_L80_error)
+                        __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_t_30, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 155, __pyx_L80_error)
                         __Pyx_GOTREF(__pyx_t_10);
-                        __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 154, __pyx_L80_error)
+                        __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 155, __pyx_L80_error)
                         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-                        /* "arithmetic_analyze.pyx":153
+                        /* "arithmetic_analyze.pyx":154
  *                                         try:
  *                                             self.calculations.append( [ _return_ ] )
  *                                             if self.calculations[ 0 ] == '-':             # <<<<<<<<<<<<<<
@@ -5091,7 +5104,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                         goto __pyx_L88;
                       }
 
-                      /* "arithmetic_analyze.pyx":156
+                      /* "arithmetic_analyze.pyx":157
  *                                                 self.calculations.append( operators[ j + 1 ] )
  *                                             else:
  *                                                 self.calculations.append( operators[ j + 1 ] )             # <<<<<<<<<<<<<<
@@ -5099,18 +5112,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  *                                             self.calculations.append( [ _return_ ] )
  */
                       /*else*/ {
-                        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 156, __pyx_L80_error)
+                        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 157, __pyx_L80_error)
                         __Pyx_GOTREF(__pyx_t_10);
                         __pyx_t_30 = (__pyx_v_j + 1);
-                        __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_t_30, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 156, __pyx_L80_error)
+                        __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_t_30, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 157, __pyx_L80_error)
                         __Pyx_GOTREF(__pyx_t_12);
-                        __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_12); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 156, __pyx_L80_error)
+                        __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_12); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 157, __pyx_L80_error)
                         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                       }
                       __pyx_L88:;
 
-                      /* "arithmetic_analyze.pyx":151
+                      /* "arithmetic_analyze.pyx":152
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:
  *                                         try:             # <<<<<<<<<<<<<<
@@ -5135,7 +5148,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
                     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                    /* "arithmetic_analyze.pyx":157
+                    /* "arithmetic_analyze.pyx":158
  *                                             else:
  *                                                 self.calculations.append( operators[ j + 1 ] )
  *                                         except TypeError:             # <<<<<<<<<<<<<<
@@ -5145,41 +5158,41 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     __pyx_t_23 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
                     if (__pyx_t_23) {
                       __Pyx_AddTraceback("arithmetic_analyze.ARITHMETIC.CHECK", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                      if (__Pyx_GetException(&__pyx_t_12, &__pyx_t_10, &__pyx_t_4) < 0) __PYX_ERR(0, 157, __pyx_L82_except_error)
+                      if (__Pyx_GetException(&__pyx_t_12, &__pyx_t_10, &__pyx_t_4) < 0) __PYX_ERR(0, 158, __pyx_L82_except_error)
                       __Pyx_GOTREF(__pyx_t_12);
                       __Pyx_GOTREF(__pyx_t_10);
                       __Pyx_GOTREF(__pyx_t_4);
 
-                      /* "arithmetic_analyze.pyx":158
+                      /* "arithmetic_analyze.pyx":159
  *                                                 self.calculations.append( operators[ j + 1 ] )
  *                                         except TypeError:
  *                                             self.calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                                             self.calculations.append( operators[ j ] )
  *                                     else: self.calculations.append( [ _return_ ] )
  */
-                      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L82_except_error)
+                      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L82_except_error)
                       __Pyx_GOTREF(__pyx_t_3);
-                      __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 158, __pyx_L82_except_error)
+                      __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 159, __pyx_L82_except_error)
                       __Pyx_GOTREF(__pyx_t_14);
                       __Pyx_INCREF(__pyx_v__return_);
                       __Pyx_GIVEREF(__pyx_v__return_);
                       PyList_SET_ITEM(__pyx_t_14, 0, __pyx_v__return_);
-                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_14); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 158, __pyx_L82_except_error)
+                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_14); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 159, __pyx_L82_except_error)
                       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-                      /* "arithmetic_analyze.pyx":159
+                      /* "arithmetic_analyze.pyx":160
  *                                         except TypeError:
  *                                             self.calculations.append( [ _return_ ] )
  *                                             self.calculations.append( operators[ j ] )             # <<<<<<<<<<<<<<
  *                                     else: self.calculations.append( [ _return_ ] )
  *                                 else: break
  */
-                      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 159, __pyx_L82_except_error)
+                      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 160, __pyx_L82_except_error)
                       __Pyx_GOTREF(__pyx_t_14);
-                      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L82_except_error)
+                      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L82_except_error)
                       __Pyx_GOTREF(__pyx_t_3);
-                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_14, __pyx_t_3); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 159, __pyx_L82_except_error)
+                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_14, __pyx_t_3); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 160, __pyx_L82_except_error)
                       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
                       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -5190,7 +5203,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     goto __pyx_L82_except_error;
                     __pyx_L82_except_error:;
 
-                    /* "arithmetic_analyze.pyx":151
+                    /* "arithmetic_analyze.pyx":152
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:
  *                                         try:             # <<<<<<<<<<<<<<
@@ -5210,7 +5223,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     __pyx_L87_try_end:;
                   }
 
-                  /* "arithmetic_analyze.pyx":150
+                  /* "arithmetic_analyze.pyx":151
  * 
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:             # <<<<<<<<<<<<<<
@@ -5220,7 +5233,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   goto __pyx_L79;
                 }
 
-                /* "arithmetic_analyze.pyx":160
+                /* "arithmetic_analyze.pyx":161
  *                                             self.calculations.append( [ _return_ ] )
  *                                             self.calculations.append( operators[ j ] )
  *                                     else: self.calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
@@ -5228,20 +5241,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  * 
  */
                 /*else*/ {
-                  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
+                  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_4);
-                  __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 160, __pyx_L1_error)
+                  __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 161, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_10);
                   __Pyx_INCREF(__pyx_v__return_);
                   __Pyx_GIVEREF(__pyx_v__return_);
                   PyList_SET_ITEM(__pyx_t_10, 0, __pyx_v__return_);
-                  __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_4, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 160, __pyx_L1_error)
+                  __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_4, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 161, __pyx_L1_error)
                   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                 }
                 __pyx_L79:;
 
-                /* "arithmetic_analyze.pyx":149
+                /* "arithmetic_analyze.pyx":150
  *                                                             self.Value[ i ][ j ][ 'type' ]  ).TYPE( MainString )
  * 
  *                                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -5251,7 +5264,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 goto __pyx_L76;
               }
 
-              /* "arithmetic_analyze.pyx":161
+              /* "arithmetic_analyze.pyx":162
  *                                             self.calculations.append( operators[ j ] )
  *                                     else: self.calculations.append( [ _return_ ] )
  *                                 else: break             # <<<<<<<<<<<<<<
@@ -5263,7 +5276,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               }
               __pyx_L76:;
 
-              /* "arithmetic_analyze.pyx":145
+              /* "arithmetic_analyze.pyx":146
  *                     else:
  *                         for j in range( length ):
  *                             if type( self.Value[ i ][ j ] ) == type( dict() ) :             # <<<<<<<<<<<<<<
@@ -5273,7 +5286,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               goto __pyx_L73;
             }
 
-            /* "arithmetic_analyze.pyx":164
+            /* "arithmetic_analyze.pyx":165
  * 
  *                             else:
  *                                 _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ j ],             # <<<<<<<<<<<<<<
@@ -5282,50 +5295,50 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
             /*else*/ {
 
-              /* "arithmetic_analyze.pyx":165
+              /* "arithmetic_analyze.pyx":166
  *                             else:
  *                                 _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ j ],
  *                                                             operators[ j ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                                 if error in [ '', None ]:
  */
-              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Values); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 164, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Values); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 165, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
 
-              /* "arithmetic_analyze.pyx":164
+              /* "arithmetic_analyze.pyx":165
  * 
  *                             else:
  *                                 _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ j ],             # <<<<<<<<<<<<<<
  *                                                             operators[ j ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-              __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
+              __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 164, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 165, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-              /* "arithmetic_analyze.pyx":165
+              /* "arithmetic_analyze.pyx":166
  *                             else:
  *                                 _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ j ],
  *                                                             operators[ j ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                                 if error in [ '', None ]:
  */
-              __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
+              __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
-              __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 165, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 166, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
 
-              /* "arithmetic_analyze.pyx":164
+              /* "arithmetic_analyze.pyx":165
  * 
  *                             else:
  *                                 _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ j ],             # <<<<<<<<<<<<<<
  *                                                             operators[ j ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-              __pyx_t_3 = PyTuple_New(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 164, __pyx_L1_error)
+              __pyx_t_3 = PyTuple_New(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 165, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_INCREF(__pyx_v_self->master);
               __Pyx_GIVEREF(__pyx_v_self->master);
@@ -5342,18 +5355,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __pyx_t_10 = 0;
               __pyx_t_4 = 0;
               __pyx_t_12 = 0;
-              __pyx_t_12 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_3, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 164, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_3, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 165, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-              /* "arithmetic_analyze.pyx":165
+              /* "arithmetic_analyze.pyx":166
  *                             else:
  *                                 _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ j ],
  *                                                             operators[ j ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                                 if error in [ '', None ]:
  */
-              __pyx_t_3 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_12)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_12), __pyx_v_MainString); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 165, __pyx_L1_error)
+              __pyx_t_3 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_12)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_12), __pyx_v_MainString); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               if (likely(__pyx_t_3 != Py_None)) {
@@ -5362,7 +5375,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 if (unlikely(size != 2)) {
                   if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                   else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                  __PYX_ERR(0, 164, __pyx_L1_error)
+                  __PYX_ERR(0, 165, __pyx_L1_error)
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                 __pyx_t_12 = PyTuple_GET_ITEM(sequence, 0); 
@@ -5370,30 +5383,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __Pyx_INCREF(__pyx_t_12);
                 __Pyx_INCREF(__pyx_t_4);
                 #else
-                __pyx_t_12 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 164, __pyx_L1_error)
+                __pyx_t_12 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 165, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_12);
-                __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
+                __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 #endif
                 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               } else {
-                __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 164, __pyx_L1_error)
+                __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 165, __pyx_L1_error)
               }
 
-              /* "arithmetic_analyze.pyx":164
+              /* "arithmetic_analyze.pyx":165
  * 
  *                             else:
  *                                 _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.Values[ i ][ j ],             # <<<<<<<<<<<<<<
  *                                                             operators[ j ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-              if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 164, __pyx_L1_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 165, __pyx_L1_error)
               __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_12);
               __pyx_t_12 = 0;
               __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_4));
               __pyx_t_4 = 0;
 
-              /* "arithmetic_analyze.pyx":167
+              /* "arithmetic_analyze.pyx":168
  *                                                             operators[ j ], self.DataBase, self.line).INIT( MainString )
  * 
  *                                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -5402,21 +5415,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               __Pyx_INCREF(__pyx_v_error);
               __pyx_t_16 = __pyx_v_error;
-              __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
+              __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
               __pyx_t_17 = (__pyx_t_8 != 0);
               if (!__pyx_t_17) {
               } else {
                 __pyx_t_7 = __pyx_t_17;
                 goto __pyx_L92_bool_binop_done;
               }
-              __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
+              __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
               __pyx_t_7 = __pyx_t_17;
               __pyx_L92_bool_binop_done:;
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
               __pyx_t_17 = (__pyx_t_7 != 0);
               if (__pyx_t_17) {
 
-                /* "arithmetic_analyze.pyx":168
+                /* "arithmetic_analyze.pyx":169
  * 
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:             # <<<<<<<<<<<<<<
@@ -5426,7 +5439,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 __pyx_t_17 = ((__pyx_v_j != (__pyx_v_length - 1)) != 0);
                 if (__pyx_t_17) {
 
-                  /* "arithmetic_analyze.pyx":169
+                  /* "arithmetic_analyze.pyx":170
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:
  *                                         try:             # <<<<<<<<<<<<<<
@@ -5442,43 +5455,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     __Pyx_XGOTREF(__pyx_t_27);
                     /*try:*/ {
 
-                      /* "arithmetic_analyze.pyx":170
+                      /* "arithmetic_analyze.pyx":171
  *                                     if j != length - 1:
  *                                         try:
  *                                             self.calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                                             self.calculations.append( operators[ j + 1 ] )
  * 
  */
-                      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L95_error)
+                      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L95_error)
                       __Pyx_GOTREF(__pyx_t_3);
-                      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L95_error)
+                      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L95_error)
                       __Pyx_GOTREF(__pyx_t_4);
-                      __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 170, __pyx_L95_error)
+                      __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 171, __pyx_L95_error)
                       __Pyx_GOTREF(__pyx_t_12);
                       __Pyx_GIVEREF(__pyx_t_4);
                       PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_4);
                       __pyx_t_4 = 0;
-                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_12); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 170, __pyx_L95_error)
+                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_12); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 171, __pyx_L95_error)
                       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-                      /* "arithmetic_analyze.pyx":171
+                      /* "arithmetic_analyze.pyx":172
  *                                         try:
  *                                             self.calculations.append( [ _return_[ 0 ] ] )
  *                                             self.calculations.append( operators[ j + 1 ] )             # <<<<<<<<<<<<<<
  * 
  *                                         except TypeError:
  */
-                      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 171, __pyx_L95_error)
+                      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 172, __pyx_L95_error)
                       __Pyx_GOTREF(__pyx_t_12);
                       __pyx_t_30 = (__pyx_v_j + 1);
-                      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_t_30, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L95_error)
+                      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_t_30, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L95_error)
                       __Pyx_GOTREF(__pyx_t_3);
-                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_3); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 171, __pyx_L95_error)
+                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_12, __pyx_t_3); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 172, __pyx_L95_error)
                       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-                      /* "arithmetic_analyze.pyx":169
+                      /* "arithmetic_analyze.pyx":170
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:
  *                                         try:             # <<<<<<<<<<<<<<
@@ -5503,7 +5516,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
                     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                    /* "arithmetic_analyze.pyx":173
+                    /* "arithmetic_analyze.pyx":174
  *                                             self.calculations.append( operators[ j + 1 ] )
  * 
  *                                         except TypeError:             # <<<<<<<<<<<<<<
@@ -5513,43 +5526,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     __pyx_t_23 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
                     if (__pyx_t_23) {
                       __Pyx_AddTraceback("arithmetic_analyze.ARITHMETIC.CHECK", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                      if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_12, &__pyx_t_4) < 0) __PYX_ERR(0, 173, __pyx_L97_except_error)
+                      if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_12, &__pyx_t_4) < 0) __PYX_ERR(0, 174, __pyx_L97_except_error)
                       __Pyx_GOTREF(__pyx_t_3);
                       __Pyx_GOTREF(__pyx_t_12);
                       __Pyx_GOTREF(__pyx_t_4);
 
-                      /* "arithmetic_analyze.pyx":174
+                      /* "arithmetic_analyze.pyx":175
  * 
  *                                         except TypeError:
  *                                             self.calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                                             self.calculations.append( operators[ j ] )
  *                                     else: self.calculations.append( [ _return_[ 0 ] ] )
  */
-                      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 174, __pyx_L97_except_error)
+                      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 175, __pyx_L97_except_error)
                       __Pyx_GOTREF(__pyx_t_10);
-                      __pyx_t_14 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 174, __pyx_L97_except_error)
+                      __pyx_t_14 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 175, __pyx_L97_except_error)
                       __Pyx_GOTREF(__pyx_t_14);
-                      __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 174, __pyx_L97_except_error)
+                      __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 175, __pyx_L97_except_error)
                       __Pyx_GOTREF(__pyx_t_11);
                       __Pyx_GIVEREF(__pyx_t_14);
                       PyList_SET_ITEM(__pyx_t_11, 0, __pyx_t_14);
                       __pyx_t_14 = 0;
-                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_11); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 174, __pyx_L97_except_error)
+                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_11); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 175, __pyx_L97_except_error)
                       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-                      /* "arithmetic_analyze.pyx":175
+                      /* "arithmetic_analyze.pyx":176
  *                                         except TypeError:
  *                                             self.calculations.append( [ _return_[ 0 ] ] )
  *                                             self.calculations.append( operators[ j ] )             # <<<<<<<<<<<<<<
  *                                     else: self.calculations.append( [ _return_[ 0 ] ] )
  *                                 else: break
  */
-                      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 175, __pyx_L97_except_error)
+                      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 176, __pyx_L97_except_error)
                       __Pyx_GOTREF(__pyx_t_11);
-                      __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 175, __pyx_L97_except_error)
+                      __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_operators, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 176, __pyx_L97_except_error)
                       __Pyx_GOTREF(__pyx_t_10);
-                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_11, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 175, __pyx_L97_except_error)
+                      __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_11, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 176, __pyx_L97_except_error)
                       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
                       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5560,7 +5573,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     goto __pyx_L97_except_error;
                     __pyx_L97_except_error:;
 
-                    /* "arithmetic_analyze.pyx":169
+                    /* "arithmetic_analyze.pyx":170
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:
  *                                         try:             # <<<<<<<<<<<<<<
@@ -5580,7 +5593,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                     __pyx_L102_try_end:;
                   }
 
-                  /* "arithmetic_analyze.pyx":168
+                  /* "arithmetic_analyze.pyx":169
  * 
  *                                 if error in [ '', None ]:
  *                                     if j != length - 1:             # <<<<<<<<<<<<<<
@@ -5590,7 +5603,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   goto __pyx_L94;
                 }
 
-                /* "arithmetic_analyze.pyx":176
+                /* "arithmetic_analyze.pyx":177
  *                                             self.calculations.append( [ _return_[ 0 ] ] )
  *                                             self.calculations.append( operators[ j ] )
  *                                     else: self.calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
@@ -5598,22 +5611,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  * 
  */
                 /*else*/ {
-                  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
+                  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_4);
-                  __pyx_t_12 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 176, __pyx_L1_error)
+                  __pyx_t_12 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 177, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_12);
-                  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L1_error)
+                  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   __Pyx_GIVEREF(__pyx_t_12);
                   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_t_12);
                   __pyx_t_12 = 0;
-                  __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_4, __pyx_t_3); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 176, __pyx_L1_error)
+                  __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_4, __pyx_t_3); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 177, __pyx_L1_error)
                   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                 }
                 __pyx_L94:;
 
-                /* "arithmetic_analyze.pyx":167
+                /* "arithmetic_analyze.pyx":168
  *                                                             operators[ j ], self.DataBase, self.line).INIT( MainString )
  * 
  *                                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -5623,7 +5636,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 goto __pyx_L91;
               }
 
-              /* "arithmetic_analyze.pyx":177
+              /* "arithmetic_analyze.pyx":178
  *                                             self.calculations.append( operators[ j ] )
  *                                     else: self.calculations.append( [ _return_[ 0 ] ] )
  *                                 else: break             # <<<<<<<<<<<<<<
@@ -5639,7 +5652,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           }
           __pyx_L72_break:;
 
-          /* "arithmetic_analyze.pyx":179
+          /* "arithmetic_analyze.pyx":180
  *                                 else: break
  * 
  *                         if error in ['', None ]:             # <<<<<<<<<<<<<<
@@ -5648,21 +5661,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
           __Pyx_INCREF(__pyx_v_error);
           __pyx_t_16 = __pyx_v_error;
-          __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
+          __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
           __pyx_t_8 = (__pyx_t_7 != 0);
           if (!__pyx_t_8) {
           } else {
             __pyx_t_17 = __pyx_t_8;
             goto __pyx_L106_bool_binop_done;
           }
-          __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
+          __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
           __pyx_t_17 = __pyx_t_8;
           __pyx_L106_bool_binop_done:;
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
           __pyx_t_8 = (__pyx_t_17 != 0);
           if (__pyx_t_8) {
 
-            /* "arithmetic_analyze.pyx":180
+            /* "arithmetic_analyze.pyx":181
  * 
  *                         if error in ['', None ]:
  *                             historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -5672,22 +5685,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_INCREF(__pyx_kp_s_);
             __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-            /* "arithmetic_analyze.pyx":181
+            /* "arithmetic_analyze.pyx":182
  *                         if error in ['', None ]:
  *                             historyOfOperators  = ''
  *                             for string in self.calculations:             # <<<<<<<<<<<<<<
  *                                 if type( string ) == type( str() ):
  *                                     historyOfOperators += string
  */
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
               __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4); __pyx_t_19 = 0;
               __pyx_t_24 = NULL;
             } else {
-              __pyx_t_19 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
+              __pyx_t_19 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
-              __pyx_t_24 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 181, __pyx_L1_error)
+              __pyx_t_24 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 182, __pyx_L1_error)
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             for (;;) {
@@ -5695,17 +5708,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 if (likely(PyList_CheckExact(__pyx_t_4))) {
                   if (__pyx_t_19 >= PyList_GET_SIZE(__pyx_t_4)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_19); __Pyx_INCREF(__pyx_t_3); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
+                  __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_19); __Pyx_INCREF(__pyx_t_3); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
                   #else
-                  __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
+                  __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   #endif
                 } else {
                   if (__pyx_t_19 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_19); __Pyx_INCREF(__pyx_t_3); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
+                  __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_19); __Pyx_INCREF(__pyx_t_3); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
                   #else
-                  __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
+                  __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   #endif
                 }
@@ -5715,7 +5728,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                   PyObject* exc_type = PyErr_Occurred();
                   if (exc_type) {
                     if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                    else __PYX_ERR(0, 181, __pyx_L1_error)
+                    else __PYX_ERR(0, 182, __pyx_L1_error)
                   }
                   break;
                 }
@@ -5724,35 +5737,35 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_3);
               __pyx_t_3 = 0;
 
-              /* "arithmetic_analyze.pyx":182
+              /* "arithmetic_analyze.pyx":183
  *                             historyOfOperators  = ''
  *                             for string in self.calculations:
  *                                 if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                                     historyOfOperators += string
  *                                 else: pass
  */
-              __pyx_t_3 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_12 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 182, __pyx_L1_error)
+              __pyx_t_12 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 183, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-              __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
+              __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 183, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               if (__pyx_t_8) {
 
-                /* "arithmetic_analyze.pyx":183
+                /* "arithmetic_analyze.pyx":184
  *                             for string in self.calculations:
  *                                 if type( string ) == type( str() ):
  *                                     historyOfOperators += string             # <<<<<<<<<<<<<<
  *                                 else: pass
  * 
  */
-                __pyx_t_12 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 183, __pyx_L1_error)
+                __pyx_t_12 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 184, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_12);
-                if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 183, __pyx_L1_error)
+                if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 184, __pyx_L1_error)
                 __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_12));
                 __pyx_t_12 = 0;
 
-                /* "arithmetic_analyze.pyx":182
+                /* "arithmetic_analyze.pyx":183
  *                             historyOfOperators  = ''
  *                             for string in self.calculations:
  *                                 if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -5762,7 +5775,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 goto __pyx_L110;
               }
 
-              /* "arithmetic_analyze.pyx":184
+              /* "arithmetic_analyze.pyx":185
  *                                 if type( string ) == type( str() ):
  *                                     historyOfOperators += string
  *                                 else: pass             # <<<<<<<<<<<<<<
@@ -5773,7 +5786,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               }
               __pyx_L110:;
 
-              /* "arithmetic_analyze.pyx":181
+              /* "arithmetic_analyze.pyx":182
  *                         if error in ['', None ]:
  *                             historyOfOperators  = ''
  *                             for string in self.calculations:             # <<<<<<<<<<<<<<
@@ -5783,29 +5796,29 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "arithmetic_analyze.pyx":186
+            /* "arithmetic_analyze.pyx":187
  *                                 else: pass
  * 
  *                             _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,             # <<<<<<<<<<<<<<
  *                                                 self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 186, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 187, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
 
-            /* "arithmetic_analyze.pyx":187
+            /* "arithmetic_analyze.pyx":188
  * 
  *                             _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,
  *                                                 self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()             # <<<<<<<<<<<<<<
  * 
  *                             if error in ['', None ]:
  */
-            __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 187, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 188, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __pyx_t_14 = NULL;
             __pyx_t_13 = 0;
@@ -5822,7 +5835,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_10)) {
               PyObject *__pyx_temp[5] = {__pyx_t_14, __pyx_t_3, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_11};
-              __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5832,7 +5845,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
               PyObject *__pyx_temp[5] = {__pyx_t_14, __pyx_t_3, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_11};
-              __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5840,7 +5853,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             } else
             #endif
             {
-              __pyx_t_9 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_9 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_9);
               if (__pyx_t_14) {
                 __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_14); __pyx_t_14 = NULL;
@@ -5857,12 +5870,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               PyTuple_SET_ITEM(__pyx_t_9, 3+__pyx_t_13, __pyx_t_11);
               __pyx_t_3 = 0;
               __pyx_t_11 = 0;
-              __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_9, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_9, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 187, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 188, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_12 = NULL;
@@ -5877,7 +5890,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             }
             __pyx_t_4 = (__pyx_t_12) ? __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_12) : __Pyx_PyObject_CallNoArg(__pyx_t_10);
             __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-            if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 187, __pyx_L1_error)
+            if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
@@ -5886,7 +5899,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               if (unlikely(size != 2)) {
                 if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                 else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                __PYX_ERR(0, 186, __pyx_L1_error)
+                __PYX_ERR(0, 187, __pyx_L1_error)
               }
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
               if (likely(PyTuple_CheckExact(sequence))) {
@@ -5899,15 +5912,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __Pyx_INCREF(__pyx_t_10);
               __Pyx_INCREF(__pyx_t_12);
               #else
-              __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
-              __pyx_t_12 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_12 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
               #endif
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             } else {
               Py_ssize_t index = -1;
-              __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               __pyx_t_15 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -5915,7 +5928,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __Pyx_GOTREF(__pyx_t_10);
               index = 1; __pyx_t_12 = __pyx_t_15(__pyx_t_9); if (unlikely(!__pyx_t_12)) goto __pyx_L111_unpacking_failed;
               __Pyx_GOTREF(__pyx_t_12);
-              if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+              if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
               __pyx_t_15 = NULL;
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
               goto __pyx_L112_unpacking_done;
@@ -5923,24 +5936,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
               __pyx_t_15 = NULL;
               if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-              __PYX_ERR(0, 186, __pyx_L1_error)
+              __PYX_ERR(0, 187, __pyx_L1_error)
               __pyx_L112_unpacking_done:;
             }
 
-            /* "arithmetic_analyze.pyx":186
+            /* "arithmetic_analyze.pyx":187
  *                                 else: pass
  * 
  *                             _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,             # <<<<<<<<<<<<<<
  *                                                 self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  */
-            if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 186, __pyx_L1_error)
+            if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 187, __pyx_L1_error)
             __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_10);
             __pyx_t_10 = 0;
             __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_12));
             __pyx_t_12 = 0;
 
-            /* "arithmetic_analyze.pyx":189
+            /* "arithmetic_analyze.pyx":190
  *                                                 self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  *                             if error in ['', None ]:             # <<<<<<<<<<<<<<
@@ -5949,21 +5962,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
             __Pyx_INCREF(__pyx_v_error);
             __pyx_t_16 = __pyx_v_error;
-            __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 189, __pyx_L1_error)
+            __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 190, __pyx_L1_error)
             __pyx_t_7 = (__pyx_t_17 != 0);
             if (!__pyx_t_7) {
             } else {
               __pyx_t_8 = __pyx_t_7;
               goto __pyx_L114_bool_binop_done;
             }
-            __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 189, __pyx_L1_error)
+            __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 190, __pyx_L1_error)
             __pyx_t_8 = __pyx_t_7;
             __pyx_L114_bool_binop_done:;
             __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             __pyx_t_7 = (__pyx_t_8 != 0);
             if (__pyx_t_7) {
 
-              /* "arithmetic_analyze.pyx":190
+              /* "arithmetic_analyze.pyx":191
  * 
  *                             if error in ['', None ]:
  *                                 self.numeric.append( _return_ )             # <<<<<<<<<<<<<<
@@ -5972,23 +5985,23 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
               if (unlikely(__pyx_v_self->numeric == Py_None)) {
                 PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-                __PYX_ERR(0, 190, __pyx_L1_error)
+                __PYX_ERR(0, 191, __pyx_L1_error)
               }
-              __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 190, __pyx_L1_error)
+              __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_v__return_); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 191, __pyx_L1_error)
 
-              /* "arithmetic_analyze.pyx":191
+              /* "arithmetic_analyze.pyx":192
  *                             if error in ['', None ]:
  *                                 self.numeric.append( _return_ )
  *                                 self.calculations   = []             # <<<<<<<<<<<<<<
  *                                 historyOfOperators  = ''
  *                             else: break
  */
-              __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
+              __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
-              if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_4) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
+              if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_4) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-              /* "arithmetic_analyze.pyx":192
+              /* "arithmetic_analyze.pyx":193
  *                                 self.numeric.append( _return_ )
  *                                 self.calculations   = []
  *                                 historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -5998,7 +6011,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               __Pyx_INCREF(__pyx_kp_s_);
               __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-              /* "arithmetic_analyze.pyx":189
+              /* "arithmetic_analyze.pyx":190
  *                                                 self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  *                             if error in ['', None ]:             # <<<<<<<<<<<<<<
@@ -6008,7 +6021,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               goto __pyx_L113;
             }
 
-            /* "arithmetic_analyze.pyx":193
+            /* "arithmetic_analyze.pyx":194
  *                                 self.calculations   = []
  *                                 historyOfOperators  = ''
  *                             else: break             # <<<<<<<<<<<<<<
@@ -6020,7 +6033,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             }
             __pyx_L113:;
 
-            /* "arithmetic_analyze.pyx":179
+            /* "arithmetic_analyze.pyx":180
  *                                 else: break
  * 
  *                         if error in ['', None ]:             # <<<<<<<<<<<<<<
@@ -6030,7 +6043,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             goto __pyx_L105;
           }
 
-          /* "arithmetic_analyze.pyx":194
+          /* "arithmetic_analyze.pyx":195
  *                                 historyOfOperators  = ''
  *                             else: break
  *                         else: break             # <<<<<<<<<<<<<<
@@ -6044,7 +6057,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         }
         __pyx_L38:;
 
-        /* "arithmetic_analyze.pyx":82
+        /* "arithmetic_analyze.pyx":83
  *                     else: break
  * 
  *                 elif len( self.Value[ i ] ) == len( operators )  :             # <<<<<<<<<<<<<<
@@ -6054,7 +6067,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         goto __pyx_L11;
       }
 
-      /* "arithmetic_analyze.pyx":197
+      /* "arithmetic_analyze.pyx":198
  * 
  *                 else:
  *                     sign                = ''             # <<<<<<<<<<<<<<
@@ -6065,19 +6078,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         __Pyx_INCREF(__pyx_kp_s_);
         __Pyx_XDECREF_SET(__pyx_v_sign, __pyx_kp_s_);
 
-        /* "arithmetic_analyze.pyx":198
+        /* "arithmetic_analyze.pyx":199
  *                 else:
  *                     sign                = ''
  *                     operators           = operators[ : ]             # <<<<<<<<<<<<<<
  *                     _return_, error     = ARRITHMETIC_DEEP_CHECKING( self.master, self.Value[ i ],
  *                                                         self.operators, self.DataBase, self.line ).INIT( MainString )
  */
-        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_operators, 0, 0, NULL, NULL, &__pyx_slice__5, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 198, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_operators, 0, 0, NULL, NULL, &__pyx_slice__5, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 199, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF_SET(__pyx_v_operators, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "arithmetic_analyze.pyx":199
+        /* "arithmetic_analyze.pyx":200
  *                     sign                = ''
  *                     operators           = operators[ : ]
  *                     _return_, error     = ARRITHMETIC_DEEP_CHECKING( self.master, self.Value[ i ],             # <<<<<<<<<<<<<<
@@ -6086,31 +6099,31 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
         if (unlikely(__pyx_v_self->Value == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 199, __pyx_L1_error)
+          __PYX_ERR(0, 200, __pyx_L1_error)
         }
-        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 199, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->Value, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
 
-        /* "arithmetic_analyze.pyx":200
+        /* "arithmetic_analyze.pyx":201
  *                     operators           = operators[ : ]
  *                     _return_, error     = ARRITHMETIC_DEEP_CHECKING( self.master, self.Value[ i ],
  *                                                         self.operators, self.DataBase, self.line ).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     if error in [ '', None ]:
  */
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_operators); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 200, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_operators); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 201, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 200, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 201, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
 
-        /* "arithmetic_analyze.pyx":199
+        /* "arithmetic_analyze.pyx":200
  *                     sign                = ''
  *                     operators           = operators[ : ]
  *                     _return_, error     = ARRITHMETIC_DEEP_CHECKING( self.master, self.Value[ i ],             # <<<<<<<<<<<<<<
  *                                                         self.operators, self.DataBase, self.line ).INIT( MainString )
  * 
  */
-        __pyx_t_9 = PyTuple_New(5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 199, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 200, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_INCREF(__pyx_v_self->master);
         __Pyx_GIVEREF(__pyx_v_self->master);
@@ -6127,18 +6140,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
         __pyx_t_4 = 0;
         __pyx_t_12 = 0;
         __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_9, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 199, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_9, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 200, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "arithmetic_analyze.pyx":200
+        /* "arithmetic_analyze.pyx":201
  *                     operators           = operators[ : ]
  *                     _return_, error     = ARRITHMETIC_DEEP_CHECKING( self.master, self.Value[ i ],
  *                                                         self.operators, self.DataBase, self.line ).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     if error in [ '', None ]:
  */
-        __pyx_t_9 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_10)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_10), __pyx_v_MainString); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 200, __pyx_L1_error)
+        __pyx_t_9 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_10)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_10), __pyx_v_MainString); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 201, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if (likely(__pyx_t_9 != Py_None)) {
@@ -6147,7 +6160,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 199, __pyx_L1_error)
+            __PYX_ERR(0, 200, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           __pyx_t_10 = PyTuple_GET_ITEM(sequence, 0); 
@@ -6155,30 +6168,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           __Pyx_INCREF(__pyx_t_10);
           __Pyx_INCREF(__pyx_t_12);
           #else
-          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 199, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 200, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_12 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 199, __pyx_L1_error)
+          __pyx_t_12 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 200, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           #endif
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         } else {
-          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 199, __pyx_L1_error)
+          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 200, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":199
+        /* "arithmetic_analyze.pyx":200
  *                     sign                = ''
  *                     operators           = operators[ : ]
  *                     _return_, error     = ARRITHMETIC_DEEP_CHECKING( self.master, self.Value[ i ],             # <<<<<<<<<<<<<<
  *                                                         self.operators, self.DataBase, self.line ).INIT( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 199, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 200, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_10);
         __pyx_t_10 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_12));
         __pyx_t_12 = 0;
 
-        /* "arithmetic_analyze.pyx":202
+        /* "arithmetic_analyze.pyx":203
  *                                                         self.operators, self.DataBase, self.line ).INIT( MainString )
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -6187,21 +6200,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
         __pyx_t_17 = (__pyx_t_8 != 0);
         if (!__pyx_t_17) {
         } else {
           __pyx_t_7 = __pyx_t_17;
           goto __pyx_L117_bool_binop_done;
         }
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
         __pyx_t_7 = __pyx_t_17;
         __pyx_L117_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_17 = (__pyx_t_7 != 0);
         if (__pyx_t_17) {
 
-          /* "arithmetic_analyze.pyx":203
+          /* "arithmetic_analyze.pyx":204
  * 
  *                     if error in [ '', None ]:
  *                         historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -6211,42 +6224,42 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           __Pyx_INCREF(__pyx_kp_s_);
           __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-          /* "arithmetic_analyze.pyx":204
+          /* "arithmetic_analyze.pyx":205
  *                     if error in [ '', None ]:
  *                         historyOfOperators  = ''
  *                         self.calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                         for string in self.calculations:
  *                             if type( string ) == type( str() ):
  */
-          __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 204, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_12 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 204, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
-          __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 204, __pyx_L1_error)
+          __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_GIVEREF(__pyx_t_12);
           PyList_SET_ITEM(__pyx_t_10, 0, __pyx_t_12);
           __pyx_t_12 = 0;
-          __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_9, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 204, __pyx_L1_error)
+          __pyx_t_18 = __Pyx_PyObject_Append(__pyx_t_9, __pyx_t_10); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 205, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "arithmetic_analyze.pyx":205
+          /* "arithmetic_analyze.pyx":206
  *                         historyOfOperators  = ''
  *                         self.calculations.append( [ _return_[ 0 ] ] )
  *                         for string in self.calculations:             # <<<<<<<<<<<<<<
  *                             if type( string ) == type( str() ):
  *                                 historyOfOperators += string
  */
-          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 205, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 206, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           if (likely(PyList_CheckExact(__pyx_t_10)) || PyTuple_CheckExact(__pyx_t_10)) {
             __pyx_t_9 = __pyx_t_10; __Pyx_INCREF(__pyx_t_9); __pyx_t_19 = 0;
             __pyx_t_24 = NULL;
           } else {
-            __pyx_t_19 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 205, __pyx_L1_error)
+            __pyx_t_19 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 206, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_24 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 205, __pyx_L1_error)
+            __pyx_t_24 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 206, __pyx_L1_error)
           }
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           for (;;) {
@@ -6254,17 +6267,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               if (likely(PyList_CheckExact(__pyx_t_9))) {
                 if (__pyx_t_19 >= PyList_GET_SIZE(__pyx_t_9)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_10 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_19); __Pyx_INCREF(__pyx_t_10); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 205, __pyx_L1_error)
+                __pyx_t_10 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_19); __Pyx_INCREF(__pyx_t_10); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 206, __pyx_L1_error)
                 #else
-                __pyx_t_10 = PySequence_ITEM(__pyx_t_9, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 205, __pyx_L1_error)
+                __pyx_t_10 = PySequence_ITEM(__pyx_t_9, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 206, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 #endif
               } else {
                 if (__pyx_t_19 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_19); __Pyx_INCREF(__pyx_t_10); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 205, __pyx_L1_error)
+                __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_19); __Pyx_INCREF(__pyx_t_10); __pyx_t_19++; if (unlikely(0 < 0)) __PYX_ERR(0, 206, __pyx_L1_error)
                 #else
-                __pyx_t_10 = PySequence_ITEM(__pyx_t_9, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 205, __pyx_L1_error)
+                __pyx_t_10 = PySequence_ITEM(__pyx_t_9, __pyx_t_19); __pyx_t_19++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 206, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 #endif
               }
@@ -6274,7 +6287,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 205, __pyx_L1_error)
+                  else __PYX_ERR(0, 206, __pyx_L1_error)
                 }
                 break;
               }
@@ -6283,35 +6296,35 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_10);
             __pyx_t_10 = 0;
 
-            /* "arithmetic_analyze.pyx":206
+            /* "arithmetic_analyze.pyx":207
  *                         self.calculations.append( [ _return_[ 0 ] ] )
  *                         for string in self.calculations:
  *                             if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                                 historyOfOperators += string
  *                             else: pass
  */
-            __pyx_t_10 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 206, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 207, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_12 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_10)), Py_EQ); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 206, __pyx_L1_error)
+            __pyx_t_12 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_10)), Py_EQ); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 207, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 206, __pyx_L1_error)
+            __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 207, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             if (__pyx_t_17) {
 
-              /* "arithmetic_analyze.pyx":207
+              /* "arithmetic_analyze.pyx":208
  *                         for string in self.calculations:
  *                             if type( string ) == type( str() ):
  *                                 historyOfOperators += string             # <<<<<<<<<<<<<<
  *                             else: pass
  * 
  */
-              __pyx_t_12 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 207, __pyx_L1_error)
+              __pyx_t_12 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 208, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
-              if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 207, __pyx_L1_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 208, __pyx_L1_error)
               __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_12));
               __pyx_t_12 = 0;
 
-              /* "arithmetic_analyze.pyx":206
+              /* "arithmetic_analyze.pyx":207
  *                         self.calculations.append( [ _return_[ 0 ] ] )
  *                         for string in self.calculations:
  *                             if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -6321,7 +6334,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
               goto __pyx_L121;
             }
 
-            /* "arithmetic_analyze.pyx":208
+            /* "arithmetic_analyze.pyx":209
  *                             if type( string ) == type( str() ):
  *                                 historyOfOperators += string
  *                             else: pass             # <<<<<<<<<<<<<<
@@ -6332,7 +6345,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             }
             __pyx_L121:;
 
-            /* "arithmetic_analyze.pyx":205
+            /* "arithmetic_analyze.pyx":206
  *                         historyOfOperators  = ''
  *                         self.calculations.append( [ _return_[ 0 ] ] )
  *                         for string in self.calculations:             # <<<<<<<<<<<<<<
@@ -6342,29 +6355,29 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           }
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-          /* "arithmetic_analyze.pyx":210
+          /* "arithmetic_analyze.pyx":211
  *                             else: pass
  * 
  *                         _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,             # <<<<<<<<<<<<<<
  *                                             self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS( )
  * 
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 210, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 211, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 210, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 211, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 210, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 211, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
 
-          /* "arithmetic_analyze.pyx":211
+          /* "arithmetic_analyze.pyx":212
  * 
  *                         _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,
  *                                             self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS( )             # <<<<<<<<<<<<<<
  * 
  *                         if error is None:
  */
-          __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 211, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 212, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __pyx_t_3 = NULL;
           __pyx_t_13 = 0;
@@ -6381,7 +6394,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_4)) {
             PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_t_10, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_11};
-            __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 210, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 211, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -6391,7 +6404,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
             PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_t_10, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_11};
-            __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 210, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 211, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -6399,7 +6412,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           } else
           #endif
           {
-            __pyx_t_14 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
+            __pyx_t_14 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 211, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             if (__pyx_t_3) {
               __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -6416,12 +6429,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             PyTuple_SET_ITEM(__pyx_t_14, 3+__pyx_t_13, __pyx_t_11);
             __pyx_t_10 = 0;
             __pyx_t_11 = 0;
-            __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 210, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 211, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 211, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           __pyx_t_12 = NULL;
@@ -6436,7 +6449,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           }
           __pyx_t_9 = (__pyx_t_12) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_12) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-          if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 211, __pyx_L1_error)
+          if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 212, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           if ((likely(PyTuple_CheckExact(__pyx_t_9))) || (PyList_CheckExact(__pyx_t_9))) {
@@ -6445,7 +6458,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 210, __pyx_L1_error)
+              __PYX_ERR(0, 211, __pyx_L1_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             if (likely(PyTuple_CheckExact(sequence))) {
@@ -6458,15 +6471,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_INCREF(__pyx_t_4);
             __Pyx_INCREF(__pyx_t_12);
             #else
-            __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 210, __pyx_L1_error)
+            __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 211, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_12 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 210, __pyx_L1_error)
+            __pyx_t_12 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 211, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             #endif
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_14 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
+            __pyx_t_14 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 211, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
             __pyx_t_15 = Py_TYPE(__pyx_t_14)->tp_iternext;
@@ -6474,7 +6487,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_GOTREF(__pyx_t_4);
             index = 1; __pyx_t_12 = __pyx_t_15(__pyx_t_14); if (unlikely(!__pyx_t_12)) goto __pyx_L122_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_12);
-            if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
+            if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
             __pyx_t_15 = NULL;
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             goto __pyx_L123_unpacking_done;
@@ -6482,24 +6495,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             __pyx_t_15 = NULL;
             if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-            __PYX_ERR(0, 210, __pyx_L1_error)
+            __PYX_ERR(0, 211, __pyx_L1_error)
             __pyx_L123_unpacking_done:;
           }
 
-          /* "arithmetic_analyze.pyx":210
+          /* "arithmetic_analyze.pyx":211
  *                             else: pass
  * 
  *                         _return_, error = mathematics.MAGIC_MATH_BASE( self.calculations,             # <<<<<<<<<<<<<<
  *                                             self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS( )
  * 
  */
-          if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 210, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 211, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v__return_, __pyx_t_4);
           __pyx_t_4 = 0;
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_12));
           __pyx_t_12 = 0;
 
-          /* "arithmetic_analyze.pyx":213
+          /* "arithmetic_analyze.pyx":214
  *                                             self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS( )
  * 
  *                         if error is None:             # <<<<<<<<<<<<<<
@@ -6510,7 +6523,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           __pyx_t_7 = (__pyx_t_17 != 0);
           if (__pyx_t_7) {
 
-            /* "arithmetic_analyze.pyx":214
+            /* "arithmetic_analyze.pyx":215
  * 
  *                         if error is None:
  *                             self.numeric.append( self._return_[ 0 ] )             # <<<<<<<<<<<<<<
@@ -6519,29 +6532,29 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
  */
             if (unlikely(__pyx_v_self->numeric == Py_None)) {
               PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-              __PYX_ERR(0, 214, __pyx_L1_error)
+              __PYX_ERR(0, 215, __pyx_L1_error)
             }
-            __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_return); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 214, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_return); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 215, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_9, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 214, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_9, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 215, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-            __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_t_12); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 214, __pyx_L1_error)
+            __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_self->numeric, __pyx_t_12); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 215, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-            /* "arithmetic_analyze.pyx":215
+            /* "arithmetic_analyze.pyx":216
  *                         if error is None:
  *                             self.numeric.append( self._return_[ 0 ] )
  *                             self.calculations   = []             # <<<<<<<<<<<<<<
  *                             historyOfOperators  = ''
  *                         else: break
  */
-            __pyx_t_12 = PyList_New(0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 215, __pyx_L1_error)
+            __pyx_t_12 = PyList_New(0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 216, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_12) < 0) __PYX_ERR(0, 215, __pyx_L1_error)
+            if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculations, __pyx_t_12) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-            /* "arithmetic_analyze.pyx":216
+            /* "arithmetic_analyze.pyx":217
  *                             self.numeric.append( self._return_[ 0 ] )
  *                             self.calculations   = []
  *                             historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -6551,7 +6564,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             __Pyx_INCREF(__pyx_kp_s_);
             __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-            /* "arithmetic_analyze.pyx":213
+            /* "arithmetic_analyze.pyx":214
  *                                             self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS( )
  * 
  *                         if error is None:             # <<<<<<<<<<<<<<
@@ -6561,7 +6574,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
             goto __pyx_L124;
           }
 
-          /* "arithmetic_analyze.pyx":217
+          /* "arithmetic_analyze.pyx":218
  *                             self.calculations   = []
  *                             historyOfOperators  = ''
  *                         else: break             # <<<<<<<<<<<<<<
@@ -6573,7 +6586,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           }
           __pyx_L124:;
 
-          /* "arithmetic_analyze.pyx":202
+          /* "arithmetic_analyze.pyx":203
  *                                                         self.operators, self.DataBase, self.line ).INIT( MainString )
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -6583,7 +6596,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
           goto __pyx_L116;
         }
 
-        /* "arithmetic_analyze.pyx":218
+        /* "arithmetic_analyze.pyx":219
  *                             historyOfOperators  = ''
  *                         else: break
  *                     else: break             # <<<<<<<<<<<<<<
@@ -6599,7 +6612,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
     }
     __pyx_L5:;
 
-    /* "arithmetic_analyze.pyx":43
+    /* "arithmetic_analyze.pyx":44
  *         historyOfOperators  = ''
  * 
  *         for i, operators in enumerate( self.ArithmeticOperators ):             # <<<<<<<<<<<<<<
@@ -6610,7 +6623,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(struct __pyx_ob
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":28
+  /* "arithmetic_analyze.pyx":29
  *         self.ArithmeticOperators        = ArithmeticOperators
  * 
  *     cpdef CHECK( self, str MainString ):             # <<<<<<<<<<<<<<
@@ -6657,7 +6670,7 @@ static PyObject *__pyx_pw_18arithmetic_analyze_10ARITHMETIC_3CHECK(PyObject *__p
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("CHECK (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_MainString), (&PyString_Type), 1, "MainString", 1))) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_MainString), (&PyString_Type), 1, "MainString", 1))) __PYX_ERR(0, 29, __pyx_L1_error)
   __pyx_r = __pyx_pf_18arithmetic_analyze_10ARITHMETIC_2CHECK(((struct __pyx_obj_18arithmetic_analyze_ARITHMETIC *)__pyx_v_self), ((PyObject*)__pyx_v_MainString));
 
   /* function exit code */
@@ -6678,7 +6691,7 @@ static PyObject *__pyx_pf_18arithmetic_analyze_10ARITHMETIC_2CHECK(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("CHECK", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(__pyx_v_self, __pyx_v_MainString, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK(__pyx_v_self, __pyx_v_MainString, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6695,7 +6708,7 @@ static PyObject *__pyx_pf_18arithmetic_analyze_10ARITHMETIC_2CHECK(struct __pyx_
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":9
+/* "arithmetic_analyze.pyx":10
  * cdef class ARITHMETIC:
  *     cdef :
  *         public dict     master             # <<<<<<<<<<<<<<
@@ -6753,7 +6766,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_6master_2__set__(struct __
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 10, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6803,7 +6816,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_6master_4__del__(struct __
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":10
+/* "arithmetic_analyze.pyx":11
  *     cdef :
  *         public dict     master
  *         public list     Value             # <<<<<<<<<<<<<<
@@ -6861,7 +6874,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_5Value_2__set__(struct __p
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 11, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6911,7 +6924,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_5Value_4__del__(struct __p
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":11
+/* "arithmetic_analyze.pyx":12
  *         public dict     master
  *         public list     Value
  *         public list     ArithmeticOperators             # <<<<<<<<<<<<<<
@@ -6969,7 +6982,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_19ArithmeticOperators_2__s
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 12, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -7019,7 +7032,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_19ArithmeticOperators_4__d
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":12
+/* "arithmetic_analyze.pyx":13
  *         public list     Value
  *         public list     ArithmeticOperators
  *         public dict     DataBase             # <<<<<<<<<<<<<<
@@ -7077,7 +7090,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_8DataBase_2__set__(struct 
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 13, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -7127,7 +7140,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_8DataBase_4__del__(struct 
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":13
+/* "arithmetic_analyze.pyx":14
  *         public list     ArithmeticOperators
  *         public dict     DataBase
  *         public int      line             # <<<<<<<<<<<<<<
@@ -7157,7 +7170,7 @@ static PyObject *__pyx_pf_18arithmetic_analyze_10ARITHMETIC_4line___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7195,7 +7208,7 @@ static int __pyx_pf_18arithmetic_analyze_10ARITHMETIC_4line_2__set__(struct __py
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
   /* function exit code */
@@ -7561,7 +7574,7 @@ static PyObject *__pyx_pf_18arithmetic_analyze_10ARITHMETIC_6__setstate_cython__
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":229
+/* "arithmetic_analyze.pyx":230
  *         public int  line
  * 
  *     def __init__( self, master, values, operators, DataBase, line):             # <<<<<<<<<<<<<<
@@ -7612,29 +7625,29 @@ static int __pyx_pw_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_1__init__(P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_values)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 1); __PYX_ERR(0, 229, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 1); __PYX_ERR(0, 230, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_operators)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 2); __PYX_ERR(0, 229, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 2); __PYX_ERR(0, 230, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_DataBase)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 3); __PYX_ERR(0, 229, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 3); __PYX_ERR(0, 230, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_line)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 4); __PYX_ERR(0, 229, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, 4); __PYX_ERR(0, 230, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 229, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 230, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
       goto __pyx_L5_argtuple_error;
@@ -7653,7 +7666,7 @@ static int __pyx_pw_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_1__init__(P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 229, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 230, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("arithmetic_analyze.ARRITHMETIC_DEEP_CHECKING.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7676,14 +7689,14 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING___init__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "arithmetic_analyze.pyx":230
+  /* "arithmetic_analyze.pyx":231
  * 
  *     def __init__( self, master, values, operators, DataBase, line):
  *         self.operators          = operators             # <<<<<<<<<<<<<<
  *         self.values             = values
  *         self.DataBase           = DataBase
  */
-  if (!(likely(PyList_CheckExact(__pyx_v_operators))||((__pyx_v_operators) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_operators)->tp_name), 0))) __PYX_ERR(0, 230, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_operators))||((__pyx_v_operators) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_operators)->tp_name), 0))) __PYX_ERR(0, 231, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_operators;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -7692,14 +7705,14 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING___init__(st
   __pyx_v_self->operators = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":231
+  /* "arithmetic_analyze.pyx":232
  *     def __init__( self, master, values, operators, DataBase, line):
  *         self.operators          = operators
  *         self.values             = values             # <<<<<<<<<<<<<<
  *         self.DataBase           = DataBase
  *         self.line               = line
  */
-  if (!(likely(PyList_CheckExact(__pyx_v_values))||((__pyx_v_values) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_values)->tp_name), 0))) __PYX_ERR(0, 231, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_values))||((__pyx_v_values) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_values)->tp_name), 0))) __PYX_ERR(0, 232, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_values;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -7708,14 +7721,14 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING___init__(st
   __pyx_v_self->values = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":232
+  /* "arithmetic_analyze.pyx":233
  *         self.operators          = operators
  *         self.values             = values
  *         self.DataBase           = DataBase             # <<<<<<<<<<<<<<
  *         self.line               = line
  *         self.master             = master
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_DataBase))||((__pyx_v_DataBase) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_DataBase)->tp_name), 0))) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_DataBase))||((__pyx_v_DataBase) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_DataBase)->tp_name), 0))) __PYX_ERR(0, 233, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_DataBase;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -7724,24 +7737,24 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING___init__(st
   __pyx_v_self->DataBase = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":233
+  /* "arithmetic_analyze.pyx":234
  *         self.values             = values
  *         self.DataBase           = DataBase
  *         self.line               = line             # <<<<<<<<<<<<<<
  *         self.master             = master
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_2;
 
-  /* "arithmetic_analyze.pyx":234
+  /* "arithmetic_analyze.pyx":235
  *         self.DataBase           = DataBase
  *         self.line               = line
  *         self.master             = master             # <<<<<<<<<<<<<<
  * 
  *     cdef tuple INIT( self, str MainString ):
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 234, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 235, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_master;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -7750,7 +7763,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING___init__(st
   __pyx_v_self->master = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":229
+  /* "arithmetic_analyze.pyx":230
  *         public int  line
  * 
  *     def __init__( self, master, values, operators, DataBase, line):             # <<<<<<<<<<<<<<
@@ -7770,7 +7783,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING___init__(st
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":236
+/* "arithmetic_analyze.pyx":237
  *         self.master             = master
  * 
  *     cdef tuple INIT( self, str MainString ):             # <<<<<<<<<<<<<<
@@ -7824,7 +7837,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("INIT", 0);
 
-  /* "arithmetic_analyze.pyx":249
+  /* "arithmetic_analyze.pyx":250
  *             _return_, string, _op_
  * 
  *         error               = ''             # <<<<<<<<<<<<<<
@@ -7834,43 +7847,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   __Pyx_INCREF(__pyx_kp_s_);
   __pyx_v_error = __pyx_kp_s_;
 
-  /* "arithmetic_analyze.pyx":250
+  /* "arithmetic_analyze.pyx":251
  * 
  *         error               = ''
  *         calculations        = []             # <<<<<<<<<<<<<<
  *         index               = []
  *         numeric             = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_calculations = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":251
+  /* "arithmetic_analyze.pyx":252
  *         error               = ''
  *         calculations        = []
  *         index               = []             # <<<<<<<<<<<<<<
  *         numeric             = []
  *         historyOfOperators  = ''
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_index = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":252
+  /* "arithmetic_analyze.pyx":253
  *         calculations        = []
  *         index               = []
  *         numeric             = []             # <<<<<<<<<<<<<<
  *         historyOfOperators  = ''
  *         lengthValues        = len( self.values )
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_numeric = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":253
+  /* "arithmetic_analyze.pyx":254
  *         index               = []
  *         numeric             = []
  *         historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -7880,7 +7893,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   __Pyx_INCREF(__pyx_kp_s_);
   __pyx_v_historyOfOperators = __pyx_kp_s_;
 
-  /* "arithmetic_analyze.pyx":254
+  /* "arithmetic_analyze.pyx":255
  *         numeric             = []
  *         historyOfOperators  = ''
  *         lengthValues        = len( self.values )             # <<<<<<<<<<<<<<
@@ -7891,13 +7904,13 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 254, __pyx_L1_error)
+    __PYX_ERR(0, 255, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_lengthValues = __pyx_t_2;
 
-  /* "arithmetic_analyze.pyx":255
+  /* "arithmetic_analyze.pyx":256
  *         historyOfOperators  = ''
  *         lengthValues        = len( self.values )
  *         lengthOperators     = len( self.operators )             # <<<<<<<<<<<<<<
@@ -7908,13 +7921,13 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 255, __pyx_L1_error)
+    __PYX_ERR(0, 256, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_lengthOperators = __pyx_t_2;
 
-  /* "arithmetic_analyze.pyx":258
+  /* "arithmetic_analyze.pyx":259
  * 
  * 
  *         if lengthValues > lengthOperators:             # <<<<<<<<<<<<<<
@@ -7924,7 +7937,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   __pyx_t_3 = ((__pyx_v_lengthValues > __pyx_v_lengthOperators) != 0);
   if (__pyx_t_3) {
 
-    /* "arithmetic_analyze.pyx":259
+    /* "arithmetic_analyze.pyx":260
  * 
  *         if lengthValues > lengthOperators:
  *             for k in range( lengthValues ):             # <<<<<<<<<<<<<<
@@ -7936,7 +7949,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_k = __pyx_t_6;
 
-      /* "arithmetic_analyze.pyx":260
+      /* "arithmetic_analyze.pyx":261
  *         if lengthValues > lengthOperators:
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -7945,41 +7958,41 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
       if (unlikely(__pyx_v_self->values == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 260, __pyx_L1_error)
+        __PYX_ERR(0, 261, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 260, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 260, __pyx_L1_error)
+      __pyx_t_8 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 260, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (__pyx_t_3) {
 
-        /* "arithmetic_analyze.pyx":261
+        /* "arithmetic_analyze.pyx":262
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                                                 self.values[ k ][ 'type' ] ).TYPE( MainString )
  *                     if error in [ '', None]:
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 261, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 261, __pyx_L1_error)
+          __PYX_ERR(0, 262, __pyx_L1_error)
         }
-        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 261, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
 
-        /* "arithmetic_analyze.pyx":262
+        /* "arithmetic_analyze.pyx":263
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,
  *                                                                                 self.values[ k ][ 'type' ] ).TYPE( MainString )             # <<<<<<<<<<<<<<
@@ -7988,11 +8001,11 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 262, __pyx_L1_error)
+          __PYX_ERR(0, 263, __pyx_L1_error)
         }
-        __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 262, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 263, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_t_11, __pyx_n_s_type); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 262, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_t_11, __pyx_n_s_type); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 263, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_11 = NULL;
@@ -8010,7 +8023,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_9)) {
           PyObject *__pyx_temp[6] = {__pyx_t_11, __pyx_v_self->master, __pyx_t_1, __pyx_v_self->DataBase, __pyx_t_10, __pyx_t_12};
-          __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 261, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 262, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8021,7 +8034,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
           PyObject *__pyx_temp[6] = {__pyx_t_11, __pyx_v_self->master, __pyx_t_1, __pyx_v_self->DataBase, __pyx_t_10, __pyx_t_12};
-          __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 261, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 262, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8030,7 +8043,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         } else
         #endif
         {
-          __pyx_t_14 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 261, __pyx_L1_error)
+          __pyx_t_14 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 262, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           if (__pyx_t_11) {
             __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_11); __pyx_t_11 = NULL;
@@ -8050,12 +8063,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_1 = 0;
           __pyx_t_10 = 0;
           __pyx_t_12 = 0;
-          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 261, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 262, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 262, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 263, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_7 = NULL;
@@ -8070,7 +8083,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         }
         __pyx_t_8 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_7, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_MainString);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 262, __pyx_L1_error)
+        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 263, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         if ((likely(PyTuple_CheckExact(__pyx_t_8))) || (PyList_CheckExact(__pyx_t_8))) {
@@ -8079,7 +8092,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 261, __pyx_L1_error)
+            __PYX_ERR(0, 262, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -8092,15 +8105,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __Pyx_INCREF(__pyx_t_9);
           __Pyx_INCREF(__pyx_t_7);
           #else
-          __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 261, __pyx_L1_error)
+          __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 262, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 261, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 262, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_14 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 261, __pyx_L1_error)
+          __pyx_t_14 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 262, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_15 = Py_TYPE(__pyx_t_14)->tp_iternext;
@@ -8108,7 +8121,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __Pyx_GOTREF(__pyx_t_9);
           index = 1; __pyx_t_7 = __pyx_t_15(__pyx_t_14); if (unlikely(!__pyx_t_7)) goto __pyx_L7_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_7);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 261, __pyx_L1_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 262, __pyx_L1_error)
           __pyx_t_15 = NULL;
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           goto __pyx_L8_unpacking_done;
@@ -8116,24 +8129,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __pyx_t_15 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 261, __pyx_L1_error)
+          __PYX_ERR(0, 262, __pyx_L1_error)
           __pyx_L8_unpacking_done:;
         }
 
-        /* "arithmetic_analyze.pyx":261
+        /* "arithmetic_analyze.pyx":262
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                                                 self.values[ k ][ 'type' ] ).TYPE( MainString )
  *                     if error in [ '', None]:
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 261, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_9);
         __pyx_t_9 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
         __pyx_t_7 = 0;
 
-        /* "arithmetic_analyze.pyx":263
+        /* "arithmetic_analyze.pyx":264
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,
  *                                                                                 self.values[ k ][ 'type' ] ).TYPE( MainString )
  *                     if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -8142,21 +8155,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 263, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
         __pyx_t_18 = (__pyx_t_17 != 0);
         if (!__pyx_t_18) {
         } else {
           __pyx_t_3 = __pyx_t_18;
           goto __pyx_L10_bool_binop_done;
         }
-        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 263, __pyx_L1_error)
+        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
         __pyx_t_3 = __pyx_t_18;
         __pyx_L10_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_18 = (__pyx_t_3 != 0);
         if (__pyx_t_18) {
 
-          /* "arithmetic_analyze.pyx":264
+          /* "arithmetic_analyze.pyx":265
  *                                                                                 self.values[ k ][ 'type' ] ).TYPE( MainString )
  *                     if error in [ '', None]:
  *                         if k != lengthValues - 1 :             # <<<<<<<<<<<<<<
@@ -8166,22 +8179,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_18 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_18) {
 
-            /* "arithmetic_analyze.pyx":265
+            /* "arithmetic_analyze.pyx":266
  *                     if error in [ '', None]:
  *                         if k != lengthValues - 1 :
  *                             calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                             calculations.append( self.operators[ k ] )
  * 
  */
-            __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 265, __pyx_L1_error)
+            __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 266, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
             __Pyx_INCREF(__pyx_v__return_);
             __Pyx_GIVEREF(__pyx_v__return_);
             PyList_SET_ITEM(__pyx_t_8, 0, __pyx_v__return_);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 265, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 266, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-            /* "arithmetic_analyze.pyx":266
+            /* "arithmetic_analyze.pyx":267
  *                         if k != lengthValues - 1 :
  *                             calculations.append( [ _return_ ] )
  *                             calculations.append( self.operators[ k ] )             # <<<<<<<<<<<<<<
@@ -8190,14 +8203,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
             if (unlikely(__pyx_v_self->operators == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 266, __pyx_L1_error)
+              __PYX_ERR(0, 267, __pyx_L1_error)
             }
-            __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 266, __pyx_L1_error)
+            __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 267, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 266, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 267, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-            /* "arithmetic_analyze.pyx":264
+            /* "arithmetic_analyze.pyx":265
  *                                                                                 self.values[ k ][ 'type' ] ).TYPE( MainString )
  *                     if error in [ '', None]:
  *                         if k != lengthValues - 1 :             # <<<<<<<<<<<<<<
@@ -8207,7 +8220,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             goto __pyx_L12;
           }
 
-          /* "arithmetic_analyze.pyx":268
+          /* "arithmetic_analyze.pyx":269
  *                             calculations.append( self.operators[ k ] )
  * 
  *                         else: calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
@@ -8215,17 +8228,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  *                 else:
  */
           /*else*/ {
-            __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 268, __pyx_L1_error)
+            __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 269, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
             __Pyx_INCREF(__pyx_v__return_);
             __Pyx_GIVEREF(__pyx_v__return_);
             PyList_SET_ITEM(__pyx_t_8, 0, __pyx_v__return_);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 268, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 269, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           }
           __pyx_L12:;
 
-          /* "arithmetic_analyze.pyx":263
+          /* "arithmetic_analyze.pyx":264
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,
  *                                                                                 self.values[ k ][ 'type' ] ).TYPE( MainString )
  *                     if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -8235,7 +8248,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           goto __pyx_L9;
         }
 
-        /* "arithmetic_analyze.pyx":269
+        /* "arithmetic_analyze.pyx":270
  * 
  *                         else: calculations.append( [ _return_ ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -8247,7 +8260,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         }
         __pyx_L9:;
 
-        /* "arithmetic_analyze.pyx":260
+        /* "arithmetic_analyze.pyx":261
  *         if lengthValues > lengthOperators:
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -8257,7 +8270,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         goto __pyx_L6;
       }
 
-      /* "arithmetic_analyze.pyx":271
+      /* "arithmetic_analyze.pyx":272
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
@@ -8266,7 +8279,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
       /*else*/ {
 
-        /* "arithmetic_analyze.pyx":272
+        /* "arithmetic_analyze.pyx":273
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                         self.operators[ 0 ][ k ], self.DataBase, self.line).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
@@ -8275,20 +8288,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 271, __pyx_L1_error)
+          __PYX_ERR(0, 272, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":271
+        /* "arithmetic_analyze.pyx":272
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                         self.operators[ 0 ][ k ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  */
-        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 271, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 272, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
 
-        /* "arithmetic_analyze.pyx":272
+        /* "arithmetic_analyze.pyx":273
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                         self.operators[ 0 ][ k ], self.DataBase, self.line).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
@@ -8297,24 +8310,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
         if (unlikely(__pyx_v_self->operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 272, __pyx_L1_error)
+          __PYX_ERR(0, 273, __pyx_L1_error)
         }
-        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 273, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_7, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 272, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_7, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 273, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 273, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
 
-        /* "arithmetic_analyze.pyx":271
+        /* "arithmetic_analyze.pyx":272
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                         self.operators[ 0 ][ k ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  */
-        __pyx_t_14 = PyTuple_New(5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 271, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 272, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_INCREF(__pyx_v_self->master);
         __Pyx_GIVEREF(__pyx_v_self->master);
@@ -8331,18 +8344,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __pyx_t_8 = 0;
         __pyx_t_9 = 0;
         __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_14, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 271, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_14, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-        /* "arithmetic_analyze.pyx":272
+        /* "arithmetic_analyze.pyx":273
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                         self.operators[ 0 ][ k ], self.DataBase, self.line).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     if error in [ '', None] :
  */
-        __pyx_t_14 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_7)->__pyx_vtab)->INIT_INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_7), __pyx_v_MainString); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 272, __pyx_L1_error)
+        __pyx_t_14 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_7)->__pyx_vtab)->INIT_INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_7), __pyx_v_MainString); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 273, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if (likely(__pyx_t_14 != Py_None)) {
@@ -8351,7 +8364,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 271, __pyx_L1_error)
+            __PYX_ERR(0, 272, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           __pyx_t_7 = PyTuple_GET_ITEM(sequence, 0); 
@@ -8359,30 +8372,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __Pyx_INCREF(__pyx_t_7);
           __Pyx_INCREF(__pyx_t_9);
           #else
-          __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 271, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 271, __pyx_L1_error)
+          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 272, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           #endif
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         } else {
-          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 271, __pyx_L1_error)
+          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 272, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":271
+        /* "arithmetic_analyze.pyx":272
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                         self.operators[ 0 ][ k ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 271, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 272, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_7);
         __pyx_t_7 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_9));
         __pyx_t_9 = 0;
 
-        /* "arithmetic_analyze.pyx":274
+        /* "arithmetic_analyze.pyx":275
  *                                         self.operators[ 0 ][ k ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  *                     if error in [ '', None] :             # <<<<<<<<<<<<<<
@@ -8391,21 +8404,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 274, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 275, __pyx_L1_error)
         __pyx_t_17 = (__pyx_t_3 != 0);
         if (!__pyx_t_17) {
         } else {
           __pyx_t_18 = __pyx_t_17;
           goto __pyx_L14_bool_binop_done;
         }
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 274, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 275, __pyx_L1_error)
         __pyx_t_18 = __pyx_t_17;
         __pyx_L14_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_17 = (__pyx_t_18 != 0);
         if (__pyx_t_17) {
 
-          /* "arithmetic_analyze.pyx":275
+          /* "arithmetic_analyze.pyx":276
  * 
  *                     if error in [ '', None] :
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -8415,24 +8428,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_17 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_17) {
 
-            /* "arithmetic_analyze.pyx":276
+            /* "arithmetic_analyze.pyx":277
  *                     if error in [ '', None] :
  *                         if k != lengthValues - 1:
  *                             calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                             calculations.append( self.operators[ k ] )
  * 
  */
-            __pyx_t_14 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 276, __pyx_L1_error)
+            __pyx_t_14 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 277, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
-            __pyx_t_9 = PyList_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 276, __pyx_L1_error)
+            __pyx_t_9 = PyList_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 277, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_GIVEREF(__pyx_t_14);
             PyList_SET_ITEM(__pyx_t_9, 0, __pyx_t_14);
             __pyx_t_14 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 276, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 277, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "arithmetic_analyze.pyx":277
+            /* "arithmetic_analyze.pyx":278
  *                         if k != lengthValues - 1:
  *                             calculations.append( [ _return_[ 0 ] ] )
  *                             calculations.append( self.operators[ k ] )             # <<<<<<<<<<<<<<
@@ -8441,14 +8454,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
             if (unlikely(__pyx_v_self->operators == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 277, __pyx_L1_error)
+              __PYX_ERR(0, 278, __pyx_L1_error)
             }
-            __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 277, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 278, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 277, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 278, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "arithmetic_analyze.pyx":275
+            /* "arithmetic_analyze.pyx":276
  * 
  *                     if error in [ '', None] :
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -8458,7 +8471,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             goto __pyx_L16;
           }
 
-          /* "arithmetic_analyze.pyx":279
+          /* "arithmetic_analyze.pyx":280
  *                             calculations.append( self.operators[ k ] )
  * 
  *                         else: calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
@@ -8466,19 +8479,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  * 
  */
           /*else*/ {
-            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 279, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 280, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 279, __pyx_L1_error)
+            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 280, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_GIVEREF(__pyx_t_9);
             PyList_SET_ITEM(__pyx_t_14, 0, __pyx_t_9);
             __pyx_t_9 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 279, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 280, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           }
           __pyx_L16:;
 
-          /* "arithmetic_analyze.pyx":274
+          /* "arithmetic_analyze.pyx":275
  *                                         self.operators[ 0 ][ k ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  *                     if error in [ '', None] :             # <<<<<<<<<<<<<<
@@ -8488,7 +8501,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           goto __pyx_L13;
         }
 
-        /* "arithmetic_analyze.pyx":280
+        /* "arithmetic_analyze.pyx":281
  * 
  *                         else: calculations.append( [ _return_[ 0 ] ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -8504,7 +8517,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
     }
     __pyx_L5_break:;
 
-    /* "arithmetic_analyze.pyx":282
+    /* "arithmetic_analyze.pyx":283
  *                     else: break
  * 
  *             if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -8513,21 +8526,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
     __Pyx_INCREF(__pyx_v_error);
     __pyx_t_16 = __pyx_v_error;
-    __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 282, __pyx_L1_error)
+    __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 283, __pyx_L1_error)
     __pyx_t_3 = (__pyx_t_18 != 0);
     if (!__pyx_t_3) {
     } else {
       __pyx_t_17 = __pyx_t_3;
       goto __pyx_L18_bool_binop_done;
     }
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 282, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 283, __pyx_L1_error)
     __pyx_t_17 = __pyx_t_3;
     __pyx_L18_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __pyx_t_3 = (__pyx_t_17 != 0);
     if (__pyx_t_3) {
 
-      /* "arithmetic_analyze.pyx":283
+      /* "arithmetic_analyze.pyx":284
  * 
  *             if error in [ '', None]:
  *                 historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -8537,7 +8550,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       __Pyx_INCREF(__pyx_kp_s_);
       __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-      /* "arithmetic_analyze.pyx":284
+      /* "arithmetic_analyze.pyx":285
  *             if error in [ '', None]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -8548,43 +8561,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       for (;;) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_14)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_9 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_2); __Pyx_INCREF(__pyx_t_9); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 284, __pyx_L1_error)
+        __pyx_t_9 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_2); __Pyx_INCREF(__pyx_t_9); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 285, __pyx_L1_error)
         #else
-        __pyx_t_9 = PySequence_ITEM(__pyx_t_14, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 284, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(__pyx_t_14, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 285, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_9);
         __pyx_t_9 = 0;
 
-        /* "arithmetic_analyze.pyx":285
+        /* "arithmetic_analyze.pyx":286
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                         historyOfOperators += string
  *                     else: pass
  */
-        __pyx_t_9 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 285, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 286, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_7 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_9)), Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 285, __pyx_L1_error)
+        __pyx_t_7 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_9)), Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 285, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if (__pyx_t_3) {
 
-          /* "arithmetic_analyze.pyx":286
+          /* "arithmetic_analyze.pyx":287
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators += string             # <<<<<<<<<<<<<<
  *                     else: pass
  * 
  */
-          __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
+          __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 287, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 286, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 287, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_7));
           __pyx_t_7 = 0;
 
-          /* "arithmetic_analyze.pyx":285
+          /* "arithmetic_analyze.pyx":286
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -8594,7 +8607,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           goto __pyx_L22;
         }
 
-        /* "arithmetic_analyze.pyx":287
+        /* "arithmetic_analyze.pyx":288
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators += string
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -8605,7 +8618,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         }
         __pyx_L22:;
 
-        /* "arithmetic_analyze.pyx":284
+        /* "arithmetic_analyze.pyx":285
  *             if error in [ '', None]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -8615,27 +8628,27 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       }
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "arithmetic_analyze.pyx":289
+      /* "arithmetic_analyze.pyx":290
  *                     else: pass
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 289, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 290, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 289, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 290, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "arithmetic_analyze.pyx":290
+      /* "arithmetic_analyze.pyx":291
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )             # <<<<<<<<<<<<<<
  *                 if error is None:
  *                     numeric.append( _return_ )
  */
-      __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_12 = NULL;
       __pyx_t_4 = 0;
@@ -8652,7 +8665,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[5] = {__pyx_t_12, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_9};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 290, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -8661,14 +8674,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[5] = {__pyx_t_12, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_9};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 290, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 290, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_12) {
           __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -8685,12 +8698,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_GIVEREF(__pyx_t_9);
         PyTuple_SET_ITEM(__pyx_t_10, 3+__pyx_t_4, __pyx_t_9);
         __pyx_t_9 = 0;
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 290, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_7 = NULL;
@@ -8705,7 +8718,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       }
       __pyx_t_14 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 290, __pyx_L1_error)
+      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_14))) || (PyList_CheckExact(__pyx_t_14))) {
@@ -8714,7 +8727,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 289, __pyx_L1_error)
+          __PYX_ERR(0, 290, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -8727,15 +8740,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_7);
         #else
-        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 290, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 290, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_10 = PyObject_GetIter(__pyx_t_14); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 289, __pyx_L1_error)
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_14); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 290, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __pyx_t_15 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -8743,7 +8756,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_GOTREF(__pyx_t_8);
         index = 1; __pyx_t_7 = __pyx_t_15(__pyx_t_10); if (unlikely(!__pyx_t_7)) goto __pyx_L23_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_7);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_10), 2) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_10), 2) < 0) __PYX_ERR(0, 290, __pyx_L1_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L24_unpacking_done;
@@ -8751,24 +8764,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 289, __pyx_L1_error)
+        __PYX_ERR(0, 290, __pyx_L1_error)
         __pyx_L24_unpacking_done:;
       }
 
-      /* "arithmetic_analyze.pyx":289
+      /* "arithmetic_analyze.pyx":290
  *                     else: pass
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:
  */
-      if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 289, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 290, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_8);
       __pyx_t_8 = 0;
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
       __pyx_t_7 = 0;
 
-      /* "arithmetic_analyze.pyx":291
+      /* "arithmetic_analyze.pyx":292
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:             # <<<<<<<<<<<<<<
@@ -8779,16 +8792,16 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       __pyx_t_17 = (__pyx_t_3 != 0);
       if (__pyx_t_17) {
 
-        /* "arithmetic_analyze.pyx":292
+        /* "arithmetic_analyze.pyx":293
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:
  *                     numeric.append( _return_ )             # <<<<<<<<<<<<<<
  *                     historyOfOperators = ''
  *                 else: pass
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 292, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 293, __pyx_L1_error)
 
-        /* "arithmetic_analyze.pyx":293
+        /* "arithmetic_analyze.pyx":294
  *                 if error is None:
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -8798,7 +8811,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_INCREF(__pyx_kp_s_);
         __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-        /* "arithmetic_analyze.pyx":291
+        /* "arithmetic_analyze.pyx":292
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:             # <<<<<<<<<<<<<<
@@ -8808,7 +8821,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         goto __pyx_L25;
       }
 
-      /* "arithmetic_analyze.pyx":294
+      /* "arithmetic_analyze.pyx":295
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -8819,7 +8832,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       }
       __pyx_L25:;
 
-      /* "arithmetic_analyze.pyx":282
+      /* "arithmetic_analyze.pyx":283
  *                     else: break
  * 
  *             if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -8829,7 +8842,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       goto __pyx_L17;
     }
 
-    /* "arithmetic_analyze.pyx":295
+    /* "arithmetic_analyze.pyx":296
  *                     historyOfOperators = ''
  *                 else: pass
  *             else: pass             # <<<<<<<<<<<<<<
@@ -8840,7 +8853,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
     }
     __pyx_L17:;
 
-    /* "arithmetic_analyze.pyx":258
+    /* "arithmetic_analyze.pyx":259
  * 
  * 
  *         if lengthValues > lengthOperators:             # <<<<<<<<<<<<<<
@@ -8850,7 +8863,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":298
+  /* "arithmetic_analyze.pyx":299
  * 
  *         else:
  *             if type( self.operators[ 0 ] ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -8860,20 +8873,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   /*else*/ {
     if (unlikely(__pyx_v_self->operators == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 298, __pyx_L1_error)
+      __PYX_ERR(0, 299, __pyx_L1_error)
     }
-    __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 298, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 299, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 298, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 299, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_14)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 298, __pyx_L1_error)
+    __pyx_t_8 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_14)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 299, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 298, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 299, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_17) {
 
-      /* "arithmetic_analyze.pyx":299
+      /* "arithmetic_analyze.pyx":300
  *         else:
  *             if type( self.operators[ 0 ] ) == type( list() ):
  *                 sign        = '+'             # <<<<<<<<<<<<<<
@@ -8883,7 +8896,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       __Pyx_INCREF(__pyx_kp_s__2);
       __pyx_v_sign = __pyx_kp_s__2;
 
-      /* "arithmetic_analyze.pyx":300
+      /* "arithmetic_analyze.pyx":301
  *             if type( self.operators[ 0 ] ) == type( list() ):
  *                 sign        = '+'
  *                 self.operators   = self.operators[ : ]             # <<<<<<<<<<<<<<
@@ -8892,9 +8905,9 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
       if (unlikely(__pyx_v_self->operators == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 300, __pyx_L1_error)
+        __PYX_ERR(0, 301, __pyx_L1_error)
       }
-      __pyx_t_8 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 300, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 301, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_8);
       __Pyx_GOTREF(__pyx_v_self->operators);
@@ -8902,7 +8915,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       __pyx_v_self->operators = ((PyObject*)__pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "arithmetic_analyze.pyx":298
+      /* "arithmetic_analyze.pyx":299
  * 
  *         else:
  *             if type( self.operators[ 0 ] ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -8912,7 +8925,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       goto __pyx_L26;
     }
 
-    /* "arithmetic_analyze.pyx":303
+    /* "arithmetic_analyze.pyx":304
  * 
  *             else:
  *                 calculations.append( self.operators[ 0 ] )             # <<<<<<<<<<<<<<
@@ -8922,14 +8935,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
     /*else*/ {
       if (unlikely(__pyx_v_self->operators == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 303, __pyx_L1_error)
+        __PYX_ERR(0, 304, __pyx_L1_error)
       }
-      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 303, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 304, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 303, __pyx_L1_error)
+      __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 304, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "arithmetic_analyze.pyx":304
+      /* "arithmetic_analyze.pyx":305
  *             else:
  *                 calculations.append( self.operators[ 0 ] )
  *                 self.operators  = self.operators[ 1 : ]             # <<<<<<<<<<<<<<
@@ -8938,9 +8951,9 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
       if (unlikely(__pyx_v_self->operators == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 304, __pyx_L1_error)
+        __PYX_ERR(0, 305, __pyx_L1_error)
       }
-      __pyx_t_8 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 305, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_8);
       __Pyx_GOTREF(__pyx_v_self->operators);
@@ -8950,7 +8963,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
     }
     __pyx_L26:;
 
-    /* "arithmetic_analyze.pyx":306
+    /* "arithmetic_analyze.pyx":307
  *                 self.operators  = self.operators[ 1 : ]
  * 
  *             for k in range( lengthValues ):             # <<<<<<<<<<<<<<
@@ -8962,7 +8975,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_k = __pyx_t_6;
 
-      /* "arithmetic_analyze.pyx":307
+      /* "arithmetic_analyze.pyx":308
  * 
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -8971,41 +8984,41 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
       if (unlikely(__pyx_v_self->values == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 307, __pyx_L1_error)
+        __PYX_ERR(0, 308, __pyx_L1_error)
       }
-      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 307, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 308, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 307, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_8)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 307, __pyx_L1_error)
+      __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_8)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 308, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 307, __pyx_L1_error)
+      __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 308, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       if (__pyx_t_17) {
 
-        /* "arithmetic_analyze.pyx":308
+        /* "arithmetic_analyze.pyx":309
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_nv); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 308, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_nv); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 309, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 308, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 309, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 308, __pyx_L1_error)
+          __PYX_ERR(0, 309, __pyx_L1_error)
         }
-        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 308, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 309, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 308, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 309, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "arithmetic_analyze.pyx":309
+        /* "arithmetic_analyze.pyx":310
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,
  *                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )             # <<<<<<<<<<<<<<
@@ -9014,11 +9027,11 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 309, __pyx_L1_error)
+          __PYX_ERR(0, 310, __pyx_L1_error)
         }
-        __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 309, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_12, __pyx_n_s_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_12, __pyx_n_s_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __pyx_t_12 = NULL;
@@ -9036,7 +9049,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[6] = {__pyx_t_12, __pyx_v_self->master, __pyx_t_8, __pyx_v_self->DataBase, __pyx_t_9, __pyx_t_1};
-          __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -9047,7 +9060,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[6] = {__pyx_t_12, __pyx_v_self->master, __pyx_t_8, __pyx_v_self->DataBase, __pyx_t_9, __pyx_t_1};
-          __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -9056,7 +9069,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         } else
         #endif
         {
-          __pyx_t_11 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 308, __pyx_L1_error)
+          __pyx_t_11 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           if (__pyx_t_12) {
             __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -9076,12 +9089,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_8 = 0;
           __pyx_t_9 = 0;
           __pyx_t_1 = 0;
-          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 309, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_7 = NULL;
@@ -9096,7 +9109,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         }
         __pyx_t_14 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_7, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_MainString);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 309, __pyx_L1_error)
+        if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if ((likely(PyTuple_CheckExact(__pyx_t_14))) || (PyList_CheckExact(__pyx_t_14))) {
@@ -9105,7 +9118,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 308, __pyx_L1_error)
+            __PYX_ERR(0, 309, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -9118,15 +9131,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __Pyx_INCREF(__pyx_t_10);
           __Pyx_INCREF(__pyx_t_7);
           #else
-          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 308, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_11 = PyObject_GetIter(__pyx_t_14); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 308, __pyx_L1_error)
+          __pyx_t_11 = PyObject_GetIter(__pyx_t_14); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __pyx_t_15 = Py_TYPE(__pyx_t_11)->tp_iternext;
@@ -9134,7 +9147,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __Pyx_GOTREF(__pyx_t_10);
           index = 1; __pyx_t_7 = __pyx_t_15(__pyx_t_11); if (unlikely(!__pyx_t_7)) goto __pyx_L30_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_7);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 2) < 0) __PYX_ERR(0, 308, __pyx_L1_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 2) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
           __pyx_t_15 = NULL;
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           goto __pyx_L31_unpacking_done;
@@ -9142,24 +9155,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __pyx_t_15 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 308, __pyx_L1_error)
+          __PYX_ERR(0, 309, __pyx_L1_error)
           __pyx_L31_unpacking_done:;
         }
 
-        /* "arithmetic_analyze.pyx":308
+        /* "arithmetic_analyze.pyx":309
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 308, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 309, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_10);
         __pyx_t_10 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
         __pyx_t_7 = 0;
 
-        /* "arithmetic_analyze.pyx":311
+        /* "arithmetic_analyze.pyx":312
  *                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -9168,21 +9181,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 311, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
         __pyx_t_18 = (__pyx_t_3 != 0);
         if (!__pyx_t_18) {
         } else {
           __pyx_t_17 = __pyx_t_18;
           goto __pyx_L33_bool_binop_done;
         }
-        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 311, __pyx_L1_error)
+        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
         __pyx_t_17 = __pyx_t_18;
         __pyx_L33_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_18 = (__pyx_t_17 != 0);
         if (__pyx_t_18) {
 
-          /* "arithmetic_analyze.pyx":312
+          /* "arithmetic_analyze.pyx":313
  * 
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -9192,7 +9205,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_18 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_18) {
 
-            /* "arithmetic_analyze.pyx":313
+            /* "arithmetic_analyze.pyx":314
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:
  *                             if not index:             # <<<<<<<<<<<<<<
@@ -9203,7 +9216,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             __pyx_t_17 = ((!__pyx_t_18) != 0);
             if (__pyx_t_17) {
 
-              /* "arithmetic_analyze.pyx":314
+              /* "arithmetic_analyze.pyx":315
  *                         if k != lengthValues - 1:
  *                             if not index:
  *                                 try:             # <<<<<<<<<<<<<<
@@ -9219,22 +9232,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
                 __Pyx_XGOTREF(__pyx_t_22);
                 /*try:*/ {
 
-                  /* "arithmetic_analyze.pyx":315
+                  /* "arithmetic_analyze.pyx":316
  *                             if not index:
  *                                 try:
  *                                     calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                                     calculations.append( self.operators[ k + 1 ])
  *                                 except IndexError:
  */
-                  __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 315, __pyx_L37_error)
+                  __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 316, __pyx_L37_error)
                   __Pyx_GOTREF(__pyx_t_14);
                   __Pyx_INCREF(__pyx_v__return_);
                   __Pyx_GIVEREF(__pyx_v__return_);
                   PyList_SET_ITEM(__pyx_t_14, 0, __pyx_v__return_);
-                  __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 315, __pyx_L37_error)
+                  __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 316, __pyx_L37_error)
                   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-                  /* "arithmetic_analyze.pyx":316
+                  /* "arithmetic_analyze.pyx":317
  *                                 try:
  *                                     calculations.append( [ _return_ ] )
  *                                     calculations.append( self.operators[ k + 1 ])             # <<<<<<<<<<<<<<
@@ -9243,15 +9256,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
                   if (unlikely(__pyx_v_self->operators == Py_None)) {
                     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                    __PYX_ERR(0, 316, __pyx_L37_error)
+                    __PYX_ERR(0, 317, __pyx_L37_error)
                   }
                   __pyx_t_23 = (__pyx_v_k + 1);
-                  __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 316, __pyx_L37_error)
+                  __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 317, __pyx_L37_error)
                   __Pyx_GOTREF(__pyx_t_14);
-                  __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 316, __pyx_L37_error)
+                  __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 317, __pyx_L37_error)
                   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-                  /* "arithmetic_analyze.pyx":314
+                  /* "arithmetic_analyze.pyx":315
  *                         if k != lengthValues - 1:
  *                             if not index:
  *                                 try:             # <<<<<<<<<<<<<<
@@ -9274,7 +9287,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
                 __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
                 __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                /* "arithmetic_analyze.pyx":317
+                /* "arithmetic_analyze.pyx":318
  *                                     calculations.append( [ _return_ ] )
  *                                     calculations.append( self.operators[ k + 1 ])
  *                                 except IndexError:             # <<<<<<<<<<<<<<
@@ -9284,12 +9297,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
                 __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_IndexError);
                 if (__pyx_t_13) {
                   __Pyx_AddTraceback("arithmetic_analyze.ARRITHMETIC_DEEP_CHECKING.INIT", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                  if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_7, &__pyx_t_10) < 0) __PYX_ERR(0, 317, __pyx_L39_except_error)
+                  if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_7, &__pyx_t_10) < 0) __PYX_ERR(0, 318, __pyx_L39_except_error)
                   __Pyx_GOTREF(__pyx_t_14);
                   __Pyx_GOTREF(__pyx_t_7);
                   __Pyx_GOTREF(__pyx_t_10);
 
-                  /* "arithmetic_analyze.pyx":318
+                  /* "arithmetic_analyze.pyx":319
  *                                     calculations.append( self.operators[ k + 1 ])
  *                                 except IndexError:
  *                                     calculations.append( self.operators[ k ] )             # <<<<<<<<<<<<<<
@@ -9298,11 +9311,11 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
                   if (unlikely(__pyx_v_self->operators == Py_None)) {
                     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                    __PYX_ERR(0, 318, __pyx_L39_except_error)
+                    __PYX_ERR(0, 319, __pyx_L39_except_error)
                   }
-                  __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 318, __pyx_L39_except_error)
+                  __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 319, __pyx_L39_except_error)
                   __Pyx_GOTREF(__pyx_t_11);
-                  __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 318, __pyx_L39_except_error)
+                  __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 319, __pyx_L39_except_error)
                   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
                   __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
                   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -9312,7 +9325,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
                 goto __pyx_L39_except_error;
                 __pyx_L39_except_error:;
 
-                /* "arithmetic_analyze.pyx":314
+                /* "arithmetic_analyze.pyx":315
  *                         if k != lengthValues - 1:
  *                             if not index:
  *                                 try:             # <<<<<<<<<<<<<<
@@ -9332,7 +9345,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
                 __pyx_L44_try_end:;
               }
 
-              /* "arithmetic_analyze.pyx":313
+              /* "arithmetic_analyze.pyx":314
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:
  *                             if not index:             # <<<<<<<<<<<<<<
@@ -9342,7 +9355,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
               goto __pyx_L36;
             }
 
-            /* "arithmetic_analyze.pyx":320
+            /* "arithmetic_analyze.pyx":321
  *                                     calculations.append( self.operators[ k ] )
  *                             else:
  *                                 calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
@@ -9350,15 +9363,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  *                         else:  calculations.append( [ _return_ ] )
  */
             /*else*/ {
-              __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
+              __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 321, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_INCREF(__pyx_v__return_);
               __Pyx_GIVEREF(__pyx_v__return_);
               PyList_SET_ITEM(__pyx_t_10, 0, __pyx_v__return_);
-              __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 320, __pyx_L1_error)
+              __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 321, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-              /* "arithmetic_analyze.pyx":321
+              /* "arithmetic_analyze.pyx":322
  *                             else:
  *                                 calculations.append( [ _return_ ] )
  *                                 calculations.append( self.operators[ k + index[ -1 ] + 1 ])             # <<<<<<<<<<<<<<
@@ -9367,28 +9380,28 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
               if (unlikely(__pyx_v_self->operators == Py_None)) {
                 PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 321, __pyx_L1_error)
+                __PYX_ERR(0, 322, __pyx_L1_error)
               }
-              __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_k); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 321, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_k); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 322, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
-              __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_index, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 321, __pyx_L1_error)
+              __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_index, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 322, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
-              __pyx_t_14 = PyNumber_Add(__pyx_t_10, __pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 321, __pyx_L1_error)
+              __pyx_t_14 = PyNumber_Add(__pyx_t_10, __pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 322, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-              __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_t_14, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 321, __pyx_L1_error)
+              __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_t_14, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 322, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_7);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-              __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_v_self->operators, __pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 321, __pyx_L1_error)
+              __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_v_self->operators, __pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 322, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-              __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 321, __pyx_L1_error)
+              __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 322, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             }
             __pyx_L36:;
 
-            /* "arithmetic_analyze.pyx":312
+            /* "arithmetic_analyze.pyx":313
  * 
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -9398,7 +9411,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             goto __pyx_L35;
           }
 
-          /* "arithmetic_analyze.pyx":322
+          /* "arithmetic_analyze.pyx":323
  *                                 calculations.append( [ _return_ ] )
  *                                 calculations.append( self.operators[ k + index[ -1 ] + 1 ])
  *                         else:  calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
@@ -9406,17 +9419,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  * 
  */
           /*else*/ {
-            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 322, __pyx_L1_error)
+            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 323, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_INCREF(__pyx_v__return_);
             __Pyx_GIVEREF(__pyx_v__return_);
             PyList_SET_ITEM(__pyx_t_14, 0, __pyx_v__return_);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 322, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 323, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           }
           __pyx_L35:;
 
-          /* "arithmetic_analyze.pyx":311
+          /* "arithmetic_analyze.pyx":312
  *                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -9426,7 +9439,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           goto __pyx_L32;
         }
 
-        /* "arithmetic_analyze.pyx":323
+        /* "arithmetic_analyze.pyx":324
  *                                 calculations.append( self.operators[ k + index[ -1 ] + 1 ])
  *                         else:  calculations.append( [ _return_ ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -9438,7 +9451,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         }
         __pyx_L32:;
 
-        /* "arithmetic_analyze.pyx":307
+        /* "arithmetic_analyze.pyx":308
  * 
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -9448,7 +9461,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         goto __pyx_L29;
       }
 
-      /* "arithmetic_analyze.pyx":326
+      /* "arithmetic_analyze.pyx":327
  * 
  *                 else:
  *                     if type( self.operators[ k ] ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -9458,20 +9471,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       /*else*/ {
         if (unlikely(__pyx_v_self->operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 326, __pyx_L1_error)
+          __PYX_ERR(0, 327, __pyx_L1_error)
         }
-        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_10 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_14)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_10 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_14)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if (__pyx_t_17) {
 
-          /* "arithmetic_analyze.pyx":327
+          /* "arithmetic_analyze.pyx":328
  *                 else:
  *                     if type( self.operators[ k ] ) == type( list() ):
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
@@ -9480,12 +9493,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
           if (unlikely(__pyx_v_self->values == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 327, __pyx_L1_error)
+            __PYX_ERR(0, 328, __pyx_L1_error)
           }
-          __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 327, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 328, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
 
-          /* "arithmetic_analyze.pyx":328
+          /* "arithmetic_analyze.pyx":329
  *                     if type( self.operators[ k ] ) == type( list() ):
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],
  *                                             self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
@@ -9494,21 +9507,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
           if (unlikely(__pyx_v_self->operators == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 328, __pyx_L1_error)
+            __PYX_ERR(0, 329, __pyx_L1_error)
           }
-          __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 328, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 329, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_14 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 328, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 329, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
 
-          /* "arithmetic_analyze.pyx":327
+          /* "arithmetic_analyze.pyx":328
  *                 else:
  *                     if type( self.operators[ k ] ) == type( list() ):
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                             self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )
  * 
  */
-          __pyx_t_11 = PyTuple_New(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 327, __pyx_L1_error)
+          __pyx_t_11 = PyTuple_New(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 328, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_INCREF(__pyx_v_self->master);
           __Pyx_GIVEREF(__pyx_v_self->master);
@@ -9525,18 +9538,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_10 = 0;
           __pyx_t_7 = 0;
           __pyx_t_14 = 0;
-          __pyx_t_14 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_11, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 327, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_11, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 328, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "arithmetic_analyze.pyx":328
+          /* "arithmetic_analyze.pyx":329
  *                     if type( self.operators[ k ] ) == type( list() ):
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],
  *                                             self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     else:
  */
-          __pyx_t_11 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_14)->__pyx_vtab)->INIT_INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_14), __pyx_v_MainString); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 328, __pyx_L1_error)
+          __pyx_t_11 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_14)->__pyx_vtab)->INIT_INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_14), __pyx_v_MainString); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 329, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           if (likely(__pyx_t_11 != Py_None)) {
@@ -9545,7 +9558,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 327, __pyx_L1_error)
+              __PYX_ERR(0, 328, __pyx_L1_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             __pyx_t_14 = PyTuple_GET_ITEM(sequence, 0); 
@@ -9553,30 +9566,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             __Pyx_INCREF(__pyx_t_14);
             __Pyx_INCREF(__pyx_t_7);
             #else
-            __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 327, __pyx_L1_error)
+            __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 328, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
-            __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
+            __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 328, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           } else {
-            __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 327, __pyx_L1_error)
+            __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 328, __pyx_L1_error)
           }
 
-          /* "arithmetic_analyze.pyx":327
+          /* "arithmetic_analyze.pyx":328
  *                 else:
  *                     if type( self.operators[ k ] ) == type( list() ):
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                             self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )
  * 
  */
-          if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 327, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 328, __pyx_L1_error)
           __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_14);
           __pyx_t_14 = 0;
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
           __pyx_t_7 = 0;
 
-          /* "arithmetic_analyze.pyx":326
+          /* "arithmetic_analyze.pyx":327
  * 
  *                 else:
  *                     if type( self.operators[ k ] ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -9586,7 +9599,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           goto __pyx_L47;
         }
 
-        /* "arithmetic_analyze.pyx":331
+        /* "arithmetic_analyze.pyx":332
  * 
  *                     else:
  *                         idd  = 0             # <<<<<<<<<<<<<<
@@ -9596,7 +9609,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         /*else*/ {
           __pyx_v_idd = 0;
 
-          /* "arithmetic_analyze.pyx":332
+          /* "arithmetic_analyze.pyx":333
  *                     else:
  *                         idd  = 0
  *                         for i, _op_ in enumerate( self.operators[ k : ] ):             # <<<<<<<<<<<<<<
@@ -9606,18 +9619,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_13 = 0;
           if (unlikely(__pyx_v_self->operators == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 332, __pyx_L1_error)
+            __PYX_ERR(0, 333, __pyx_L1_error)
           }
-          __pyx_t_11 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, __pyx_v_k, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 332, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, __pyx_v_k, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 333, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __pyx_t_7 = __pyx_t_11; __Pyx_INCREF(__pyx_t_7); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           for (;;) {
             if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_7)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_2); __Pyx_INCREF(__pyx_t_11); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 332, __pyx_L1_error)
+            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_2); __Pyx_INCREF(__pyx_t_11); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 333, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_7, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 332, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_7, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 333, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
             __Pyx_XDECREF_SET(__pyx_v__op_, __pyx_t_11);
@@ -9625,22 +9638,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             __pyx_v_i = __pyx_t_13;
             __pyx_t_13 = (__pyx_t_13 + 1);
 
-            /* "arithmetic_analyze.pyx":333
+            /* "arithmetic_analyze.pyx":334
  *                         idd  = 0
  *                         for i, _op_ in enumerate( self.operators[ k : ] ):
  *                             if type( _op_ ) == type( list() ):             # <<<<<<<<<<<<<<
  *                                 idd = i
  *                                 break
  */
-            __pyx_t_11 = PyList_New(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_11 = PyList_New(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 334, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v__op_)), ((PyObject *)Py_TYPE(__pyx_t_11)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v__op_)), ((PyObject *)Py_TYPE(__pyx_t_11)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 334, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-            __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 334, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             if (__pyx_t_17) {
 
-              /* "arithmetic_analyze.pyx":334
+              /* "arithmetic_analyze.pyx":335
  *                         for i, _op_ in enumerate( self.operators[ k : ] ):
  *                             if type( _op_ ) == type( list() ):
  *                                 idd = i             # <<<<<<<<<<<<<<
@@ -9649,7 +9662,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
               __pyx_v_idd = __pyx_v_i;
 
-              /* "arithmetic_analyze.pyx":335
+              /* "arithmetic_analyze.pyx":336
  *                             if type( _op_ ) == type( list() ):
  *                                 idd = i
  *                                 break             # <<<<<<<<<<<<<<
@@ -9658,7 +9671,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
               goto __pyx_L49_break;
 
-              /* "arithmetic_analyze.pyx":333
+              /* "arithmetic_analyze.pyx":334
  *                         idd  = 0
  *                         for i, _op_ in enumerate( self.operators[ k : ] ):
  *                             if type( _op_ ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -9667,7 +9680,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
             }
 
-            /* "arithmetic_analyze.pyx":336
+            /* "arithmetic_analyze.pyx":337
  *                                 idd = i
  *                                 break
  *                             else: pass             # <<<<<<<<<<<<<<
@@ -9677,7 +9690,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             /*else*/ {
             }
 
-            /* "arithmetic_analyze.pyx":332
+            /* "arithmetic_analyze.pyx":333
  *                     else:
  *                         idd  = 0
  *                         for i, _op_ in enumerate( self.operators[ k : ] ):             # <<<<<<<<<<<<<<
@@ -9688,19 +9701,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_L49_break:;
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "arithmetic_analyze.pyx":338
+          /* "arithmetic_analyze.pyx":339
  *                             else: pass
  * 
  *                         index.append( idd )             # <<<<<<<<<<<<<<
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                     self.operators[ k + idd ], self.DataBase, self.line).INIT_INIT( MainString )
  */
-          __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_idd); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 338, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_idd); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 339, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_index, __pyx_t_7); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 338, __pyx_L1_error)
+          __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_index, __pyx_t_7); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 339, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "arithmetic_analyze.pyx":339
+          /* "arithmetic_analyze.pyx":340
  * 
  *                         index.append( idd )
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
@@ -9709,12 +9722,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
           if (unlikely(__pyx_v_self->values == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 339, __pyx_L1_error)
+            __PYX_ERR(0, 340, __pyx_L1_error)
           }
-          __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 339, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
 
-          /* "arithmetic_analyze.pyx":340
+          /* "arithmetic_analyze.pyx":341
  *                         index.append( idd )
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                     self.operators[ k + idd ], self.DataBase, self.line).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
@@ -9723,22 +9736,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
           if (unlikely(__pyx_v_self->operators == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 340, __pyx_L1_error)
+            __PYX_ERR(0, 341, __pyx_L1_error)
           }
           __pyx_t_13 = (__pyx_v_k + __pyx_v_idd);
-          __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_13, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 340, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_13, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 341, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 340, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 341, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
 
-          /* "arithmetic_analyze.pyx":339
+          /* "arithmetic_analyze.pyx":340
  * 
  *                         index.append( idd )
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                     self.operators[ k + idd ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  */
-          __pyx_t_10 = PyTuple_New(5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 339, __pyx_L1_error)
+          __pyx_t_10 = PyTuple_New(5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_INCREF(__pyx_v_self->master);
           __Pyx_GIVEREF(__pyx_v_self->master);
@@ -9755,18 +9768,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_7 = 0;
           __pyx_t_14 = 0;
           __pyx_t_11 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_10, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 339, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_10, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "arithmetic_analyze.pyx":340
+          /* "arithmetic_analyze.pyx":341
  *                         index.append( idd )
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                     self.operators[ k + idd ], self.DataBase, self.line).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     if error in [ '' , None ]:
  */
-          __pyx_t_10 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_11)->__pyx_vtab)->INIT_INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_11), __pyx_v_MainString); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 340, __pyx_L1_error)
+          __pyx_t_10 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_11)->__pyx_vtab)->INIT_INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_11), __pyx_v_MainString); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 341, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           if (likely(__pyx_t_10 != Py_None)) {
@@ -9775,7 +9788,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 339, __pyx_L1_error)
+              __PYX_ERR(0, 340, __pyx_L1_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             __pyx_t_11 = PyTuple_GET_ITEM(sequence, 0); 
@@ -9783,24 +9796,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             __Pyx_INCREF(__pyx_t_11);
             __Pyx_INCREF(__pyx_t_14);
             #else
-            __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 339, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 340, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_14 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 339, __pyx_L1_error)
+            __pyx_t_14 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 340, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             #endif
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           } else {
-            __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 339, __pyx_L1_error)
+            __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 340, __pyx_L1_error)
           }
 
-          /* "arithmetic_analyze.pyx":339
+          /* "arithmetic_analyze.pyx":340
  * 
  *                         index.append( idd )
  *                         _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                     self.operators[ k + idd ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  */
-          if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 339, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_11);
           __pyx_t_11 = 0;
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_14));
@@ -9808,7 +9821,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         }
         __pyx_L47:;
 
-        /* "arithmetic_analyze.pyx":342
+        /* "arithmetic_analyze.pyx":343
  *                                     self.operators[ k + idd ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  *                     if error in [ '' , None ]:             # <<<<<<<<<<<<<<
@@ -9817,21 +9830,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 342, __pyx_L1_error)
+        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 343, __pyx_L1_error)
         __pyx_t_3 = (__pyx_t_18 != 0);
         if (!__pyx_t_3) {
         } else {
           __pyx_t_17 = __pyx_t_3;
           goto __pyx_L52_bool_binop_done;
         }
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 342, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 343, __pyx_L1_error)
         __pyx_t_17 = __pyx_t_3;
         __pyx_L52_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_3 = (__pyx_t_17 != 0);
         if (__pyx_t_3) {
 
-          /* "arithmetic_analyze.pyx":343
+          /* "arithmetic_analyze.pyx":344
  * 
  *                     if error in [ '' , None ]:
  *                         key = True             # <<<<<<<<<<<<<<
@@ -9840,7 +9853,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
           __pyx_v_key = 1;
 
-          /* "arithmetic_analyze.pyx":344
+          /* "arithmetic_analyze.pyx":345
  *                     if error in [ '' , None ]:
  *                         key = True
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -9850,7 +9863,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           __pyx_t_3 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_3) {
 
-            /* "arithmetic_analyze.pyx":345
+            /* "arithmetic_analyze.pyx":346
  *                         key = True
  *                         if k != lengthValues - 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -9866,24 +9879,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
               __Pyx_XGOTREF(__pyx_t_20);
               /*try:*/ {
 
-                /* "arithmetic_analyze.pyx":346
+                /* "arithmetic_analyze.pyx":347
  *                         if k != lengthValues - 1:
  *                             try:
  *                                 calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                                 calculations.append( self.operators[ k + 1 ] )
  * 
  */
-                __pyx_t_10 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 346, __pyx_L55_error)
+                __pyx_t_10 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 347, __pyx_L55_error)
                 __Pyx_GOTREF(__pyx_t_10);
-                __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 346, __pyx_L55_error)
+                __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 347, __pyx_L55_error)
                 __Pyx_GOTREF(__pyx_t_14);
                 __Pyx_GIVEREF(__pyx_t_10);
                 PyList_SET_ITEM(__pyx_t_14, 0, __pyx_t_10);
                 __pyx_t_10 = 0;
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 346, __pyx_L55_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 347, __pyx_L55_error)
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-                /* "arithmetic_analyze.pyx":347
+                /* "arithmetic_analyze.pyx":348
  *                             try:
  *                                 calculations.append( [ _return_[ 0 ] ] )
  *                                 calculations.append( self.operators[ k + 1 ] )             # <<<<<<<<<<<<<<
@@ -9892,15 +9905,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
                 if (unlikely(__pyx_v_self->operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 347, __pyx_L55_error)
+                  __PYX_ERR(0, 348, __pyx_L55_error)
                 }
                 __pyx_t_23 = (__pyx_v_k + 1);
-                __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 347, __pyx_L55_error)
+                __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 348, __pyx_L55_error)
                 __Pyx_GOTREF(__pyx_t_14);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 347, __pyx_L55_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 348, __pyx_L55_error)
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-                /* "arithmetic_analyze.pyx":345
+                /* "arithmetic_analyze.pyx":346
  *                         key = True
  *                         if k != lengthValues - 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -9923,7 +9936,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-              /* "arithmetic_analyze.pyx":349
+              /* "arithmetic_analyze.pyx":350
  *                                 calculations.append( self.operators[ k + 1 ] )
  * 
  *                             except TypeError:             # <<<<<<<<<<<<<<
@@ -9933,29 +9946,29 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
               __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
               if (__pyx_t_13) {
                 __Pyx_AddTraceback("arithmetic_analyze.ARRITHMETIC_DEEP_CHECKING.INIT", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_10, &__pyx_t_11) < 0) __PYX_ERR(0, 349, __pyx_L57_except_error)
+                if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_10, &__pyx_t_11) < 0) __PYX_ERR(0, 350, __pyx_L57_except_error)
                 __Pyx_GOTREF(__pyx_t_14);
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_GOTREF(__pyx_t_11);
 
-                /* "arithmetic_analyze.pyx":350
+                /* "arithmetic_analyze.pyx":351
  * 
  *                             except TypeError:
  *                                 calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                                 calculations.append( self.operators[ k + 2 ] )
  *                         else:
  */
-                __pyx_t_7 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 350, __pyx_L57_except_error)
+                __pyx_t_7 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 351, __pyx_L57_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
-                __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L57_except_error)
+                __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L57_except_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_GIVEREF(__pyx_t_7);
                 PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_7);
                 __pyx_t_7 = 0;
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 350, __pyx_L57_except_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 351, __pyx_L57_except_error)
                 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                /* "arithmetic_analyze.pyx":351
+                /* "arithmetic_analyze.pyx":352
  *                             except TypeError:
  *                                 calculations.append( [ _return_[ 0 ] ] )
  *                                 calculations.append( self.operators[ k + 2 ] )             # <<<<<<<<<<<<<<
@@ -9964,12 +9977,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
                 if (unlikely(__pyx_v_self->operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 351, __pyx_L57_except_error)
+                  __PYX_ERR(0, 352, __pyx_L57_except_error)
                 }
                 __pyx_t_23 = (__pyx_v_k + 2);
-                __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L57_except_error)
+                __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L57_except_error)
                 __Pyx_GOTREF(__pyx_t_1);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 351, __pyx_L57_except_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 352, __pyx_L57_except_error)
                 __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
                 __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -9979,7 +9992,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
               goto __pyx_L57_except_error;
               __pyx_L57_except_error:;
 
-              /* "arithmetic_analyze.pyx":345
+              /* "arithmetic_analyze.pyx":346
  *                         key = True
  *                         if k != lengthValues - 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -9999,7 +10012,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
               __pyx_L62_try_end:;
             }
 
-            /* "arithmetic_analyze.pyx":344
+            /* "arithmetic_analyze.pyx":345
  *                     if error in [ '' , None ]:
  *                         key = True
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -10009,7 +10022,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
             goto __pyx_L54;
           }
 
-          /* "arithmetic_analyze.pyx":353
+          /* "arithmetic_analyze.pyx":354
  *                                 calculations.append( self.operators[ k + 2 ] )
  *                         else:
  *                             calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
@@ -10017,19 +10030,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  * 
  */
           /*else*/ {
-            __pyx_t_11 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 353, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 354, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 353, __pyx_L1_error)
+            __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 354, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_GIVEREF(__pyx_t_11);
             PyList_SET_ITEM(__pyx_t_10, 0, __pyx_t_11);
             __pyx_t_11 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 353, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 354, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           }
           __pyx_L54:;
 
-          /* "arithmetic_analyze.pyx":342
+          /* "arithmetic_analyze.pyx":343
  *                                     self.operators[ k + idd ], self.DataBase, self.line).INIT_INIT( MainString )
  * 
  *                     if error in [ '' , None ]:             # <<<<<<<<<<<<<<
@@ -10039,7 +10052,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           goto __pyx_L51;
         }
 
-        /* "arithmetic_analyze.pyx":354
+        /* "arithmetic_analyze.pyx":355
  *                         else:
  *                             calculations.append( [ _return_[ 0 ] ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -10055,7 +10068,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
     }
     __pyx_L28_break:;
 
-    /* "arithmetic_analyze.pyx":356
+    /* "arithmetic_analyze.pyx":357
  *                     else: break
  * 
  *             if error in [ '' , None ]:             # <<<<<<<<<<<<<<
@@ -10064,21 +10077,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
     __Pyx_INCREF(__pyx_v_error);
     __pyx_t_16 = __pyx_v_error;
-    __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 356, __pyx_L1_error)
+    __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 357, __pyx_L1_error)
     __pyx_t_18 = (__pyx_t_17 != 0);
     if (!__pyx_t_18) {
     } else {
       __pyx_t_3 = __pyx_t_18;
       goto __pyx_L66_bool_binop_done;
     }
-    __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 356, __pyx_L1_error)
+    __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 357, __pyx_L1_error)
     __pyx_t_3 = __pyx_t_18;
     __pyx_L66_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __pyx_t_18 = (__pyx_t_3 != 0);
     if (__pyx_t_18) {
 
-      /* "arithmetic_analyze.pyx":357
+      /* "arithmetic_analyze.pyx":358
  * 
  *             if error in [ '' , None ]:
  *                 historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -10088,7 +10101,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       __Pyx_INCREF(__pyx_kp_s_);
       __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-      /* "arithmetic_analyze.pyx":358
+      /* "arithmetic_analyze.pyx":359
  *             if error in [ '' , None ]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -10099,43 +10112,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       for (;;) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_10)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_11 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_2); __Pyx_INCREF(__pyx_t_11); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 358, __pyx_L1_error)
+        __pyx_t_11 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_2); __Pyx_INCREF(__pyx_t_11); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 359, __pyx_L1_error)
         #else
-        __pyx_t_11 = PySequence_ITEM(__pyx_t_10, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 358, __pyx_L1_error)
+        __pyx_t_11 = PySequence_ITEM(__pyx_t_10, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 359, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_11);
         __pyx_t_11 = 0;
 
-        /* "arithmetic_analyze.pyx":359
+        /* "arithmetic_analyze.pyx":360
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                         historyOfOperators += string
  *                     else: pass
  */
-        __pyx_t_11 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 360, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_11)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_11)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 360, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 360, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         if (__pyx_t_18) {
 
-          /* "arithmetic_analyze.pyx":360
+          /* "arithmetic_analyze.pyx":361
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators += string             # <<<<<<<<<<<<<<
  *                     else: pass
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  */
-          __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 360, __pyx_L1_error)
+          __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 361, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 360, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 361, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_14));
           __pyx_t_14 = 0;
 
-          /* "arithmetic_analyze.pyx":359
+          /* "arithmetic_analyze.pyx":360
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -10145,7 +10158,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
           goto __pyx_L70;
         }
 
-        /* "arithmetic_analyze.pyx":361
+        /* "arithmetic_analyze.pyx":362
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators += string
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -10156,7 +10169,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         }
         __pyx_L70:;
 
-        /* "arithmetic_analyze.pyx":358
+        /* "arithmetic_analyze.pyx":359
  *             if error in [ '' , None ]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -10166,27 +10179,27 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       }
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "arithmetic_analyze.pyx":362
+      /* "arithmetic_analyze.pyx":363
  *                         historyOfOperators += string
  *                     else: pass
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                             historyOfOperators, self.line ).MATHS_OPERATIONS( )
  * 
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 362, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 363, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "arithmetic_analyze.pyx":363
+      /* "arithmetic_analyze.pyx":364
  *                     else: pass
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                             historyOfOperators, self.line ).MATHS_OPERATIONS( )             # <<<<<<<<<<<<<<
  * 
  *                 if error in [ '' , None ]:
  */
-      __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 363, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 364, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_t_7 = NULL;
       __pyx_t_4 = 0;
@@ -10203,7 +10216,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[5] = {__pyx_t_7, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_11};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 363, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -10212,14 +10225,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[5] = {__pyx_t_7, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_11};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 363, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       } else
       #endif
       {
-        __pyx_t_9 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 363, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         if (__pyx_t_7) {
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -10236,12 +10249,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_GIVEREF(__pyx_t_11);
         PyTuple_SET_ITEM(__pyx_t_9, 3+__pyx_t_4, __pyx_t_11);
         __pyx_t_11 = 0;
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 363, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __pyx_t_14 = NULL;
@@ -10256,7 +10269,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       }
       __pyx_t_10 = (__pyx_t_14) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_14) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_10))) || (PyList_CheckExact(__pyx_t_10))) {
@@ -10265,7 +10278,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 362, __pyx_L1_error)
+          __PYX_ERR(0, 363, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -10278,15 +10291,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_INCREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_t_14);
         #else
-        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_14 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_14 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 363, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         #endif
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_9 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_9 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 363, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_15 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -10294,7 +10307,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_GOTREF(__pyx_t_1);
         index = 1; __pyx_t_14 = __pyx_t_15(__pyx_t_9); if (unlikely(!__pyx_t_14)) goto __pyx_L71_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_14);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 362, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 363, __pyx_L1_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L72_unpacking_done;
@@ -10302,24 +10315,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 362, __pyx_L1_error)
+        __PYX_ERR(0, 363, __pyx_L1_error)
         __pyx_L72_unpacking_done:;
       }
 
-      /* "arithmetic_analyze.pyx":362
+      /* "arithmetic_analyze.pyx":363
  *                         historyOfOperators += string
  *                     else: pass
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                             historyOfOperators, self.line ).MATHS_OPERATIONS( )
  * 
  */
-      if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 362, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 363, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_1);
       __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_14));
       __pyx_t_14 = 0;
 
-      /* "arithmetic_analyze.pyx":365
+      /* "arithmetic_analyze.pyx":366
  *                                                             historyOfOperators, self.line ).MATHS_OPERATIONS( )
  * 
  *                 if error in [ '' , None ]:             # <<<<<<<<<<<<<<
@@ -10328,30 +10341,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  */
       __Pyx_INCREF(__pyx_v_error);
       __pyx_t_16 = __pyx_v_error;
-      __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 366, __pyx_L1_error)
       __pyx_t_17 = (__pyx_t_3 != 0);
       if (!__pyx_t_17) {
       } else {
         __pyx_t_18 = __pyx_t_17;
         goto __pyx_L74_bool_binop_done;
       }
-      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 366, __pyx_L1_error)
       __pyx_t_18 = __pyx_t_17;
       __pyx_L74_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __pyx_t_17 = (__pyx_t_18 != 0);
       if (__pyx_t_17) {
 
-        /* "arithmetic_analyze.pyx":366
+        /* "arithmetic_analyze.pyx":367
  * 
  *                 if error in [ '' , None ]:
  *                     numeric.append( _return_ )             # <<<<<<<<<<<<<<
  *                     historyOfOperators = ''
  *                 else: pass
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 366, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 367, __pyx_L1_error)
 
-        /* "arithmetic_analyze.pyx":367
+        /* "arithmetic_analyze.pyx":368
  *                 if error in [ '' , None ]:
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -10361,7 +10374,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         __Pyx_INCREF(__pyx_kp_s_);
         __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-        /* "arithmetic_analyze.pyx":365
+        /* "arithmetic_analyze.pyx":366
  *                                                             historyOfOperators, self.line ).MATHS_OPERATIONS( )
  * 
  *                 if error in [ '' , None ]:             # <<<<<<<<<<<<<<
@@ -10371,7 +10384,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
         goto __pyx_L73;
       }
 
-      /* "arithmetic_analyze.pyx":368
+      /* "arithmetic_analyze.pyx":369
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -10382,7 +10395,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
       }
       __pyx_L73:;
 
-      /* "arithmetic_analyze.pyx":356
+      /* "arithmetic_analyze.pyx":357
  *                     else: break
  * 
  *             if error in [ '' , None ]:             # <<<<<<<<<<<<<<
@@ -10393,7 +10406,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   }
   __pyx_L3:;
 
-  /* "arithmetic_analyze.pyx":371
+  /* "arithmetic_analyze.pyx":372
  * 
  * 
  *         return numeric, error             # <<<<<<<<<<<<<<
@@ -10401,7 +10414,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
  *     cdef tuple INIT_INIT( self, str MainString ):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 372, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_INCREF(__pyx_v_numeric);
   __Pyx_GIVEREF(__pyx_v_numeric);
@@ -10413,7 +10426,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   __pyx_t_10 = 0;
   goto __pyx_L0;
 
-  /* "arithmetic_analyze.pyx":236
+  /* "arithmetic_analyze.pyx":237
  *         self.master             = master
  * 
  *     cdef tuple INIT( self, str MainString ):             # <<<<<<<<<<<<<<
@@ -10449,7 +10462,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT(s
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":373
+/* "arithmetic_analyze.pyx":374
  *         return numeric, error
  * 
  *     cdef tuple INIT_INIT( self, str MainString ):             # <<<<<<<<<<<<<<
@@ -10501,7 +10514,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("INIT_INIT", 0);
 
-  /* "arithmetic_analyze.pyx":388
+  /* "arithmetic_analyze.pyx":389
  *             _return_, string
  * 
  *         error               = ''             # <<<<<<<<<<<<<<
@@ -10511,43 +10524,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   __Pyx_INCREF(__pyx_kp_s_);
   __pyx_v_error = __pyx_kp_s_;
 
-  /* "arithmetic_analyze.pyx":389
+  /* "arithmetic_analyze.pyx":390
  * 
  *         error               = ''
  *         calculations        = []             # <<<<<<<<<<<<<<
  *         index               = []
  *         numeric             = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 389, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_calculations = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":390
+  /* "arithmetic_analyze.pyx":391
  *         error               = ''
  *         calculations        = []
  *         index               = []             # <<<<<<<<<<<<<<
  *         numeric             = []
  *         historyOfOperators  = ''
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_index = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":391
+  /* "arithmetic_analyze.pyx":392
  *         calculations        = []
  *         index               = []
  *         numeric             = []             # <<<<<<<<<<<<<<
  *         historyOfOperators  = ''
  *         lengthValues        = len( self.values )
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_numeric = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":392
+  /* "arithmetic_analyze.pyx":393
  *         index               = []
  *         numeric             = []
  *         historyOfOperators  = ''             # <<<<<<<<<<<<<<
@@ -10557,7 +10570,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   __Pyx_INCREF(__pyx_kp_s_);
   __pyx_v_historyOfOperators = __pyx_kp_s_;
 
-  /* "arithmetic_analyze.pyx":393
+  /* "arithmetic_analyze.pyx":394
  *         numeric             = []
  *         historyOfOperators  = ''
  *         lengthValues        = len( self.values )             # <<<<<<<<<<<<<<
@@ -10568,13 +10581,13 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 393, __pyx_L1_error)
+    __PYX_ERR(0, 394, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 393, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 394, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_lengthValues = __pyx_t_2;
 
-  /* "arithmetic_analyze.pyx":394
+  /* "arithmetic_analyze.pyx":395
  *         historyOfOperators  = ''
  *         lengthValues        = len( self.values )
  *         lengthOperators     = len( self.operators )             # <<<<<<<<<<<<<<
@@ -10585,13 +10598,13 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 394, __pyx_L1_error)
+    __PYX_ERR(0, 395, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 395, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_lengthOperators = __pyx_t_2;
 
-  /* "arithmetic_analyze.pyx":396
+  /* "arithmetic_analyze.pyx":397
  *         lengthOperators     = len( self.operators )
  * 
  *         if lengthValues > lengthOperators :             # <<<<<<<<<<<<<<
@@ -10601,7 +10614,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   __pyx_t_3 = ((__pyx_v_lengthValues > __pyx_v_lengthOperators) != 0);
   if (__pyx_t_3) {
 
-    /* "arithmetic_analyze.pyx":397
+    /* "arithmetic_analyze.pyx":398
  * 
  *         if lengthValues > lengthOperators :
  *             for k in range( lengthValues ):             # <<<<<<<<<<<<<<
@@ -10613,7 +10626,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_k = __pyx_t_6;
 
-      /* "arithmetic_analyze.pyx":398
+      /* "arithmetic_analyze.pyx":399
  *         if lengthValues > lengthOperators :
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -10622,41 +10635,41 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       if (unlikely(__pyx_v_self->values == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 398, __pyx_L1_error)
+        __PYX_ERR(0, 399, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 399, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_8 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 399, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 399, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (__pyx_t_3) {
 
-        /* "arithmetic_analyze.pyx":399
+        /* "arithmetic_analyze.pyx":400
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                             self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 400, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 399, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 400, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 399, __pyx_L1_error)
+          __PYX_ERR(0, 400, __pyx_L1_error)
         }
-        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 400, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 399, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 400, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
 
-        /* "arithmetic_analyze.pyx":400
+        /* "arithmetic_analyze.pyx":401
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,
  *                                                             self.values[ k ][ 'type' ] ).TYPE( MainString )             # <<<<<<<<<<<<<<
@@ -10665,11 +10678,11 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 400, __pyx_L1_error)
+          __PYX_ERR(0, 401, __pyx_L1_error)
         }
-        __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 400, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 401, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_t_11, __pyx_n_s_type); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 400, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_t_11, __pyx_n_s_type); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 401, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_11 = NULL;
@@ -10687,7 +10700,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_9)) {
           PyObject *__pyx_temp[6] = {__pyx_t_11, __pyx_v_self->master, __pyx_t_1, __pyx_v_self->DataBase, __pyx_t_10, __pyx_t_12};
-          __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 400, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10698,7 +10711,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
           PyObject *__pyx_temp[6] = {__pyx_t_11, __pyx_v_self->master, __pyx_t_1, __pyx_v_self->DataBase, __pyx_t_10, __pyx_t_12};
-          __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 400, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10707,7 +10720,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         } else
         #endif
         {
-          __pyx_t_14 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_14 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 400, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           if (__pyx_t_11) {
             __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_11); __pyx_t_11 = NULL;
@@ -10727,12 +10740,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_1 = 0;
           __pyx_t_10 = 0;
           __pyx_t_12 = 0;
-          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 400, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 400, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 401, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_7 = NULL;
@@ -10747,7 +10760,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_t_8 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_7, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_MainString);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 400, __pyx_L1_error)
+        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 401, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         if ((likely(PyTuple_CheckExact(__pyx_t_8))) || (PyList_CheckExact(__pyx_t_8))) {
@@ -10756,7 +10769,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 399, __pyx_L1_error)
+            __PYX_ERR(0, 400, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -10769,15 +10782,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_INCREF(__pyx_t_9);
           __Pyx_INCREF(__pyx_t_7);
           #else
-          __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 400, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 400, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_14 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 399, __pyx_L1_error)
+          __pyx_t_14 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 400, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __pyx_t_15 = Py_TYPE(__pyx_t_14)->tp_iternext;
@@ -10785,7 +10798,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_GOTREF(__pyx_t_9);
           index = 1; __pyx_t_7 = __pyx_t_15(__pyx_t_14); if (unlikely(!__pyx_t_7)) goto __pyx_L7_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_7);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 399, __pyx_L1_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_14), 2) < 0) __PYX_ERR(0, 400, __pyx_L1_error)
           __pyx_t_15 = NULL;
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           goto __pyx_L8_unpacking_done;
@@ -10793,24 +10806,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __pyx_t_15 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 399, __pyx_L1_error)
+          __PYX_ERR(0, 400, __pyx_L1_error)
           __pyx_L8_unpacking_done:;
         }
 
-        /* "arithmetic_analyze.pyx":399
+        /* "arithmetic_analyze.pyx":400
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                             self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 399, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 400, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_9);
         __pyx_t_9 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
         __pyx_t_7 = 0;
 
-        /* "arithmetic_analyze.pyx":402
+        /* "arithmetic_analyze.pyx":403
  *                                                             self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  *                     if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -10819,21 +10832,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 402, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 403, __pyx_L1_error)
         __pyx_t_18 = (__pyx_t_17 != 0);
         if (!__pyx_t_18) {
         } else {
           __pyx_t_3 = __pyx_t_18;
           goto __pyx_L10_bool_binop_done;
         }
-        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 402, __pyx_L1_error)
+        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 403, __pyx_L1_error)
         __pyx_t_3 = __pyx_t_18;
         __pyx_L10_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_18 = (__pyx_t_3 != 0);
         if (__pyx_t_18) {
 
-          /* "arithmetic_analyze.pyx":403
+          /* "arithmetic_analyze.pyx":404
  * 
  *                     if error in [ '', None]:
  *                         if k != lengthValues - 1 :             # <<<<<<<<<<<<<<
@@ -10843,22 +10856,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_18 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_18) {
 
-            /* "arithmetic_analyze.pyx":404
+            /* "arithmetic_analyze.pyx":405
  *                     if error in [ '', None]:
  *                         if k != lengthValues - 1 :
  *                             calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_ ] )
  */
-            __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 404, __pyx_L1_error)
+            __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 405, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
             __Pyx_INCREF(__pyx_v__return_);
             __Pyx_GIVEREF(__pyx_v__return_);
             PyList_SET_ITEM(__pyx_t_8, 0, __pyx_v__return_);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 404, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 405, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-            /* "arithmetic_analyze.pyx":405
+            /* "arithmetic_analyze.pyx":406
  *                         if k != lengthValues - 1 :
  *                             calculations.append( [ _return_ ] )
  *                             calculations.append( self.operators[ k ] )             # <<<<<<<<<<<<<<
@@ -10867,14 +10880,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
             if (unlikely(__pyx_v_self->operators == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 405, __pyx_L1_error)
+              __PYX_ERR(0, 406, __pyx_L1_error)
             }
-            __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 405, __pyx_L1_error)
+            __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 406, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 405, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 406, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-            /* "arithmetic_analyze.pyx":403
+            /* "arithmetic_analyze.pyx":404
  * 
  *                     if error in [ '', None]:
  *                         if k != lengthValues - 1 :             # <<<<<<<<<<<<<<
@@ -10884,7 +10897,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
             goto __pyx_L12;
           }
 
-          /* "arithmetic_analyze.pyx":406
+          /* "arithmetic_analyze.pyx":407
  *                             calculations.append( [ _return_ ] )
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
@@ -10892,17 +10905,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  *                 else:
  */
           /*else*/ {
-            __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 406, __pyx_L1_error)
+            __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 407, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
             __Pyx_INCREF(__pyx_v__return_);
             __Pyx_GIVEREF(__pyx_v__return_);
             PyList_SET_ITEM(__pyx_t_8, 0, __pyx_v__return_);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 406, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 407, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           }
           __pyx_L12:;
 
-          /* "arithmetic_analyze.pyx":402
+          /* "arithmetic_analyze.pyx":403
  *                                                             self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  *                     if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -10912,7 +10925,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L9;
         }
 
-        /* "arithmetic_analyze.pyx":407
+        /* "arithmetic_analyze.pyx":408
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_ ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -10924,7 +10937,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_L9:;
 
-        /* "arithmetic_analyze.pyx":398
+        /* "arithmetic_analyze.pyx":399
  *         if lengthValues > lengthOperators :
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -10934,7 +10947,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         goto __pyx_L6;
       }
 
-      /* "arithmetic_analyze.pyx":409
+      /* "arithmetic_analyze.pyx":410
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
@@ -10943,7 +10956,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       /*else*/ {
 
-        /* "arithmetic_analyze.pyx":410
+        /* "arithmetic_analyze.pyx":411
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                         self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
@@ -10952,20 +10965,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 409, __pyx_L1_error)
+          __PYX_ERR(0, 410, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":409
+        /* "arithmetic_analyze.pyx":410
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                         self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )
  * 
  */
-        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 409, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 410, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
 
-        /* "arithmetic_analyze.pyx":410
+        /* "arithmetic_analyze.pyx":411
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                         self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
@@ -10974,21 +10987,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 410, __pyx_L1_error)
+          __PYX_ERR(0, 411, __pyx_L1_error)
         }
-        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 410, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 411, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 410, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 411, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "arithmetic_analyze.pyx":409
+        /* "arithmetic_analyze.pyx":410
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                         self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )
  * 
  */
-        __pyx_t_14 = PyTuple_New(5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 409, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 410, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_INCREF(__pyx_v_self->master);
         __Pyx_GIVEREF(__pyx_v_self->master);
@@ -11005,18 +11018,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __pyx_t_8 = 0;
         __pyx_t_7 = 0;
         __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_14, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 409, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_14, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 410, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-        /* "arithmetic_analyze.pyx":410
+        /* "arithmetic_analyze.pyx":411
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],
  *                                         self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     if error in [ '', None] :
  */
-        __pyx_t_14 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_9)->__pyx_vtab)->INIT_INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_9), __pyx_v_MainString); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 410, __pyx_L1_error)
+        __pyx_t_14 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_9)->__pyx_vtab)->INIT_INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_9), __pyx_v_MainString); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 411, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         if (likely(__pyx_t_14 != Py_None)) {
@@ -11025,7 +11038,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 409, __pyx_L1_error)
+            __PYX_ERR(0, 410, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           __pyx_t_9 = PyTuple_GET_ITEM(sequence, 0); 
@@ -11033,30 +11046,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_INCREF(__pyx_t_9);
           __Pyx_INCREF(__pyx_t_7);
           #else
-          __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 409, __pyx_L1_error)
+          __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 410, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 409, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 410, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         } else {
-          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 409, __pyx_L1_error)
+          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 410, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":409
+        /* "arithmetic_analyze.pyx":410
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING( self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                         self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 409, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 410, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_9);
         __pyx_t_9 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_7));
         __pyx_t_7 = 0;
 
-        /* "arithmetic_analyze.pyx":412
+        /* "arithmetic_analyze.pyx":413
  *                                         self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )
  * 
  *                     if error in [ '', None] :             # <<<<<<<<<<<<<<
@@ -11065,21 +11078,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 412, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 413, __pyx_L1_error)
         __pyx_t_17 = (__pyx_t_3 != 0);
         if (!__pyx_t_17) {
         } else {
           __pyx_t_18 = __pyx_t_17;
           goto __pyx_L14_bool_binop_done;
         }
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 412, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 413, __pyx_L1_error)
         __pyx_t_18 = __pyx_t_17;
         __pyx_L14_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_17 = (__pyx_t_18 != 0);
         if (__pyx_t_17) {
 
-          /* "arithmetic_analyze.pyx":413
+          /* "arithmetic_analyze.pyx":414
  * 
  *                     if error in [ '', None] :
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -11089,24 +11102,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_17 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_17) {
 
-            /* "arithmetic_analyze.pyx":414
+            /* "arithmetic_analyze.pyx":415
  *                     if error in [ '', None] :
  *                         if k != lengthValues - 1:
  *                             calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_[ 0 ] ] )
  */
-            __pyx_t_14 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 414, __pyx_L1_error)
+            __pyx_t_14 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 415, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
-            __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 414, __pyx_L1_error)
+            __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 415, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_GIVEREF(__pyx_t_14);
             PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_14);
             __pyx_t_14 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_7); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 414, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_7); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 415, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-            /* "arithmetic_analyze.pyx":415
+            /* "arithmetic_analyze.pyx":416
  *                         if k != lengthValues - 1:
  *                             calculations.append( [ _return_[ 0 ] ] )
  *                             calculations.append( self.operators[ k ] )             # <<<<<<<<<<<<<<
@@ -11115,14 +11128,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
             if (unlikely(__pyx_v_self->operators == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 415, __pyx_L1_error)
+              __PYX_ERR(0, 416, __pyx_L1_error)
             }
-            __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_7); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_7); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-            /* "arithmetic_analyze.pyx":413
+            /* "arithmetic_analyze.pyx":414
  * 
  *                     if error in [ '', None] :
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -11132,7 +11145,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
             goto __pyx_L16;
           }
 
-          /* "arithmetic_analyze.pyx":416
+          /* "arithmetic_analyze.pyx":417
  *                             calculations.append( [ _return_[ 0 ] ] )
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
@@ -11140,19 +11153,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  * 
  */
           /*else*/ {
-            __pyx_t_7 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 416, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 417, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 416, __pyx_L1_error)
+            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 417, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_GIVEREF(__pyx_t_7);
             PyList_SET_ITEM(__pyx_t_14, 0, __pyx_t_7);
             __pyx_t_7 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 416, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 417, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           }
           __pyx_L16:;
 
-          /* "arithmetic_analyze.pyx":412
+          /* "arithmetic_analyze.pyx":413
  *                                         self.operators[ k ], self.DataBase, self.line ).INIT_INIT( MainString )
  * 
  *                     if error in [ '', None] :             # <<<<<<<<<<<<<<
@@ -11162,7 +11175,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L13;
         }
 
-        /* "arithmetic_analyze.pyx":417
+        /* "arithmetic_analyze.pyx":418
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_[ 0 ] ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -11178,7 +11191,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     }
     __pyx_L5_break:;
 
-    /* "arithmetic_analyze.pyx":419
+    /* "arithmetic_analyze.pyx":420
  *                     else: break
  * 
  *             if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -11187,21 +11200,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
     __Pyx_INCREF(__pyx_v_error);
     __pyx_t_16 = __pyx_v_error;
-    __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 419, __pyx_L1_error)
+    __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 420, __pyx_L1_error)
     __pyx_t_3 = (__pyx_t_18 != 0);
     if (!__pyx_t_3) {
     } else {
       __pyx_t_17 = __pyx_t_3;
       goto __pyx_L18_bool_binop_done;
     }
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 419, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 420, __pyx_L1_error)
     __pyx_t_17 = __pyx_t_3;
     __pyx_L18_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __pyx_t_3 = (__pyx_t_17 != 0);
     if (__pyx_t_3) {
 
-      /* "arithmetic_analyze.pyx":420
+      /* "arithmetic_analyze.pyx":421
  * 
  *             if error in [ '', None]:
  *                 historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -11211,7 +11224,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       __Pyx_INCREF(__pyx_kp_s_);
       __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-      /* "arithmetic_analyze.pyx":421
+      /* "arithmetic_analyze.pyx":422
  *             if error in [ '', None]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -11222,43 +11235,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       for (;;) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_14)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_2); __Pyx_INCREF(__pyx_t_7); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 421, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_2); __Pyx_INCREF(__pyx_t_7); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 422, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_14, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 421, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_14, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 422, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "arithmetic_analyze.pyx":422
+        /* "arithmetic_analyze.pyx":423
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                         historyOfOperators += string
  *                     else: pass
  */
-        __pyx_t_7 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 422, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 423, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_9 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 422, __pyx_L1_error)
+        __pyx_t_9 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 423, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 422, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 423, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         if (__pyx_t_3) {
 
-          /* "arithmetic_analyze.pyx":423
+          /* "arithmetic_analyze.pyx":424
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators += string             # <<<<<<<<<<<<<<
  *                     else: pass
  * 
  */
-          __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 423, __pyx_L1_error)
+          __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 424, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 423, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 424, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_9));
           __pyx_t_9 = 0;
 
-          /* "arithmetic_analyze.pyx":422
+          /* "arithmetic_analyze.pyx":423
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -11268,7 +11281,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L22;
         }
 
-        /* "arithmetic_analyze.pyx":424
+        /* "arithmetic_analyze.pyx":425
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators += string
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -11279,7 +11292,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_L22:;
 
-        /* "arithmetic_analyze.pyx":421
+        /* "arithmetic_analyze.pyx":422
  *             if error in [ '', None]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -11289,27 +11302,27 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "arithmetic_analyze.pyx":426
+      /* "arithmetic_analyze.pyx":427
  *                     else: pass
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 426, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 426, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "arithmetic_analyze.pyx":427
+      /* "arithmetic_analyze.pyx":428
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )             # <<<<<<<<<<<<<<
  *                 if error is None:
  *                     numeric.append( _return_ )
  */
-      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 427, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 428, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_12 = NULL;
       __pyx_t_4 = 0;
@@ -11326,7 +11339,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[5] = {__pyx_t_12, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_7};
-        __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 426, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -11335,14 +11348,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[5] = {__pyx_t_12, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_7};
-        __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 426, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 426, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_12) {
           __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -11359,12 +11372,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_GIVEREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_10, 3+__pyx_t_4, __pyx_t_7);
         __pyx_t_7 = 0;
-        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 426, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 428, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_t_9 = NULL;
@@ -11379,7 +11392,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __pyx_t_14 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 427, __pyx_L1_error)
+      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 428, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_14))) || (PyList_CheckExact(__pyx_t_14))) {
@@ -11388,7 +11401,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 426, __pyx_L1_error)
+          __PYX_ERR(0, 427, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -11401,15 +11414,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_9);
         #else
-        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 426, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 426, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_10 = PyObject_GetIter(__pyx_t_14); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 426, __pyx_L1_error)
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_14); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __pyx_t_15 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -11417,7 +11430,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_GOTREF(__pyx_t_8);
         index = 1; __pyx_t_9 = __pyx_t_15(__pyx_t_10); if (unlikely(!__pyx_t_9)) goto __pyx_L23_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_9);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_10), 2) < 0) __PYX_ERR(0, 426, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_10), 2) < 0) __PYX_ERR(0, 427, __pyx_L1_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L24_unpacking_done;
@@ -11425,24 +11438,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 426, __pyx_L1_error)
+        __PYX_ERR(0, 427, __pyx_L1_error)
         __pyx_L24_unpacking_done:;
       }
 
-      /* "arithmetic_analyze.pyx":426
+      /* "arithmetic_analyze.pyx":427
  *                     else: pass
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:
  */
-      if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 426, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_8);
       __pyx_t_8 = 0;
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_9));
       __pyx_t_9 = 0;
 
-      /* "arithmetic_analyze.pyx":428
+      /* "arithmetic_analyze.pyx":429
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:             # <<<<<<<<<<<<<<
@@ -11453,16 +11466,16 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       __pyx_t_17 = (__pyx_t_3 != 0);
       if (__pyx_t_17) {
 
-        /* "arithmetic_analyze.pyx":429
+        /* "arithmetic_analyze.pyx":430
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:
  *                     numeric.append( _return_ )             # <<<<<<<<<<<<<<
  *                     historyOfOperators = ''
  *                 else: pass
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 429, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 430, __pyx_L1_error)
 
-        /* "arithmetic_analyze.pyx":430
+        /* "arithmetic_analyze.pyx":431
  *                 if error is None:
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -11472,7 +11485,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_INCREF(__pyx_kp_s_);
         __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-        /* "arithmetic_analyze.pyx":428
+        /* "arithmetic_analyze.pyx":429
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                             historyOfOperators ,self.line ).MATHS_OPERATIONS( )
  *                 if error is None:             # <<<<<<<<<<<<<<
@@ -11482,7 +11495,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         goto __pyx_L25;
       }
 
-      /* "arithmetic_analyze.pyx":431
+      /* "arithmetic_analyze.pyx":432
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -11493,7 +11506,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __pyx_L25:;
 
-      /* "arithmetic_analyze.pyx":419
+      /* "arithmetic_analyze.pyx":420
  *                     else: break
  * 
  *             if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -11503,7 +11516,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       goto __pyx_L17;
     }
 
-    /* "arithmetic_analyze.pyx":432
+    /* "arithmetic_analyze.pyx":433
  *                     historyOfOperators = ''
  *                 else: pass
  *             else: pass             # <<<<<<<<<<<<<<
@@ -11514,7 +11527,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     }
     __pyx_L17:;
 
-    /* "arithmetic_analyze.pyx":396
+    /* "arithmetic_analyze.pyx":397
  *         lengthOperators     = len( self.operators )
  * 
  *         if lengthValues > lengthOperators :             # <<<<<<<<<<<<<<
@@ -11524,7 +11537,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":434
+  /* "arithmetic_analyze.pyx":435
  *             else: pass
  * 
  *         elif lengthValues == lengthOperators:             # <<<<<<<<<<<<<<
@@ -11534,7 +11547,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   __pyx_t_17 = ((__pyx_v_lengthValues == __pyx_v_lengthOperators) != 0);
   if (__pyx_t_17) {
 
-    /* "arithmetic_analyze.pyx":435
+    /* "arithmetic_analyze.pyx":436
  * 
  *         elif lengthValues == lengthOperators:
  *             if type(  self.operators[ 0 ] ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -11543,20 +11556,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
     if (unlikely(__pyx_v_self->operators == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 435, __pyx_L1_error)
+      __PYX_ERR(0, 436, __pyx_L1_error)
     }
-    __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_14)), ((PyObject *)Py_TYPE(__pyx_t_9)), Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_8 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_14)), ((PyObject *)Py_TYPE(__pyx_t_9)), Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_17) {
 
-      /* "arithmetic_analyze.pyx":436
+      /* "arithmetic_analyze.pyx":437
  *         elif lengthValues == lengthOperators:
  *             if type(  self.operators[ 0 ] ) == type( list() ):
  *                 sign       = ''             # <<<<<<<<<<<<<<
@@ -11566,7 +11579,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       __Pyx_INCREF(__pyx_kp_s_);
       __pyx_v_sign = __pyx_kp_s_;
 
-      /* "arithmetic_analyze.pyx":435
+      /* "arithmetic_analyze.pyx":436
  * 
  *         elif lengthValues == lengthOperators:
  *             if type(  self.operators[ 0 ] ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -11576,7 +11589,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       goto __pyx_L26;
     }
 
-    /* "arithmetic_analyze.pyx":438
+    /* "arithmetic_analyze.pyx":439
  *                 sign       = ''
  *             else:
  *                 if self.operators[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -11586,16 +11599,16 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     /*else*/ {
       if (unlikely(__pyx_v_self->operators == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 438, __pyx_L1_error)
+        __PYX_ERR(0, 439, __pyx_L1_error)
       }
-      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 438, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 439, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_8, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 438, __pyx_L1_error)
+      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_8, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 439, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_3 = (__pyx_t_17 != 0);
       if (__pyx_t_3) {
 
-        /* "arithmetic_analyze.pyx":439
+        /* "arithmetic_analyze.pyx":440
  *             else:
  *                 if self.operators[ 0 ] in [ '-' ]:
  *                     calculations.append( self.operators[ 0 ] )             # <<<<<<<<<<<<<<
@@ -11604,14 +11617,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 439, __pyx_L1_error)
+          __PYX_ERR(0, 440, __pyx_L1_error)
         }
-        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 439, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 440, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 439, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 440, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "arithmetic_analyze.pyx":438
+        /* "arithmetic_analyze.pyx":439
  *                 sign       = ''
  *             else:
  *                 if self.operators[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -11621,7 +11634,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         goto __pyx_L27;
       }
 
-      /* "arithmetic_analyze.pyx":440
+      /* "arithmetic_analyze.pyx":441
  *                 if self.operators[ 0 ] in [ '-' ]:
  *                     calculations.append( self.operators[ 0 ] )
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -11632,7 +11645,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __pyx_L27:;
 
-      /* "arithmetic_analyze.pyx":441
+      /* "arithmetic_analyze.pyx":442
  *                     calculations.append( self.operators[ 0 ] )
  *                 else: pass
  *                 self.operators  = self.operators[ 1 : ]             # <<<<<<<<<<<<<<
@@ -11641,9 +11654,9 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       if (unlikely(__pyx_v_self->operators == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 441, __pyx_L1_error)
+        __PYX_ERR(0, 442, __pyx_L1_error)
       }
-      __pyx_t_8 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 441, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 442, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_8);
       __Pyx_GOTREF(__pyx_v_self->operators);
@@ -11653,7 +11666,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     }
     __pyx_L26:;
 
-    /* "arithmetic_analyze.pyx":443
+    /* "arithmetic_analyze.pyx":444
  *                 self.operators  = self.operators[ 1 : ]
  * 
  *             for k in range( lengthValues ):             # <<<<<<<<<<<<<<
@@ -11665,7 +11678,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_k = __pyx_t_6;
 
-      /* "arithmetic_analyze.pyx":444
+      /* "arithmetic_analyze.pyx":445
  * 
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -11674,54 +11687,54 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       if (unlikely(__pyx_v_self->values == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 444, __pyx_L1_error)
+        __PYX_ERR(0, 445, __pyx_L1_error)
       }
-      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 445, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 445, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_8)), ((PyObject *)Py_TYPE(__pyx_t_9)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_8)), ((PyObject *)Py_TYPE(__pyx_t_9)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 445, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 445, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       if (__pyx_t_3) {
 
-        /* "arithmetic_analyze.pyx":445
+        /* "arithmetic_analyze.pyx":446
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase,             # <<<<<<<<<<<<<<
  *                                         self.line, self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_nv); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 445, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_nv); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 446, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 445, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 446, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 445, __pyx_L1_error)
+          __PYX_ERR(0, 446, __pyx_L1_error)
         }
-        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 445, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 446, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
 
-        /* "arithmetic_analyze.pyx":446
+        /* "arithmetic_analyze.pyx":447
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase,
  *                                         self.line, self.values[ k ][ 'type' ] ).TYPE( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     if error in [ '', None ]:
  */
-        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 446, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 447, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 446, __pyx_L1_error)
+          __PYX_ERR(0, 447, __pyx_L1_error)
         }
-        __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 446, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 447, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_12, __pyx_n_s_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_12, __pyx_n_s_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __pyx_t_12 = NULL;
@@ -11739,7 +11752,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[6] = {__pyx_t_12, __pyx_v_self->master, __pyx_t_8, __pyx_v_self->DataBase, __pyx_t_7, __pyx_t_1};
-          __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 445, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 446, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11750,7 +11763,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[6] = {__pyx_t_12, __pyx_v_self->master, __pyx_t_8, __pyx_v_self->DataBase, __pyx_t_7, __pyx_t_1};
-          __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 445, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 446, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11759,7 +11772,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         } else
         #endif
         {
-          __pyx_t_11 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 445, __pyx_L1_error)
+          __pyx_t_11 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 446, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           if (__pyx_t_12) {
             __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -11779,12 +11792,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_8 = 0;
           __pyx_t_7 = 0;
           __pyx_t_1 = 0;
-          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 445, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 446, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 446, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 447, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_9 = NULL;
@@ -11799,7 +11812,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_t_14 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_9, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_MainString);
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 446, __pyx_L1_error)
+        if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 447, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if ((likely(PyTuple_CheckExact(__pyx_t_14))) || (PyList_CheckExact(__pyx_t_14))) {
@@ -11808,7 +11821,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 445, __pyx_L1_error)
+            __PYX_ERR(0, 446, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -11821,15 +11834,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_INCREF(__pyx_t_10);
           __Pyx_INCREF(__pyx_t_9);
           #else
-          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 445, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 446, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 445, __pyx_L1_error)
+          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 446, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           #endif
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_11 = PyObject_GetIter(__pyx_t_14); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 445, __pyx_L1_error)
+          __pyx_t_11 = PyObject_GetIter(__pyx_t_14); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 446, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __pyx_t_15 = Py_TYPE(__pyx_t_11)->tp_iternext;
@@ -11837,7 +11850,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_GOTREF(__pyx_t_10);
           index = 1; __pyx_t_9 = __pyx_t_15(__pyx_t_11); if (unlikely(!__pyx_t_9)) goto __pyx_L31_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_9);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 2) < 0) __PYX_ERR(0, 445, __pyx_L1_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 2) < 0) __PYX_ERR(0, 446, __pyx_L1_error)
           __pyx_t_15 = NULL;
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           goto __pyx_L32_unpacking_done;
@@ -11845,24 +11858,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __pyx_t_15 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 445, __pyx_L1_error)
+          __PYX_ERR(0, 446, __pyx_L1_error)
           __pyx_L32_unpacking_done:;
         }
 
-        /* "arithmetic_analyze.pyx":445
+        /* "arithmetic_analyze.pyx":446
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error = nv.TYPE( self.master, self.values[ k ], self.DataBase,             # <<<<<<<<<<<<<<
  *                                         self.line, self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 445, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 446, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_10);
         __pyx_t_10 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_9));
         __pyx_t_9 = 0;
 
-        /* "arithmetic_analyze.pyx":448
+        /* "arithmetic_analyze.pyx":449
  *                                         self.line, self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -11871,21 +11884,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 448, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 449, __pyx_L1_error)
         __pyx_t_18 = (__pyx_t_17 != 0);
         if (!__pyx_t_18) {
         } else {
           __pyx_t_3 = __pyx_t_18;
           goto __pyx_L34_bool_binop_done;
         }
-        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 448, __pyx_L1_error)
+        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 449, __pyx_L1_error)
         __pyx_t_3 = __pyx_t_18;
         __pyx_L34_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_18 = (__pyx_t_3 != 0);
         if (__pyx_t_18) {
 
-          /* "arithmetic_analyze.pyx":449
+          /* "arithmetic_analyze.pyx":450
  * 
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -11895,22 +11908,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_18 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_18) {
 
-            /* "arithmetic_analyze.pyx":450
+            /* "arithmetic_analyze.pyx":451
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:
  *                             calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_ ] )
  */
-            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 450, __pyx_L1_error)
+            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 451, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_INCREF(__pyx_v__return_);
             __Pyx_GIVEREF(__pyx_v__return_);
             PyList_SET_ITEM(__pyx_t_14, 0, __pyx_v__return_);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 450, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 451, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-            /* "arithmetic_analyze.pyx":451
+            /* "arithmetic_analyze.pyx":452
  *                         if k != lengthValues - 1:
  *                             calculations.append( [ _return_ ] )
  *                             calculations.append( self.operators[ k ] )             # <<<<<<<<<<<<<<
@@ -11919,14 +11932,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
             if (unlikely(__pyx_v_self->operators == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 451, __pyx_L1_error)
+              __PYX_ERR(0, 452, __pyx_L1_error)
             }
-            __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 451, __pyx_L1_error)
+            __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 452, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 451, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 452, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-            /* "arithmetic_analyze.pyx":449
+            /* "arithmetic_analyze.pyx":450
  * 
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -11936,7 +11949,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
             goto __pyx_L36;
           }
 
-          /* "arithmetic_analyze.pyx":452
+          /* "arithmetic_analyze.pyx":453
  *                             calculations.append( [ _return_ ] )
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
@@ -11944,17 +11957,17 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  * 
  */
           /*else*/ {
-            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 452, __pyx_L1_error)
+            __pyx_t_14 = PyList_New(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 453, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_INCREF(__pyx_v__return_);
             __Pyx_GIVEREF(__pyx_v__return_);
             PyList_SET_ITEM(__pyx_t_14, 0, __pyx_v__return_);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 452, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 453, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           }
           __pyx_L36:;
 
-          /* "arithmetic_analyze.pyx":448
+          /* "arithmetic_analyze.pyx":449
  *                                         self.line, self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -11964,7 +11977,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L33;
         }
 
-        /* "arithmetic_analyze.pyx":453
+        /* "arithmetic_analyze.pyx":454
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_ ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -11976,7 +11989,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_L33:;
 
-        /* "arithmetic_analyze.pyx":444
+        /* "arithmetic_analyze.pyx":445
  * 
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -11986,7 +11999,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         goto __pyx_L30;
       }
 
-      /* "arithmetic_analyze.pyx":456
+      /* "arithmetic_analyze.pyx":457
  * 
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
@@ -11995,7 +12008,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       /*else*/ {
 
-        /* "arithmetic_analyze.pyx":457
+        /* "arithmetic_analyze.pyx":458
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],
  *                                     self.operators[ k ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
@@ -12004,20 +12017,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 456, __pyx_L1_error)
+          __PYX_ERR(0, 457, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":456
+        /* "arithmetic_analyze.pyx":457
  * 
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                     self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 456, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 457, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
 
-        /* "arithmetic_analyze.pyx":457
+        /* "arithmetic_analyze.pyx":458
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],
  *                                     self.operators[ k ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
@@ -12026,21 +12039,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 457, __pyx_L1_error)
+          __PYX_ERR(0, 458, __pyx_L1_error)
         }
-        __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 457, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 458, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 457, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 458, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
 
-        /* "arithmetic_analyze.pyx":456
+        /* "arithmetic_analyze.pyx":457
  * 
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                     self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-        __pyx_t_11 = PyTuple_New(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 456, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 457, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_INCREF(__pyx_v_self->master);
         __Pyx_GIVEREF(__pyx_v_self->master);
@@ -12057,18 +12070,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __pyx_t_14 = 0;
         __pyx_t_9 = 0;
         __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_11, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 456, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_11, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 457, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "arithmetic_analyze.pyx":457
+        /* "arithmetic_analyze.pyx":458
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],
  *                                     self.operators[ k ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     if error in ['', None ]:
  */
-        __pyx_t_11 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_10)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_10), __pyx_v_MainString); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 457, __pyx_L1_error)
+        __pyx_t_11 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_10)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_10), __pyx_v_MainString); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 458, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if (likely(__pyx_t_11 != Py_None)) {
@@ -12077,7 +12090,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 456, __pyx_L1_error)
+            __PYX_ERR(0, 457, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           __pyx_t_10 = PyTuple_GET_ITEM(sequence, 0); 
@@ -12085,30 +12098,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_INCREF(__pyx_t_10);
           __Pyx_INCREF(__pyx_t_9);
           #else
-          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 456, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 457, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 456, __pyx_L1_error)
+          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 457, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           #endif
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         } else {
-          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 456, __pyx_L1_error)
+          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 457, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":456
+        /* "arithmetic_analyze.pyx":457
  * 
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                     self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 456, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 457, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_10);
         __pyx_t_10 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_9));
         __pyx_t_9 = 0;
 
-        /* "arithmetic_analyze.pyx":459
+        /* "arithmetic_analyze.pyx":460
  *                                     self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  *                     if error in ['', None ]:             # <<<<<<<<<<<<<<
@@ -12117,21 +12130,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 459, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 460, __pyx_L1_error)
         __pyx_t_17 = (__pyx_t_3 != 0);
         if (!__pyx_t_17) {
         } else {
           __pyx_t_18 = __pyx_t_17;
           goto __pyx_L38_bool_binop_done;
         }
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 459, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 460, __pyx_L1_error)
         __pyx_t_18 = __pyx_t_17;
         __pyx_L38_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_17 = (__pyx_t_18 != 0);
         if (__pyx_t_17) {
 
-          /* "arithmetic_analyze.pyx":460
+          /* "arithmetic_analyze.pyx":461
  * 
  *                     if error in ['', None ]:
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -12141,24 +12154,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_17 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_17) {
 
-            /* "arithmetic_analyze.pyx":461
+            /* "arithmetic_analyze.pyx":462
  *                     if error in ['', None ]:
  *                         if k != lengthValues - 1:
  *                             calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_[ 0 ] ] )
  */
-            __pyx_t_11 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 461, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 462, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_9 = PyList_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 461, __pyx_L1_error)
+            __pyx_t_9 = PyList_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 462, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_GIVEREF(__pyx_t_11);
             PyList_SET_ITEM(__pyx_t_9, 0, __pyx_t_11);
             __pyx_t_11 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 461, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 462, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "arithmetic_analyze.pyx":462
+            /* "arithmetic_analyze.pyx":463
  *                         if k != lengthValues - 1:
  *                             calculations.append( [ _return_[ 0 ] ] )
  *                             calculations.append( self.operators[ k ] )             # <<<<<<<<<<<<<<
@@ -12167,14 +12180,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
             if (unlikely(__pyx_v_self->operators == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 462, __pyx_L1_error)
+              __PYX_ERR(0, 463, __pyx_L1_error)
             }
-            __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 462, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 463, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 462, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 463, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "arithmetic_analyze.pyx":460
+            /* "arithmetic_analyze.pyx":461
  * 
  *                     if error in ['', None ]:
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -12184,7 +12197,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
             goto __pyx_L40;
           }
 
-          /* "arithmetic_analyze.pyx":463
+          /* "arithmetic_analyze.pyx":464
  *                             calculations.append( [ _return_[ 0 ] ] )
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
@@ -12192,19 +12205,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  * 
  */
           /*else*/ {
-            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 463, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 464, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 463, __pyx_L1_error)
+            __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 464, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_GIVEREF(__pyx_t_9);
             PyList_SET_ITEM(__pyx_t_11, 0, __pyx_t_9);
             __pyx_t_9 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 463, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 464, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           }
           __pyx_L40:;
 
-          /* "arithmetic_analyze.pyx":459
+          /* "arithmetic_analyze.pyx":460
  *                                     self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  *                     if error in ['', None ]:             # <<<<<<<<<<<<<<
@@ -12214,7 +12227,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L37;
         }
 
-        /* "arithmetic_analyze.pyx":464
+        /* "arithmetic_analyze.pyx":465
  *                             calculations.append( self.operators[ k ] )
  *                         else: calculations.append( [ _return_[ 0 ] ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -12230,7 +12243,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     }
     __pyx_L29_break:;
 
-    /* "arithmetic_analyze.pyx":466
+    /* "arithmetic_analyze.pyx":467
  *                     else: break
  * 
  *             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -12239,21 +12252,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
     __Pyx_INCREF(__pyx_v_error);
     __pyx_t_16 = __pyx_v_error;
-    __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 466, __pyx_L1_error)
+    __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 467, __pyx_L1_error)
     __pyx_t_3 = (__pyx_t_18 != 0);
     if (!__pyx_t_3) {
     } else {
       __pyx_t_17 = __pyx_t_3;
       goto __pyx_L42_bool_binop_done;
     }
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 466, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 467, __pyx_L1_error)
     __pyx_t_17 = __pyx_t_3;
     __pyx_L42_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __pyx_t_3 = (__pyx_t_17 != 0);
     if (__pyx_t_3) {
 
-      /* "arithmetic_analyze.pyx":467
+      /* "arithmetic_analyze.pyx":468
  * 
  *             if error in [ '', None ]:
  *                 historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -12263,7 +12276,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       __Pyx_INCREF(__pyx_kp_s_);
       __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-      /* "arithmetic_analyze.pyx":468
+      /* "arithmetic_analyze.pyx":469
  *             if error in [ '', None ]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -12274,43 +12287,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       for (;;) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_11)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_9 = PyList_GET_ITEM(__pyx_t_11, __pyx_t_2); __Pyx_INCREF(__pyx_t_9); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 468, __pyx_L1_error)
+        __pyx_t_9 = PyList_GET_ITEM(__pyx_t_11, __pyx_t_2); __Pyx_INCREF(__pyx_t_9); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 469, __pyx_L1_error)
         #else
-        __pyx_t_9 = PySequence_ITEM(__pyx_t_11, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 468, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(__pyx_t_11, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 469, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_9);
         __pyx_t_9 = 0;
 
-        /* "arithmetic_analyze.pyx":469
+        /* "arithmetic_analyze.pyx":470
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                         historyOfOperators += string
  *                     else: pass
  */
-        __pyx_t_9 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 469, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 470, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_9)), Py_EQ); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 469, __pyx_L1_error)
+        __pyx_t_10 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_9)), Py_EQ); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 470, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 469, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 470, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if (__pyx_t_3) {
 
-          /* "arithmetic_analyze.pyx":470
+          /* "arithmetic_analyze.pyx":471
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators += string             # <<<<<<<<<<<<<<
  *                     else: pass
  * 
  */
-          __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 470, __pyx_L1_error)
+          __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 471, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          if (!(likely(PyString_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 470, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 471, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_10));
           __pyx_t_10 = 0;
 
-          /* "arithmetic_analyze.pyx":469
+          /* "arithmetic_analyze.pyx":470
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -12320,7 +12333,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L46;
         }
 
-        /* "arithmetic_analyze.pyx":471
+        /* "arithmetic_analyze.pyx":472
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators += string
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -12331,7 +12344,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_L46:;
 
-        /* "arithmetic_analyze.pyx":468
+        /* "arithmetic_analyze.pyx":469
  *             if error in [ '', None ]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -12341,27 +12354,27 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "arithmetic_analyze.pyx":473
+      /* "arithmetic_analyze.pyx":474
  *                     else: pass
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )
  * 
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 473, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 474, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 473, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 474, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "arithmetic_analyze.pyx":474
+      /* "arithmetic_analyze.pyx":475
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )             # <<<<<<<<<<<<<<
  * 
  *                 if error in [ '', None ]:
  */
-      __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 474, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 475, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_1 = NULL;
       __pyx_t_4 = 0;
@@ -12378,7 +12391,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_14)) {
         PyObject *__pyx_temp[5] = {__pyx_t_1, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_9};
-        __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 473, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -12387,14 +12400,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
         PyObject *__pyx_temp[5] = {__pyx_t_1, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_9};
-        __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 473, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else
       #endif
       {
-        __pyx_t_7 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 473, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -12411,12 +12424,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_GIVEREF(__pyx_t_9);
         PyTuple_SET_ITEM(__pyx_t_7, 3+__pyx_t_4, __pyx_t_9);
         __pyx_t_9 = 0;
-        __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_7, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 473, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_7, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 474, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 475, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_t_10 = NULL;
@@ -12431,7 +12444,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __pyx_t_11 = (__pyx_t_10) ? __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_t_10) : __Pyx_PyObject_CallNoArg(__pyx_t_14);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 474, __pyx_L1_error)
+      if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 475, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_11))) || (PyList_CheckExact(__pyx_t_11))) {
@@ -12440,7 +12453,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 473, __pyx_L1_error)
+          __PYX_ERR(0, 474, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -12453,15 +12466,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_INCREF(__pyx_t_14);
         __Pyx_INCREF(__pyx_t_10);
         #else
-        __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 473, __pyx_L1_error)
+        __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 473, __pyx_L1_error)
+        __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         #endif
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_7 = PyObject_GetIter(__pyx_t_11); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 473, __pyx_L1_error)
+        __pyx_t_7 = PyObject_GetIter(__pyx_t_11); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_15 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -12469,7 +12482,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_GOTREF(__pyx_t_14);
         index = 1; __pyx_t_10 = __pyx_t_15(__pyx_t_7); if (unlikely(!__pyx_t_10)) goto __pyx_L47_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_10);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_7), 2) < 0) __PYX_ERR(0, 473, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_7), 2) < 0) __PYX_ERR(0, 474, __pyx_L1_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         goto __pyx_L48_unpacking_done;
@@ -12477,24 +12490,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 473, __pyx_L1_error)
+        __PYX_ERR(0, 474, __pyx_L1_error)
         __pyx_L48_unpacking_done:;
       }
 
-      /* "arithmetic_analyze.pyx":473
+      /* "arithmetic_analyze.pyx":474
  *                     else: pass
  * 
  *                 _return_, error = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )
  * 
  */
-      if (!(likely(PyString_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 473, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 474, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_14);
       __pyx_t_14 = 0;
       __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_10));
       __pyx_t_10 = 0;
 
-      /* "arithmetic_analyze.pyx":476
+      /* "arithmetic_analyze.pyx":477
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )
  * 
  *                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -12503,30 +12516,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       __Pyx_INCREF(__pyx_v_error);
       __pyx_t_16 = __pyx_v_error;
-      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 476, __pyx_L1_error)
+      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 477, __pyx_L1_error)
       __pyx_t_18 = (__pyx_t_17 != 0);
       if (!__pyx_t_18) {
       } else {
         __pyx_t_3 = __pyx_t_18;
         goto __pyx_L50_bool_binop_done;
       }
-      __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 476, __pyx_L1_error)
+      __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 477, __pyx_L1_error)
       __pyx_t_3 = __pyx_t_18;
       __pyx_L50_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __pyx_t_18 = (__pyx_t_3 != 0);
       if (__pyx_t_18) {
 
-        /* "arithmetic_analyze.pyx":477
+        /* "arithmetic_analyze.pyx":478
  * 
  *                 if error in [ '', None ]:
  *                     numeric.append( _return_ )             # <<<<<<<<<<<<<<
  *                     historyOfOperators = ''
  *                 else: pass
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 477, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 478, __pyx_L1_error)
 
-        /* "arithmetic_analyze.pyx":478
+        /* "arithmetic_analyze.pyx":479
  *                 if error in [ '', None ]:
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -12536,7 +12549,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_INCREF(__pyx_kp_s_);
         __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-        /* "arithmetic_analyze.pyx":476
+        /* "arithmetic_analyze.pyx":477
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )
  * 
  *                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -12546,7 +12559,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         goto __pyx_L49;
       }
 
-      /* "arithmetic_analyze.pyx":479
+      /* "arithmetic_analyze.pyx":480
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -12557,7 +12570,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __pyx_L49:;
 
-      /* "arithmetic_analyze.pyx":466
+      /* "arithmetic_analyze.pyx":467
  *                     else: break
  * 
  *             if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -12567,7 +12580,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       goto __pyx_L41;
     }
 
-    /* "arithmetic_analyze.pyx":480
+    /* "arithmetic_analyze.pyx":481
  *                     historyOfOperators = ''
  *                 else: pass
  *             else: pass             # <<<<<<<<<<<<<<
@@ -12578,7 +12591,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     }
     __pyx_L41:;
 
-    /* "arithmetic_analyze.pyx":434
+    /* "arithmetic_analyze.pyx":435
  *             else: pass
  * 
  *         elif lengthValues == lengthOperators:             # <<<<<<<<<<<<<<
@@ -12588,7 +12601,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":483
+  /* "arithmetic_analyze.pyx":484
  * 
  *         else:
  *             if type( self.operators[ 0 ] ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -12598,20 +12611,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   /*else*/ {
     if (unlikely(__pyx_v_self->operators == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 483, __pyx_L1_error)
+      __PYX_ERR(0, 484, __pyx_L1_error)
     }
-    __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 483, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 484, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_10 = PyList_New(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 483, __pyx_L1_error)
+    __pyx_t_10 = PyList_New(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 484, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_11)), ((PyObject *)Py_TYPE(__pyx_t_10)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 483, __pyx_L1_error)
+    __pyx_t_14 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_11)), ((PyObject *)Py_TYPE(__pyx_t_10)), Py_EQ); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 484, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 483, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 484, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     if (__pyx_t_18) {
 
-      /* "arithmetic_analyze.pyx":484
+      /* "arithmetic_analyze.pyx":485
  *         else:
  *             if type( self.operators[ 0 ] ) == type( list() ):
  *                 sign       = '+'             # <<<<<<<<<<<<<<
@@ -12621,7 +12634,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       __Pyx_INCREF(__pyx_kp_s__2);
       __pyx_v_sign = __pyx_kp_s__2;
 
-      /* "arithmetic_analyze.pyx":485
+      /* "arithmetic_analyze.pyx":486
  *             if type( self.operators[ 0 ] ) == type( list() ):
  *                 sign       = '+'
  *                 self.operators  = self.operators[ : ]             # <<<<<<<<<<<<<<
@@ -12630,9 +12643,9 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       if (unlikely(__pyx_v_self->operators == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 485, __pyx_L1_error)
+        __PYX_ERR(0, 486, __pyx_L1_error)
       }
-      __pyx_t_14 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 485, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 486, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_GIVEREF(__pyx_t_14);
       __Pyx_GOTREF(__pyx_v_self->operators);
@@ -12640,7 +12653,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       __pyx_v_self->operators = ((PyObject*)__pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "arithmetic_analyze.pyx":483
+      /* "arithmetic_analyze.pyx":484
  * 
  *         else:
  *             if type( self.operators[ 0 ] ) == type( list() ):             # <<<<<<<<<<<<<<
@@ -12650,7 +12663,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       goto __pyx_L52;
     }
 
-    /* "arithmetic_analyze.pyx":487
+    /* "arithmetic_analyze.pyx":488
  *                 self.operators  = self.operators[ : ]
  *             else:
  *                 if self.operators[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -12660,16 +12673,16 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     /*else*/ {
       if (unlikely(__pyx_v_self->operators == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 487, __pyx_L1_error)
+        __PYX_ERR(0, 488, __pyx_L1_error)
       }
-      __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 487, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_14, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 487, __pyx_L1_error)
+      __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_14, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __pyx_t_3 = (__pyx_t_18 != 0);
       if (__pyx_t_3) {
 
-        /* "arithmetic_analyze.pyx":488
+        /* "arithmetic_analyze.pyx":489
  *             else:
  *                 if self.operators[ 0 ] in [ '-' ]:
  *                     calculations.append( self.operators[ 0 ] )             # <<<<<<<<<<<<<<
@@ -12678,14 +12691,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 488, __pyx_L1_error)
+          __PYX_ERR(0, 489, __pyx_L1_error)
         }
-        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 488, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->operators, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 489, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 488, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_14); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 489, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-        /* "arithmetic_analyze.pyx":487
+        /* "arithmetic_analyze.pyx":488
  *                 self.operators  = self.operators[ : ]
  *             else:
  *                 if self.operators[ 0 ] in [ '-' ]:             # <<<<<<<<<<<<<<
@@ -12695,7 +12708,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         goto __pyx_L53;
       }
 
-      /* "arithmetic_analyze.pyx":489
+      /* "arithmetic_analyze.pyx":490
  *                 if self.operators[ 0 ] in [ '-' ]:
  *                     calculations.append( self.operators[ 0 ] )
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -12706,7 +12719,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __pyx_L53:;
 
-      /* "arithmetic_analyze.pyx":490
+      /* "arithmetic_analyze.pyx":491
  *                     calculations.append( self.operators[ 0 ] )
  *                 else: pass
  *                 self.operators  = self.operators[ 1 : ]             # <<<<<<<<<<<<<<
@@ -12715,9 +12728,9 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       if (unlikely(__pyx_v_self->operators == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 490, __pyx_L1_error)
+        __PYX_ERR(0, 491, __pyx_L1_error)
       }
-      __pyx_t_14 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 490, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_GetSlice(__pyx_v_self->operators, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 491, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_GIVEREF(__pyx_t_14);
       __Pyx_GOTREF(__pyx_v_self->operators);
@@ -12727,7 +12740,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     }
     __pyx_L52:;
 
-    /* "arithmetic_analyze.pyx":492
+    /* "arithmetic_analyze.pyx":493
  *                 self.operators  = self.operators[ 1 : ]
  * 
  *             for k in range( lengthValues ):             # <<<<<<<<<<<<<<
@@ -12739,7 +12752,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_k = __pyx_t_6;
 
-      /* "arithmetic_analyze.pyx":493
+      /* "arithmetic_analyze.pyx":494
  * 
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -12748,41 +12761,41 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       if (unlikely(__pyx_v_self->values == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 493, __pyx_L1_error)
+        __PYX_ERR(0, 494, __pyx_L1_error)
       }
-      __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 493, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_10 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 493, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_11 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_14)), ((PyObject *)Py_TYPE(__pyx_t_10)), Py_EQ); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+      __pyx_t_11 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_14)), ((PyObject *)Py_TYPE(__pyx_t_10)), Py_EQ); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 493, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       if (__pyx_t_3) {
 
-        /* "arithmetic_analyze.pyx":494
+        /* "arithmetic_analyze.pyx":495
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error    = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_nv); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 494, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_nv); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 494, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 494, __pyx_L1_error)
+          __PYX_ERR(0, 495, __pyx_L1_error)
         }
-        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 494, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 494, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "arithmetic_analyze.pyx":495
+        /* "arithmetic_analyze.pyx":496
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error    = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,
  *                                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )             # <<<<<<<<<<<<<<
@@ -12791,11 +12804,11 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 495, __pyx_L1_error)
+          __PYX_ERR(0, 496, __pyx_L1_error)
         }
-        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 495, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 496, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_type); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 495, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_type); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 496, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_1 = NULL;
@@ -12813,7 +12826,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[6] = {__pyx_t_1, __pyx_v_self->master, __pyx_t_14, __pyx_v_self->DataBase, __pyx_t_9, __pyx_t_8};
-          __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 494, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 495, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -12824,7 +12837,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[6] = {__pyx_t_1, __pyx_v_self->master, __pyx_t_14, __pyx_v_self->DataBase, __pyx_t_9, __pyx_t_8};
-          __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 494, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_13, 5+__pyx_t_13); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 495, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -12833,7 +12846,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         } else
         #endif
         {
-          __pyx_t_12 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 494, __pyx_L1_error)
+          __pyx_t_12 = PyTuple_New(5+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 495, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           if (__pyx_t_1) {
             __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -12853,12 +12866,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_14 = 0;
           __pyx_t_9 = 0;
           __pyx_t_8 = 0;
-          __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_12, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 494, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_12, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 495, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         }
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 495, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_TYPE); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 496, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_10 = NULL;
@@ -12873,7 +12886,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_t_11 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_10, __pyx_v_MainString) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_MainString);
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
+        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 496, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if ((likely(PyTuple_CheckExact(__pyx_t_11))) || (PyList_CheckExact(__pyx_t_11))) {
@@ -12882,7 +12895,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 494, __pyx_L1_error)
+            __PYX_ERR(0, 495, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -12895,15 +12908,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_INCREF(__pyx_t_7);
           __Pyx_INCREF(__pyx_t_10);
           #else
-          __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 494, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 495, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 494, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 495, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           #endif
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_12 = PyObject_GetIter(__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 494, __pyx_L1_error)
+          __pyx_t_12 = PyObject_GetIter(__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 495, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __pyx_t_15 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -12911,7 +12924,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_GOTREF(__pyx_t_7);
           index = 1; __pyx_t_10 = __pyx_t_15(__pyx_t_12); if (unlikely(!__pyx_t_10)) goto __pyx_L57_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_10);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_12), 2) < 0) __PYX_ERR(0, 494, __pyx_L1_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_12), 2) < 0) __PYX_ERR(0, 495, __pyx_L1_error)
           __pyx_t_15 = NULL;
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           goto __pyx_L58_unpacking_done;
@@ -12919,24 +12932,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           __pyx_t_15 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 494, __pyx_L1_error)
+          __PYX_ERR(0, 495, __pyx_L1_error)
           __pyx_L58_unpacking_done:;
         }
 
-        /* "arithmetic_analyze.pyx":494
+        /* "arithmetic_analyze.pyx":495
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):
  *                     _return_, error    = nv.TYPE( self.master, self.values[ k ], self.DataBase, self.line,             # <<<<<<<<<<<<<<
  *                                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 494, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_7);
         __pyx_t_7 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_10));
         __pyx_t_10 = 0;
 
-        /* "arithmetic_analyze.pyx":497
+        /* "arithmetic_analyze.pyx":498
  *                                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -12945,21 +12958,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 497, __pyx_L1_error)
+        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 498, __pyx_L1_error)
         __pyx_t_17 = (__pyx_t_18 != 0);
         if (!__pyx_t_17) {
         } else {
           __pyx_t_3 = __pyx_t_17;
           goto __pyx_L60_bool_binop_done;
         }
-        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 497, __pyx_L1_error)
+        __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 498, __pyx_L1_error)
         __pyx_t_3 = __pyx_t_17;
         __pyx_L60_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_17 = (__pyx_t_3 != 0);
         if (__pyx_t_17) {
 
-          /* "arithmetic_analyze.pyx":498
+          /* "arithmetic_analyze.pyx":499
  * 
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -12969,7 +12982,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_17 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_17) {
 
-            /* "arithmetic_analyze.pyx":499
+            /* "arithmetic_analyze.pyx":500
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -12985,22 +12998,22 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __Pyx_XGOTREF(__pyx_t_22);
               /*try:*/ {
 
-                /* "arithmetic_analyze.pyx":500
+                /* "arithmetic_analyze.pyx":501
  *                         if k != lengthValues - 1:
  *                             try:
  *                                 calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                                 calculations.append( self.operators[ k + 2 ] )
  *                             except TypeError:
  */
-                __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 500, __pyx_L63_error)
+                __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 501, __pyx_L63_error)
                 __Pyx_GOTREF(__pyx_t_11);
                 __Pyx_INCREF(__pyx_v__return_);
                 __Pyx_GIVEREF(__pyx_v__return_);
                 PyList_SET_ITEM(__pyx_t_11, 0, __pyx_v__return_);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 500, __pyx_L63_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 501, __pyx_L63_error)
                 __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-                /* "arithmetic_analyze.pyx":501
+                /* "arithmetic_analyze.pyx":502
  *                             try:
  *                                 calculations.append( [ _return_ ] )
  *                                 calculations.append( self.operators[ k + 2 ] )             # <<<<<<<<<<<<<<
@@ -13009,15 +13022,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
                 if (unlikely(__pyx_v_self->operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 501, __pyx_L63_error)
+                  __PYX_ERR(0, 502, __pyx_L63_error)
                 }
                 __pyx_t_23 = (__pyx_v_k + 2);
-                __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 501, __pyx_L63_error)
+                __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 502, __pyx_L63_error)
                 __Pyx_GOTREF(__pyx_t_11);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 501, __pyx_L63_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 502, __pyx_L63_error)
                 __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-                /* "arithmetic_analyze.pyx":499
+                /* "arithmetic_analyze.pyx":500
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -13040,7 +13053,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-              /* "arithmetic_analyze.pyx":502
+              /* "arithmetic_analyze.pyx":503
  *                                 calculations.append( [ _return_ ] )
  *                                 calculations.append( self.operators[ k + 2 ] )
  *                             except TypeError:             # <<<<<<<<<<<<<<
@@ -13050,27 +13063,27 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
               if (__pyx_t_13) {
                 __Pyx_AddTraceback("arithmetic_analyze.ARRITHMETIC_DEEP_CHECKING.INIT_INIT", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_10, &__pyx_t_7) < 0) __PYX_ERR(0, 502, __pyx_L65_except_error)
+                if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_10, &__pyx_t_7) < 0) __PYX_ERR(0, 503, __pyx_L65_except_error)
                 __Pyx_GOTREF(__pyx_t_11);
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_GOTREF(__pyx_t_7);
 
-                /* "arithmetic_analyze.pyx":503
+                /* "arithmetic_analyze.pyx":504
  *                                 calculations.append( self.operators[ k + 2 ] )
  *                             except TypeError:
  *                                 calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                                 calculations.append( self.operators[k + 1] )
  *                             except IndexError:
  */
-                __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 503, __pyx_L65_except_error)
+                __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 504, __pyx_L65_except_error)
                 __Pyx_GOTREF(__pyx_t_12);
                 __Pyx_INCREF(__pyx_v__return_);
                 __Pyx_GIVEREF(__pyx_v__return_);
                 PyList_SET_ITEM(__pyx_t_12, 0, __pyx_v__return_);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 503, __pyx_L65_except_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 504, __pyx_L65_except_error)
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-                /* "arithmetic_analyze.pyx":504
+                /* "arithmetic_analyze.pyx":505
  *                             except TypeError:
  *                                 calculations.append( [ _return_ ] )
  *                                 calculations.append( self.operators[k + 1] )             # <<<<<<<<<<<<<<
@@ -13079,12 +13092,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
                 if (unlikely(__pyx_v_self->operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 504, __pyx_L65_except_error)
+                  __PYX_ERR(0, 505, __pyx_L65_except_error)
                 }
                 __pyx_t_23 = (__pyx_v_k + 1);
-                __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 504, __pyx_L65_except_error)
+                __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 505, __pyx_L65_except_error)
                 __Pyx_GOTREF(__pyx_t_12);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 504, __pyx_L65_except_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 505, __pyx_L65_except_error)
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                 __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
                 __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -13092,7 +13105,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
                 goto __pyx_L64_exception_handled;
               }
 
-              /* "arithmetic_analyze.pyx":505
+              /* "arithmetic_analyze.pyx":506
  *                                 calculations.append( [ _return_ ] )
  *                                 calculations.append( self.operators[k + 1] )
  *                             except IndexError:             # <<<<<<<<<<<<<<
@@ -13102,27 +13115,27 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_IndexError);
               if (__pyx_t_13) {
                 __Pyx_AddTraceback("arithmetic_analyze.ARRITHMETIC_DEEP_CHECKING.INIT_INIT", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_10, &__pyx_t_11) < 0) __PYX_ERR(0, 505, __pyx_L65_except_error)
+                if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_10, &__pyx_t_11) < 0) __PYX_ERR(0, 506, __pyx_L65_except_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_GOTREF(__pyx_t_11);
 
-                /* "arithmetic_analyze.pyx":506
+                /* "arithmetic_analyze.pyx":507
  *                                 calculations.append( self.operators[k + 1] )
  *                             except IndexError:
  *                                 calculations.append( [ _return_ ] )             # <<<<<<<<<<<<<<
  *                                 calculations.append( self.operators[ k ] )
  *                         else:
  */
-                __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 506, __pyx_L65_except_error)
+                __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 507, __pyx_L65_except_error)
                 __Pyx_GOTREF(__pyx_t_12);
                 __Pyx_INCREF(__pyx_v__return_);
                 __Pyx_GIVEREF(__pyx_v__return_);
                 PyList_SET_ITEM(__pyx_t_12, 0, __pyx_v__return_);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 506, __pyx_L65_except_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 507, __pyx_L65_except_error)
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-                /* "arithmetic_analyze.pyx":507
+                /* "arithmetic_analyze.pyx":508
  *                             except IndexError:
  *                                 calculations.append( [ _return_ ] )
  *                                 calculations.append( self.operators[ k ] )             # <<<<<<<<<<<<<<
@@ -13131,11 +13144,11 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
                 if (unlikely(__pyx_v_self->operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 507, __pyx_L65_except_error)
+                  __PYX_ERR(0, 508, __pyx_L65_except_error)
                 }
-                __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 507, __pyx_L65_except_error)
+                __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 508, __pyx_L65_except_error)
                 __Pyx_GOTREF(__pyx_t_12);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 507, __pyx_L65_except_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 508, __pyx_L65_except_error)
                 __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
                 __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
                 __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -13145,7 +13158,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               goto __pyx_L65_except_error;
               __pyx_L65_except_error:;
 
-              /* "arithmetic_analyze.pyx":499
+              /* "arithmetic_analyze.pyx":500
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -13165,7 +13178,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __pyx_L70_try_end:;
             }
 
-            /* "arithmetic_analyze.pyx":498
+            /* "arithmetic_analyze.pyx":499
  * 
  *                     if error in [ '', None ]:
  *                         if k != lengthValues - 1:             # <<<<<<<<<<<<<<
@@ -13175,7 +13188,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
             goto __pyx_L62;
           }
 
-          /* "arithmetic_analyze.pyx":509
+          /* "arithmetic_analyze.pyx":510
  *                                 calculations.append( self.operators[ k ] )
  *                         else:
  *                             calculations.append( [ self._return_ ] )             # <<<<<<<<<<<<<<
@@ -13183,19 +13196,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  *                 else:
  */
           /*else*/ {
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_return); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 509, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_return); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 510, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 509, __pyx_L1_error)
+            __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 510, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_GIVEREF(__pyx_t_11);
             PyList_SET_ITEM(__pyx_t_10, 0, __pyx_t_11);
             __pyx_t_11 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 509, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 510, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           }
           __pyx_L62:;
 
-          /* "arithmetic_analyze.pyx":497
+          /* "arithmetic_analyze.pyx":498
  *                                                                     self.values[ k ][ 'type' ] ).TYPE( MainString )
  * 
  *                     if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -13205,7 +13218,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L59;
         }
 
-        /* "arithmetic_analyze.pyx":510
+        /* "arithmetic_analyze.pyx":511
  *                         else:
  *                             calculations.append( [ self._return_ ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -13217,7 +13230,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_L59:;
 
-        /* "arithmetic_analyze.pyx":493
+        /* "arithmetic_analyze.pyx":494
  * 
  *             for k in range( lengthValues ):
  *                 if type( self.values[ k ] ) == type( dict() ):             # <<<<<<<<<<<<<<
@@ -13227,7 +13240,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         goto __pyx_L56;
       }
 
-      /* "arithmetic_analyze.pyx":512
+      /* "arithmetic_analyze.pyx":513
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
@@ -13236,7 +13249,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       /*else*/ {
 
-        /* "arithmetic_analyze.pyx":513
+        /* "arithmetic_analyze.pyx":514
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],
  *                                                 self.operators[ k ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
@@ -13245,20 +13258,20 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->values == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 512, __pyx_L1_error)
+          __PYX_ERR(0, 513, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":512
+        /* "arithmetic_analyze.pyx":513
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                                 self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-        __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 512, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_self->values, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 513, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
 
-        /* "arithmetic_analyze.pyx":513
+        /* "arithmetic_analyze.pyx":514
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],
  *                                                 self.operators[ k ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
@@ -13267,21 +13280,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         if (unlikely(__pyx_v_self->operators == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 513, __pyx_L1_error)
+          __PYX_ERR(0, 514, __pyx_L1_error)
         }
-        __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 513, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 514, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 513, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 514, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
 
-        /* "arithmetic_analyze.pyx":512
+        /* "arithmetic_analyze.pyx":513
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                                 self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-        __pyx_t_12 = PyTuple_New(5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 512, __pyx_L1_error)
+        __pyx_t_12 = PyTuple_New(5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 513, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_INCREF(__pyx_v_self->master);
         __Pyx_GIVEREF(__pyx_v_self->master);
@@ -13298,18 +13311,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __pyx_t_10 = 0;
         __pyx_t_11 = 0;
         __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_12, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 512, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING), __pyx_t_12, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 513, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "arithmetic_analyze.pyx":513
+        /* "arithmetic_analyze.pyx":514
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],
  *                                                 self.operators[ k ], self.DataBase, self.line).INIT( MainString )             # <<<<<<<<<<<<<<
  * 
  *                     if error in [ '', None] :
  */
-        __pyx_t_12 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_7)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_7), __pyx_v_MainString); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 513, __pyx_L1_error)
+        __pyx_t_12 = ((struct __pyx_vtabstruct_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_7)->__pyx_vtab)->INIT(((struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *)__pyx_t_7), __pyx_v_MainString); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 514, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if (likely(__pyx_t_12 != Py_None)) {
@@ -13318,7 +13331,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 512, __pyx_L1_error)
+            __PYX_ERR(0, 513, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           __pyx_t_7 = PyTuple_GET_ITEM(sequence, 0); 
@@ -13326,30 +13339,30 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __Pyx_INCREF(__pyx_t_7);
           __Pyx_INCREF(__pyx_t_11);
           #else
-          __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 512, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 513, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 512, __pyx_L1_error)
+          __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 513, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           #endif
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         } else {
-          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 512, __pyx_L1_error)
+          __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 513, __pyx_L1_error)
         }
 
-        /* "arithmetic_analyze.pyx":512
+        /* "arithmetic_analyze.pyx":513
  *                     else: break
  *                 else:
  *                     _return_, error = ARRITHMETIC_DEEP_CHECKING(self.master, self.values[ k ],             # <<<<<<<<<<<<<<
  *                                                 self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 512, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 513, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v__return_, __pyx_t_7);
         __pyx_t_7 = 0;
         __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_11));
         __pyx_t_11 = 0;
 
-        /* "arithmetic_analyze.pyx":515
+        /* "arithmetic_analyze.pyx":516
  *                                                 self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  *                     if error in [ '', None] :             # <<<<<<<<<<<<<<
@@ -13358,21 +13371,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
         __Pyx_INCREF(__pyx_v_error);
         __pyx_t_16 = __pyx_v_error;
-        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 515, __pyx_L1_error)
+        __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 516, __pyx_L1_error)
         __pyx_t_18 = (__pyx_t_3 != 0);
         if (!__pyx_t_18) {
         } else {
           __pyx_t_17 = __pyx_t_18;
           goto __pyx_L76_bool_binop_done;
         }
-        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 515, __pyx_L1_error)
+        __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 516, __pyx_L1_error)
         __pyx_t_17 = __pyx_t_18;
         __pyx_L76_bool_binop_done:;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_18 = (__pyx_t_17 != 0);
         if (__pyx_t_18) {
 
-          /* "arithmetic_analyze.pyx":516
+          /* "arithmetic_analyze.pyx":517
  * 
  *                     if error in [ '', None] :
  *                         if k != lengthValues- 1:             # <<<<<<<<<<<<<<
@@ -13382,7 +13395,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           __pyx_t_18 = ((__pyx_v_k != (__pyx_v_lengthValues - 1)) != 0);
           if (__pyx_t_18) {
 
-            /* "arithmetic_analyze.pyx":517
+            /* "arithmetic_analyze.pyx":518
  *                     if error in [ '', None] :
  *                         if k != lengthValues- 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -13398,24 +13411,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __Pyx_XGOTREF(__pyx_t_20);
               /*try:*/ {
 
-                /* "arithmetic_analyze.pyx":518
+                /* "arithmetic_analyze.pyx":519
  *                         if k != lengthValues- 1:
  *                             try:
  *                                 calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                                 calculations.append( self.operators[ k + 1 ] )
  *                             except TypeError:
  */
-                __pyx_t_12 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 518, __pyx_L79_error)
+                __pyx_t_12 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 519, __pyx_L79_error)
                 __Pyx_GOTREF(__pyx_t_12);
-                __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 518, __pyx_L79_error)
+                __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 519, __pyx_L79_error)
                 __Pyx_GOTREF(__pyx_t_11);
                 __Pyx_GIVEREF(__pyx_t_12);
                 PyList_SET_ITEM(__pyx_t_11, 0, __pyx_t_12);
                 __pyx_t_12 = 0;
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 518, __pyx_L79_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 519, __pyx_L79_error)
                 __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-                /* "arithmetic_analyze.pyx":519
+                /* "arithmetic_analyze.pyx":520
  *                             try:
  *                                 calculations.append( [ _return_[ 0 ] ] )
  *                                 calculations.append( self.operators[ k + 1 ] )             # <<<<<<<<<<<<<<
@@ -13424,15 +13437,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
                 if (unlikely(__pyx_v_self->operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 519, __pyx_L79_error)
+                  __PYX_ERR(0, 520, __pyx_L79_error)
                 }
                 __pyx_t_23 = (__pyx_v_k + 1);
-                __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 519, __pyx_L79_error)
+                __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 520, __pyx_L79_error)
                 __Pyx_GOTREF(__pyx_t_11);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 519, __pyx_L79_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_11); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 520, __pyx_L79_error)
                 __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-                /* "arithmetic_analyze.pyx":517
+                /* "arithmetic_analyze.pyx":518
  *                     if error in [ '', None] :
  *                         if k != lengthValues- 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -13455,7 +13468,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-              /* "arithmetic_analyze.pyx":520
+              /* "arithmetic_analyze.pyx":521
  *                                 calculations.append( [ _return_[ 0 ] ] )
  *                                 calculations.append( self.operators[ k + 1 ] )
  *                             except TypeError:             # <<<<<<<<<<<<<<
@@ -13465,29 +13478,29 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
               if (__pyx_t_13) {
                 __Pyx_AddTraceback("arithmetic_analyze.ARRITHMETIC_DEEP_CHECKING.INIT_INIT", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_12, &__pyx_t_7) < 0) __PYX_ERR(0, 520, __pyx_L81_except_error)
+                if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_12, &__pyx_t_7) < 0) __PYX_ERR(0, 521, __pyx_L81_except_error)
                 __Pyx_GOTREF(__pyx_t_11);
                 __Pyx_GOTREF(__pyx_t_12);
                 __Pyx_GOTREF(__pyx_t_7);
 
-                /* "arithmetic_analyze.pyx":521
+                /* "arithmetic_analyze.pyx":522
  *                                 calculations.append( self.operators[ k + 1 ] )
  *                             except TypeError:
  *                                 calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
  *                                 calculations.append( self.operators[ k + 2 ] )
  *                         else:  calculations.append( [ _return_[ 0 ] ] )
  */
-                __pyx_t_10 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 521, __pyx_L81_except_error)
+                __pyx_t_10 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 522, __pyx_L81_except_error)
                 __Pyx_GOTREF(__pyx_t_10);
-                __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 521, __pyx_L81_except_error)
+                __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 522, __pyx_L81_except_error)
                 __Pyx_GOTREF(__pyx_t_8);
                 __Pyx_GIVEREF(__pyx_t_10);
                 PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_10);
                 __pyx_t_10 = 0;
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 521, __pyx_L81_except_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 522, __pyx_L81_except_error)
                 __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-                /* "arithmetic_analyze.pyx":522
+                /* "arithmetic_analyze.pyx":523
  *                             except TypeError:
  *                                 calculations.append( [ _return_[ 0 ] ] )
  *                                 calculations.append( self.operators[ k + 2 ] )             # <<<<<<<<<<<<<<
@@ -13496,12 +13509,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
                 if (unlikely(__pyx_v_self->operators == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                  __PYX_ERR(0, 522, __pyx_L81_except_error)
+                  __PYX_ERR(0, 523, __pyx_L81_except_error)
                 }
                 __pyx_t_23 = (__pyx_v_k + 2);
-                __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 522, __pyx_L81_except_error)
+                __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_self->operators, __pyx_t_23, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 523, __pyx_L81_except_error)
                 __Pyx_GOTREF(__pyx_t_8);
-                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 522, __pyx_L81_except_error)
+                __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_8); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 523, __pyx_L81_except_error)
                 __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
                 __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
                 __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -13511,7 +13524,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               goto __pyx_L81_except_error;
               __pyx_L81_except_error:;
 
-              /* "arithmetic_analyze.pyx":517
+              /* "arithmetic_analyze.pyx":518
  *                     if error in [ '', None] :
  *                         if k != lengthValues- 1:
  *                             try:             # <<<<<<<<<<<<<<
@@ -13531,7 +13544,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
               __pyx_L86_try_end:;
             }
 
-            /* "arithmetic_analyze.pyx":516
+            /* "arithmetic_analyze.pyx":517
  * 
  *                     if error in [ '', None] :
  *                         if k != lengthValues- 1:             # <<<<<<<<<<<<<<
@@ -13541,7 +13554,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
             goto __pyx_L78;
           }
 
-          /* "arithmetic_analyze.pyx":523
+          /* "arithmetic_analyze.pyx":524
  *                                 calculations.append( [ _return_[ 0 ] ] )
  *                                 calculations.append( self.operators[ k + 2 ] )
  *                         else:  calculations.append( [ _return_[ 0 ] ] )             # <<<<<<<<<<<<<<
@@ -13549,19 +13562,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  * 
  */
           /*else*/ {
-            __pyx_t_7 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 523, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_GetItemInt(__pyx_v__return_, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 524, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 523, __pyx_L1_error)
+            __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 524, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_GIVEREF(__pyx_t_7);
             PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_7);
             __pyx_t_7 = 0;
-            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 523, __pyx_L1_error)
+            __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_calculations, __pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 524, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           }
           __pyx_L78:;
 
-          /* "arithmetic_analyze.pyx":515
+          /* "arithmetic_analyze.pyx":516
  *                                                 self.operators[ k ], self.DataBase, self.line).INIT( MainString )
  * 
  *                     if error in [ '', None] :             # <<<<<<<<<<<<<<
@@ -13571,7 +13584,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L75;
         }
 
-        /* "arithmetic_analyze.pyx":524
+        /* "arithmetic_analyze.pyx":525
  *                                 calculations.append( self.operators[ k + 2 ] )
  *                         else:  calculations.append( [ _return_[ 0 ] ] )
  *                     else: break             # <<<<<<<<<<<<<<
@@ -13587,7 +13600,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
     }
     __pyx_L55_break:;
 
-    /* "arithmetic_analyze.pyx":526
+    /* "arithmetic_analyze.pyx":527
  *                     else: break
  * 
  *             if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -13596,21 +13609,21 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
     __Pyx_INCREF(__pyx_v_error);
     __pyx_t_16 = __pyx_v_error;
-    __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 526, __pyx_L1_error)
+    __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 527, __pyx_L1_error)
     __pyx_t_3 = (__pyx_t_17 != 0);
     if (!__pyx_t_3) {
     } else {
       __pyx_t_18 = __pyx_t_3;
       goto __pyx_L90_bool_binop_done;
     }
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 526, __pyx_L1_error)
+    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 527, __pyx_L1_error)
     __pyx_t_18 = __pyx_t_3;
     __pyx_L90_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __pyx_t_3 = (__pyx_t_18 != 0);
     if (__pyx_t_3) {
 
-      /* "arithmetic_analyze.pyx":527
+      /* "arithmetic_analyze.pyx":528
  * 
  *             if error in [ '', None]:
  *                 historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -13620,7 +13633,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       __Pyx_INCREF(__pyx_kp_s_);
       __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-      /* "arithmetic_analyze.pyx":528
+      /* "arithmetic_analyze.pyx":529
  *             if error in [ '', None]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -13631,43 +13644,43 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       for (;;) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_12)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_2); __Pyx_INCREF(__pyx_t_7); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 528, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_2); __Pyx_INCREF(__pyx_t_7); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 529, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_12, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 528, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_12, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 529, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_string, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "arithmetic_analyze.pyx":529
+        /* "arithmetic_analyze.pyx":530
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
  *                         historyOfOperators+= string
  *                     else: pass
  */
-        __pyx_t_7 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 529, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 530, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 529, __pyx_L1_error)
+        __pyx_t_11 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_string)), ((PyObject *)Py_TYPE(__pyx_t_7)), Py_EQ); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 530, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 529, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 530, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         if (__pyx_t_3) {
 
-          /* "arithmetic_analyze.pyx":530
+          /* "arithmetic_analyze.pyx":531
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators+= string             # <<<<<<<<<<<<<<
  *                     else: pass
  * 
  */
-          __pyx_t_11 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 530, __pyx_L1_error)
+          __pyx_t_11 = PyNumber_InPlaceAdd(__pyx_v_historyOfOperators, __pyx_v_string); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 531, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (!(likely(PyString_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 530, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 531, __pyx_L1_error)
           __Pyx_DECREF_SET(__pyx_v_historyOfOperators, ((PyObject*)__pyx_t_11));
           __pyx_t_11 = 0;
 
-          /* "arithmetic_analyze.pyx":529
+          /* "arithmetic_analyze.pyx":530
  *                 historyOfOperators = ''
  *                 for string in calculations:
  *                     if type( string ) == type( str() ):             # <<<<<<<<<<<<<<
@@ -13677,7 +13690,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
           goto __pyx_L94;
         }
 
-        /* "arithmetic_analyze.pyx":531
+        /* "arithmetic_analyze.pyx":532
  *                     if type( string ) == type( str() ):
  *                         historyOfOperators+= string
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -13688,7 +13701,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         }
         __pyx_L94:;
 
-        /* "arithmetic_analyze.pyx":528
+        /* "arithmetic_analyze.pyx":529
  *             if error in [ '', None]:
  *                 historyOfOperators = ''
  *                 for string in calculations:             # <<<<<<<<<<<<<<
@@ -13698,27 +13711,27 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-      /* "arithmetic_analyze.pyx":533
+      /* "arithmetic_analyze.pyx":534
  *                     else: pass
  * 
  *                 _values_ , serror = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )
  *                 if error in [ '', None ]:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 533, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_mathematics); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 534, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 533, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_MAGIC_MATH_BASE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 534, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "arithmetic_analyze.pyx":534
+      /* "arithmetic_analyze.pyx":535
  * 
  *                 _values_ , serror = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )             # <<<<<<<<<<<<<<
  *                 if error in [ '', None ]:
  *                     numeric.append( _return_ )
  */
-      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 534, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 535, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_10 = NULL;
       __pyx_t_4 = 0;
@@ -13735,7 +13748,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[5] = {__pyx_t_10, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_7};
-        __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 533, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 534, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -13744,14 +13757,14 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[5] = {__pyx_t_10, __pyx_v_calculations, __pyx_v_self->DataBase, __pyx_v_historyOfOperators, __pyx_t_7};
-        __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 533, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_4, 4+__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 534, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       } else
       #endif
       {
-        __pyx_t_9 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 533, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(4+__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 534, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         if (__pyx_t_10) {
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -13768,12 +13781,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_GIVEREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_9, 3+__pyx_t_4, __pyx_t_7);
         __pyx_t_7 = 0;
-        __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 533, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 534, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 534, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MATHS_OPERATIONS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 535, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __pyx_t_11 = NULL;
@@ -13788,7 +13801,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __pyx_t_12 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 534, __pyx_L1_error)
+      if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 535, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if ((likely(PyTuple_CheckExact(__pyx_t_12))) || (PyList_CheckExact(__pyx_t_12))) {
@@ -13797,7 +13810,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 533, __pyx_L1_error)
+          __PYX_ERR(0, 534, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -13810,15 +13823,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_11);
         #else
-        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 533, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 534, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 533, __pyx_L1_error)
+        __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 534, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         #endif
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_9 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 533, __pyx_L1_error)
+        __pyx_t_9 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 534, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __pyx_t_15 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -13826,7 +13839,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_GOTREF(__pyx_t_8);
         index = 1; __pyx_t_11 = __pyx_t_15(__pyx_t_9); if (unlikely(!__pyx_t_11)) goto __pyx_L95_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_11);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 533, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 534, __pyx_L1_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L96_unpacking_done;
@@ -13834,11 +13847,11 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 533, __pyx_L1_error)
+        __PYX_ERR(0, 534, __pyx_L1_error)
         __pyx_L96_unpacking_done:;
       }
 
-      /* "arithmetic_analyze.pyx":533
+      /* "arithmetic_analyze.pyx":534
  *                     else: pass
  * 
  *                 _values_ , serror = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,             # <<<<<<<<<<<<<<
@@ -13850,7 +13863,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       __pyx_v_serror = __pyx_t_11;
       __pyx_t_11 = 0;
 
-      /* "arithmetic_analyze.pyx":535
+      /* "arithmetic_analyze.pyx":536
  *                 _values_ , serror = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )
  *                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -13859,31 +13872,31 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  */
       __Pyx_INCREF(__pyx_v_error);
       __pyx_t_16 = __pyx_v_error;
-      __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 535, __pyx_L1_error)
+      __pyx_t_18 = (__Pyx_PyString_Equals(__pyx_t_16, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 536, __pyx_L1_error)
       __pyx_t_17 = (__pyx_t_18 != 0);
       if (!__pyx_t_17) {
       } else {
         __pyx_t_3 = __pyx_t_17;
         goto __pyx_L98_bool_binop_done;
       }
-      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 535, __pyx_L1_error)
+      __pyx_t_17 = (__Pyx_PyString_Equals(__pyx_t_16, Py_None, Py_EQ)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 536, __pyx_L1_error)
       __pyx_t_3 = __pyx_t_17;
       __pyx_L98_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __pyx_t_17 = (__pyx_t_3 != 0);
       if (__pyx_t_17) {
 
-        /* "arithmetic_analyze.pyx":536
+        /* "arithmetic_analyze.pyx":537
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )
  *                 if error in [ '', None ]:
  *                     numeric.append( _return_ )             # <<<<<<<<<<<<<<
  *                     historyOfOperators = ''
  *                 else: pass
  */
-        if (unlikely(!__pyx_v__return_)) { __Pyx_RaiseUnboundLocalError("_return_"); __PYX_ERR(0, 536, __pyx_L1_error) }
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 536, __pyx_L1_error)
+        if (unlikely(!__pyx_v__return_)) { __Pyx_RaiseUnboundLocalError("_return_"); __PYX_ERR(0, 537, __pyx_L1_error) }
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_numeric, __pyx_v__return_); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 537, __pyx_L1_error)
 
-        /* "arithmetic_analyze.pyx":537
+        /* "arithmetic_analyze.pyx":538
  *                 if error in [ '', None ]:
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''             # <<<<<<<<<<<<<<
@@ -13893,7 +13906,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         __Pyx_INCREF(__pyx_kp_s_);
         __Pyx_DECREF_SET(__pyx_v_historyOfOperators, __pyx_kp_s_);
 
-        /* "arithmetic_analyze.pyx":535
+        /* "arithmetic_analyze.pyx":536
  *                 _values_ , serror = mathematics.MAGIC_MATH_BASE( calculations, self.DataBase,
  *                                                         historyOfOperators, self.line).MATHS_OPERATIONS( )
  *                 if error in [ '', None ]:             # <<<<<<<<<<<<<<
@@ -13903,7 +13916,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
         goto __pyx_L97;
       }
 
-      /* "arithmetic_analyze.pyx":538
+      /* "arithmetic_analyze.pyx":539
  *                     numeric.append( _return_ )
  *                     historyOfOperators = ''
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -13914,7 +13927,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       }
       __pyx_L97:;
 
-      /* "arithmetic_analyze.pyx":526
+      /* "arithmetic_analyze.pyx":527
  *                     else: break
  * 
  *             if error in [ '', None]:             # <<<<<<<<<<<<<<
@@ -13924,7 +13937,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
       goto __pyx_L89;
     }
 
-    /* "arithmetic_analyze.pyx":539
+    /* "arithmetic_analyze.pyx":540
  *                     historyOfOperators = ''
  *                 else: pass
  *             else: pass             # <<<<<<<<<<<<<<
@@ -13937,7 +13950,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   }
   __pyx_L3:;
 
-  /* "arithmetic_analyze.pyx":542
+  /* "arithmetic_analyze.pyx":543
  * 
  * 
  *         return numeric, error             # <<<<<<<<<<<<<<
@@ -13945,7 +13958,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 542, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 543, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_INCREF(__pyx_v_numeric);
   __Pyx_GIVEREF(__pyx_v_numeric);
@@ -13957,7 +13970,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   __pyx_t_12 = 0;
   goto __pyx_L0;
 
-  /* "arithmetic_analyze.pyx":373
+  /* "arithmetic_analyze.pyx":374
  *         return numeric, error
  * 
  *     cdef tuple INIT_INIT( self, str MainString ):             # <<<<<<<<<<<<<<
@@ -13994,7 +14007,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_I
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":223
+/* "arithmetic_analyze.pyx":224
  * cdef class ARRITHMETIC_DEEP_CHECKING:
  *     cdef :
  *         public list operators             # <<<<<<<<<<<<<<
@@ -14052,7 +14065,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_9operators_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 223, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 224, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14102,7 +14115,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_9operators_
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":224
+/* "arithmetic_analyze.pyx":225
  *     cdef :
  *         public list operators
  *         public list values             # <<<<<<<<<<<<<<
@@ -14160,7 +14173,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_6values_2__
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 224, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 225, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14210,7 +14223,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_6values_4__
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":225
+/* "arithmetic_analyze.pyx":226
  *         public list operators
  *         public list values
  *         public dict master             # <<<<<<<<<<<<<<
@@ -14268,7 +14281,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_6master_2__
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 225, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 226, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14318,7 +14331,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_6master_4__
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":226
+/* "arithmetic_analyze.pyx":227
  *         public list values
  *         public dict master
  *         public dict DataBase             # <<<<<<<<<<<<<<
@@ -14376,7 +14389,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_8DataBase_2
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 226, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 227, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14426,7 +14439,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_8DataBase_4
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":227
+/* "arithmetic_analyze.pyx":228
  *         public dict master
  *         public dict DataBase
  *         public int  line             # <<<<<<<<<<<<<<
@@ -14456,7 +14469,7 @@ static PyObject *__pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_4line
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -14494,7 +14507,7 @@ static int __pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_4line_2__se
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 228, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
   /* function exit code */
@@ -14840,10 +14853,10 @@ static PyObject *__pyx_pf_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_4__se
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":552
+/* "arithmetic_analyze.pyx":553
  *         public int  line
  * 
- *     def __init__(self, master, DataBase, line, logical ):             # <<<<<<<<<<<<<<
+ *     def __init__(self, master, DataBase, line, logical):             # <<<<<<<<<<<<<<
  *         self.master         = master
  *         self.logical        = logical
  */
@@ -14888,23 +14901,23 @@ static int __pyx_pw_18arithmetic_analyze_11FINAL_VALUE_1__init__(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_DataBase)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 1); __PYX_ERR(0, 552, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 1); __PYX_ERR(0, 553, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_line)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 2); __PYX_ERR(0, 552, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 2); __PYX_ERR(0, 553, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_logical)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 3); __PYX_ERR(0, 552, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 3); __PYX_ERR(0, 553, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 552, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 553, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -14921,7 +14934,7 @@ static int __pyx_pw_18arithmetic_analyze_11FINAL_VALUE_1__init__(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 552, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 553, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("arithmetic_analyze.FINAL_VALUE.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -14944,14 +14957,14 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE___init__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "arithmetic_analyze.pyx":553
+  /* "arithmetic_analyze.pyx":554
  * 
- *     def __init__(self, master, DataBase, line, logical ):
+ *     def __init__(self, master, DataBase, line, logical):
  *         self.master         = master             # <<<<<<<<<<<<<<
  *         self.logical        = logical
  *         self.line           = line
  */
-  if (!(likely(PyList_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 553, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 554, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_master;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14960,14 +14973,14 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE___init__(struct __pyx_obj
   __pyx_v_self->master = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":554
- *     def __init__(self, master, DataBase, line, logical ):
+  /* "arithmetic_analyze.pyx":555
+ *     def __init__(self, master, DataBase, line, logical):
  *         self.master         = master
  *         self.logical        = logical             # <<<<<<<<<<<<<<
  *         self.line           = line
  *         self.DataBase       = DataBase
  */
-  if (!(likely(PyList_CheckExact(__pyx_v_logical))||((__pyx_v_logical) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_logical)->tp_name), 0))) __PYX_ERR(0, 554, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_logical))||((__pyx_v_logical) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_logical)->tp_name), 0))) __PYX_ERR(0, 555, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_logical;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14976,24 +14989,24 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE___init__(struct __pyx_obj
   __pyx_v_self->logical = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":555
+  /* "arithmetic_analyze.pyx":556
  *         self.master         = master
  *         self.logical        = logical
  *         self.line           = line             # <<<<<<<<<<<<<<
  *         self.DataBase       = DataBase
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 555, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_line); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 556, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_2;
 
-  /* "arithmetic_analyze.pyx":556
+  /* "arithmetic_analyze.pyx":557
  *         self.logical        = logical
  *         self.line           = line
  *         self.DataBase       = DataBase             # <<<<<<<<<<<<<<
  * 
  *     cdef GET_DATA( self , _object_, bint out_side = True) :
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_DataBase))||((__pyx_v_DataBase) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_DataBase)->tp_name), 0))) __PYX_ERR(0, 556, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_DataBase))||((__pyx_v_DataBase) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_DataBase)->tp_name), 0))) __PYX_ERR(0, 557, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_DataBase;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -15002,10 +15015,10 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE___init__(struct __pyx_obj
   __pyx_v_self->DataBase = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":552
+  /* "arithmetic_analyze.pyx":553
  *         public int  line
  * 
- *     def __init__(self, master, DataBase, line, logical ):             # <<<<<<<<<<<<<<
+ *     def __init__(self, master, DataBase, line, logical):             # <<<<<<<<<<<<<<
  *         self.master         = master
  *         self.logical        = logical
  */
@@ -15022,7 +15035,7 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE___init__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":558
+/* "arithmetic_analyze.pyx":559
  *         self.DataBase       = DataBase
  * 
  *     cdef GET_DATA( self , _object_, bint out_side = True) :             # <<<<<<<<<<<<<<
@@ -15070,19 +15083,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
     }
   }
 
-  /* "arithmetic_analyze.pyx":567
+  /* "arithmetic_analyze.pyx":568
  *             result
  * 
  *         _return_       = []             # <<<<<<<<<<<<<<
  *         error          = ''
  *         number         = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 568, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v__return_ = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":568
+  /* "arithmetic_analyze.pyx":569
  * 
  *         _return_       = []
  *         error          = ''             # <<<<<<<<<<<<<<
@@ -15092,34 +15105,34 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
   __Pyx_INCREF(__pyx_kp_s_);
   __pyx_v_error = __pyx_kp_s_;
 
-  /* "arithmetic_analyze.pyx":569
+  /* "arithmetic_analyze.pyx":570
  *         _return_       = []
  *         error          = ''
  *         number         = []             # <<<<<<<<<<<<<<
  *         partial_type   = [ type( list() ), type( dict() ), type( str() ), type( tuple() ) ]
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 569, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 570, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_number = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":570
+  /* "arithmetic_analyze.pyx":571
  *         error          = ''
  *         number         = []
  *         partial_type   = [ type( list() ), type( dict() ), type( str() ), type( tuple() ) ]             # <<<<<<<<<<<<<<
  * 
  *         if self.master:
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyTuple_Type))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyTuple_Type))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyList_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 570, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 571, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_t_1)));
   __Pyx_GIVEREF(((PyObject *)Py_TYPE(__pyx_t_1)));
@@ -15140,7 +15153,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
   __pyx_v_partial_type = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "arithmetic_analyze.pyx":572
+  /* "arithmetic_analyze.pyx":573
  *         partial_type   = [ type( list() ), type( dict() ), type( str() ), type( tuple() ) ]
  * 
  *         if self.master:             # <<<<<<<<<<<<<<
@@ -15150,7 +15163,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
   __pyx_t_6 = (__pyx_v_self->master != Py_None)&&(PyList_GET_SIZE(__pyx_v_self->master) != 0);
   if (__pyx_t_6) {
 
-    /* "arithmetic_analyze.pyx":573
+    /* "arithmetic_analyze.pyx":574
  * 
  *         if self.master:
  *             for i in range( len( self.master ) ):             # <<<<<<<<<<<<<<
@@ -15161,15 +15174,15 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
     __Pyx_INCREF(__pyx_t_5);
     if (unlikely(__pyx_t_5 == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 573, __pyx_L1_error)
+      __PYX_ERR(0, 574, __pyx_L1_error)
     }
-    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_5); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 573, __pyx_L1_error)
+    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_5); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 574, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_8 = __pyx_t_7;
     for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
       __pyx_v_i = __pyx_t_9;
 
-      /* "arithmetic_analyze.pyx":574
+      /* "arithmetic_analyze.pyx":575
  *         if self.master:
  *             for i in range( len( self.master ) ):
  *                 result = None             # <<<<<<<<<<<<<<
@@ -15179,7 +15192,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
       __Pyx_INCREF(Py_None);
       __Pyx_XDECREF_SET(__pyx_v_result, Py_None);
 
-      /* "arithmetic_analyze.pyx":575
+      /* "arithmetic_analyze.pyx":576
  *             for i in range( len( self.master ) ):
  *                 result = None
  *                 try:             # <<<<<<<<<<<<<<
@@ -15195,145 +15208,145 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
         __Pyx_XGOTREF(__pyx_t_12);
         /*try:*/ {
 
-          /* "arithmetic_analyze.pyx":577
+          /* "arithmetic_analyze.pyx":578
  *                 try:
  * 
  *                     if   self.logical == '==':          result = self.master[ i ] == _object_             # <<<<<<<<<<<<<<
  *                     elif self.logical == '>=':          result = self.master[ i ] >= _object_
  *                     elif self.logical == '<=':          result = self.master[ i ] <= _object_
  */
-          __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__6, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 577, __pyx_L6_error)
+          __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__6, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 578, __pyx_L6_error)
           __pyx_t_13 = (__pyx_t_6 != 0);
           if (__pyx_t_13) {
             if (unlikely(__pyx_v_self->master == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 577, __pyx_L6_error)
+              __PYX_ERR(0, 578, __pyx_L6_error)
             }
-            __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 577, __pyx_L6_error)
+            __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 578, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_5);
-            __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_v__object_, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 577, __pyx_L6_error)
+            __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_v__object_, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 578, __pyx_L6_error)
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             __Pyx_DECREF_SET(__pyx_v_result, __pyx_t_4);
             __pyx_t_4 = 0;
             goto __pyx_L14;
           }
 
-          /* "arithmetic_analyze.pyx":578
+          /* "arithmetic_analyze.pyx":579
  * 
  *                     if   self.logical == '==':          result = self.master[ i ] == _object_
  *                     elif self.logical == '>=':          result = self.master[ i ] >= _object_             # <<<<<<<<<<<<<<
  *                     elif self.logical == '<=':          result = self.master[ i ] <= _object_
  *                     elif self.logical == '!=':          result = self.master[ i ] != _object_
  */
-          __pyx_t_13 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__7, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 578, __pyx_L6_error)
+          __pyx_t_13 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__7, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 579, __pyx_L6_error)
           __pyx_t_6 = (__pyx_t_13 != 0);
           if (__pyx_t_6) {
             if (unlikely(__pyx_v_self->master == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 578, __pyx_L6_error)
+              __PYX_ERR(0, 579, __pyx_L6_error)
             }
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 578, __pyx_L6_error)
+            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 579, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_v__object_, Py_GE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 578, __pyx_L6_error)
+            __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_v__object_, Py_GE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 579, __pyx_L6_error)
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_DECREF_SET(__pyx_v_result, __pyx_t_5);
             __pyx_t_5 = 0;
             goto __pyx_L14;
           }
 
-          /* "arithmetic_analyze.pyx":579
+          /* "arithmetic_analyze.pyx":580
  *                     if   self.logical == '==':          result = self.master[ i ] == _object_
  *                     elif self.logical == '>=':          result = self.master[ i ] >= _object_
  *                     elif self.logical == '<=':          result = self.master[ i ] <= _object_             # <<<<<<<<<<<<<<
  *                     elif self.logical == '!=':          result = self.master[ i ] != _object_
  *                     elif self.logical == '<' :          result = self.master[ i ] <  _object_
  */
-          __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__8, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 579, __pyx_L6_error)
+          __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__8, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 580, __pyx_L6_error)
           __pyx_t_13 = (__pyx_t_6 != 0);
           if (__pyx_t_13) {
             if (unlikely(__pyx_v_self->master == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 579, __pyx_L6_error)
+              __PYX_ERR(0, 580, __pyx_L6_error)
             }
-            __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 579, __pyx_L6_error)
+            __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 580, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_5);
-            __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_v__object_, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 579, __pyx_L6_error)
+            __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_v__object_, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 580, __pyx_L6_error)
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             __Pyx_DECREF_SET(__pyx_v_result, __pyx_t_4);
             __pyx_t_4 = 0;
             goto __pyx_L14;
           }
 
-          /* "arithmetic_analyze.pyx":580
+          /* "arithmetic_analyze.pyx":581
  *                     elif self.logical == '>=':          result = self.master[ i ] >= _object_
  *                     elif self.logical == '<=':          result = self.master[ i ] <= _object_
  *                     elif self.logical == '!=':          result = self.master[ i ] != _object_             # <<<<<<<<<<<<<<
  *                     elif self.logical == '<' :          result = self.master[ i ] <  _object_
  *                     elif self.logical == '>' :          result = self.master[ i ] >  _object_
  */
-          __pyx_t_13 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__9, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 580, __pyx_L6_error)
+          __pyx_t_13 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__9, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 581, __pyx_L6_error)
           __pyx_t_6 = (__pyx_t_13 != 0);
           if (__pyx_t_6) {
             if (unlikely(__pyx_v_self->master == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 580, __pyx_L6_error)
+              __PYX_ERR(0, 581, __pyx_L6_error)
             }
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 580, __pyx_L6_error)
+            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 581, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_v__object_, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 580, __pyx_L6_error)
+            __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_v__object_, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 581, __pyx_L6_error)
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_DECREF_SET(__pyx_v_result, __pyx_t_5);
             __pyx_t_5 = 0;
             goto __pyx_L14;
           }
 
-          /* "arithmetic_analyze.pyx":581
+          /* "arithmetic_analyze.pyx":582
  *                     elif self.logical == '<=':          result = self.master[ i ] <= _object_
  *                     elif self.logical == '!=':          result = self.master[ i ] != _object_
  *                     elif self.logical == '<' :          result = self.master[ i ] <  _object_             # <<<<<<<<<<<<<<
  *                     elif self.logical == '>' :          result = self.master[ i ] >  _object_
  * 
  */
-          __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__10, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 581, __pyx_L6_error)
+          __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__10, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 582, __pyx_L6_error)
           __pyx_t_13 = (__pyx_t_6 != 0);
           if (__pyx_t_13) {
             if (unlikely(__pyx_v_self->master == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 581, __pyx_L6_error)
+              __PYX_ERR(0, 582, __pyx_L6_error)
             }
-            __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 581, __pyx_L6_error)
+            __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 582, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_5);
-            __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_v__object_, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 581, __pyx_L6_error)
+            __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_v__object_, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 582, __pyx_L6_error)
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             __Pyx_DECREF_SET(__pyx_v_result, __pyx_t_4);
             __pyx_t_4 = 0;
             goto __pyx_L14;
           }
 
-          /* "arithmetic_analyze.pyx":582
+          /* "arithmetic_analyze.pyx":583
  *                     elif self.logical == '!=':          result = self.master[ i ] != _object_
  *                     elif self.logical == '<' :          result = self.master[ i ] <  _object_
  *                     elif self.logical == '>' :          result = self.master[ i ] >  _object_             # <<<<<<<<<<<<<<
  * 
  *                     if result is True:
  */
-          __pyx_t_13 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__11, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 582, __pyx_L6_error)
+          __pyx_t_13 = (__Pyx_PyString_Equals(__pyx_v_self->logical, __pyx_kp_s__11, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 583, __pyx_L6_error)
           __pyx_t_6 = (__pyx_t_13 != 0);
           if (__pyx_t_6) {
             if (unlikely(__pyx_v_self->master == Py_None)) {
               PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-              __PYX_ERR(0, 582, __pyx_L6_error)
+              __PYX_ERR(0, 583, __pyx_L6_error)
             }
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 582, __pyx_L6_error)
+            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 583, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_v__object_, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 582, __pyx_L6_error)
+            __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_v__object_, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 583, __pyx_L6_error)
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_DECREF_SET(__pyx_v_result, __pyx_t_5);
             __pyx_t_5 = 0;
           }
           __pyx_L14:;
 
-          /* "arithmetic_analyze.pyx":584
+          /* "arithmetic_analyze.pyx":585
  *                     elif self.logical == '>' :          result = self.master[ i ] >  _object_
  * 
  *                     if result is True:             # <<<<<<<<<<<<<<
@@ -15344,19 +15357,19 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
           __pyx_t_13 = (__pyx_t_6 != 0);
           if (__pyx_t_13) {
 
-            /* "arithmetic_analyze.pyx":585
+            /* "arithmetic_analyze.pyx":586
  * 
  *                     if result is True:
  *                         number.append( i )             # <<<<<<<<<<<<<<
  *                         if out_side is False:
  *                             _return_.append( True )
  */
-            __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 585, __pyx_L6_error)
+            __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 586, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_5);
-            __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_number, __pyx_t_5); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 585, __pyx_L6_error)
+            __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_number, __pyx_t_5); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 586, __pyx_L6_error)
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-            /* "arithmetic_analyze.pyx":586
+            /* "arithmetic_analyze.pyx":587
  *                     if result is True:
  *                         number.append( i )
  *                         if out_side is False:             # <<<<<<<<<<<<<<
@@ -15366,16 +15379,16 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
             __pyx_t_13 = ((__pyx_v_out_side == 0) != 0);
             if (__pyx_t_13) {
 
-              /* "arithmetic_analyze.pyx":587
+              /* "arithmetic_analyze.pyx":588
  *                         number.append( i )
  *                         if out_side is False:
  *                             _return_.append( True )             # <<<<<<<<<<<<<<
  *                         else:
  *                             _return_.append( self.master[ i ] )
  */
-              __pyx_t_14 = __Pyx_PyList_Append(__pyx_v__return_, Py_True); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 587, __pyx_L6_error)
+              __pyx_t_14 = __Pyx_PyList_Append(__pyx_v__return_, Py_True); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 588, __pyx_L6_error)
 
-              /* "arithmetic_analyze.pyx":586
+              /* "arithmetic_analyze.pyx":587
  *                     if result is True:
  *                         number.append( i )
  *                         if out_side is False:             # <<<<<<<<<<<<<<
@@ -15385,7 +15398,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
               goto __pyx_L16;
             }
 
-            /* "arithmetic_analyze.pyx":589
+            /* "arithmetic_analyze.pyx":590
  *                             _return_.append( True )
  *                         else:
  *                             _return_.append( self.master[ i ] )             # <<<<<<<<<<<<<<
@@ -15395,16 +15408,16 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
             /*else*/ {
               if (unlikely(__pyx_v_self->master == Py_None)) {
                 PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 589, __pyx_L6_error)
+                __PYX_ERR(0, 590, __pyx_L6_error)
               }
-              __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 589, __pyx_L6_error)
+              __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 590, __pyx_L6_error)
               __Pyx_GOTREF(__pyx_t_5);
-              __pyx_t_14 = __Pyx_PyList_Append(__pyx_v__return_, __pyx_t_5); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 589, __pyx_L6_error)
+              __pyx_t_14 = __Pyx_PyList_Append(__pyx_v__return_, __pyx_t_5); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 590, __pyx_L6_error)
               __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             }
             __pyx_L16:;
 
-            /* "arithmetic_analyze.pyx":584
+            /* "arithmetic_analyze.pyx":585
  *                     elif self.logical == '>' :          result = self.master[ i ] >  _object_
  * 
  *                     if result is True:             # <<<<<<<<<<<<<<
@@ -15414,7 +15427,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
             goto __pyx_L15;
           }
 
-          /* "arithmetic_analyze.pyx":591
+          /* "arithmetic_analyze.pyx":592
  *                             _return_.append( self.master[ i ] )
  *                     else:
  *                         if out_side is False:             # <<<<<<<<<<<<<<
@@ -15425,16 +15438,16 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
             __pyx_t_13 = ((__pyx_v_out_side == 0) != 0);
             if (__pyx_t_13) {
 
-              /* "arithmetic_analyze.pyx":592
+              /* "arithmetic_analyze.pyx":593
  *                     else:
  *                         if out_side is False:
  *                             _return_.append( False )             # <<<<<<<<<<<<<<
  *                         else: pass
  * 
  */
-              __pyx_t_14 = __Pyx_PyList_Append(__pyx_v__return_, Py_False); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 592, __pyx_L6_error)
+              __pyx_t_14 = __Pyx_PyList_Append(__pyx_v__return_, Py_False); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 593, __pyx_L6_error)
 
-              /* "arithmetic_analyze.pyx":591
+              /* "arithmetic_analyze.pyx":592
  *                             _return_.append( self.master[ i ] )
  *                     else:
  *                         if out_side is False:             # <<<<<<<<<<<<<<
@@ -15444,7 +15457,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
               goto __pyx_L17;
             }
 
-            /* "arithmetic_analyze.pyx":593
+            /* "arithmetic_analyze.pyx":594
  *                         if out_side is False:
  *                             _return_.append( False )
  *                         else: pass             # <<<<<<<<<<<<<<
@@ -15457,7 +15470,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
           }
           __pyx_L15:;
 
-          /* "arithmetic_analyze.pyx":575
+          /* "arithmetic_analyze.pyx":576
  *             for i in range( len( self.master ) ):
  *                 result = None
  *                 try:             # <<<<<<<<<<<<<<
@@ -15476,7 +15489,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "arithmetic_analyze.pyx":595
+        /* "arithmetic_analyze.pyx":596
  *                         else: pass
  * 
  *                 except TypeError:             # <<<<<<<<<<<<<<
@@ -15486,12 +15499,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
         __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
         if (__pyx_t_15) {
           __Pyx_AddTraceback("arithmetic_analyze.FINAL_VALUE.GET_DATA", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_4, &__pyx_t_3) < 0) __PYX_ERR(0, 595, __pyx_L8_except_error)
+          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_4, &__pyx_t_3) < 0) __PYX_ERR(0, 596, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_GOTREF(__pyx_t_3);
 
-          /* "arithmetic_analyze.pyx":596
+          /* "arithmetic_analyze.pyx":597
  * 
  *                 except TypeError:
  *                     ob1     = FINAL_VALUE( self.master[ i ], self.DataBase, self.line, self.logical ).CONVERSION( self.master[ i ] )             # <<<<<<<<<<<<<<
@@ -15500,13 +15513,13 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
  */
           if (unlikely(__pyx_v_self->master == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 596, __pyx_L8_except_error)
+            __PYX_ERR(0, 597, __pyx_L8_except_error)
           }
-          __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 596, __pyx_L8_except_error)
+          __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 597, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L8_except_error)
+          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 597, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_16 = PyTuple_New(4); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 596, __pyx_L8_except_error)
+          __pyx_t_16 = PyTuple_New(4); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 597, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_GIVEREF(__pyx_t_2);
           PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_2);
@@ -15520,32 +15533,32 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
           PyTuple_SET_ITEM(__pyx_t_16, 3, __pyx_v_self->logical);
           __pyx_t_2 = 0;
           __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_FINAL_VALUE), __pyx_t_16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L8_except_error)
+          __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_FINAL_VALUE), __pyx_t_16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 597, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
           if (unlikely(__pyx_v_self->master == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            __PYX_ERR(0, 596, __pyx_L8_except_error)
+            __PYX_ERR(0, 597, __pyx_L8_except_error)
           }
-          __pyx_t_16 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 596, __pyx_L8_except_error)
+          __pyx_t_16 = __Pyx_GetItemInt_List(__pyx_v_self->master, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 597, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_16);
-          __pyx_t_2 = ((struct __pyx_vtabstruct_18arithmetic_analyze_FINAL_VALUE *)((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_t_1)->__pyx_vtab)->CONVERSION(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_t_1), __pyx_t_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 596, __pyx_L8_except_error)
+          __pyx_t_2 = ((struct __pyx_vtabstruct_18arithmetic_analyze_FINAL_VALUE *)((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_t_1)->__pyx_vtab)->CONVERSION(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_t_1), __pyx_t_16, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 597, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
           __pyx_v_ob1 = __pyx_t_2;
           __pyx_t_2 = 0;
 
-          /* "arithmetic_analyze.pyx":597
+          /* "arithmetic_analyze.pyx":598
  *                 except TypeError:
  *                     ob1     = FINAL_VALUE( self.master[ i ], self.DataBase, self.line, self.logical ).CONVERSION( self.master[ i ] )
  *                     ob2     = FINAL_VALUE( _object_, self.DataBase, self.line, self.logical ).CONVERSION( _object_ )             # <<<<<<<<<<<<<<
  *                     error   = nc.ERRORS( self.line ).ERROR7( self.logical, ob1, ob2)
  *                     break
  */
-          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 597, __pyx_L8_except_error)
+          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 598, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_16 = PyTuple_New(4); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 597, __pyx_L8_except_error)
+          __pyx_t_16 = PyTuple_New(4); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 598, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_INCREF(__pyx_v__object_);
           __Pyx_GIVEREF(__pyx_v__object_);
@@ -15559,28 +15572,28 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
           __Pyx_GIVEREF(__pyx_v_self->logical);
           PyTuple_SET_ITEM(__pyx_t_16, 3, __pyx_v_self->logical);
           __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_FINAL_VALUE), __pyx_t_16, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 597, __pyx_L8_except_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_18arithmetic_analyze_FINAL_VALUE), __pyx_t_16, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 598, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-          __pyx_t_16 = ((struct __pyx_vtabstruct_18arithmetic_analyze_FINAL_VALUE *)((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_t_2)->__pyx_vtab)->CONVERSION(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_t_2), __pyx_v__object_); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 597, __pyx_L8_except_error)
+          __pyx_t_16 = ((struct __pyx_vtabstruct_18arithmetic_analyze_FINAL_VALUE *)((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_t_2)->__pyx_vtab)->CONVERSION(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_t_2), __pyx_v__object_, 0); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 598, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __pyx_v_ob2 = __pyx_t_16;
           __pyx_t_16 = 0;
 
-          /* "arithmetic_analyze.pyx":598
+          /* "arithmetic_analyze.pyx":599
  *                     ob1     = FINAL_VALUE( self.master[ i ], self.DataBase, self.line, self.logical ).CONVERSION( self.master[ i ] )
  *                     ob2     = FINAL_VALUE( _object_, self.DataBase, self.line, self.logical ).CONVERSION( _object_ )
  *                     error   = nc.ERRORS( self.line ).ERROR7( self.logical, ob1, ob2)             # <<<<<<<<<<<<<<
  *                     break
  *         else: error = nc.ERRORS( self.line ).ERROR8( self.master )
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nc); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nc); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 599, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ERRORS); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+          __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ERRORS); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 599, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_17);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+          __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 599, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_1);
           __pyx_t_18 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_17))) {
@@ -15595,10 +15608,10 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
           __pyx_t_2 = (__pyx_t_18) ? __Pyx_PyObject_Call2Args(__pyx_t_17, __pyx_t_18, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_1);
           __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 599, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-          __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_ERROR7); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+          __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_ERROR7); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 599, __pyx_L8_except_error)
           __Pyx_GOTREF(__pyx_t_17);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __pyx_t_2 = NULL;
@@ -15616,7 +15629,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_17)) {
             PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_self->logical, __pyx_v_ob1, __pyx_v_ob2};
-            __pyx_t_16 = __Pyx_PyFunction_FastCall(__pyx_t_17, __pyx_temp+1-__pyx_t_15, 3+__pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+            __pyx_t_16 = __Pyx_PyFunction_FastCall(__pyx_t_17, __pyx_temp+1-__pyx_t_15, 3+__pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 599, __pyx_L8_except_error)
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_GOTREF(__pyx_t_16);
           } else
@@ -15624,13 +15637,13 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_17)) {
             PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_self->logical, __pyx_v_ob1, __pyx_v_ob2};
-            __pyx_t_16 = __Pyx_PyCFunction_FastCall(__pyx_t_17, __pyx_temp+1-__pyx_t_15, 3+__pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+            __pyx_t_16 = __Pyx_PyCFunction_FastCall(__pyx_t_17, __pyx_temp+1-__pyx_t_15, 3+__pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 599, __pyx_L8_except_error)
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_GOTREF(__pyx_t_16);
           } else
           #endif
           {
-            __pyx_t_1 = PyTuple_New(3+__pyx_t_15); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+            __pyx_t_1 = PyTuple_New(3+__pyx_t_15); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 599, __pyx_L8_except_error)
             __Pyx_GOTREF(__pyx_t_1);
             if (__pyx_t_2) {
               __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -15644,16 +15657,16 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
             __Pyx_INCREF(__pyx_v_ob2);
             __Pyx_GIVEREF(__pyx_v_ob2);
             PyTuple_SET_ITEM(__pyx_t_1, 2+__pyx_t_15, __pyx_v_ob2);
-            __pyx_t_16 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_1, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 598, __pyx_L8_except_error)
+            __pyx_t_16 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_1, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 599, __pyx_L8_except_error)
             __Pyx_GOTREF(__pyx_t_16);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           }
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_16))||((__pyx_t_16) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_16)->tp_name), 0))) __PYX_ERR(0, 598, __pyx_L8_except_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_16))||((__pyx_t_16) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_16)->tp_name), 0))) __PYX_ERR(0, 599, __pyx_L8_except_error)
           __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_16));
           __pyx_t_16 = 0;
 
-          /* "arithmetic_analyze.pyx":599
+          /* "arithmetic_analyze.pyx":600
  *                     ob2     = FINAL_VALUE( _object_, self.DataBase, self.line, self.logical ).CONVERSION( _object_ )
  *                     error   = nc.ERRORS( self.line ).ERROR7( self.logical, ob1, ob2)
  *                     break             # <<<<<<<<<<<<<<
@@ -15670,7 +15683,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
         goto __pyx_L8_except_error;
         __pyx_L8_except_error:;
 
-        /* "arithmetic_analyze.pyx":575
+        /* "arithmetic_analyze.pyx":576
  *             for i in range( len( self.master ) ):
  *                 result = None
  *                 try:             # <<<<<<<<<<<<<<
@@ -15693,7 +15706,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
     }
     __pyx_L5_break:;
 
-    /* "arithmetic_analyze.pyx":572
+    /* "arithmetic_analyze.pyx":573
  *         partial_type   = [ type( list() ), type( dict() ), type( str() ), type( tuple() ) ]
  * 
  *         if self.master:             # <<<<<<<<<<<<<<
@@ -15703,7 +15716,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":600
+  /* "arithmetic_analyze.pyx":601
  *                     error   = nc.ERRORS( self.line ).ERROR7( self.logical, ob1, ob2)
  *                     break
  *         else: error = nc.ERRORS( self.line ).ERROR8( self.master )             # <<<<<<<<<<<<<<
@@ -15711,12 +15724,12 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
  *         if type( self.master ) == type( list() ):  return _return_, number, error
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 600, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 601, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ERRORS); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 600, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ERRORS); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 601, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 600, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 601, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_17 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_16))) {
@@ -15731,10 +15744,10 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
     __pyx_t_4 = (__pyx_t_17) ? __Pyx_PyObject_Call2Args(__pyx_t_16, __pyx_t_17, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 600, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 601, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_ERROR8); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 600, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_ERROR8); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 601, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -15749,31 +15762,31 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
     }
     __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_16, __pyx_t_4, __pyx_v_self->master) : __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_v_self->master);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 600, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 601, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 600, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 601, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_error, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
   }
   __pyx_L3:;
 
-  /* "arithmetic_analyze.pyx":602
+  /* "arithmetic_analyze.pyx":603
  *         else: error = nc.ERRORS( self.line ).ERROR8( self.master )
  * 
  *         if type( self.master ) == type( list() ):  return _return_, number, error             # <<<<<<<<<<<<<<
  *         else: return tuple( _return_ ), number, error
  * 
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 602, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 603, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_16 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_self->master)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_16); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 602, __pyx_L1_error)
+  __pyx_t_16 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_self->master)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_16); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 603, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_16); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 602, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_16); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 603, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
   if (__pyx_t_13) {
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_16 = PyTuple_New(3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 602, __pyx_L1_error)
+    __pyx_t_16 = PyTuple_New(3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 603, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_INCREF(__pyx_v__return_);
     __Pyx_GIVEREF(__pyx_v__return_);
@@ -15789,18 +15802,18 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
     goto __pyx_L0;
   }
 
-  /* "arithmetic_analyze.pyx":603
+  /* "arithmetic_analyze.pyx":604
  * 
  *         if type( self.master ) == type( list() ):  return _return_, number, error
  *         else: return tuple( _return_ ), number, error             # <<<<<<<<<<<<<<
  * 
- *     cdef str CONVERSION( self, master_init ):
+ *     cpdef CONVERSION( self, master_init ):
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_16 = PyList_AsTuple(__pyx_v__return_); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 603, __pyx_L1_error)
+    __pyx_t_16 = PyList_AsTuple(__pyx_v__return_); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 604, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
-    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 603, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 604, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_16);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_16);
@@ -15816,7 +15829,7 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
     goto __pyx_L0;
   }
 
-  /* "arithmetic_analyze.pyx":558
+  /* "arithmetic_analyze.pyx":559
  *         self.DataBase       = DataBase
  * 
  *     cdef GET_DATA( self , _object_, bint out_side = True) :             # <<<<<<<<<<<<<<
@@ -15849,23 +15862,24 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA(struct __py
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":605
+/* "arithmetic_analyze.pyx":606
  *         else: return tuple( _return_ ), number, error
  * 
- *     cdef str CONVERSION( self, master_init ):             # <<<<<<<<<<<<<<
+ *     cpdef CONVERSION( self, master_init ):             # <<<<<<<<<<<<<<
  *         cdef str _return_
  * 
  */
 
-static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UNUSED struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_master_init) {
+static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_3CONVERSION(PyObject *__pyx_v_self, PyObject *__pyx_v_master_init); /*proto*/
+static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UNUSED struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_master_init, int __pyx_skip_dispatch) {
   PyObject *__pyx_v__return_ = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  int __pyx_t_2;
+  PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_5;
   PyObject *__pyx_t_6 = NULL;
   PyObject *__pyx_t_7 = NULL;
   int __pyx_t_8;
@@ -15874,159 +15888,144 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UN
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("CONVERSION", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_CONVERSION); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 606, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_3CONVERSION)) {
+        __Pyx_XDECREF(__pyx_r);
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+          if (likely(__pyx_t_4)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+            __Pyx_INCREF(__pyx_t_4);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_3, function);
+          }
+        }
+        __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_master_init) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_master_init);
+        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 606, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_r = __pyx_t_2;
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_type_dict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
 
-  /* "arithmetic_analyze.pyx":608
+  /* "arithmetic_analyze.pyx":609
  *         cdef str _return_
  * 
- *         if   type( master_init ) == type( int() )       :   _return_ = '{}{}integer(){}'.format(color.be, color.ne, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(color.be, color.ve, color.be)
- *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(color.be, color.ae, color.be)
+ *         if   type( master_init ) == type( int() )       :   _return_ = '{}{}integer(){}'.format(bm.fg.blue, bm.fg.red_L, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
+ *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
  */
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_int_0)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 608, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 608, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_int_0)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 609, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_integer, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 608, __pyx_L1_error)
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_integer, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 608, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 609, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_ne); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 608, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 608, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_blue); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 609, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_red_L); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_blue); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
     __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
       if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
         __Pyx_INCREF(__pyx_t_7);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
         __pyx_t_8 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 608, __pyx_L1_error)
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 608, __pyx_L1_error)
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 608, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 609, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_7) {
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
       }
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_4);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_6);
+      __pyx_t_3 = 0;
       __pyx_t_4 = 0;
-      __pyx_t_5 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 608, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 608, __pyx_L1_error)
-    __pyx_v__return_ = ((PyObject*)__pyx_t_1);
-    __pyx_t_1 = 0;
-    goto __pyx_L3;
-  }
-
-  /* "arithmetic_analyze.pyx":609
- * 
- *         if   type( master_init ) == type( int() )       :   _return_ = '{}{}integer(){}'.format(color.be, color.ne, color.be)
- *         elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(color.be, color.ve, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(color.be, color.ae, color.be)
- *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(color.be, color.me, color.be)
- */
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_float_0_0)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 609, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_float, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 609, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_ve); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 609, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 609, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = NULL;
-    __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
-        __pyx_t_8 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_t_9, __pyx_t_6, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_t_9, __pyx_t_6, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    } else
-    #endif
-    {
-      __pyx_t_7 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 609, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      if (__pyx_t_4) {
-        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
-      }
-      __Pyx_GIVEREF(__pyx_t_9);
-      PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_8, __pyx_t_9);
-      __Pyx_GIVEREF(__pyx_t_6);
-      PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_t_6);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_8, __pyx_t_5);
-      __pyx_t_9 = 0;
-      __pyx_t_6 = 0;
-      __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 609, __pyx_L1_error)
     __pyx_v__return_ = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
@@ -16034,78 +16033,96 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UN
   }
 
   /* "arithmetic_analyze.pyx":610
- *         if   type( master_init ) == type( int() )       :   _return_ = '{}{}integer(){}'.format(color.be, color.ne, color.be)
- *         elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(color.be, color.ve, color.be)
- *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(color.be, color.ae, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(color.be, color.me, color.be)
- *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(color.be, color.ke, color.be)
+ * 
+ *         if   type( master_init ) == type( int() )       :   _return_ = '{}{}integer(){}'.format(bm.fg.blue, bm.fg.red_L, bm.fg.blue)
+ *         elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
+ *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan_L, bm.fg.blue)
  */
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(Py_False)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 610, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_float_0_0)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_boolean, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 610, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 610, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_ae); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 610, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 610, __pyx_L1_error)
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_float, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_bm); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_9 = NULL;
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_blue); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_green_L); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_blue); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = NULL;
     __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_9)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_9);
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_3)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_3);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
         __pyx_t_8 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_t_9, __pyx_t_6, __pyx_t_4};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_t_9, __pyx_t_6, __pyx_t_4};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 610, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      if (__pyx_t_9) {
-        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_9); __pyx_t_9 = NULL;
+      __pyx_t_7 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 610, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      if (__pyx_t_3) {
+        __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
       }
-      __Pyx_GIVEREF(__pyx_t_7);
-      PyTuple_SET_ITEM(__pyx_t_4, 0+__pyx_t_8, __pyx_t_7);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_8, __pyx_t_5);
+      __Pyx_GIVEREF(__pyx_t_9);
+      PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_8, __pyx_t_9);
       __Pyx_GIVEREF(__pyx_t_6);
-      PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_8, __pyx_t_6);
-      __pyx_t_7 = 0;
-      __pyx_t_5 = 0;
+      PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_t_6);
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_8, __pyx_t_4);
+      __pyx_t_9 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+      __pyx_t_4 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 610, __pyx_L1_error)
     __pyx_v__return_ = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
@@ -16113,27 +16130,142 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UN
   }
 
   /* "arithmetic_analyze.pyx":611
- *         elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(color.be, color.ve, color.be)
- *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(color.be, color.ae, color.be)
- *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(color.be, color.me, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(color.be, color.ke, color.be)
- *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(color.be, color.ie, color.be)
+ *         if   type( master_init ) == type( int() )       :   _return_ = '{}{}integer(){}'.format(bm.fg.blue, bm.fg.red_L, bm.fg.blue)
+ *         elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
+ *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan_L, bm.fg.blue)
+ *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(bm.fg.blue, bm.fg.yellow_L, bm.fg.blue)
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyComplex_Type))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_1)), Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 611, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(Py_False)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 611, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 611, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_complex, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 611, __pyx_L1_error)
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_boolean, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_bm); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 611, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_me); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_blue); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 611, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 611, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cyan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_blue); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 611, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_9 = NULL;
+    __pyx_t_8 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_9)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_9);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+        __pyx_t_8 = 1;
+      }
+    }
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    } else
+    #endif
+    {
+      __pyx_t_3 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      if (__pyx_t_9) {
+        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_9); __pyx_t_9 = NULL;
+      }
+      __Pyx_GIVEREF(__pyx_t_7);
+      PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_8, __pyx_t_7);
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_8, __pyx_t_4);
+      __Pyx_GIVEREF(__pyx_t_6);
+      PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_8, __pyx_t_6);
+      __pyx_t_7 = 0;
+      __pyx_t_4 = 0;
+      __pyx_t_6 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 611, __pyx_L1_error)
+    __pyx_v__return_ = ((PyObject*)__pyx_t_1);
+    __pyx_t_1 = 0;
+    goto __pyx_L3;
+  }
+
+  /* "arithmetic_analyze.pyx":612
+ *         elif type( master_init ) == type( float() )     :   _return_ = '{}{}float(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
+ *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
+ *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan_L, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(bm.fg.blue, bm.fg.yellow_L, bm.fg.blue)
+ *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(bm.fg.blue, bm.fg.blue_L, bm.fg.blue)
+ */
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyComplex_Type))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_1)), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 612, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_5) {
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_complex, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_blue); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_cyan_L); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_blue); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
     __pyx_t_8 = 0;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -16148,156 +16280,192 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UN
     }
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_6, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 611, __pyx_L1_error)
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_6, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_6, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 611, __pyx_L1_error)
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_6, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 612, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_7) {
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
       }
-      __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_4);
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_6);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_5);
-      __pyx_t_4 = 0;
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_4);
+      __pyx_t_3 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_5 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 611, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_4 = 0;
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 611, __pyx_L1_error)
-    __pyx_v__return_ = ((PyObject*)__pyx_t_3);
-    __pyx_t_3 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 612, __pyx_L1_error)
+    __pyx_v__return_ = ((PyObject*)__pyx_t_2);
+    __pyx_t_2 = 0;
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":612
- *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(color.be, color.ae, color.be)
- *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(color.be, color.me, color.be)
- *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(color.be, color.ke, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(color.be, color.ie, color.be)
- *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( color.be, color.te, color.be)
+  /* "arithmetic_analyze.pyx":613
+ *         elif type( master_init ) == type( bool() )      :   _return_ = '{}{}boolean(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
+ *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan_L, bm.fg.blue)
+ *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(bm.fg.blue, bm.fg.yellow_L, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(bm.fg.blue, bm.fg.blue_L, bm.fg.blue)
+ *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.magenta, bm.fg.blue)
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 612, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 612, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 613, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 613, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 613, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_list, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 612, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 612, __pyx_L1_error)
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_list, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_bm); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 613, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_ke); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 612, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_blue); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 613, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_4 = NULL;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_yellow_L); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_blue); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = NULL;
     __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_4);
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_3)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_3);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
         __pyx_t_8 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_t_9, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_t_9, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 613, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_t_9, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_t_9, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 613, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 613, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (__pyx_t_4) {
-        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
+      if (__pyx_t_3) {
+        __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
       }
       __Pyx_GIVEREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_8, __pyx_t_9);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_t_5);
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_8, __pyx_t_6);
       __pyx_t_9 = 0;
-      __pyx_t_5 = 0;
+      __pyx_t_4 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 613, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 612, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 613, __pyx_L1_error)
     __pyx_v__return_ = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":613
- *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(color.be, color.me, color.be)
- *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(color.be, color.ke, color.be)
- *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(color.be, color.ie, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( color.be, color.te, color.be)
- *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(color.be, color.be, color.be)
+  /* "arithmetic_analyze.pyx":614
+ *         elif type( master_init ) == type( complex() )   :   _return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan_L, bm.fg.blue)
+ *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(bm.fg.blue, bm.fg.yellow_L, bm.fg.blue)
+ *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(bm.fg.blue, bm.fg.blue_L, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.magenta, bm.fg.blue)
+ *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.blue, bm.fg.blue)
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyTuple_Type))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 613, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyTuple_Type))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_1)), Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 613, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_1)), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 613, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_tuple, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 613, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 614, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_5) {
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_tuple, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_bm); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 614, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_ie); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 613, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 614, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 613, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_blue); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_blue_L); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_blue); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __pyx_t_9 = NULL;
     __pyx_t_8 = 0;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -16312,163 +16480,199 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UN
     }
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_6, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 613, __pyx_L1_error)
+      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_6, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_6, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 613, __pyx_L1_error)
+      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_6, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 613, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_3 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_9) {
-        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_9); __pyx_t_9 = NULL;
+        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_9); __pyx_t_9 = NULL;
       }
       __Pyx_GIVEREF(__pyx_t_7);
-      PyTuple_SET_ITEM(__pyx_t_4, 0+__pyx_t_8, __pyx_t_7);
+      PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_8, __pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_6);
-      PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_8, __pyx_t_6);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_8, __pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_8, __pyx_t_6);
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_8, __pyx_t_4);
       __pyx_t_7 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_5 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 613, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_4 = 0;
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 613, __pyx_L1_error)
-    __pyx_v__return_ = ((PyObject*)__pyx_t_3);
-    __pyx_t_3 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 614, __pyx_L1_error)
+    __pyx_v__return_ = ((PyObject*)__pyx_t_2);
+    __pyx_t_2 = 0;
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":614
- *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(color.be, color.ke, color.be)
- *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(color.be, color.ie, color.be)
- *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( color.be, color.te, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(color.be, color.be, color.be)
- *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(color.be, color.ge, color.be)
+  /* "arithmetic_analyze.pyx":615
+ *         elif type( master_init ) == type( list() )      :   _return_ = '{}{}list(){}'.format(bm.fg.blue, bm.fg.yellow_L, bm.fg.blue)
+ *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(bm.fg.blue, bm.fg.blue_L, bm.fg.blue)
+ *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.magenta, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.blue, bm.fg.blue)
+ *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green, bm.fg.blue)
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 614, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 615, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_dictionary, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 614, __pyx_L1_error)
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_dictionary, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 615, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_te); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 614, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_blue); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 615, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_magenta); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_blue); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
     __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
       if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
         __Pyx_INCREF(__pyx_t_7);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
         __pyx_t_8 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 615, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_7) {
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
       }
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_4);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_6);
+      __pyx_t_3 = 0;
       __pyx_t_4 = 0;
-      __pyx_t_5 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 614, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 615, __pyx_L1_error)
     __pyx_v__return_ = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":615
- *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(color.be, color.ie, color.be)
- *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( color.be, color.te, color.be)
- *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(color.be, color.be, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(color.be, color.ge, color.be)
- *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(color.be, color.le, color.be)
+  /* "arithmetic_analyze.pyx":616
+ *         elif type( master_init ) == type( tuple() )     :   _return_ = '{}{}tuple(){}'.format(bm.fg.blue, bm.fg.blue_L, bm.fg.blue)
+ *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.magenta, bm.fg.blue)
+ *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.blue, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green, bm.fg.blue)
+ *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(bm.fg.blue, bm.fg.red, bm.fg.blue)
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyString_Type))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_1)), Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_1)), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 615, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_string, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 616, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_5) {
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_string, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_bm); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 616, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 615, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 616, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 615, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = NULL;
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_blue); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_blue); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_blue); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = NULL;
     __pyx_t_8 = 0;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
-      if (likely(__pyx_t_4)) {
+      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
+      if (likely(__pyx_t_3)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_3);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_1, function);
         __pyx_t_8 = 1;
@@ -16476,236 +16680,277 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UN
     }
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_t_9, __pyx_t_6, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
+      PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_t_9, __pyx_t_6, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_t_9, __pyx_t_6, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
+      PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_t_9, __pyx_t_6, __pyx_t_4};
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 615, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 616, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (__pyx_t_4) {
-        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
+      if (__pyx_t_3) {
+        __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
       }
       __Pyx_GIVEREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_8, __pyx_t_9);
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_t_6);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_8, __pyx_t_5);
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_8, __pyx_t_4);
       __pyx_t_9 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_5 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_4 = 0;
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 615, __pyx_L1_error)
-    __pyx_v__return_ = ((PyObject*)__pyx_t_3);
-    __pyx_t_3 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 616, __pyx_L1_error)
+    __pyx_v__return_ = ((PyObject*)__pyx_t_2);
+    __pyx_t_2 = 0;
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":616
- *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( color.be, color.te, color.be)
- *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(color.be, color.be, color.be)
- *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(color.be, color.ge, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(color.be, color.le, color.be)
+  /* "arithmetic_analyze.pyx":617
+ *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.magenta, bm.fg.blue)
+ *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.blue, bm.fg.blue)
+ *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(bm.fg.blue, bm.fg.red, bm.fg.blue)
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_3)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 616, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 617, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(__pyx_t_2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 617, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_range_2, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 616, __pyx_L1_error)
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_range_2, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_bm); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 617, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_ge); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 616, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_blue); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 617, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_green); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_blue); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __pyx_t_9 = NULL;
     __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_3);
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_2);
       if (likely(__pyx_t_9)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
         __Pyx_INCREF(__pyx_t_9);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
         __pyx_t_8 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_5, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_7, __pyx_t_4, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 616, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_3 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 617, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_9) {
-        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_9); __pyx_t_9 = NULL;
+        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_9); __pyx_t_9 = NULL;
       }
       __Pyx_GIVEREF(__pyx_t_7);
-      PyTuple_SET_ITEM(__pyx_t_4, 0+__pyx_t_8, __pyx_t_7);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_8, __pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_8, __pyx_t_7);
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_8, __pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_6);
-      PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_8, __pyx_t_6);
+      PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_8, __pyx_t_6);
       __pyx_t_7 = 0;
-      __pyx_t_5 = 0;
+      __pyx_t_4 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 616, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 617, __pyx_L1_error)
     __pyx_v__return_ = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L3;
   }
 
-  /* "arithmetic_analyze.pyx":617
- *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(color.be, color.be, color.be)
- *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(color.be, color.ge, color.be)
- *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(color.be, color.le, color.be)             # <<<<<<<<<<<<<<
+  /* "arithmetic_analyze.pyx":618
+ *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.blue, bm.fg.blue)
+ *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green, bm.fg.blue)
+ *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(bm.fg.blue, bm.fg.red, bm.fg.blue)             # <<<<<<<<<<<<<<
  * 
- *         return _return_ + color.reset
+ *         return _return_ + bm.init.reset
  */
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(Py_None)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 617, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_master_init)), ((PyObject *)Py_TYPE(Py_None)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 618, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_none, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 617, __pyx_L1_error)
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_none, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 617, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_le); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 618, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_be); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 617, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_blue); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_bm); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_fg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_red); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_bm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_fg); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_blue); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
     __pyx_t_8 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
       if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
         __Pyx_INCREF(__pyx_t_7);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
         __pyx_t_8 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_6, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_6, __pyx_t_4};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_6, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_6, __pyx_t_4};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 617, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 618, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_7) {
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
       }
-      __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_4);
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_6);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_5);
-      __pyx_t_4 = 0;
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_4);
+      __pyx_t_3 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
+      __pyx_t_4 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 617, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 618, __pyx_L1_error)
     __pyx_v__return_ = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
   }
   __pyx_L3:;
 
-  /* "arithmetic_analyze.pyx":619
- *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(color.be, color.le, color.be)
+  /* "arithmetic_analyze.pyx":620
+ *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(bm.fg.blue, bm.fg.red, bm.fg.blue)
  * 
- *         return _return_ + color.reset             # <<<<<<<<<<<<<<
+ *         return _return_ + bm.init.reset             # <<<<<<<<<<<<<<
  * 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v__return_)) { __Pyx_RaiseUnboundLocalError("_return_"); __PYX_ERR(0, 619, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18arithmetic_analyze_color), __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 619, __pyx_L1_error)
+  if (unlikely(!__pyx_v__return_)) { __Pyx_RaiseUnboundLocalError("_return_"); __PYX_ERR(0, 620, __pyx_L1_error) }
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Add(__pyx_v__return_, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 619, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 620, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 619, __pyx_L1_error)
-  __pyx_r = ((PyObject*)__pyx_t_3);
-  __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyNumber_Add(__pyx_v__return_, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 620, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "arithmetic_analyze.pyx":605
+  /* "arithmetic_analyze.pyx":606
  *         else: return tuple( _return_ ), number, error
  * 
- *     cdef str CONVERSION( self, master_init ):             # <<<<<<<<<<<<<<
+ *     cpdef CONVERSION( self, master_init ):             # <<<<<<<<<<<<<<
  *         cdef str _return_
  * 
  */
@@ -16713,9 +16958,9 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UN
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_9);
@@ -16728,7 +16973,46 @@ static PyObject *__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(CYTHON_UN
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":547
+/* Python wrapper */
+static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_3CONVERSION(PyObject *__pyx_v_self, PyObject *__pyx_v_master_init); /*proto*/
+static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_3CONVERSION(PyObject *__pyx_v_self, PyObject *__pyx_v_master_init) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("CONVERSION (wrapper)", 0);
+  __pyx_r = __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_2CONVERSION(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_v_self), ((PyObject *)__pyx_v_master_init));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_2CONVERSION(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v_master_init) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("CONVERSION", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION(__pyx_v_self, __pyx_v_master_init, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 606, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("arithmetic_analyze.FINAL_VALUE.CONVERSION", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "arithmetic_analyze.pyx":548
  * cdef class FINAL_VALUE:
  *     cdef :
  *         public list master             # <<<<<<<<<<<<<<
@@ -16786,7 +17070,7 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_6master_2__set__(struct _
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 547, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 548, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -16836,7 +17120,7 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_6master_4__del__(struct _
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":548
+/* "arithmetic_analyze.pyx":549
  *     cdef :
  *         public list master
  *         public dict DataBase             # <<<<<<<<<<<<<<
@@ -16894,7 +17178,7 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_8DataBase_2__set__(struct
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 548, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 549, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -16944,7 +17228,7 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_8DataBase_4__del__(struct
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":549
+/* "arithmetic_analyze.pyx":550
  *         public list master
  *         public dict DataBase
  *         public list logical             # <<<<<<<<<<<<<<
@@ -17002,7 +17286,7 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_7logical_2__set__(struct 
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 549, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 550, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -17052,12 +17336,12 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_7logical_4__del__(struct 
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":550
+/* "arithmetic_analyze.pyx":551
  *         public dict DataBase
  *         public list logical
  *         public int  line             # <<<<<<<<<<<<<<
  * 
- *     def __init__(self, master, DataBase, line, logical ):
+ *     def __init__(self, master, DataBase, line, logical):
  */
 
 /* Python wrapper */
@@ -17082,7 +17366,7 @@ static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4line___get__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 550, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 551, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -17120,7 +17404,7 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4line_2__set__(struct __p
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 550, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 551, __pyx_L1_error)
   __pyx_v_self->line = __pyx_t_1;
 
   /* function exit code */
@@ -17141,19 +17425,19 @@ static int __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4line_2__set__(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_2__reduce_cython__(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_v_self));
+  __pyx_r = __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4__reduce_cython__(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_2__reduce_cython__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self) {
+static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4__reduce_cython__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self) {
   PyObject *__pyx_v_state = 0;
   PyObject *__pyx_v__dict = 0;
   int __pyx_v_use_setstate;
@@ -17405,19 +17689,19 @@ static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_2__reduce_cython__(
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4__setstate_cython__(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_18arithmetic_analyze_11FINAL_VALUE_6__setstate_cython__(((struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4__setstate_cython__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_6__setstate_cython__(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -17456,7 +17740,7 @@ static PyObject *__pyx_pf_18arithmetic_analyze_11FINAL_VALUE_4__setstate_cython_
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":638
+/* "arithmetic_analyze.pyx":639
  * 
  * 
  *     def __init__( self ) :             # <<<<<<<<<<<<<<
@@ -17490,232 +17774,232 @@ static int __pyx_pf_18arithmetic_analyze_5color___init__(struct __pyx_obj_18arit
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "arithmetic_analyze.pyx":639
+  /* "arithmetic_analyze.pyx":640
  * 
  *     def __init__( self ) :
  *         self.ve      = Fore.LIGHTGREEN_EX             # <<<<<<<<<<<<<<
  *         self.ne      = Fore.LIGHTRED_EX
  *         self.te      = Fore.MAGENTA
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_LIGHTGREEN_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_LIGHTGREEN_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 639, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->ve);
   __Pyx_DECREF(__pyx_v_self->ve);
   __pyx_v_self->ve = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":640
+  /* "arithmetic_analyze.pyx":641
  *     def __init__( self ) :
  *         self.ve      = Fore.LIGHTGREEN_EX
  *         self.ne      = Fore.LIGHTRED_EX             # <<<<<<<<<<<<<<
  *         self.te      = Fore.MAGENTA
  *         self.we      = Fore.LIGHTWHITE_EX
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTRED_EX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTRED_EX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 640, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 641, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->ne);
   __Pyx_DECREF(__pyx_v_self->ne);
   __pyx_v_self->ne = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":641
+  /* "arithmetic_analyze.pyx":642
  *         self.ve      = Fore.LIGHTGREEN_EX
  *         self.ne      = Fore.LIGHTRED_EX
  *         self.te      = Fore.MAGENTA             # <<<<<<<<<<<<<<
  *         self.we      = Fore.LIGHTWHITE_EX
  *         self.ke      = Fore.LIGHTYELLOW_EX
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_MAGENTA); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_MAGENTA); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 641, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->te);
   __Pyx_DECREF(__pyx_v_self->te);
   __pyx_v_self->te = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":642
+  /* "arithmetic_analyze.pyx":643
  *         self.ne      = Fore.LIGHTRED_EX
  *         self.te      = Fore.MAGENTA
  *         self.we      = Fore.LIGHTWHITE_EX             # <<<<<<<<<<<<<<
  *         self.ke      = Fore.LIGHTYELLOW_EX
  *         self.ie      = Fore.LIGHTBLUE_EX
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTWHITE_EX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 642, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTWHITE_EX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 642, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->we);
   __Pyx_DECREF(__pyx_v_self->we);
   __pyx_v_self->we = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":643
+  /* "arithmetic_analyze.pyx":644
  *         self.te      = Fore.MAGENTA
  *         self.we      = Fore.LIGHTWHITE_EX
  *         self.ke      = Fore.LIGHTYELLOW_EX             # <<<<<<<<<<<<<<
  *         self.ie      = Fore.LIGHTBLUE_EX
  *         self.ae      = Fore.CYAN
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 643, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 644, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_LIGHTYELLOW_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 643, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_LIGHTYELLOW_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 643, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 644, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->ke);
   __Pyx_DECREF(__pyx_v_self->ke);
   __pyx_v_self->ke = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":644
+  /* "arithmetic_analyze.pyx":645
  *         self.we      = Fore.LIGHTWHITE_EX
  *         self.ke      = Fore.LIGHTYELLOW_EX
  *         self.ie      = Fore.LIGHTBLUE_EX             # <<<<<<<<<<<<<<
  *         self.ae      = Fore.CYAN
  *         self.le      = Fore.RED
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 645, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTBLUE_EX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 644, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_LIGHTBLUE_EX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 645, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 644, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 645, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->ie);
   __Pyx_DECREF(__pyx_v_self->ie);
   __pyx_v_self->ie = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":645
+  /* "arithmetic_analyze.pyx":646
  *         self.ke      = Fore.LIGHTYELLOW_EX
  *         self.ie      = Fore.LIGHTBLUE_EX
  *         self.ae      = Fore.CYAN             # <<<<<<<<<<<<<<
  *         self.le      = Fore.RED
  *         self.be      = Fore.BLUE
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 645, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_CYAN); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 645, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_CYAN); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 645, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 646, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->ae);
   __Pyx_DECREF(__pyx_v_self->ae);
   __pyx_v_self->ae = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":646
+  /* "arithmetic_analyze.pyx":647
  *         self.ie      = Fore.LIGHTBLUE_EX
  *         self.ae      = Fore.CYAN
  *         self.le      = Fore.RED             # <<<<<<<<<<<<<<
  *         self.be      = Fore.BLUE
  *         self.ge      = Fore.GREEN
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_RED); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_RED); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 647, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 646, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 647, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->le);
   __Pyx_DECREF(__pyx_v_self->le);
   __pyx_v_self->le = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":647
+  /* "arithmetic_analyze.pyx":648
  *         self.ae      = Fore.CYAN
  *         self.le      = Fore.RED
  *         self.be      = Fore.BLUE             # <<<<<<<<<<<<<<
  *         self.ge      = Fore.GREEN
  *         self.me      = Fore.LIGHTCYAN_EX
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_BLUE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_BLUE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 647, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 648, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->be);
   __Pyx_DECREF(__pyx_v_self->be);
   __pyx_v_self->be = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":648
+  /* "arithmetic_analyze.pyx":649
  *         self.le      = Fore.RED
  *         self.be      = Fore.BLUE
  *         self.ge      = Fore.GREEN             # <<<<<<<<<<<<<<
  *         self.me      = Fore.LIGHTCYAN_EX
  *         self.reset   = Style.RESET_ALL
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Fore); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 649, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_GREEN); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_GREEN); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 649, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 648, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 649, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->ge);
   __Pyx_DECREF(__pyx_v_self->ge);
   __pyx_v_self->ge = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":649
+  /* "arithmetic_analyze.pyx":650
  *         self.be      = Fore.BLUE
  *         self.ge      = Fore.GREEN
  *         self.me      = Fore.LIGHTCYAN_EX             # <<<<<<<<<<<<<<
  *         self.reset   = Style.RESET_ALL
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 649, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Fore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 650, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_LIGHTCYAN_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 649, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_LIGHTCYAN_EX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 650, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 649, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 650, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->me);
   __Pyx_DECREF(__pyx_v_self->me);
   __pyx_v_self->me = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "arithmetic_analyze.pyx":650
+  /* "arithmetic_analyze.pyx":651
  *         self.ge      = Fore.GREEN
  *         self.me      = Fore.LIGHTCYAN_EX
  *         self.reset   = Style.RESET_ALL             # <<<<<<<<<<<<<<
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Style); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 650, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Style); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 651, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_RESET_ALL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 650, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_RESET_ALL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 651, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 650, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 651, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->reset);
   __Pyx_DECREF(__pyx_v_self->reset);
   __pyx_v_self->reset = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "arithmetic_analyze.pyx":638
+  /* "arithmetic_analyze.pyx":639
  * 
  * 
  *     def __init__( self ) :             # <<<<<<<<<<<<<<
@@ -17736,7 +18020,7 @@ static int __pyx_pf_18arithmetic_analyze_5color___init__(struct __pyx_obj_18arit
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":624
+/* "arithmetic_analyze.pyx":625
  * cdef class color:
  *     cdef public :
  *         str ve             # <<<<<<<<<<<<<<
@@ -17794,7 +18078,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ve_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 624, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 625, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -17844,7 +18128,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ve_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":625
+/* "arithmetic_analyze.pyx":626
  *     cdef public :
  *         str ve
  *         str ne             # <<<<<<<<<<<<<<
@@ -17902,7 +18186,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ne_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 625, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 626, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -17952,7 +18236,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ne_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":626
+/* "arithmetic_analyze.pyx":627
  *         str ve
  *         str ne
  *         str te             # <<<<<<<<<<<<<<
@@ -18010,7 +18294,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2te_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 626, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 627, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18060,7 +18344,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2te_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":627
+/* "arithmetic_analyze.pyx":628
  *         str ne
  *         str te
  *         str we             # <<<<<<<<<<<<<<
@@ -18118,7 +18402,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2we_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 627, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 628, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18168,7 +18452,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2we_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":628
+/* "arithmetic_analyze.pyx":629
  *         str te
  *         str we
  *         str ke             # <<<<<<<<<<<<<<
@@ -18226,7 +18510,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ke_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 628, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 629, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18276,7 +18560,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ke_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":629
+/* "arithmetic_analyze.pyx":630
  *         str we
  *         str ke
  *         str ie             # <<<<<<<<<<<<<<
@@ -18334,7 +18618,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ie_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 629, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 630, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18384,7 +18668,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ie_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":630
+/* "arithmetic_analyze.pyx":631
  *         str ke
  *         str ie
  *         str ae             # <<<<<<<<<<<<<<
@@ -18442,7 +18726,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ae_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 630, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 631, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18492,7 +18776,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ae_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":631
+/* "arithmetic_analyze.pyx":632
  *         str ie
  *         str ae
  *         str le             # <<<<<<<<<<<<<<
@@ -18550,7 +18834,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2le_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 631, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 632, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18600,7 +18884,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2le_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":632
+/* "arithmetic_analyze.pyx":633
  *         str ae
  *         str le
  *         str be             # <<<<<<<<<<<<<<
@@ -18658,7 +18942,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2be_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 632, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 633, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18708,7 +18992,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2be_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":633
+/* "arithmetic_analyze.pyx":634
  *         str le
  *         str be
  *         str ge             # <<<<<<<<<<<<<<
@@ -18766,7 +19050,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ge_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 633, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 634, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18816,7 +19100,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2ge_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":634
+/* "arithmetic_analyze.pyx":635
  *         str be
  *         str ge
  *         str me             # <<<<<<<<<<<<<<
@@ -18874,7 +19158,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2me_2__set__(struct __pyx_obj_18
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 634, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 635, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18924,7 +19208,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_2me_4__del__(struct __pyx_obj_18
   return __pyx_r;
 }
 
-/* "arithmetic_analyze.pyx":635
+/* "arithmetic_analyze.pyx":636
  *         str ge
  *         str me
  *         str reset             # <<<<<<<<<<<<<<
@@ -18982,7 +19266,7 @@ static int __pyx_pf_18arithmetic_analyze_5color_5reset_2__set__(struct __pyx_obj
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 635, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 636, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -21892,8 +22176,9 @@ static int __pyx_setprop_18arithmetic_analyze_11FINAL_VALUE_line(PyObject *o, Py
 }
 
 static PyMethodDef __pyx_methods_18arithmetic_analyze_FINAL_VALUE[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_3__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_5__setstate_cython__, METH_O, 0},
+  {"CONVERSION", (PyCFunction)__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_3CONVERSION, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_5__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_18arithmetic_analyze_11FINAL_VALUE_7__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -22326,6 +22611,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ArithmeticOperators, __pyx_k_ArithmeticOperators, sizeof(__pyx_k_ArithmeticOperators), 0, 0, 1, 1},
   {&__pyx_n_s_BLUE, __pyx_k_BLUE, sizeof(__pyx_k_BLUE), 0, 0, 1, 1},
   {&__pyx_n_s_CHECK, __pyx_k_CHECK, sizeof(__pyx_k_CHECK), 0, 0, 1, 1},
+  {&__pyx_n_s_CONVERSION, __pyx_k_CONVERSION, sizeof(__pyx_k_CONVERSION), 0, 0, 1, 1},
   {&__pyx_n_s_CYAN, __pyx_k_CYAN, sizeof(__pyx_k_CYAN), 0, 0, 1, 1},
   {&__pyx_n_s_CythonModules_Linux, __pyx_k_CythonModules_Linux, sizeof(__pyx_k_CythonModules_Linux), 0, 0, 1, 1},
   {&__pyx_n_s_DataBase, __pyx_k_DataBase, sizeof(__pyx_k_DataBase), 0, 0, 1, 1},
@@ -22366,38 +22652,41 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 0, 1, 0},
   {&__pyx_kp_s__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 0, 1, 0},
   {&__pyx_kp_s__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 0, 1, 0},
-  {&__pyx_n_s_ae, __pyx_k_ae, sizeof(__pyx_k_ae), 0, 0, 1, 1},
   {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
   {&__pyx_n_s_arithmetic_analyze, __pyx_k_arithmetic_analyze, sizeof(__pyx_k_arithmetic_analyze), 0, 0, 1, 1},
-  {&__pyx_n_s_be, __pyx_k_be, sizeof(__pyx_k_be), 0, 0, 1, 1},
+  {&__pyx_n_s_blue, __pyx_k_blue, sizeof(__pyx_k_blue), 0, 0, 1, 1},
+  {&__pyx_n_s_blue_L, __pyx_k_blue_L, sizeof(__pyx_k_blue_L), 0, 0, 1, 1},
+  {&__pyx_n_s_bm, __pyx_k_bm, sizeof(__pyx_k_bm), 0, 0, 1, 1},
+  {&__pyx_n_s_bm_configure, __pyx_k_bm_configure, sizeof(__pyx_k_bm_configure), 0, 0, 1, 1},
   {&__pyx_kp_s_boolean, __pyx_k_boolean, sizeof(__pyx_k_boolean), 0, 0, 1, 0},
   {&__pyx_n_s_calculations, __pyx_k_calculations, sizeof(__pyx_k_calculations), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_color, __pyx_k_color, sizeof(__pyx_k_color), 0, 0, 1, 1},
   {&__pyx_n_s_colorama, __pyx_k_colorama, sizeof(__pyx_k_colorama), 0, 0, 1, 1},
   {&__pyx_kp_s_complex, __pyx_k_complex, sizeof(__pyx_k_complex), 0, 0, 1, 0},
+  {&__pyx_n_s_cyan, __pyx_k_cyan, sizeof(__pyx_k_cyan), 0, 0, 1, 1},
+  {&__pyx_n_s_cyan_L, __pyx_k_cyan_L, sizeof(__pyx_k_cyan_L), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_kp_s_dictionary, __pyx_k_dictionary, sizeof(__pyx_k_dictionary), 0, 0, 1, 0},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
+  {&__pyx_n_s_fg, __pyx_k_fg, sizeof(__pyx_k_fg), 0, 0, 1, 1},
   {&__pyx_kp_s_float, __pyx_k_float, sizeof(__pyx_k_float), 0, 0, 1, 0},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
-  {&__pyx_n_s_ge, __pyx_k_ge, sizeof(__pyx_k_ge), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
-  {&__pyx_n_s_ie, __pyx_k_ie, sizeof(__pyx_k_ie), 0, 0, 1, 1},
+  {&__pyx_n_s_green, __pyx_k_green, sizeof(__pyx_k_green), 0, 0, 1, 1},
+  {&__pyx_n_s_green_L, __pyx_k_green_L, sizeof(__pyx_k_green_L), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_kp_s_integer, __pyx_k_integer, sizeof(__pyx_k_integer), 0, 0, 1, 0},
-  {&__pyx_n_s_ke, __pyx_k_ke, sizeof(__pyx_k_ke), 0, 0, 1, 1},
-  {&__pyx_n_s_le, __pyx_k_le, sizeof(__pyx_k_le), 0, 0, 1, 1},
   {&__pyx_n_s_line, __pyx_k_line, sizeof(__pyx_k_line), 0, 0, 1, 1},
   {&__pyx_kp_s_list, __pyx_k_list, sizeof(__pyx_k_list), 0, 0, 1, 0},
   {&__pyx_n_s_logical, __pyx_k_logical, sizeof(__pyx_k_logical), 0, 0, 1, 1},
+  {&__pyx_n_s_magenta, __pyx_k_magenta, sizeof(__pyx_k_magenta), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_master, __pyx_k_master, sizeof(__pyx_k_master), 0, 0, 1, 1},
   {&__pyx_n_s_mathematics, __pyx_k_mathematics, sizeof(__pyx_k_mathematics), 0, 0, 1, 1},
-  {&__pyx_n_s_me, __pyx_k_me, sizeof(__pyx_k_me), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_nc, __pyx_k_nc, sizeof(__pyx_k_nc), 0, 0, 1, 1},
-  {&__pyx_n_s_ne, __pyx_k_ne, sizeof(__pyx_k_ne), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_kp_s_none, __pyx_k_none, sizeof(__pyx_k_none), 0, 0, 1, 0},
   {&__pyx_n_s_numerical_value, __pyx_k_numerical_value, sizeof(__pyx_k_numerical_value), 0, 0, 1, 1},
@@ -22416,6 +22705,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_kp_s_range_2, __pyx_k_range_2, sizeof(__pyx_k_range_2), 0, 0, 1, 0},
+  {&__pyx_n_s_red, __pyx_k_red, sizeof(__pyx_k_red), 0, 0, 1, 1},
+  {&__pyx_n_s_red_L, __pyx_k_red_L, sizeof(__pyx_k_red_L), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
@@ -22423,24 +22714,24 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_return, __pyx_k_return, sizeof(__pyx_k_return), 0, 0, 1, 1},
   {&__pyx_n_s_script_MATHS, __pyx_k_script_MATHS, sizeof(__pyx_k_script_MATHS), 0, 0, 1, 1},
   {&__pyx_n_s_script_PARXER, __pyx_k_script_PARXER, sizeof(__pyx_k_script_PARXER), 0, 0, 1, 1},
+  {&__pyx_n_s_script_STDIN_LinuxSTDIN, __pyx_k_script_STDIN_LinuxSTDIN, sizeof(__pyx_k_script_STDIN_LinuxSTDIN), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_kp_s_string, __pyx_k_string, sizeof(__pyx_k_string), 0, 0, 1, 0},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
-  {&__pyx_n_s_te, __pyx_k_te, sizeof(__pyx_k_te), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_kp_s_tuple, __pyx_k_tuple, sizeof(__pyx_k_tuple), 0, 0, 1, 0},
   {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
-  {&__pyx_n_s_ve, __pyx_k_ve, sizeof(__pyx_k_ve), 0, 0, 1, 1},
+  {&__pyx_n_s_yellow_L, __pyx_k_yellow_L, sizeof(__pyx_k_yellow_L), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 43, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 55, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 122, __pyx_L1_error)
-  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 317, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 318, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -22450,36 +22741,36 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "arithmetic_analyze.pyx":136
+  /* "arithmetic_analyze.pyx":137
  *                                                     self.DataBase, historyOfOperators, self.line ).MATHS_OPERATIONS()
  * 
  *                                 if error [ None, '' ]:             # <<<<<<<<<<<<<<
  *                                     self.numeric.append( _return_ )
  *                                     self.calculations   = []
  */
-  __pyx_tuple__4 = PyTuple_Pack(2, Py_None, __pyx_kp_s_); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(2, Py_None, __pyx_kp_s_); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "arithmetic_analyze.pyx":198
+  /* "arithmetic_analyze.pyx":199
  *                 else:
  *                     sign                = ''
  *                     operators           = operators[ : ]             # <<<<<<<<<<<<<<
  *                     _return_, error     = ARRITHMETIC_DEEP_CHECKING( self.master, self.Value[ i ],
  *                                                         self.operators, self.DataBase, self.line ).INIT( MainString )
  */
-  __pyx_slice__5 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_slice__5 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__5);
   __Pyx_GIVEREF(__pyx_slice__5);
 
-  /* "arithmetic_analyze.pyx":616
- *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( color.be, color.te, color.be)
- *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(color.be, color.be, color.be)
- *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(color.be, color.ge, color.be)             # <<<<<<<<<<<<<<
- *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(color.be, color.le, color.be)
+  /* "arithmetic_analyze.pyx":617
+ *         elif type( master_init ) == type( dict() )      :   _return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.magenta, bm.fg.blue)
+ *         elif type( master_init ) == type( str() )       :   _return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.blue, bm.fg.blue)
+ *         elif type( master_init ) == type( range( 1 ) )  :   _return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green, bm.fg.blue)             # <<<<<<<<<<<<<<
+ *         elif type( master_init ) == type( None )        :   _return_ = '{}{}none(){}'.format(bm.fg.blue, bm.fg.red, bm.fg.blue)
  * 
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_int_1); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 616, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_int_1); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 617, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
@@ -22566,54 +22857,54 @@ static int __Pyx_modinit_type_init_code(void) {
   /*--- Type init code ---*/
   __pyx_vtabptr_18arithmetic_analyze_ARITHMETIC = &__pyx_vtable_18arithmetic_analyze_ARITHMETIC;
   __pyx_vtable_18arithmetic_analyze_ARITHMETIC.CHECK = (PyObject *(*)(struct __pyx_obj_18arithmetic_analyze_ARITHMETIC *, PyObject *, int __pyx_skip_dispatch))__pyx_f_18arithmetic_analyze_10ARITHMETIC_CHECK;
-  if (PyType_Ready(&__pyx_type_18arithmetic_analyze_ARITHMETIC) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_18arithmetic_analyze_ARITHMETIC) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_18arithmetic_analyze_ARITHMETIC.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_18arithmetic_analyze_ARITHMETIC.tp_dictoffset && __pyx_type_18arithmetic_analyze_ARITHMETIC.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_18arithmetic_analyze_ARITHMETIC.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_18arithmetic_analyze_ARITHMETIC.tp_dict, __pyx_vtabptr_18arithmetic_analyze_ARITHMETIC) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ARITHMETIC, (PyObject *)&__pyx_type_18arithmetic_analyze_ARITHMETIC) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18arithmetic_analyze_ARITHMETIC) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_18arithmetic_analyze_ARITHMETIC.tp_dict, __pyx_vtabptr_18arithmetic_analyze_ARITHMETIC) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ARITHMETIC, (PyObject *)&__pyx_type_18arithmetic_analyze_ARITHMETIC) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18arithmetic_analyze_ARITHMETIC) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __pyx_ptype_18arithmetic_analyze_ARITHMETIC = &__pyx_type_18arithmetic_analyze_ARITHMETIC;
   __pyx_vtabptr_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING = &__pyx_vtable_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING;
   __pyx_vtable_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING.INIT = (PyObject *(*)(struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *, PyObject *))__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT;
   __pyx_vtable_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING.INIT_INIT = (PyObject *(*)(struct __pyx_obj_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING *, PyObject *))__pyx_f_18arithmetic_analyze_25ARRITHMETIC_DEEP_CHECKING_INIT_INIT;
-  if (PyType_Ready(&__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING.tp_dictoffset && __pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING.tp_dict, __pyx_vtabptr_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ARRITHMETIC_DEEP_CHECKING, (PyObject *)&__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING.tp_dict, __pyx_vtabptr_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ARRITHMETIC_DEEP_CHECKING, (PyObject *)&__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING) < 0) __PYX_ERR(0, 222, __pyx_L1_error)
   __pyx_ptype_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING = &__pyx_type_18arithmetic_analyze_ARRITHMETIC_DEEP_CHECKING;
   __pyx_vtabptr_18arithmetic_analyze_FINAL_VALUE = &__pyx_vtable_18arithmetic_analyze_FINAL_VALUE;
   __pyx_vtable_18arithmetic_analyze_FINAL_VALUE.GET_DATA = (PyObject *(*)(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *, PyObject *, struct __pyx_opt_args_18arithmetic_analyze_11FINAL_VALUE_GET_DATA *__pyx_optional_args))__pyx_f_18arithmetic_analyze_11FINAL_VALUE_GET_DATA;
-  __pyx_vtable_18arithmetic_analyze_FINAL_VALUE.CONVERSION = (PyObject *(*)(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *, PyObject *))__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION;
-  if (PyType_Ready(&__pyx_type_18arithmetic_analyze_FINAL_VALUE) < 0) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_vtable_18arithmetic_analyze_FINAL_VALUE.CONVERSION = (PyObject *(*)(struct __pyx_obj_18arithmetic_analyze_FINAL_VALUE *, PyObject *, int __pyx_skip_dispatch))__pyx_f_18arithmetic_analyze_11FINAL_VALUE_CONVERSION;
+  if (PyType_Ready(&__pyx_type_18arithmetic_analyze_FINAL_VALUE) < 0) __PYX_ERR(0, 546, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_18arithmetic_analyze_FINAL_VALUE.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_18arithmetic_analyze_FINAL_VALUE.tp_dictoffset && __pyx_type_18arithmetic_analyze_FINAL_VALUE.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_18arithmetic_analyze_FINAL_VALUE.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_18arithmetic_analyze_FINAL_VALUE.tp_dict, __pyx_vtabptr_18arithmetic_analyze_FINAL_VALUE) < 0) __PYX_ERR(0, 545, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_FINAL_VALUE, (PyObject *)&__pyx_type_18arithmetic_analyze_FINAL_VALUE) < 0) __PYX_ERR(0, 545, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18arithmetic_analyze_FINAL_VALUE) < 0) __PYX_ERR(0, 545, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_18arithmetic_analyze_FINAL_VALUE.tp_dict, __pyx_vtabptr_18arithmetic_analyze_FINAL_VALUE) < 0) __PYX_ERR(0, 546, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_FINAL_VALUE, (PyObject *)&__pyx_type_18arithmetic_analyze_FINAL_VALUE) < 0) __PYX_ERR(0, 546, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18arithmetic_analyze_FINAL_VALUE) < 0) __PYX_ERR(0, 546, __pyx_L1_error)
   __pyx_ptype_18arithmetic_analyze_FINAL_VALUE = &__pyx_type_18arithmetic_analyze_FINAL_VALUE;
-  if (PyType_Ready(&__pyx_type_18arithmetic_analyze_color) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_18arithmetic_analyze_color) < 0) __PYX_ERR(0, 623, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_18arithmetic_analyze_color.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_18arithmetic_analyze_color.tp_dictoffset && __pyx_type_18arithmetic_analyze_color.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_18arithmetic_analyze_color.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_color, (PyObject *)&__pyx_type_18arithmetic_analyze_color) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18arithmetic_analyze_color) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_color, (PyObject *)&__pyx_type_18arithmetic_analyze_color) < 0) __PYX_ERR(0, 623, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18arithmetic_analyze_color) < 0) __PYX_ERR(0, 623, __pyx_L1_error)
   __pyx_ptype_18arithmetic_analyze_color = &__pyx_type_18arithmetic_analyze_color;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -22848,9 +23139,9 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "arithmetic_analyze.pyx":1
- * from script.PARXER          import numerical_value as nv             # <<<<<<<<<<<<<<
- * from colorama               import Fore, Style
- * from script.MATHS           import mathematics
+ * from script.PARXER                      import numerical_value as nv             # <<<<<<<<<<<<<<
+ * from colorama                           import Fore, Style
+ * from script.MATHS                       import mathematics
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -22867,10 +23158,10 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "arithmetic_analyze.pyx":2
- * from script.PARXER          import numerical_value as nv
- * from colorama               import Fore, Style             # <<<<<<<<<<<<<<
- * from script.MATHS           import mathematics
- * from CythonModules.Linux    import NumeriCal  as nc
+ * from script.PARXER                      import numerical_value as nv
+ * from colorama                           import Fore, Style             # <<<<<<<<<<<<<<
+ * from script.MATHS                       import mathematics
+ * from CythonModules.Linux                import NumeriCal  as nc
  */
   __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -22894,11 +23185,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "arithmetic_analyze.pyx":3
- * from script.PARXER          import numerical_value as nv
- * from colorama               import Fore, Style
- * from script.MATHS           import mathematics             # <<<<<<<<<<<<<<
- * from CythonModules.Linux    import NumeriCal  as nc
- * 
+ * from script.PARXER                      import numerical_value as nv
+ * from colorama                           import Fore, Style
+ * from script.MATHS                       import mathematics             # <<<<<<<<<<<<<<
+ * from CythonModules.Linux                import NumeriCal  as nc
+ * from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -22915,10 +23206,10 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "arithmetic_analyze.pyx":4
- * from colorama               import Fore, Style
- * from script.MATHS           import mathematics
- * from CythonModules.Linux    import NumeriCal  as nc             # <<<<<<<<<<<<<<
- * 
+ * from colorama                           import Fore, Style
+ * from script.MATHS                       import mathematics
+ * from CythonModules.Linux                import NumeriCal  as nc             # <<<<<<<<<<<<<<
+ * from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
  * 
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
@@ -22935,15 +23226,36 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
+  /* "arithmetic_analyze.pyx":5
+ * from script.MATHS                       import mathematics
+ * from CythonModules.Linux                import NumeriCal  as nc
+ * from script.STDIN.LinuxSTDIN 	        import bm_configure as bm             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_bm_configure);
+  __Pyx_GIVEREF(__pyx_n_s_bm_configure);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_bm_configure);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_script_STDIN_LinuxSTDIN, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_bm_configure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_bm, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
   /* "(tree fragment)":1
  * def __pyx_unpickle_ARITHMETIC(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_18arithmetic_analyze_1__pyx_unpickle_ARITHMETIC, NULL, __pyx_n_s_arithmetic_analyze); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_ARITHMETIC, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_18arithmetic_analyze_1__pyx_unpickle_ARITHMETIC, NULL, __pyx_n_s_arithmetic_analyze); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_ARITHMETIC, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":11
  *         __pyx_unpickle_ARITHMETIC__set_state(<ARITHMETIC> __pyx_result, __pyx_state)
@@ -22952,20 +23264,20 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.ArithmeticOperators = __pyx_state[0]; __pyx_result.DataBase = __pyx_state[1]; __pyx_result.Value = __pyx_state[2]; __pyx_result.calculation = __pyx_state[3]; __pyx_result.line = __pyx_state[4]; __pyx_result.master = __pyx_state[5]; __pyx_result.numeric = __pyx_state[6]
  *     if len(__pyx_state) > 7 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_18arithmetic_analyze_3__pyx_unpickle_ARRITHMETIC_DEEP_CHECKING, NULL, __pyx_n_s_arithmetic_analyze); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_ARRITHMETIC_DEEP, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_18arithmetic_analyze_3__pyx_unpickle_ARRITHMETIC_DEEP_CHECKING, NULL, __pyx_n_s_arithmetic_analyze); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_ARRITHMETIC_DEEP, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_FINAL_VALUE(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_18arithmetic_analyze_5__pyx_unpickle_FINAL_VALUE, NULL, __pyx_n_s_arithmetic_analyze); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_FINAL_VALUE, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_18arithmetic_analyze_5__pyx_unpickle_FINAL_VALUE, NULL, __pyx_n_s_arithmetic_analyze); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_FINAL_VALUE, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":11
  *         __pyx_unpickle_FINAL_VALUE__set_state(<FINAL_VALUE> __pyx_result, __pyx_state)
@@ -22974,20 +23286,20 @@ if (!__Pyx_RefNanny) {
  *     __pyx_result.DataBase = __pyx_state[0]; __pyx_result.line = __pyx_state[1]; __pyx_result.logical = __pyx_state[2]; __pyx_result.master = __pyx_state[3]
  *     if len(__pyx_state) > 4 and hasattr(__pyx_result, '__dict__'):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_18arithmetic_analyze_7__pyx_unpickle_color, NULL, __pyx_n_s_arithmetic_analyze); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_color, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_18arithmetic_analyze_7__pyx_unpickle_color, NULL, __pyx_n_s_arithmetic_analyze); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_color, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "arithmetic_analyze.pyx":1
- * from script.PARXER          import numerical_value as nv             # <<<<<<<<<<<<<<
- * from colorama               import Fore, Style
- * from script.MATHS           import mathematics
+ * from script.PARXER                      import numerical_value as nv             # <<<<<<<<<<<<<<
+ * from colorama                           import Fore, Style
+ * from script.MATHS                       import mathematics
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /*--- Wrapped vars code ---*/
 
