@@ -1,33 +1,7 @@
 from script.PARXER                                          import numerical_value
 from script.PARXER.VAR_NAME                                 import get_var_name
 from script.PARXER.PRINT                                    import show_data
-from script.LEXER.FUNCTION                                  import print_value
-from statement                                              import mainStatement as MS
-from script.STDIN.WinSTDIN                                  import stdin
-from script.PARXER.PARXER_FUNCTIONS._IF_                    import if_statement, if_inter
-from script.PARXER.PARXER_FUNCTIONS._IF_                    import end_else_elif
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import unless_statement, unless_interpreter
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import end_else_elif as _end_else_elif_
-from script.PARXER.PARXER_FUNCTIONS._SWITCH_                import end_case_default, switch_statement
-from script.PARXER.PARXER_FUNCTIONS.WHILE                   import while_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_                   import end_for_else, for_interpreter
-from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_         import comment as cmt
-from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_         import cmt_interpreter as cmt_int
-from script.PARXER.PARXER_FUNCTIONS._TRY_                   import try_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_                   import for_try
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF as wIF
-from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless as wU
-from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
-from script.PARXER.PARXER_FUNCTIONS._FOR_                   import for_block_treatment, for_begin
-from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS               import def_interpreter
-from script.PARXER.PARXER_FUNCTIONS.CLASSES                 import class_interpreter
-from script.PARXER                                          import module_load_treatment 
-from script.STDIN.LinuxSTDIN                                import bm_configure as bm
-from src.modulesLoading                                     import modules, moduleMain 
-from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
-from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
-from src.functions.windows                                  import windowsDef as WD
-from src.classes.windows                                    import windowsClass as WC
+from script.PARXER                                          import parxerError as pE
 
 class ASSEMBLY( ):
     def __init__(self, master: dict, data_base: dict, line: int ):
@@ -51,6 +25,8 @@ class ASSEMBLY( ):
                  interpreter    : bool = False,
                  locked         : bool = False
                  ):
+        
+        
         self.error          = None
         self._return_       = None
         self.key_return     = False
@@ -58,8 +34,7 @@ class ASSEMBLY( ):
         if self._if_egal_ == 'comment' : pass
 
         if self._if_egal_ is None:
-            self._return_, self.error = self.num_parxer.NUMERICAL( self.master, self.data_base,
-                                                                   self.line ).ANALYSE( main_string )
+            self._return_, self.error = self.num_parxer.NUMERICAL( self.master, self.data_base, self.line ).ANALYSE( main_string )
             if self.error is None:
                 if not self.data_base[ 'no_printed_values' ]:
                     if self._return_ is not None:
@@ -164,7 +139,7 @@ class ASSEMBLY( ):
                                                         self.__value__[ w ] = self._return_[ i ]
 
                                     except TypeError:
-                                        self.error = ERRORS( self.line ).ERROR1( self.__value__, 'a list()')
+                                        self.error = pE.ERRORS( self.line ).ERROR1( self.__value__, 'a list()')
                                         break
 
                                 if self.global_vars:
@@ -221,7 +196,7 @@ class ASSEMBLY( ):
                         }
                         self.data_base['matrix'] = None
                     else:
-                        self.error = ERRORS( self.line ).ERROR2( self.data_base[ 'assigment' ] )
+                        self.error = pE.ERRORS( self.line ).ERROR2( self.data_base[ 'assigment' ] )
                         self.data_base[ 'no_printed_values' ]   = []
                         self.data_base[ 'assigment' ]           = None
                 else: pass
