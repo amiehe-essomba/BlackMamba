@@ -28,7 +28,7 @@ class windows:
         # main data base
         self.data_base  = data_base
         # string module analyses 
-        self.analyse    = control_string.STRING_ANALYSE({}, 1)
+        self.analyse    = control_string.STRING_ANALYSE(self.data_base, 1)
 
     def terminal(self, c: str = '', terminal_name : str = 'pegasus'):
         # input initialization
