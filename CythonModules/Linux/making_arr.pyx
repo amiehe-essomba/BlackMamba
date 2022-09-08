@@ -1,7 +1,7 @@
 from colorama 			    			import Fore, Style
 from CythonModules.Linux 				import fileError as fe 
 from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
-#from CythonModules.Linux		import arithmetic_analyze as aa
+#from CythonModules.Linux				import arithmetic_analyze as aa
 
 
 cdef DIFF( str string1, str string2 ):
@@ -304,12 +304,12 @@ cdef class Arithmetic:
 		if len( self.listOfValue ) == len( Index ):
 			if self.listOfValue:
 				for i in range( len( self.listOfValue ) ):
-					if self.listOfValue[ i ] in type1  and Index[ i ] in type1 :
+					if type(self.listOfValue[ i ]) in type1  and type(Index[ i ]) in type1 :
 						if inv is False:
 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
 						else:
 							final.append( (self.listOfValue[ i ] - Index[ i ]) )
-					elif self.listOfValue[ i ] in type2  and Index[ i ] in type2 :
+					elif type(self.listOfValue[ i ]) in type2  and type(Index[ i ]) in type2 :
 						if inv is False:
 							final.append( DIFF( self.listOfValue[ i ] , Index[ i ] ) )
 						else:
@@ -323,8 +323,8 @@ cdef class Arithmetic:
 
 		if not error: 
 			error = None
-			if ob_type == 'list' : return self.listOfValue[ : ], error
-			else: return tuple( self.listOfValue[ : ] ), error
+			if ob_type == 'list' : return final, error
+			else: return tuple( final ), error
 		else: return None, error
 	
 	cpdef MulListFloat( self , float  Index, str ob_type = 'list')						:
@@ -1090,6 +1090,9 @@ cdef class ERRORS	:
 			result1 
 			result2 
         
+		result1 = ''
+		result2 = ''
+
 		if type( object1 ) in [ type( list() ), type( tuple()) ]:
 			if len( object1 ) < 4 : result1 = object1
 			else: 

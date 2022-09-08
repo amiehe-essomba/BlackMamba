@@ -13,8 +13,13 @@ setup(
             "loop_for.pyx",
             'NumeriCal.pyx',
             'arithmetic_analyze.pyx',
+            'fileError.pyx',
             'making_arr.pyx',
-            'fileError.pyx'
+            'bm_statistics.pyx',
+            'help.pyx',
+            'Tuple.pyx',
+            'if_statement.pyx',
+            'array_to_list.pyx'
             ], 
         annotate = True
         )
