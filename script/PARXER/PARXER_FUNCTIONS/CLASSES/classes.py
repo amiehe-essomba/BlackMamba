@@ -193,7 +193,6 @@ class EXTERNAL_DEF_STATEMENT:
 
         return self.error
 
-
 class INTERNAL_DEF_STATTEMENT:
     def __init__(self, master: any, data_base: dict, line: int, extra: dict):
         self.master             = master

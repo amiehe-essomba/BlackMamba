@@ -89,11 +89,11 @@ class CLASSIFICATION:
                 self.DataBase[ 'modulesImport' ]['variables']['vars'][self.index]     = self.vars.copy()
                 self.DataBase[ 'modulesImport' ]['variables']['values'][self.index]   = self._values_.copy()
                 self.DataBase[ 'modulesImport' ]['modules'][self.index]               = info['module_main'][ 0 ]
-                                
+
+            # only classes
             if    self.db[ 'class_names']  and not self.db[ 'func_names' ]  :
                 self.star       = False
                 if  info['module_load'] is not None:
-                    
                     for x, name in enumerate(info['module_main']):
                         self.idd        = 0
                         for mod in info['module_load']:
@@ -183,7 +183,7 @@ class CLASSIFICATION:
                         
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data
-            
+            # only functions
             elif  self.db[ 'func_names' ]  and not self.db[ 'class_names' ] :
                 self.star       = False
                 if  info['module_load'] is not None:
@@ -280,7 +280,7 @@ class CLASSIFICATION:
                         
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data
-             
+            # classes and functions
             elif  self.db[ 'func_names' ]  and  self.db[ 'class_names' ]    :
                 self.star = False
                 if  info['module_load'] is not None:
@@ -398,7 +398,7 @@ class CLASSIFICATION:
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data1
                     del self.data2
-            
+            # if not classes and functions
             else: self.error =  er.ERRORS( self.line ).ERROR11( info['module_main'][0] )
 
         else: 
@@ -426,7 +426,6 @@ class INIT:
         self.db = db
         
     def INIT(self):
-        
         functionNames, functions = db.DATA_BASE().FUNCTIONS()
         
         self.db['global_vars']['vars']                          = []

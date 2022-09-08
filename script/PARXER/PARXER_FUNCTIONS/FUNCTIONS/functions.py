@@ -17,9 +17,9 @@ from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
 from src.functions                                      import error as er
 from src.functions                                      import function, loading, set_openfile, updating_data
-import  numpy as np
-try:  from CythonModules.Windows                        import fileError as fe 
-except ImportError:  from CythonModules.Linux           import fileError as fe 
+from functions                                          import internalDef as ID
+from statement.comment                                  import externalCmt
+from script.PARXER.PARXER_FUNCTIONS.WHILE               import while_statement
 try:  from CythonModules.Linux                          import loop_for
 except ImportError: from CythonModules.Windows          import loop_for
 
@@ -73,10 +73,8 @@ class FUNCTION_TREATMENT:
 
                     if self.error is None:
                         self.new_data_base              = self._new_data_base_[ 'data_base' ]
-                        
                         self.new_data_base              = FUNCTION_TREATMENT( self.master, self.data_base, self.line ).INIT_FUNCTION( initialize_data,
                                                                                             self.new_data_base, self.function_name )
-                        
                         self.new_data_base[ 'print' ]   = []
                         self.all_data_analyses  = self.data_base[ 'functions' ][ self.function_location ][ self.function_name ]
                         self.all_data_analyses  = self.all_data_analyses[ 'history_of_data' ]
@@ -139,11 +137,9 @@ class FUNCTION_TREATMENT:
                         else:
                             self.empty_values = self.new_data_base[ 'empty_values' ]
                             self.error = er.ERRORS( self.line ).ERROR15( self.function_name, self.empty_values )
-                            
                     else: pass
                 else: pass
             else: pass
-
         elif self.function_name in self.library[ 'func_names' ]     :
             
             self.data_base[ 'assigment' ] = self.function_name+'( )'
@@ -164,7 +160,9 @@ class FUNCTION_TREATMENT:
                         self.new_data_base              = self._new_data_base_[ 'data_base' ]
                         self.new_data_base              = FUNCTION_TREATMENT( self.master, self.data_base, self.line ).INIT_FUNCTION(initialize_data,
                                                                                                     self.new_data_base, self.function_name, lib = True)
-                        
+                        # updating modules loaded
+                        updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION(  self.data_base, self.new_data_base)
+
                         self.new_data_base[ 'print' ]   = []
                         try:
                             self.all_data_analyses  = self.library[ 'functions' ][ self.function_location ][ self.function_name ]
@@ -243,7 +241,6 @@ class FUNCTION_TREATMENT:
                     else: pass
                 else: pass
             else: pass
-       
         else: 
             self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
     
@@ -275,7 +272,9 @@ class FUNCTION_TREATMENT:
                                 self.all_data_analyses  = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']][ self.function_name ]
                                 self.all_data_analyses  = self.all_data_analyses[ 'history_of_data' ]
                                 self.keyActivation      = False
-                                
+
+                                updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION( self.data_base, self.new_data_base)
+
                                 if self.new_data_base[ 'empty_values' ] is None:
                                     self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
                                                                     self.line).DEF_STATEMENT( 1, self.all_data_analyses )
@@ -411,7 +410,6 @@ class FUNCTION_TREATMENT:
                         else:
                             self.idd = self.old_vars.index( name )
                             self.init_values[ self.idd ] = self.init_values[ i ]
-                
                 else: pass 
                 
                 self.variables[ 'vars' ]            = self.old_vars
@@ -1021,9 +1019,12 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                 self.string                          = self.normal_string
                 
                 if self.active_tab is True:
-                    self.get_block, self.value, self.error = def_end.INTERNAL_BLOCKS( self.string,
-                                        self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation + 1 )
-                    
+                    self.get_block, self.value, self.error = ID.INTERNAL_BLOCKS(string=self.string,
+                                    normal_string=self.normal_string, data_base=self.data_base,  line=self.if_line).BLOCKS(
+                                    tabulation=self.tabulation + 1, function=_type_, interpreter=True,
+                                    class_name=class_name, class_key=class_key,
+                                    func_name=self.data_base['current_func'], loop=True)
+
                     if self.error is None:
                         if   self.get_block == 'any'     :
                             self.space = 0
@@ -1036,43 +1037,49 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                 if self.error is None: pass
                                 else: break
                             else: self.keyPass = True
-
                         elif self.get_block == 'if:'     :
                             self.next_line  = j + 1
                             self.error = if_statement.INTERNAL_IF_LOOP_STATEMENT ( self.master,
                                         self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                self.def_list[ j + 1], _type_ = _type_ )
+                                                    self.def_list[ j + 1], _type_ = _type_, keyPass=self.keyPass )
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'if' )
                                 self.space = 0
-
                             else: break
-                        
+                        elif self.get_block == 'while:'  :
+
+                            self.next_line  = j + 1
+                            self.error = while_statement.EXTERNAL_WHILE_LOOP_STATEMENT( self.master , self.data_base,
+                                            self.line).WHILE_STATEMENT( self.value, self.tabulation + 1, self.def_list[j + 1],
+                                            main_string = self.normal_string[self.tabulation : ], _type_ = _type_, keyPass=self.keyPass )
+
+                            if self.error is None:
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'while' )
+                                self.space = 0
+                            else: break
                         elif self.get_block == 'switch:' :
                             self.next_line  = j + 1
                             self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
                                             self.line ).SWITCH( self.value, self.tabulation + 1,
-                                                                                self.def_list[ j + 1], _type_ = _type_ )
+                                                             self.def_list[ j + 1], _type_ = _type_, keyPass=self.keyPass )
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'switch' )
                                 self.space = 0
 
                             else: break
-                            
                         elif self.get_block == 'unless:' :
                             self.next_line  = j + 1
-                            self.error = unless_statement.INTERNAL_UNLESS_LOOP_STATEMENT( self.master , self.data_base,
+                            self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( self.master , self.data_base,
                                             self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
-                                                                                self.def_list[ j + 1], _type_ = _type_ )
+                                            self.def_list[ j + 1], _type_ = _type_, keyPass = self.keyPass )
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'unless' )
                                 self.space = 0
-
                             else: break
-                        
                         elif self.get_block == 'for:'    :
                             self.next_line  = j + 1
                             self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
@@ -1099,9 +1106,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'for' )
                                 self.space = 0
-
                             else: break
-
                         elif self.get_block == 'try:'    :
                             self.next_line = j + 1
                             
@@ -1113,7 +1118,6 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                 self.history.append( 'try' )
                                 self.space = 0
                             else: break
-                            
                         elif self.get_block == 'begin:'  :
                             self.next_line  = j + 1
                             self.error = cmt.COMMENT_LOOP_STATEMENT( self.master, self.data_base, self.line ).COMMENT( self.tabulation + 1, 
@@ -1126,7 +1130,6 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                 self.after = end_for_else.CHECK_VALUES( self.data_base ).AFTER()
                                 self.error = end_for_else.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
                                 break
-
                         elif self.get_block == 'def:'    :
                             self.db = db.DATA_BASE().STORAGE().copy()
                             self.next_line  = j + 1
@@ -1180,18 +1183,18 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                     
                                 else: break
                             else: break
-                            
                         elif self.get_block == 'empty'   :
                             if self.space <= 2: self.space += 1
                             else:
                                 self.error = er.ERRORS( self.line ).ERROR10()
                                 break
-
+                        elif self.get_block == 'comment_line':
+                            self.store_value.append(self.normal_string)
+                            self.space = 0
                     else: break
-
                 else:
-                    self.get_block, self.value, self.error = def_end.EXTERNAL_BLOCKS( self.string,
-                             self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation )
+                    self.get_block, self.value, self.error = externalCmt.EXTERNAL_BLOCKS( normal_string=self.normal_string,
+                                        data_base=self.data_base, line=self.line).BLOCKS(  tabulation=self.tabulation)
 
                     if self.error is None:
                         if self.get_block   == 'end:'   :
@@ -1202,7 +1205,6 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                             else:
                                 self.error = er.ERRORS(self.line).ERROR17( self.history[ -1 ] )
                                 break
-
                         elif self.get_block == 'empty'  :
                             if self.space <= 2:
                                 self.space += 1
@@ -1265,8 +1267,11 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                 self.string                          = self.normal_string
 
                 if self.active_tab is True:
-                    self.get_block, self.value, self.error = end_for_else.INTERNAL_BLOCKS( self.string,
-                                        self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation + 1 )
+                    self.get_block, self.value, self.error = ID.INTERNAL_BLOCKS(string=self.string,
+                                normal_string=self.normal_string, data_base=self.data_base, line=self.if_line).BLOCKS(
+                                tabulation=self.tabulation + 1, function=_type_, interpreter=True,
+                                class_name=class_name, class_key=class_key,
+                                func_name=self.data_base['current_func'], loop=False)
                     
                     if self.error is None:
                         if self.get_block   == 'any'     :
@@ -1278,43 +1283,38 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                                 if self.error is None: pass
                                 else: break
                             else: self.keyPass = True
-
                         elif self.get_block == 'if:'     :
                             self.next_line  = j + 1
                             self.error = if_statement.INTERNAL_IF_LOOP_STATEMENT ( self.master,
                                         self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
-                                                                                self.def_list[ j + 1], _type_ = _type_ )
+                                                        self.def_list[ j + 1], _type_ = _type_, keyPass = self.keyPass )
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'if' )
                                 self.space = 0
-
                             else: break
-
                         elif self.get_block == 'switch:' :
                             self.next_line  = j + 1
                             self.error = switch_statement.SWITCH_LOOP_STATEMENT( self.master , self.data_base,
                                             self.line ).SWITCH( self.value, self.tabulation + 1,
-                                                                                self.def_list[ j + 1], _type_ = _type_ )
+                                                     self.def_list[ j + 1], _type_ = _type_, keyPass = self.keyPass )
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'switch' )
                                 self.space = 0
 
                             else: break
-                            
                         elif self.get_block == 'unless:' :
                             self.next_line  = j + 1
-                            self.error = unless_statement.EXTERNAL_UNLESS_LOOP_STATEMENT( self.master , self.data_base,
+                            self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master , self.data_base,
                                             self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
-                                                                                self.def_list[ j + 1], _type_ = _type_ )
+                                                              self.def_list[ j + 1], _type_ = _type_, keyPass = self.keyPass )
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'unless' )
                                 self.space = 0
 
                             else: break
-
                         elif self.get_block == 'for:'    :
                             self.next_line  = j + 1
                             self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
@@ -1343,7 +1343,17 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                                 self.space = 0
 
                             else: break
+                        elif self.get_block == 'while:'  :
+                            self.next_line = j + 1
+                            self.error = while_statement.EXTERNAL_WHILE_LOOP_STATEMENT(self.master, self.data_base,
+                                         self.line).WHILE_STATEMENT(  self.value, self.tabulation + 1, self.def_list[j + 1],
+                                        main_string=self.normal_string[ self.tabulation : ], _type_=_type_, keyPass = self.keyPass)
 
+                            if self.error is None:
+                                self.store_value.append(self.normal_string)
+                                self.history.append('while')
+                                self.space = 0
+                            else:  break
                         elif self.get_block == 'try:'    :
                             self.next_line = j + 1
                             
@@ -1355,7 +1365,6 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                                 self.history.append( 'try' )
                                 self.space = 0
                             else: break
-                        
                         elif self.get_block == 'begin:'  :
                             self.next_line  = j + 1
                             self.error = cmt.COMMENT_LOOP_STATEMENT( self.master, self.data_base, self.line ).COMMENT( self.tabulation + 1, 
@@ -1364,18 +1373,19 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                                 self.store_value.append( self.normal_string )
                                 self.history.append( 'begin' )
                                 self.space = 0
-
                             else: break
-
                         elif self.get_block == 'empty'   :
                             if self.space <= 2: self.space += 1
                             else:
                                 self.error = er.ERRORS( self.line ).ERROR10()
                                 break
+                        elif self.get_block == 'comment_line':
+                            self.store_value.append(self.normal_string)
+                            self.space = 0
                     else: break
                 else:
-                    self.get_block, self.value, self.error = def_end.EXTERNAL_BLOCKS( self.string,
-                             self.normal_string, self.data_base, self.line).BLOCKS( self.tabulation )
+                    self.get_block, self.value, self.error = externalCmt.EXTERNAL_BLOCKS( normal_string=self.normal_string,
+                                            data_base=self.data_base, line=self.line).BLOCKS(tabulation=self.tabulation)
 
                     if self.error is None:
                         if self.get_block   == 'end:'   :
@@ -1386,14 +1396,12 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                             else:
                                 self.error = er.ERRORS(self.line).ERROR17( self.history[ -1 ] )
                                 break
-
                         elif self.get_block == 'empty'  :
                             if self.space <= 2:
                                 self.space += 1
                             else:
                                 self.error = er.ERRORS( self.line ).ERROR10()
                                 break
-
                     else: break
             else:
                 self.if_line        += 1

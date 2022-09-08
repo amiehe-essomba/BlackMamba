@@ -6,6 +6,7 @@ from script.LEXER.FUNCTION                      import main
 from script.STDIN.LinuxSTDIN                    import bm_configure as bm
 from script                                     import control_string
 from script.PARXER.PARXER_FUNCTIONS._IF_        import if_inter
+from src.classes                                import db
 try:
     from CythonModules.Windows                  import fileError as fe
 except ImportError:
@@ -78,7 +79,7 @@ class EXTERNAL_DEF_STATEMENT:
                                     self.NewLIST    = stdin.STDIN(self.data_base, self.line ).GROUPBY(k, self.loop_list[self.next_line : ],
                                                                                                     index = 'int', _class_ = True)
                                     
-                                    self.db = classes.DB.def_data_base
+                                    self.db = db.DB.def_data_base
                                     self.lexer, _, self.error = main.MAIN(self.value, self.db, self.line).MAIN( _type_ = 'class' )
                                     
                                     if self.error is None:
@@ -222,7 +223,7 @@ class EXTERNAL_DEF_STATEMENT:
         self.arguments          = self.functions[ 'arguments' ]
         self.values             = self.functions[ 'value' ]
         self.history            = self.functions[ 'history_of_data' ]
-        self.db                 =  classes.DB.def_data_base
+        self.db                 =  db.DB.def_data_base
         self.func_name          = self.db[ 'func_names' ][ 0 ]
         self.class_name         = self.data_base[ 'current_class' ]
 

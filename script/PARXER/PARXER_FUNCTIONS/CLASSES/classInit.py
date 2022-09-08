@@ -1,4 +1,3 @@
-from imp import load_dynamic
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import error as er

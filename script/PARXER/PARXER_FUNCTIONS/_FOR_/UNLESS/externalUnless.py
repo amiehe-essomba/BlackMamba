@@ -1,0 +1,267 @@
+from script                                             import control_string
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_try, for_switch, for_begin, for_statement
+from script.LEXER.FUNCTION                              import main
+from script.STDIN.LinuxSTDIN                            import bm_configure as bm
+from statement                                          import InternalStatement as IS
+from statement                                          import externalUnless as eUnless
+from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import UnlessError
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import WindowsIF as wIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import subWindowsUnless as wU
+
+ke = bm.fg.rbg(255,255,0)
+
+class EXTERNAL_UNLESS:
+    def __init__(self,
+            master      : str,              
+            data_base   : dict,             
+            line        : int ,
+            history     : list,
+            store_value : list,
+            space       : int,    
+            index_else  : int
+            ):
+        
+        # main string
+        self.master             = master
+        # current line in the IDE
+        self.line               = line
+        # data base 
+        self.data_base          = data_base
+        # history of command 
+        self.history            = history
+        # canceling def when any command was not typed
+        self.store_value        = store_value
+        # counting empty line 
+        self.space              = space
+        #canceling def 
+        self.def_cancel         = False
+        #contriling string
+        self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
+        # else block 
+        self.index_else         = index_else
+
+    def UNLESS(self, 
+            bool_value  : bool, 
+            loop        : list,
+            tabulation  : int = 1,
+            _type_      : str = 'conditional',
+            c           : str = '',
+            term        : str = ''
+            ):
+        """
+        :param bool_value:
+        :param tabulation:
+        :param _type_:
+        :return:
+        """
+        
+        ################################################################################################
+        self.if_line            = 0                                             # counting 
+        self.error              = None                                          # error 
+        self.string             = ''                                            # concatented string
+        self.normal_string      = ''                                            # normal string
+        self.end                = ''                                            # canceling deff
+
+        ################################################################################################
+        self.active_tab         = None                                          # activating indentation 
+        self.tabulation         = tabulation                                    # counting indentation 
+        self.max_emtyLine       = 5                                             # max line for empty line
+        self.loop               = loop                                          # storing values
+        self.unless_cancel      = False                                         # canceling while loop
+        ################################################################################################
+        
+
+        for i in range(1): 
+            # concatening string and extraction of string concatenated , tabulation for and indensation and error        
+            self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.master,
+                                                                        tabulation=self.tabulation)
+            if self.error is None:
+                # build normal string 
+                self.normal_string = self.analyse.BUILD_NON_CON(string=self.master, tabulation=self.tabulation)
+                # indentation activated 
+                if self.active_tab is True:
+                    self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string,
+                                    normal_string=self.normal_string, data_base=self.data_base,  line=self.if_line).BLOCKS(
+                                    tabulation=self.tabulation + 1, function=_type_, interpreter=False)
+
+                    if self.error  is None:
+                        # begin block
+                        if self.get_block   == 'begin:'     :
+                            self.store_value.append(self.normal_string)
+                            self.loop.append( ( self.normal_string, True ) )
+                            self._values_, self.error = for_begin.COMMENT_STATEMENT( master=self.master, data_base=self.data_base,
+                                                    line=self.if_line  ).COMMENT( tabulation=self.tabulation + 1, color=self.color )
+                            if self.error is None:
+                                self.history.append( 'begin' )
+                                self.space = 0
+                                self.loop.append( self._values_ )
+                            else: break
+                        # if block
+                        elif self.get_block == 'if:'        :
+                            self.store_value.append( self.normal_string )
+                            self.loop.append((self.normal_string, True))
+                            self._values_, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
+                               bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+
+                            if self.error is None:
+                                self.history.append( 'if' )
+                                self.space = 0
+                                self.loop.append( self._values_ )
+                            else: break
+                        # unless block
+                        elif self.get_block == 'unless:'    :
+                            self.loop.append((self.normal_string, True))
+                            self._values_, self.error = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
+                               bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+
+                            if self.error is None:
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'unless' )
+                                self.space = 0
+                                self.loop.append( self._values_ )
+                            else: break
+                        # for loop
+                        elif self.get_block == 'for:'       :
+                            self.store_value.append(self.normal_string)
+                            self.loop.append( ( self.normal_string, True ) )
+                            
+                            loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( master=self.master,
+                                                        data_base=self.data_base, line=self.if_line ).FOR_STATEMENT( tabulation=self.tabulation+1 )
+                            if self.error is None:
+                                self.history.append( 'for' )
+                                self.space = 0
+                                self.loop.append( (loop, tab, self.error) )
+                            else: break
+                        # try block
+                        elif self.get_block == 'try:'       :
+                            self.store_value.append(self.normal_string)
+                            self.loop.append( ( self.normal_string, True ) )
+                            
+                            self._values_, self.error = for_try.INTERNAL_TRY_STATEMENT( master=self.master,
+                                    data_base=self.data_base, line=self.if_line ).TRY_STATEMENT( tabulation = self.tabulation + 1,
+                                                                                                _type_=_type_)
+
+                            if self.error is None:
+                                self.history.append( 'try' )
+                                self.space = 0
+                                self.loop.append( self._values_ )
+                            else: break
+                        # switch block
+                        elif self.get_block == 'switch:'    :
+                            self.store_value.append(self.normal_string)
+                            self.loop.append((self.normal_string, True))
+                            self._values_, self.error = for_switch.SWITCH_STATEMENT( master=self.master,
+                                        data_base=self.data_base, line=self.if_line ).SWITCH( main_values=self.value,
+                                                                        tabulation=self.tabulation + 1, _type_=_type_)
+                            
+                            if self.error is None:
+                                self.history.append( 'switch' )
+                                self.space = 0
+                                self.loop.append( self._values_ )
+                            else:  break
+                        # empty line
+                        elif self.get_block == 'empty'      :
+                            if self.space <= self.max_emtyLine:
+                                self.space += 1
+                                self.loop.append((self.normal_string, True))
+                            else:
+                                self.error = UnlessError.ERRORS( self.if_line ).ERROR4()
+                                break
+                        # value
+                        elif self.get_block == 'any'        :
+                            self.store_value.append(self.normal_string)
+                            self.space = 0
+                            self.error      = main.SCANNER(master=self.value,data_base=self.data_base,
+                                                        line=self.if_line).SCANNER(_id_ = 1, _type_= _type_, _key_=True)
+                            if self.error is None: self.loop.append( (self.normal_string, True) )
+                            else: break
+                    else: break
+                else:
+                    self.get_block, self.value, self.error = eUnless.EXTERNAL_BLOCKS(string=self.string,
+                                    normal_string=self.normal_string, data_base=self.data_base,
+                                                                        line=self.if_line).BLOCKS(tabulation=self.tabulation)
+
+                    if self.error is None:
+                        # break unless statement
+                        if self.get_block   == 'end:' :
+                            if self.store_value:
+                                del self.store_value[ : ]
+                                del self.history[ : ]
+                                self.loop.append((self.normal_string, False))
+                                self.unless_cancel = True
+                                break
+                            else:
+                                self.error = UnlessError.ERRORS( self.if_line ).ERROR2( self.history[ -1 ])
+                                break
+                        # else block
+                        elif self.get_block == 'else:':
+                            if self.index_else < 1:
+                                if self.store_value:
+                                    self.index_else             += 1
+                                    self.store_value            = []
+                                    self.history.append( 'else' )
+                                    self.loop.append((self.normal_string, False))
+                                else:
+                                    self.error = UnlessError.ERRORS( self.if_line ).ERROR2( self.history[ -1 ] )
+                                    break
+                            else:
+                                self.error = UnlessError.ERRORS( self.if_line ).ERROR3( 'else' )
+                                break
+                        # empty line
+                        elif self.get_block == 'empty':
+                            if self.space <= self.max_emtyLine:
+                                self.space += 1
+                                self.loop.append((self.normal_string, False))
+                            else:
+                                self.error = UnlessError.ERRORS( self.if_line ).ERROR4()
+                                break
+                    else: break
+            else:
+                if self.tabulation == 1: break
+                else:
+                    # if tabulation is false ( not indentation)
+                    self.error = None
+                    # normal string 
+                    self.normal_string = self.analyse.BUILD_NON_CON(string=self.master,tabulation=self.tabulation)
+                    
+                    self.get_block, self.value, self.error = eUnless.EXTERNAL_BLOCKS(string=self.string,
+                                        normal_string=self.normal_string, data_base=self.data_base,
+                                                                        line=self.if_line).BLOCKS(tabulation=self.tabulation)
+
+                    if self.error is None:
+                        # break unless statement
+                        if self.get_block   == 'end:' :
+                            if self.store_value:
+                                del self.store_value[ : ]
+                                del self.history[ : ]
+                                self.loop.append((self.normal_string, False))
+                                self.unless_cancel = True
+                                break
+                            else:
+                                self.error = UnlessError.ERRORS( self.if_line).ERROR2(self.history[ -1 ] )
+                                break
+                        # else block
+                        elif self.get_block == 'else:':
+                            if self.index_else < 1:
+                                if self.store_value:
+                                    self.index_else             += 1
+                                    self.store_value            = []
+                                    self.history.append( 'else' )
+                                    self.loop.append((self.normal_string, False))
+                                else:
+                                    self.error = UnlessError.ERRORS( self.if_line ).ERROR2(self.history[-1])
+                                    break
+                            else:
+                                self.error = UnlessError.ERRORS( self.if_line ).ERROR3( 'else' )
+                                break
+                        # empty line 
+                        elif self.get_block == 'empty':
+                            if self.space <= self.max_emtyLine:
+                                self.space += 1
+                                self.loop.append((self.normal_string, False))
+                            else:
+                                self.error = UnlessError.ERRORS(  self.if_line ).ERROR4()
+                                break
+                    else: break
+          
+        return self.loop, self.unless_cancel, self.error
