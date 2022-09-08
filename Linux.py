@@ -19,7 +19,8 @@
 #############################################################
 
 import sys, os
-from script.STDIN.LinuxSTDIN                import readchar
+import termios, sys, tty
+#from script.STDIN.LinuxSTDIN                import readchar
 from script.PARXER.PARXER_FUNCTIONS._IF_    import IfError
 from script.LEXER.FUNCTION                  import main
 from script.DATA_BASE                       import data_base as db
@@ -27,6 +28,16 @@ from script                                 import control_string
 from script.PARXER                          import parxer_assembly
 from script.STDIN.LinuxSTDIN                import bm_configure as bm
 
+def readchar():
+    fd              = sys.stdin.fileno()
+    old_settings    = termios.tcgetattr(fd)
+
+    try:
+        tty.setraw(sys.stdin)
+        ch = ord( sys.stdin.read(1) )
+    finally: termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+    return ch 
 
 class linux:
     def __init__(self, data_base: dict):
@@ -40,7 +51,7 @@ class linux:
 
         # set color on yellow
         self.c              = bm.fg.rbg(255, 255, 0)
-        if self.term == 'orion': pass
+        if terminal_name == 'orion': pass
         else: self.c        = bm.fg.rbg(255, 255, 255)
         # reset color
         self.reset          = bm.init.reset
@@ -98,8 +109,6 @@ class linux:
         self.space          = 0
         # detecting if indentation was used
         self.active_tab     = None
-        # tabulation key
-        self.tabulation     = tabulation
         # history of commands
         ###########################################################
         # clear entire line
@@ -395,8 +404,7 @@ class linux:
                     # move cursor of left
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     # print the final input with its transformations
-                    if self.term == 'orion': print(self.main_input + bm.words(string=self.s, color=bm.fg.rbg(255,
-                                                                                                             255, 255)).final())
+                    if terminal_name == 'orion': print(self.main_input + bm.words(string=self.s, color=bm.fg.rbg(255,  255, 255)).final())
                     else:   print(self.main_input + bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
 
                     # storing input
@@ -420,13 +428,13 @@ class linux:
 
                     if self.string:
                         # running lexer
-                        self.lexer, self.normal_string, self.error = main.MAIN(self.mainString, self.data_base, self.line).MAIN()
+                        self.lexer, self.normal_string, self.error = main.MAIN(self.string, self.data_base, self.if_line).MAIN()
                         if self.error is None :
                             if self.lexer is not None:
                                 # running parser
                                 self.num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.data_base,
-                                        self.line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
-                                if self.error is None: self.cursor.append(bm.get_cursor_pos.pos)
+                                        self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
+                                if self.error is None: pass
                                 else:
                                     sys.stdout.write(bm.clear.line(2))
                                     sys.stdout.write(bm.move_cursor.LEFT(1000))
@@ -456,7 +464,7 @@ class linux:
                 # clear entire line
                 sys.stdout.write(bm.clear.line(pos=0))
 
-                if self.term == 'orion':
+                if terminal_name == 'orion':
                     # key word activation
                     sys.stdout.write(self.main_input + bm.string().syntax_highlight(
                         name=bm.words(string=self.s, color=bm.fg.white_L).final()))
