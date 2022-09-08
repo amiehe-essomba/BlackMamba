@@ -1,10 +1,10 @@
 class UPDATE:
-    def __init__(self, database : dict):
-        self.database       = database
+    def __init__(self, data_base : dict):
+        self.data_base       = data_base
     def UPDATE(self,
-               before   : dict, # DataBase before any computing
-               dafter   : dict, # DataBase updated after computing
-               error    : any   # error got after computing
+                before   : dict, # DataBase before any computing
+                after    : dict, # DataBase updated after computing
+                error    : any   # error got after computing
                ):
         self.error = error # init error
 
