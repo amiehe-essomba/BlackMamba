@@ -171,7 +171,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
                                 elif self.get_block == 'any'        :
                                     self.store_value.append(self.normal_string)
                                     self.space = 0
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         if self.data_base[ 'pass' ] is None:
                                             self.error = self.lex_par.LEXER_AND_PARXER(master=self.value, data_base=self.data_base,
                                                                 line=self.line).ANALYZE( _id_=1, _type_= _type_ )

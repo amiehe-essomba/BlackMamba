@@ -5,7 +5,7 @@ from script.STDIN.WinSTDIN                              import stdin
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmtError as ce
 from statement.comment                                  import externalCmt, internalCmt
-try:  from CythonModules.Windows                        import fileError as fe 
+try:  from CythonModules.Windows                        import fileError as fe
 except ImportError: from CythonModules.Linux            import fileError as fe
 
 ae = bm.fg.cyan_L
@@ -39,7 +39,7 @@ class COMMENT_STATEMENT:
         self.comment_storage        = []
         self.comment_name           = None
         self.loop                   = []
-    
+
         ############################################################################
 
         while self.end != 'end:' :
@@ -111,7 +111,7 @@ class COMMENT_STATEMENT:
                                 else:
                                     self.error = ce.ERRORS( self.line ).ERROR2( )
                                     break
-                                
+
                             elif self.get_block == 'empty'    :
                                 if self.space <= self.max:
                                     self.space += 1
@@ -146,7 +146,7 @@ class COMMENT_STATEMENT:
 
                             elif self.get_block == 'save:'   :
                                 if self.store_value:
-                                    
+
                                     if self.locked is False:
                                         self.locked = True
                                         self.comment_name = self.value
@@ -165,7 +165,7 @@ class COMMENT_STATEMENT:
                                 else:
                                     self.error = ce.ERRORS(  self.line ).ERROR4()
                                     break
-                            
+
                             else:
                                 self.error = ce.ERRORS( self.line ).ERROR4()
                                 break
@@ -185,8 +185,8 @@ class COMMENT_STATEMENT:
         return self.loop, self.error
 
 class COMMENT_WINDOWS:
-    def __init__(self, 
-                master      : any, 
+    def __init__(self,
+                master      : any,
                 data_base   : dict, 
                 line        : int
                 ):
@@ -214,7 +214,7 @@ class COMMENT_WINDOWS:
         self.comment_name           = None
 
         ############################################################################
-        
+
         self.color          = bm.fg.rbg(255,0,255)
         self.input          = '{}cmt:{}'.format(self.color, bm.init.reset)
         self.length         = len(self.input)
@@ -254,7 +254,7 @@ class COMMENT_WINDOWS:
                     self.if_line += 1
                     sys.stdout.write(bm.move_cursor.LEFT(1000))
                     self.clear_input = self.mainString
-                    
+
                     if self.clear_input:
                         ####################################################################
                         _, self._, self.err = self.analyse.BUILD_CON(string=self.clear_input,tabulation=self.tabulation)
