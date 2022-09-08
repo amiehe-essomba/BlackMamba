@@ -31,7 +31,8 @@ class RUN_FUNCTION:
         self.new_data_base[ 'functions' ]       = self.DataBase[ 'functions' ]
         
         self.new_data_base[ 'print' ]   = []
-                                            
+        updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION(self.DataBase, self.new_data_base)
+
         if self.new_data_base[ 'empty_values' ] is None:
             
             self.error = func.EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,

@@ -7,7 +7,7 @@ from src.classes                                import updatingClasses as UC
 from statement.comment                          import externalCmt
 from script                                     import control_string
 from src.classes.windows                        import subWindowsClass as SWC
-
+from classes                                    import internalClass as IC
 
 class EXTERNAL_CLASS:
     def __init__(self, 
@@ -44,7 +44,8 @@ class EXTERNAL_CLASS:
                 class_starage   : list,
                 _subClass_      : dict, 
                 _type_          : str = 'class',
-                c               : str = '' 
+                c               : str = '',
+                term            : str = ''
                 ):
         
         self.error              = None
@@ -58,7 +59,7 @@ class EXTERNAL_CLASS:
         self._subClass_         = _subClass_
         self.lexer              = None
         self.max_emtyLine       = 5
-        
+        self.comments           = []
         ##########################################################
    
         for i in range(1):
@@ -71,8 +72,9 @@ class EXTERNAL_CLASS:
                 
                 # when idendation is True
                 if self.active_tab is True:
-                        self.get_block, self.value, self.error = end_class.INTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
+                        self.get_block, self.value, self.error = IC.INTERNAL_BLOCKS(normal_string=self.normal_string, data_base=self.data_base,
+                                                            line=self.line).BLOCKS(tabulation=self.tabulation+1, loop=False)
+                            #end_class.INTERNAL_BLOCKS( self.string, self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
                         if self.error is None:
                             # function block
                             if self.get_block   == 'def:'   :
@@ -82,7 +84,7 @@ class EXTERNAL_CLASS:
                                     self.key_init, self.error = UC.UPDATING(self.data_base,
                                                 self.line, self.extra_class_data).UPDATE_FUNCTION_BEFORE( self.lexer )
                                     if self.error is None:
-                                        self.error = WD.EXTERNAL_DEF_WINDOWS(data_base=self.db,  line=self.line).TERMINAL(tabulation=self.tabulation + 1, c=c,
+                                        self.error = WD.EXTERNAL_DEF_WINDOWS(data_base=self.db,  line=self.line, term=term).TERMINAL(tabulation=self.tabulation + 1, c=c,
                                                         _type_ = _type_, class_name = self.data_base[ 'current_class' ], class_key  = self.key_init, function='class')
                                         if self.error is None:
                                             self.error = UC.UPDATING(self.data_base,
@@ -107,8 +109,8 @@ class EXTERNAL_CLASS:
                                 self.lexer, _, self.error = main.MAIN(self.value, self.db, self.line).MAIN( _type_ = 'class' )
                                 if self.error is None:
                                     # calling sub-class IDE 
-                                    self.error = SWC.INTERNAL_CLASS_WINDOWS(master=None, data_base=self.db, line=self.line, 
-                                                    extra=self.lexer['class']).TERMINAL(tabulation=self.tabulation + 1,  c=c, _type_=_type_)
+                                    self.error = SWC.INTERNAL_CLASS_WINDOWS( data_base=self.db, line=self.line, 
+                                                    extra=self.lexer['class'], term = term).TERMINAL(tabulation=self.tabulation + 1,  c=c, _type_=_type_)
                                     
                                     # checking error 
                                     if self.error is None:
@@ -141,6 +143,10 @@ class EXTERNAL_CLASS:
                                     else:
                                         self.error = EC.ERRORS(self.line).ERROR10()
                                         break
+                            # comment line
+                            elif self.get_block == 'comment_line':
+                                self.comments.append(self.normal_string)
+                                self.space = 0
                         else: break
                 else:
                     self.get_block, self.value, self.error = externalCmt.EXTERNAL_BLOCKS(normal_string=self.normal_string,

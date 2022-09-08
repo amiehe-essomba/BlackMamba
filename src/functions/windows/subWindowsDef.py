@@ -1,5 +1,5 @@
 ############################################
-# class IDE                                #
+# DEF function IDE                         #
 ############################################
 # created by : amiehe-essomba              #
 # updating by: amiehe-essomba              #
@@ -9,25 +9,21 @@
 import os, sys
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
+from src.functions.windows                              import updatingDef as UD
+from src.functions.windows                              import internalDef as ID
 from script                                             import control_string
-from src.classes                                        import updatingClasses as UC
-from src.classes.windows                                import externalClass as EC
 
-
-class EXTERNAL_CLASS_WINDOWS:
+class INTERNAL_DEF_WINDOWS:
     def __init__(self, 
-            data_base   : dict, 
-            line        : int,
-            extra       : dict,
-            term        : str 
-            ):
-        
-        # current line 
+                data_base   : dict, 
+                line        : int,
+                term        : str
+                ):
+
+        # line 
         self.line               = line
         # main data base
         self.data_base          = data_base
-        # external data containig certain informatios regarding classes  
-        self.extra              = extra
         # terminal name 
         self.term               = term
         #contriling string
@@ -35,8 +31,11 @@ class EXTERNAL_CLASS_WINDOWS:
 
     def TERMINAL( self, 
             tabulation  : int,  
+            class_name  : str   = '' , 
+            class_key   : bool  = False,
             c           : str   = '',
-            _type_      : str   = 'class'
+            function    : str   = 'def',
+            _type_      : str   = 'def'
             ):
         
         self.if_line            = 0
@@ -46,11 +45,9 @@ class EXTERNAL_CLASS_WINDOWS:
         self.space              = 0
         self.active_tab         = None
         self.tabulation         = tabulation
-        self.history            = [ 'class' ]
-        self.class_starage      = []
+        self.history            = [ 'def' ]
+        self.def_starage        = []
         self.store_value        = []
-        self.classes_before     = self.data_base[ 'classes' ][ : ]
-        self.names_before       = self.data_base[ 'class_names' ][ : ]
       
         ##########################################################
         self.color              = bm.fg.rbg(255,255,0)
@@ -67,18 +64,14 @@ class EXTERNAL_CLASS_WINDOWS:
         self.previous_c         = c
         self.mainString         = ''
         self.mainIndex          = 0
-        self.class_cancel       = False
-        ##########################################################
+        self.subFunc            = {}
+        self.def_cancel         = False
         
-        # struc for sub-class
-        self._subClass_     = {
-            'classes'       : [],
-            'class_names'   : []
-        }
+        ##########################################################
         # false if clean line is not activated else true
-        self.clear_line = False   
+        self.clear_line = False      
         ##########################################################
-        
+               
         sys.stdout.write(bm.clear.line(2))
         sys.stdout.write(bm.move_cursor.LEFT(1000))
         sys.stdout.write(bm.string().syntax_highlight(name = self.input))
@@ -99,10 +92,10 @@ class EXTERNAL_CLASS_WINDOWS:
                         break
                     # write char
                     else:
-                        self.input       = self.input[ : self.index ] + chr( self.char ) + self.input[ self.index : ]
-                        self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char ) + self.mainString[ self.mainIndex : ]
-                        self.index       += 1
-                        self.mainIndex   += 1
+                        self.input      = self.input[: self.index] + chr(self.char) + self.input[self.index:]
+                        self.mainString = self.mainString[: self.mainIndex] + chr(self.char) + self.mainString[  self.mainIndex:]
+                        self.index      += 1
+                        self.mainIndex  += 1
                     
                 elif self.char in {10, 13}:
                     self.if_line += 1
@@ -111,10 +104,10 @@ class EXTERNAL_CLASS_WINDOWS:
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                 
                     if self.mainString:
-                        ####################################################################
+                         ####################################################################
                         if self.term == 'orion':
                             # Syntaxis color 
-                            self.input = self.input[: self.length] + bm.words(string=self.mainString, color=bm.fg.white_L).final(n=1)
+                            self.input = self.input[: self.length] + bm.words(string=self.mainString, color=bm.fg.white_L).final()
                             #moving cursor left
                             sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                             # moving cursor up
@@ -140,16 +133,18 @@ class EXTERNAL_CLASS_WINDOWS:
                             sys.stdout.write(self.input)
                             # move left again 
                             sys.stdout.write(bm.move_cursor.LEFT(1000))
+                            
                         ######################################################################
                         
                         #calling the main module DEF 
-                        self.class_cancel, self.error = EC.EXTERNAL_CLASS(master=self.mainString, data_base = self.data_base, line=self.if_line,
-                            extra=self.extra, history=self.history, store_value=self.store_value, space=self.space).CLASS(  tabulation=self.tabulation, 
-                            class_starage=self.class_starage, _subClass_=self._subClass_, c=c,  _type_=_type_, term=self.term )
-                        
+                        self.def_cancel, self.error = ID.INTERNAL_DEF(master=self.mainString, data_base = self.data_base, line=self.if_line,
+                            history=self.history, store_value=self.store_value, space=self.space).DEF(  tabulation=self.tabulation, 
+                            def_starage=self.def_starage, class_name=class_name, class_key=class_key, c=c, function=function,
+                            _type_=_type_, term=self.term )
+                            
                         #break while loop if error is not None
                         if self.error is None: 
-                            if self.class_cancel is True : break 
+                            if self.def_cancel is True: break 
                             else: pass
                         else: break
                     else:
@@ -157,12 +152,12 @@ class EXTERNAL_CLASS_WINDOWS:
                         if self.space <= self.max_emtyLine:
                             self.space += 1
                             self.mainString = self.analyse.BUILD_NON_CON(string=self.mainString,tabulation=self.tabulation)
-                            self.class_starage.append((self.mainString, False))
+                            self.def_starage.append((self.mainString, False))
                         else:
                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                             break
                     
-                    self.input      = self.main_input 
+                    self.input      = self.main_input
                     self.index      = self.length
                     self.mainString = ''
                     self.mainIndex  = 0
@@ -191,13 +186,11 @@ class EXTERNAL_CLASS_WINDOWS:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 
-            except IndexError:
+            except TypeError:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
         
-        if self.error is None:  UC.UPDATING( self.data_base, self.line, {} ).UPDATE_CLASS( self.class_starage )
-        else:
-            self.data_base[ 'classes' ]     = self.classes_before
-            self.data_base[ 'class_names' ] = self.names_before
+        # updating function 
+        UD.UPDATING(self.data_base ).UPDATE_FUNCTION( self.def_starage, self.subFunc )
         
         return self.error

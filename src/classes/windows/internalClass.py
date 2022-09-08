@@ -8,6 +8,7 @@ from src.classes                                import db
 from src.classes                                import updatingClasses as UC
 from script                                     import control_string
 from statement.comment                          import externalCmt
+from classes                                    import internalClass as IC
 
 class INTERNAL_CLASS:
     def __init__(self, 
@@ -43,7 +44,8 @@ class INTERNAL_CLASS:
                 tabulation      : int,
                 class_starage   : list,
                 _type_          : str = 'class',
-                c               : str = '' 
+                c               : str = '', 
+                term            : str = ''
                 ):
         
         self.error              = None
@@ -56,7 +58,7 @@ class INTERNAL_CLASS:
         self.class_starage      = class_starage
         self.lexer              = None
         self.max_emtyLine       = 5
-        
+        self.comments           = []
         ##########################################################
 
         for i in range(1):
@@ -69,8 +71,9 @@ class INTERNAL_CLASS:
                 
                 # when idendation is True
                 if self.active_tab is True:
-                        self.get_block, self.value, self.error = end_class.INTERNAL_BLOCKS( self.string,
-                                    self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation + 1 )
+                        self.get_block, self.value, self.error = IC.INTERNAL_BLOCKS(normal_string=self.normal_string,
+                                           data_base=self.data_base, line=self.line).BLOCKS( tabulation=self.tabulation + 1, loop=False)
+
                         if self.error is None:
                             # function block
                             if self.get_block   == 'def:'   :
@@ -80,11 +83,9 @@ class INTERNAL_CLASS:
                                     self.key_init, self.error = UC.UPDATING(self.data_base,
                                                 self.line, self.extra_class_data).UPDATE_FUNCTION_BEFORE( self.lexer )
                                     if self.error is None:
-                                        #self.error = functions.EXTERNAL_DEF_STATEMENT( self.master, self.db,
-                                        #                        self.line ).DEF( self.tabulation + 1,
-                                        #                        self.data_base[ 'current_class' ], self.key_init )
+                                        # calling DEF module
                                         self.error = WD.EXTERNAL_DEF_WINDOWS(data_base=self.db, 
-                                                        line=self.line).TERMINAL(tabulation=self.tabulation + 1, c=c,
+                                                        line=self.line, term=term).TERMINAL(tabulation=self.tabulation + 1, c=c,
                                                         _type_ = _type_, class_name = self.data_base[ 'current_class' ],
                                                         class_key  = self.key_init, function='class')
                                         
@@ -121,6 +122,10 @@ class INTERNAL_CLASS:
                                     else:
                                         self.error = EC.ERRORS(self.line).ERROR10()
                                         break
+                            # comment line
+                            elif self.get_block == 'comment_line':
+                                self.comments.append(self.normal_string)
+                                self.space = 0
                         else: break
                 else:
                     self.get_block, self.value, self.error = externalCmt.EXTERNAL_BLOCKS(normal_string=self.normal_string,
