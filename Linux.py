@@ -34,7 +34,7 @@ class linux:
         # main data base
         self.data_base  = data_base
         # contriling string
-        self.analyse    = control_string.STRING_ANALYSE(self.data_base, self.line)
+        self.analyse    = control_string.STRING_ANALYSE(self.data_base, 1)
 
     def terminal(self, c: str = '', terminal_name : str = 'pegasus'):
 
