@@ -1,6 +1,6 @@
 from script.PARXER.PARXER_FUNCTIONS.CLASSES     import end_class
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import functions, def_interpreter
-from script.PARXER.PARXER_FUNCTIONS.CLASSES     import classes
+from src.classes                                import errorClass as classes
 from script.STDIN.WinSTDIN                      import stdin
 from script.LEXER.FUNCTION                      import main
 from script.STDIN.LinuxSTDIN                    import bm_configure as bm
