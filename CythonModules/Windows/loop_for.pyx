@@ -1,7 +1,7 @@
 #from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer import NEXT_ANALYZE
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
 from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
 
 cdef dict UPDATING(dict base, str name, value):
     cdef :

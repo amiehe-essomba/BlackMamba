@@ -78,7 +78,7 @@ class EXTERNAL_IF:
                 # build normal string 
                 self.normal_string = self.analyse.BUILD_NON_CON(string=self.master, tabulation=self.tabulation)
 
-                 # when indentation is True
+                # when indentation is True
                 if self.active_tab is True:
                     self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
                             data_base=self.data_base, line=self.if_line).BLOCKS(tabulation = self.tabulation + 1, function = _type_,

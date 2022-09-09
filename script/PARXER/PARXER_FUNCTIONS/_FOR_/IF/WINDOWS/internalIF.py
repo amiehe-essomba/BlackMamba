@@ -4,7 +4,7 @@ from statement                                              import externalIF as
 from script.PARXER.PARXER_FUNCTIONS._IF_                    import IfError
 from script.PARXER.PARXER_FUNCTIONS._FOR_                   import for_try, for_statement
 from script.LEXER.FUNCTION                                  import main
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS import WindowsIF as wIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF as wIF
 from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless as wU
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
 from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
