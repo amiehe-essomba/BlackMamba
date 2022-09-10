@@ -2,6 +2,7 @@
 from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import for_analyze 
+from loop                                               import mainFor
 
 cdef dict UPDATING(dict base, str name, value):
     cdef :
@@ -169,25 +170,29 @@ cdef class LOOP:
                                 elif 'for'    in keys           :
                                     subfor_values  = _string_[ 'for' ]
                                     #tabulation     = _string_[ 'tabulation' ]
-                                    subfor_value   = _string_[ 'value' ]
+                                    #subfor_value   = _string_[ 'value' ]
                                     #self.DataBase[ subfor_value[ 'variable' ] ] = subfor_value[ 'value' ]
+                                    s, subfor_value, error = mainFor.mainFor.FOR_BLOCK(normal_string = subfor_values[0], 
+                                            data_base=self.DataBase, line=(self.line+for_line)).FOR( function = 'loop', interpreter = False, locked=False)
+                                    
+                                    if not error:
+                                        error = LOOP( DataBase=self.DataBase, line=(self.line+for_line) ).SubLOOP( for_values=list(subfor_value[ 'value' ]), 
+                                                        var_name=subfor_value[ 'variable' ], loop_list=(subfor_values[1], tabulation, ''))    
+                                                        
+                                        if error is None:
+                                            if   self.DataBase[ 'break' ] is None: pass 
+                                            else:
+                                                self.DataBase[ 'break' ] = None 
+                                                doubleKey = True
+                                                break
 
-                                    error = LOOP( DataBase=self.DataBase, line=(self.line+for_line) ).SubLOOP( for_values=list(subfor_value[ 'value' ]), 
-                                                    var_name=subfor_value[ 'variable' ], loop_list=(subfor_values[1], tabulation, ''))    
-                                                    
-                                    if error is None:
-                                        if   self.DataBase[ 'break' ] is None: pass 
-                                        else:
-                                            self.DataBase[ 'break' ] = None 
-                                            doubleKey = True
-                                            break
-
-                                        if self.DataBase[ 'exit' ] is None: pass
-                                        else:
-                                            self.DataBase['exit'] = None 
-                                            doubleKey = True
-                                            broke     = True
-                                            break 
+                                            if self.DataBase[ 'exit' ] is None: pass
+                                            else:
+                                                self.DataBase['exit'] = None 
+                                                doubleKey = True
+                                                broke     = True
+                                                break 
+                                        else: break
                                     else: break
                                 else: pass
                             else: pass
@@ -299,11 +304,11 @@ cdef class LOOP:
                                 
                                 elif 'if'     in keys           :
                                         if_values      = _string_[ 'if' ]
-                                        tabulation     = _string_[ 'tabulation' ]
+                                        #tabulation     = _string_[ 'tabulation' ]
                                         boolean_value  = _string_[ 'value' ]
                                         
                                         error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
-                                                (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
+                                                (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation+1 , if_values, 'loop' )
                                         if error is None: 
                                             if   self.DataBase[ 'break' ] is None: pass 
                                             else:
@@ -341,24 +346,28 @@ cdef class LOOP:
                                     else: break
                                 elif 'for'    in keys           :
                                     subfor_values  = _string_[ 'for' ]
-                                    tabulation     = _string_[ 'tabulation' ]
-                                    subfor_value   = _string_[ 'value' ]
-                                     
-                                    error = LOOP( DataBase=self.DataBase, line=(self.line+for_line) ).SubLOOP( for_values=list(subfor_value[ 'value' ]), 
-                                                var_name = subfor_value[ 'variable' ], loop_list=(subfor_values[1], tabulation, '') )                     
-                                    if error is None:
-                                        if   self.DataBase[ 'break' ] is None: pass 
-                                        else:
-                                            self.DataBase[ 'break' ] = None 
-                                            doubleKey = True
-                                            break
+                                    #tabulation     = _string_[ 'tabulation' ]
+                                    #subfor_value   = _string_[ 'value' ]
+                                    s, subfor_value, error = mainFor.mainFor.FOR_BLOCK(normal_string = subfor_values[0],  
+                                            data_base=self.DataBase, line=(self.line+for_line)).FOR( function = 'loop', interpreter = False, locked=False)
+                                    
+                                    if not error:
+                                        error = LOOP( DataBase=self.DataBase, line=(self.line+for_line) ).SubLOOP( for_values=list(subfor_value[ 'value' ]), 
+                                                    var_name = subfor_value[ 'variable' ], loop_list=(subfor_values[1], tabulation, '') )                     
+                                        if error is None:
+                                            if   self.DataBase[ 'break' ] is None: pass 
+                                            else:
+                                                self.DataBase[ 'break' ] = None 
+                                                doubleKey = True
+                                                break
 
-                                        if self.DataBase[ 'exit' ] is None: pass
-                                        else:
-                                            self.DataBase['exit'] = None 
-                                            doubleKey = True
-                                            broke     = True
-                                            break 
+                                            if self.DataBase[ 'exit' ] is None: pass
+                                            else:
+                                                self.DataBase['exit'] = None 
+                                                doubleKey = True
+                                                broke     = True
+                                                break 
+                                        else: break
                                     else: break
                                 else: pass
                             else: pass

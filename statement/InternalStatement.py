@@ -36,6 +36,7 @@ class INTERNAL_BLOCKS:
                 tabulation      : int,              # tabulation
                 function        : any   = None,     # functionn
                 interpreter     : bool  = False,    # interpreter
+                locked          : bool  = False
                 ):
         """
         :param tabulation:
@@ -76,7 +77,7 @@ class INTERNAL_BLOCKS:
                             except IndexError: self.error  = er.ERRORS(self.line).ERROR1( 'if' )
                     elif self.normal_string[ : 3 ] == 'for'     :
                         self._return_, self.value, self.error = mainFor.FOR_BLOCK(normal_string =self.normal_string,
-                            data_base=self.data_base, line=self.line).FOR( function = function, interpreter = interpreter)
+                            data_base=self.data_base, line=self.line).FOR( function = function, interpreter = interpreter, locked=locked)
                     elif self.normal_string[ : 6 ] == 'unless'  :
                         if self.normal_string[ -1 ] == ':':
                             if self.normal_string[ 6 ] in [ ' ' ]:

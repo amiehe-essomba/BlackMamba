@@ -29,6 +29,7 @@ from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import WindowsFor as wFor
 from src.functions.windows                              import windowsDef as WD
 from src.classes.windows                                import windowsClass as WC
+from loop                                               import mainFor
 try:
     from CythonModules.Windows                          import fileError as fe 
 except ImportError:
@@ -338,9 +339,11 @@ class ASSEMBLY( ):
                     else: pass
                 else: pass
             elif self.master[ 'function' ] == 'for'     :
-                self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
-                                                                self.line ).BOCKS( main_string )
-
+                #self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
+                #                                                self.line ).BOCKS( main_string )
+                self._, self.value, self.error =  mainFor.FOR_BLOCK(normal_string =main_string,
+                                                data_base=self.data_base, line=self.line).FOR( function = 'loop',
+                                                interpreter = interpreter,   locked=False)
                 if self.error is None:
                     self.data_base[ 'print' ] = []
                     
@@ -349,7 +352,8 @@ class ASSEMBLY( ):
                                     
                     if self.error is None:
                         self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
-                            self.line ).FOR( main_string, self.value, self.name, loop_list = (self.listTransform, self.tab, self.error) )
+                                                self.line ).FOR( main_string, self.value['value'], self.value['variable'],
+                                                loop_list = (self.listTransform, self.tab, self.error) )
 
                         if self.error is None:
                             if self.data_base[ 'print' ] is not None:
