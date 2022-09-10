@@ -203,7 +203,7 @@ cdef class LOOP:
             return [ None if not error else error][ 0 ]
         else: return error 
 
-    cdef SubLOOP( self, list for_values, str var_name, bint interpreter = False, tuple loop_list = () ):
+    cdef SubLOOP( self, list for_values, str var_name,  tuple loop_list = () ):
         cdef:
             str     error, normal_string, err
             dict    before
@@ -271,7 +271,7 @@ cdef class LOOP:
                                     active_tab      = any_values[ 1 ]
                                     lexer           = _string_[ 'lex' ]
                         
-                                    error    = for_statement.NEXT_ANALYZE( normal_string, self.DataBase,
+                                    error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
                                             ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop', _lexer_ = lexer )
                                     
                                     if not error: 
