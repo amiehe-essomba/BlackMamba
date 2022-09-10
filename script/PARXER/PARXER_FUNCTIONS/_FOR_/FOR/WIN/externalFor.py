@@ -71,7 +71,7 @@ class EXTERNAL_FOR:
                 if self.active_tab is True:
                     self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
                             data_base=self.data_base, line=self.if_line).BLOCKS(tabulation = self.tabulation + 1, function = _type_,
-                                                                                interpreter = False)
+                                                                                interpreter = False, locked=True)
 
                     if self.error  is None:
                         # if block

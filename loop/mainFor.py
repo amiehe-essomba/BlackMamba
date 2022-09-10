@@ -124,7 +124,8 @@ class FOR_BLOCK         :
 
     def FOR(self,
             function            : any   = None,     #
-            interpreter         : bool  = False     #
+            interpreter         : bool  = False,    #
+            locked              : bool  = False
             ):
         self.error          = None
         self._return_       = None
@@ -148,10 +149,12 @@ class FOR_BLOCK         :
                     self.lex, self.error    = partial_lexer.LEXER(self.normal_string, self.data_base,
                                                                self.line).MAIN_LEXER( self.normal_string )
                     if self.error is None:
-                        self._values_, self.var_name, self.operator, self.error = MAIN_FOR(self.lex, self.data_base,
-                                                                self.line).BOCKS( self.new_normal_string )
-                        if self.error is None:  self.value = {'value': self._values_, 'variable': self.var_name}
-                        else:  pass
+                        if locked is False:
+                            self._values_, self.var_name, self.operator, self.error = MAIN_FOR(self.lex, self.data_base,
+                                                                    self.line).BOCKS( self.new_normal_string )
+                            if self.error is None:  self.value = {'value': self._values_, 'variable': self.var_name}
+                            else:  pass
+                        else: self.value = {'value': None, 'variable': None}
                     else: pass
                 else:
                     self.value      = self.control.DELETE_SPACE(self.normal_string)

@@ -4,6 +4,7 @@ from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
+
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
@@ -415,7 +416,6 @@ class INTERNAL_IF_LOOP_STATEMENT:
 
         if self.keyPass is False:
             for j, _string_ in enumerate( self.loop_list ):
-                
                 if self.next_line == 0: self.key = True 
                 else:
                     if self.next_line != j: self.key = True 
@@ -433,7 +433,6 @@ class INTERNAL_IF_LOOP_STATEMENT:
                         if self.active_tab is True:
                             self.get_block, self.value, self.error = end_else_elif.INTERNAL_BLOCKS(self.string,
                                             self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation+1 )
-                        
                             if self.error  is None:
                                 if self.get_block   == 'begin:' :
                                     self.next_line  = j + 1
