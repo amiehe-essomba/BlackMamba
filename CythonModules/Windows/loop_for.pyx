@@ -172,7 +172,7 @@ cdef class LOOP:
                                     #tabulation     = _string_[ 'tabulation' ]
                                     #subfor_value   = _string_[ 'value' ]
                                     #self.DataBase[ subfor_value[ 'variable' ] ] = subfor_value[ 'value' ]
-                                    s, subfor_value, error = mainFor.mainFor.FOR_BLOCK(normal_string = subfor_values[0], 
+                                    s, subfor_value, error = mainFor.FOR_BLOCK(normal_string = subfor_values[0], 
                                             data_base=self.DataBase, line=(self.line+for_line)).FOR( function = 'loop', interpreter = False, locked=False)
                                     
                                     if not error:
@@ -348,7 +348,7 @@ cdef class LOOP:
                                     subfor_values  = _string_[ 'for' ]
                                     #tabulation     = _string_[ 'tabulation' ]
                                     #subfor_value   = _string_[ 'value' ]
-                                    s, subfor_value, error = mainFor.mainFor.FOR_BLOCK(normal_string = subfor_values[0],  
+                                    s, subfor_value, error = mainFor.FOR_BLOCK(normal_string = subfor_values[0],  
                                             data_base=self.DataBase, line=(self.line+for_line)).FOR( function = 'loop', interpreter = False, locked=False)
                                     
                                     if not error:
