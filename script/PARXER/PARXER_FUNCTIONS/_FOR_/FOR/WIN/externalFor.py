@@ -8,7 +8,7 @@ from script.PARXER.LEXER_CONFIGURE                          import lexer_and_par
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
 from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
-from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WINDOWS       import subWindowFor as sWFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import subWindowFor as sWFor
 
 
 
