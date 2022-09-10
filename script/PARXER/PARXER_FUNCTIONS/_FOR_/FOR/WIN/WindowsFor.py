@@ -9,7 +9,7 @@
 import sys
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
-from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WINDOWS   import externalFor as eFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN   import externalFor as eFor
 from script                                             import control_string
 
 class EXTERNAL_IF_WINDOWS:
