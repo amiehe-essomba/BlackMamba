@@ -1,6 +1,7 @@
 #from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer import NEXT_ANALYZE
 from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import for_analyze 
 
 cdef dict UPDATING(dict base, str name, value):
     cdef :
@@ -92,7 +93,7 @@ cdef class LOOP:
                                     active_tab      = any_values[ 1 ]
                                     lexer           = _string_[ 'lex' ]
                                     
-                                    error    = for_statement.NEXT_ANALYZE( normal_string, self.DataBase,
+                                    error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
                                             ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer )
 
                                     #error    = for_statement.NEXT_ANALYZE( normal_string, self.DataBase,
@@ -268,7 +269,7 @@ cdef class LOOP:
                                     active_tab      = any_values[ 1 ]
                                     lexer           = _string_[ 'lex' ]
                         
-                                    error    = for_statement.NEXT_ANALYZE( normal_string, self.DataBase,
+                                    error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
                                             ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop', _lexer_ = lexer )
                                     
                                     if not error: 
