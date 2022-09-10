@@ -359,8 +359,7 @@ class ASSEMBLY( ):
                                         for sub_value in value:
                                             if i < len( self.list_of_values) - 1:
                                                 show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = True)
-                                            else:
-                                            show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
+                                            else:  show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
                                     else:
                                         if i < len( self.list_of_values) - 1:
                                             print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )

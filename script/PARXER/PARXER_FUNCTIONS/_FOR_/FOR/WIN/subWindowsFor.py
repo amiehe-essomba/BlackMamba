@@ -41,7 +41,7 @@ class INTERNAL_FOR_WINDOWS:
         self.space              = 0
         self.active_tab         = None
         self.tabulation         = tabulation
-        self.history            = [ 'if' ]
+        self.history            = [ 'for' ]
         self.loop               = []
         self.store_value        = []
       

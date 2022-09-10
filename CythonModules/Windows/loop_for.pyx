@@ -343,8 +343,7 @@ cdef class LOOP:
                                     subfor_values  = _string_[ 'for' ]
                                     tabulation     = _string_[ 'tabulation' ]
                                     subfor_value   = _string_[ 'value' ]
-                                    self.DataBase[ subfor_value[ 'variable' ] ] = subfor_value[ 'value' ]
-                                    
+                                     
                                     error = LOOP( DataBase=self.DataBase, line=(self.line+for_line) ).SubLOOP( for_values=list(subfor_value[ 'value' ]), 
                                                 var_name = subfor_value[ 'variable' ], loop_list=(subfor_values[1], tabulation, '') )                     
                                     if error is None:

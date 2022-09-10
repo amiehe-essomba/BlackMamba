@@ -12,7 +12,7 @@ from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN   import externalFor as eFor
 from script                                             import control_string
 
-class EXTERNAL_IF_WINDOWS:
+class EXTERNAL_FOR_WINDOWS:
     def __init__(self, 
             data_base   : dict, 
             line        : int,
@@ -41,7 +41,7 @@ class EXTERNAL_IF_WINDOWS:
         self.space              = 0
         self.active_tab         = None
         self.tabulation         = tabulation
-        self.history            = [ 'if' ]
+        self.history            = [ 'for' ]
         self.loop               = []
         self.store_value        = []
       
@@ -176,7 +176,7 @@ class EXTERNAL_IF_WINDOWS:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
 
-            except TypeError:
+            except IndexError:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
         

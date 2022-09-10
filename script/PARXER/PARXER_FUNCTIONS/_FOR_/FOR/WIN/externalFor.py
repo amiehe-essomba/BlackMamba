@@ -8,9 +8,7 @@ from script.PARXER.LEXER_CONFIGURE                          import lexer_and_par
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
 from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
-from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import subWindowFor as sWFor
-
-
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import subWindowsFor as sWFor
 
 class EXTERNAL_FOR:
     def __init__(self, 
@@ -52,7 +50,6 @@ class EXTERNAL_FOR:
         self.string                 = ''
         self.normal_string          = ''
         self.end                    = ''
-        self.store_value            = []
         self.index_else             = 0
         self.if_line                = 0
         self.active_tab             = None
@@ -66,11 +63,10 @@ class EXTERNAL_FOR:
             # concatening string and extraction of string concatenated , tabulation for and indensation and error        
             self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.master,
                                                                         tabulation=self.tabulation)
+
             if self.error is None:
                 # build normal string 
                 self.normal_string = self.analyse.BUILD_NON_CON(string=self.master, tabulation=self.tabulation)
-                # when indentation is True
-                
                 # when indentation is True
                 if self.active_tab is True:
                     self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
@@ -138,8 +134,8 @@ class EXTERNAL_FOR:
                         elif self.get_block == 'for:'           :
                             self.store_if_values    = []
                             self.store_if_values.append( (self.normal_string, True) )
-                            self.if_values, self.error  = sWFor.INTRENAL_IF_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
-                                    tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+                            self.if_values, self.tab, self.error  = sWFor.INTERNAL_FOR_WINDOWS(data_base=self.data_base, line=self.line,
+                                    term=term ).TERMINAL( tabulation=self.tabulation + 1, _type_ = _type_, c=c )
                             
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
@@ -246,4 +242,3 @@ class EXTERNAL_FOR:
         ############################################################################
         return self.loop_for, self.for_cancel, self.error
     
-        #return {'for' : self.loop_for},  self.tabulation, self.error

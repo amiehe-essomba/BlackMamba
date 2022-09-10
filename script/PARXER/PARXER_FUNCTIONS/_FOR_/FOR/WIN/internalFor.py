@@ -51,7 +51,6 @@ class INTERNAL_FOR:
         self.string                 = ''
         self.normal_string          = ''
         self.end                    = ''
-        self.store_value            = []
         self.index_else             = 0
         self.if_line                = 0
         self.active_tab             = None
@@ -137,7 +136,7 @@ class INTERNAL_FOR:
                         elif self.get_block == 'for:'           :
                             self.store_if_values    = []
                             self.store_if_values.append( (self.normal_string, True) )
-                            self.if_values, self.error  = wFor.EXTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
+                            self.if_values, self.tab, self.error  = wFor.EXTERNAL_FOR_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
                                     tabulation=self.tabulation + 1, _type_ = _type_, c=c )
                             
                             if self.error is None:

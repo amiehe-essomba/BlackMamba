@@ -1,4 +1,4 @@
-
+class COMMENT:
     def __init__(self,
                 master      : any,
                 data_base   : dict, 
