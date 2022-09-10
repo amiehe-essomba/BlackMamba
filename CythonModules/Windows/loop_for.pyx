@@ -53,6 +53,7 @@ cdef class LOOP:
             list    unless_values
             dict    subfor_value
             list    subfor_values
+            tuple   all_for_values
 
         counting    = 0
         doubleKey   = False
@@ -172,10 +173,13 @@ cdef class LOOP:
                                     #tabulation     = _string_[ 'tabulation' ]
                                     #subfor_value   = _string_[ 'value' ]
                                     #self.DataBase[ subfor_value[ 'variable' ] ] = subfor_value[ 'value' ]
-                                    s, subfor_value, error = mainFor.FOR_BLOCK(normal_string = subfor_values[0], 
+                                    
+                                    all_for_values = mainFor.FOR_BLOCK(normal_string = subfor_values[0][0][tabulation : ], 
                                             data_base=self.DataBase, line=(self.line+for_line)).FOR( function = 'loop', interpreter = False, locked=False)
                                     
-                                    if not error:
+                                    if not all_for_values[ 2 ]:
+                                        subfor_value = all_for_values[ 1 ]
+                                
                                         error = LOOP( DataBase=self.DataBase, line=(self.line+for_line) ).SubLOOP( for_values=list(subfor_value[ 'value' ]), 
                                                         var_name=subfor_value[ 'variable' ], loop_list=(subfor_values[1], tabulation, ''))    
                                                         
@@ -193,7 +197,9 @@ cdef class LOOP:
                                                 broke     = True
                                                 break 
                                         else: break
-                                    else: break
+                                    else: 
+                                        error = all_for_values[ 2 ]
+                                        break
                                 else: pass
                             else: pass
                         else: pass
@@ -348,7 +354,7 @@ cdef class LOOP:
                                     subfor_values  = _string_[ 'for' ]
                                     #tabulation     = _string_[ 'tabulation' ]
                                     #subfor_value   = _string_[ 'value' ]
-                                    s, subfor_value, error = mainFor.FOR_BLOCK(normal_string = subfor_values[0],  
+                                    s, subfor_value, error = mainFor.FOR_BLOCK(normal_string = subfor_values[0][0][ tabulation : ],  
                                             data_base=self.DataBase, line=(self.line+for_line)).FOR( function = 'loop', interpreter = False, locked=False)
                                     
                                     if not error:
