@@ -1,9 +1,6 @@
 from script.LEXER.FUNCTION                              import main
 from script.PARXER                                      import parxer_assembly
-<<<<<<< HEAD
 import cython
-=======
->>>>>>> BlackMamba
 
 @cython.cclass
 class NEXT_ANALYZE:
