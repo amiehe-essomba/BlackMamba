@@ -180,4 +180,4 @@ class INTERNAL_FOR_WINDOWS:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
         
-        return self.loop,  self.error
+        return {'for' : self.loop},  self.tabulation, self.error
