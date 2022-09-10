@@ -15,7 +15,7 @@ from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmt_interpreter as cmt_int
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_try
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS import WindowsIF as wIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import WindowsIF as wIF
 from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import WindowsUnless as wU
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS import WindowsSwitch as WSw
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment, for_begin
@@ -26,7 +26,7 @@ from script.STDIN.LinuxSTDIN                            import bm_configure as b
 from src.modulesLoading                                 import modules, moduleMain 
 from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
-#
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import WindowsFor as wFor
 from src.functions.windows                              import windowsDef as WD
 from src.classes.windows                                import windowsClass as WC
 try:
@@ -343,32 +343,38 @@ class ASSEMBLY( ):
 
                 if self.error is None:
                     self.data_base[ 'print' ] = []
-                    self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
-                                                    self.line ).FOR( main_string, self.value, self.name )
-
+                    
+                    self.listTransform, self.tab, self.error = wFor.EXTERNAL_FOR_WINDOWS(data_base=self.data_base,
+                                    line=self.line, term=term).TERMINAL( tabulation=1, _type_='loop', c = bm.fg.rbg(255,255,255) )
+                                    
                     if self.error is None:
-                        if self.data_base[ 'print' ] is not None:
-                            self.list_of_values = self.data_base[ 'print' ]
-                            for i, value in enumerate( self.list_of_values ):
-                                if len( self.value ) == 1 :
-                                    for sub_value in value:
-                                        if i < len( self.list_of_values) - 1:
-                                            show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = True)
-                                        else:
-                                           show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
-                                else:
-                                    if i < len( self.list_of_values) - 1:
-                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                        self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
+                            self.line ).FOR( main_string, self.value, self.name, loop_list = (self.listTransform, self.tab, self.error) )
+
+                        if self.error is None:
+                            if self.data_base[ 'print' ] is not None:
+                                self.list_of_values = self.data_base[ 'print' ]
+                                for i, value in enumerate( self.list_of_values ):
+                                    if len( self.value ) == 1 :
+                                        for sub_value in value:
+                                            if i < len( self.list_of_values) - 1:
+                                                show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = True)
+                                            else:
+                                            show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
                                     else:
-                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = False )
+                                        if i < len( self.list_of_values) - 1:
+                                            print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                                        else:
+                                            print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = False )
 
-                                if self.got_errors:
-                                    print( self.got_errors[ i ])
-                                else: pass
+                                    if self.got_errors:
+                                        print( self.got_errors[ i ])
+                                    else: pass
+                            else: pass
                         else: pass
+                        self.data_base['print'] = []
                     else: pass
-                    self.data_base['print'] = []
-
+                    
                 else: self.error = self.error
             elif self.master[ 'function' ] == 'while'   :
                 self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,

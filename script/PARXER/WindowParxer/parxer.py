@@ -21,7 +21,7 @@ from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
 from src.functions.windows                                  import windowsDef as WD
 from src.classes.windows                                    import windowsClass as WC
 from script.PARXER                                          import partial_assembly
-
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import WindowsFor as wFor
 
 class ASSEMBLY( ):
     def __init__(self, 
@@ -164,30 +164,34 @@ class ASSEMBLY( ):
 
                 if self.error is None:
                     self.data_base[ 'print' ] = []
-                    self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
-                                                    self.line ).FOR( main_string, self.value, self.name )
-
+                    self.listTransform, self.tab, self.error = wFor.EXTERNAL_FOR_WINDOWS(data_base=self.data_base,
+                                    line=self.line, term=term).TERMINAL( tabulation=1, _type_='loop', c = bm.fg.rbg(255,255,255) )
+                                    
                     if self.error is None:
-                        if self.data_base[ 'print' ] is not None:
-                            self.list_of_values = self.data_base[ 'print' ]
-                            for i, value in enumerate( self.list_of_values ):
-                                if len( self.value ) == 1 :
-                                    for sub_value in value:
-                                        if i < len( self.list_of_values) - 1:
-                                            show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = True)
-                                        else:
-                                           show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
-                                else:
-                                    if i < len( self.list_of_values) - 1:
-                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
-                                    else:
-                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = False )
+                        self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
+                            self.line ).FOR( main_string, self.value, self.name, loop_list = (self.listTransform, self.tab, self.error) )
 
-                                if self.got_errors:
-                                    print( self.got_errors[ i ])
-                                else: pass
+                        if self.error is None:
+                            if self.data_base[ 'print' ] is not None:
+                                self.list_of_values = self.data_base[ 'print' ]
+                                for i, value in enumerate( self.list_of_values ):
+                                    if len( self.value ) == 1 :
+                                        for sub_value in value:
+                                            if i < len( self.list_of_values) - 1:
+                                                show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = True)
+                                            else:
+                                            show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
+                                    else:
+                                        if i < len( self.list_of_values) - 1:
+                                            print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                                        else:
+                                            print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = False )
+
+                                    if self.got_errors:
+                                        print( self.got_errors[ i ])
+                                    else: pass
+                            else: pass
                         else: pass
-                    else: pass
                     self.data_base['print'] = []
 
                 else: self.error = self.error
