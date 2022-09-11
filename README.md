@@ -24,7 +24,7 @@
 12. from/module/load/as
 ```
 
-### Loading Modules
+## Loading Modules
 - from module /**path**/**file_name**/ load **module** as **alias_name**
 - from module /**path**/**file_name**/ load **module1, module2, ...**
 - from module **file_name** load **module** as **alias_name**
@@ -34,7 +34,8 @@
 - load module **module1, module2, ...**
 - load module **file_name** as **alias_name**
 
-### Select Your IDE 
+
+## Select Your IDE 
 
 ```python
 mamba --T orion
