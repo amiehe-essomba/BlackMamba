@@ -1,5 +1,12 @@
-# BlackMamba 
-## BlackMamba is an open source object-oriented programming language created from **Python, Cython and C**. Newly created, it will be oriented towards solving machine learning and Deep-learning problems and creating web pages.
+<h1 align="center"> Black Mamba </h1>
+<p align="ceneter">Black Mamba is an open source object-oriented programming language created using three different languages **Python, Cython and C**. Newly created, it will be oriented towards solving machine learning and Deep-learning problems and for the furtur it will be also used for  creating web pages. But at the moment it only iused for AI, some packages are written to make it powerful and very useful. Black Mamba represents the futur of interpreted oriented-programming language.</p>
+
+## Built With 
+- Python 
+- Cython 
+- C
+- C++
+
 
 ```python
 1. begin/save/as
@@ -15,16 +22,6 @@
 11.with
 12.from/module/load/as
 ```
-
-> creating and handling a dictionary
- 
-![module load ](/images/dict.png)
-
-
-> creating and handling a list
- 
-![module load ](/images/list.png)
-
 
 ```bash
 from module /path/maths/ load statistics as stats
@@ -43,9 +40,6 @@ load module maths as m
 
 ![module load ](/images/m2.png)
 
-> IF structure
- 
-![module load ](/images/if.png)
 
 ## Project Description 
 
@@ -58,7 +52,17 @@ That's very impotant.
 Please make sure to update tests as appropriate.
 >For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
-## Authors and Acknowledgement
+## Authors 
+** Amiehe Essomba ** 
+
+- [Profile](https://github.com/amiehe-essomba "Amiehe Essomba" )
+- [Website](https://pypi.org/user/amiehe/ "pypi")
+
+## Acknowledgement
+
+## Support 
+Give a star if you like this project!
 
 ## License 
 This project is licensed under [MIT License](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
+
