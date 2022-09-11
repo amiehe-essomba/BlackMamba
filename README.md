@@ -10,37 +10,36 @@
 ## Language Tools
 
 ```python
-- begin/save/as/end
-- if/elif/else/end
-- unless/else/end
-- switch/case/default/end
-- try/except/finally/end
-- for/end
-- while/end
-- until/end
-- def/func/end
-- class/end
-- with/end
-- from/module/load/as
+1.  begin/save/as/end
+2.  if/elif/else/end
+3.  unless/else/end
+4.  switch/case/default/end
+5.  try/except/finally/end
+6.  for/end
+7.  while/end
+8.  until/end
+9.  def/func/end
+10. class/end
+11. with/end
+12. from/module/load/as
 ```
 
-```bash
-from module /path/maths/ load statistics as stats
-from module maths load statistics as stats
-from module maths load statistics, math
-from module maths load *
-load module /path/maths/
-load module maths, iris
-load module maths as m
+### Loading Modules
+- from module /**path**/**file_name**/ load **module** as **alias_name**
+- from module /**path**/**file_name**/ load **module1, module2, ...**
+- from module **file_name** load **module** as **alias_name**
+- from module **file_name** load *module1, module2, ...*
+- from module **file_name** load *
+- load module /**path**/**file_name**/
+- load module **module1, module2, ...**
+- load module **file_name** as **alias_name**
+
+### Select Your IDE 
+
+```python
+mamba --T orion
+mamba --T pegasus
 ```
-> loading a module as not an alias
-
-![module load ](/images/m1.png)
-
-> loading of a module as an alias
-
-![module load ](/images/m2.png)
-
 
 ## Project Description 
 
