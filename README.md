@@ -22,6 +22,8 @@
 10. class/end
 11. with/end
 12. from/module/load/as
+13. open/close
+14. with/end
 ```
 
 ## Loading Modules
@@ -53,11 +55,12 @@ That's very impotant.
 Please make sure to update tests as appropriate.
 >For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
-## Author 
+## 🤵 Author 
 **Amiehe Essomba** 
 
 - [Profile](https://github.com/amiehe-essomba "Amiehe Essomba" )
 - [Website](https://pypi.org/user/amiehe/ "pypi")
+- [Twitter](https://twitter.com/irene_essomba?t=dyzm9cjFPhktK4NEtiqtmw&s=09 "@Essomba" )
 
 ## Acknowledgement
 
@@ -65,5 +68,6 @@ Please make sure to update tests as appropriate.
 Give a ⭐ if you like this project!
 
 ## License 
+Copyrihght © 2022 **Amiehe Essomba**
 This project is licensed under [MIT License](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
 
