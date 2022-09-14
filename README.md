@@ -26,16 +26,6 @@
 14. with/end
 ```
 
-## Loading Modules
-- from module /**path**/**file_name**/ load **module** as **alias_name**
-- from module /**path**/**file_name**/ load **module1, module2, ...**
-- from module **file_name** load **module** as **alias_name**
-- from module **file_name** load *module1, module2, ...*
-- from module **file_name** load *
-- load module /**path**/**file_name**/
-- load module **module1, module2, ...**
-- load module **file_name** as **alias_name**
-
 
 ## Select Your IDE 
 
@@ -68,6 +58,7 @@ Please make sure to update tests as appropriate.
 Give a ⭐ if you like this project!
 
 ## License 
-Copyrihght © 2022 **Amiehe Essomba**
+Copyrihght © 2022 **Amiehe Essomba** <\br>
 This project is licensed under [MIT License](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
+![Bower](https://img.shields.io/bower/l/Black%20Mamba)
 
