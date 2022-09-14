@@ -51,7 +51,6 @@ Please make sure to update tests as appropriate.
 - [Profile](https://github.com/amiehe-essomba "Amiehe Essomba" )
 - [Website](https://pypi.org/user/amiehe/ "pypi")
 - [Twitter](https://twitter.com/irene_essomba?t=dyzm9cjFPhktK4NEtiqtmw&s=09 "@Essomba" )
-- ![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Firene_essomba%3Ft%3Ddyzm9cjFPhktK4NEtiqtmw%26s%3D09)
 
 ## Acknowledgement
 
@@ -59,7 +58,9 @@ Please make sure to update tests as appropriate.
 Give a ⭐ if you like this project!
 
 ## License 
-Copyrihght © 2022 **Amiehe Essomba** <\br>
+Copyrihght © 2022 **Amiehe Essomba**
+
+
 This project is licensed under [MIT License](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
 ![Bower](https://img.shields.io/bower/l/Black%20Mamba)
 
