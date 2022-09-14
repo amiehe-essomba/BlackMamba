@@ -63,4 +63,4 @@ Copyrihght © 2022 **Amiehe Essomba**
 
 This project is licensed under [MIT License](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
 
-<span style="color:orange;">Word up</span>
+<span style="color:orange">Word up</span>
