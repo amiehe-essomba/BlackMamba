@@ -3,15 +3,17 @@ from statement.error                 import tryError as te
 from statement.error                 import error as er
 from statement.comment               import externalBlocks
 from statement.comment               import structure
-
 from script                          import control_string
+
+
 class EXTERNAL_BLOCKS:
     def __init__(self,
-                 string         : str,
-                 normal_string  : str,
-                 data_base      : dict,
-                 line           : int
-                 ):
+            string         : str,
+            normal_string  : str,
+            data_base      : dict,
+            line           : int
+            ):
+        
         self.line               = line
         self.string             = string
         self.normal_string      = normal_string
