@@ -2,10 +2,10 @@
 <p align="ceneter">Black Mamba is an open source object-oriented programming language oriented towards solving machine learning and Deep-learning problems and for the furtur it will be also used for creating web pages. But at the moment it only iused for AI, some packages are written to make it powerful and very useful. Black Mamba represents the futur of interpreted oriented-programming language.</p>
 
 ## Built With 
-- Python 
-- Cython 
-- C
-- C++
+- __**Python**__ 
+- __**Cython**__ 
+- __**C**__
+- __**C++**__
 
 ## Language Tools
 
@@ -58,7 +58,8 @@ Please make sure to update tests as appropriate.
 Give a ⭐ if you like this project!
 
 ## License 
-Copyrihght © 2022 **Amiehe Essomba** <\br>
+Copyrihght © 2022 **Amiehe Essomba**
+
+
 This project is licensed under [MIT License](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
-![Bower](https://img.shields.io/bower/l/Black%20Mamba)
 
