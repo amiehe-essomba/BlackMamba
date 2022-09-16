@@ -92,7 +92,7 @@ class EXTERNAL_FOR:
                         elif self.get_block == 'unless:'        :
                             self.store_if_values    = []
                             self.store_if_values.append( (self.normal_string, True) )
-                            self.if_values, self.error  = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.if_line, 
+                            self.if_values, self.error  = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.line, 
                                     term=term ).TERMINAL(  bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
                             
                             if self.error is None:
@@ -107,7 +107,7 @@ class EXTERNAL_FOR:
                             self.store_if_values    = []
                             self.store_if_values.append( (self.normal_string, True) )
                             self.if_values, self.error  = WSw.EXTERNAL_SWITCH_WINDOWS(data_base=self.data_base,
-                                       line=self.if_line, term=term).TERMINAL( bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=c)
+                                       line=self.line, term=term).TERMINAL( bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=c)
                             
                             if self.error is None:
                                 self.store_value.append( self.normal_string )
