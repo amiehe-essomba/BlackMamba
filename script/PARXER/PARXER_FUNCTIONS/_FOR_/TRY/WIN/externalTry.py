@@ -7,6 +7,7 @@ from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch
 from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile      as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import subWindowsFor     as sWFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import subWinTry         as swTry
 from script.PARXER.PARXER_FUNCTIONS._TRY_                   import tryError          as TE
 from statement                                              import externalTry 
 
@@ -39,12 +40,12 @@ class EXTERNAL_TRY:
         #contriling string
         self.analyse            = control_string.STRING_ANALYSE(self.data_base, self.line)
         # lexer and parxer 
-        self.lex_par                = lexer_and_parxer
+        self.lex_par            = lexer_and_parxer
 
     def TRY(self, 
             loop        : list,
             tabulation  : int = 1,
-            _type_      : str = 'conditional',
+            _type_      : str = 'try',
             c           : str = '',
             term        : str = '' 
             ):
@@ -113,8 +114,8 @@ class EXTERNAL_TRY:
                             self.store_value.append( self.normal_string )
                             self.loop.append( (self.normal_string, True) )
 
-                            self._values_, self.error = INTERNAL_TRY_STATEMENT( self.master,
-                                                self.data_base, self.if_line).TRY_STATEMENT( self.tabulation + 1)
+                            self._values, self.error = swTry.INTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
+                               tabulation=self.tabulation + 1, _type_ = _type_, c=c )
                             if self.error is None:
                                 self.history.append( 'unless' )
                                 self.space = 0
