@@ -5,8 +5,7 @@ from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_inter
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_interpreter as ui
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_try
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR           import forError as fE
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 try:
     from CythonModules.Windows                          import fileError as fe 
@@ -152,7 +151,7 @@ class EXTERNAL_FOR_STATEMENT:
                                             self.loop_for.append( {'empty' : (self.normal_string, True), 'value': None,
                                                                 'tabulation' : k } )
                                         else:
-                                            self.error = for_statement.ERRORS( self.line ).ERROR4()
+                                            self.error = fE.ERRORS( self.line ).ERROR4()
                                             break
 
                                     elif self.get_block == 'any'            :
@@ -177,7 +176,7 @@ class EXTERNAL_FOR_STATEMENT:
                                             self.loop_for.append( (self.normal_string, False) )
 
                                         else:
-                                            self.error =  for_statement.ERRORS( self.line ).ERROR2( self.history[ -1 ])
+                                            self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                             break
                                 
                                 else: break
@@ -195,7 +194,7 @@ class EXTERNAL_FOR_STATEMENT:
 
                                             break
                                         else:
-                                            self.error =  for_statement.ERRORS( self.line ).ERROR2( self.history[ -1 ])
+                                            self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                             break
 
                                     elif self.get_block == 'else:' :
@@ -207,11 +206,11 @@ class EXTERNAL_FOR_STATEMENT:
                                                 self.loop_for.append( (self.normal_string, False) )
 
                                             else:
-                                                self.error =  for_statement.ERRORS( self.line ).ERROR2( self.history[ -1 ] )
+                                                self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ] )
                                                 break
 
                                         else:
-                                            self.error =  for_statement.ERRORS( self.line ).ERROR3( 'else' )
+                                            self.error =  fE.ERRORS( self.line ).ERROR3( 'else' )
                                             break
 
                                     elif self.get_block == 'empty' :
@@ -219,11 +218,11 @@ class EXTERNAL_FOR_STATEMENT:
                                             self.space += 1
                                             self.loop_for.append( (self.normal_string, False ))
                                         else:
-                                            self.error =  for_statement.ERRORS( self.line ).ERROR4()
+                                            self.error =  fE.ERRORS( self.line ).ERROR4()
                                             break
 
                                     else:
-                                        self.error =  for_statement.ERRORS( self.line ).ERROR4()
+                                        self.error =  fE.ERRORS( self.line ).ERROR4()
                                         break
                                 else: break
 
@@ -371,7 +370,7 @@ class INTERNAL_FOR_STATEMENT:
                                             self.loop_for.append( {'empty' : (self.normal_string, True), 'value': None,
                                                                 'tabulation' : k } )
                                         else:
-                                            self.error = for_statement.ERRORS( self.line ).ERROR4()
+                                            self.error = fE.ERRORS( self.line ).ERROR4()
                                             break
 
                                     elif self.get_block == 'any'            :
@@ -396,7 +395,7 @@ class INTERNAL_FOR_STATEMENT:
                                             self.loop_for.append( (self.normal_string, False) )
 
                                         else:
-                                            self.error =  for_statement.ERRORS( self.line ).ERROR2( self.history[ -1 ])
+                                            self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                             break
                                 
                                 else: break
@@ -414,7 +413,7 @@ class INTERNAL_FOR_STATEMENT:
 
                                             break
                                         else:
-                                            self.error =  for_statement.ERRORS( self.line ).ERROR2( self.history[ -1 ])
+                                            self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                             break
 
                                     elif self.get_block == 'else:' :
@@ -426,11 +425,11 @@ class INTERNAL_FOR_STATEMENT:
                                                 self.loop_for.append( (self.normal_string, False) )
 
                                             else:
-                                                self.error =  for_statement.ERRORS( self.line ).ERROR2( self.history[ -1 ] )
+                                                self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ] )
                                                 break
 
                                         else:
-                                            self.error =  for_statement.ERRORS( self.line ).ERROR3( 'else' )
+                                            self.error =  fE.ERRORS( self.line ).ERROR3( 'else' )
                                             break
 
                                     elif self.get_block == 'empty' :
@@ -438,11 +437,11 @@ class INTERNAL_FOR_STATEMENT:
                                             self.space += 1
                                             self.loop_for.append( (self.normal_string, False ))
                                         else:
-                                            self.error =  for_statement.ERRORS( self.line ).ERROR4()
+                                            self.error =  fE.ERRORS( self.line ).ERROR4()
                                             break
 
                                     else:
-                                        self.error =  for_statement.ERRORS( self.line ).ERROR4()
+                                        self.error =  fE.ERRORS( self.line ).ERROR4()
                                         break
                                 else: break
 

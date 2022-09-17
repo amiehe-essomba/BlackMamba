@@ -1,34 +1,11 @@
-from re import I
-from colorama           import Fore, init, Style
-from script             import control_string
-from script.STDIN.WinSTDIN       import stdin
-import cython
-
-from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
-from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
-from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
-from script.PARXER                                      import parxer_assembly
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
+
 try:
     from CythonModules.Linux                            import loop_for
 except ImportError:
     from CythonModules.Windows                          import loop_for
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
-me = Fore.LIGHTCYAN_EX
-le = Fore.RED
-he = Fore.GREEN
-be = Fore.BLUE
 
 class TREATMENT:
     def __init__(self, data_base:dict, line:int):
@@ -185,7 +162,6 @@ class TREATMENT:
         self.error = end_for_else.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
 
         return  self.finally_values, self.error
-
 
 class UPDATE_VAR_NAME:
     def __init__(self, data_base:dict):
