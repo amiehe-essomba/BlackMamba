@@ -217,7 +217,7 @@ class ASSEMBLY( ):
                     else: pass
                 else: pass
             
-            else: print(self.master)
+            else: pass
         # no functions detected 
         else:
             # multi-line comments 

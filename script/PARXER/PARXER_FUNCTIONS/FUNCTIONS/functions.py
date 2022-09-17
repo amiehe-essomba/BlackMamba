@@ -1,11 +1,7 @@
-from script.STDIN.WinSTDIN                              import stdin
-from script                                             import control_string
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_if, for_begin, for_statement, for_switch, for_unless,  for_try
 from script.PARXER.INTERNAL_FUNCTION                    import get_list
 from script.LEXER.FUNCTION                              import main
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
-from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import def_end
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
 from script.LEXER.FUNCTION                              import print_value
 from script.DATA_BASE                                   import data_base as db
@@ -911,10 +907,6 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                 self.next_line      = None
 
         return self.error
-
-
-
-
 
 
 

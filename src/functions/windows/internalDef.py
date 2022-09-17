@@ -18,15 +18,16 @@
 # updated by : Elena-Royer                                #
 ###########################################################
 
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement, for_try
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import WindowsIF as wIF
-from src.functions                                      import error as er
-from functions                                          import internalDef as ID
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN       import WindowsTry           as wTry
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import subWindowsFor        as sWFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import WindowsIF            as wIF
+from src.functions                                      import error                as er
+from functions                                          import internalDef          as ID
 from statement.comment                                  import externalCmt
 from script                                             import control_string
-from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import WindowsUnless as wU
-from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
-from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
+from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import WindowsUnless        as wU
+from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch    as WSw
+from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile     as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
 
 class INTERNAL_DEF:
@@ -129,12 +130,13 @@ class INTERNAL_DEF:
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
                                     
-                                    loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( self.master,
-                                                                self.data_base, self.line ).FOR_STATEMENT( self.tabulation+1 )
+                                    self._loop_, self.tab, self.error  = sWFor.INTERNAL_FOR_WINDOWS(data_base=self.data_base, line=self.if_line,
+                                                        term=term ).TERMINAL( tabulation=self.tabulation + 1, _type_ = _type_, c=c )
                                     if self.error is None:
+                                        #storing data
                                         self.history.append( 'for' )
                                         self.space = 0
-                                        self.def_starage.append( (loop, tab, self.error) )
+                                        self.def_starage.append( (self._loop_, self.tab, self.error ) )
 
                                     else: break             
                                 # if statement
@@ -176,12 +178,13 @@ class INTERNAL_DEF:
                                         self.space = 0
                                         self.def_starage.append(self._values_)
                                     else:  break
+                                # try statement
                                 elif self.get_block == 'try:'   :
                                     self.store_value.append(self.normal_string)
                                     self.def_starage.append( ( self.normal_string, True ) )
                                 
-                                    self._values_, self.error = for_try.INTERNAL_TRY_STATEMENT( self.master,
-                                            self.data_base, self.line ).TRY_STATEMENT( tabulation = self.tabulation + 1)
+                                    self._values_, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
+                                            tabulation=self.tabulation + 1, _type_ = _type_, c=c )
 
                                     if self.error is None:
                                         self.history.append( 'try' )
@@ -227,6 +230,7 @@ class INTERNAL_DEF:
                                     else: 
                                         self.error = er.ERRORS( self.line ).ERROR0( self.value )
                                         break
+                                # line comment
                                 elif self.get_block == 'comment_line':
                                     self.store_value.append(self.normal_string)
                                     self.space = 0

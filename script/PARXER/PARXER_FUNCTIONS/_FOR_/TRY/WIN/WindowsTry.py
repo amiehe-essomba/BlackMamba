@@ -9,7 +9,7 @@
 import sys
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
-from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY           import externalTry as eTry
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN       import externalTry as eTry
 from script                                             import control_string
 
 class EXTERNAL_TRY_WINDOWS:
