@@ -89,7 +89,7 @@ class INTERNAL_TRY:
                         if self.get_block   == 'begin:'  :
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
-                            self._values, self.error  = begin.COMMENT_WINDOWS(data_base=self.data_base,  line=self.line, 
+                            self._values_, self.error  = begin.COMMENT_WINDOWS(data_base=self.data_base,  line=self.line, 
                                                                             term=term).COMMENT( tabulation=self.tabulation + 1, c=c)
                             if self.error is None:
                                 self.history.append( 'begin' )
@@ -101,7 +101,7 @@ class INTERNAL_TRY:
                             self.store_value.append( self.normal_string )
                             self.loop.append( (self.normal_string, True ) )
 
-                            self._values, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
+                            self._values_, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
                                bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
 
                             if self.error is None:
@@ -114,7 +114,7 @@ class INTERNAL_TRY:
                             self.store_value.append( self.normal_string )
                             self.loop.append( (self.normal_string, True) )
 
-                            self._values, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
+                            self._values_, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
                                tabulation=self.tabulation + 1, _type_ = _type_, c=c )
                             if self.error is None:
                                 self.history.append( 'unless' )
@@ -126,7 +126,7 @@ class INTERNAL_TRY:
                             self.store_value.append(self.normal_string)
                             self.loop.append((self.normal_string, True))
 
-                            self._values, self.error  = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.line, 
+                            self._values_, self.error  = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.line, 
                                     term=term ).TERMINAL(  bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
 
                             if self.error is None:
@@ -149,7 +149,7 @@ class INTERNAL_TRY:
                         # switch statement block
                         elif self.get_block == 'switch:' :
                             self.loop.append((self.normal_string, True))
-                            self._values, self.error  = WSw.EXTERNAL_SWITCH_WINDOWS(data_base=self.data_base,
+                            self._values_, self.error  = WSw.EXTERNAL_SWITCH_WINDOWS(data_base=self.data_base,
                                        line=self.if_line, term=term).TERMINAL( bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=c)
                             
                             if self.error is None:
@@ -158,9 +158,9 @@ class INTERNAL_TRY:
                                 self.loop.append( self._values_ )
                             else:  break
                         # while loop
-                        elif self.get_block == 'while:' :
+                        elif self.get_block == 'while:'  :
                             self.loop.append((self.normal_string, True))
-                            self._values, self.error  = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
+                            self._values_, self.error  = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
                                             bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c)
                             
                             if self.error is None:

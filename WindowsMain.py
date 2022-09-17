@@ -19,8 +19,9 @@ import sys, os
 from script.LEXER.FUNCTION      import main
 from script.DATA_BASE           import data_base as db
 from script                     import control_string
-from script.PARXER              import parxer_assembly
+#from script.PARXER              import parxer_assembly
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
+from script.PARXER.WindowParxer import parxer
 
 
 class windows:
@@ -150,7 +151,7 @@ class windows:
                             if self.lexer is not None:
                                 
                                 # running parser 
-                                self.num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.data_base,
+                                self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
                                         self.line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
                                 if self.error is None: self.cursor.append(bm.get_cursor_pos.pos)   
                                 else:

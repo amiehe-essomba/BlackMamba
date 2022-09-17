@@ -14,11 +14,11 @@ from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else, for
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmt_interpreter as cmt_int
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_try
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN       import WindowsTry           as wTry
 from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import WindowsIF as wIF
 from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import WindowsUnless as wU
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS import WindowsSwitch as WSw
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment, for_begin
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import def_interpreter
 from script.PARXER.PARXER_FUNCTIONS.CLASSES             import class_interpreter
 from script.PARXER                                      import module_load_treatment 
@@ -414,8 +414,8 @@ class ASSEMBLY( ):
                 self.data_base[ 'print' ] = []
                 self.newLine                    = self.line 
 
-                self.listTransform, self.error = for_try.EXTERNAL_TRY_STATEMENT( None,
-                                            self.data_base, self.newLine ).TRY_STATEMENT( tabulation = 1)
+                self.listTransform, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.newLine, term=term ).TERMINAL(
+                               tabulation=1, _type_ = 'try', c=bm.fg.rbg(255,255,255) )
             
                 if self.error is None:
                     self._finally_key_, self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT(None,

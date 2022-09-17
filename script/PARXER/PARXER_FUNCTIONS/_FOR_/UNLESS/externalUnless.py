@@ -1,14 +1,16 @@
-from script                                             import control_string
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_try, for_switch, for_begin, for_statement
-from script.LEXER.FUNCTION                              import main
-from script.STDIN.LinuxSTDIN                            import bm_configure as bm
-from statement                                          import InternalStatement as IS
-from statement                                          import externalUnless as eUnless
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import UnlessError
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import WindowsIF as wIF
-from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import subWindowsUnless as wU
+from script                                                 import control_string
+from script.LEXER.FUNCTION                                  import main
+from statement                                              import InternalStatement    as IS
+from statement                                              import externalUnless       as eUnless
+from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import UnlessError
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF            as wIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import subWindowsUnless     as wU
+from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch        as WSw
+from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile         as WWh
+from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import subWindowsFor        as sWFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import WindowsTry           as wTry
 
-ke = bm.fg.rbg(255,255,0)
 
 class EXTERNAL_UNLESS:
     def __init__(self,
@@ -89,8 +91,8 @@ class EXTERNAL_UNLESS:
                         if self.get_block   == 'begin:'     :
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
-                            self._values_, self.error = for_begin.COMMENT_STATEMENT( master=self.master, data_base=self.data_base,
-                                                    line=self.if_line  ).COMMENT( tabulation=self.tabulation + 1, color=self.color )
+                            self._values_, self.error  = begin.COMMENT_WINDOWS(data_base=self.data_base,  line=self.line, 
+                                                                            term=term).COMMENT( tabulation=self.tabulation + 1, c=c)
                             if self.error is None:
                                 self.history.append( 'begin' )
                                 self.space = 0
@@ -125,21 +127,31 @@ class EXTERNAL_UNLESS:
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
                             
-                            loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( master=self.master,
-                                                        data_base=self.data_base, line=self.if_line ).FOR_STATEMENT( tabulation=self.tabulation+1 )
+                            self._loop_, self.tab, self.error  = sWFor.INTERNAL_FOR_WINDOWS(data_base=self.data_base, line=self.line,
+                                    term=term ).TERMINAL( tabulation=self.tabulation + 1, _type_ = _type_, c=c )
                             if self.error is None:
                                 self.history.append( 'for' )
                                 self.space = 0
-                                self.loop.append( (loop, tab, self.error) )
+                                self.loop.append( (self._loop_, self.tab, self.error) )
                             else: break
+                        # while loop
+                        elif self.get_block == 'while:'     :
+                            self.loop.append((self.normal_string, True))
+                            self._values_, self.error  = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
+                                            bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c)
+                            
+                            if self.error is None:
+                                self.history.append( 'while' )
+                                self.space = 0
+                                self.loop.append( self._values_ )
+                            else:  break
                         # try block
                         elif self.get_block == 'try:'       :
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
                             
-                            self._values_, self.error = for_try.INTERNAL_TRY_STATEMENT( master=self.master,
-                                    data_base=self.data_base, line=self.if_line ).TRY_STATEMENT( tabulation = self.tabulation + 1,
-                                                                                                _type_=_type_)
+                            self._values_, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
+                               tabulation=self.tabulation + 1, _type_ = _type_, c=c )
 
                             if self.error is None:
                                 self.history.append( 'try' )
@@ -150,9 +162,8 @@ class EXTERNAL_UNLESS:
                         elif self.get_block == 'switch:'    :
                             self.store_value.append(self.normal_string)
                             self.loop.append((self.normal_string, True))
-                            self._values_, self.error = for_switch.SWITCH_STATEMENT( master=self.master,
-                                        data_base=self.data_base, line=self.if_line ).SWITCH( main_values=self.value,
-                                                                        tabulation=self.tabulation + 1, _type_=_type_)
+                            self._values_, self.error  = WSw.EXTERNAL_SWITCH_WINDOWS(data_base=self.data_base,
+                                       line=self.if_line, term=term).TERMINAL( bool_value=self.value, tabulation=self.tabulation + 1, _type_=_type_, c=c)
                             
                             if self.error is None:
                                 self.history.append( 'switch' )
