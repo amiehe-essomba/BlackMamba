@@ -1,14 +1,15 @@
 from statement.comment                                      import externalCmt
 from script                                                 import control_string
-from statement                                              import InternalStatement as IS
-from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR               import forError as fe
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF as wIF
-from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless as wU
+from statement                                              import InternalStatement    as IS
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR               import forError             as fe
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF            as wIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless        as wU
 from script.PARXER.LEXER_CONFIGURE                          import lexer_and_parxer
-from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
-from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
+from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch        as WSw
+from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile         as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
-from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import WindowsFor as wFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import WindowsFor           as wFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import WindowsTry           as wTry
 
 
 class INTERNAL_FOR:
@@ -162,7 +163,18 @@ class INTERNAL_FOR:
                             else: break
                         # try block
                         elif self.get_block == 'try:'           :
-                            pass
+                            self.store_if_values    = []
+                            self.store_if_values.append( (self.normal_string, True) )
+                            self._values_, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
+                               tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+                            
+                            if self.error is None:
+                                self.store_value.append( self.normal_string )
+                                self.history.append( 'try' )
+                                self.store_if_values.append( self.if_values )
+                                self.loop_for.append( {'try' : self.store_if_values, 'value' : self.value, 'tabulation' : (self.tabulation + 1) } )
+                                self.store_if_values = []
+                            else: break
                         # empty line 
                         elif self.get_block == 'empty'          :
                             if self.space <= self.max_emptyLine:

@@ -1,27 +1,27 @@
 from script.PARXER.PRINT                                    import show_data
 from script.LEXER.FUNCTION                                  import print_value
-from statement                                              import mainStatement as MS
+from statement                                              import mainStatement        as MS
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import unless_statement
 from script.PARXER.PARXER_FUNCTIONS._IF_                    import if_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_                import switch_statement
 from script.PARXER.PARXER_FUNCTIONS.WHILE                   import while_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_                   import end_for_else
-from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_         import comment as cmt
+from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_         import comment              as cmt
 from script.PARXER.PARXER_FUNCTIONS._TRY_                   import try_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_                   import for_try
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF as wIF
-from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless as wU
-from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF            as wIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless        as wU
+from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch        as WSw
 from script.PARXER.PARXER_FUNCTIONS._FOR_                   import for_block_treatment
 from script.PARXER                                          import module_load_treatment 
-from script.STDIN.LinuxSTDIN                                import bm_configure as bm
+from script.STDIN.LinuxSTDIN                                import bm_configure         as bm
 from src.modulesLoading                                     import modules, moduleMain 
-from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
+from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile         as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
-from src.functions.windows                                  import windowsDef as WD
-from src.classes.windows                                    import windowsClass as WC
+from src.functions.windows                                  import windowsDef           as WD
+from src.classes.windows                                    import windowsClass         as WC
 from script.PARXER                                          import partial_assembly
-from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import WindowsFor as wFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import WindowsFor           as wFor
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import WindowsTry           as wTry
+from loop                                                   import mainFor
 
 class ASSEMBLY( ):
     def __init__(self, 
@@ -83,7 +83,7 @@ class ASSEMBLY( ):
                     self.data_base[ 'print' ] = []
                     # running if IDE
                     self.listTransform, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base,
-                                    line=self.line, term=term).TERMINAL(bool_value = self._return_, tabulation=1, _type_='conditional',
+                                    line=self.newLine, term=term).TERMINAL(bool_value = self._return_, tabulation=1, _type_='conditional',
                                     c = bm.fg.rbg(255,255,255) )
 
                     if self.error is None:
@@ -106,16 +106,16 @@ class ASSEMBLY( ):
                 else: pass
             # active_function detected unless function 
             elif self.master[ 'function' ] == 'unless'  :
-                self._return_, self.error = MS.MAIN( main_string, self.data_base, self.line).MAIN(  typ='unless',
+                self.newLine                    = self.line 
+                self._return_, self.error       = MS.MAIN( main_string, self.data_base, self.newLine).MAIN(  typ='unless',
                                         opposite=True, interpreter=True )
                
                 if self.error is None:
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.error = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base,
-                                    line=self.line, term=term).TERMINAL(bool_value = self._return_,
+                                    line=self.newLine, term=term).TERMINAL(bool_value = self._return_,
                                     tabulation=1, _type_='conditional', c = bm.fg.rbg(255,255,255) )
                     if self.error is None:
-                        self.newLine                    = self.line 
                         self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( None , self.data_base,
                                             self.newLine ).UNLESS_STATEMENT( self._return_, 1, self.listTransform )
                         if self.error is None:
@@ -133,15 +133,15 @@ class ASSEMBLY( ):
                 else: pass
             # active_function detected switch  function 
             elif self.master[ 'function' ] == 'switch'  :
-                self._return_, self.error = MS.MAIN(main_string, self.data_base, self.line).MAIN(typ='switch',
+                self.newLine                    = self.line 
+                self._return_, self.error = MS.MAIN(main_string, self.data_base, self.newLine).MAIN(typ='switch',
                                                 opposite=False, interpreter=True)
                 if self.error is None:
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.error = WSw.EXTERNAL_SWITCH_WINDOWS(data_base=self.data_base,
-                                    line=self.line, term=term).TERMINAL(bool_value = self._return_,
+                                    line=self.newLine, term=term).TERMINAL(bool_value = self._return_,
                                     tabulation=1, _type_='conditional',  c = bm.fg.rbg(255,255,255) )
                     if self.error is None:
-                        self.newLine                    = self.line 
                         self.error = switch_statement.SWITCH_LOOP_STATEMENT( None , self.data_base,
                                             self.newLine ).SWITCH( self._return_, 1, self.listTransform )
                         if self.error is None:
@@ -159,17 +159,18 @@ class ASSEMBLY( ):
                 else: pass
             # active_function detected for function 
             elif self.master[ 'function' ] == 'for'     :
-                self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
-                                                                self.line ).BOCKS( main_string )
+                self.newLine                    = self.line 
+                self._, self.value, self.error =  mainFor.FOR_BLOCK(normal_string =main_string, data_base=self.data_base, 
+                                                line=self.newLine).FOR( function = 'loop', interpreter = interpreter,   locked=False)
 
                 if self.error is None:
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.tab, self.error = wFor.EXTERNAL_FOR_WINDOWS(data_base=self.data_base,
-                                    line=self.line, term=term).TERMINAL( tabulation=1, _type_='loop', c = bm.fg.rbg(255,255,255) )
+                                    line=self.newLine , term=term).TERMINAL( tabulation=1, _type_='loop', c = bm.fg.rbg(255,255,255) )
                                     
                     if self.error is None:
-                        self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
-                            self.line ).FOR( main_string, self.value, self.name, loop_list = (self.listTransform, self.tab, self.error) )
+                        self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base, self.newLine ).FOR( main_string, 
+                                self.value['value'], self.value['variable'], loop_list = (self.listTransform, self.tab, self.error) )
 
                         if self.error is None:
                             if self.data_base[ 'print' ] is not None:
@@ -180,7 +181,7 @@ class ASSEMBLY( ):
                                             if i < len( self.list_of_values) - 1:
                                                 show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = True)
                                             else:
-                                            show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
+                                                show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
                                     else:
                                         if i < len( self.list_of_values) - 1:
                                             print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
@@ -197,8 +198,9 @@ class ASSEMBLY( ):
                 else: self.error = self.error
             # active_function detected while function 
             elif self.master[ 'function' ] == 'while'   :
+                self.newLine                    = self.line 
                 self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
-                                line=self.line).MAIN(typ = 'while', opposite = False, interpreter = True, function = 'loop')
+                                line=self.newLine).MAIN(typ = 'while', opposite = False, interpreter = True, function = 'loop')
                 if self.error is None:
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.error = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base,
@@ -214,6 +216,7 @@ class ASSEMBLY( ):
                         else: pass 
                     else: pass
                 else: pass
+            
             else: print(self.master)
         # no functions detected 
         else:
@@ -221,7 +224,7 @@ class ASSEMBLY( ):
             if   self.master[ 'begin'  ] is True        :
                 self.newLine                   = self.line
                 self.listTransform, self.error = begin.COMMENT_WINDOWS(data_base=self.data_base,
-                                        line=self.line, term=term).COMMENT( tabulation=1, c=bm.fg.rbg(153, 153, 255))
+                                        line=self.newLine, term=term).COMMENT( tabulation=1, c=bm.fg.rbg(153, 153, 255))
                 if self.error is None:
                     self.error = cmt.COMMENT_LOOP_STATEMENT( None, self.data_base, self.newLine ).COMMENT( 1, self.listTransform )
                 else: pass              
@@ -237,9 +240,8 @@ class ASSEMBLY( ):
             elif self.master[ 'try' ] is True:
                 self.data_base[ 'print' ] = []
                 self.newLine                    = self.line 
-
-                self.listTransform, self.error = for_try.EXTERNAL_TRY_STATEMENT( None,
-                                            self.data_base, self.newLine ).TRY_STATEMENT( tabulation = 1)
+                self.listTransform, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.newLine, term=term ).TERMINAL(
+                               tabulation=1, _type_ = 'try', c=bm.fg.rbg(255,255,255) )
             
                 if self.error is None:
                     self._finally_key_, self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT(None,
