@@ -13,8 +13,7 @@ from statement.comment                                  import structure
 from statement                                          import mainStatement as MS
 from loop                                               import mainFor
 from statement.comment                                  import externalBlocks
-try: from CythonModules.Windows                         import fileError as fe
-except ImportError:  from CythonModules.Linux           import fileError as fe
+
 
 class INTERNAL_BLOCKS:
     def __init__(self, 
@@ -292,7 +291,7 @@ class INTERNAL_BLOCKS:
                     elif self.normal_string[ : 3 ] == 'end'         :
                         if self.normal_string[-1] == ':':
                             self._return_ = 'end:'
-                            self.error = externalBlocks.EXTERNAL(data_base=self.data_base, line=self.line).EXTERNAL(snum=3,
+                            self.error = externalBlocks.EXTERNAL(data_base=self.data_base, line=self.line).EXTERNAL(num=3,
                                                             normal_string=self.normal_string, tabulation=self.tabulation, split=True)
                         else:
                             if self.normal_string in ['end']: self.error = er.ERRORS(self.line).ERROR1('end')
