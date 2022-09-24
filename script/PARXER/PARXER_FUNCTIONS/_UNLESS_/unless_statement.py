@@ -1,13 +1,10 @@
 import cython
 from script                                             import control_string
-from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
-from script.LEXER.FUNCTION                              import main
-from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from statement                                          import InternalStatement as IS
 from statement                                          import externalUnless as eUnless
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import UnlessError
@@ -15,7 +12,6 @@ from updatingDataBase                                   import updating
 try:  from CythonModules.Linux                          import loop_for
 except ImportError: from CythonModules.Windows          import loop_for
 
-ke = bm.fg.rbg(255, 255,0)
 
 @cython.cclass
 class EXTERNAL_UNLESS_FOR_STATEMENT:
@@ -33,12 +29,12 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
 
     @cython.cfunc
     def UNLESS_STATEMENT(self, 
-                        bool_value      : bool,                 # boolean value used to activate the calculation
-                        tabulation      : int   = 0,            # tabulation
-                        loop_list       : list  = [],           # all values
-                        _type_          : str   = 'conditional',# type structure
-                        keyPass         : bool  = False         # if pass function is detected
-                        ):
+            bool_value      : bool,                 # boolean value used to activate the calculation
+            tabulation      : int   = 0,            # tabulation
+            loop_list       : list  = [],           # all values
+            _type_          : str   = 'conditional',# type structure
+            keyPass         : bool  = False         # if pass function is detected
+            ):
 
         """
         :param bool_value:
@@ -239,10 +235,10 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
 @cython.cclass
 class INTERNAL_UNLESS_FOR_STATEMENT:
     def __init__(self,
-                master      : any, 
-                data_base   : dict, 
-                line        : int
-                ):
+            master      : any, 
+            data_base   : dict, 
+            line        : int
+            ):
         
         self.line                   = line
         self.master                 = master
@@ -252,12 +248,12 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
 
     @cython.cfunc
     def UNLESS_STATEMENT(self, 
-                        bool_value      : bool, 
-                        tabulation      : int   = 0, 
-                        loop_list       : list  = [],
-                        _type_          : str   = 'conditional',
-                        keyPass         : bool  = False
-                        ):
+            bool_value      : bool, 
+            tabulation      : int   = 0, 
+            loop_list       : list  = [],
+            _type_          : str   = 'conditional',
+            keyPass         : bool  = False
+            ):
         self.error                  = None
         self.string                 = ''
         self.normal_string          = ''

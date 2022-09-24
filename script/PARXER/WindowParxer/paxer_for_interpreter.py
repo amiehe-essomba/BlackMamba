@@ -16,6 +16,7 @@ from statement                                              import mainStatement
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS               import def_interpreter
 from script.PARXER.PARXER_FUNCTIONS.CLASSES                 import class_interpreter
 from src.modulesLoading                                     import modules, moduleMain 
+from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import unless_statement     as US
 
 class ASSEMBLY( ):
     def __init__(self, 
@@ -57,17 +58,18 @@ class ASSEMBLY( ):
             if   self.master[ 'function' ] is None      :
                 self.error = partial_assembly.ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
             elif self.master[ 'function' ] == 'if'      :
-
+                self.newLine                    = self.line
+                
                 self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
                                 line=self.newLine).MAIN(typ = 'if', opposite = False, interpreter = True, function = None)
                 if self.error is None:
                     self.data_base[ 'print' ]       = []
                     self.NewLIST                    = stdin.STDIN(self.data_base, self.line ).GROUPBY(1, MainList)
                     self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
-                    self.newLine                    = self.line
+                    
                     
                     self.listTransform ,self.error  = if_inter.EXTERNAL_IF_STATEMENT( None, self.data_base,
-                                                                         self.line ).IF_STATEMENT(1, self.NewLIST )
+                                                                         self.newLine ).IF_STATEMENT(1, self.NewLIST )
                     if self.error is None:
                         self.MainStringTransform        = 't'+main_string
                         self.listTransform              = [(self.MainStringTransform , True), self.listTransform]
@@ -89,26 +91,35 @@ class ASSEMBLY( ):
                 else:
                     self.error = self.error
             elif self.master[ 'function' ] == 'unless'  :
+                self.newLine                    = self.line
                 self._return_, self.error           = MS.MAIN( main_string, self.data_base, self.newLine).MAIN(  typ='unless',
-                                    opposite=True, interpreter=True )
+                                                                    opposite=True, interpreter=True )
                 if self.error is None:
-                    self.NewLIST                    = stdin.STDIN(self.data_base, self.line ).GROUPBY(1, MainList)
+                    self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine ).GROUPBY(1, MainList)
                     self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
                 
-                    self.error                      = unless_interpreter.EXTERNAL_UNLESS_STATEMENT(None, self.data_base,
-                                                                            self.line).UNLESS_STATEMENT(self._return_, 1, self.NewLIST )
+                    self.listTransform, self.error = unless_interpreter.EXTERNAL_UNLESS_STATEMENT(master=None, data_base=self.data_base,
+                            line=self.newLine).UNLESS_STATEMENT(self._return_, 1, self.NewLIST )
+                    
+                    self.MainStringTransform        = 't'+main_string
+                    self.listTransform              = [(self.MainStringTransform , True), self.listTransform]
+                    
+                    self.error = US.EXTERNAL_UNLESS_FOR_STATEMEN( master=None , data_base=self.data_base, 
+                            line=self.newLine ).UNLESS_STATEMENT( bool_value=self._return_, tabuation=1, loop_list=self.listTransform )
                     
                     if self.error is None:
-                        if self.data_base[ 'print' ] is not None:
-                            self.list_of_values = self.data_base[ 'print' ]
-                            for i, value in enumerate( self.list_of_values ):
-                                if i < len( self.list_of_values ) - 1:
-                                    print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
-                                else:
-                                    print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
-                                    
+                        if self.error is None:
+                            if self.data_base[ 'print' ] is not None:
+                                self.list_of_values = self.data_base[ 'print' ]
+                                for i, value in enumerate( self.list_of_values ):
+                                    if i < len( self.list_of_values ) - 1:
+                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                                    else:
+                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
+                                        
+                            else: pass
+                            self.data_base['print'] = []
                         else: pass
-                        self.data_base['print'] = []
                     else: pass
                 else: pass
             elif self.master[ 'function' ] == 'switch'  :
