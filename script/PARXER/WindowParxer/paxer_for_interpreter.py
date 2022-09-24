@@ -104,7 +104,7 @@ class ASSEMBLY( ):
                     self.MainStringTransform        = 't'+main_string
                     self.listTransform              = [(self.MainStringTransform , True), self.listTransform]
                     
-                    self.error = US.EXTERNAL_UNLESS_FOR_STATEMEN( master=None , data_base=self.data_base, 
+                    self.error = US.EXTERNAL_UNLESS_FOR_STATEMENT( master=None , data_base=self.data_base, 
                             line=self.newLine ).UNLESS_STATEMENT( bool_value=self._return_, tabuation=1, loop_list=self.listTransform )
                     
                     if self.error is None:

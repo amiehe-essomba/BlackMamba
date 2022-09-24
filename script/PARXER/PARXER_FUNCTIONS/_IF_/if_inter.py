@@ -1,13 +1,8 @@
 from script                                             import control_string
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement, unless_interpreter
-from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
-from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment, cmt_interpreter
-from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
+from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_interpreter
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
-from script.LEXER.FUNCTION                              import main
 from script.STDIN.WinSTDIN                              import stdin
-from script.STDIN.LinuxSTDIN                            import bm_configure         as bm
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError              as Ie
 from statement                                          import InternalStatement    as IS
 from statement                                          import externalIF           as eIF
@@ -21,10 +16,11 @@ class EXTERNAL_IF_STATEMENT:
         self.lex_par                = lexer_and_parxer
 
     def IF_STATEMENT(self, 
-                    tabulation  : int   = 1,
-                    loop_list   : list  = [],
-                    _type_      : str   = 'conditional',
-                    ):
+            tabulation  : int   = 1,
+            loop_list   : list  = [],
+            _type_      : str   = 'conditional'
+            ):
+        
         self.error                  = None
         self.string                 = ''
         self.normal_string          = ''
@@ -89,7 +85,6 @@ class EXTERNAL_IF_STATEMENT:
                                         else: 
                                             self.error = Ie.ERRORS( self.line ).ERROR4()
                                             break
-                                    
                                     elif self.get_block == 'unless:' :
                                         self.next_line              = j+1
                                         self.loop.append( ( self.normal_string, True ) )
@@ -110,8 +105,7 @@ class EXTERNAL_IF_STATEMENT:
                                             else: break
                                         else: 
                                             self.error = Ie.ERRORS( self.line ).ERROR4()
-                                            break
-                                                                
+                                            break                                                          
                                     elif self.get_block == 'empty'   :
                                         if self.space <= self.maxEmptyLine:
                                             self.space += 1
@@ -119,7 +113,6 @@ class EXTERNAL_IF_STATEMENT:
                                         else:
                                             self.error = Ie.ERRORS( self.line ).ERROR4()
                                             break
-
                                     elif self.get_block == 'any'     :
                                         self.store_value.append( self.normal_string )
                                         self.space = 0
@@ -130,16 +123,13 @@ class EXTERNAL_IF_STATEMENT:
                                     
                                     elif self.get_block == 'end:'    :
                                         self.loop.append( (self.normal_string, False) )
-
                                     elif self.get_block == 'elif:'   :
                                         self.history.append( 'elif' )
                                         self.store_value        = []
                                         self.loop.append( (self.normal_string, False) )
-
                                     elif self.get_block == 'else:'   :
                                         self.history.append( 'else' )
-                                        self.loop.append( (self.normal_string, False) )      
-                                    
+                                        self.loop.append( (self.normal_string, False) )                                     
                                     else:
                                         self.error = Ie.ERRORS( self.line ).ERROR4()
                                         break
@@ -154,17 +144,14 @@ class EXTERNAL_IF_STATEMENT:
                                 if self.error is None:
                                     if   self.get_block == 'end:'   :
                                         self.loop.append( (self.normal_string, False) )
-                                        break
-                                    
+                                        break    
                                     elif self.get_block == 'elif:'  :
                                         self.history.append( 'elif' )
                                         self.store_value        = []
                                         self.loop.append( (self.normal_string, False) )
-
                                     elif self.get_block == 'else:'  :
                                         self.history.append( 'else' )
                                         self.loop.append( (self.normal_string, False) )
-
                                     elif self.get_block == 'empty'  :
                                         if self.space <= self.maxEmptyLine:
                                             self.space += 1
@@ -172,7 +159,6 @@ class EXTERNAL_IF_STATEMENT:
                                         else:
                                             self.error = Ie.ERRORS( self.line ).ERROR4()
                                             break
-
                                     else:
                                         self.error = Ie.ERRORS( self.line ).ERROR4()
                                         break
@@ -183,8 +169,7 @@ class EXTERNAL_IF_STATEMENT:
                 else:
                     self.error = Ie.ERRORS( self.line ).ERROR4()
                     break
-        else:
-            self.error = Ie.ERRORS( self.line ).ERROR5()
+        else:  self.error = Ie.ERRORS( self.line ).ERROR5()
         ############################################################################
         
         return self.loop , self.error

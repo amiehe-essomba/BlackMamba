@@ -1,6 +1,5 @@
 from script                                             import control_string
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_inter
-from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmt_interpreter
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import UnlessError          as UE 
