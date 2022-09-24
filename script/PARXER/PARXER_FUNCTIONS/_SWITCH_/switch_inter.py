@@ -5,7 +5,7 @@ from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError          
 from statement                                          import InternalStatement    as IS
 from statement                                          import externalSwitch       as ES
 
-class EXTERNAL_IF_STATEMENT:
+class SWITCH:
     def __init__(self, master, data_base, line) -> None:
         self.line                   = line
         self.master                 = master
@@ -13,7 +13,7 @@ class EXTERNAL_IF_STATEMENT:
         self.analyze                = control_string
         self.lex_par                = lexer_and_parxer
 
-    def IF_STATEMENT(self, 
+    def SWITCH(self, 
             tabulation  : int   = 1,
             loop_list   : list  = [],
             _type_      : str   = 'conditional'

@@ -27,6 +27,7 @@ class FUNCTION:
         self.values             = self.get_informations[ 'value' ][ : ]
         self.int_values         = self.values[ : ]
         self.emty_values        = []
+        self.function_type      = self.get_informations[ 'type_return' ]
 
         ###########################################################################
         self.computed_values    = info_data[ 'values_computed' ]
@@ -185,7 +186,8 @@ class FUNCTION:
         self._return_     = {
             'data_base'         : self.def_data_base,
             'vars'              : self.arguments,
-            'values'            : self.int_values
+            'values'            : self.int_values,
+            'type'              : self.function_type
         }
 
         return  self._return_, self.error

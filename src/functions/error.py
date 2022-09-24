@@ -170,3 +170,8 @@ class ERRORS:
         error = '{}cannot be {}a function. {}line: {}{}'.format(self.white, self.yellow, self.white, self.yellow,self.line)
         self.error = fe.FileErrors('SyntaxError').Errors() + '{}The subfunction {}{} '.format(self.white,  self.red, string) + error
         return self.error + self.reset
+    
+    def ERROR24( self, string1, string2 ):
+        error = '{}instead {}. {}line: {}{}'.format(self.white, string2, self.white, self.yellow,self.line)
+        self.error = fe.FileErrors('TypeError').Errors() + '{}returning type error. got {} '.format(self.white,  string1) + error
+        return self.error + self.reset

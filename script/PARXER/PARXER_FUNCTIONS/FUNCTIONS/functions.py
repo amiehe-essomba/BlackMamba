@@ -4,18 +4,19 @@ from script.LEXER.FUNCTION                              import main
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
 from script.LEXER.FUNCTION                              import print_value
-from script.DATA_BASE                                   import data_base as db
-from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
-from script.PARXER                                      import module_load_treatment  as mlt
-from script.STDIN.LinuxSTDIN                            import bm_configure as bm
+from script.DATA_BASE                                   import data_base                as db
+from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment                  as cmt
+from script.PARXER                                      import module_load_treatment    as mlt
+from script.STDIN.LinuxSTDIN                            import bm_configure             as bm
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
-from src.functions                                      import error as er
+from src.functions                                      import error                    as er
 from src.functions                                      import function, loading, set_openfile, updating_data
-from functions                                          import internalDef as ID
+from functions                                          import internalDef              as ID
 from statement.comment                                  import externalCmt
 from script.PARXER.PARXER_FUNCTIONS.WHILE               import while_statement
+from src.functions                                      import type_of_data             as tod
 try:  from CythonModules.Linux                          import loop_for
 except ImportError: from CythonModules.Windows          import loop_for
 
@@ -51,7 +52,7 @@ class FUNCTION_TREATMENT:
         self.initialize_values      = None
         
         
-        if   self.function_name in self.data_base[ 'func_names' ]   :  
+        if   self.function_name in self.data_base[ 'func_names' ]   :
             self.data_base[ 'assigment' ] = self.function_name+'( )'
             self.function_location      = self.data_base[ 'func_names' ].index( self.function_name )
             self.function_info          = self.data_base[ 'functions' ][ self.function_location ]
@@ -69,6 +70,7 @@ class FUNCTION_TREATMENT:
 
                     if self.error is None:
                         self.new_data_base              = self._new_data_base_[ 'data_base' ]
+                        self._type_                     = self._new_data_base_[ 'type' ]
                         self.new_data_base              = FUNCTION_TREATMENT( self.master, self.data_base, self.line ).INIT_FUNCTION( initialize_data,
                                                                                             self.new_data_base, self.function_name )
                         self.new_data_base[ 'print' ]   = []
@@ -87,17 +89,35 @@ class FUNCTION_TREATMENT:
                                 if self.new_data_base[ 'return' ] is not None:
                                     if len( self.new_data_base[ 'return' ] ) == 1:
                                         self.final_values = self.new_data_base[ 'return' ][ 0 ]
-                                    else: self.final_values = tuple( self.new_data_base[ 'return' ] )
+                                        if self._type_ is None: pass 
+                                        else:
+                                            self.typ = tod.CHECK_TYPE_OF_DATA(value=self._type_).RETURNING_TYPE()[0]
+                                            if type(self.final_values) == self.typ : pass
+                                            else: 
+                                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                                self.error = error.ERRORS(self.line).ERROR24(self.false, self.typ )
+                                    else: 
+                                        if self._type_ is None: pass
+                                        else:
+                                            self.typ = tod.CHECK_TYPE_OF_DATA(value='tuple').RETURNING_TYPE()[0]
+                                            if self._type_ == 'tuple': self.final_values = tuple( self.new_data_base[ 'return' ] )
+                                            else: 
+                                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                                self.error = error.ERRORS(self.line).ERROR24(self.false, self.typ )
 
-                                    if self.new_data_base[ 'print' ] is not None:
-                                       
-                                        self.print_values   = True
-                                        self.list_of_values = self.new_data_base[ 'print' ]
+                                    if self.error is None:
+                                        if self.new_data_base[ 'print' ] is not None:
                                         
-                                        for i, value in enumerate( self.list_of_values ):
-                                            print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
+                                            self.print_values   = True
+                                            self.list_of_values = self.new_data_base[ 'print' ]
+                                            
+                                            for i, value in enumerate( self.list_of_values ):
+                                                print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
 
-                                        self.new_data_base[ 'print' ]   = []
+                                            self.new_data_base[ 'print' ]   = []
+                                        else: pass
                                     else: pass
                                     updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base, self._new_data_base_ )
 
