@@ -54,11 +54,11 @@ class FUNCTION:
         self.function_type, self.error  = self.string_type.CHAR_SELECTION( '->' )
         if   len(self.function_type) == 1: pass
         elif len(self.function_type) == 2: 
-            self._type_, self.err = self.control.DELETE_SPACE( self.function_type[ 1 ] )
+            self._types_, self.err = self.control.DELETE_SPACE( self.function_type[ 1 ] )
             if self.err is None:
                 self.master, self.err = self.control.DELETE_SPACE( self.function_type[ 0 ] )
                 if self.err is None: 
-                    if self._type_ in self.type: self.function_info['type_return'] = self._type_
+                    if self._types_ in self.type: self.function_info['type_return'] = self._types_
                     else: self.error = ERRORS(self.line).ERROR6()
                 else: self.error = ERRORS(self.line).ERROR0( main_string )
             else: self.error = ERRORS(self.line).ERROR0( main_string )

@@ -2,26 +2,25 @@
 # Main IDE for windows called when BM      #  
 # is running un windows sys                #
 #                                          #
-# The default terminal running is pegasus  #
-# and the performed one is the orion       #
+# *The default terminal running is pegasus #
+# *and the performed one is the orion      #
 # with a syntaxis coloration               #
 #                                          #
 # to call them just typed                  #
 #                                          #
-# mamba --T orion                          #
-# mamba --T pegasus                        #
+# *mamba --T orion                         #
+# *mamba --T pegasus                       #
 ############################################
-# created by : amiehe-essomba              #
-# updating by: amiehe-essomba              #
+# **created by : amiehe-essomba            #
+# **updating by: amiehe-essomba            #
 ############################################
 
 import sys, os
 from script.LEXER.FUNCTION      import main
-from script.DATA_BASE           import data_base as db
 from script                     import control_string
-#from script.PARXER              import parxer_assembly
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
-from script.PARXER.WindowParxer import parxer
+from script.PARXER.WINParxer    import parxer
+from script.STDIN.LinuxSTDIN    import bm_configure     as bm
+from script.DATA_BASE           import data_base        as db
 
 
 class windows:

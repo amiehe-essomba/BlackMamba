@@ -7,8 +7,7 @@ from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement, if_inter
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement, unless_interpreter
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import end_else_elif as _end_else_elif_
-from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import end_case_default, switch_statement
+from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS.WHILE               import while_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else, for_interpreter
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
@@ -72,8 +71,11 @@ class ASSEMBLY( ):
                     if self._return_ is not None:
                         if interpreter is False:
                             if locked is False: 
-                                for value in self._return_:
-                                    show_data.SHOW( value, self.data_base, key ).SHOW()
+                                if self.data_base['def_return'] is True:
+                                    for value in self._return_:
+                                        show_data.SHOW( value, self.data_base, key ).SHOW()
+                                    self.data_base['def_return'] = False 
+                                else: pass
                             else: pass
                         else: pass
                     else: pass
@@ -519,8 +521,8 @@ class ASSEMBLY( ):
                 else:
                     self.error = self.error
             elif self.master[ 'function' ] == 'unless'  : 
-                self._return_, self.error = _end_else_elif_.MAIN_UNLESS(main_string, self.data_base,
-                                                                  self.line).BOCKS()
+                self._return_, self.error = MS.MAIN( main_string, self.data_base, self.line).MAIN(  typ='unless',
+                                                                    opposite=True, interpreter=True )
                 if self.error is None:
                     self.NewLIST                    = stdin.STDIN(self.data_base, self.line ).GROUPBY(1, MainList)
                     self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
@@ -542,8 +544,8 @@ class ASSEMBLY( ):
                     else: pass
                 else: pass
             elif self.master[ 'function' ] == 'switch'  :
-                self._return_, self.error = end_case_default.MAIN_SWITCH( main_string, self.data_base,
-                                                                  self.line).BOCKS()
+                self._return_, self.error = MS.MAIN(main_string, self.data_base, self.line).MAIN(typ='switch',
+                                                opposite=False, interpreter=True)
                 if self.error is None:
                     self.error = switch_statement.SWITCH_STATEMENT (None, self.data_base,
                                                         self.line).SWITCH(self._return_, 1)

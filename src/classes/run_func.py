@@ -1,7 +1,10 @@
-from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
-from src.classes                                    import error as er 
-from src.functions                                  import updating_data
-from script.LEXER.FUNCTION                          import print_value
+from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import functions                as func
+from src.classes                                        import error                    as er 
+from src.functions                                      import type_of_data             as tod
+from src.functions                                      import error                    as err
+from src.functions                                      import updating_data
+from script.LEXER.FUNCTION                              import print_value
+
 
 class RUN_FUNCTION:
     def __init__(self, 
@@ -15,7 +18,7 @@ class RUN_FUNCTION:
         self.new_data_base      = new_data_base
         self._new_data_base_    = _new_data_base_
         
-    def RUN( self,  all_data_analyses: list, functionName : str, tabulation: int =2)   :
+    def RUN( self,  all_data_analyses: list, functionName : str, tabulation: int =2, _type_ : str = None)   :
         self.all_data_analyses  = all_data_analyses
         self.error              = None
         self.initialize_values  = None
@@ -45,55 +48,81 @@ class RUN_FUNCTION:
                 self.keyActivation          = False
 
                 if self.new_data_base[ 'return' ] is not None:
-                    
+                    self.DataBase['def_return'] = True
+                            
                     if len( self.new_data_base[ 'return' ] ) == 1:
                         self.final_values = self.new_data_base[ 'return' ][ 0 ]
-                    else: self.final_values = tuple( self.new_data_base[ 'return' ] )
-                    
-                    if self.new_data_base[ 'print' ] is not None:
-                        self.print_values   = True
-                        self.list_of_values = self.new_data_base[ 'print' ]
-                        for i, value in enumerate( self.list_of_values ):
-                            print_value.PRINT_PRINT( value, self.DataBase ).PRINT_PRINT( key = False )
-
-                        self.new_data_base[ 'print' ]   = []
-                    else: pass
-                    updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
-                                                            self._new_data_base_ )
-                else:
-                    
-                    if self.new_data_base[ 'sub_print' ] is None:
-                        if self.new_data_base[ 'transformation' ] is None:
-                            if self.new_data_base[ 'return' ] is not None:
-                                self.final_values   = self.new_data_base[ 'return' ]
-                                self.keyActivation  = True
-                            else: pass
-                            
+                        if _type_ is None: pass 
                         else:
-                            self.final_values = self.new_data_base[ 'transformation' ]
-                            self.new_data_base[ 'transformation' ]      = None
-                            self.keyActivation                          = True
-                            
-                        if self.new_data_base[ 'print' ] :
+                            self.typ = tod.CHECK_TYPE_OF_DATA(value=_type_).RETURNING_TYPE()
+                            if type(self.final_values) == self.typ[0] : pass
+                            else: 
+                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                self.error = err.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
+                    else: 
+                        self.final_values = tuple( self.new_data_base[ 'return' ] )
+                        if _type_ is None: pass
+                        else:
+                            self.typ = tod.CHECK_TYPE_OF_DATA(value='tuple').RETURNING_TYPE()
+                            if self._type_ == 'tuple': pass
+                            else: 
+                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                self.error = err.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
+                    
+                    if self.error is None:
+                        if self.new_data_base[ 'print' ] is not None:
                             self.print_values   = True
                             self.list_of_values = self.new_data_base[ 'print' ]
-
                             for i, value in enumerate( self.list_of_values ):
                                 print_value.PRINT_PRINT( value, self.DataBase ).PRINT_PRINT( key = False )
 
-                            self.new_data_base[ 'print' ]       = []
-                        else: 
-                            if self.keyActivation is True: pass 
-                            else: 
-                                if self.functionName == 'initialize': pass 
-                                else: self.DataBase[ 'no_printed_values' ].append( None )
-                            
-                        updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
+                            self.new_data_base[ 'print' ]   = []
+                        else: pass
+                    else: pass
+                    
+                    updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
                                                             self._new_data_base_ )
-                    else:
-                        self.DataBase[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
-                        updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base,
-                                                        self._new_data_base_)
+                else:
+                    if _type_ in [None, 'none']:
+                        if self.new_data_base[ 'sub_print' ] is None:
+                            if self.new_data_base[ 'transformation' ] is None:
+                                if self.new_data_base[ 'return' ] is not None:
+                                    self.final_values   = self.new_data_base[ 'return' ]
+                                    self.keyActivation  = True
+                                else: pass
+                                
+                            else:
+                                self.final_values = self.new_data_base[ 'transformation' ]
+                                self.new_data_base[ 'transformation' ]      = None
+                                self.keyActivation                          = True
+                                
+                            if self.new_data_base[ 'print' ] :
+                                self.print_values   = True
+                                self.list_of_values = self.new_data_base[ 'print' ]
+
+                                for i, value in enumerate( self.list_of_values ):
+                                    print_value.PRINT_PRINT( value, self.DataBase ).PRINT_PRINT( key = False )
+
+                                self.new_data_base[ 'print' ]       = []
+                            else: 
+                                if self.keyActivation is True: pass 
+                                else: 
+                                    if self.functionName == 'initialize': pass 
+                                    else: self.DataBase[ 'no_printed_values' ].append( None )
+                                
+                            updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
+                                                                self._new_data_base_ )
+                        else:
+                            self.DataBase[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
+                            updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base,
+                                                            self._new_data_base_)
+                    else: 
+                        self.typ = tod.CHECK_TYPE_OF_DATA(value=_type_).RETURNING_TYPE()
+                        self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                        self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                        self.error = err.ERRORS(self.line).ERROR24(self.typ[1], self.false)
             else: pass
         else:   
             self.empty_values   = self.new_data_base[ 'empty_values' ]

@@ -9,14 +9,15 @@ from script.PARXER                                          import module_load_t
 from script.PARXER                                          import partial_assembly
 from script.STDIN.WinSTDIN                                  import stdin
 from script.PARXER.PARXER_FUNCTIONS._IF_                    import if_inter
+from script.PARXER.PARXER_FUNCTIONS._SWITCH_                import switch_inter
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import unless_interpreter
 from script.PARXER.PARXER_FUNCTIONS._FOR_                   import for_interpreter
-from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_         import cmt_interpreter      as cmt_int
-from statement                                              import mainStatement        as MS
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS               import def_interpreter
 from script.PARXER.PARXER_FUNCTIONS.CLASSES                 import class_interpreter
 from src.modulesLoading                                     import modules, moduleMain 
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import unless_statement     as US
+from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_         import cmt_interpreter      as cmt_int
+from statement                                              import mainStatement        as MS
 
 class ASSEMBLY( ):
     def __init__(self, 
@@ -123,12 +124,37 @@ class ASSEMBLY( ):
                     else: pass
                 else: pass
             elif self.master[ 'function' ] == 'switch'  :
+                self.newLine                    = self.line
                 self._return_, self.error = MS.MAIN(main_string, self.data_base, self.newLine).MAIN(typ='switch',
                                                 opposite=False, interpreter=True)
                 if self.error is None:
-                    self.error = switch_statement.SWITCH_STATEMENT (None, self.data_base, self.line).SWITCH(self._return_, 1)
-                else:
-                    self.error = self.error
+                    self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine ).GROUPBY(1, MainList)
+                    self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
+                
+                    self.listTransform, self.error = switch_inter.SWITCH(master=None, data_base=self.data_base,
+                            line=self.newLine).SWITCH(tabulation = 1, loop_list = self.NewLIST )
+                    
+                    #self.MainStringTransform        = 't'+main_string
+                    #self.listTransform              = [(self.MainStringTransform , True), self.listTransform]
+                    
+                    self.error = switch_statement.SWITCH_LOOP_STATEMENT(master=None, data_base=self.data_base, 
+                                        line=self.line).SWITCH(main_values=self._return_, tabulation=1, loop_list=self.listTransform)
+                    
+                    if self.error is None:
+                        if self.error is None:
+                            if self.data_base[ 'print' ] is not None:
+                                self.list_of_values = self.data_base[ 'print' ]
+                                for i, value in enumerate( self.list_of_values ):
+                                    if i < len( self.list_of_values ) - 1:
+                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                                    else:
+                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
+                                        
+                            else: pass
+                            self.data_base['print'] = []
+                        else: pass
+                    else: pass
+                else: pass
             elif self.master[ 'function' ] == 'for'     :
                 self._, self.value, self.error =  mainFor.FOR_BLOCK(normal_string =main_string, data_base=self.data_base, 
                                                 line=self.newLine).FOR( function = 'loop', interpreter = interpreter,   locked=False)
