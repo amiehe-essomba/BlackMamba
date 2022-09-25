@@ -1,6 +1,6 @@
-from module statistics load Mean
+from module statistics load Floor
 load module data
 
 v = [].random(100)
-print * Mean()
+print * Floor(5.235)
 

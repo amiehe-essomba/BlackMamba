@@ -39,6 +39,7 @@ class DATA_BASE:
         'switch'            : [],           # when switch function is called
         'unless'            : [],           # when unless function si called / opposited if function 
         'return'            : None,         # dict containing the values returned 
+        'def_return'        : False,        # same as 'return
         'print'             : [],           # when print function is called
         'sub_print'         : None,         # if print function was used in loop, def, class etc...
         'current_func'      : None,         # current function called

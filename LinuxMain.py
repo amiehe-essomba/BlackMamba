@@ -16,15 +16,17 @@
 #       * mamba --T orion                                   #
 #       * mamba --T pegasus                                 #
 #############################################################
+# **created by : amiehe-essomba                             #
+# **updating by: amiehe-essomba                             #
 #############################################################
+
 
 import sys, os
 from script.STDIN.LinuxSTDIN                import readchar
-from script.PARXER.PARXER_FUNCTIONS._IF_    import IfError
 from script.LEXER.FUNCTION                  import main
+from script.PARXER.WINParxer                import parxer
 from script.DATA_BASE                       import data_base as db
 from script                                 import control_string
-from script.PARXER                          import parxer_assembly
 from script.STDIN.LinuxSTDIN                import bm_configure as bm
 
 
@@ -41,7 +43,7 @@ class linux:
         # set color on yellow
         self.c              = bm.fg.rbg(255, 255, 0)
         if terminal_name == 'orion': pass
-        else: self.c        = bm.fg.rbg(255, 255, 255)
+        else: self.c        = c
         # reset color
         self.reset          = bm.init.reset
         # input initialized
@@ -421,7 +423,7 @@ class linux:
                         if self.error is None :
                             if self.lexer is not None:
                                 # running parser
-                                self.num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.data_base,
+                                self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
                                         self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
                                 if self.error is None: pass
                                 else:
@@ -469,6 +471,7 @@ class linux:
                     sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                 else: pass
                 sys.stdout.flush()
+                
             except KeyboardInterrupt:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
@@ -483,12 +486,12 @@ class linux:
     
 if __name__ == '__main__':
     
-    term = 'orion'
+    terminal = 'orion'
     try:
         os.system('clear')
         sys.stdout.write(bm.save.save)
-        bm.head().head(sys='Linux', term = term)
+        bm.head().head(sys='Linux', term = terminal)
         data_base = db.DATA_BASE().STORAGE().copy()
-        linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
+        linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=terminal)
     except KeyboardInterrupt:  pass
     except TypeError: pass

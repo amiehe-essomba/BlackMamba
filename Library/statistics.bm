@@ -1,7 +1,7 @@
 load module data 
 
 global value 
-value = [].random(1000)
+value = [].random(10)
 
 def Floor( numeric : float ):
 	value = string( numeric )

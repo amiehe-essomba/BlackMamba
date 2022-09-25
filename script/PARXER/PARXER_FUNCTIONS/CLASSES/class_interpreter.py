@@ -7,10 +7,7 @@ from script.STDIN.LinuxSTDIN                    import bm_configure as bm
 from script                                     import control_string
 from script.PARXER.PARXER_FUNCTIONS._IF_        import if_inter
 from src.classes                                import db
-try:
-    from CythonModules.Windows                  import fileError as fe
-except ImportError:
-    from CythonModules.Linux                    import fileError as fe
+
 
 class EXTERNAL_DEF_STATEMENT:
     def __init__(self,
@@ -119,7 +116,7 @@ class EXTERNAL_DEF_STATEMENT:
                                     self.NewLIST    = stdin.STDIN(self.data_base, self.line ).GROUPBY(self.tabulation, self.loop_list[self.next_line : ],
                                                                                                     index = 'int', _class_ = True)
                 
-                                    self.db =  classes.DB.class_data_base
+                                    self.db =  db.DB.class_data_base
                                     self.lexer, _, self.error = main.MAIN(self.value, self.db, self.line).MAIN( _type_ = 'class' )
                                     if self.error is None:
                                         if self.NewLIST:
@@ -380,7 +377,7 @@ class INTERNAL_DEF_STATTEMENT:
                                         self.NewLIST    = stdin.STDIN(self.data_base, self.line ).GROUPBY(k, self.loop_list[self.next_line : ],
                                                                                                         index = 'int', _class_ = True)
                                         
-                                        self.db = classes.DB.def_data_base
+                                        self.db = db.DB.def_data_base
                                         self.lexer, _, self.error = main.MAIN(self.value, self.db, self.line).MAIN( _type_ = 'class' )
                                         
                                         if self.error is None:

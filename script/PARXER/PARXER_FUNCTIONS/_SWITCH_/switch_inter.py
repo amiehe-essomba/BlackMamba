@@ -6,7 +6,7 @@ from statement                                          import InternalStatement
 from statement                                          import externalSwitch       as ES
 
 class SWITCH:
-    def __init__(self, master, data_base, line) -> None:
+    def __init__(self, master: any , data_base: dict, line: int) -> None:
         self.line                   = line
         self.master                 = master
         self.data_base              = data_base

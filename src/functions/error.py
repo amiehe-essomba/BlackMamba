@@ -172,6 +172,6 @@ class ERRORS:
         return self.error + self.reset
     
     def ERROR24( self, string1, string2 ):
-        error = '{}instead {}. {}line: {}{}'.format(self.white, string2, self.white, self.yellow,self.line)
+        error = '{}instead {} {}type. {}line: {}{}'.format(self.white, string2, self.white, self.white, self.yellow,self.line)
         self.error = fe.FileErrors('TypeError').Errors() + '{}returning type error. got {} '.format(self.white,  string1) + error
         return self.error + self.reset

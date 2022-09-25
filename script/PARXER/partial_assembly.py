@@ -40,8 +40,11 @@ class ASSEMBLY( ):
                     if self._return_ is not None:
                         if interpreter is False:
                             if locked is False: 
-                                for value in self._return_:
-                                    show_data.SHOW( value, self.data_base, key ).SHOW()
+                                if self.data_base['def_return'] is True:
+                                    for value in self._return_:
+                                        show_data.SHOW( value, self.data_base, key ).SHOW()
+                                    self.data_base['def_return'] = False 
+                                else: pass
                             else: pass
                         else: pass
                     else: pass
