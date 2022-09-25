@@ -291,9 +291,7 @@ class FUNCTION_TREATMENT:
             else: pass
         else:
             self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
-    
             if self.mod['key'] is True: 
-                
                 self.data_base[ 'assigment' ]   = self.function_name+'( )'
                 self.function_info              = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']]
                 self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
@@ -313,105 +311,116 @@ class FUNCTION_TREATMENT:
                                                                                                     self.new_data_base, self.function_name, lib = True)
                             loading.LOAD(self.data_base['modulesImport']['func_names'][self.mod['id1']], self.function_name).INITIALIZE(self.new_data_base, 
                                               self.data_base['modulesImport']['functions'][self.mod['id1']])
-                            self.n = self.data_base['modulesImport']['fileNames'].index(_main_)
-                            loading.LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
+                            
+                            print(self.data_base['modulesImport']['fileNames'], self.function_name, self.data_base[ 'modulesImport' ][ 'mainFuncNames' ])
+                            
+                            #self.n = self.data_base['modulesImport']['fileNames'].index(self.function_name) #    index(_main_)
+                            #self.n = 0
+                            #try:
+                            
+                            #self.n = self.data_base[ 'modulesImport' ][ 'mainFuncNames' ][self.mod['id1']].index( self.function_name)
+                            #loading.LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
                             self.new_data_base[ 'print' ]   = []
                             
-                            try:
-                                self.all_data_analyses  = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']][ self.function_name ]
-                                self.all_data_analyses  = self.all_data_analyses[ 'history_of_data' ]
-                                self.keyActivation      = False
+                            #except ValueError: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
+                            
+                            if self.error is None:
+                                try:
+                                    self.all_data_analyses  = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']][ self.function_name ]
+                                    self.all_data_analyses  = self.all_data_analyses[ 'history_of_data' ]
+                                    self.keyActivation      = False
+                                    
+                                    updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION( self.data_base, self.new_data_base)
 
-                                updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION( self.data_base, self.new_data_base)
-
-                                if self.new_data_base[ 'empty_values' ] is None:
-                                    self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
-                                                                    self.line).DEF_STATEMENT( 1, self.all_data_analyses )
-                                    if self.error is None:
-                                        self.data_base['irene']     = self.new_data_base['irene']
-                                        self.initialize_values      = self.new_data_base[ 'variables' ]
-                                        
-                                        if self.new_data_base[ 'return' ] is not None:
-                                            self.data_base['def_return'] = True
-                                            if len( self.new_data_base[ 'return' ] ) == 1:
-                                                self.final_values   = self.new_data_base[ 'return' ][ 0 ]
-                                                if self._type_ is None: pass 
-                                                else:
-                                                    self.typ = tod.CHECK_TYPE_OF_DATA(value=self._type_).RETURNING_TYPE()
-                                                    if type(self.final_values) == self.typ[0] : pass
-                                                    else: 
-                                                        self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
-                                                        self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
-                                                        self.error = er.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
-                                            else:
-                                                self.final_values   = tuple( self.new_data_base[ 'return' ] )
-                                                if self._type_ is None: pass
-                                                else:
-                                                    self.typ = tod.CHECK_TYPE_OF_DATA(value='tuple').RETURNING_TYPE()
-                                                    if self._type_ == 'tuple': pass
-                                                    else: 
-                                                        self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
-                                                        self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
-                                                        self.error = er.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
-
-                                            if self.error is None:
-                                                if self.new_data_base[ 'print' ] :
-                                                    self.print_values = True
-                                                    self.list_of_values = self.new_data_base[ 'print' ]
-                                                    for i, value in enumerate( self.list_of_values ):
-                                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
-
-                                                    self.new_data_base['print'] = []
-                                                else: pass
-                                            else: pass
+                                    if self.new_data_base[ 'empty_values' ] is None:
+                                        self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
+                                                                        self.line).DEF_STATEMENT( 1, self.all_data_analyses )
+                                        if self.error is None:
+                                            self.data_base['irene']     = self.new_data_base['irene']
+                                            self.initialize_values      = self.new_data_base[ 'variables' ]
                                             
-                                            updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
-                                        else:
-                                            if self._type_ in [None, 'none']:
-                                                if self.new_data_base[ 'sub_print' ] is None:
-                                                    if self.new_data_base[ 'transformation' ] is None:
-                                                        self.final_values   = self.new_data_base[ 'return' ]
+                                            if self.new_data_base[ 'return' ] is not None:
+                                                self.data_base['def_return'] = True
+                                                if len( self.new_data_base[ 'return' ] ) == 1:
+                                                    self.final_values   = self.new_data_base[ 'return' ][ 0 ]
+                                                    if self._type_ is None: pass 
                                                     else:
-                                                        self.keyActivation  = True
-                                                        self.final_values   = self.new_data_base[ 'transformation' ]
-                                                        self.new_data_base[ 'transformation' ] = None
-                                                
+                                                        self.typ = tod.CHECK_TYPE_OF_DATA(value=self._type_).RETURNING_TYPE()
+                                                        if type(self.final_values) == self.typ[0] : pass
+                                                        else: 
+                                                            self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                                            self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                                            self.error = er.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
+                                                else:
+                                                    self.final_values   = tuple( self.new_data_base[ 'return' ] )
+                                                    if self._type_ is None: pass
+                                                    else:
+                                                        self.typ = tod.CHECK_TYPE_OF_DATA(value='tuple').RETURNING_TYPE()
+                                                        if self._type_ == 'tuple': pass
+                                                        else: 
+                                                            self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                                            self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                                            self.error = er.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
+
+                                                if self.error is None:
                                                     if self.new_data_base[ 'print' ] :
-                                                        
                                                         self.print_values = True
                                                         self.list_of_values = self.new_data_base[ 'print' ]
-
                                                         for i, value in enumerate( self.list_of_values ):
                                                             print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
 
-                                                        self.new_data_base[ 'print' ] = []
-                                                    else:     
-                                                        if self.keyActivation is True: 
-                                                            if self.function_name == 'fopen': 
-                                                                self.data_base[ 'no_printed_values' ].append( None )
-                                                                self.error = set_openfile.SET_OPEN_FILE( self.new_data_base[ 'open' ], 
-                                                                                        self.data_base, self.line).SET_OPEN()
-                                                        
-                                                            else: pass
-                                                        else: 
-                                                            if self.function_name == 'initialize': pass 
-                                                            else: self.data_base[ 'no_printed_values' ].append( None )
-                                                        
-                                                    updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
-                                                else:
-                                                    self.data_base[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
-                        
-                                                    updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
-                                            else: 
-                                                self.typ   = tod.CHECK_TYPE_OF_DATA(value=self._type_).RETURNING_TYPE()
-                                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
-                                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
-                                                self.error = er.ERRORS(self.line).ERROR24(self.typ[1] , self.false)
-                                    else: pass
-                                else:
-                                    self.empty_values = self.new_data_base[ 'empty_values' ]
-                                    self.error = er.ERRORS( self.line ).ERROR15( self.function_name, self.empty_values ) 
-                            except KeyError: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
+                                                        self.new_data_base['print'] = []
+                                                    else: pass
+                                                else: pass
+                                                
+                                                updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
+                                            else:
+                                                if self._type_ in [None, 'none']:
+                                                    if self.new_data_base[ 'sub_print' ] is None:
+                                                        if self.new_data_base[ 'transformation' ] is None:
+                                                            self.final_values   = self.new_data_base[ 'return' ]
+                                                        else:
+                                                            self.keyActivation  = True
+                                                            self.final_values   = self.new_data_base[ 'transformation' ]
+                                                            self.new_data_base[ 'transformation' ] = None
+                                                    
+                                                        if self.new_data_base[ 'print' ] :
+                                                            
+                                                            self.print_values = True
+                                                            self.list_of_values = self.new_data_base[ 'print' ]
+
+                                                            for i, value in enumerate( self.list_of_values ):
+                                                                print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
+
+                                                            self.new_data_base[ 'print' ] = []
+                                                        else:
+                                                            if self.keyActivation is True: 
+                                                                if self.function_name == 'fopen': 
+                                                                    self.data_base[ 'no_printed_values' ].append( None )
+                                                                    self.error = set_openfile.SET_OPEN_FILE( self.new_data_base[ 'open' ], 
+                                                                                            self.data_base, self.line).SET_OPEN()
+                                                            
+                                                                else: pass
+                                                            else: 
+                                                                if self.function_name == 'initialize': pass 
+                                                                else: self.data_base[ 'no_printed_values' ].append( None )
+                                                            
+                                                        updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
+                                                    else:
+                                                        self.data_base[ 'no_printed_values' ].append( self.new_data_base[ 'sub_print' ] )
+                            
+                                                        updating_data.UPDATE_DATA_BASE(None, None, None).INITIALIZATION(self.new_data_base, self._new_data_base_)
+                                                else: 
+                                                    self.typ   = tod.CHECK_TYPE_OF_DATA(value=self._type_).RETURNING_TYPE()
+                                                    self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                                    self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                                    self.error = er.ERRORS(self.line).ERROR24(self.typ[1] , self.false)
+                                        else: pass
+                                    else:
+                                        self.empty_values = self.new_data_base[ 'empty_values' ]
+                                        self.error = er.ERRORS( self.line ).ERROR15( self.function_name, self.empty_values ) 
+                                except KeyError: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
+                            else: pass
                         else: pass 
                     else: pass
                 else: pass

@@ -1,3 +1,26 @@
+#############################################################
+#############################################################
+# Black Mamba Windows Interpretor                           #
+# This version has currently two code iditors:              #
+#                                                           #
+#                                                           #
+# * pegasus is the default editor                           #
+# * orion is the optimized code editor with a syntaxis      #
+#   color                                                   #
+# basically we can use both without any problems because    #
+# they work very well.                                      #
+#                                                           #
+#                                                           #
+# * to select a terminal it's very simple, just do this     #
+#                                                           #
+#       * mamba --T orion                                   #
+#       * mamba --T pegasus                                 #
+#############################################################
+# **created by : amiehe-essomba                             #
+# **updating by: amiehe-essomba                             #
+#############################################################
+
+
 from script.LEXER.FUNCTION      import main
 from script.PARXER              import parxer_assembly
 from script.DATA_BASE           import data_base as db
@@ -15,7 +38,7 @@ control         = control_string.STRING_ANALYSE( {}, 1 )
 
 
 try:
-    path_library    = 'D:\\black_mamba\\Library\\iris.bm'
+    path_library    = 'E:\\bb\\elena\\BlackMamba\\Library\\iris.bm'
     
     with open(file=path_library, mode='r') as file:
         for line in file.readlines():  
