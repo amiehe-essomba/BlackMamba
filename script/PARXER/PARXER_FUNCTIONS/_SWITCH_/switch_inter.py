@@ -43,6 +43,7 @@ class SWITCH:
         ############################################################################
         if self.loop_list:
             for  j, _string_ in enumerate( self.loop_list ):
+                
                 self.if_line    += 1
                 self.line       += 1
                 
@@ -50,6 +51,7 @@ class SWITCH:
                     if _type_ != 'conditional': pass 
                     else:  _string_ = '\t'+_string_
                     
+                   
                     if j >= self.next_line:
                         k = stdin.STDIN(self.data_base, self.line ).ENCODING(_string_)                   
                         self.string, self.normal_string, self.active_tab, self.error =  stdin.STDIN(self.data_base,
@@ -59,34 +61,31 @@ class SWITCH:
                                 self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
                                             data_base=self.data_base, line=self.line).INTERPRETER_BLOCKS(tabulation=k+1, function=_type_, typ='switch')
                                 
-                                self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
-                                            data_base=self.data_base, line=self.line).INTERPRETER_BLOCKS(tabulation=k+1, function=_type_, typ='if')
-                                
                                 if self.error  is None: 
                                     if   self.get_block == 'empty'      :
                                         if self.space <= self.maxEmptyLine:
                                             self.space += 1
-                                            self.loop.append( (self.normal_string, True) )
+                                            self.loop.append( (self.normal_string[1 :], True) )
                                         else:
                                             self.error = Ie.ERRORS( self.line ).ERROR4()
                                             break
                                     elif self.get_block == 'any'        :
                                         self.store_value.append( self.normal_string )
                                         self.space = 0
-                                        self.loop.append( (self.normal_string, True) )
+                                        self.loop.append( (self.normal_string[1 :], True) )
 
                                     #############################################################
                                     #############################################################
                                     
                                     elif self.get_block == 'end:'       :
-                                        self.loop.append( (self.normal_string, False) )
+                                        self.loop.append( (self.normal_string[1 :], False) )
                                     elif self.get_block == 'case:'      :
                                         self.history.append( 'case' )
                                         self.store_value        = []
-                                        self.loop.append( (self.normal_string, False) )
+                                        self.loop.append( (self.normal_string[1 :], False) )
                                     elif self.get_block == 'default:'   :
                                         self.history.append( 'default' )
-                                        self.loop.append( (self.normal_string, False) )                                     
+                                        self.loop.append( (self.normal_string[1 :], False) )                                     
                                     else:
                                         self.error = Ie.ERRORS( self.line ).ERROR4()
                                         break
