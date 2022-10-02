@@ -36,7 +36,7 @@ class iris:
         self.width  = 0.3       # in centimeter
     end:
 
-    def get(type : string = 'color) -> any:
+    def get(type : string = 'color') -> any:
         if type in ['color']:
             return color
         elif type in ['length']:
@@ -47,6 +47,19 @@ class iris:
             return 'Error type'
         end:
     end:
+end:
+```
+
+### Creating a simple function
+
+```ruby
+floor = func( master : float ) -> integer :
+    str = string( master )  # converting float to a string
+    str = str.plit('.')     # spliting string
+    int = integer(str[0])   # converting string to an integer
+
+    # return the integer part of master
+    return int
 end:
 ```
 
