@@ -28,15 +28,15 @@
 
 ### Creating a simple class
 
-``` python
+```Ruby
 class iris:
-    def initialize():
+    def initialize() -> None:
         self.length = 1.5       # in centimeter
         self.color  = 'green'   # 
         self.width  = 0.3       # in centimeter
     end:
 
-    def get(type : string = 'color):
+    def get(type : string = 'color) -> any:
         if type in ['color']:
             return color
         elif type in ['length']:
