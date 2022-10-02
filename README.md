@@ -63,9 +63,9 @@ floor = func( master : float ) -> integer :
     return int
 end:
 ```
-> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
+> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
-### Opening && reading && writing in file
+### Opening && reading && writing in a file
 
 ```ruby
 # opening file
@@ -76,7 +76,7 @@ my_file.readlines()
 # writing in the open file
 my_file.write('Hello World !\n')
 ```
-> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
+> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
 ## Select Your IDE 
 
@@ -94,7 +94,7 @@ pull requests are welcome. Fore major changes, please open an issue first to dis
 That's very impotant.
 
 Please make sure to update tests as appropriate.
->For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
+>For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
 ## 🤵 Author 
 **Amiehe Essomba** 
