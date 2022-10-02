@@ -10,8 +10,8 @@ def Floor( numeric : float ):
 	return finalVal
 end:
 
-def Mean( ):
-	return mean(value)
+def Mean( a = 4):
+	return float(a)
 end:
 
 def sin( master = 1):
