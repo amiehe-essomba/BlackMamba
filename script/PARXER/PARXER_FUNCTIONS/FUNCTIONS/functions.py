@@ -51,7 +51,6 @@ class FUNCTION_TREATMENT:
         self.print_values           = False
         self.initialize_values      = None
         
-        
         if   self.function_name in self.data_base[ 'func_names' ]   :
             self.data_base[ 'assigment' ] = self.function_name+'( )'
             self.function_location      = self.data_base[ 'func_names' ].index( self.function_name )
@@ -130,7 +129,7 @@ class FUNCTION_TREATMENT:
                                                 self.keyActivation  = True
                                                 self.final_values   = self.new_data_base[ 'transformation' ]
                                                 self.new_data_base[ 'transformation' ]  = None
-
+                        
                                             
                                             if self.new_data_base[ 'print' ] :
                                                 self.print_values = True
@@ -163,7 +162,6 @@ class FUNCTION_TREATMENT:
                 else: pass
             else: pass
         elif self.function_name in self.library[ 'func_names' ]     :
-            
             self.data_base[ 'assigment' ] = self.function_name+'( )'
             self.function_location  = self.library[ 'func_names' ].index( self.function_name )
             self.function_info      = self.library[ 'functions' ][ self.function_location ]
@@ -193,7 +191,6 @@ class FUNCTION_TREATMENT:
                             self.keyActivation      = False
                             
                             if self.new_data_base[ 'empty_values' ] is None:
-                               
                                 self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
                                                                 self.line).DEF_STATEMENT( 1, self.all_data_analyses )
                                 if self.error is None:
@@ -249,6 +246,7 @@ class FUNCTION_TREATMENT:
                                                     self.keyActivation  = True
                                                     self.final_values   = self.new_data_base[ 'transformation' ]
                                                     self.new_data_base[ 'transformation' ] = None
+                                                    self.data_base['def_return'] = True
                                             
                                                 if self.new_data_base[ 'print' ] :
                                                     
@@ -296,7 +294,6 @@ class FUNCTION_TREATMENT:
                 self.function_info              = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']]
                 self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
                                                                        self.line ).MAIN( def_key = 'indirect' )
-                
                 if self.error is None: 
                     self._return_,  self.error = function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name ) 
@@ -307,19 +304,19 @@ class FUNCTION_TREATMENT:
                         if self.error is None:
                             self.new_data_base              = self._new_data_base_[ 'data_base' ]
                             self._type_                     = self._new_data_base_['type']
+                            #print(self.data_base['modulesImport']['fileNames'], self.function_name, self.data_base[ 'modulesImport' ][ 'mainFuncNames' ], '@')
                             self.new_data_base              = FUNCTION_TREATMENT( self.master, self.data_base, self.line ).INIT_FUNCTION(initialize_data,
                                                                                                     self.new_data_base, self.function_name, lib = True)
+                            
                             loading.LOAD(self.data_base['modulesImport']['func_names'][self.mod['id1']], self.function_name).INITIALIZE(self.new_data_base, 
                                               self.data_base['modulesImport']['functions'][self.mod['id1']])
-                            
-                            print(self.data_base['modulesImport']['fileNames'], self.function_name, self.data_base[ 'modulesImport' ][ 'mainFuncNames' ])
-                            
+                             
                             #self.n = self.data_base['modulesImport']['fileNames'].index(self.function_name) #    index(_main_)
                             #self.n = 0
                             #try:
                             
-                            #self.n = self.data_base[ 'modulesImport' ][ 'mainFuncNames' ][self.mod['id1']].index( self.function_name)
-                            #loading.LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
+                            self.n = self.data_base[ 'modulesImport' ][ 'mainFuncNames' ][self.mod['id1']].index( self.function_name)
+                            loading.LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
                             self.new_data_base[ 'print' ]   = []
                             
                             #except ValueError: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
@@ -329,12 +326,15 @@ class FUNCTION_TREATMENT:
                                     self.all_data_analyses  = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']][ self.function_name ]
                                     self.all_data_analyses  = self.all_data_analyses[ 'history_of_data' ]
                                     self.keyActivation      = False
+                                    #print(self.data_base['modulesImport'])
+                                    #print('-------------------------------------------')
+                                    #print(self.new_data_base['LIB'])
+                                    #updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION( self.data_base, self.new_data_base)
                                     
-                                    updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION( self.data_base, self.new_data_base)
-
                                     if self.new_data_base[ 'empty_values' ] is None:
                                         self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
                                                                         self.line).DEF_STATEMENT( 1, self.all_data_analyses )
+                                        
                                         if self.error is None:
                                             self.data_base['irene']     = self.new_data_base['irene']
                                             self.initialize_values      = self.new_data_base[ 'variables' ]
@@ -594,7 +594,6 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
         ############################################################################
 
         for j, _string_ in enumerate( self.def_list ):
-
             if j != self.next_line:
                 self.if_line                         = 1
                 self.line                           += 1 
@@ -607,7 +606,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                     tabulation=self.tabulation + 1, function=_type_, interpreter=True,
                                     class_name=class_name, class_key=class_key,
                                     func_name=self.data_base['current_func'], loop=True)
-
+              
                     if self.error is None:
                         if   self.get_block == 'any'     :
                             self.space = 0
@@ -617,7 +616,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                             if self.data_base['pass'] is None:
                                 if self.data_base[ 'return' ] is None:
                                     self.error = self.lex_par.LEXER_AND_PARXER( self.value[self.tabulation :], self.data_base,
-                                                                    self.line ).ANALYZE( _id_ = self.tabulation+1, _type_ = _type_ )
+                                                                    self.line ).ANALYZE( _id_ = 1, _type_ = _type_ )
                                     if self.error is None: pass
                                     else: break
                                 else: pass
