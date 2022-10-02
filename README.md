@@ -69,11 +69,12 @@ end:
 
 ```ruby
 # opening file
-open(name=my_file, file='README.md', action='red', encoding='utf-8', status='old')
+open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
 # reading the open file
-my_file.readline()
+my_file.readline()  
+my_file.readlines()
 # writing in the open file
-my_file.write('Hello World !')
+my_file.write('Hello World !\n')
 ```
 > more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
