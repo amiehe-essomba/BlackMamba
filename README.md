@@ -26,6 +26,30 @@
 14. with/end
 ```
 
+### Creating a simple class
+
+``` python
+class iris:
+    def initialize():
+        self.length = 1.5       # in centimeter
+        self.color  = 'green'   # 
+        self.width  = 0.3       # in centimeter
+    end:
+
+    def get(type : string = 'color):
+        if type in ['color']:
+            return color
+        elif type in ['length']:
+            return length
+        elif type == 'width':
+            return width
+        else:
+            return 'Error type'
+        end:
+    end:
+end:
+```
+
 
 ## Select Your IDE 
 
