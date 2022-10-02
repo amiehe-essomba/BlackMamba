@@ -167,7 +167,6 @@ class FUNCTION_TREATMENT:
             self.function_info      = self.library[ 'functions' ][ self.function_location ]
             self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
                                                                        self.line ).MAIN( def_key = 'indirect' )
-
             if self.error is None:
                 self._return_,  self.error =function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name )
@@ -175,15 +174,15 @@ class FUNCTION_TREATMENT:
                 if self.error is None:
                     self._new_data_base_, self.error  = function.FUNCTION( [ self.function_info ], self.data_base,
                                                     self.line).INIT_FUNCTION( self.normal_expression, self._return_ )
-
                     if self.error is None:
                         self.new_data_base              = self._new_data_base_[ 'data_base' ]
                         self._type_                     = self._new_data_base_[ 'type' ]
                         self.new_data_base              = FUNCTION_TREATMENT( self.master, self.data_base, self.line ).INIT_FUNCTION(initialize_data,
                                                                                                     self.new_data_base, self.function_name, lib = True)
                         # updating modules loaded
-                        updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION(  self.data_base, self.new_data_base)
-
+                        # i have to find a solution to make it faster
+                        #updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION(  self.data_base, self.new_data_base)
+                       
                         self.new_data_base[ 'print' ]   = []
                         try:
                             self.all_data_analyses  = self.library[ 'functions' ][ self.function_location ][ self.function_name ]
@@ -191,6 +190,7 @@ class FUNCTION_TREATMENT:
                             self.keyActivation      = False
                             
                             if self.new_data_base[ 'empty_values' ] is None:
+                                #print(self.all_data_analyses)
                                 self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
                                                                 self.line).DEF_STATEMENT( 1, self.all_data_analyses )
                                 if self.error is None:
@@ -288,6 +288,7 @@ class FUNCTION_TREATMENT:
                 else: pass
             else: pass
         else:
+            #
             self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
             if self.mod['key'] is True: 
                 self.data_base[ 'assigment' ]   = self.function_name+'( )'
@@ -423,8 +424,7 @@ class FUNCTION_TREATMENT:
                             else: pass
                         else: pass 
                     else: pass
-                else: pass
-                
+                else: pass    
             else: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
 
         return self.final_values, self.data_base[ 'no_printed_values' ], self.initialize_values, self.error
@@ -592,7 +592,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
         ############################################################################
         self.keyPass                = False
         ############################################################################
-
+        
         for j, _string_ in enumerate( self.def_list ):
             if j != self.next_line:
                 self.if_line                         = 1
