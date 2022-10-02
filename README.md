@@ -9,17 +9,27 @@
 
 ## Language Tools
 
-```python
+```sql
 1.  begin/save/as/end
+```
+```python
 2.  if/elif/else/end
-3.  unless/else/end
-4.  switch/case/default/end
+```
+```go
+3.  switch/case/default/end
+```
+```python
 5.  try/except/finally/end
+```
+```ruby
+3.  unless/else/end
 6.  for/end
 7.  while/end
 8.  until/end
 9.  def/func/end
 10. class/end
+```
+```sql
 11. with/end
 12. from/module/load/as
 13. open/close
@@ -28,7 +38,7 @@
 
 ### Creating a simple class
 
-```Ruby
+```ruby
 class iris:
     def initialize() -> None:
         self.length = 1.5       # in centimeter
