@@ -31,17 +31,17 @@
 ```ruby
 class iris:
     def initialize() -> None:
-        self.length = 1.5       # in centimeter
-        self.color  = 'green'   # 
-        self.width  = 0.3       # in centimeter
+        self.length = 1.5       # length in centimeter
+        self.color  = 'green'   # sheets color
+        self.width  = 0.3       # width in centimeter
     end:
-
+    # getting informations 
     def get(type : string = 'color') -> any:
         if type in ['color']:
             return color
         elif type in ['length']:
             return length
-        elif type == 'width':
+        elif type in ['width']:
             return width
         else:
             return 'Error type'
@@ -49,20 +49,33 @@ class iris:
     end:
 end:
 ```
+> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
 ### Creating a simple function
 
 ```ruby
 floor = func( master : float ) -> integer :
     str = string( master )  # converting float to a string
-    str = str.plit('.')     # spliting string
+    str = str.split('.')     # spliting string
     int = integer(str[0])   # converting string to an integer
 
     # return the integer part of master
     return int
 end:
 ```
+> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
+### Opening && reading && writing in file
+
+```ruby
+# opening file
+open(name=my_file, file='README.md', action='red', encoding='utf-8', status='old')
+# reading the open file
+my_file.readline()
+# writing in the open file
+my_file.write('Hello World !')
+```
+> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
 ## Select Your IDE 
 
