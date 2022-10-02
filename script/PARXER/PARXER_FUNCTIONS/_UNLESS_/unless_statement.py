@@ -91,7 +91,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
                                     self.history.append( 'begin' )
                                     self.space = 0
 
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         self.error = comment.COMMENT_LOOP_STATEMENT( master=self.master, data_base=self.data_base,
                                                                 line=self.line ).COMMENT( tabulation=self.tabulation + 1,
                                                                 loop_list=self.loop_list[ j + 1 ], keyPass = self.keyPass)
@@ -101,7 +101,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
                                 elif self.get_block == 'if:'        :
                                     self.next_line  = j + 1
 
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         self.error = if_statement.INTERNAL_IF_LOOP_STATEMENT(  master=self.master,
                                                 data_base=self.data_base, line=self.line).IF_STATEMENT( bool_value=self.value,
                                                 tabulation=self.tabulation + 1,  loop_list=self.loop_list[ j + 1 ],
@@ -117,7 +117,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
                                         self.space = 0
                                 elif self.get_block == 'unless:'    :
                                     self.next_line  = j + 1
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         self.error = INTERNAL_UNLESS_FOR_STATEMENT( master=self.master,
                                                             data_base=self.data_base, line=self.line ).UNLESS_STATEMENT( bool_value=self.value,
                                                             tabulation=self.tabulation + 1,
@@ -139,7 +139,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
                                     if self.data_base[ 'pass' ] is None: pass 
                                     else: self.keyPass = True
 
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         self.error = try_statement.INTERNAL_TRY_FOR_STATEMENT(master= self.master,
                                                 data_base=self.data_base, line=self.line).TRY_STATEMENT( tabulation=self.tabulation + 1,
                                                 loop_list=self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
@@ -151,7 +151,7 @@ class EXTERNAL_UNLESS_FOR_STATEMENT:
                                     self.history.append( 'begin' )
                                     self.space = 0
 
-                                    if self.bool_value is False :
+                                    if self.bool_value is True:
                                         self.error = switch_statement.SWITCH_LOOP_STATEMENT( master=self.master , data_base=self.data_base,
                                                         line=self.line ).SWITCH( main_values=self.value, tabulation=self.tabulation + 1,
                                                         loop_list=self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass)
@@ -300,7 +300,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
                                     self.store_value.append( self.normal_string )
                                     self.history.append( 'begin' )
                                     self.space = 0
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         self.error = comment.COMMENT_LOOP_STATEMENT( master=self.master, data_base=self.data_base,
                                                                 line=self.line ).COMMENT( tabulation=self.tabulation + 1,
                                                                 loop_list=self.loop_list[ j + 1 ], keyPass = self.keyPass)
@@ -309,7 +309,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
                                     else: pass
                                 elif self.get_block == 'if:'        :
                                     self.next_line  = j + 1
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         self.error = if_statement.INTERNAL_IF_LOOP_STATEMENT(  master=self.master,
                                                 data_base=self.data_base, line=self.line).IF_STATEMENT( bool_value=self.value,
                                                 tabulation=self.tabulation + 1,  loop_list=self.loop_list[ j + 1 ],
@@ -325,7 +325,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
                                         self.space = 0
                                 elif self.get_block == 'unless:'    :
                                     self.next_line  = j + 1
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         self.error = EXTERNAL_UNLESS_FOR_STATEMENT( master=self.master,
                                                 data_base=self.data_base, line=self.line ).UNLESS_STATEMENT( bool_value=self.value,
                                                 tabulation=self.tabulation + 1,
@@ -347,7 +347,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
                                     if self.data_base[ 'pass' ] is None: pass
                                     else: self.keyPass = True
 
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         self.error = try_statement.INTERNAL_TRY_FOR_STATEMENT(master= self.master,
                                                 data_base=self.data_base, line=self.line).TRY_STATEMENT( tabulation=self.tabulation + 1,
                                                 loop_list=self.loop_list[ self.next_line], keyPass = self.keyPass, _type_ = _type_ )
@@ -359,7 +359,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
                                     self.history.append( 'begin' )
                                     self.space = 0
 
-                                    if self.bool_value is False :
+                                    if self.bool_value is True:
                                         self.error = switch_statement.SWITCH_LOOP_STATEMENT( master=self.master , data_base=self.data_base,
                                                         line=self.line ).SWITCH( main_values=self.value, tabulation=self.tabulation + 1,
                                                         loop_list=self.loop_list[ j + 1 ], _type_ = _type_, keyPass = self.keyPass)
@@ -375,7 +375,7 @@ class INTERNAL_UNLESS_FOR_STATEMENT:
                                 elif self.get_block == 'any'        :
                                     self.store_value.append(self.normal_string)
                                     self.space = 0
-                                    if self.bool_value is False:
+                                    if self.bool_value is True:
                                         if self.data_base[ 'pass' ] is None:
                                             self.error = self.lex_par.LEXER_AND_PARXER(master=self.value, data_base=self.data_base,
                                                                 line=self.line).ANALYZE( _id_=1, _type_= _type_ )

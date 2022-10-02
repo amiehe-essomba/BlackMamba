@@ -347,7 +347,7 @@ class INTERNAL_BLOCKS:
                             else: self.error = er.ERRORS(self.line).ERROR1('except')
                         else: self.error = er.ERRORS(self.line).ERROR4()
                     elif self.normal_string[ : 4 ] == 'else'        :
-                        if typ in [ 'if' ]:
+                        if typ in [ 'if', 'unless' ]:
                             if self.normal_string[ -1 ] == ':':
                                 self._return_ = 'else:'
                                 self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL( num=4,

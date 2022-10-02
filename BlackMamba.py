@@ -21,11 +21,11 @@
 #############################################################
 
 
-from script.LEXER.FUNCTION      import main
-from script.PARXER              import parxer_assembly
-from script.DATA_BASE           import data_base as db
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
 from script                     import control_string
+from script.LEXER.FUNCTION      import main
+from script.DATA_BASE           import data_base                as db
+from script.STDIN.LinuxSTDIN    import bm_configure             as bm
+from script.PARXER.WINParxer    import parxer_for_interpreter   as PFI
 import os
 
 
@@ -79,8 +79,9 @@ if __name__ == '__main__':
                         lexer, normal_string, error = main.MAIN(string, data_base, line).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
                         if error is None:
                             if lexer is not None:
-                                num, key, error = parxer_assembly.ASSEMBLY(lexer, data_base, line).GLOBAL_ASSEMBLY_FOR_INTERPRETER(normal_string, True,
+                                num, key, error = PFI.ASSEMBLY(lexer, data_base, line).GLOBAL_ASSEMBLY_FOR_INTERPRETER(normal_string, True,
                                                                                     MainList = data_from_file[x+1: ], baseFileName = currunt_file)
+                                
                                 if error is None: pass
                                 else: 
                                     print('{}\n'.format( error ) )
@@ -98,8 +99,9 @@ if __name__ == '__main__':
                             lexer, normal_string, error = main.MAIN(string, data_base, line).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
                             if error is None:
                                 if lexer is not None:
-                                    num, key, error = parxer_assembly.ASSEMBLY(lexer, data_base, line).GLOBAL_ASSEMBLY_FOR_INTERPRETER(normal_string, 
-                                                                            True, MainList = data_from_file[x+1: ], baseFileName = currunt_file)
+                                    num, key, error = PFI.ASSEMBLY(lexer, data_base, line).GLOBAL_ASSEMBLY_FOR_INTERPRETER(normal_string, True,
+                                                                                    MainList = data_from_file[x+1: ], baseFileName = currunt_file)
+                                    
                                     if error is None: pass
                                     else:
                                         print('{}\n'.format( error ) )

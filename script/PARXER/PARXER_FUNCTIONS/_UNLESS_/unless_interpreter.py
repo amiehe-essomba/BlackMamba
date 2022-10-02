@@ -42,9 +42,7 @@ class EXTERNAL_UNLESS_STATEMENT:
         self.maxEmptyLine           = 2
 
         ############################################################################
-
         for  j, _string_ in enumerate( self.loop_list ):
-            
             if _string_ :
                 _string_ = '\t'+_string_
                 
@@ -55,12 +53,12 @@ class EXTERNAL_UNLESS_STATEMENT:
                     k = stdin.STDIN(self.data_base, self.line ).ENCODING(_string_)                   
                     self.string, self.normal_string, self.active_tab, self.error =  stdin.STDIN(self.data_base,
                                                                         self.line ).STDIN_FOR_INTERPRETER( k, _string_ )
+                 
                     if self.error is None:
                         if self.active_tab is True:
 
                             self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
                                             data_base=self.data_base, line=self.line).INTERPRETER_BLOCKS(tabulation=k+1, function=_type_, typ='unless')
-                            
                             if self.error  is None:
                                 
                                 if   self.get_block == 'if:'     :
