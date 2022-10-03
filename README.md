@@ -79,8 +79,9 @@ end:
 ### Open file.
 ```python
 open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
-- name=5
 ```
+- [x] name
+
 ### Read an open file.
 ```python 
 my_file.readlines()
