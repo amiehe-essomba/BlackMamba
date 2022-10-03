@@ -1,16 +1,13 @@
+import cython
 from script                                             import control_string
 from script.STDIN.WinSTDIN                              import stdin
-import cython
 from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_inter
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_interpreter as ui
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR           import forError as fE
-from script.STDIN.LinuxSTDIN                            import bm_configure as bm
-try:
-    from CythonModules.Windows                          import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                            import fileError as fe
+from statement                                          import InternalStatement as IS
+from statement                                          import externalRest
 
 
 class EXTERNAL_FOR_STATEMENT:
@@ -67,8 +64,8 @@ class EXTERNAL_FOR_STATEMENT:
                         
                         if self.error is None:
                             if self.active_tab is True:
-                                self.get_block, self.value, self.error = end_for_else.INTERNAL_BLOCKS( self.string,
-                                                self.normal_string, self.data_base, self.line ).BLOCKS( k + 1, loop = loop, function = _type_ )
+                                self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
+                                            data_base=self.data_base, line=self.line).INTERPRETER_BLOCKS(tabulation=k+1, function=_type_, typ='for')
                                 
                                 if self.error  is None:
 
@@ -182,9 +179,9 @@ class EXTERNAL_FOR_STATEMENT:
                                 else: break
 
                             else:
-                                self.get_block, self.value, self.error = end_for_else.EXTERNAL_BLOCKS( self.string,
-                                            self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation )
-
+                                self.get_block, self.value, self.error = externalRest.EXTERNAL_BLOCKS(normal_string=self.normal_string, 
+                                                                data_base=self.data_base, line=self.line).BLOCKS(tabulation=self.tabulation)
+                           
                                 if self.error is None:
                                     if   self.get_block == 'end:'  :
                                         if self.store_value:
@@ -196,23 +193,6 @@ class EXTERNAL_FOR_STATEMENT:
                                         else:
                                             self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                             break
-
-                                    elif self.get_block == 'else:' :
-                                        if self.index_else < 1:
-                                            if self.store_value:
-                                                self.index_else             += 1
-                                                self.store_value            = []
-                                                self.history.append( 'else' )
-                                                self.loop_for.append( (self.normal_string, False) )
-
-                                            else:
-                                                self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ] )
-                                                break
-
-                                        else:
-                                            self.error =  fE.ERRORS( self.line ).ERROR3( 'else' )
-                                            break
-
                                     elif self.get_block == 'empty' :
                                         if self.space <= 2:
                                             self.space += 1
@@ -220,7 +200,6 @@ class EXTERNAL_FOR_STATEMENT:
                                         else:
                                             self.error =  fE.ERRORS( self.line ).ERROR4()
                                             break
-
                                     else:
                                         self.error =  fE.ERRORS( self.line ).ERROR4()
                                         break
@@ -285,8 +264,8 @@ class INTERNAL_FOR_STATEMENT:
                         
                         if self.error is None:
                             if self.active_tab is True:
-                                self.get_block, self.value, self.error = end_for_else.INTERNAL_BLOCKS( self.string,
-                                                self.normal_string, self.data_base, self.line ).BLOCKS( k + 1, loop = loop, function = _type_ )
+                                self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
+                                            data_base=self.data_base, line=self.line).INTERPRETER_BLOCKS(tabulation=k+1, function=_type_, typ='for')
                                 
                                 if self.error  is None:
 
@@ -397,12 +376,10 @@ class INTERNAL_FOR_STATEMENT:
                                         else:
                                             self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                             break
-                                
                                 else: break
-
                             else:
-                                self.get_block, self.value, self.error = end_for_else.EXTERNAL_BLOCKS( self.string,
-                                            self.normal_string, self.data_base, self.line ).BLOCKS( self.tabulation )
+                                self.get_block, self.value, self.error = externalRest.EXTERNAL_BLOCKS(normal_string=self.normal_string, 
+                                                                data_base=self.data_base, line=self.line).BLOCKS(tabulation=self.tabulation)
 
                                 if self.error is None:
                                     if   self.get_block == 'end:'  :
@@ -415,23 +392,6 @@ class INTERNAL_FOR_STATEMENT:
                                         else:
                                             self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                             break
-
-                                    elif self.get_block == 'else:' :
-                                        if self.index_else < 1:
-                                            if self.store_value:
-                                                self.index_else             += 1
-                                                self.store_value            = []
-                                                self.history.append( 'else' )
-                                                self.loop_for.append( (self.normal_string, False) )
-
-                                            else:
-                                                self.error =  fE.ERRORS( self.line ).ERROR2( self.history[ -1 ] )
-                                                break
-
-                                        else:
-                                            self.error =  fE.ERRORS( self.line ).ERROR3( 'else' )
-                                            break
-
                                     elif self.get_block == 'empty' :
                                         if self.space <= 2:
                                             self.space += 1
@@ -439,7 +399,6 @@ class INTERNAL_FOR_STATEMENT:
                                         else:
                                             self.error =  fE.ERRORS( self.line ).ERROR4()
                                             break
-
                                     else:
                                         self.error =  fE.ERRORS( self.line ).ERROR4()
                                         break

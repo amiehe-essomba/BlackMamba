@@ -13,7 +13,7 @@ To clarify what is expected of our members, Black Mamba has adopted the Code of 
 - [x] Relax and have fun!
 
 ## Before filing an issue.
-- [x] Reporting a potential bug? Please read the ** How to file a bug report ** section to make sure that all necessary information is included.
+- [x] Reporting a potential bug? Please read the **How to file a bug report** section to make sure that all necessary information is included.
 - [x] Contributing code? Be sure to review the contributor checklist for helpful tips on the tools we use to build BM.
 
 

@@ -233,7 +233,7 @@ class ASSEMBLY( ):
                     self.MainStringTransform        = main_string
                     self.listTransform              = self.NewLIST 
                     
-                    self.error = class_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.newLine , self.master['class']).CLASSES(  tabulation = 1, 
+                    self.error = class_interpreter.EXTERNAL_CLASS_STATEMENT( None, self.data_base, self.newLine , self.master['class']).CLASSES(  tabulation = 1, 
                                                                         loop_list = self.listTransform )
                     if self.error is None: pass
                     else: pass                    
