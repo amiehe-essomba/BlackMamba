@@ -79,6 +79,7 @@ end:
 ### Open file.
 ```python
 open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
+[x] name=5
 ```
 ### Read an open file.
 ```python 
