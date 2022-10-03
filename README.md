@@ -65,7 +65,6 @@ floor = func( master : float ) -> integer :
 end:
 
 # Second Method
-
 def floor( master : float ) -> integer:
     str = string( master )      # converting float to a string
     str = str.split('.')        # spliting string
