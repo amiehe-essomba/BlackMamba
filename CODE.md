@@ -1,1 +1,1 @@
-<p> CODE of CONDUCT <\p>
+<h1 align="center"> CODE OF CONDUCT </h1>
