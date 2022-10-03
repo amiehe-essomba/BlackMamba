@@ -36,3 +36,10 @@ else:
 end:
 
 print * v, m, N
+
+begin:
+	hello here
+save as cmt:
+end:
+
+print * cmt

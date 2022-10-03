@@ -257,6 +257,7 @@ class ASSEMBLY( ):
                         else:  pass
                     else: pass
                 else: pass
+            
             else:
                 # running def
                 if   self.data_base[ 'current_func' ]  is not None:
