@@ -79,9 +79,6 @@ end:
 ### Open file.
 ```python
 open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
-- [x] action  = read, write, a
-- [x] encodin = utf-8, utf-16, utf-32
-- [x] status  = old, new    
 ```
 
 ### Read an open file.
