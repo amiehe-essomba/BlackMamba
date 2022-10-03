@@ -78,7 +78,7 @@ my_file.readlines()
 my_file.write('Hello World !\n')
 ```
 ### Close an open file
-```ruby
+```python
 my_file.close()
 ```
 
