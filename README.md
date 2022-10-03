@@ -76,7 +76,7 @@ end:
 ```
 > more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
-### Open file.
+### Open a file.
 ```python
 open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
 ```
