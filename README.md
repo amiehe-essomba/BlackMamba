@@ -65,17 +65,23 @@ end:
 ```
 > more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
-### Opening && reading && writing in a file
-
+### Open file.
 ```ruby
-# opening file
 open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
-# reading the open file
-my_file.readline()  
+```
+### Read an open file.
+```ruby 
 my_file.readlines()
-# writing in the open file
+```
+### Write to an open file 
+```ruby
 my_file.write('Hello World !\n')
 ```
+### Close an open file
+```ruby
+my_file.close()
+```
+
 > more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
 ## Select Your IDE 
