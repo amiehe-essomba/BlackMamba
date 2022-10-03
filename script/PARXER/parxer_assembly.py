@@ -9,7 +9,7 @@ from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement, unless_interpreter
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS.WHILE               import while_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else, for_interpreter
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_interpreter
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmt_interpreter as cmt_int
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
@@ -341,8 +341,6 @@ class ASSEMBLY( ):
                     else: pass
                 else: pass
             elif self.master[ 'function' ] == 'for'     :
-                #self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
-                #                                                self.line ).BOCKS( main_string )
                 self._, self.value, self.error =  mainFor.FOR_BLOCK(normal_string =main_string,
                                                 data_base=self.data_base, line=self.line).FOR( function = 'loop',
                                                 interpreter = interpreter,   locked=False)
@@ -552,10 +550,13 @@ class ASSEMBLY( ):
                 else:
                     self.error = self.error
             elif self.master[ 'function' ] == 'for'     :
-                self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
-                                                                self.line ).BOCKS( main_string )
+                self._, self.val, self.error =  mainFor.FOR_BLOCK(normal_string =main_string,
+                                                data_base=self.data_base, line=self.line).FOR( function = 'loop',
+                                                interpreter = interpreter,   locked=False)
                 
                 if self.error is None:
+                    self.value = self.val['value']
+                    self.name  = self.val['variable']
                     self.data_base['variables']['vars'].append(self.name)
                     self.data_base['variables']['values'].append(self.value[-1])
                     
@@ -696,10 +697,15 @@ class ASSEMBLY( ):
                                                                          self.line ).IF_STATEMENT(1, self.NewLIST )
                 else: pass
             elif self.master[ 'function' ] == 'for'     :
-                self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
-                                                                self.line ).BOCKS( main_string )
+                self._, self.val, self.error =  mainFor.FOR_BLOCK(normal_string =main_string,
+                                                data_base=self.data_base, line=self.line).FOR( function = 'loop',
+                                                interpreter = interpreter,   locked=False)
+                #self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
+                #                                                self.line ).BOCKS( main_string )
                 
                 if self.error is None:
+                    self.value = self.val['value']
+                    self.name  = self.val['variable']
                     self.data_base['variables']['vars'].append(self.name)
                     self.data_base['variables']['values'].append(self.value[-1])
                     
@@ -732,7 +738,7 @@ class ASSEMBLY( ):
                 self.MainStringTransform        = main_string
                 self.listTransform              = self.NewLIST 
                 
-                self.error = class_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES(  tabulation = 1, 
+                self.error = class_interpreter.EXTERNAL_CLASS_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES(  tabulation = 1, 
                                                                     loop_list = self.listTransform )
                 if self.error is None: pass
                 else: pass           

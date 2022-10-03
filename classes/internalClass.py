@@ -54,7 +54,7 @@ class INTERNAL_BLOCKS:
                             if self.normal_string[ -1 ] == ':':
                                 if self.normal_string[ 5 ] in [ ' ' ]:
                                     self.value = self.normal_string
-                                    self._return_, self.error = INTERNAL_BLOCKS(self.string, self.normal_string,
+                                    self._return_, self.error = INTERNAL_BLOCKS(self.normal_string,
                                                                     self.data_base, self.line).BLOCK_TREATMENT(num=5, function='class')
                                 else:
                                     try:
@@ -68,7 +68,7 @@ class INTERNAL_BLOCKS:
                             if loop is True:
                                 if self.normal_string[-1] == ':':
                                     self._return_ = 'end:'
-                                    self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(snum=3, normal_string=self.normal_string)
+                                    self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(num=3, normal_string=self.normal_string)
                                 else:
                                     if self.normal_string in ['end']:  self.error = er.ERRORS(self.line).ERROR1('end')
                                     else:  self.error = er.ERRORS(self.line).ERROR4()

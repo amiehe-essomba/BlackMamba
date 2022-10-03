@@ -1,6 +1,5 @@
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
-
+from updatingDataBase                                   import updating
 try:
     from CythonModules.Linux                            import loop_for
 except ImportError:
@@ -24,7 +23,7 @@ class TREATMENT:
             ):
         
         self.error                  = None
-        self.before                 = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+        self.before                 = updating.UPDATE( data_base=self.data_base ).BEFORE()
         self.for_values_init        = for_values[ : ]
         self.var_name               = name_var
         self.loop_for               = None
@@ -156,10 +155,9 @@ class TREATMENT:
         """
 
         
-        self.error = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init), self.var_name, loop_list )
-
-        self.after = end_for_else.CHECK_VALUES( self.data_base ).AFTER()
-        self.error = end_for_else.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
+        self.error      = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init), self.var_name, loop_list )
+        self.after      = updating.UPDATE( data_base=self.data_base ).AFTER()
+        self.error      = updating.UPDATE( data_base=self.data_base ).UPDATE( before=self.before, after=self.after, error=self.error )
 
         return  self.finally_values, self.error
 

@@ -1,4 +1,3 @@
-from script.PARXER.PARXER_FUNCTIONS.CLASSES     import end_class
 from src.functions.windows                      import windowsDef as WD
 from script.STDIN.WinSTDIN                      import stdin
 from script.LEXER.FUNCTION                      import main

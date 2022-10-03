@@ -1,4 +1,3 @@
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.INTERNAL_FUNCTION                    import get_list
 from script.LEXER.FUNCTION                              import main
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
@@ -17,6 +16,7 @@ from functions                                          import internalDef      
 from statement.comment                                  import externalCmt
 from script.PARXER.PARXER_FUNCTIONS.WHILE               import while_statement
 from src.functions                                      import type_of_data             as tod
+from updatingDataBase                                   import updating
 try:  from CythonModules.Linux                          import loop_for
 except ImportError: from CythonModules.Windows          import loop_for
 
@@ -666,7 +666,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                             else: break
                         elif self.get_block == 'for:'    :
                             self.next_line  = j + 1
-                            self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                            self.before     = updating.UPDATE( data_base=self.data_base ).BEFORE()
                             
                             self.var_name       = self.value[ 'variable' ]
                             self.for_values_init= self.value[ 'value' ]
@@ -711,8 +711,8 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                                 self.history.append( 'begin' )
                                 self.space = 0
                             else:
-                                self.after = end_for_else.CHECK_VALUES( self.data_base ).AFTER()
-                                self.error = end_for_else.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
+                                self.after      = updating.UPDATE( data_base=self.data_base ).AFTER()
+                                self.error      = updating.UPDATE( data_base=self.data_base ).UPDATE( before=self.before, after=self.after, error=self.error )
                                 break
                         elif self.get_block == 'def:'    :
                             self.db = db.DATA_BASE().STORAGE().copy()
@@ -903,7 +903,7 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                             else: break
                         elif self.get_block == 'for:'    :
                             self.next_line  = j + 1
-                            self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                            self.before     = updating.UPDATE( data_base=self.data_base ).BEFORE()
                             
                             self.var_name       = self.value[ 'variable' ]
                             self.for_values_init= self.value[ 'value' ]

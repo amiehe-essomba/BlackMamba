@@ -113,10 +113,10 @@ class VARIABLE_CHECKING :
 
 class FOR_BLOCK         :
     def __init__(self,
-                 data_base      : dict,             #
-                 line           : int ,             #
-                 normal_string  : str               #
-                 ):
+                data_base      : dict,             #
+                line           : int ,             #
+                normal_string  : str               #
+                ):
         self.data_base          = data_base
         self.line               = line
         self.normal_string      = normal_string

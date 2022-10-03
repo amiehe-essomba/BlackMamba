@@ -1,6 +1,5 @@
 import cython
 from script                                             import control_string
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
@@ -203,7 +202,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                         else: pass
                                 elif self.get_block == 'for:'    :
                                     self.next_line  = j + 1
-                                    self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                                    self.before     = updating.UPDATE( data_base=self.data_base ).BEFORE()
                                     self.store_value.append( self.normal_string )
                                     self.history.append( 'for' )
                                     self.space = 0
@@ -582,7 +581,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
                                         else: pass
                                 elif self.get_block == 'for:'   :
                                     self.next_line  = j + 1
-                                    self.before     = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+                                    self.before     = updating.UPDATE( data_base=self.data_base ).BEFORE()
                                     self.store_value.append( self.normal_string )
                                     self.history.append( 'for' )
                                     self.space = 0

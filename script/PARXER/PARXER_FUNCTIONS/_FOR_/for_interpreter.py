@@ -1,7 +1,6 @@
 import cython
 from script                                             import control_string
 from script.STDIN.WinSTDIN                              import stdin
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_inter
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_interpreter as ui
