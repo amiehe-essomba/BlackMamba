@@ -60,7 +60,7 @@ class EXTERNAL_DEF_STATEMENT:
                             self.get_block, self.value, self.error = ID.INTERNAL_BLOCKS( string=self.string,
                                         normal_string=self.normal_string, data_base=self.data_base, 
                                         line=self.if_line ).BLOCKS( tabulation=k+ 1,
-                                        function=function, interpreter = False, class_name= class_name, class_key=class_key,
+                                        function=_type_, interpreter = False, class_name= class_name, class_key=class_key,
                                         func_name=self.data_base[ 'current_func' ], loop = True)
                                         
                             if self.error is None:
@@ -249,7 +249,7 @@ class INTERNAL_DEF_STATEMENT:
                             self.get_block, self.value, self.error = ID.INTERNAL_BLOCKS( string=self.string,
                                         normal_string=self.normal_string, data_base=self.data_base, 
                                         line=self.if_line ).BLOCKS( tabulation=k+ 1,
-                                        function=function, interpreter = False, class_name= class_name, class_key=class_key,
+                                        function=_type_, interpreter = False, class_name= class_name, class_key=class_key,
                                         func_name=self.data_base[ 'current_func' ], loop = True)
                                         
                             if self.error is None:
