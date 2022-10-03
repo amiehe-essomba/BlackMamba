@@ -54,7 +54,19 @@ end:
 ### Creating a simple function
 
 ```ruby
+# First method
 floor = func( master : float ) -> integer :
+    str = string( master )      # converting float to a string
+    str = str.split('.')        # spliting string
+    int = integer(str[0])       # converting string to an integer
+
+    # return the integer part of master
+    return int
+end:
+
+# Second Method
+
+def floor( master : float ) -> integer:
     str = string( master )      # converting float to a string
     str = str.split('.')        # spliting string
     int = integer(str[0])       # converting string to an integer
