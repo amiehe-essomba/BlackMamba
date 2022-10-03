@@ -80,7 +80,11 @@ end:
 ```python
 open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
 ```
-- [x] name
+- [x] name    = file name 
+- [x] file    = file location 
+- [x] action  = read, write, a:{read + write}
+- [x] encodin = utf-8, utf-16, utf-32
+- [x] status  = old, new    
 
 ### Read an open file.
 ```python 
