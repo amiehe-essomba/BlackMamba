@@ -66,15 +66,15 @@ end:
 > more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
 ### Open file.
-```ruby
+```python
 open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
 ```
 ### Read an open file.
-```ruby 
+```python 
 my_file.readlines()
 ```
 ### Write to an open file 
-```ruby
+```python
 my_file.write('Hello World !\n')
 ```
 ### Close an open file
