@@ -54,7 +54,18 @@ end:
 ### Creating a simple function
 
 ```ruby
+# First method
 floor = func( master : float ) -> integer :
+    str = string( master )      # converting float to a string
+    str = str.split('.')        # spliting string
+    int = integer(str[0])       # converting string to an integer
+
+    # return the integer part of master
+    return int
+end:
+
+# Second Method
+def floor( master : float ) -> integer:
     str = string( master )      # converting float to a string
     str = str.split('.')        # spliting string
     int = integer(str[0])       # converting string to an integer
@@ -65,17 +76,24 @@ end:
 ```
 > more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
-### Opening && reading && writing in a file
-
-```ruby
-# opening file
+### Open file.
+```python
 open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
-# reading the open file
-my_file.readline()  
+```
+
+### Read an open file.
+```python 
 my_file.readlines()
-# writing in the open file
+```
+### Write to an open file 
+```python
 my_file.write('Hello World !\n')
 ```
+### Close an open file
+```python
+my_file.close()
+```
+
 > more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
 ## Select Your IDE 
