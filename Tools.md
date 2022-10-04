@@ -14,6 +14,9 @@ class iris:
         return {color : color, size: size, width : width}
      end:
 end:    
+
+# 
+print * iris().get()
 ```
 
 - **Without initialize() function**
