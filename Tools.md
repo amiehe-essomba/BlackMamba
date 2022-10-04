@@ -29,10 +29,6 @@ class math:
         def sum( a :int, b : float) -> float:
             return a+b
         end:
-        
-        def prod( a : int = 2, b : int/float/bool ) -> any:
-            return a * b
-        end:
     end:
 end:
 ```
