@@ -46,7 +46,27 @@ end:
 print * math().arithmetic.sum( 4, 3)
 ```
 
-## Inheritance class
+## Inheritance classes`
+
+```ruby
+class setosa:
+    def initialize( color : string = 'red', size : float) -> None:
+        self.color = color
+        self.size  = size 
+        self.width = 0.3
+    end:
+end:
+
+class iris( setosa ):
+    def get():
+        return {color : color, size : size, width : width}
+    end:
+end:
+
+print * iris.get(), iris.color, iris.size, iris.width
+```
+
+
 
 ## Handling files
 ### Open a file 
