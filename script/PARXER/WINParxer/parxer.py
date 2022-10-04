@@ -216,7 +216,6 @@ class ASSEMBLY( ):
                         else: pass 
                     else: pass
                 else: pass
-            
             else: pass
         # no functions detected 
         else:
@@ -256,8 +255,7 @@ class ASSEMBLY( ):
                                     print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
                         else:  pass
                     else: pass
-                else: pass
-            
+                else: pass    
             else:
                 # running def
                 if   self.data_base[ 'current_func' ]  is not None:
