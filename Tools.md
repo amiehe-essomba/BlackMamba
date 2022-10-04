@@ -15,7 +15,6 @@ class iris:
      end:
 end:    
 
-# 
 print * iris().get()
 ```
 
@@ -27,6 +26,8 @@ class math:
     end:
 end:
 
+print * math.sum( a=4, b=-1)
+
 class math:
     class arithmetic:
         def sum( a :int, b : float) -> float:
@@ -34,6 +35,8 @@ class math:
         end:
     end:
 end:
+
+print * math().arithmetic.sum( 4, 3)
 ```
 
 ## Inheritance class
