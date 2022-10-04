@@ -1,3 +1,6 @@
+# Classes
+To create a class, it must have a name and the choice of the name of a class is not random, it must respect a certain number of criteria: it must start with an upper or lower case letter, it cannot contain only alphabetic characters and the underscore character, its length does not matter. The creation of a __class__ is done using the keyword **class** followed by the name of the class and ends with a **:** to indicate the end of the chain, its closure is done using the keyword **end** followed by **:** 
+**A class can only contain classes and functions and nothing else**
 ## Creating a simple class
 
 - **With initialize() function**
@@ -18,7 +21,7 @@ end:
 print * iris().get()
 ```
 
-<p> You can initialized values in **initialize** function to make them acceessible directly if functions created inside class </p>
+<p> You can initialized values in initialize function to make them acceessible directly if functions created inside class </p>
 
 - **Without initialize() function**
 ```ruby
