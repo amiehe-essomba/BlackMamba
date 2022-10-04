@@ -18,6 +18,8 @@ end:
 print * iris().get()
 ```
 
+<p> You can initialized values in **initialize** function to make them acceessible directly if functions created inside class </p>
+
 - **Without initialize() function**
 ```ruby
 class math:
