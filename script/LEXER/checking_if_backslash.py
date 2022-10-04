@@ -1,11 +1,8 @@
-from script                     import control_string
-from script.STDIN.WinSTDIN      import stdin
-from script.LEXER               import segmentation
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
-try:
-    from CythonModules.Windows  import fileError as fe 
-except ImportError:
-    from CythonModules.Linux    import fileError as fe 
+from script                                 import control_string
+from script.STDIN.WinSTDIN                  import stdin
+from script.LEXER                           import segmentation
+from script.LEXER.error.CythonWIN           import backslashError   as BE
+from script.STDIN.LinuxSTDIN                import bm_configure     as bm
 
 
 ie = bm.fg.blue_L
@@ -78,7 +75,7 @@ class BACKSSLASH:
 
                                                             for w in self.normal_string:
                                                                 if w in ['\{}'.format('')]:
-                                                                    self.error = ERRORS( (self.line+self.string_line)).ERROR1( self.normal_string )
+                                                                    self.error = BE.ERRORS( (self.line+self.string_line)).ERROR1( self.normal_string )
                                                                     break
                                                                 else: pass
 
@@ -130,30 +127,29 @@ class BACKSSLASH:
                                                                             self.data_storage.append( self.backend )
                                                                             break
                                                                     else:
-                                                                        self.error = ERRORS( (self.line+self.string_line) ).ERROR0( self.normal_string )
+                                                                        self.error = BE.ERRORS( (self.line+self.string_line) ).ERROR0( self.normal_string )
                                                                         break
                                                             else: break
                                                         else:  self.error = None
                                                     except IndexError :
                                                         if self.space <= 5: self.space += 1
                                                         else:
-                                                            self.error = ERRORS((self.line + self.string_line)).ERROR2()
+                                                            self.error = BE.ERRORS((self.line + self.string_line)).ERROR2()
                                                             break
                                                 else:
-                                                    self.error = ERRORS((self.line + self.string_line)).ERROR3()
+                                                    self.error = BE.ERRORS((self.line + self.string_line)).ERROR3()
                                                     break
 
-                                            else:
-                                                break
+                                            else:  break
 
                                         except KeyboardInterrupt:
-                                            self.error = ERRORS( self.line ).ERROR3()
+                                            self.error = BE.ERRORS( self.line ).ERROR3()
                                             break
                                         except EOFError:
-                                            self.error = ERRORS(self.line).ERROR3()
+                                            self.error = BE.ERRORS(self.line).ERROR3()
                                             break
                                 else:
-                                    self.error = ERRORS(self.line).ERROR1(self.master)
+                                    self.error = BE.ERRORS(self.line).ERROR1(self.master)
                                     break
                             else: pass
                         else:
@@ -187,17 +183,14 @@ class BACKSSLASH:
                                                             if self.error is None:
                                                                 for w in self.normal_string:
                                                                     if w in ['\{}'.format('')]:
-                                                                        self.error = ERRORS( (self.line + self.string_line)
-                                                                            ).ERROR1(self.normal_string)
+                                                                        self.error = BE.ERRORS( (self.line + self.string_line)  ).ERROR1(self.normal_string)
                                                                         break
                                                                     else: pass
                                                                 if self.error is None:
                                                                     if self.backend not in self.normal_string:
                                                                         self.string_check, self.error = segmentation.SEGMENTATION(
                                                                             self.string, self.normal_string,
-                                                                            self.data_base,
-                                                                            (self.line + self.string_line)).TREATEMENT(
-                                                                            _id_ + 1, te)
+                                                                            self.data_base, (self.line + self.string_line)).TREATEMENT(  _id_ + 1, te)
 
                                                                         if self.error is None: self.data_storage.append(self.string_check)
                                                                         else:break
@@ -212,10 +205,8 @@ class BACKSSLASH:
 
                                                                                     for i, __string__ in enumerate(self.data_split):
                                                                                         self.string_check, self.error = segmentation.SEGMENTATION(
-                                                                                            __string__, __string__,
-                                                                                            self.data_base,
-                                                                                            (self.line + self.string_line)
-                                                                                            ).TREATEMENT(_id_ + 1, te)
+                                                                                            __string__, __string__,  self.data_base,
+                                                                                            (self.line + self.string_line)  ).TREATEMENT(_id_ + 1, te)
 
                                                                                         if self.error is None:
                                                                                             if i == 0: self.string_add += self.string_check
@@ -240,25 +231,25 @@ class BACKSSLASH:
                                                                                 self.data_storage.append(self.backend)
                                                                                 break
                                                                         else:
-                                                                            self.error = ERRORS( (self.line + self.string_line)).ERROR0(self.normal_string)
+                                                                            self.error = BE.ERRORS( (self.line + self.string_line)).ERROR0(self.normal_string)
                                                                             break
-                                                                else:break
+                                                                else: break
                                                             else: self.error = None
                                                         except IndexError:
                                                             if self.space <= 5: self.space += 1
                                                             else:
-                                                                self.error = ERRORS((self.line + self.string_line)).ERROR2()
+                                                                self.error = BE.ERRORS((self.line + self.string_line)).ERROR2()
                                                                 break
                                                     else:
-                                                        self.error = ERRORS( (self.line + self.string_line) ).ERROR3()
+                                                        self.error = BE.ERRORS( (self.line + self.string_line) ).ERROR3()
                                                         break
                                                 else: break
 
                                             except KeyboardInterrupt:
-                                                self.error = ERRORS(self.line).ERROR3()
+                                                self.error = BE.ERRORS(self.line).ERROR3()
                                                 break
                                             except EOFError:
-                                                self.error = ERRORS(self.line).ERROR3()
+                                                self.error = BE.ERRORS(self.line).ERROR3()
                                                 break
 
                                     else:
@@ -273,17 +264,17 @@ class BACKSSLASH:
                                                     self.locked             = True
                                                     break
                                             except IndexError:
-                                                self.error = ERRORS(self.line).ERROR0(self.master)
+                                                self.error = BE.ERRORS(self.line).ERROR0(self.master)
                                                 break
                                         else:
-                                            self.error = ERRORS( self.line ).ERROR0( self.master )
+                                            self.error = BE.ERRORS( self.line ).ERROR0( self.master )
                                             break
                                 else:
-                                    self.error = ERRORS(self.line).ERROR1(self.master)
+                                    self.error = BE.ERRORS(self.line).ERROR1(self.master)
                                     break
                             else: pass
                     else:
-                        self.error = ERRORS( self.line ).ERROR0( self.master )
+                        self.error = BE.ERRORS( self.line ).ERROR0( self.master )
                         break
                 else:
                     if i == len( self.master ) - 1:
@@ -353,7 +344,7 @@ class DEEP_CHECKING:
                             #self.error = ERRORS( self.line ).ERROR4( main_string )
                             #break
                     except IndexError:
-                        self.error = ERRORS( self.line ).ERROR0( main_string )
+                        self.error = BE.ERRORS( self.line ).ERROR0( main_string )
                         break
 
                 else:
@@ -435,7 +426,7 @@ class BACKSSLASH_FOR_INTERPRETER:
 
                                                                 for w in self.normal_string:
                                                                     if w in ['\{}'.format('')]:
-                                                                        self.error = ERRORS( (self.line+self.string_line) ).ERROR1( self.normal_string )
+                                                                        self.error = BE.ERRORS( (self.line+self.string_line) ).ERROR1( self.normal_string )
                                                                         break
                                                                     else: pass
 
@@ -494,7 +485,7 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                                 self.data_storage.append( self.backend )
                                                                                 break
                                                                         else:
-                                                                            self.error = ERRORS( (self.line+self.string_line)
+                                                                            self.error = BE.ERRORS( (self.line+self.string_line)
                                                                                                     ).ERROR0( self.normal_string )
                                                                             break
                                                                 else: break
@@ -502,24 +493,24 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                         except IndexError :
                                                             if self.space <= 5: self.space += 1
                                                             else:
-                                                                self.error = ERRORS((self.line + self.string_line)).ERROR2()
+                                                                self.error = BE.ERRORS((self.line + self.string_line)).ERROR2()
                                                                 break
                                                     else:
-                                                        self.error = ERRORS((self.line + self.string_line)).ERROR3()
+                                                        self.error = BE.ERRORS((self.line + self.string_line)).ERROR3()
                                                         break
                                                 else: break
                                             except KeyboardInterrupt:
-                                                self.error = ERRORS( self.line ).ERROR3()
+                                                self.error = BE.ERRORS( self.line ).ERROR3()
                                                 break
                                             except EOFError:
-                                                self.error = ERRORS(self.line).ERROR3()
+                                                self.error = BE.ERRORS(self.line).ERROR3()
                                                 break
                                     
                                     else:
-                                        self.error = ERRORS(self.line ).ERROR3()
+                                        self.error = BE.ERRORS(self.line ).ERROR3()
                                         break
                                 else:
-                                    self.error = ERRORS(self.line).ERROR1(self.master)
+                                    self.error = BE.ERRORS(self.line).ERROR1(self.master)
                                     break
                             else: pass
                         else:
@@ -556,8 +547,7 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                 if self.error is None:
                                                                     for w in self.normal_string:
                                                                         if w in ['\{}'.format('')]:
-                                                                            self.error = ERRORS( (self.line + self.string_line)
-                                                                                ).ERROR1(self.normal_string)
+                                                                            self.error = BE.ERRORS( (self.line + self.string_line) ).ERROR1(self.normal_string)
                                                                             break
                                                                         else: pass
                                                                     if self.error is None:
@@ -611,28 +601,28 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                                     self.data_storage.append(self.backend)
                                                                                     break
                                                                             else:
-                                                                                self.error = ERRORS( (self.line + self.string_line) ).ERROR0(self.normal_string)
+                                                                                self.error = BE.ERRORS( (self.line + self.string_line) ).ERROR0(self.normal_string)
                                                                                 break
                                                                     else:break
                                                                 else: self.error = None
                                                             except IndexError:
                                                                 if self.space <= 5: self.space += 1
                                                                 else:
-                                                                    self.error = ERRORS((self.line + self.string_line)).ERROR2()
+                                                                    self.error = BE.ERRORS((self.line + self.string_line)).ERROR2()
                                                                     break
                                                         else:
-                                                            self.error = ERRORS( (self.line + self.string_line) ).ERROR3()
+                                                            self.error = BE.ERRORS( (self.line + self.string_line) ).ERROR3()
                                                             break
                                                     else: break
 
                                                 except KeyboardInterrupt:
-                                                    self.error = ERRORS(self.line).ERROR3()
+                                                    self.error = BE.ERRORS(self.line).ERROR3()
                                                     break
                                                 except EOFError:
-                                                    self.error = ERRORS(self.line).ERROR3()
+                                                    self.error = BE.ERRORS(self.line).ERROR3()
                                                     break
                                         else: 
-                                            self.error = ERRORS(self.line ).ERROR3()
+                                            self.error = BE.ERRORS(self.line ).ERROR3()
                                             break
                                     else:
                                         if self.last_char == self.backend and len( self.master ) > 1:
@@ -646,17 +636,17 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                     self.locked             = True
                                                     break
                                             except IndexError:
-                                                self.error = ERRORS(self.line).ERROR0(self.master)
+                                                self.error = BE.ERRORS(self.line).ERROR0(self.master)
                                                 break
                                         else:
-                                            self.error = ERRORS( self.line ).ERROR0( self.master )
+                                            self.error = BE.ERRORS( self.line ).ERROR0( self.master )
                                             break
                                 else:
-                                    self.error = ERRORS(self.line).ERROR1(self.master)
+                                    self.error = BE.ERRORS(self.line).ERROR1(self.master)
                                     break
                             else: pass
                     else:
-                        self.error = ERRORS( self.line ).ERROR0( self.master )
+                        self.error = BE.ERRORS( self.line ).ERROR0( self.master )
                         break
                 else:
                     if i == len( self.master ) - 1:
@@ -686,57 +676,11 @@ class BACKSSLASH_FOR_INTERPRETER:
             if self.loopActivation is True:
                 if self.isBreak is True: pass 
                 else: 
-                    if self.backend: self.error = ERRORS( self.initLine ).ERROR5( self.master, self.backend )
-                    else: self.error = ERRORS( self.initLine ).ERROR0( self.master  )
+                    if self.backend: self.error = BE.ERRORS( self.initLine ).ERROR5( self.master, self.backend )
+                    else: self.error = BE.ERRORS( self.initLine ).ERROR0( self.master  )
             else: pass
         else: pass
         
         return self.new_string, self.error
 
-class ERRORS:
-    def __init__(self, line):
-        self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
-        self.reset      = bm.init.reset
-
-    def ERROR0(self, string: str):
-        error = ' {}line: {}{}'.format( self.white, self.yellow, self.line )
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>.'.format(self.white, self.cyan, string)+error
-
-        return self.error+self.reset
-
-    def ERROR1(self, string: str):
-        error = '{}due to bad {}backslash {}<< \ >> {}position . {}line: {}{}'.format(self.white, self.red, self.magenta,
-                                                                                      self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string)+error
-
-        return self.error+self.reset
-
-    def ERROR2(self):
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}syntax error, {}EMPTY {}value was detected. {}line : {}{}'.format(self.white, 
-                                                                                self.white, self.yellow, self.white, self.yellow, self.line)
-        return  self.error+self.reset
-
-    def ERROR3(self):
-        self.error = fe.FileErrors( 'IndentationError' ).Errors() + '{}unexpected an indented block. {}line : {}{}'.format(self.yellow, 
-                                                self.white, self.yellow, self.line)
-        return  self.error+self.reset
-
-    def ERROR4(self, string: str):
-        error = '{}due to bad char {}after {}<< \ >>. {}line: {}{}'.format(self.white, self.red, self.magenta, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string)+error
-
-        return  self.error+self.reset
-    
-    def ERROR5(self, string: str, _open_: str):
-        error       = '{}close the {}opening {}<< {} >>. {}line: {}{}'.format( self.white, self.red, self.blue, _open_,self.white, self.yellow, self.line)
-        self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
-
-        return self.error+self.reset
 
