@@ -10,11 +10,33 @@ class iris:
     end:
     
     # get items
-    def get( item : string ):
+    def get( item : string ) -> dictionary:
         return {color : color, size: size, width : width}
      end:
 end:    
 ```
+
+- **Without initialize() function**
+```ruby
+class math:
+    def sum( a : int, b : int = 5) -> integer:
+        return a+b
+    end:
+end:
+
+class math:
+    class arithmetic:
+        def sum( a :int, b : float) -> float:
+            return a+b
+        end:
+        
+        def prod( a : int = 2, b : int/float/bool ) -> any:
+            return a * b
+        end:
+    end:
+end:
+```
+
 ## Inheritance class
 
 ## Handling files
