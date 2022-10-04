@@ -11,15 +11,7 @@ class iris:
     
     # get items
     def get( item : string ):
-        if item == 'color':
-            return color
-        elif item == 'width':
-            return width
-        elif item == 'size':
-            return size
-        else:
-            return 'item Error'
-        end:
+        return {color : color, size: size, width : width}
      end:
 end:    
 ```
