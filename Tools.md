@@ -110,6 +110,8 @@ end:
 print * iris.info( item = 'color'), iris.get(), iris.color 
 ```
 
+It is also possible for a class to inherit the properties of several classes at the same time as the example above demonstrates.
+
 ## Multidimensional classes
 
 ```ruby
