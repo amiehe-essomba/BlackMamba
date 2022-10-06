@@ -208,9 +208,9 @@ print * index(id = 4)
 ```
 
 ```ruby
-def List( id : integer ) -> list:
+def List( id : int, max : int = 5 ) -> list:
     list_of_values = [].random( id )
-    return list_of_values[:5]
+    return list_of_values[:max]
 end:
 
 print * List( id = 50 )
