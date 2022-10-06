@@ -218,7 +218,7 @@ print * List( id = 50 )
 
 ## Creating a function using **func** as a keyword
 ```ruby
-sdef Sum() -> float:
+Sum = func() -> float:
     list_of_values = [].random((10, (100,300)))
     return sum( list_of_values )
 end:
@@ -226,3 +226,20 @@ end:
 print * Sum()
 ```
 
+
+## Multidimensional functions
+
+```ruby
+prod = func( a : float,  b : int) -> integer:
+    def Floor():
+        str = string( a )
+        str_int = integer( str.split('.')[ 0 ] )
+
+        return str_int
+    end:
+
+    return Floor() * b
+end:
+```
+
+# Modules importation 
