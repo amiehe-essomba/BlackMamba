@@ -161,7 +161,7 @@ The type of a function is defined as follows:
 ```ruby
 prod = func() -> list:
 prod = func() -> tuple:
-prod = func() -> integer:
+prod = func() -> any:
 ```
 
 ## Creating a function using **def** as a keyword
