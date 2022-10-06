@@ -164,14 +164,44 @@ prod = func() -> tuple:
 prod = func() -> any:
 ```
 
+## Variables Type in a function.
+
+- [x] none for **None** type
+- [x] int  for **integer** type
+- [x] float for **float** type
+- [x] bool for **boolean** type
+- [x] string for **string** type
+- [x] cplx for **complex** type
+- [x] range for **range** type
+- [x] list for **list** type
+- [x] tuple for tuple **type**
+- [x] dict for **dictionary** type
+- [x] ndarray for **ndarray** type
+
 ## Creating a function using **def** as a keyword
 ```ruby
-def sum() -> list:
-    return [].random(10)
+def Sum() -> float:
+    list_of_values = [].random(10)
+    return sum( list_of_values )
 end:
+
+print * Sum()
 ```
+
+### Defining default values
+
+```ruby
+def index( id = 2 ) -> integer:
+    list_of_values = [].random(10)
+    return list_of_values.choice( id )
+end:
+
+### Variables Type in function
 
 ## Creating a function using **func** as a keyword
 ```ruby
 sum = func() -> list:
+    return [].random((10, (100, 300)))
+end:
+```
 
