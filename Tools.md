@@ -159,12 +159,12 @@ The default value is **any** it means that the output can be any type.
 The type of a function is defined as follows:
 
 ```ruby
-prod = func() -> list:
-prod = func() -> tuple:
-prod = func() -> any:
+- prod = func() -> list:
+- prod = func() -> tuple:
+- prod = func() -> any:
 ```
 
-## Variables Type in a function.
+## Variable types defined in a function.
 
 - [x] none for **None** type
 - [x] int  for **integer** type
@@ -177,6 +177,14 @@ prod = func() -> any:
 - [x] tuple for tuple **type**
 - [x] dict for **dictionary** type
 - [x] ndarray for **ndarray** type
+
+A variable can have more than one type
+
+```ruby
+- def prod( a : int ) -> float:
+- def prod( a : int/float/bool) -> any
+- def prod( a : int/float = 5.0) -> None
+```
 
 ## Creating a function using **def** as a keyword
 ```ruby
