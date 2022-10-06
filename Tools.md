@@ -181,9 +181,9 @@ The type of a function is defined as follows:
 A variable can have more than one type
 
 ```ruby
-- def prod( a : int ) -> float:
-- def prod( a : int/float/bool) -> any
-- def prod( a : int/float = 5.0) -> None
+-def prod( a : int ) -> float:
+-def prod( a : int/float/bool) -> any
+-def prod( a : int/float = 5.0) -> None
 ```
 
 ## Creating a function using **def** as a keyword
