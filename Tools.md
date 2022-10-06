@@ -181,9 +181,9 @@ prod = func() -> any:
 A variable can have more than one type
 
 ```ruby
-def prod( a : int ) -> float:
-def prod( a : int/float/bool) -> any
-def prod( a : int/float = 5.0) -> None
+def prod( a : bool) -> float:
+def prod( a : tuple/list) -> integer:
+def prod( a : float = 5.0) -> None:
 ```
 
 ## Creating a function using **def** as a keyword
