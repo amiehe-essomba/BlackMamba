@@ -203,7 +203,7 @@ def index( id = 2 ) -> integer:
     list_of_values = [].random(10)
     return list_of_values.choice( id )
 end:
-
+```
 ### Variables Type in function
 
 ## Creating a function using **func** as a keyword
