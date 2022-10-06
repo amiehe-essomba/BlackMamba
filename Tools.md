@@ -203,13 +203,26 @@ def index( id = 2 ) -> integer:
     list_of_values = [].random(10)
     return list_of_values.choice( id )
 end:
+
+print * index(id = 4)
 ```
-### Variables Type in function
+
+```ruby
+def List( id : integer ) -> list:
+    list_of_values = [].random( id )
+    return list_of_values[:5]
+end:
+
+print * List( id = 50 )
+```
 
 ## Creating a function using **func** as a keyword
 ```ruby
-sum = func() -> list:
-    return [].random((10, (100, 300)))
+sdef Sum() -> float:
+    list_of_values = [].random((10, (100,300)))
+    return sum( list_of_values )
 end:
+
+print * Sum()
 ```
 
