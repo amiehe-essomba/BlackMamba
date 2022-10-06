@@ -139,7 +139,7 @@ print * math(a = 4).arithmetic(b = -4 ).sum(c = 2.0)
 There are two different methods for creating functions: the first method uses the keyword **def** generally used for creating functions in a class but can be used globally, the second method uses the keyword **func** but cannot be used to create a function in a class only used outside of classes.
 Just like classes, functions need a name the characteristics are identical (read the **Classes** section), a function can contain everything except classes which host functions.
 
-## Different outputs of a function.
+## Function types.
 
 The nature or output of a function can be specified
 - [x] None or none : No output
