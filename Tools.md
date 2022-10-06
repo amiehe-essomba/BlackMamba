@@ -139,6 +139,28 @@ print * math(a = 4).arithmetic(b = -4 ).sum(c = 2.0)
 There are two different methods for creating functions: the first method uses the keyword **def** generally used for creating functions in a class but can be used globally, the second method uses the keyword **func** but cannot be used to create a function in a class only used outside of classes.
 Just like classes, functions need a name the characteristics are identical (read the **Classes** section), a function can contain everything except classes which host functions.
 
+## Different outputs of a function.
+
+The nature or output of a function can be specified
+- [ ] None : No output
+- [ ] integer 
+- [ ] float 
+- [ ] boolean
+- [ ] string
+- [ ] range
+- [ ] list
+- [ ] tuple
+- [ ] dictionary
+- [ ] ndarry
+
 ## Creating a function using **def** as a keyword
+```ruby
+def sum() -> list:
+    return [].random(10)
+end:
+```
 
 ## Creating a function using **func** as a keyword
+```ruby
+sum = func() -> list:
+
