@@ -50,7 +50,67 @@ end:
 
 print * iris().get()
 ```
-- **Multidimensional classes**
+
+
+## Inheritance classes`
+
+```ruby
+class setosa:
+    def initialize( color : string = 'red', size : float) -> None:
+        self.color = color
+        self.size  = size 
+        self.width = 0.3
+    end:
+end:
+
+class iris( setosa ):
+    def get():
+        return {color : color, size : size, width : width}
+    end:
+end:
+
+print * iris.get(), iris.color, iris.size, iris.width
+```
+
+It is possible to have access to the different information of another class, namely: its different functions and thus use them in the host class, it is also possible to obtain the semi-global variables created in the **initialize()** function if it was created in this class. This could be extremely efficient, it is also possible to associate the functions of this class to the host class as shown in the example above.
+We start by creating a class setosa containing only the semi-global variables of this class just to simplify things then a second class is created ( host class ), the class iris will host the class setosa just by defining setosa between brackets and so iris can access all of setosa's information down to the smallest detail.
+
+## Multiple inheritances
+
+
+```ruby
+class setosa:
+    def initialize( color : string = 'red', size : float) -> None:
+        self.color = color
+        self.size  = size 
+        self.width = 0.3
+    end:
+end:
+
+class versicolor( setosa ):
+    def get( item : string = 'color') -> string:
+        if item == 'color':
+            return color
+        elif item == 'size':
+            return length
+        else:
+            return 'item Error'
+        end:
+    end:
+end:
+
+class iris( setosa, versicolor ):
+    def info( item : string = 'length' ) -> dictionary:
+        # itialazing versicolor
+        set = versicolor.get( item = item )
+        return {color : color, size : size, width : width}
+    end:
+end:
+
+print * iris.info( item = 'color'), iris.get(), iri.color 
+```
+
+## Multidimensional classes
 
 ```ruby
 class math:
@@ -73,27 +133,6 @@ end:
 
 print * math(a = 4).arithmetic(b = -4 ).sum(c = 2.0)
 ```
-
-## Inheritance classes`
-
-```ruby
-class setosa:
-    def initialize( color : string = 'red', size : float) -> None:
-        self.color = color
-        self.size  = size 
-        self.width = 0.3
-    end:
-end:
-
-class iris( setosa ):
-    def get():
-        return {color : color, size : size, width : width}
-    end:
-end:
-
-print * iris.get(), iris.color, iris.size, iris.width
-```
-
 
 
 ## Handling files
