@@ -147,11 +147,14 @@ The nature or output of a function can be specified
 - [x] float 
 - [x] boolean
 - [x] string
+- [x] complex
 - [x] range
 - [x] list
 - [x] tuple
 - [x] dictionary
 - [x] ndarray
+- [x] any
+The default value is **any* it means that the output can be any type
 
 ## Creating a function using **def** as a keyword
 ```ruby
