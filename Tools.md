@@ -142,7 +142,7 @@ Just like classes, functions need a name the characteristics are identical (read
 ## Different outputs of a function.
 
 The nature or output of a function can be specified
-- [x] None : No output
+- [x] None or none : No output
 - [x] integer 
 - [x] float 
 - [x] boolean
