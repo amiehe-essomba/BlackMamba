@@ -50,28 +50,28 @@ end:
 
 print * iris().get()
 ```
+**multidimensional classes**
 
-<p> You can initialized values in initialize function to make them acceessible directly if functions created inside class </p>
-
-- **Without initialize() function**
 ```ruby
 class math:
-    def sum( a : int, b : int = 5) -> integer:
-        return a+b
+    def initilaize( a : int = 0) -> None:
+        self.a = a
     end:
-end:
-
-print * math.sum( a=4, b=-1)
-
-class math:
+    
+    # creating a sub-class
     class arithmetic:
-        def sum( a :int, b : float) -> float:
-            return a+b
+        def initalize( b : int ) -> None:
+            self.b = b
+        end:
+        
+        #creatng sub-function
+        def mean( c : float) -> float:
+            return (a+b+c)/3.0
         end:
     end:
 end:
 
-print * math().arithmetic.sum( 4, 3)
+print * math(a = 4).arithmetic(b = -4 ).sum(c = 2.0)
 ```
 
 ## Inheritance classes`
