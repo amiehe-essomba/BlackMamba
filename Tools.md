@@ -142,16 +142,16 @@ Just like classes, functions need a name the characteristics are identical (read
 ## Different outputs of a function.
 
 The nature or output of a function can be specified
-- [ ] None : No output
-- [ ] integer 
-- [ ] float 
-- [ ] boolean
-- [ ] string
-- [ ] range
-- [ ] list
-- [ ] tuple
-- [ ] dictionary
-- [ ] ndarry
+- [x] None : No output
+- [x] integer 
+- [x] float 
+- [x] boolean
+- [x] string
+- [x] range
+- [x] list
+- [x] tuple
+- [x] dictionary
+- [x] ndarray
 
 ## Creating a function using **def** as a keyword
 ```ruby
