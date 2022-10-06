@@ -140,8 +140,8 @@ There are two different methods for creating functions: the first method uses th
 Just like classes, functions need a name the characteristics are identical (read the **Classes** section), a function can contain everything except classes which host functions.
 
 ## Function types.
+It is possible to specify the type of a function using the keywords below:
 
-The nature or output of a function can be specified
 - [x] None or none : No output
 - [x] integer 
 - [x] float 
@@ -154,7 +154,15 @@ The nature or output of a function can be specified
 - [x] dictionary
 - [x] ndarray
 - [x] any
-The default value is **any* it means that the output can be any type
+
+The default value is **any** it means that the output can be any type.
+The type of a function is defined as follows:
+
+```ruby
+prod = func() -> list:
+prod = func() -> tuple:
+prod = func() -> integer:
+```
 
 ## Creating a function using **def** as a keyword
 ```ruby
