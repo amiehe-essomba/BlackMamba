@@ -135,10 +135,5 @@ end:
 
 print * math(a = 4).arithmetic(b = -4 ).sum(c = 2.0)
 ```
+# Functions 
 
-
-## Handling files
-### Open a file 
-```ruby
-open(name, file, action, encoding, status)
-```
