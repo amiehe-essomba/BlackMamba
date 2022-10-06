@@ -107,7 +107,7 @@ class iris( setosa, versicolor ):
     end:
 end:
 
-print * iris.info( item = 'color'), iris.get(), iri.color 
+print * iris.info( item = 'color'), iris.get(), iris.color 
 ```
 
 ## Multidimensional classes
