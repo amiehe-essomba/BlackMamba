@@ -50,7 +50,7 @@ end:
 
 print * iris().get()
 ```
-**multidimensional classes**
+- **Multidimensional classes**
 
 ```ruby
 class math:
