@@ -256,7 +256,7 @@ ndarray(List, 2, 2).array(reverse = True, axis = None)
 maxtrix.ndarray(List, 2, 2).array(reverse = True, axis = None) 
 ```
 
-## Mult-Importations 
+### Multi-Importations 
 ```ruby
 1. from module maths load statistics, trigo
 
@@ -269,7 +269,7 @@ PI   = trigo.pi
 Bohr_radus = physics.B_radius
 ```
 
-## Creating an alias.
+### Creating an alias.
 ```ruby
 1. from module matrix load ndarray as nd
 
@@ -280,3 +280,25 @@ nd(List, 2, 2).array(reverse = True, axis = None)
 
 mt.ndarray(List, 2, 2).array(reverse = True, axis = None) 
 ```
+
+### Loading all modules.
+```ruby
+1. from module matrix load *
+
+List = [1, 2, 3, 4]
+nd(List, 2, 2).array() 
+nd(List, 2, 2).std() 
+```
+## Loading modules from specific directory.
+
+```ruby
+1. from module /path/matrix/ load mode
+2. from module /path/matrix/ load mode as md
+3. from module /path/matrix/ load *
+4. load module /path/matrix/
+6. load module /path/matrix/ as mx
+
+path = is the module location
+```
+
+# Handling files.
