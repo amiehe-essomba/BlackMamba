@@ -242,4 +242,41 @@ prod = func( a : float,  b : int) -> integer:
 end:
 ```
 
-# Modules importation 
+# Module importations.
+## Loading modules from the Library/Current Working Directory(CWD).
+
+```ruby
+1. from module matrix load ndarray
+
+List = [1, 2, 3, 4]
+ndarray(List, 2, 2).array(reverse = True, axis = None) 
+
+2. load module matrix 
+
+maxtrix.ndarray(List, 2, 2).array(reverse = True, axis = None) 
+```
+
+## Mult-Importations 
+```ruby
+1. from module maths load statistics, trigo
+
+List = [1, 2, 3, 4]
+MEAN = statistics.mean( List)
+PI   = trigo.pi
+
+2. load module maths, physics
+
+Bohr_radus = physics.B_radius
+```
+
+## Creating an alias.
+```ruby
+1. from module matrix load ndarray as nd
+
+List = [1, 2, 3, 4]
+nd(List, 2, 2).array(reverse = True, axis = None) 
+
+2. load module matrix as mt
+
+mt.ndarray(List, 2, 2).array(reverse = True, axis = None) 
+```
