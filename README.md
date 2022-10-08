@@ -9,93 +9,47 @@
 - __**C++**__
 
 ## Language Tools
-
+### LOOP
 ```ruby
-1.  begin/save/as/end
-2.  if/elif/else/end
-3.  switch/case/default/end
-4.  try/except/finally/end
-5.  unless/else/end
-6.  for/end
-7.  while/end
-8.  until/end
-9.  def/func/end
-10. class/end
-11. with/end
-12. from/module/load/as
-13. open/close
-14. with/end
+1. FOR 
+2. WHILE
+3. UNTIL
 ```
 
-### Creating a simple class
+### STRUCTURE.
 
+```reuby
+1. IF, ELIF, ELSE
+2. UNLESS, ELSE
+3. SWITCH, CASE, DEFAULT
+4. TRY, EXCEPT, FINALLY
+5. BEGIN
+```
+
+### HANDLING FILE
 ```ruby
-class iris:
-    def initialize() -> None:
-        self.length = 1.5       # length in centimeter
-        self.color  = 'green'   # sheets color
-        self.width  = 0.3       # width in centimeter
-    end:
-    # getting informations 
-    def get(type : string = 'color') -> any:
-        if type in ['color']:
-            return color
-        elif type in ['length']:
-            return length
-        elif type in ['width']:
-            return width
-        else:
-            return 'Error type'
-        end:
-    end:
-end:
+1. OPEN
+2. CLOSE
+3. WITH
 ```
-> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
-### Creating a simple function
-
+### LOADING MODULES
 ```ruby
-# First method
-floor = func( master : float ) -> integer :
-    str = string( master )      # converting float to a string
-    str = str.split('.')        # spliting string
-    int = integer(str[0])       # converting string to an integer
-
-    # return the integer part of master
-    return int
-end:
-
-# Second Method
-def floor( master : float ) -> integer:
-    str = string( master )      # converting float to a string
-    str = str.split('.')        # spliting string
-    int = integer(str[0])       # converting string to an integer
-
-    # return the integer part of master
-    return int
-end:
-```
-> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
-
-### Open a file.
-```python
-open(name='my_file', file='README.md', action='read', encoding='utf-8', status='old')
+1. FROM, MODULE, LOAD, AS
 ```
 
-### Read an open file.
-```python 
-my_file.readlines()
-```
-### Write to an open file 
-```python
-my_file.write('Hello World !\n')
-```
-### Close an open file
-```python
-my_file.close()
+### FUNCTIONS
+```ruby
+1. DEF
+2. FUNC
 ```
 
-> more details [here](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
+### CLASSES
+```ruby
+1. CLASS
+```
+
+> Leran more about  [Language Tools](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
 ## Select Your IDE 
 
