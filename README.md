@@ -9,14 +9,14 @@
 - __**C++**__
 
 ## Language Tools
-### LOOP
-```ruby
+#### LOOP
+```python
 1. FOR 
 2. WHILE
 3. UNTIL
 ```
 
-### STRUCTURE.
+#### STRUCTURE.
 
 ```python
 1. IF, ELIF, ELSE
@@ -26,26 +26,26 @@
 5. BEGIN
 ```
 
-### HANDLING FILE
-```ruby
+#### HANDLING FILE
+```python
 1. OPEN
 2. CLOSE
 3. WITH
 ```
 
-### LOADING MODULES
-```ruby
+#### LOADING MODULES
+```python
 1. FROM, MODULE, LOAD, AS
 ```
 
-### FUNCTIONS
-```ruby
+#### FUNCTIONS
+```python
 1. DEF
 2. FUNC
 ```
 
-### CLASSES
-```ruby
+#### CLASSES
+```python
 1. CLASS
 ```
 
