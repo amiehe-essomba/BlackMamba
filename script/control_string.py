@@ -97,7 +97,7 @@ class STRING_ANALYSE(object):
 
         return self.upper_case
 
-    def DELETE_SPACE(self, string: str):
+    def DELETE_SPACE(self, string: str, name: str = 'python'):
         self.string_error = None
         ########################################################################
         # i use this function to delete space to left and rigth of the string
@@ -114,12 +114,16 @@ class STRING_ANALYSE(object):
                 self.new_string = string[:-1]
                 string = self.new_string
 
-        except IndexError:
-            self.string_error = ERRORS( self.line ).ERROR7()
+        except IndexError:  self.string_error = ERRORS( self.line ).ERROR7()
+        
+        if name == 'cython':
+            if self.string_error is None: self.string_error = ""
+            else: pass 
+        else: pass
 
         return string, self.string_error
 
-    def DELETE_RIGTH(self, string: str):
+    def DELETE_RIGTH(self, string: str, name: str = 'python'):
 
         self.string_error = None
 
@@ -129,12 +133,16 @@ class STRING_ANALYSE(object):
                 self.new_string = string[:-1]
                 string = self.new_string
 
-        except IndexError:
-            self.string_error = ERRORS( self.line ).ERROR7()
+        except IndexError: self.string_error = ERRORS( self.line ).ERROR7()
+        
+        if name == 'cython':
+            if self.string_error is None: self.string_error = ""
+            else: pass 
+        else: pass
 
         return string, self.string_error
 
-    def DELETE_LEFT(self, string: str):
+    def DELETE_LEFT(self, string: str, name: str = 'python'):
         self.string_error = None
 
         try:
@@ -143,8 +151,12 @@ class STRING_ANALYSE(object):
                 self.new_string = string[1:]
                 string = self.new_string
 
-        except IndexError:
-            self.string_error = ERRORS( self.line ).ERROR7()
+        except IndexError:  self.string_error = ERRORS( self.line ).ERROR7()
+        
+        if name == 'cython':
+            if self.string_error is None: self.string_error = ""
+            else: pass 
+        else: pass
 
         return  string, self.string_error
 
@@ -167,7 +179,7 @@ class STRING_ANALYSE(object):
 
         return string_
 
-    def BUILD_CON(self, string: str, tabulation: int):
+    def BUILD_CON(self, string: str, tabulation: int, name: str = 'python'):
 
         string_, self.tab_activate, self.tab_key = '', False, False
         self.state_value = list(str(string))
@@ -218,8 +230,12 @@ class STRING_ANALYSE(object):
             else:
                 pass
 
-        else:
-            pass
+        else: pass
+        
+        if name == 'cython':
+            if self.error is None: self.error = ""
+            else: pass 
+        else: pass
 
         return string_, self.tab_activate, self.error
 
