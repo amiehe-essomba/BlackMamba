@@ -18,7 +18,7 @@
 
 ### STRUCTURE.
 
-```reuby
+```python
 1. IF, ELIF, ELSE
 2. UNLESS, ELSE
 3. SWITCH, CASE, DEFAULT
