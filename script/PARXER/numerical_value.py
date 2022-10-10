@@ -1542,7 +1542,7 @@ class TYPE:
         self.data_base          = data_base
         self.main_master        = main_master
 
-    def TYPE(self, main_string: str):
+    def TYPE(self, main_string: str, name : str = 'python'):
         self.error              = None
         self._return_           = None
 
@@ -1679,6 +1679,12 @@ class TYPE:
                     else: self.data_base[ 'no_printed_values' ] = []
             else: pass
         else:pass
+        
+        if name == 'cython':
+            self._return_ = [ self._return_ ]
+            if self.error is None: self.error = ""
+            else: pass 
+        else: pass
         
         return self._return_, self.error
 
