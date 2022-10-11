@@ -3,7 +3,7 @@ from CythonModules.Windows                          import fileError    as fe
 
 cdef class ERRORS:
     cdef public :
-        int : line 
+        unsigned long int line 
     cdef :
         str error 
         str cyan 
@@ -27,7 +27,7 @@ cdef class ERRORS:
         self.reset      = bm.init.reset
         self.error      = ''
 
-    cpdef str ERROR0(self, string: str):
+    cpdef str ERROR0(self, str string):
         cdef:
             str error = ''
 
@@ -36,7 +36,7 @@ cdef class ERRORS:
 
         return self.error+self.reset
 
-    cpdef str ERROR1(self, string: str):
+    cpdef str ERROR1(self, str string):
         cdef:
             str error = ''
 
@@ -59,7 +59,7 @@ cdef class ERRORS:
                                                 self.white, self.yellow, self.line)
         return  self.error+self.reset
 
-    cpdef str ERROR4(self, string: str):
+    cpdef str ERROR4(self, str string):
         cdef:
             str error = ''
 
@@ -68,7 +68,7 @@ cdef class ERRORS:
 
         return  self.error+self.reset
     
-    cpdef str ERROR5(self, string: str, _open_: str):
+    cpdef str ERROR5(self, str string, str _open_):
         cdef:
             str error = ''
 

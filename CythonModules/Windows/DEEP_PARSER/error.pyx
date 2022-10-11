@@ -36,7 +36,7 @@ cdef class ERRORS:
 
         return self.error+self.reset
 
-    cdef str ERROR3(self, str string, str _char_ = 'an integer()' ):
+    cdef str ERROR3(self, string, str _char_ = 'an integer()' ):
         self.error = '{}is not {}{} {}type. {}line: {}{}'.format(self.white, self.red, _char_, self.yellow, self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}<< {}{}{} >> '.format(self.green, self.cyan, string, self.green) + self.error
 
