@@ -103,22 +103,11 @@ cdef class SEGMENTATION:
                             else            : char5 = int( num.NUMBER().number )
 
                             if self.initialize[ 0 ] is None:
-
-                                if char1 < char2 and char1 < char3 and char1 < char4 and char1 < char5:
-                                    self.initialize[ 0 ] = '('
-
-                                if char2 < char1 and char2 < char3 and char2 < char4 and char2 < char5:
-                                    self.initialize[ 0 ] = '['
-
-                                if char3 < char1 and char3 < char2 and char3 < char4 and char3 < char5:
-                                    self.initialize[ 0 ] = '{'
-
-                                if char4 < char1 and char4 < char2 and char4 < char3 and char4 < char5:
-                                    self.initialize[ 0 ] = '"'
-
-                                if char5 < char1 and char5 < char2 and char5 < char3 and char5 < char4:
-                                    self.initialize[ 0 ] = "'"
-
+                                if char1 < char2 and char1 < char3 and char1 < char4 and char1 < char5: self.initialize[ 0 ] = '('
+                                if char2 < char1 and char2 < char3 and char2 < char4 and char2 < char5: self.initialize[ 0 ] = '['
+                                if char3 < char1 and char3 < char2 and char3 < char4 and char3 < char5: self.initialize[ 0 ] = '{'
+                                if char4 < char1 and char4 < char2 and char4 < char3 and char4 < char5: self.initialize[ 0 ] = '"'
+                                if char5 < char1 and char5 < char2 and char5 < char3 and char5 < char4: self.initialize[ 0 ] = "'"
                                 self.key_bracket = True
                             else: pass
 
