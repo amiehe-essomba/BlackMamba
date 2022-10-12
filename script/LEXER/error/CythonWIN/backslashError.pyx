@@ -15,7 +15,7 @@ cdef class ERRORS:
         str white
         str reset
 
-    def __init__(self, line):
+    def __cinit__(self, line):
         self.line       = line
         self.cyan       = bm.fg.cyan_L
         self.red        = bm.fg.red_L
