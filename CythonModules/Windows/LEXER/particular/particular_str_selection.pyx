@@ -18,8 +18,7 @@ cdef class SELECTION:
         bint str_id, str_id_, key_bracket
         list type_of_chaine, var_attribute
     
-
-    def __cinit__(self, master: str, long_chaine: str , data_base: dict, line: int):
+    def __cinit__(self, master, long_chaine, data_base, line):
         self.master         = master
         self.long_chaine    = long_chaine
         self.data_base      = data_base
@@ -45,7 +44,7 @@ cdef class SELECTION:
             unsigned long long int i, Len
             str str_, Open
             list list_of_chars = ['[', '(', '{', '"', "'"]
-            unsigned long int char1, char2, char3, char4, char5 
+            unsigned long long int char1, char2, char3, char4, char5 
 
         for i, str_ in enumerate( self.master ):
             if str_ in list_of_chars:
@@ -168,4 +167,5 @@ cdef class SELECTION:
                 self.str_id_            = False
                 self.key_bracket        = False
 
+        
         return self.var_attribute, self.error

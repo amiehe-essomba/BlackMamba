@@ -115,7 +115,6 @@ class AFFECTATION:
                                 else:
                                     self.error = self.string_error.ERROR_TREATMENT3( self.long_chaine )
                                     break
-
                         if self.initialize[ 0 ] == "'":
                             if self.str_id_ == False:
                                 self.left, self.rigth = 1, 0

@@ -9,9 +9,9 @@ setup(
     author_email='amieheessomba@etu.unistra.fr',
     ext_modules=cythonize( 
         [
-            "comment_line.pyx", 
-            "checking_tabulation.pyx",
-            "checking_if_affectation.pyx"
+            "attributes.pyx", 
+            "data_transform.pyx",
+            "particular_str_selection.pyx"
             ], 
         annotate = True
         )
