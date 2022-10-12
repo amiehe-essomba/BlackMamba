@@ -1,7 +1,8 @@
-from colorama import  Fore
-from script.LEXER import segmentation
-from script.LEXER import check_if_affectation
-from script import control_string
+from colorama                       import  Fore
+from script.LEXER                   import segmentation
+from script.LEXER                   import check_if_affectation
+from script                         import control_string
+from script.LEXER.error.CythonWIN   import affectationError as AE
 
 ne = Fore.LIGHTRED_EX
 ie = Fore.LIGHTBLUE_EX
@@ -20,7 +21,7 @@ class SELECTION:
         self.line           = line
         self.number         = segmentation.NUMBER()
         self.string_error   = segmentation.ERROR(self.line)
-        self.string_error_  = check_if_affectation.ERRORS(self.line)
+        self.string_error_  = AE#check_if_affectation.ERRORS(self.line)
         self.str_control    = control_string.STRING_ANALYSE(self.data_base, self.line)
 
     def CHAR_SELECTION(self, _char_: str):

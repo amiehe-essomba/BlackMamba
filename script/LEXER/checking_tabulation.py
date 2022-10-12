@@ -16,6 +16,7 @@ from script.LEXER                   import segmentation
 from script                         import control_string
 from script.LEXER                   import checking_if_backslash
 from script.LEXER                   import comment_line
+from script.STDIN.LinuxSTDIN        import bm_configure as bm
 
 class CHECK_TAB:
     def __init__(self,
@@ -34,6 +35,7 @@ class CHECK_TAB:
         self.analyze        = control_string.STRING_ANALYSE( self.data_base, self.line )                                # string controlling function
         self.backslash      = checking_if_backslash#.BACKSSLASH( self.master, self.data_base, self.line )               # backslash initialization
         self.comment        = comment_line                                                                              # comment line line initialization
+        self.color          = bm.fg.cyan_L
 
     def CHECK_LINE(self,
             _id_: int       # tab number
