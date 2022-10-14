@@ -40,7 +40,7 @@ cdef class CHECK_TAB:
     cpdef CHECK_LINE(self, unsigned long int _id_ ):
 
         cdef :
-            int i 
+            signed long int i 
             signed long int idd = -1
             str str_ 
 
