@@ -334,6 +334,7 @@ class DOT:
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.string )
                                         break
+                                    #here
                                 else:
                                     self.before = self.string
                                     self.after  = self.master[ i + 1 : ]

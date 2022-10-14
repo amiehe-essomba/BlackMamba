@@ -37,8 +37,13 @@ end:
 
 print * v, m, N
 
-begin:
-	hello here
+begin:	
+	
+	hello here, my name is essomba 
+	
+	i am 27 years old, 
+	i am leaving in US - california
+	i am a PhD student at university of Strasbourg 
 save as cmt:
 end:
 
