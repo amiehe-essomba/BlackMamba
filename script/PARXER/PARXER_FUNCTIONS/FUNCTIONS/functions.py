@@ -23,10 +23,11 @@ except ImportError: from CythonModules.Windows          import loop_for
 
 class FUNCTION_TREATMENT:
     def __init__(self, 
-                master      : any, 
-                data_base   : dict, 
-                line        : int 
-                ):
+        master      : any, 
+        data_base   : dict, 
+        line        : int 
+        ):
+        
         self.master             = master
         self.line               = line
         self.data_base          = data_base
@@ -125,10 +126,12 @@ class FUNCTION_TREATMENT:
                                         if self.new_data_base[ 'sub_print' ] is None:
                                             if self.new_data_base[ 'transformation' ] is None:
                                                 self.final_values   = self.new_data_base[ 'return' ]
+                                                self.data_base['def_return']            = False
                                             else:
                                                 self.keyActivation  = True
                                                 self.final_values   = self.new_data_base[ 'transformation' ]
                                                 self.new_data_base[ 'transformation' ]  = None
+                                                self.data_base['def_return']            = True
                         
                                             
                                             if self.new_data_base[ 'print' ] :
@@ -241,12 +244,14 @@ class FUNCTION_TREATMENT:
                                         if self._type_ in [None, 'none']:
                                             if self.new_data_base[ 'sub_print' ] is None:
                                                 if self.new_data_base[ 'transformation' ] is None:
-                                                    self.final_values   = self.new_data_base[ 'return' ]
+                                                    self.final_values                       = self.new_data_base[ 'return' ]
+                                                    self.data_base['def_return']            = False
                                                 else:
-                                                    self.keyActivation  = True
-                                                    self.final_values   = self.new_data_base[ 'transformation' ]
-                                                    self.new_data_base[ 'transformation' ] = None
-                                                    self.data_base['def_return'] = True
+                                                    self.keyActivation                      = True
+                                                    self.final_values                       = self.new_data_base[ 'transformation' ]
+                                                    self.new_data_base[ 'transformation' ]  = None
+                                                    self.data_base['def_return']            = True
+                                                    self.data_base['def_return']            = True
                                             
                                                 if self.new_data_base[ 'print' ] :
                                                     
@@ -376,17 +381,19 @@ class FUNCTION_TREATMENT:
                                                 
                                                 updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,  self._new_data_base_ )
                                             else:
+                                                
                                                 if self._type_ in [None, 'none']:
                                                     if self.new_data_base[ 'sub_print' ] is None:
                                                         if self.new_data_base[ 'transformation' ] is None:
                                                             self.final_values   = self.new_data_base[ 'return' ]
+                                                            self.data_base['def_return'] = False
                                                         else:
-                                                            self.keyActivation  = True
-                                                            self.final_values   = self.new_data_base[ 'transformation' ]
-                                                            self.new_data_base[ 'transformation' ] = None
+                                                            self.keyActivation                      = True
+                                                            self.final_values                       = self.new_data_base[ 'transformation' ]
+                                                            self.new_data_base[ 'transformation' ]  = None
+                                                            self.data_base['def_return']            = True
                                                     
                                                         if self.new_data_base[ 'print' ] :
-                                                            
                                                             self.print_values = True
                                                             self.list_of_values = self.new_data_base[ 'print' ]
 

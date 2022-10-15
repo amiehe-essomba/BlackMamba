@@ -228,7 +228,7 @@ cdef class AFFECTATION:
             else: pass
         except IndexError: pass
 
-        if not self.error:  self.var_attribute = data_transform.DATA( self.var_attribute ).TRANSFORM()
+        if not self.error:  self.var_attribute, self.error = data_transform.DATA( self.var_attribute, self.master ).TRANSFORM()
         else: pass
 
         return self.var_attribute, self.error

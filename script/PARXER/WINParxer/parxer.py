@@ -25,10 +25,10 @@ from loop                                                   import mainFor
 
 class ASSEMBLY( ):
     def __init__(self, 
-                master      : dict, 
-                data_base   : dict, 
-                line        : int 
-                ):
+        master      : dict, 
+        data_base   : dict, 
+        line        : int 
+        ):
         
         # current line 
         self.line           = line

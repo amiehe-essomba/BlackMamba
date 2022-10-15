@@ -14,7 +14,8 @@ class STDIN:
     def STDIN(self, 
             color   :dict, 
             tab     :int, 
-            _type_  :str = '...'
+            _type_  :str = '...',
+            name    :str ="python"
             ):
 
         self.string_concatenate = str( input('{}{} {}'.format(color[ '0' ], _type_, color[ '1' ])) )
@@ -23,6 +24,11 @@ class STDIN:
         self.string_concatenate, self.tab_activate, self.error = self.analyse.BUILD_CON( self.string_concatenate, tab )
         self.normal_string      = self.analyse.BUILD_NON_CON( self.normal_string, tab )
 
+        if name == 'cython':
+            if self.error is None: self.error = ""
+            else: pass 
+        else: pass 
+        
         return self.string_concatenate, self.normal_string, self.tab_activate, self.error
 
     def NORMAL_STDIN(self, color: dict, type = '... '):

@@ -20,11 +20,11 @@ class ASSEMBLY( ):
         except: self._if_egal_ = 'comment'
 
     def ASSEMBLY(self,
-                 main_string    : str,
-                 key            : bool = False,
-                 interpreter    : bool = False,
-                 locked         : bool = False
-                 ):
+        main_string    : str,
+        key            : bool = False,
+        interpreter    : bool = False,
+        locked         : bool = False
+        ):
         
         
         self.error          = None
@@ -40,10 +40,9 @@ class ASSEMBLY( ):
                     if self._return_ is not None:
                         if interpreter is False:
                             if locked is False: 
-                                if self.data_base['def_return'] is True:
+                                if self.data_base['def_return'] in [None, True]:
                                     for value in self._return_:
                                         show_data.SHOW( value, self.data_base, key ).SHOW()
-                                    self.data_base['def_return'] = False 
                                 else: pass
                             else: pass
                         else: pass
@@ -205,4 +204,6 @@ class ASSEMBLY( ):
                 else: pass
             else: pass
 
+        self.data_base['def_return'] = None 
+        
         return self.error
