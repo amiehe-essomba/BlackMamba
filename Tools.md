@@ -301,4 +301,179 @@ nd(List, 2, 2).std()
 path = is the module location
 ```
 
-# Handling files.
+# Handling files. 
+## Opening a file.
+
+For opening a new file, we can use the keyword **open** as defined bellow.
+
+```ruby
+open(name, file, action, status, encoding, error)
+```
+
+- [ ] **name** is an alias connected to the opening file 
+- [ ] **file** is the file name or location+file name
+- [ ] **action** could be **r** for reading, **w** for writing or **rw** for reading and writing
+- [ ] **status** specifies if that is a old or new opening file. It could be **new** for new file or **old** respectively
+- [ ] **encoding** could take these value [utf-8, ascii, utf-16, utf-32, latin-1, cp1252] 
+- [ ] **error** takes only **surrogateescape** value, It is a default value
+
+```
+open(name=my_file, file='BlackMamba/README.md/, action='r', status='old', encoding='ascii' )
+```
+
+## Reading the opening file.
+
+For reading the opening file we can use to keywords **readline** for specific line and **readlines** for entire file. 
+
+```ruby
+1. my_file.readline(n=line)
+2. my_file.readlines()
+```
+[ ] **n** is a specific line of the file.
+
+## Closing the opening file
+
+For closing the opening file we can just use the keyword **close** as it is defined bellow. 
+
+```ruby
+my_file.close()
+```
+
+## Using the keyword with 
+
+Usually for reading or writing directly in the opening file. It's **faster** and **easier**.
+
+```ruby:
+with open(name=my_file, file='BlackMamba/README.md/, action='r', status='old', encoding='ascii' ):
+    my_file.readlines()
+end:
+```
+
+
+# Conditionals.
+
+## The **if, elif and else** statement
+
+```ruby
+if   (conditions):
+    <statements>
+elif (conditions):
+    <statements>
+else:
+    <statements>
+end:
+```
+
+> Example 
+
+```ruby:
+if 1 == ? integer():
+    print * ? integer()
+elif 1 == ? float():
+    print * ? float()
+else:
+    print * None 
+end:
+```
+
+
+## The **unless and else** statement
+
+```ruby
+unless  (conditions):
+    <statements>
+else:
+    <statements>
+end:
+```
+
+## The **switch** statement
+```ruby
+swicth (expression):
+case value1:
+    <statements>
+case value2:
+    <statements>
+case value3
+    <statements>
+default:
+    <statements>
+end:
+```
+
+# Loops. 
+
+## The **for**  loop 
+
+```ruby
+for (expression):
+    <statements>
+end:
+```
+>
+
+```ruby
+line = 0
+
+for i in range(0, 10):
+    line += 1
+end:
+
+for i in ([1:10]) only (i % 2 == 0):
+    line += i
+end:
+```
+
+## The **while** loop
+```ruby
+while (conditions):
+    <statements>
+end:
+```
+
+> Examples
+
+```ruby
+line = 10
+
+while (line > 0 ) and (line % 2 == 1) :
+    line -= 1
+end:
+
+key = False
+
+while key == True:
+    line += 1
+
+    if line > 10:
+        key = True 
+    else:
+        pass 
+    end
+end:
+```
+
+# Multiline comments
+
+## The **begin** statement
+
+```ruby
+begin:
+    <statements>
+end:
+```
+
+> Example
+
+```ruby
+begin:
+    my name is Black Mama, I am a powerful programing language,
+    i was created in 2022 by amiehe-essomba, PhD student 
+    at universty of Strasbourg, France.
+    I was created for solving several problems specially in AI.
+    But i need you help to be more powerful.
+end:
+```
+
+
+

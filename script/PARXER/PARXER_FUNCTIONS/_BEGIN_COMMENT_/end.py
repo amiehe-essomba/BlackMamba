@@ -82,7 +82,7 @@ class INTERNAL_BLOCKS:
         self.back_end       = self.tabulation - 1
         self._return_       = None
         self.error          = None
-        self.value          = None
+        self.value          = ""
 
         self.string                 = self.string[ self.back_end : ]
         self.normal_string          = self.normal_string[ self.back_end : ]

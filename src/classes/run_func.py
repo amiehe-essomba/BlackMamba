@@ -8,17 +8,24 @@ from script.LEXER.FUNCTION                              import print_value
 
 class RUN_FUNCTION:
     def __init__(self, 
-                DataBase        : dict, 
-                line            : int, 
-                new_data_base   : dict, 
-                _new_data_base_ : dict 
-                ) :
+        DataBase        : dict, 
+        line            : int, 
+        new_data_base   : dict, 
+        _new_data_base_ : dict 
+        ) :
+        
         self.DataBase           = DataBase
         self.line               = line 
         self.new_data_base      = new_data_base
         self._new_data_base_    = _new_data_base_
         
-    def RUN( self,  all_data_analyses: list, functionName : str, tabulation: int =2, _type_ : str = None)   :
+    def RUN( self, 
+            all_data_analyses   : list, 
+            functionName        : str, 
+            tabulation          : int =2, 
+            _type_              : str = None
+            ) :
+        
         self.all_data_analyses  = all_data_analyses
         self.error              = None
         self.initialize_values  = None
@@ -92,11 +99,12 @@ class RUN_FUNCTION:
                                     self.final_values   = self.new_data_base[ 'return' ]
                                     self.keyActivation  = True
                                 else: pass
-                                
+                                self.DataBase['def_return'] = False
                             else:
                                 self.final_values = self.new_data_base[ 'transformation' ]
                                 self.new_data_base[ 'transformation' ]      = None
                                 self.keyActivation                          = True
+                                self.DataBase['def_return']                 = True
                                 
                             if self.new_data_base[ 'print' ] :
                                 self.print_values   = True

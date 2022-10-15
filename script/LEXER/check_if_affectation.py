@@ -264,7 +264,7 @@ class AFFECTATION:
             else: pass
         except IndexError:  pass
 
-        self.var_attribute = AFFECTATION( self.var_attribute, self.long_chaine, self.data_base,
+        self.var_attribute, self.error  = AFFECTATION( self.var_attribute, self.long_chaine, self.data_base,
                                                                         self.line ).DATA_TRANSFORMATION()
         return self.var_attribute, self.error
 
@@ -369,59 +369,64 @@ class AFFECTATION:
         return self.var_attribute, self.error
 
     def DATA_TRANSFORMATION(self):
-        self._item_list_ = list( self.master.keys() )
-
+        self._item_list_    = list( self.master.keys() )
+        self.error          = None 
+        self._return_       = {}
+        
         if 'operator' in self._item_list_:
-            self.operator   = self.master[ 'operator' ]
-            self.values     = self.master[ 'value' ]
-            self.variables  = self.master[ 'variable' ]
-            self._return_   = None
+            try:
+                self.operator   = self.master[ 'operator' ]
+                self.values     = self.master[ 'value' ]
+                self.variables  = self.master[ 'variable' ]
+                self._return_   = None
 
-            if self.operator in [ '=' ]:
-                self._return_ = self.master
+                if self.operator in [ '=' ]:
+                    self._return_ = self.master
 
-            elif self.operator in [ '+=' ]:
-                self.master[ 'operator' ] = '='
-                for i, value in enumerate( self.values ):
-                    self.values[ i ] = self.variables[ i ] + ' ' + '+' + ' ' + self.values[ i ]
-                self.master[ 'value' ] = self.values
-                self._return_ = self.master
+                elif self.operator in [ '+=' ]:
+                    self.master[ 'operator' ] = '='
+                    for i, value in enumerate( self.values ):
+                        self.values[ i ] = self.variables[ i ] + ' ' + '+' + ' ' + self.values[ i ]
+                    self.master[ 'value' ] = self.values
+                    self._return_ = self.master
 
-            elif self.operator in [ '-=' ]:
-                self.master[ 'operator' ] = '='
-                for i, value in enumerate( self.values ):
-                    self.values[ i ] = self.variables[ i ] + ' ' + '-' + ' ' + self.values[ i ]
-                self.master[ 'value' ] = self.values
-                self._return_ = self.master
+                elif self.operator in [ '-=' ]:
+                    self.master[ 'operator' ] = '='
+                    for i, value in enumerate( self.values ):
+                        self.values[ i ] = self.variables[ i ] + ' ' + '-' + ' ' + self.values[ i ]
+                    self.master[ 'value' ] = self.values
+                    self._return_ = self.master
 
-            elif self.operator in [ '*=' ]:
-                self.master[ 'operator' ] = '='
-                for i, value in enumerate( self.values ):
-                    self.values[ i ] = self.variables[ i ] + ' ' + '*' + ' ' + self.values[ i ]
-                self.master[ 'value' ] = self.values
-                self._return_ = self.master
+                elif self.operator in [ '*=' ]:
+                    self.master[ 'operator' ] = '='
+                    for i, value in enumerate( self.values ):
+                        self.values[ i ] = self.variables[ i ] + ' ' + '*' + ' ' + self.values[ i ]
+                    self.master[ 'value' ] = self.values
+                    self._return_ = self.master
 
-            elif self.operator in [ '/=' ]:
-                self.master[ 'operator' ] = '='
-                for i, value in enumerate( self.values ):
-                    self.values[ i ] = self.variables[ i ] + ' ' + '/' + ' ' + self.values[ i ]
-                self.master[ 'value' ] = self.values
-                self._return_ = self.master
+                elif self.operator in [ '/=' ]:
+                    self.master[ 'operator' ] = '='
+                    for i, value in enumerate( self.values ):
+                        self.values[ i ] = self.variables[ i ] + ' ' + '/' + ' ' + self.values[ i ]
+                    self.master[ 'value' ] = self.values
+                    self._return_ = self.master
 
-            elif self.operator in [ '^=' ]:
-                self.master[ 'operator' ] = '='
-                for i, value in enumerate( self.values ):
-                    self.values[ i ] = self.variables[ i ] + ' ' + '^' + ' ' + self.values[ i ]
-                self.master[ 'value' ] = self.values
-                self._return_ = self.master
+                elif self.operator in [ '^=' ]:
+                    self.master[ 'operator' ] = '='
+                    for i, value in enumerate( self.values ):
+                        self.values[ i ] = self.variables[ i ] + ' ' + '^' + ' ' + self.values[ i ]
+                    self.master[ 'value' ] = self.values
+                    self._return_ = self.master
 
-            elif self.operator in [ '%=' ]:
-                self.master[ 'operator' ] = '='
-                for i, value in enumerate( self.values ):
-                    self.values[ i ] = self.variables[ i ] + ' ' + '%' + ' ' + self.values[ i ]
-                self.master[ 'value' ] = self.values
-                self._return_ = self.master
+                elif self.operator in [ '%=' ]:
+                    self.master[ 'operator' ] = '='
+                    for i, value in enumerate( self.values ):
+                        self.values[ i ] = self.variables[ i ] + ' ' + '%' + ' ' + self.values[ i ]
+                    self.master[ 'value' ] = self.values
+                    self._return_ = self.master
 
+            except KeyError: self.error = AE.ERRORS(self.line).ERROR0( self.long_chaine )
+                
         else:  self._return_ = self.master
 
-        return self._return_
+        return self._return_, self.error 
