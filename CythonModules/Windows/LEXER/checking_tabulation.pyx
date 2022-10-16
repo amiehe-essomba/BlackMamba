@@ -12,11 +12,10 @@ i am gonna to show you further how it's possible to set multi-line = comments. b
 
 """
 
-
-from script.LEXER                       import checking_if_backslash
-from CythonModules.Windows.LEXER.seg    import segmentation
-from CythonModules.Windows.LEXER        import comment_line
-from CythonModules.Windows.LEXER.seg    import segError as SE
+from CythonModules.Windows.LEXER.seg        import segmentation
+from CythonModules.Windows.LEXER            import comment_line
+from CythonModules.Windows.LEXER.backslash  import checking_if_backslash as CBS
+from CythonModules.Windows.LEXER.seg        import segError as SE
 
 cdef class CHECK_TAB:
     cdef public:
@@ -78,7 +77,7 @@ cdef class CHECK_TAB:
                             if idd == -1: pass
                             else: self.master = self.master[: idd]
 
-                    self.string_check, self.error             = checking_if_backslash.BACKSSLASH(master=self.master,
+                    self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,
                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )
                     if not self.error :
 

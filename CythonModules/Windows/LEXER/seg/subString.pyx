@@ -20,7 +20,7 @@ cdef class SUB_STRING:
         list storage
         unsigned long long int len_storage
         str c, input, length,  mainString , Open, new_string
-        unsigned long int mainIndex, max_emtyLine, index, sub_length
+        unsigned long long int mainIndex, max_emtyLine, index, sub_length
         bint active_tab, key_bracket
         int left, right
 

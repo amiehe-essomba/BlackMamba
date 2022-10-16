@@ -1,6 +1,7 @@
 from script                             import control_string
 from CythonModules.Windows.LEXER.seg    import num
 from CythonModules.Windows.LEXER.seg    import segError as SE
+from script.LEXER                       import subStringInterpretor as SSI
 from CythonModules.Windows.LEXER.seg    import subString
 
 cdef class SEGMENTATION:
@@ -58,10 +59,7 @@ cdef class SEGMENTATION:
         # if left and rigth bracket was found
         self.if_key_is_true = False
 
-    cdef tuple TREATEMENT(self,
-        unsigned long int _id_   ,  # _id_ value for indentations
-        str color                   # color used for the blocks
-        ):
+    cdef tuple TREATEMENT(self, unsigned long int _id_ , list MainList ):
 
         cdef:
             unsigned long int i 
@@ -79,7 +77,6 @@ cdef class SEGMENTATION:
                 # removing right and left space
                 self.long_chaine, self.error    = control_string.STRING_ANALYSE( self.data_base, self.line ).DELETE_SPACE( self.long_chaine, 'cython' )      
             except TypeError: pass
-
             if not self.error :
 
                 for i, str_ in enumerate( self.long_chaine ):
@@ -171,9 +168,9 @@ cdef class SEGMENTATION:
                                                         self.line ).STRING_IN_TRUE_BLOCK(self.string_in_true, self.string )
 
                                         if not self.error:
-                                            self.new_str, self.error = subString.SUB_STRING( self.initialize[ 0 ], self.data_base,
-                                                                                self.line ).SUB_STR( _id_, color, self.store )
-
+                                            self.new_str, self.error = SSI.SUB_STRING( self.initialize[ 0 ], self.data_base,
+                                                                self.line ).SUB_STR( _id_, self.store, MainList, self.long_chaine, name='cython' ) 
+                                            
                                             if not self.error:
                                                 self.string += self.new_str
                                             else: break

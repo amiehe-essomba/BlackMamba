@@ -9,9 +9,10 @@ cdef class SELECTION:
         str master, long_chaine
         dict data_base
         unsigned long int line 
+
     cdef:
         unsigned long long int number
-        unsigned long int left, rigth
+        unsigned long long int left, rigth
         list initialize
         bint active_key, if_key_is_true
         str error, string_in_true, string, chaine
@@ -41,7 +42,8 @@ cdef class SELECTION:
 
     cdef CHAR_SELECTION(self, str _char_ = ""):
         cdef :
-            unsigned long long int i, Len
+            unsigned long long int Len
+            signed long long int i
             str str_, Open
             list list_of_chars = ['[', '(', '{', '"', "'"]
             unsigned long long int char1, char2, char3, char4, char5 
@@ -88,8 +90,7 @@ cdef class SELECTION:
                         self.left, self.rigth = 1, 0
                         self.str_id = True
                     else:
-                        if self.rigth <= 1:
-                            self.rigth = self.rigth + str_.count('"')
+                        if self.rigth <= 1: self.rigth = self.rigth + str_.count('"')
                         else:
                             self.error = segError.ERROR(self.line).ERROR_TREATMENT3(self.long_chaine)
                             break
@@ -98,8 +99,7 @@ cdef class SELECTION:
                         self.left, self.rigth   = 1, 0
                         self.str_id_            = True
                     else:
-                        if self.rigth <= 1:
-                            self.rigth = self.rigth + str_.count("'")
+                        if self.rigth <= 1: self.rigth = self.rigth + str_.count("'")
                         else:
                             self.error = segError.ERROR(self.line).ERROR_TREATMENT3(self.long_chaine)
                             break
