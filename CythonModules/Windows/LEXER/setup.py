@@ -13,7 +13,8 @@ setup(
             "checking_tabulation.pyx",
             "checking_if_affectation.pyx",
             "Dictionary.pyx",
-            "float_or_function.pyx"
+            "float_or_function.pyx",
+            'checking_tab_for_Inter.pyx'
             ], 
         annotate = True
         )

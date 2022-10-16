@@ -13,7 +13,8 @@ setup(
             "num.pyx",
             'segError.pyx',
             'characters.pyx',
-            'subSTring.pyx'
+            'subSTring.pyx',
+            'seg_interpretor.pyx'
             ], 
         annotate = True
         )

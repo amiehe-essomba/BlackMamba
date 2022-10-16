@@ -842,7 +842,9 @@ static const char *__pyx_f[] = {
 /*--- Type declarations ---*/
 struct __pyx_obj_14data_transform_DATA;
 
-/* "data_transform.pyx":1
+/* "data_transform.pyx":3
+ * from script.LEXER.error.CythonWIN           import affectationError as AE
+ * 
  * cdef class DATA:             # <<<<<<<<<<<<<<
  *     cdef public:
  *         dict master
@@ -851,6 +853,7 @@ struct __pyx_obj_14data_transform_DATA {
   PyObject_HEAD
   struct __pyx_vtabstruct_14data_transform_DATA *__pyx_vtab;
   PyObject *master;
+  PyObject *long_chaine;
 };
 
 
@@ -934,6 +937,10 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 /* GetBuiltinName.proto */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
+/* RaiseArgTupleInvalid.proto */
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
 /* RaiseDoubleKeywords.proto */
 static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
 
@@ -941,10 +948,6 @@ static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_n
 static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
     PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
     const char* function_name);
-
-/* RaiseArgTupleInvalid.proto */
-static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
-    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
 /* py_dict_keys.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyDict_Keys(PyObject* d);
@@ -1050,6 +1053,11 @@ static int __Pyx_SetItemInt_Generic(PyObject *o, PyObject *j, PyObject *v);
 static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObject *v,
                                                int is_list, int wraparound, int boundscheck);
 
+/* GetTopmostException.proto */
+#if CYTHON_USE_EXC_INFO_STACK
+static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
+#endif
+
 /* PyThreadStateGet.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyThreadState_declare  PyThreadState *__pyx_tstate;
@@ -1059,6 +1067,130 @@ static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObje
 #define __Pyx_PyThreadState_declare
 #define __Pyx_PyThreadState_assign
 #define __Pyx_PyErr_Occurred()  PyErr_Occurred()
+#endif
+
+/* SaveResetException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_ExceptionSave(type, value, tb)  __Pyx__ExceptionSave(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#define __Pyx_ExceptionReset(type, value, tb)  __Pyx__ExceptionReset(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
+#else
+#define __Pyx_ExceptionSave(type, value, tb)   PyErr_GetExcInfo(type, value, tb)
+#define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
+#endif
+
+/* PyErrExceptionMatches.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
+#else
+#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
+#endif
+
+/* GetException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
+static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#else
+static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
+#endif
+
+/* PyDictVersioning.proto */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
+#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
+    (version_var) = __PYX_GET_DICT_VERSION(dict);\
+    (cache_var) = (value);
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
+        (VAR) = __pyx_dict_cached_value;\
+    } else {\
+        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
+        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
+    }\
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
+#else
+#define __PYX_GET_DICT_VERSION(dict)  (0)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
+#endif
+
+/* GetModuleGlobalName.proto */
+#if CYTHON_USE_DICT_VERSIONS
+#define __Pyx_GetModuleGlobalName(var, name)  {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_d))) ?\
+        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
+        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+}
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  {\
+    PY_UINT64_T __pyx_dict_version;\
+    PyObject *__pyx_dict_cached_value;\
+    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+}
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
+#else
+#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
+#endif
+
+/* PyCFunctionFastCall.proto */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
+#else
+#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
+#endif
+
+/* PyFunctionFastCall.proto */
+#if CYTHON_FAST_PYCALL
+#define __Pyx_PyFunction_FastCall(func, args, nargs)\
+    __Pyx_PyFunction_FastCallDict((func), (args), (nargs), NULL)
+#if 1 || PY_VERSION_HEX < 0x030600B1
+static PyObject *__Pyx_PyFunction_FastCallDict(PyObject *func, PyObject **args, Py_ssize_t nargs, PyObject *kwargs);
+#else
+#define __Pyx_PyFunction_FastCallDict(func, args, nargs, kwargs) _PyFunction_FastCallDict(func, args, nargs, kwargs)
+#endif
+#define __Pyx_BUILD_ASSERT_EXPR(cond)\
+    (sizeof(char [1 - 2*!(cond)]) - 1)
+#ifndef Py_MEMBER_SIZE
+#define Py_MEMBER_SIZE(type, member) sizeof(((type *)0)->member)
+#endif
+  static size_t __pyx_pyframe_localsplus_offset = 0;
+  #include "frameobject.h"
+  #define __Pxy_PyFrame_Initialize_Offsets()\
+    ((void)__Pyx_BUILD_ASSERT_EXPR(sizeof(PyFrameObject) == offsetof(PyFrameObject, f_localsplus) + Py_MEMBER_SIZE(PyFrameObject, f_localsplus)),\
+     (void)(__pyx_pyframe_localsplus_offset = ((size_t)PyFrame_Type.tp_basicsize) - Py_MEMBER_SIZE(PyFrameObject, f_localsplus)))
+  #define __Pyx_PyFrame_GetLocalsplus(frame)\
+    (assert(__pyx_pyframe_localsplus_offset), (PyObject **)(((char *)(frame)) + __pyx_pyframe_localsplus_offset))
+#endif
+
+/* PyObjectCall2Args.proto */
+static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
+
+/* PyObjectCallMethO.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
+#endif
+
+/* PyObjectCallOneArg.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
+
+/* PyObjectSetAttrStr.proto */
+#if CYTHON_USE_TYPE_SLOTS
+#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
+static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
+#else
+#define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
+#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
 #endif
 
 /* PyErrFetchRestore.proto */
@@ -1106,45 +1238,17 @@ static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_nam
 /* SetVTable.proto */
 static int __Pyx_SetVtable(PyObject *dict, void *vtable);
 
-/* PyErrExceptionMatches.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
-#else
-#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
-#endif
-
 /* PyObjectGetAttrStrNoError.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name);
 
 /* SetupReduce.proto */
 static int __Pyx_setup_reduce(PyObject* type_obj);
 
-/* PyDictVersioning.proto */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
-#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
-    (version_var) = __PYX_GET_DICT_VERSION(dict);\
-    (cache_var) = (value);
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
-        (VAR) = __pyx_dict_cached_value;\
-    } else {\
-        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
-        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
-    }\
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
-#else
-#define __PYX_GET_DICT_VERSION(dict)  (0)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
-#endif
+/* Import.proto */
+static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
+
+/* ImportFrom.proto */
+static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
 
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
@@ -1221,8 +1325,10 @@ int __pyx_module_is_main_data_transform = 0;
 
 /* Implementation of 'data_transform' */
 static PyObject *__pyx_builtin_range;
+static PyObject *__pyx_builtin_KeyError;
 static PyObject *__pyx_builtin_TypeError;
 static const char __pyx_k_[] = "=";
+static const char __pyx_k_AE[] = "AE";
 static const char __pyx_k__2[] = "+=";
 static const char __pyx_k__3[] = " ";
 static const char __pyx_k__4[] = "+";
@@ -1238,13 +1344,19 @@ static const char __pyx_k__13[] = "^=";
 static const char __pyx_k__14[] = "^";
 static const char __pyx_k_DATA[] = "DATA";
 static const char __pyx_k_keys[] = "keys";
+static const char __pyx_k_line[] = "line";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_error[] = "error";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_value[] = "value";
+static const char __pyx_k_ERROR0[] = "ERROR0";
+static const char __pyx_k_ERRORS[] = "ERRORS";
+static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_master[] = "master";
 static const char __pyx_k_reduce[] = "__reduce__";
+static const char __pyx_k_KeyError[] = "KeyError";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_operator[] = "operator";
 static const char __pyx_k_setstate[] = "__setstate__";
@@ -1252,12 +1364,19 @@ static const char __pyx_k_variable[] = "variable";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
+static const char __pyx_k_long_chaine[] = "long_chaine";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_affectationError[] = "affectationError";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_script_LEXER_error_CythonWIN[] = "script.LEXER.error.CythonWIN";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_kp_s_;
+static PyObject *__pyx_n_s_AE;
 static PyObject *__pyx_n_s_DATA;
+static PyObject *__pyx_n_s_ERROR0;
+static PyObject *__pyx_n_s_ERRORS;
+static PyObject *__pyx_n_s_KeyError;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_kp_s__10;
 static PyObject *__pyx_kp_s__11;
@@ -1272,9 +1391,14 @@ static PyObject *__pyx_kp_s__6;
 static PyObject *__pyx_kp_s__7;
 static PyObject *__pyx_kp_s__8;
 static PyObject *__pyx_kp_s__9;
+static PyObject *__pyx_n_s_affectationError;
 static PyObject *__pyx_n_s_cline_in_traceback;
+static PyObject *__pyx_n_s_error;
 static PyObject *__pyx_n_s_getstate;
+static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_keys;
+static PyObject *__pyx_n_s_line;
+static PyObject *__pyx_n_s_long_chaine;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_master;
 static PyObject *__pyx_n_s_name;
@@ -1285,15 +1409,19 @@ static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
+static PyObject *__pyx_n_s_script_LEXER_error_CythonWIN;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_value;
 static PyObject *__pyx_n_s_variable;
-static int __pyx_pf_14data_transform_4DATA___cinit__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self, PyObject *__pyx_v_master); /* proto */
+static int __pyx_pf_14data_transform_4DATA___cinit__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self, PyObject *__pyx_v_master, PyObject *__pyx_v_long_chaine); /* proto */
 static PyObject *__pyx_pf_14data_transform_4DATA_6master___get__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self); /* proto */
 static int __pyx_pf_14data_transform_4DATA_6master_2__set__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_pf_14data_transform_4DATA_6master_4__del__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_14data_transform_4DATA_11long_chaine___get__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self); /* proto */
+static int __pyx_pf_14data_transform_4DATA_11long_chaine_2__set__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_14data_transform_4DATA_11long_chaine_4__del__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_14data_transform_4DATA_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_14data_transform_DATA *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_14data_transform_4DATA_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_14data_transform_DATA *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_14data_transform_DATA(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -1302,18 +1430,19 @@ static PyObject *__pyx_tuple__15;
 static PyObject *__pyx_tuple__16;
 /* Late includes */
 
-/* "data_transform.pyx":5
- *         dict master
+/* "data_transform.pyx":8
+ *         str long_chaine
  * 
- *     def __cinit__(self, master):             # <<<<<<<<<<<<<<
+ *     def __cinit__(self, master, long_chaine):             # <<<<<<<<<<<<<<
  *         self.master         = master
- * 
+ *         self.long_chaine    = long_chaine
  */
 
 /* Python wrapper */
 static int __pyx_pw_14data_transform_4DATA_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static int __pyx_pw_14data_transform_4DATA_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_master = 0;
+  PyObject *__pyx_v_long_chaine = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1321,12 +1450,14 @@ static int __pyx_pw_14data_transform_4DATA_1__cinit__(PyObject *__pyx_v_self, Py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_master,0};
-    PyObject* values[1] = {0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_master,&__pyx_n_s_long_chaine,0};
+    PyObject* values[2] = {0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         CYTHON_FALLTHROUGH;
         case  0: break;
@@ -1337,33 +1468,41 @@ static int __pyx_pw_14data_transform_4DATA_1__cinit__(PyObject *__pyx_v_self, Py
         case  0:
         if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_master)) != 0)) kw_args--;
         else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_long_chaine)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, 1); __PYX_ERR(0, 8, __pyx_L3_error)
+        }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 5, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 8, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_master = values[0];
+    __pyx_v_long_chaine = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 5, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 8, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("data_transform.DATA.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14data_transform_4DATA___cinit__(((struct __pyx_obj_14data_transform_DATA *)__pyx_v_self), __pyx_v_master);
+  __pyx_r = __pyx_pf_14data_transform_4DATA___cinit__(((struct __pyx_obj_14data_transform_DATA *)__pyx_v_self), __pyx_v_master, __pyx_v_long_chaine);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_14data_transform_4DATA___cinit__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self, PyObject *__pyx_v_master) {
+static int __pyx_pf_14data_transform_4DATA___cinit__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self, PyObject *__pyx_v_master, PyObject *__pyx_v_long_chaine) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1372,14 +1511,14 @@ static int __pyx_pf_14data_transform_4DATA___cinit__(struct __pyx_obj_14data_tra
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "data_transform.pyx":6
+  /* "data_transform.pyx":9
  * 
- *     def __cinit__(self, master):
+ *     def __cinit__(self, master, long_chaine):
  *         self.master         = master             # <<<<<<<<<<<<<<
+ *         self.long_chaine    = long_chaine
  * 
- *     cdef dict TRANSFORM(self):
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 9, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_master;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -1388,12 +1527,28 @@ static int __pyx_pf_14data_transform_4DATA___cinit__(struct __pyx_obj_14data_tra
   __pyx_v_self->master = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "data_transform.pyx":5
- *         dict master
- * 
- *     def __cinit__(self, master):             # <<<<<<<<<<<<<<
+  /* "data_transform.pyx":10
+ *     def __cinit__(self, master, long_chaine):
  *         self.master         = master
+ *         self.long_chaine    = long_chaine             # <<<<<<<<<<<<<<
  * 
+ *     cdef dict TRANSFORM(self):
+ */
+  if (!(likely(PyString_CheckExact(__pyx_v_long_chaine))||((__pyx_v_long_chaine) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_long_chaine)->tp_name), 0))) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = __pyx_v_long_chaine;
+  __Pyx_INCREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->long_chaine);
+  __Pyx_DECREF(__pyx_v_self->long_chaine);
+  __pyx_v_self->long_chaine = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "data_transform.pyx":8
+ *         str long_chaine
+ * 
+ *     def __cinit__(self, master, long_chaine):             # <<<<<<<<<<<<<<
+ *         self.master         = master
+ *         self.long_chaine    = long_chaine
  */
 
   /* function exit code */
@@ -1408,8 +1563,8 @@ static int __pyx_pf_14data_transform_4DATA___cinit__(struct __pyx_obj_14data_tra
   return __pyx_r;
 }
 
-/* "data_transform.pyx":8
- *         self.master         = master
+/* "data_transform.pyx":12
+ *         self.long_chaine    = long_chaine
  * 
  *     cdef dict TRANSFORM(self):             # <<<<<<<<<<<<<<
  *         cdef:
@@ -1422,790 +1577,928 @@ static PyObject *__pyx_f_14data_transform_4DATA_TRANSFORM(struct __pyx_obj_14dat
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  int __pyx_t_3;
-  int __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  unsigned long __pyx_t_7;
-  unsigned long __pyx_t_8;
-  PyObject *__pyx_t_9 = NULL;
-  PyObject *__pyx_t_10 = NULL;
-  PyObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  int __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
+  unsigned long __pyx_t_10;
+  unsigned long __pyx_t_11;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  int __pyx_t_15;
+  PyObject *__pyx_t_16 = NULL;
+  PyObject *__pyx_t_17 = NULL;
+  PyObject *__pyx_t_18 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("TRANSFORM", 0);
 
-  /* "data_transform.pyx":12
+  /* "data_transform.pyx":16
  *             unsigned long int i
  * 
- *         if 'operator' in list( self.master.keys() ):             # <<<<<<<<<<<<<<
- *             if   self.master[ 'operator' ] in [ '=' ]: pass
- *             elif self.master[ 'operator' ] in [ '+=' ]:
+ *         try:             # <<<<<<<<<<<<<<
+ *             if 'operator' in list( self.master.keys() ):
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass
  */
-  if (unlikely(__pyx_v_self->master == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 12, __pyx_L1_error)
-  }
-  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_self->master); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_operator, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = (__pyx_t_3 != 0);
-  if (__pyx_t_4) {
+  {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ExceptionSave(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3);
+    __Pyx_XGOTREF(__pyx_t_1);
+    __Pyx_XGOTREF(__pyx_t_2);
+    __Pyx_XGOTREF(__pyx_t_3);
+    /*try:*/ {
 
-    /* "data_transform.pyx":13
+      /* "data_transform.pyx":17
  * 
- *         if 'operator' in list( self.master.keys() ):
- *             if   self.master[ 'operator' ] in [ '=' ]: pass             # <<<<<<<<<<<<<<
- *             elif self.master[ 'operator' ] in [ '+=' ]:
- *                 self.master[ 'operator' ] = '='
- */
-    if (unlikely(__pyx_v_self->master == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 13, __pyx_L1_error)
-    }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 13, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_3 = (__pyx_t_4 != 0);
-    if (__pyx_t_3) {
-      goto __pyx_L4;
-    }
-
-    /* "data_transform.pyx":14
- *         if 'operator' in list( self.master.keys() ):
- *             if   self.master[ 'operator' ] in [ '=' ]: pass
- *             elif self.master[ 'operator' ] in [ '+=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-    if (unlikely(__pyx_v_self->master == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 14, __pyx_L1_error)
-    }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 14, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = (__pyx_t_3 != 0);
-    if (__pyx_t_4) {
-
-      /* "data_transform.pyx":15
- *             if   self.master[ 'operator' ] in [ '=' ]: pass
- *             elif self.master[ 'operator' ] in [ '+=' ]:
- *                 self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]
+ *         try:
+ *             if 'operator' in list( self.master.keys() ):             # <<<<<<<<<<<<<<
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass
+ *                 elif self.master[ 'operator' ] in [ '+=' ]:
  */
       if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 15, __pyx_L1_error)
+        PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
+        __PYX_ERR(0, 17, __pyx_L3_error)
       }
-      if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 15, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyDict_Keys(__pyx_v_self->master); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L3_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_5 = PySequence_List(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 17, __pyx_L3_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_operator, __pyx_t_5, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 17, __pyx_L3_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_7 = (__pyx_t_6 != 0);
+      if (__pyx_t_7) {
 
-      /* "data_transform.pyx":16
- *             elif self.master[ 'operator' ] in [ '+=' ]:
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]
+        /* "data_transform.pyx":18
+ *         try:
+ *             if 'operator' in list( self.master.keys() ):
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass             # <<<<<<<<<<<<<<
+ *                 elif self.master[ 'operator' ] in [ '+=' ]:
+ *                     self.master[ 'operator' ] = '='
+ */
+        if (unlikely(__pyx_v_self->master == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 18, __pyx_L3_error)
+        }
+        __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 18, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 18, __pyx_L3_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_6 = (__pyx_t_7 != 0);
+        if (__pyx_t_6) {
+          goto __pyx_L10;
+        }
+
+        /* "data_transform.pyx":19
+ *             if 'operator' in list( self.master.keys() ):
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass
+ *                 elif self.master[ 'operator' ] in [ '+=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+        if (unlikely(__pyx_v_self->master == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 19, __pyx_L3_error)
+        }
+        __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 19, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 19, __pyx_L3_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_7 = (__pyx_t_6 != 0);
+        if (__pyx_t_7) {
+
+          /* "data_transform.pyx":20
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass
+ *                 elif self.master[ 'operator' ] in [ '+=' ]:
+ *                     self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 20, __pyx_L3_error)
+          }
+          if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 20, __pyx_L3_error)
+
+          /* "data_transform.pyx":21
+ *                 elif self.master[ 'operator' ] in [ '+=' ]:
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]
  * 
  */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 16, __pyx_L1_error)
-      }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 16, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_6 = __pyx_t_5;
-      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-        __pyx_v_i = __pyx_t_7;
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 21, __pyx_L3_error)
+          }
+          __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L3_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __pyx_t_8 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 21, __pyx_L3_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_9 = __pyx_t_8;
+          for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+            __pyx_v_i = __pyx_t_10;
+
+            /* "data_transform.pyx":22
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
+ * 
+ *                 elif self.master[ 'operator' ] in [ '-=' ]:
+ */
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 22, __pyx_L3_error)
+            }
+            __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_5);
+            __pyx_t_11 = __pyx_v_i;
+            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_5, __pyx_t_11, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 22, __pyx_L3_error)
+            }
+            __pyx_t_12 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __pyx_t_13 = __Pyx_GetItemInt(__pyx_t_12, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __pyx_t_12 = PyNumber_Add(__pyx_t_13, __pyx_kp_s__3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_Add(__pyx_t_12, __pyx_kp_s__4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __pyx_t_12 = PyNumber_Add(__pyx_t_13, __pyx_kp_s__3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 22, __pyx_L3_error)
+            }
+            __pyx_t_13 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_13, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_Add(__pyx_t_12, __pyx_t_14); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_t_4, __pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_t_11, __pyx_t_14, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 22, __pyx_L3_error)
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          }
+
+          /* "data_transform.pyx":19
+ *             if 'operator' in list( self.master.keys() ):
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass
+ *                 elif self.master[ 'operator' ] in [ '+=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+          goto __pyx_L10;
+        }
+
+        /* "data_transform.pyx":24
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '-=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+        if (unlikely(__pyx_v_self->master == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 24, __pyx_L3_error)
+        }
+        __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_kp_s__5, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 24, __pyx_L3_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_6 = (__pyx_t_7 != 0);
+        if (__pyx_t_6) {
+
+          /* "data_transform.pyx":25
+ * 
+ *                 elif self.master[ 'operator' ] in [ '-=' ]:
+ *                     self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 25, __pyx_L3_error)
+          }
+          if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 25, __pyx_L3_error)
+
+          /* "data_transform.pyx":26
+ *                 elif self.master[ 'operator' ] in [ '-=' ]:
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 26, __pyx_L3_error)
+          }
+          __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 26, __pyx_L3_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __pyx_t_8 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 26, __pyx_L3_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_9 = __pyx_t_8;
+          for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+            __pyx_v_i = __pyx_t_10;
+
+            /* "data_transform.pyx":27
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
+ * 
+ *                 elif self.master[ 'operator' ] in [ '*=' ]:
+ */
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 27, __pyx_L3_error)
+            }
+            __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_5);
+            __pyx_t_11 = __pyx_v_i;
+            __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_5, __pyx_t_11, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 27, __pyx_L3_error)
+            }
+            __pyx_t_13 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_13, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_Add(__pyx_t_4, __pyx_kp_s__3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_4 = PyNumber_Add(__pyx_t_13, __pyx_kp_s__6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_Add(__pyx_t_4, __pyx_kp_s__3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 27, __pyx_L3_error)
+            }
+            __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_4 = PyNumber_Add(__pyx_t_13, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __pyx_t_12 = PyNumber_InPlaceAdd(__pyx_t_14, __pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_t_11, __pyx_t_12, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 27, __pyx_L3_error)
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          }
+
+          /* "data_transform.pyx":24
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '-=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+          goto __pyx_L10;
+        }
+
+        /* "data_transform.pyx":29
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '*=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+        if (unlikely(__pyx_v_self->master == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 29, __pyx_L3_error)
+        }
+        __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_kp_s__7, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 29, __pyx_L3_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_7 = (__pyx_t_6 != 0);
+        if (__pyx_t_7) {
+
+          /* "data_transform.pyx":30
+ * 
+ *                 elif self.master[ 'operator' ] in [ '*=' ]:
+ *                     self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 30, __pyx_L3_error)
+          }
+          if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 30, __pyx_L3_error)
+
+          /* "data_transform.pyx":31
+ *                 elif self.master[ 'operator' ] in [ '*=' ]:
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 31, __pyx_L3_error)
+          }
+          __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __pyx_t_8 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_9 = __pyx_t_8;
+          for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+            __pyx_v_i = __pyx_t_10;
+
+            /* "data_transform.pyx":32
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
+ * 
+ *                 elif self.master[ 'operator' ] in [ '/=' ]:
+ */
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 32, __pyx_L3_error)
+            }
+            __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_5);
+            __pyx_t_11 = __pyx_v_i;
+            __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_5, __pyx_t_11, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 32, __pyx_L3_error)
+            }
+            __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_4 = PyNumber_Add(__pyx_t_14, __pyx_kp_s__3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __pyx_t_14 = PyNumber_Add(__pyx_t_4, __pyx_kp_s__8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_4 = PyNumber_Add(__pyx_t_14, __pyx_kp_s__3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 32, __pyx_L3_error)
+            }
+            __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __pyx_t_13 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __pyx_t_14 = PyNumber_Add(__pyx_t_4, __pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_t_12, __pyx_t_14); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_t_11, __pyx_t_13, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 32, __pyx_L3_error)
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          }
+
+          /* "data_transform.pyx":29
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '*=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+          goto __pyx_L10;
+        }
+
+        /* "data_transform.pyx":34
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '/=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+        if (unlikely(__pyx_v_self->master == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 34, __pyx_L3_error)
+        }
+        __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 34, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_kp_s__9, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 34, __pyx_L3_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_6 = (__pyx_t_7 != 0);
+        if (__pyx_t_6) {
+
+          /* "data_transform.pyx":35
+ * 
+ *                 elif self.master[ 'operator' ] in [ '/=' ]:
+ *                     self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 35, __pyx_L3_error)
+          }
+          if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 35, __pyx_L3_error)
+
+          /* "data_transform.pyx":36
+ *                 elif self.master[ 'operator' ] in [ '/=' ]:
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 36, __pyx_L3_error)
+          }
+          __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L3_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __pyx_t_8 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 36, __pyx_L3_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_9 = __pyx_t_8;
+          for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+            __pyx_v_i = __pyx_t_10;
+
+            /* "data_transform.pyx":37
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
+ * 
+ *                 elif self.master[ 'operator' ] in [ '%=' ]:
+ */
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 37, __pyx_L3_error)
+            }
+            __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_5);
+            __pyx_t_11 = __pyx_v_i;
+            __pyx_t_13 = __Pyx_GetItemInt(__pyx_t_5, __pyx_t_11, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 37, __pyx_L3_error)
+            }
+            __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __pyx_t_14 = PyNumber_Add(__pyx_t_12, __pyx_kp_s__3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __pyx_t_12 = PyNumber_Add(__pyx_t_14, __pyx_kp_s__10); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __pyx_t_14 = PyNumber_Add(__pyx_t_12, __pyx_kp_s__3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 37, __pyx_L3_error)
+            }
+            __pyx_t_12 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_12, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __pyx_t_12 = PyNumber_Add(__pyx_t_14, __pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_t_13, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_t_11, __pyx_t_4, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 37, __pyx_L3_error)
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          }
+
+          /* "data_transform.pyx":34
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '/=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+          goto __pyx_L10;
+        }
+
+        /* "data_transform.pyx":39
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '%=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+        if (unlikely(__pyx_v_self->master == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 39, __pyx_L3_error)
+        }
+        __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_kp_s__11, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 39, __pyx_L3_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_7 = (__pyx_t_6 != 0);
+        if (__pyx_t_7) {
+
+          /* "data_transform.pyx":40
+ * 
+ *                 elif self.master[ 'operator' ] in [ '%=' ]:
+ *                     self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 40, __pyx_L3_error)
+          }
+          if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 40, __pyx_L3_error)
+
+          /* "data_transform.pyx":41
+ *                 elif self.master[ 'operator' ] in [ '%=' ]:
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 41, __pyx_L3_error)
+          }
+          __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 41, __pyx_L3_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __pyx_t_8 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 41, __pyx_L3_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_9 = __pyx_t_8;
+          for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+            __pyx_v_i = __pyx_t_10;
+
+            /* "data_transform.pyx":42
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
+ * 
+ *                 elif self.master[ 'operator' ] in [ '^=' ]:
+ */
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 42, __pyx_L3_error)
+            }
+            __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_5);
+            __pyx_t_11 = __pyx_v_i;
+            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_5, __pyx_t_11, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 42, __pyx_L3_error)
+            }
+            __pyx_t_12 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __pyx_t_13 = __Pyx_GetItemInt(__pyx_t_12, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __pyx_t_12 = PyNumber_Add(__pyx_t_13, __pyx_kp_s__3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_Add(__pyx_t_12, __pyx_kp_s__12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __pyx_t_12 = PyNumber_Add(__pyx_t_13, __pyx_kp_s__3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 42, __pyx_L3_error)
+            }
+            __pyx_t_13 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_13, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_Add(__pyx_t_12, __pyx_t_14); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_t_4, __pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_t_11, __pyx_t_14, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 42, __pyx_L3_error)
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          }
+
+          /* "data_transform.pyx":39
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '%=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+          goto __pyx_L10;
+        }
+
+        /* "data_transform.pyx":44
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '^=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+        if (unlikely(__pyx_v_self->master == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 44, __pyx_L3_error)
+        }
+        __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L3_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_kp_s__13, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 44, __pyx_L3_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_6 = (__pyx_t_7 != 0);
+        if (__pyx_t_6) {
+
+          /* "data_transform.pyx":45
+ * 
+ *                 elif self.master[ 'operator' ] in [ '^=' ]:
+ *                     self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '^' + ' ' + self.master[ 'value' ][ i ]
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 45, __pyx_L3_error)
+          }
+          if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 45, __pyx_L3_error)
+
+          /* "data_transform.pyx":46
+ *                 elif self.master[ 'operator' ] in [ '^=' ]:
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '^' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ */
+          if (unlikely(__pyx_v_self->master == Py_None)) {
+            PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+            __PYX_ERR(0, 46, __pyx_L3_error)
+          }
+          __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L3_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __pyx_t_8 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 46, __pyx_L3_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_9 = __pyx_t_8;
+          for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+            __pyx_v_i = __pyx_t_10;
+
+            /* "data_transform.pyx":47
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '^' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
+ * 
+ *             else: pass
+ */
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 47, __pyx_L3_error)
+            }
+            __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_5);
+            __pyx_t_11 = __pyx_v_i;
+            __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_5, __pyx_t_11, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_14);
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 47, __pyx_L3_error)
+            }
+            __pyx_t_13 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_13, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_Add(__pyx_t_4, __pyx_kp_s__3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_4 = PyNumber_Add(__pyx_t_13, __pyx_kp_s__14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __pyx_t_13 = PyNumber_Add(__pyx_t_4, __pyx_kp_s__3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_13);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 47, __pyx_L3_error)
+            }
+            __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_4 = PyNumber_Add(__pyx_t_13, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __pyx_t_12 = PyNumber_InPlaceAdd(__pyx_t_14, __pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_GOTREF(__pyx_t_12);
+            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_t_11, __pyx_t_12, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 47, __pyx_L3_error)
+            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          }
+
+          /* "data_transform.pyx":44
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]
+ * 
+ *                 elif self.master[ 'operator' ] in [ '^=' ]:             # <<<<<<<<<<<<<<
+ *                     self.master[ 'operator' ] = '='
+ *                     for i in range(len(self.master[ 'value' ])):
+ */
+        }
+        __pyx_L10:;
 
         /* "data_transform.pyx":17
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
  * 
- *             elif self.master[ 'operator' ] in [ '-=' ]:
+ *         try:
+ *             if 'operator' in list( self.master.keys() ):             # <<<<<<<<<<<<<<
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass
+ *                 elif self.master[ 'operator' ] in [ '+=' ]:
  */
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 17, __pyx_L1_error)
-        }
-        __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_8 = __pyx_v_i;
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_8, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 17, __pyx_L1_error)
-        }
-        __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_9, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_Add(__pyx_t_10, __pyx_kp_s__3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_9, __pyx_kp_s__4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_Add(__pyx_t_10, __pyx_kp_s__3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 17, __pyx_L1_error)
-        }
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_t_8, __pyx_t_11, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        goto __pyx_L9;
       }
 
-      /* "data_transform.pyx":14
- *         if 'operator' in list( self.master.keys() ):
- *             if   self.master[ 'operator' ] in [ '=' ]: pass
- *             elif self.master[ 'operator' ] in [ '+=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-      goto __pyx_L4;
-    }
-
-    /* "data_transform.pyx":19
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]
+      /* "data_transform.pyx":49
+ *                         self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '^' + ' ' + self.master[ 'value' ][ i ]
  * 
- *             elif self.master[ 'operator' ] in [ '-=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-    if (unlikely(__pyx_v_self->master == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 19, __pyx_L1_error)
-    }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__5, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 19, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_3 = (__pyx_t_4 != 0);
-    if (__pyx_t_3) {
-
-      /* "data_transform.pyx":20
+ *             else: pass             # <<<<<<<<<<<<<<
+ *         except KeyError: self.error = AE.ERRORS(self.line).ERROR0( self.long_chaine )
  * 
- *             elif self.master[ 'operator' ] in [ '-=' ]:
- *                 self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]
  */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 20, __pyx_L1_error)
+      /*else*/ {
       }
-      if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 20, __pyx_L1_error)
+      __pyx_L9:;
 
-      /* "data_transform.pyx":21
- *             elif self.master[ 'operator' ] in [ '-=' ]:
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]
- * 
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 21, __pyx_L1_error)
-      }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 21, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_6 = __pyx_t_5;
-      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-        __pyx_v_i = __pyx_t_7;
-
-        /* "data_transform.pyx":22
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
- * 
- *             elif self.master[ 'operator' ] in [ '*=' ]:
- */
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 22, __pyx_L1_error)
-        }
-        __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_8 = __pyx_v_i;
-        __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_8, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 22, __pyx_L1_error)
-        }
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_1, __pyx_kp_s__3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_10, __pyx_kp_s__6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_1, __pyx_kp_s__3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 22, __pyx_L1_error)
-        }
-        __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_t_11, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_t_8, __pyx_t_9, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      }
-
-      /* "data_transform.pyx":19
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '+' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '-=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-      goto __pyx_L4;
-    }
-
-    /* "data_transform.pyx":24
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '*=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-    if (unlikely(__pyx_v_self->master == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 24, __pyx_L1_error)
-    }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__7, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = (__pyx_t_3 != 0);
-    if (__pyx_t_4) {
-
-      /* "data_transform.pyx":25
- * 
- *             elif self.master[ 'operator' ] in [ '*=' ]:
- *                 self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 25, __pyx_L1_error)
-      }
-      if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
-
-      /* "data_transform.pyx":26
- *             elif self.master[ 'operator' ] in [ '*=' ]:
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]
- * 
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 26, __pyx_L1_error)
-      }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 26, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_6 = __pyx_t_5;
-      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-        __pyx_v_i = __pyx_t_7;
-
-        /* "data_transform.pyx":27
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
- * 
- *             elif self.master[ 'operator' ] in [ '/=' ]:
- */
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 27, __pyx_L1_error)
-        }
-        __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_8 = __pyx_v_i;
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_8, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 27, __pyx_L1_error)
-        }
-        __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_11, __pyx_kp_s__3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = PyNumber_Add(__pyx_t_1, __pyx_kp_s__8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_11, __pyx_kp_s__3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 27, __pyx_L1_error)
-        }
-        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = PyNumber_Add(__pyx_t_1, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_t_8, __pyx_t_10, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      }
-
-      /* "data_transform.pyx":24
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '-' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '*=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-      goto __pyx_L4;
-    }
-
-    /* "data_transform.pyx":29
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '/=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-    if (unlikely(__pyx_v_self->master == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 29, __pyx_L1_error)
-    }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__9, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 29, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_3 = (__pyx_t_4 != 0);
-    if (__pyx_t_3) {
-
-      /* "data_transform.pyx":30
- * 
- *             elif self.master[ 'operator' ] in [ '/=' ]:
- *                 self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 30, __pyx_L1_error)
-      }
-      if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 30, __pyx_L1_error)
-
-      /* "data_transform.pyx":31
- *             elif self.master[ 'operator' ] in [ '/=' ]:
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]
- * 
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 31, __pyx_L1_error)
-      }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 31, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_6 = __pyx_t_5;
-      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-        __pyx_v_i = __pyx_t_7;
-
-        /* "data_transform.pyx":32
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
- * 
- *             elif self.master[ 'operator' ] in [ '%=' ]:
- */
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 32, __pyx_L1_error)
-        }
-        __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_8 = __pyx_v_i;
-        __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_8, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 32, __pyx_L1_error)
-        }
-        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = PyNumber_Add(__pyx_t_9, __pyx_kp_s__3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_Add(__pyx_t_11, __pyx_kp_s__10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = PyNumber_Add(__pyx_t_9, __pyx_kp_s__3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 32, __pyx_L1_error)
-        }
-        __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_9, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_Add(__pyx_t_11, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_t_8, __pyx_t_1, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 32, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      }
-
-      /* "data_transform.pyx":29
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '*' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '/=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-      goto __pyx_L4;
-    }
-
-    /* "data_transform.pyx":34
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '%=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-    if (unlikely(__pyx_v_self->master == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 34, __pyx_L1_error)
-    }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__11, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 34, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = (__pyx_t_3 != 0);
-    if (__pyx_t_4) {
-
-      /* "data_transform.pyx":35
- * 
- *             elif self.master[ 'operator' ] in [ '%=' ]:
- *                 self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 35, __pyx_L1_error)
-      }
-      if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 35, __pyx_L1_error)
-
-      /* "data_transform.pyx":36
- *             elif self.master[ 'operator' ] in [ '%=' ]:
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]
- * 
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 36, __pyx_L1_error)
-      }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 36, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_6 = __pyx_t_5;
-      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-        __pyx_v_i = __pyx_t_7;
-
-        /* "data_transform.pyx":37
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
- * 
- *             elif self.master[ 'operator' ] in [ '^=' ]:
- */
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 37, __pyx_L1_error)
-        }
-        __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_8 = __pyx_v_i;
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_8, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 37, __pyx_L1_error)
-        }
-        __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_9, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_Add(__pyx_t_10, __pyx_kp_s__3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_9, __pyx_kp_s__12); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_Add(__pyx_t_10, __pyx_kp_s__3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 37, __pyx_L1_error)
-        }
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_t_8, __pyx_t_11, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 37, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      }
-
-      /* "data_transform.pyx":34
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '/' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '%=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-      goto __pyx_L4;
-    }
-
-    /* "data_transform.pyx":39
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '^=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-    if (unlikely(__pyx_v_self->master == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 39, __pyx_L1_error)
-    }
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_operator); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_2, __pyx_kp_s__13, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 39, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_3 = (__pyx_t_4 != 0);
-    if (__pyx_t_3) {
-
-      /* "data_transform.pyx":40
- * 
- *             elif self.master[ 'operator' ] in [ '^=' ]:
- *                 self.master[ 'operator' ] = '='             # <<<<<<<<<<<<<<
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '^' + ' ' + self.master[ 'value' ][ i ]
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 40, __pyx_L1_error)
-      }
-      if (unlikely(PyDict_SetItem(__pyx_v_self->master, __pyx_n_s_operator, __pyx_kp_s_) < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
-
-      /* "data_transform.pyx":41
- *             elif self.master[ 'operator' ] in [ '^=' ]:
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):             # <<<<<<<<<<<<<<
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '^' + ' ' + self.master[ 'value' ][ i ]
- * 
- */
-      if (unlikely(__pyx_v_self->master == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 41, __pyx_L1_error)
-      }
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 41, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_6 = __pyx_t_5;
-      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-        __pyx_v_i = __pyx_t_7;
-
-        /* "data_transform.pyx":42
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '^' + ' ' + self.master[ 'value' ][ i ]             # <<<<<<<<<<<<<<
- * 
- *         else: pass
- */
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 42, __pyx_L1_error)
-        }
-        __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_8 = __pyx_v_i;
-        __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_8, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 42, __pyx_L1_error)
-        }
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_variable); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_1, __pyx_kp_s__3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_10, __pyx_kp_s__14); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_1, __pyx_kp_s__3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(__pyx_v_self->master == Py_None)) {
-          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 42, __pyx_L1_error)
-        }
-        __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->master, __pyx_n_s_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_i, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_t_11, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_t_8, __pyx_t_9, unsigned long, 0, __Pyx_PyInt_From_unsigned_long, 0, 0, 1) < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      }
-
-      /* "data_transform.pyx":39
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '%' + ' ' + self.master[ 'value' ][ i ]
- * 
- *             elif self.master[ 'operator' ] in [ '^=' ]:             # <<<<<<<<<<<<<<
- *                 self.master[ 'operator' ] = '='
- *                 for i in range(len(self.master[ 'value' ])):
- */
-    }
-    __pyx_L4:;
-
-    /* "data_transform.pyx":12
+      /* "data_transform.pyx":16
  *             unsigned long int i
  * 
- *         if 'operator' in list( self.master.keys() ):             # <<<<<<<<<<<<<<
- *             if   self.master[ 'operator' ] in [ '=' ]: pass
- *             elif self.master[ 'operator' ] in [ '+=' ]:
+ *         try:             # <<<<<<<<<<<<<<
+ *             if 'operator' in list( self.master.keys() ):
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass
  */
-    goto __pyx_L3;
+    }
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    goto __pyx_L8_try_end;
+    __pyx_L3_error:;
+    __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+    __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+    __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+    /* "data_transform.pyx":50
+ * 
+ *             else: pass
+ *         except KeyError: self.error = AE.ERRORS(self.line).ERROR0( self.long_chaine )             # <<<<<<<<<<<<<<
+ * 
+ *         return self.master, self.error
+ */
+    __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_KeyError);
+    if (__pyx_t_15) {
+      __Pyx_AddTraceback("data_transform.DATA.TRANSFORM", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_12, &__pyx_t_4) < 0) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_AE); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_16);
+      __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_ERRORS); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_17);
+      __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+      __pyx_t_16 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_line); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_16);
+      __pyx_t_18 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_17))) {
+        __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_17);
+        if (likely(__pyx_t_18)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_17);
+          __Pyx_INCREF(__pyx_t_18);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_17, function);
+        }
+      }
+      __pyx_t_13 = (__pyx_t_18) ? __Pyx_PyObject_Call2Args(__pyx_t_17, __pyx_t_18, __pyx_t_16) : __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_16);
+      __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+      __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_13);
+      __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
+      __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_ERROR0); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_17);
+      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+      __pyx_t_13 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_17))) {
+        __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_17);
+        if (likely(__pyx_t_13)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_17);
+          __Pyx_INCREF(__pyx_t_13);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_17, function);
+        }
+      }
+      __pyx_t_14 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_17, __pyx_t_13, __pyx_v_self->long_chaine) : __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_v_self->long_chaine);
+      __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_GOTREF(__pyx_t_14);
+      __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
+      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_error, __pyx_t_14) < 0) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      goto __pyx_L4_exception_handled;
+    }
+    goto __pyx_L5_except_error;
+    __pyx_L5_except_error:;
+
+    /* "data_transform.pyx":16
+ *             unsigned long int i
+ * 
+ *         try:             # <<<<<<<<<<<<<<
+ *             if 'operator' in list( self.master.keys() ):
+ *                 if   self.master[ 'operator' ] in [ '=' ]: pass
+ */
+    __Pyx_XGIVEREF(__pyx_t_1);
+    __Pyx_XGIVEREF(__pyx_t_2);
+    __Pyx_XGIVEREF(__pyx_t_3);
+    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
+    goto __pyx_L1_error;
+    __pyx_L4_exception_handled:;
+    __Pyx_XGIVEREF(__pyx_t_1);
+    __Pyx_XGIVEREF(__pyx_t_2);
+    __Pyx_XGIVEREF(__pyx_t_3);
+    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
+    __pyx_L8_try_end:;
   }
 
-  /* "data_transform.pyx":44
- *                     self.master[ 'value' ][ i ] += self.master[ 'variable' ][ i ] + ' ' + '^' + ' ' + self.master[ 'value' ][ i ]
+  /* "data_transform.pyx":52
+ *         except KeyError: self.error = AE.ERRORS(self.line).ERROR0( self.long_chaine )
  * 
- *         else: pass             # <<<<<<<<<<<<<<
- * 
- *         return self.master
- */
-  /*else*/ {
-  }
-  __pyx_L3:;
-
-  /* "data_transform.pyx":46
- *         else: pass
- * 
- *         return self.master             # <<<<<<<<<<<<<<
+ *         return self.master, self.error             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __Pyx_INCREF(__pyx_v_self->master);
-  __pyx_r = __pyx_v_self->master;
+  __Pyx_GIVEREF(__pyx_v_self->master);
+  PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_v_self->master);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_4);
+  __pyx_t_4 = 0;
+  if (!(likely(PyDict_CheckExact(__pyx_t_12))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_r = ((PyObject*)__pyx_t_12);
+  __pyx_t_12 = 0;
   goto __pyx_L0;
 
-  /* "data_transform.pyx":8
- *         self.master         = master
+  /* "data_transform.pyx":12
+ *         self.long_chaine    = long_chaine
  * 
  *     cdef dict TRANSFORM(self):             # <<<<<<<<<<<<<<
  *         cdef:
@@ -2214,11 +2507,14 @@ static PyObject *__pyx_f_14data_transform_4DATA_TRANSFORM(struct __pyx_obj_14dat
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_XDECREF(__pyx_t_11);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_12);
+  __Pyx_XDECREF(__pyx_t_13);
+  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_XDECREF(__pyx_t_16);
+  __Pyx_XDECREF(__pyx_t_17);
+  __Pyx_XDECREF(__pyx_t_18);
   __Pyx_AddTraceback("data_transform.DATA.TRANSFORM", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -2227,12 +2523,12 @@ static PyObject *__pyx_f_14data_transform_4DATA_TRANSFORM(struct __pyx_obj_14dat
   return __pyx_r;
 }
 
-/* "data_transform.pyx":3
+/* "data_transform.pyx":5
  * cdef class DATA:
  *     cdef public:
  *         dict master             # <<<<<<<<<<<<<<
+ *         str long_chaine
  * 
- *     def __cinit__(self, master):
  */
 
 /* Python wrapper */
@@ -2285,7 +2581,7 @@ static int __pyx_pf_14data_transform_4DATA_6master_2__set__(struct __pyx_obj_14d
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 5, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -2328,6 +2624,114 @@ static int __pyx_pf_14data_transform_4DATA_6master_4__del__(struct __pyx_obj_14d
   __Pyx_GOTREF(__pyx_v_self->master);
   __Pyx_DECREF(__pyx_v_self->master);
   __pyx_v_self->master = ((PyObject*)Py_None);
+
+  /* function exit code */
+  __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "data_transform.pyx":6
+ *     cdef public:
+ *         dict master
+ *         str long_chaine             # <<<<<<<<<<<<<<
+ * 
+ *     def __cinit__(self, master, long_chaine):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_14data_transform_4DATA_11long_chaine_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_14data_transform_4DATA_11long_chaine_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_14data_transform_4DATA_11long_chaine___get__(((struct __pyx_obj_14data_transform_DATA *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_14data_transform_4DATA_11long_chaine___get__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_self->long_chaine);
+  __pyx_r = __pyx_v_self->long_chaine;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static int __pyx_pw_14data_transform_4DATA_11long_chaine_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_14data_transform_4DATA_11long_chaine_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_14data_transform_4DATA_11long_chaine_2__set__(((struct __pyx_obj_14data_transform_DATA *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_14data_transform_4DATA_11long_chaine_2__set__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__set__", 0);
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = __pyx_v_value;
+  __Pyx_INCREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->long_chaine);
+  __Pyx_DECREF(__pyx_v_self->long_chaine);
+  __pyx_v_self->long_chaine = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("data_transform.DATA.long_chaine.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static int __pyx_pw_14data_transform_4DATA_11long_chaine_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_14data_transform_4DATA_11long_chaine_5__del__(PyObject *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_14data_transform_4DATA_11long_chaine_4__del__(((struct __pyx_obj_14data_transform_DATA *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_14data_transform_4DATA_11long_chaine_4__del__(struct __pyx_obj_14data_transform_DATA *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__del__", 0);
+  __Pyx_INCREF(Py_None);
+  __Pyx_GIVEREF(Py_None);
+  __Pyx_GOTREF(__pyx_v_self->long_chaine);
+  __Pyx_DECREF(__pyx_v_self->long_chaine);
+  __pyx_v_self->long_chaine = ((PyObject*)Py_None);
 
   /* function exit code */
   __pyx_r = 0;
@@ -2461,6 +2865,7 @@ static PyObject *__pyx_tp_new_14data_transform_DATA(PyTypeObject *t, PyObject *a
   p = ((struct __pyx_obj_14data_transform_DATA *)o);
   p->__pyx_vtab = __pyx_vtabptr_14data_transform_DATA;
   p->master = ((PyObject*)Py_None); Py_INCREF(Py_None);
+  p->long_chaine = ((PyObject*)Py_None); Py_INCREF(Py_None);
   if (unlikely(__pyx_pw_14data_transform_4DATA_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
@@ -2477,6 +2882,7 @@ static void __pyx_tp_dealloc_14data_transform_DATA(PyObject *o) {
   #endif
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->master);
+  Py_CLEAR(p->long_chaine);
   (*Py_TYPE(o)->tp_free)(o);
 }
 
@@ -2511,6 +2917,19 @@ static int __pyx_setprop_14data_transform_4DATA_master(PyObject *o, PyObject *v,
   }
 }
 
+static PyObject *__pyx_getprop_14data_transform_4DATA_long_chaine(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_14data_transform_4DATA_11long_chaine_1__get__(o);
+}
+
+static int __pyx_setprop_14data_transform_4DATA_long_chaine(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+  if (v) {
+    return __pyx_pw_14data_transform_4DATA_11long_chaine_3__set__(o, v);
+  }
+  else {
+    return __pyx_pw_14data_transform_4DATA_11long_chaine_5__del__(o);
+  }
+}
+
 static PyMethodDef __pyx_methods_14data_transform_DATA[] = {
   {"__reduce_cython__", (PyCFunction)__pyx_pw_14data_transform_4DATA_3__reduce_cython__, METH_NOARGS, 0},
   {"__setstate_cython__", (PyCFunction)__pyx_pw_14data_transform_4DATA_5__setstate_cython__, METH_O, 0},
@@ -2519,6 +2938,7 @@ static PyMethodDef __pyx_methods_14data_transform_DATA[] = {
 
 static struct PyGetSetDef __pyx_getsets_14data_transform_DATA[] = {
   {(char *)"master", __pyx_getprop_14data_transform_4DATA_master, __pyx_setprop_14data_transform_4DATA_master, (char *)0, 0},
+  {(char *)"long_chaine", __pyx_getprop_14data_transform_4DATA_long_chaine, __pyx_setprop_14data_transform_4DATA_long_chaine, (char *)0, 0},
   {0, 0, 0, 0, 0}
 };
 
@@ -2638,7 +3058,11 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_, __pyx_k_, sizeof(__pyx_k_), 0, 0, 1, 0},
+  {&__pyx_n_s_AE, __pyx_k_AE, sizeof(__pyx_k_AE), 0, 0, 1, 1},
   {&__pyx_n_s_DATA, __pyx_k_DATA, sizeof(__pyx_k_DATA), 0, 0, 1, 1},
+  {&__pyx_n_s_ERROR0, __pyx_k_ERROR0, sizeof(__pyx_k_ERROR0), 0, 0, 1, 1},
+  {&__pyx_n_s_ERRORS, __pyx_k_ERRORS, sizeof(__pyx_k_ERRORS), 0, 0, 1, 1},
+  {&__pyx_n_s_KeyError, __pyx_k_KeyError, sizeof(__pyx_k_KeyError), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_kp_s__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 0, 1, 0},
   {&__pyx_kp_s__11, __pyx_k__11, sizeof(__pyx_k__11), 0, 0, 1, 0},
@@ -2653,9 +3077,14 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 0, 1, 0},
   {&__pyx_kp_s__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 0, 1, 0},
   {&__pyx_kp_s__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 0, 1, 0},
+  {&__pyx_n_s_affectationError, __pyx_k_affectationError, sizeof(__pyx_k_affectationError), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+  {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
+  {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_keys, __pyx_k_keys, sizeof(__pyx_k_keys), 0, 0, 1, 1},
+  {&__pyx_n_s_line, __pyx_k_line, sizeof(__pyx_k_line), 0, 0, 1, 1},
+  {&__pyx_n_s_long_chaine, __pyx_k_long_chaine, sizeof(__pyx_k_long_chaine), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_master, __pyx_k_master, sizeof(__pyx_k_master), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
@@ -2666,6 +3095,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
+  {&__pyx_n_s_script_LEXER_error_CythonWIN, __pyx_k_script_LEXER_error_CythonWIN, sizeof(__pyx_k_script_LEXER_error_CythonWIN), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
@@ -2674,7 +3104,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) __PYX_ERR(0, 50, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -2759,16 +3190,16 @@ static int __Pyx_modinit_type_init_code(void) {
   /*--- Type init code ---*/
   __pyx_vtabptr_14data_transform_DATA = &__pyx_vtable_14data_transform_DATA;
   __pyx_vtable_14data_transform_DATA.TRANSFORM = (PyObject *(*)(struct __pyx_obj_14data_transform_DATA *))__pyx_f_14data_transform_4DATA_TRANSFORM;
-  if (PyType_Ready(&__pyx_type_14data_transform_DATA) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14data_transform_DATA) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14data_transform_DATA.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_14data_transform_DATA.tp_dictoffset && __pyx_type_14data_transform_DATA.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_14data_transform_DATA.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_14data_transform_DATA.tp_dict, __pyx_vtabptr_14data_transform_DATA) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_DATA, (PyObject *)&__pyx_type_14data_transform_DATA) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_14data_transform_DATA) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_14data_transform_DATA.tp_dict, __pyx_vtabptr_14data_transform_DATA) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_DATA, (PyObject *)&__pyx_type_14data_transform_DATA) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_14data_transform_DATA) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __pyx_ptype_14data_transform_DATA = &__pyx_type_14data_transform_DATA;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -2896,6 +3327,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_data_transform(PyObject *__pyx_pyi
 #endif
 {
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3002,20 +3434,41 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "data_transform.pyx":1
- * cdef class DATA:             # <<<<<<<<<<<<<<
- *     cdef public:
- *         dict master
+ * from script.LEXER.error.CythonWIN           import affectationError as AE             # <<<<<<<<<<<<<<
+ * 
+ * cdef class DATA:
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_affectationError);
+  __Pyx_GIVEREF(__pyx_n_s_affectationError);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_affectationError);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_script_LEXER_error_CythonWIN, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_affectationError); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_AE, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /*--- Wrapped vars code ---*/
 
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
       __Pyx_AddTraceback("init data_transform", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -3079,6 +3532,32 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
 #endif
     }
     return result;
+}
+
+/* RaiseArgTupleInvalid */
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
 }
 
 /* RaiseDoubleKeywords */
@@ -3195,32 +3674,6 @@ invalid_keyword:
     #endif
 bad:
     return -1;
-}
-
-/* RaiseArgTupleInvalid */
-static void __Pyx_RaiseArgtupleInvalid(
-    const char* func_name,
-    int exact,
-    Py_ssize_t num_min,
-    Py_ssize_t num_max,
-    Py_ssize_t num_found)
-{
-    Py_ssize_t num_expected;
-    const char *more_or_less;
-    if (num_found < num_min) {
-        num_expected = num_min;
-        more_or_less = "at least";
-    } else {
-        num_expected = num_max;
-        more_or_less = "at most";
-    }
-    if (exact) {
-        more_or_less = "exactly";
-    }
-    PyErr_Format(PyExc_TypeError,
-                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                 func_name, more_or_less, num_expected,
-                 (num_expected == 1) ? "" : "s", num_found);
 }
 
 /* PyObjectCall */
@@ -3599,6 +4052,467 @@ static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObje
     return __Pyx_SetItemInt_Generic(o, PyInt_FromSsize_t(i), v);
 }
 
+/* GetTopmostException */
+#if CYTHON_USE_EXC_INFO_STACK
+static _PyErr_StackItem *
+__Pyx_PyErr_GetTopmostException(PyThreadState *tstate)
+{
+    _PyErr_StackItem *exc_info = tstate->exc_info;
+    while ((exc_info->exc_type == NULL || exc_info->exc_type == Py_None) &&
+           exc_info->previous_item != NULL)
+    {
+        exc_info = exc_info->previous_item;
+    }
+    return exc_info;
+}
+#endif
+
+/* SaveResetException */
+#if CYTHON_FAST_THREAD_STATE
+static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
+    #if CYTHON_USE_EXC_INFO_STACK
+    _PyErr_StackItem *exc_info = __Pyx_PyErr_GetTopmostException(tstate);
+    *type = exc_info->exc_type;
+    *value = exc_info->exc_value;
+    *tb = exc_info->exc_traceback;
+    #else
+    *type = tstate->exc_type;
+    *value = tstate->exc_value;
+    *tb = tstate->exc_traceback;
+    #endif
+    Py_XINCREF(*type);
+    Py_XINCREF(*value);
+    Py_XINCREF(*tb);
+}
+static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    #if CYTHON_USE_EXC_INFO_STACK
+    _PyErr_StackItem *exc_info = tstate->exc_info;
+    tmp_type = exc_info->exc_type;
+    tmp_value = exc_info->exc_value;
+    tmp_tb = exc_info->exc_traceback;
+    exc_info->exc_type = type;
+    exc_info->exc_value = value;
+    exc_info->exc_traceback = tb;
+    #else
+    tmp_type = tstate->exc_type;
+    tmp_value = tstate->exc_value;
+    tmp_tb = tstate->exc_traceback;
+    tstate->exc_type = type;
+    tstate->exc_value = value;
+    tstate->exc_traceback = tb;
+    #endif
+    Py_XDECREF(tmp_type);
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(tmp_tb);
+}
+#endif
+
+/* PyErrExceptionMatches */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
+    Py_ssize_t i, n;
+    n = PyTuple_GET_SIZE(tuple);
+#if PY_MAJOR_VERSION >= 3
+    for (i=0; i<n; i++) {
+        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
+    }
+#endif
+    for (i=0; i<n; i++) {
+        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
+    PyObject *exc_type = tstate->curexc_type;
+    if (exc_type == err) return 1;
+    if (unlikely(!exc_type)) return 0;
+    if (unlikely(PyTuple_Check(err)))
+        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
+    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
+}
+#endif
+
+/* GetException */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb)
+#else
+static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb)
+#endif
+{
+    PyObject *local_type, *local_value, *local_tb;
+#if CYTHON_FAST_THREAD_STATE
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    local_type = tstate->curexc_type;
+    local_value = tstate->curexc_value;
+    local_tb = tstate->curexc_traceback;
+    tstate->curexc_type = 0;
+    tstate->curexc_value = 0;
+    tstate->curexc_traceback = 0;
+#else
+    PyErr_Fetch(&local_type, &local_value, &local_tb);
+#endif
+    PyErr_NormalizeException(&local_type, &local_value, &local_tb);
+#if CYTHON_FAST_THREAD_STATE
+    if (unlikely(tstate->curexc_type))
+#else
+    if (unlikely(PyErr_Occurred()))
+#endif
+        goto bad;
+    #if PY_MAJOR_VERSION >= 3
+    if (local_tb) {
+        if (unlikely(PyException_SetTraceback(local_value, local_tb) < 0))
+            goto bad;
+    }
+    #endif
+    Py_XINCREF(local_tb);
+    Py_XINCREF(local_type);
+    Py_XINCREF(local_value);
+    *type = local_type;
+    *value = local_value;
+    *tb = local_tb;
+#if CYTHON_FAST_THREAD_STATE
+    #if CYTHON_USE_EXC_INFO_STACK
+    {
+        _PyErr_StackItem *exc_info = tstate->exc_info;
+        tmp_type = exc_info->exc_type;
+        tmp_value = exc_info->exc_value;
+        tmp_tb = exc_info->exc_traceback;
+        exc_info->exc_type = local_type;
+        exc_info->exc_value = local_value;
+        exc_info->exc_traceback = local_tb;
+    }
+    #else
+    tmp_type = tstate->exc_type;
+    tmp_value = tstate->exc_value;
+    tmp_tb = tstate->exc_traceback;
+    tstate->exc_type = local_type;
+    tstate->exc_value = local_value;
+    tstate->exc_traceback = local_tb;
+    #endif
+    Py_XDECREF(tmp_type);
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(tmp_tb);
+#else
+    PyErr_SetExcInfo(local_type, local_value, local_tb);
+#endif
+    return 0;
+bad:
+    *type = 0;
+    *value = 0;
+    *tb = 0;
+    Py_XDECREF(local_type);
+    Py_XDECREF(local_value);
+    Py_XDECREF(local_tb);
+    return -1;
+}
+
+/* PyDictVersioning */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
+    PyObject **dictptr = NULL;
+    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
+    if (offset) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
+#else
+        dictptr = _PyObject_GetDictPtr(obj);
+#endif
+    }
+    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+}
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+        return 0;
+    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+}
+#endif
+
+/* GetModuleGlobalName */
+#if CYTHON_USE_DICT_VERSIONS
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
+#else
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
+#endif
+{
+    PyObject *result;
+#if !CYTHON_AVOID_BORROWED_REFS
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
+    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    } else if (unlikely(PyErr_Occurred())) {
+        return NULL;
+    }
+#else
+    result = PyDict_GetItem(__pyx_d, name);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+#endif
+#else
+    result = PyObject_GetItem(__pyx_d, name);
+    __PYX_UPDATE_DICT_CACHE(__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+    PyErr_Clear();
+#endif
+    return __Pyx_GetBuiltinName(name);
+}
+
+/* PyCFunctionFastCall */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
+    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
+    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
+    PyObject *self = PyCFunction_GET_SELF(func);
+    int flags = PyCFunction_GET_FLAGS(func);
+    assert(PyCFunction_Check(func));
+    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS | METH_STACKLESS)));
+    assert(nargs >= 0);
+    assert(nargs == 0 || args != NULL);
+    /* _PyCFunction_FastCallDict() must not be called with an exception set,
+       because it may clear it (directly or indirectly) and so the
+       caller loses its exception */
+    assert(!PyErr_Occurred());
+    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
+        return (*((__Pyx_PyCFunctionFastWithKeywords)(void*)meth)) (self, args, nargs, NULL);
+    } else {
+        return (*((__Pyx_PyCFunctionFast)(void*)meth)) (self, args, nargs);
+    }
+}
+#endif
+
+/* PyFunctionFastCall */
+#if CYTHON_FAST_PYCALL
+static PyObject* __Pyx_PyFunction_FastCallNoKw(PyCodeObject *co, PyObject **args, Py_ssize_t na,
+                                               PyObject *globals) {
+    PyFrameObject *f;
+    PyThreadState *tstate = __Pyx_PyThreadState_Current;
+    PyObject **fastlocals;
+    Py_ssize_t i;
+    PyObject *result;
+    assert(globals != NULL);
+    /* XXX Perhaps we should create a specialized
+       PyFrame_New() that doesn't take locals, but does
+       take builtins without sanity checking them.
+       */
+    assert(tstate != NULL);
+    f = PyFrame_New(tstate, co, globals, NULL);
+    if (f == NULL) {
+        return NULL;
+    }
+    fastlocals = __Pyx_PyFrame_GetLocalsplus(f);
+    for (i = 0; i < na; i++) {
+        Py_INCREF(*args);
+        fastlocals[i] = *args++;
+    }
+    result = PyEval_EvalFrameEx(f,0);
+    ++tstate->recursion_depth;
+    Py_DECREF(f);
+    --tstate->recursion_depth;
+    return result;
+}
+#if 1 || PY_VERSION_HEX < 0x030600B1
+static PyObject *__Pyx_PyFunction_FastCallDict(PyObject *func, PyObject **args, Py_ssize_t nargs, PyObject *kwargs) {
+    PyCodeObject *co = (PyCodeObject *)PyFunction_GET_CODE(func);
+    PyObject *globals = PyFunction_GET_GLOBALS(func);
+    PyObject *argdefs = PyFunction_GET_DEFAULTS(func);
+    PyObject *closure;
+#if PY_MAJOR_VERSION >= 3
+    PyObject *kwdefs;
+#endif
+    PyObject *kwtuple, **k;
+    PyObject **d;
+    Py_ssize_t nd;
+    Py_ssize_t nk;
+    PyObject *result;
+    assert(kwargs == NULL || PyDict_Check(kwargs));
+    nk = kwargs ? PyDict_Size(kwargs) : 0;
+    if (Py_EnterRecursiveCall((char*)" while calling a Python object")) {
+        return NULL;
+    }
+    if (
+#if PY_MAJOR_VERSION >= 3
+            co->co_kwonlyargcount == 0 &&
+#endif
+            likely(kwargs == NULL || nk == 0) &&
+            co->co_flags == (CO_OPTIMIZED | CO_NEWLOCALS | CO_NOFREE)) {
+        if (argdefs == NULL && co->co_argcount == nargs) {
+            result = __Pyx_PyFunction_FastCallNoKw(co, args, nargs, globals);
+            goto done;
+        }
+        else if (nargs == 0 && argdefs != NULL
+                 && co->co_argcount == Py_SIZE(argdefs)) {
+            /* function called with no arguments, but all parameters have
+               a default value: use default values as arguments .*/
+            args = &PyTuple_GET_ITEM(argdefs, 0);
+            result =__Pyx_PyFunction_FastCallNoKw(co, args, Py_SIZE(argdefs), globals);
+            goto done;
+        }
+    }
+    if (kwargs != NULL) {
+        Py_ssize_t pos, i;
+        kwtuple = PyTuple_New(2 * nk);
+        if (kwtuple == NULL) {
+            result = NULL;
+            goto done;
+        }
+        k = &PyTuple_GET_ITEM(kwtuple, 0);
+        pos = i = 0;
+        while (PyDict_Next(kwargs, &pos, &k[i], &k[i+1])) {
+            Py_INCREF(k[i]);
+            Py_INCREF(k[i+1]);
+            i += 2;
+        }
+        nk = i / 2;
+    }
+    else {
+        kwtuple = NULL;
+        k = NULL;
+    }
+    closure = PyFunction_GET_CLOSURE(func);
+#if PY_MAJOR_VERSION >= 3
+    kwdefs = PyFunction_GET_KW_DEFAULTS(func);
+#endif
+    if (argdefs != NULL) {
+        d = &PyTuple_GET_ITEM(argdefs, 0);
+        nd = Py_SIZE(argdefs);
+    }
+    else {
+        d = NULL;
+        nd = 0;
+    }
+#if PY_MAJOR_VERSION >= 3
+    result = PyEval_EvalCodeEx((PyObject*)co, globals, (PyObject *)NULL,
+                               args, (int)nargs,
+                               k, (int)nk,
+                               d, (int)nd, kwdefs, closure);
+#else
+    result = PyEval_EvalCodeEx(co, globals, (PyObject *)NULL,
+                               args, (int)nargs,
+                               k, (int)nk,
+                               d, (int)nd, closure);
+#endif
+    Py_XDECREF(kwtuple);
+done:
+    Py_LeaveRecursiveCall();
+    return result;
+}
+#endif
+#endif
+
+/* PyObjectCall2Args */
+static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
+    PyObject *args, *result = NULL;
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(function)) {
+        PyObject *args[2] = {arg1, arg2};
+        return __Pyx_PyFunction_FastCall(function, args, 2);
+    }
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(function)) {
+        PyObject *args[2] = {arg1, arg2};
+        return __Pyx_PyCFunction_FastCall(function, args, 2);
+    }
+    #endif
+    args = PyTuple_New(2);
+    if (unlikely(!args)) goto done;
+    Py_INCREF(arg1);
+    PyTuple_SET_ITEM(args, 0, arg1);
+    Py_INCREF(arg2);
+    PyTuple_SET_ITEM(args, 1, arg2);
+    Py_INCREF(function);
+    result = __Pyx_PyObject_Call(function, args, NULL);
+    Py_DECREF(args);
+    Py_DECREF(function);
+done:
+    return result;
+}
+
+/* PyObjectCallMethO */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
+    PyObject *self, *result;
+    PyCFunction cfunc;
+    cfunc = PyCFunction_GET_FUNCTION(func);
+    self = PyCFunction_GET_SELF(func);
+    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+        return NULL;
+    result = cfunc(self, arg);
+    Py_LeaveRecursiveCall();
+    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
+        PyErr_SetString(
+            PyExc_SystemError,
+            "NULL result without error in PyObject_Call");
+    }
+    return result;
+}
+#endif
+
+/* PyObjectCallOneArg */
+#if CYTHON_COMPILING_IN_CPYTHON
+static PyObject* __Pyx__PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *result;
+    PyObject *args = PyTuple_New(1);
+    if (unlikely(!args)) return NULL;
+    Py_INCREF(arg);
+    PyTuple_SET_ITEM(args, 0, arg);
+    result = __Pyx_PyObject_Call(func, args, NULL);
+    Py_DECREF(args);
+    return result;
+}
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+#if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(func)) {
+        return __Pyx_PyFunction_FastCall(func, &arg, 1);
+    }
+#endif
+    if (likely(PyCFunction_Check(func))) {
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_O)) {
+            return __Pyx_PyObject_CallMethO(func, arg);
+#if CYTHON_FAST_PYCCALL
+        } else if (__Pyx_PyFastCFunction_Check(func)) {
+            return __Pyx_PyCFunction_FastCall(func, &arg, 1);
+#endif
+        }
+    }
+    return __Pyx__PyObject_CallOneArg(func, arg);
+}
+#else
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *result;
+    PyObject *args = PyTuple_Pack(1, arg);
+    if (unlikely(!args)) return NULL;
+    result = __Pyx_PyObject_Call(func, args, NULL);
+    Py_DECREF(args);
+    return result;
+}
+#endif
+
+/* PyObjectSetAttrStr */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
+    PyTypeObject* tp = Py_TYPE(obj);
+    if (likely(tp->tp_setattro))
+        return tp->tp_setattro(obj, attr_name, value);
+#if PY_MAJOR_VERSION < 3
+    if (likely(tp->tp_setattr))
+        return tp->tp_setattr(obj, PyString_AS_STRING(attr_name), value);
+#endif
+    return PyObject_SetAttr(obj, attr_name, value);
+}
+#endif
+
 /* PyErrFetchRestore */
 #if CYTHON_FAST_THREAD_STATE
 static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
@@ -3850,31 +4764,6 @@ bad:
     return -1;
 }
 
-/* PyErrExceptionMatches */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
-    Py_ssize_t i, n;
-    n = PyTuple_GET_SIZE(tuple);
-#if PY_MAJOR_VERSION >= 3
-    for (i=0; i<n; i++) {
-        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
-    }
-#endif
-    for (i=0; i<n; i++) {
-        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
-    }
-    return 0;
-}
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
-    PyObject *exc_type = tstate->curexc_type;
-    if (exc_type == err) return 1;
-    if (unlikely(!exc_type)) return 0;
-    if (unlikely(PyTuple_Check(err)))
-        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
-    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
-}
-#endif
-
 /* PyObjectGetAttrStrNoError */
 static void __Pyx_PyObject_GetAttrStr_ClearAttributeError(void) {
     __Pyx_PyThreadState_declare
@@ -3981,31 +4870,84 @@ __PYX_GOOD:
     return ret;
 }
 
-/* PyDictVersioning */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
-    PyObject **dictptr = NULL;
-    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
-    if (offset) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
-#else
-        dictptr = _PyObject_GetDictPtr(obj);
-#endif
+/* Import */
+static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {
+    PyObject *empty_list = 0;
+    PyObject *module = 0;
+    PyObject *global_dict = 0;
+    PyObject *empty_dict = 0;
+    PyObject *list;
+    #if PY_MAJOR_VERSION < 3
+    PyObject *py_import;
+    py_import = __Pyx_PyObject_GetAttrStr(__pyx_b, __pyx_n_s_import);
+    if (!py_import)
+        goto bad;
+    #endif
+    if (from_list)
+        list = from_list;
+    else {
+        empty_list = PyList_New(0);
+        if (!empty_list)
+            goto bad;
+        list = empty_list;
     }
-    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+    global_dict = PyModule_GetDict(__pyx_m);
+    if (!global_dict)
+        goto bad;
+    empty_dict = PyDict_New();
+    if (!empty_dict)
+        goto bad;
+    {
+        #if PY_MAJOR_VERSION >= 3
+        if (level == -1) {
+            if ((1) && (strchr(__Pyx_MODULE_NAME, '.'))) {
+                module = PyImport_ImportModuleLevelObject(
+                    name, global_dict, empty_dict, list, 1);
+                if (!module) {
+                    if (!PyErr_ExceptionMatches(PyExc_ImportError))
+                        goto bad;
+                    PyErr_Clear();
+                }
+            }
+            level = 0;
+        }
+        #endif
+        if (!module) {
+            #if PY_MAJOR_VERSION < 3
+            PyObject *py_level = PyInt_FromLong(level);
+            if (!py_level)
+                goto bad;
+            module = PyObject_CallFunctionObjArgs(py_import,
+                name, global_dict, empty_dict, list, py_level, (PyObject *)NULL);
+            Py_DECREF(py_level);
+            #else
+            module = PyImport_ImportModuleLevelObject(
+                name, global_dict, empty_dict, list, level);
+            #endif
+        }
+    }
+bad:
+    #if PY_MAJOR_VERSION < 3
+    Py_XDECREF(py_import);
+    #endif
+    Py_XDECREF(empty_list);
+    Py_XDECREF(empty_dict);
+    return module;
 }
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
-        return 0;
-    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+
+/* ImportFrom */
+static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
+    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
+    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
+        PyErr_Format(PyExc_ImportError,
+        #if PY_MAJOR_VERSION < 3
+            "cannot import name %.230s", PyString_AS_STRING(name));
+        #else
+            "cannot import name %S", name);
+        #endif
+    }
+    return value;
 }
-#endif
 
 /* CLineInTraceback */
 #ifndef CYTHON_CLINE_IN_TRACEBACK

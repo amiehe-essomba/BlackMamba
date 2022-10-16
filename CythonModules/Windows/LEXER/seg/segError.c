@@ -1684,7 +1684,7 @@ static int __pyx_pf_8segError_5ERROR___init__(struct __pyx_obj_8segError_ERROR *
  *         self.reset      = bm.init.reset
  *         self.error      = ''             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR0(self, string: str ):
+ *     cdef str ERROR0(self, str string ):
  */
   __Pyx_INCREF(__pyx_kp_s_);
   __Pyx_GIVEREF(__pyx_kp_s_);
@@ -1716,7 +1716,7 @@ static int __pyx_pf_8segError_5ERROR___init__(struct __pyx_obj_8segError_ERROR *
 /* "segError.pyx":22
  *         self.error      = ''
  * 
- *     cdef ERROR0(self, string: str ):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR0(self, str string ):             # <<<<<<<<<<<<<<
  *         self.error = ' {}line: {}{}'.format( self.white, self.yellow, self.line )
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>.'.format(self.white, self.cyan, string)+self.error
  */
@@ -1737,7 +1737,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR0(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":23
  * 
- *     cdef ERROR0(self, string: str ):
+ *     cdef str ERROR0(self, str string ):
  *         self.error = ' {}line: {}{}'.format( self.white, self.yellow, self.line )             # <<<<<<<<<<<<<<
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>.'.format(self.white, self.cyan, string)+self.error
  * 
@@ -1804,7 +1804,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR0(struct __pyx_obj_8segError_ERRO
   __pyx_t_1 = 0;
 
   /* "segError.pyx":24
- *     cdef ERROR0(self, string: str ):
+ *     cdef str ERROR0(self, str string ):
  *         self.error = ' {}line: {}{}'.format( self.white, self.yellow, self.line )
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>.'.format(self.white, self.cyan, string)+self.error             # <<<<<<<<<<<<<<
  * 
@@ -1917,19 +1917,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR0(struct __pyx_obj_8segError_ERRO
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR1(self, string: str ):
+ *     cdef str ERROR1(self, str string ):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":22
  *         self.error      = ''
  * 
- *     cdef ERROR0(self, string: str ):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR0(self, str string ):             # <<<<<<<<<<<<<<
  *         self.error = ' {}line: {}{}'.format( self.white, self.yellow, self.line )
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>.'.format(self.white, self.cyan, string)+self.error
  */
@@ -1952,7 +1952,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR0(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":28
  *         return self.error+self.reset
  * 
- *     cdef ERROR1(self, string: str ):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR1(self, str string ):             # <<<<<<<<<<<<<<
  *         self.error      = '{}due to {}<< , >> {}at the beginning. {}line: {}{}'.format(self.white, self.red, self.yellow,
  *                                                                                    self.white, self.yellow,self.line)
  */
@@ -1973,7 +1973,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR1(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":29
  * 
- *     cdef ERROR1(self, string: str ):
+ *     cdef str ERROR1(self, str string ):
  *         self.error      = '{}due to {}<< , >> {}at the beginning. {}line: {}{}'.format(self.white, self.red, self.yellow,             # <<<<<<<<<<<<<<
  *                                                                                    self.white, self.yellow,self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -1982,7 +1982,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR1(struct __pyx_obj_8segError_ERRO
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":30
- *     cdef ERROR1(self, string: str ):
+ *     cdef str ERROR1(self, str string ):
  *         self.error      = '{}due to {}<< , >> {}at the beginning. {}line: {}{}'.format(self.white, self.red, self.yellow,
  *                                                                                    self.white, self.yellow,self.line)             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -2052,7 +2052,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR1(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":29
  * 
- *     cdef ERROR1(self, string: str ):
+ *     cdef str ERROR1(self, str string ):
  *         self.error      = '{}due to {}<< , >> {}at the beginning. {}line: {}{}'.format(self.white, self.red, self.yellow,             # <<<<<<<<<<<<<<
  *                                                                                    self.white, self.yellow,self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -2178,19 +2178,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR1(struct __pyx_obj_8segError_ERRO
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR2(self):
+ *     cdef str ERROR2(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":28
  *         return self.error+self.reset
  * 
- *     cdef ERROR1(self, string: str ):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR1(self, str string ):             # <<<<<<<<<<<<<<
  *         self.error      = '{}due to {}<< , >> {}at the beginning. {}line: {}{}'.format(self.white, self.red, self.yellow,
  *                                                                                    self.white, self.yellow,self.line)
  */
@@ -2213,7 +2213,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR1(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":35
  *         return self.error+self.reset
  * 
- *     cdef ERROR2(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR2(self):             # <<<<<<<<<<<<<<
  *         self.error       = '{}<< , >> {}on the previous line. {}line: {}{}'.format(self.red, self.yellow,
  *                                                                               self.white,self.yellow, (self.line-1) )
  */
@@ -2234,7 +2234,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR2(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":36
  * 
- *     cdef ERROR2(self):
+ *     cdef str ERROR2(self):
  *         self.error       = '{}<< , >> {}on the previous line. {}line: {}{}'.format(self.red, self.yellow,             # <<<<<<<<<<<<<<
  *                                                                               self.white,self.yellow, (self.line-1) )
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due to '.format(self.white) + self.error
@@ -2243,7 +2243,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR2(struct __pyx_obj_8segError_ERRO
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":37
- *     cdef ERROR2(self):
+ *     cdef str ERROR2(self):
  *         self.error       = '{}<< , >> {}on the previous line. {}line: {}{}'.format(self.red, self.yellow,
  *                                                                               self.white,self.yellow, (self.line-1) )             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due to '.format(self.white) + self.error
@@ -2310,7 +2310,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR2(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":36
  * 
- *     cdef ERROR2(self):
+ *     cdef str ERROR2(self):
  *         self.error       = '{}<< , >> {}on the previous line. {}line: {}{}'.format(self.red, self.yellow,             # <<<<<<<<<<<<<<
  *                                                                               self.white,self.yellow, (self.line-1) )
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due to '.format(self.white) + self.error
@@ -2403,19 +2403,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR2(struct __pyx_obj_8segError_ERRO
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR3(self):
+ *     cdef str ERROR3(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":35
  *         return self.error+self.reset
  * 
- *     cdef ERROR2(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR2(self):             # <<<<<<<<<<<<<<
  *         self.error       = '{}<< , >> {}on the previous line. {}line: {}{}'.format(self.red, self.yellow,
  *                                                                               self.white,self.yellow, (self.line-1) )
  */
@@ -2438,7 +2438,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR2(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":42
  *         return self.error+self.reset
  * 
- *     cdef ERROR3(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR3(self):             # <<<<<<<<<<<<<<
  *         self.error       = '{}<< , >> {}was not set on the previous line. {}line: {}{}'.format(self.red, self.yellow,
  *                                                                                           self.white, self.yellow, (self.line - 1) )
  */
@@ -2459,7 +2459,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR3(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":43
  * 
- *     cdef ERROR3(self):
+ *     cdef str ERROR3(self):
  *         self.error       = '{}<< , >> {}was not set on the previous line. {}line: {}{}'.format(self.red, self.yellow,             # <<<<<<<<<<<<<<
  *                                                                                           self.white, self.yellow, (self.line - 1) )
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax '.format(self.white) + self.error
@@ -2468,7 +2468,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR3(struct __pyx_obj_8segError_ERRO
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":44
- *     cdef ERROR3(self):
+ *     cdef str ERROR3(self):
  *         self.error       = '{}<< , >> {}was not set on the previous line. {}line: {}{}'.format(self.red, self.yellow,
  *                                                                                           self.white, self.yellow, (self.line - 1) )             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax '.format(self.white) + self.error
@@ -2535,7 +2535,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR3(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":43
  * 
- *     cdef ERROR3(self):
+ *     cdef str ERROR3(self):
  *         self.error       = '{}<< , >> {}was not set on the previous line. {}line: {}{}'.format(self.red, self.yellow,             # <<<<<<<<<<<<<<
  *                                                                                           self.white, self.yellow, (self.line - 1) )
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax '.format(self.white) + self.error
@@ -2628,19 +2628,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR3(struct __pyx_obj_8segError_ERRO
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR4(self, _open_: str, _close_: str):
+ *     cdef str ERROR4(self, str _open_, str _close_):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":42
  *         return self.error+self.reset
  * 
- *     cdef ERROR3(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR3(self):             # <<<<<<<<<<<<<<
  *         self.error       = '{}<< , >> {}was not set on the previous line. {}line: {}{}'.format(self.red, self.yellow,
  *                                                                                           self.white, self.yellow, (self.line - 1) )
  */
@@ -2663,7 +2663,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR3(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":49
  *         return self.error+self.reset
  * 
- *     cdef ERROR4(self, _open_: str, _close_: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR4(self, str _open_, str _close_):             # <<<<<<<<<<<<<<
  *         self.error      = '{}<< {} {} >> {}line: {}{}'.format(self.blue, _open_,  _close_,
  *                                                           self.white, self.yellow, self.line)
  */
@@ -2684,7 +2684,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR4(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":50
  * 
- *     cdef ERROR4(self, _open_: str, _close_: str):
+ *     cdef str ERROR4(self, str _open_, str _close_):
  *         self.error      = '{}<< {} {} >> {}line: {}{}'.format(self.blue, _open_,  _close_,             # <<<<<<<<<<<<<<
  *                                                           self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due no value inside '.format(self.white) + self.error
@@ -2693,7 +2693,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR4(struct __pyx_obj_8segError_ERRO
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":51
- *     cdef ERROR4(self, _open_: str, _close_: str):
+ *     cdef str ERROR4(self, str _open_, str _close_):
  *         self.error      = '{}<< {} {} >> {}line: {}{}'.format(self.blue, _open_,  _close_,
  *                                                           self.white, self.yellow, self.line)             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due no value inside '.format(self.white) + self.error
@@ -2763,7 +2763,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR4(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":50
  * 
- *     cdef ERROR4(self, _open_: str, _close_: str):
+ *     cdef str ERROR4(self, str _open_, str _close_):
  *         self.error      = '{}<< {} {} >> {}line: {}{}'.format(self.blue, _open_,  _close_,             # <<<<<<<<<<<<<<
  *                                                           self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due no value inside '.format(self.white) + self.error
@@ -2856,19 +2856,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR4(struct __pyx_obj_8segError_ERRO
  * 
  *         return  self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR5(self, string: str):
+ *     cdef str ERROR5(self, str string):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":49
  *         return self.error+self.reset
  * 
- *     cdef ERROR4(self, _open_: str, _close_: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR4(self, str _open_, str _close_):             # <<<<<<<<<<<<<<
  *         self.error      = '{}<< {} {} >> {}line: {}{}'.format(self.blue, _open_,  _close_,
  *                                                           self.white, self.yellow, self.line)
  */
@@ -2891,7 +2891,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR4(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":56
  *         return  self.error+self.reset
  * 
- *     cdef ERROR5(self, string: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR5(self, str string):             # <<<<<<<<<<<<<<
  *         self.error      = '{}due to no value {}before << {},{} >>. line: {}{}'.format(self.white, self.red, self.green, self.white, self.yellow, self.line )
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+ '{}invalid syntax in {} << {} >>, '.format(self.white, self.cyan, string) + self.error
  */
@@ -2912,7 +2912,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR5(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":57
  * 
- *     cdef ERROR5(self, string: str):
+ *     cdef str ERROR5(self, str string):
  *         self.error      = '{}due to no value {}before << {},{} >>. line: {}{}'.format(self.white, self.red, self.green, self.white, self.yellow, self.line )             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+ '{}invalid syntax in {} << {} >>, '.format(self.white, self.cyan, string) + self.error
  * 
@@ -2988,7 +2988,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR5(struct __pyx_obj_8segError_ERRO
   __pyx_t_1 = 0;
 
   /* "segError.pyx":58
- *     cdef ERROR5(self, string: str):
+ *     cdef str ERROR5(self, str string):
  *         self.error      = '{}due to no value {}before << {},{} >>. line: {}{}'.format(self.white, self.red, self.green, self.white, self.yellow, self.line )
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+ '{}invalid syntax in {} << {} >>, '.format(self.white, self.cyan, string) + self.error             # <<<<<<<<<<<<<<
  * 
@@ -3101,19 +3101,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR5(struct __pyx_obj_8segError_ERRO
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR6(self):
+ *     cdef str ERROR6(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":56
  *         return  self.error+self.reset
  * 
- *     cdef ERROR5(self, string: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR5(self, str string):             # <<<<<<<<<<<<<<
  *         self.error      = '{}due to no value {}before << {},{} >>. line: {}{}'.format(self.white, self.red, self.green, self.white, self.yellow, self.line )
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+ '{}invalid syntax in {} << {} >>, '.format(self.white, self.cyan, string) + self.error
  */
@@ -3136,7 +3136,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR5(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":62
  *         return self.error+self.reset
  * 
- *     cdef ERROR6(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR6(self):             # <<<<<<<<<<<<<<
  *         self.error       = '{}<< , >> {} at the end on the previous line. line: {}{}'.format(self.red, self.white, self.yellow, (self.line - 1))
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due to '.format(self.white) + self.error
  */
@@ -3157,7 +3157,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR6(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":63
  * 
- *     cdef ERROR6(self):
+ *     cdef str ERROR6(self):
  *         self.error       = '{}<< , >> {} at the end on the previous line. line: {}{}'.format(self.red, self.white, self.yellow, (self.line - 1))             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due to '.format(self.white) + self.error
  * 
@@ -3227,7 +3227,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR6(struct __pyx_obj_8segError_ERRO
   __pyx_t_1 = 0;
 
   /* "segError.pyx":64
- *     cdef ERROR6(self):
+ *     cdef str ERROR6(self):
  *         self.error       = '{}<< , >> {} at the end on the previous line. line: {}{}'.format(self.red, self.white, self.yellow, (self.line - 1))
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due to '.format(self.white) + self.error             # <<<<<<<<<<<<<<
  * 
@@ -3307,19 +3307,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR6(struct __pyx_obj_8segError_ERRO
  * 
  *         return  self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR7(self, mains_tring: str, sub_string: str):
+ *     cdef str ERROR7(self, str mains_tring, str sub_string):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":62
  *         return self.error+self.reset
  * 
- *     cdef ERROR6(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR6(self):             # <<<<<<<<<<<<<<
  *         self.error       = '{}<< , >> {} at the end on the previous line. line: {}{}'.format(self.red, self.white, self.yellow, (self.line - 1))
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax, due to '.format(self.white) + self.error
  */
@@ -3342,7 +3342,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR6(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":68
  *         return  self.error+self.reset
  * 
- *     cdef ERROR7(self, mains_tring: str, sub_string: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR7(self, str mains_tring, str sub_string):             # <<<<<<<<<<<<<<
  * 
  *         self.error = '{}due to bad {}char, {}<< {} >>. {}line: {}{}'.format(self.white, self.red, self.green, sub_string,
  */
@@ -3362,7 +3362,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR7(struct __pyx_obj_8segError_ERRO
   __Pyx_RefNannySetupContext("ERROR7", 0);
 
   /* "segError.pyx":70
- *     cdef ERROR7(self, mains_tring: str, sub_string: str):
+ *     cdef str ERROR7(self, str mains_tring, str sub_string):
  * 
  *         self.error = '{}due to bad {}char, {}<< {} >>. {}line: {}{}'.format(self.white, self.red, self.green, sub_string,             # <<<<<<<<<<<<<<
  *                                                                        self.white, self.yellow, self.line)
@@ -3444,7 +3444,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR7(struct __pyx_obj_8segError_ERRO
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "segError.pyx":70
- *     cdef ERROR7(self, mains_tring: str, sub_string: str):
+ *     cdef str ERROR7(self, str mains_tring, str sub_string):
  * 
  *         self.error = '{}due to bad {}char, {}<< {} >>. {}line: {}{}'.format(self.white, self.red, self.green, sub_string,             # <<<<<<<<<<<<<<
  *                                                                        self.white, self.yellow, self.line)
@@ -3571,19 +3571,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR7(struct __pyx_obj_8segError_ERRO
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR8(self):
+ *     cdef str ERROR8(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":68
  *         return  self.error+self.reset
  * 
- *     cdef ERROR7(self, mains_tring: str, sub_string: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR7(self, str mains_tring, str sub_string):             # <<<<<<<<<<<<<<
  * 
  *         self.error = '{}due to bad {}char, {}<< {} >>. {}line: {}{}'.format(self.white, self.red, self.green, sub_string,
  */
@@ -3606,7 +3606,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR7(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":76
  *         return self.error+self.reset
  * 
- *     cdef ERROR8(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR8(self):             # <<<<<<<<<<<<<<
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}syntax error, {}EMPTY {}value was detected. {}line : {}{}'.format(self.white,
  *                                                     self.green, self.yellow, self.white, self.yellow, self.line)
  */
@@ -3628,7 +3628,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR8(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":77
  * 
- *     cdef ERROR8(self):
+ *     cdef str ERROR8(self):
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}syntax error, {}EMPTY {}value was detected. {}line : {}{}'.format(self.white,             # <<<<<<<<<<<<<<
  *                                                     self.green, self.yellow, self.white, self.yellow, self.line)
  * 
@@ -3675,7 +3675,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR8(struct __pyx_obj_8segError_ERRO
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":78
- *     cdef ERROR8(self):
+ *     cdef str ERROR8(self):
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}syntax error, {}EMPTY {}value was detected. {}line : {}{}'.format(self.white,
  *                                                     self.green, self.yellow, self.white, self.yellow, self.line)             # <<<<<<<<<<<<<<
  * 
@@ -3745,7 +3745,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR8(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":77
  * 
- *     cdef ERROR8(self):
+ *     cdef str ERROR8(self):
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}syntax error, {}EMPTY {}value was detected. {}line : {}{}'.format(self.white,             # <<<<<<<<<<<<<<
  *                                                     self.green, self.yellow, self.white, self.yellow, self.line)
  * 
@@ -3766,19 +3766,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR8(struct __pyx_obj_8segError_ERRO
  * 
  *         return  self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR9(self):
+ *     cdef str ERROR9(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
+  __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":76
  *         return self.error+self.reset
  * 
- *     cdef ERROR8(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR8(self):             # <<<<<<<<<<<<<<
  *         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}syntax error, {}EMPTY {}value was detected. {}line : {}{}'.format(self.white,
  *                                                     self.green, self.yellow, self.white, self.yellow, self.line)
  */
@@ -3802,7 +3802,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR8(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":82
  *         return  self.error+self.reset
  * 
- *     cdef ERROR9(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR9(self):             # <<<<<<<<<<<<<<
  *         self.error = fe.FileErrors( 'IndentationError' ).Errors() + '{}unexpected an indented block. {}line : {}{}'.format(self.yellow,
  *                                                 self.white, self.yellow, self.line)
  */
@@ -3824,7 +3824,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR9(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":83
  * 
- *     cdef ERROR9(self):
+ *     cdef str ERROR9(self):
  *         self.error = fe.FileErrors( 'IndentationError' ).Errors() + '{}unexpected an indented block. {}line : {}{}'.format(self.yellow,             # <<<<<<<<<<<<<<
  *                                                 self.white, self.yellow, self.line)
  * 
@@ -3871,7 +3871,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR9(struct __pyx_obj_8segError_ERRO
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":84
- *     cdef ERROR9(self):
+ *     cdef str ERROR9(self):
  *         self.error = fe.FileErrors( 'IndentationError' ).Errors() + '{}unexpected an indented block. {}line : {}{}'.format(self.yellow,
  *                                                 self.white, self.yellow, self.line)             # <<<<<<<<<<<<<<
  * 
@@ -3935,7 +3935,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR9(struct __pyx_obj_8segError_ERRO
 
   /* "segError.pyx":83
  * 
- *     cdef ERROR9(self):
+ *     cdef str ERROR9(self):
  *         self.error = fe.FileErrors( 'IndentationError' ).Errors() + '{}unexpected an indented block. {}line : {}{}'.format(self.yellow,             # <<<<<<<<<<<<<<
  *                                                 self.white, self.yellow, self.line)
  * 
@@ -3956,19 +3956,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR9(struct __pyx_obj_8segError_ERRO
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR_TREATMENT1(self, string: str, _open_: str):
+ *     cdef str ERROR_TREATMENT1(self, str string, str _open_):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_r = __pyx_t_2;
+  __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":82
  *         return  self.error+self.reset
  * 
- *     cdef ERROR9(self):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR9(self):             # <<<<<<<<<<<<<<
  *         self.error = fe.FileErrors( 'IndentationError' ).Errors() + '{}unexpected an indented block. {}line : {}{}'.format(self.yellow,
  *                                                 self.white, self.yellow, self.line)
  */
@@ -3992,7 +3992,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR9(struct __pyx_obj_8segError_ERRO
 /* "segError.pyx":88
  *         return self.error+self.reset
  * 
- *     cdef ERROR_TREATMENT1(self, string: str, _open_: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR_TREATMENT1(self, str string, str _open_):             # <<<<<<<<<<<<<<
  *         self.error      = '{}close {}the {}opening {}<< {} >>. {}line: {}{}'.format(self.green, self.white, self.red, self.blue,
  *                                                                         _open_, self.white, self.yellow, self.line)
  */
@@ -4013,7 +4013,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT1(struct __pyx_obj_8seg
 
   /* "segError.pyx":89
  * 
- *     cdef ERROR_TREATMENT1(self, string: str, _open_: str):
+ *     cdef str ERROR_TREATMENT1(self, str string, str _open_):
  *         self.error      = '{}close {}the {}opening {}<< {} >>. {}line: {}{}'.format(self.green, self.white, self.red, self.blue,             # <<<<<<<<<<<<<<
  *                                                                         _open_, self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4022,7 +4022,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT1(struct __pyx_obj_8seg
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":90
- *     cdef ERROR_TREATMENT1(self, string: str, _open_: str):
+ *     cdef str ERROR_TREATMENT1(self, str string, str _open_):
  *         self.error      = '{}close {}the {}opening {}<< {} >>. {}line: {}{}'.format(self.green, self.white, self.red, self.blue,
  *                                                                         _open_, self.white, self.yellow, self.line)             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4098,7 +4098,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT1(struct __pyx_obj_8seg
 
   /* "segError.pyx":89
  * 
- *     cdef ERROR_TREATMENT1(self, string: str, _open_: str):
+ *     cdef str ERROR_TREATMENT1(self, str string, str _open_):
  *         self.error      = '{}close {}the {}opening {}<< {} >>. {}line: {}{}'.format(self.green, self.white, self.red, self.blue,             # <<<<<<<<<<<<<<
  *                                                                         _open_, self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4224,19 +4224,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT1(struct __pyx_obj_8seg
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR_TREATMENT2(self, string: str, _close_: str):
+ *     cdef str ERROR_TREATMENT2(self, str string, str _close_):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":88
  *         return self.error+self.reset
  * 
- *     cdef ERROR_TREATMENT1(self, string: str, _open_: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR_TREATMENT1(self, str string, str _open_):             # <<<<<<<<<<<<<<
  *         self.error      = '{}close {}the {}opening {}<< {} >>. {}line: {}{}'.format(self.green, self.white, self.red, self.blue,
  *                                                                         _open_, self.white, self.yellow, self.line)
  */
@@ -4259,7 +4259,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT1(struct __pyx_obj_8seg
 /* "segError.pyx":95
  *         return self.error+self.reset
  * 
- *     cdef ERROR_TREATMENT2(self, string: str, _close_: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR_TREATMENT2(self, str string, str _close_):             # <<<<<<<<<<<<<<
  *         self.error       = '{}open {}<< {} >> {}before {}closing. {}line: {}{}'.format(self.green, self.blue, _close_, self.white, self.red,
  *                                                                                   self.white, self.yellow, self.line)
  */
@@ -4280,7 +4280,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT2(struct __pyx_obj_8seg
 
   /* "segError.pyx":96
  * 
- *     cdef ERROR_TREATMENT2(self, string: str, _close_: str):
+ *     cdef str ERROR_TREATMENT2(self, str string, str _close_):
  *         self.error       = '{}open {}<< {} >> {}before {}closing. {}line: {}{}'.format(self.green, self.blue, _close_, self.white, self.red,             # <<<<<<<<<<<<<<
  *                                                                                   self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4289,7 +4289,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT2(struct __pyx_obj_8seg
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":97
- *     cdef ERROR_TREATMENT2(self, string: str, _close_: str):
+ *     cdef str ERROR_TREATMENT2(self, str string, str _close_):
  *         self.error       = '{}open {}<< {} >> {}before {}closing. {}line: {}{}'.format(self.green, self.blue, _close_, self.white, self.red,
  *                                                                                   self.white, self.yellow, self.line)             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4365,7 +4365,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT2(struct __pyx_obj_8seg
 
   /* "segError.pyx":96
  * 
- *     cdef ERROR_TREATMENT2(self, string: str, _close_: str):
+ *     cdef str ERROR_TREATMENT2(self, str string, str _close_):
  *         self.error       = '{}open {}<< {} >> {}before {}closing. {}line: {}{}'.format(self.green, self.blue, _close_, self.white, self.red,             # <<<<<<<<<<<<<<
  *                                                                                   self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4491,19 +4491,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT2(struct __pyx_obj_8seg
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR_TREATMENT3(self, string: str):
+ *     cdef str ERROR_TREATMENT3(self, str string):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":95
  *         return self.error+self.reset
  * 
- *     cdef ERROR_TREATMENT2(self, string: str, _close_: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR_TREATMENT2(self, str string, str _close_):             # <<<<<<<<<<<<<<
  *         self.error       = '{}open {}<< {} >> {}before {}closing. {}line: {}{}'.format(self.green, self.blue, _close_, self.white, self.red,
  *                                                                                   self.white, self.yellow, self.line)
  */
@@ -4526,7 +4526,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT2(struct __pyx_obj_8seg
 /* "segError.pyx":102
  *         return self.error+self.reset
  * 
- *     cdef ERROR_TREATMENT3(self, string: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR_TREATMENT3(self, str string):             # <<<<<<<<<<<<<<
  *         self.error       = '{}due to, too much  {}<< " >> {}characters. {}line: {}{}'.format(self.white, self.red, self.yellow,
  *                                                                                 self.white, self.yellow, self.line)
  */
@@ -4547,7 +4547,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT3(struct __pyx_obj_8seg
 
   /* "segError.pyx":103
  * 
- *     cdef ERROR_TREATMENT3(self, string: str):
+ *     cdef str ERROR_TREATMENT3(self, str string):
  *         self.error       = '{}due to, too much  {}<< " >> {}characters. {}line: {}{}'.format(self.white, self.red, self.yellow,             # <<<<<<<<<<<<<<
  *                                                                                 self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4556,7 +4556,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT3(struct __pyx_obj_8seg
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":104
- *     cdef ERROR_TREATMENT3(self, string: str):
+ *     cdef str ERROR_TREATMENT3(self, str string):
  *         self.error       = '{}due to, too much  {}<< " >> {}characters. {}line: {}{}'.format(self.white, self.red, self.yellow,
  *                                                                                 self.white, self.yellow, self.line)             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4626,7 +4626,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT3(struct __pyx_obj_8seg
 
   /* "segError.pyx":103
  * 
- *     cdef ERROR_TREATMENT3(self, string: str):
+ *     cdef str ERROR_TREATMENT3(self, str string):
  *         self.error       = '{}due to, too much  {}<< " >> {}characters. {}line: {}{}'.format(self.white, self.red, self.yellow,             # <<<<<<<<<<<<<<
  *                                                                                 self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4752,19 +4752,19 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT3(struct __pyx_obj_8seg
  * 
  *         return self.error+self.reset             # <<<<<<<<<<<<<<
  * 
- *     cdef ERROR_TREATMENT4(self, string: str, _open_: str):
+ *     cdef str ERROR_TREATMENT4(self, str string, str _open_):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":102
  *         return self.error+self.reset
  * 
- *     cdef ERROR_TREATMENT3(self, string: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR_TREATMENT3(self, str string):             # <<<<<<<<<<<<<<
  *         self.error       = '{}due to, too much  {}<< " >> {}characters. {}line: {}{}'.format(self.white, self.red, self.yellow,
  *                                                                                 self.white, self.yellow, self.line)
  */
@@ -4787,7 +4787,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT3(struct __pyx_obj_8seg
 /* "segError.pyx":109
  *         return self.error+self.reset
  * 
- *     cdef ERROR_TREATMENT4(self, string: str, _open_: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR_TREATMENT4(self, str string, str _open_):             # <<<<<<<<<<<<<<
  *         self.error       = '{}due to many {}opening {}<< {} >>. {}line: {}{}'.format(self.white, self.green, self.red, _open_,
  *                                                                                 self.white, self.yellow, self.line)
  */
@@ -4808,7 +4808,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT4(struct __pyx_obj_8seg
 
   /* "segError.pyx":110
  * 
- *     cdef ERROR_TREATMENT4(self, string: str, _open_: str):
+ *     cdef str ERROR_TREATMENT4(self, str string, str _open_):
  *         self.error       = '{}due to many {}opening {}<< {} >>. {}line: {}{}'.format(self.white, self.green, self.red, _open_,             # <<<<<<<<<<<<<<
  *                                                                                 self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4817,7 +4817,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT4(struct __pyx_obj_8seg
   __Pyx_GOTREF(__pyx_t_2);
 
   /* "segError.pyx":111
- *     cdef ERROR_TREATMENT4(self, string: str, _open_: str):
+ *     cdef str ERROR_TREATMENT4(self, str string, str _open_):
  *         self.error       = '{}due to many {}opening {}<< {} >>. {}line: {}{}'.format(self.white, self.green, self.red, _open_,
  *                                                                                 self.white, self.yellow, self.line)             # <<<<<<<<<<<<<<
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -4890,7 +4890,7 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT4(struct __pyx_obj_8seg
 
   /* "segError.pyx":110
  * 
- *     cdef ERROR_TREATMENT4(self, string: str, _open_: str):
+ *     cdef str ERROR_TREATMENT4(self, str string, str _open_):
  *         self.error       = '{}due to many {}opening {}<< {} >>. {}line: {}{}'.format(self.white, self.green, self.red, _open_,             # <<<<<<<<<<<<<<
  *                                                                                 self.white, self.yellow, self.line)
  *         self.error  = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + self.error
@@ -5019,14 +5019,14 @@ static PyObject *__pyx_f_8segError_5ERROR_ERROR_TREATMENT4(struct __pyx_obj_8seg
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = PyNumber_Add(__pyx_v_self->error, __pyx_v_self->reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_r = __pyx_t_3;
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "segError.pyx":109
  *         return self.error+self.reset
  * 
- *     cdef ERROR_TREATMENT4(self, string: str, _open_: str):             # <<<<<<<<<<<<<<
+ *     cdef str ERROR_TREATMENT4(self, str string, str _open_):             # <<<<<<<<<<<<<<
  *         self.error       = '{}due to many {}opening {}<< {} >>. {}line: {}{}'.format(self.white, self.green, self.red, _open_,
  *                                                                                 self.white, self.yellow, self.line)
  */

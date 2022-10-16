@@ -48,7 +48,9 @@ cdef class AFFECTATION:
 
     cdef DEEP_CHECKING(self, str _char_ = ""):
         cdef :
-            unsigned long long int i, j, k, j_moins, j_plus
+
+            unsigned long long int k, j_moins, j_plus
+            signed long long int i, j
             str str_, Open
             list list_of_chars = ['[', '(', '{', '"', "'"]
             unsigned long long int char1, char2, char3, char4, char5 

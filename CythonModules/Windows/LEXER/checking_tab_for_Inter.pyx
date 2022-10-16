@@ -1,3 +1,22 @@
+"""
+this function is created to control the first part of string syntax.
+is the first function of the lexer that a created is based on 3 differents modules
+-   COOMMENT_LINE()
+-   BACKSLASH()
+-   SEGMENTATIO()
+these 3 functions represent the basis of the basis of my lexer.
+comment_line used to define comments like this ( # that's is my fist programming language )
+but we have also the possibility to set multi-line comments  by using the < begin > statment block.
+i am gonna to show you further how it's possible to set multi-line = comments. but for momment let's
+# focious out attention on the basis of out lexer.
+
+"""
+
+from CythonModules.Windows.LEXER.backslash      import bs_interpretor as BSI
+from CythonModules.Windows.LEXER.seg            import seg_interpretor as SI
+from CythonModules.Windows.LEXER                import comment_line
+from CythonModules.Windows.LEXER.seg            import segError as SE
+
 cdef class CHECK_TAB_FOR_INTERPRETER:
     cdef public :
         str master 
@@ -24,8 +43,8 @@ cdef class CHECK_TAB_FOR_INTERPRETER:
         self.line           = line                                                                                      
         # data base where data are stored
         self.data_base      = data_base   
-        self.error          = ''
-        self.string_check   = ''                                                                              
+        self.error          = ""
+        self.string_check   = ""                                                                              
         
         
     cpdef CHECK_LINE(self,  unsigned long _id_, list  MainList ) :
@@ -43,7 +62,7 @@ cdef class CHECK_TAB_FOR_INTERPRETER:
 
                 if str_ not in ['\t', ' ']: pass
                 else:
-                    self.error = segmentation.ERROR( self.line ).ERROR9( )
+                    self.error = SE.ERROR( self.line ).ERROR9( )
                     break
             else: pass
 
@@ -66,7 +85,7 @@ cdef class CHECK_TAB_FOR_INTERPRETER:
                         if idd == -1: pass
                         else: self.master = self.master[: idd]
 
-                    self.string_check, self.error             = checking_if_backslash.BACKSSLASH_FOR_INTERPRETER( master=self.master,
+                    self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,
                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )
                     if not self.error:
 
@@ -74,7 +93,7 @@ cdef class CHECK_TAB_FOR_INTERPRETER:
                         # by using < SEGMENTATION > function that a very powerful function which control many things,
                         # surch as the parentheses, backets .....
 
-                        self.string_check, self.error   = segmentation.SEGMENTATION_FOR_INTERPRETER(self.string_check, self.string_check,
+                        self.string_check, self.error   = SI.SEGMENTATION(self.string_check, self.string_check,
                                                             self.data_base, self.line).TREATEMENT(_id_, MainList)
                     else: pass
                 else: pass

@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "checking_tabulation",
+        "name": "checking_tab_for_Inter",
         "sources": [
-            "checking_tabulation.pyx"
+            "checking_tab_for_Inter.pyx"
         ]
     },
-    "module_name": "checking_tabulation"
+    "module_name": "checking_tab_for_Inter"
 }
 END: Cython Metadata */
 
@@ -624,8 +624,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__checking_tabulation
-#define __PYX_HAVE_API__checking_tabulation
+#define __PYX_HAVE__checking_tab_for_Inter
+#define __PYX_HAVE_API__checking_tab_for_Inter
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -835,23 +835,23 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "checking_tabulation.pyx",
+  "checking_tab_for_Inter.pyx",
   "stringsource",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_19checking_tabulation_CHECK_TAB;
+struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER;
 
-/* "checking_tabulation.pyx":20
- * from CythonModules.Windows.LEXER.seg        import segError as SE
+/* "checking_tab_for_Inter.pyx":20
+ * from CythonModules.Windows.LEXER.seg            import segError as SE
  * 
- * cdef class CHECK_TAB:             # <<<<<<<<<<<<<<
- *     cdef public:
+ * cdef class CHECK_TAB_FOR_INTERPRETER:             # <<<<<<<<<<<<<<
+ *     cdef public :
  *         str master
  */
-struct __pyx_obj_19checking_tabulation_CHECK_TAB {
+struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER {
   PyObject_HEAD
-  struct __pyx_vtabstruct_19checking_tabulation_CHECK_TAB *__pyx_vtab;
+  struct __pyx_vtabstruct_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_vtab;
   PyObject *master;
   PyObject *long_chaine;
   PyObject *data_base;
@@ -862,10 +862,10 @@ struct __pyx_obj_19checking_tabulation_CHECK_TAB {
 
 
 
-struct __pyx_vtabstruct_19checking_tabulation_CHECK_TAB {
-  PyObject *(*CHECK_LINE)(struct __pyx_obj_19checking_tabulation_CHECK_TAB *, unsigned long, int __pyx_skip_dispatch);
+struct __pyx_vtabstruct_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER {
+  PyObject *(*CHECK_LINE)(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *, unsigned long, PyObject *, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_19checking_tabulation_CHECK_TAB *__pyx_vtabptr_19checking_tabulation_CHECK_TAB;
+static struct __pyx_vtabstruct_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_vtabptr_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER;
 
 /* --- Runtime support code (head) --- */
 /* Refnanny.proto */
@@ -979,13 +979,6 @@ static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UIN
 #define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
 #endif
 
-/* PyCFunctionFastCall.proto */
-#if CYTHON_FAST_PYCCALL
-static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
-#else
-#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
-#endif
-
 /* PyFunctionFastCall.proto */
 #if CYTHON_FAST_PYCALL
 #define __Pyx_PyFunction_FastCall(func, args, nargs)\
@@ -1009,23 +1002,19 @@ static PyObject *__Pyx_PyFunction_FastCallDict(PyObject *func, PyObject **args, 
     (assert(__pyx_pyframe_localsplus_offset), (PyObject **)(((char *)(frame)) + __pyx_pyframe_localsplus_offset))
 #endif
 
+/* PyCFunctionFastCall.proto */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
+#else
+#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
+#endif
+
 /* PyObjectCall.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
 #else
 #define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
 #endif
-
-/* PyObjectCall2Args.proto */
-static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
-
-/* PyObjectCallMethO.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
-#endif
-
-/* PyObjectCallOneArg.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
 /* IncludeStringH.proto */
 #include <string.h>
@@ -1063,6 +1052,17 @@ static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_ve
 #define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
 static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
 #endif
+
+/* PyObjectCall2Args.proto */
+static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
+
+/* PyObjectCallMethO.proto */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
+#endif
+
+/* PyObjectCallOneArg.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
 /* PyObjectCallNoArg.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -1104,6 +1104,12 @@ static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize
 static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
 static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
                                                      int is_list, int wraparound, int boundscheck);
+
+/* ArgTypeTest.proto */
+#define __Pyx_ArgTypeTest(obj, type, none_allowed, name, exact)\
+    ((likely((Py_TYPE(obj) == type) | (none_allowed && (obj == Py_None)))) ? 1 :\
+        __Pyx__ArgTypeTest(obj, type, name, exact))
+static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
 
 /* PyThreadStateGet.proto */
 #if CYTHON_FAST_THREAD_STATE
@@ -1219,13 +1225,13 @@ static CYTHON_INLINE unsigned long __Pyx_PyInt_As_unsigned_long(PyObject *);
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_long(unsigned long value);
 
 /* CIntFromPy.proto */
-static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
+static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntFromPy.proto */
-static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
+static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
 
 /* FastTypeChecks.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -1246,42 +1252,42 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, unsigned long __pyx_v__id_, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_CHECK_LINE(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, unsigned long __pyx_v__id_, PyObject *__pyx_v_MainList, int __pyx_skip_dispatch); /* proto*/
 
-/* Module declarations from 'checking_tabulation' */
-static PyTypeObject *__pyx_ptype_19checking_tabulation_CHECK_TAB = 0;
-#define __Pyx_MODULE_NAME "checking_tabulation"
-extern int __pyx_module_is_main_checking_tabulation;
-int __pyx_module_is_main_checking_tabulation = 0;
+/* Module declarations from 'checking_tab_for_Inter' */
+static PyTypeObject *__pyx_ptype_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER = 0;
+#define __Pyx_MODULE_NAME "checking_tab_for_Inter"
+extern int __pyx_module_is_main_checking_tab_for_Inter;
+int __pyx_module_is_main_checking_tab_for_Inter = 0;
 
-/* Implementation of 'checking_tabulation' */
+/* Implementation of 'checking_tab_for_Inter' */
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_TypeError;
 static const char __pyx_k_[] = "";
 static const char __pyx_k_SE[] = "SE";
+static const char __pyx_k_SI[] = "SI";
 static const char __pyx_k__2[] = "\t";
 static const char __pyx_k__3[] = " ";
 static const char __pyx_k__4[] = "\"";
 static const char __pyx_k__5[] = "'";
 static const char __pyx_k_id[] = "_id_";
-static const char __pyx_k_CBS[] = "CBS";
+static const char __pyx_k_BSI[] = "BSI";
 static const char __pyx_k_line[] = "line";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_ERROR[] = "ERROR";
-static const char __pyx_k_color[] = "color";
 static const char __pyx_k_ERROR9[] = "ERROR9";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_master[] = "master";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_string[] = "string";
 static const char __pyx_k_COMMENT[] = "COMMENT";
+static const char __pyx_k_MainList[] = "MainList";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_segError[] = "segError";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_BACKSLASH[] = "BACKSLASH";
-static const char __pyx_k_CHECK_TAB[] = "CHECK_TAB";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_data_base[] = "data_base";
 static const char __pyx_k_enumerate[] = "enumerate";
@@ -1294,12 +1300,13 @@ static const char __pyx_k_long_chaine[] = "long_chaine";
 static const char __pyx_k_COMMENT_LINE[] = "COMMENT_LINE";
 static const char __pyx_k_SEGMENTATION[] = "SEGMENTATION";
 static const char __pyx_k_comment_line[] = "comment_line";
-static const char __pyx_k_segmentation[] = "segmentation";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_stringcomment[] = "stringcomment";
+static const char __pyx_k_bs_interpretor[] = "bs_interpretor";
+static const char __pyx_k_seg_interpretor[] = "seg_interpretor";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_checking_if_backslash[] = "checking_if_backslash";
+static const char __pyx_k_CHECK_TAB_FOR_INTERPRETER[] = "CHECK_TAB_FOR_INTERPRETER";
 static const char __pyx_k_CythonModules_Windows_LEXER[] = "CythonModules.Windows.LEXER";
 static const char __pyx_k_CythonModules_Windows_LEXER_seg[] = "CythonModules.Windows.LEXER.seg";
 static const char __pyx_k_this_function_is_created_to_con[] = "\nthis function is created to control the first part of string syntax.\nis the first function of the lexer that a created is based on 3 differents modules\n-   COOMMENT_LINE()\n-   BACKSLASH()\n-   SEGMENTATIO()\nthese 3 functions represent the basis of the basis of my lexer.\ncomment_line used to define comments like this ( # that's is my fist programming language )\nbut we have also the possibility to set multi-line comments  by using the < begin > statment block.\ni am gonna to show you further how it's possible to set multi-line = comments. but for momment let's\n# focious out attention on the basis of out lexer.\n\n";
@@ -1308,9 +1315,9 @@ static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __red
 static PyObject *__pyx_kp_s_;
 static PyObject *__pyx_n_s_BACKSLASH;
 static PyObject *__pyx_n_s_BACKSSLASH;
-static PyObject *__pyx_n_s_CBS;
+static PyObject *__pyx_n_s_BSI;
 static PyObject *__pyx_n_s_CHECK_LINE;
-static PyObject *__pyx_n_s_CHECK_TAB;
+static PyObject *__pyx_n_s_CHECK_TAB_FOR_INTERPRETER;
 static PyObject *__pyx_n_s_COMMENT;
 static PyObject *__pyx_n_s_COMMENT_LINE;
 static PyObject *__pyx_n_s_CythonModules_Windows_LEXER;
@@ -1318,17 +1325,18 @@ static PyObject *__pyx_n_s_CythonModules_Windows_LEXER_back;
 static PyObject *__pyx_n_s_CythonModules_Windows_LEXER_seg;
 static PyObject *__pyx_n_s_ERROR;
 static PyObject *__pyx_n_s_ERROR9;
+static PyObject *__pyx_n_s_MainList;
 static PyObject *__pyx_n_s_SE;
 static PyObject *__pyx_n_s_SEGMENTATION;
+static PyObject *__pyx_n_s_SI;
 static PyObject *__pyx_n_s_TREATEMENT;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_kp_s__2;
 static PyObject *__pyx_kp_s__3;
 static PyObject *__pyx_kp_s__4;
 static PyObject *__pyx_kp_s__5;
-static PyObject *__pyx_n_s_checking_if_backslash;
+static PyObject *__pyx_n_s_bs_interpretor;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_color;
 static PyObject *__pyx_n_s_comment_line;
 static PyObject *__pyx_n_s_data_base;
 static PyObject *__pyx_n_s_enumerate;
@@ -1346,44 +1354,44 @@ static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_segError;
-static PyObject *__pyx_n_s_segmentation;
+static PyObject *__pyx_n_s_seg_interpretor;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_string;
 static PyObject *__pyx_n_s_stringcomment;
 static PyObject *__pyx_n_s_test;
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_master, PyObject *__pyx_v_long_chaine, PyObject *__pyx_v_data_base, PyObject *__pyx_v_line); /* proto */
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_2CHECK_LINE(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, unsigned long __pyx_v__id_); /* proto */
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_6master___get__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self); /* proto */
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_2__set__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_4__del__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine___get__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self); /* proto */
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_2__set__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_4__del__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base___get__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self); /* proto */
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_2__set__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_4__del__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_4line___get__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self); /* proto */
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_4line_2__set__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_19checking_tabulation_CHECK_TAB(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER___cinit__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_master, PyObject *__pyx_v_long_chaine, PyObject *__pyx_v_data_base, PyObject *__pyx_v_line); /* proto */
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_2CHECK_LINE(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, unsigned long __pyx_v__id_, PyObject *__pyx_v_MainList); /* proto */
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master___get__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self); /* proto */
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_2__set__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_4__del__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine___get__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self); /* proto */
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_2__set__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_4__del__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base___get__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self); /* proto */
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_2__set__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_4__del__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line___get__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self); /* proto */
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_2__set__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tuple__6;
 static PyObject *__pyx_tuple__7;
 static PyObject *__pyx_tuple__8;
 /* Late includes */
 
-/* "checking_tabulation.pyx":31
+/* "checking_tab_for_Inter.pyx":31
  *         str string_check
  * 
- *     def __cinit__(self, master, long_chaine, data_base, line):             # <<<<<<<<<<<<<<
- *         self.master         = master
- *         self.long_chaine    = long_chaine
+ *     def __cinit__(self,             # <<<<<<<<<<<<<<
+ *         master      ,     #   that's the concatenate main string
+ *         long_chaine ,     #   non-concatenate main string
  */
 
 /* Python wrapper */
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_master = 0;
   PyObject *__pyx_v_long_chaine = 0;
   PyObject *__pyx_v_data_base = 0;
@@ -1456,18 +1464,18 @@ static int __pyx_pw_19checking_tabulation_9CHECK_TAB_1__cinit__(PyObject *__pyx_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 31, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self), __pyx_v_master, __pyx_v_long_chaine, __pyx_v_data_base, __pyx_v_line);
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER___cinit__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self), __pyx_v_master, __pyx_v_long_chaine, __pyx_v_data_base, __pyx_v_line);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_master, PyObject *__pyx_v_long_chaine, PyObject *__pyx_v_data_base, PyObject *__pyx_v_line) {
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER___cinit__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_master, PyObject *__pyx_v_long_chaine, PyObject *__pyx_v_data_base, PyObject *__pyx_v_line) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1477,14 +1485,14 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "checking_tabulation.pyx":32
+  /* "checking_tab_for_Inter.pyx":39
  * 
- *     def __cinit__(self, master, long_chaine, data_base, line):
+ *         # concatenate main string
  *         self.master         = master             # <<<<<<<<<<<<<<
+ *         # non-concatenate main string
  *         self.long_chaine    = long_chaine
- *         self.data_base      = data_base
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_master))||((__pyx_v_master) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_master)->tp_name), 0))) __PYX_ERR(0, 39, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_master;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -1493,14 +1501,14 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_
   __pyx_v_self->master = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "checking_tabulation.pyx":33
- *     def __cinit__(self, master, long_chaine, data_base, line):
+  /* "checking_tab_for_Inter.pyx":41
  *         self.master         = master
+ *         # non-concatenate main string
  *         self.long_chaine    = long_chaine             # <<<<<<<<<<<<<<
- *         self.data_base      = data_base
+ *         # currently line
  *         self.line           = line
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_long_chaine))||((__pyx_v_long_chaine) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_long_chaine)->tp_name), 0))) __PYX_ERR(0, 33, __pyx_L1_error)
+  if (!(likely(PyString_CheckExact(__pyx_v_long_chaine))||((__pyx_v_long_chaine) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_long_chaine)->tp_name), 0))) __PYX_ERR(0, 41, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_long_chaine;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -1509,14 +1517,24 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_
   __pyx_v_self->long_chaine = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "checking_tabulation.pyx":34
- *         self.master         = master
+  /* "checking_tab_for_Inter.pyx":43
  *         self.long_chaine    = long_chaine
- *         self.data_base      = data_base             # <<<<<<<<<<<<<<
- *         self.line           = line
- *         self.error          = ''
+ *         # currently line
+ *         self.line           = line             # <<<<<<<<<<<<<<
+ *         # data base where data are stored
+ *         self.data_base      = data_base
  */
-  if (!(likely(PyDict_CheckExact(__pyx_v_data_base))||((__pyx_v_data_base) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_data_base)->tp_name), 0))) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_unsigned_long(__pyx_v_line); if (unlikely((__pyx_t_2 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_v_self->line = __pyx_t_2;
+
+  /* "checking_tab_for_Inter.pyx":45
+ *         self.line           = line
+ *         # data base where data are stored
+ *         self.data_base      = data_base             # <<<<<<<<<<<<<<
+ *         self.error          = ""
+ *         self.string_check   = ""
+ */
+  if (!(likely(PyDict_CheckExact(__pyx_v_data_base))||((__pyx_v_data_base) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_data_base)->tp_name), 0))) __PYX_ERR(0, 45, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_data_base;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -1525,21 +1543,11 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_
   __pyx_v_self->data_base = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "checking_tabulation.pyx":35
- *         self.long_chaine    = long_chaine
+  /* "checking_tab_for_Inter.pyx":46
+ *         # data base where data are stored
  *         self.data_base      = data_base
- *         self.line           = line             # <<<<<<<<<<<<<<
- *         self.error          = ''
- *         self.string_check   = ''
- */
-  __pyx_t_2 = __Pyx_PyInt_As_unsigned_long(__pyx_v_line); if (unlikely((__pyx_t_2 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 35, __pyx_L1_error)
-  __pyx_v_self->line = __pyx_t_2;
-
-  /* "checking_tabulation.pyx":36
- *         self.data_base      = data_base
- *         self.line           = line
- *         self.error          = ''             # <<<<<<<<<<<<<<
- *         self.string_check   = ''
+ *         self.error          = ""             # <<<<<<<<<<<<<<
+ *         self.string_check   = ""
  * 
  */
   __Pyx_INCREF(__pyx_kp_s_);
@@ -1548,12 +1556,12 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_
   __Pyx_DECREF(__pyx_v_self->error);
   __pyx_v_self->error = __pyx_kp_s_;
 
-  /* "checking_tabulation.pyx":37
- *         self.line           = line
- *         self.error          = ''
- *         self.string_check   = ''             # <<<<<<<<<<<<<<
+  /* "checking_tab_for_Inter.pyx":47
+ *         self.data_base      = data_base
+ *         self.error          = ""
+ *         self.string_check   = ""             # <<<<<<<<<<<<<<
  * 
- *     cpdef CHECK_LINE(self, unsigned long int _id_ ):
+ * 
  */
   __Pyx_INCREF(__pyx_kp_s_);
   __Pyx_GIVEREF(__pyx_kp_s_);
@@ -1561,12 +1569,12 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_
   __Pyx_DECREF(__pyx_v_self->string_check);
   __pyx_v_self->string_check = __pyx_kp_s_;
 
-  /* "checking_tabulation.pyx":31
+  /* "checking_tab_for_Inter.pyx":31
  *         str string_check
  * 
- *     def __cinit__(self, master, long_chaine, data_base, line):             # <<<<<<<<<<<<<<
- *         self.master         = master
- *         self.long_chaine    = long_chaine
+ *     def __cinit__(self,             # <<<<<<<<<<<<<<
+ *         master      ,     #   that's the concatenate main string
+ *         long_chaine ,     #   non-concatenate main string
  */
 
   /* function exit code */
@@ -1574,25 +1582,25 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB___cinit__(struct __pyx_obj_
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "checking_tabulation.pyx":39
- *         self.string_check   = ''
+/* "checking_tab_for_Inter.pyx":50
  * 
- *     cpdef CHECK_LINE(self, unsigned long int _id_ ):             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef CHECK_LINE(self,  unsigned long _id_, list  MainList ) :             # <<<<<<<<<<<<<<
  * 
  *         cdef :
  */
 
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_3CHECK_LINE(PyObject *__pyx_v_self, PyObject *__pyx_arg__id_); /*proto*/
-static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, unsigned long __pyx_v__id_, int __pyx_skip_dispatch) {
-  long __pyx_v_i;
-  long __pyx_v_idd;
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_3CHECK_LINE(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_CHECK_LINE(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, unsigned long __pyx_v__id_, PyObject *__pyx_v_MainList, int __pyx_skip_dispatch) {
+  int __pyx_v_i;
+  int __pyx_v_idd;
   PyObject *__pyx_v_str_ = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -1601,15 +1609,14 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  long __pyx_t_6;
-  PyObject *(*__pyx_t_7)(PyObject *);
-  int __pyx_t_8;
-  PyObject *__pyx_t_9 = NULL;
-  int __pyx_t_10;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *(*__pyx_t_8)(PyObject *);
+  int __pyx_t_9;
+  PyObject *__pyx_t_10 = NULL;
   int __pyx_t_11;
-  PyObject *__pyx_t_12 = NULL;
-  int __pyx_t_13;
-  PyObject *(*__pyx_t_14)(PyObject *);
+  int __pyx_t_12;
+  PyObject *(*__pyx_t_13)(PyObject *);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1623,14 +1630,15 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_CHECK_LINE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_CHECK_LINE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_19checking_tabulation_9CHECK_TAB_3CHECK_LINE)) {
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_3CHECK_LINE)) {
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_3 = __Pyx_PyInt_From_unsigned_long(__pyx_v__id_); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_unsigned_long(__pyx_v__id_); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
+        __pyx_t_6 = 0;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
           __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
           if (likely(__pyx_t_5)) {
@@ -1638,13 +1646,43 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
             __Pyx_INCREF(__pyx_t_5);
             __Pyx_INCREF(function);
             __Pyx_DECREF_SET(__pyx_t_4, function);
+            __pyx_t_6 = 1;
           }
         }
-        __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
-        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_4)) {
+          PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_3, __pyx_v_MainList};
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+          PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_3, __pyx_v_MainList};
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        } else
+        #endif
+        {
+          __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 50, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          if (__pyx_t_5) {
+            __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
+          }
+          __Pyx_GIVEREF(__pyx_t_3);
+          PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_t_3);
+          __Pyx_INCREF(__pyx_v_MainList);
+          __Pyx_GIVEREF(__pyx_v_MainList);
+          PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_MainList);
+          __pyx_t_3 = 0;
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_r = __pyx_t_2;
         __pyx_t_2 = 0;
@@ -1664,16 +1702,7 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
     #endif
   }
 
-  /* "checking_tabulation.pyx":43
- *         cdef :
- *             signed long int i
- *             signed long int idd = -1             # <<<<<<<<<<<<<<
- *             str str_
- * 
- */
-  __pyx_v_idd = -1L;
-
-  /* "checking_tabulation.pyx":46
+  /* "checking_tab_for_Inter.pyx":56
  *             str str_
  * 
  *         for i, str_ in enumerate( self.long_chaine ):             # <<<<<<<<<<<<<<
@@ -1681,39 +1710,39 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
  * 
  */
   __pyx_t_6 = 0;
-  __pyx_t_1 = PyObject_GetIter(__pyx_v_self->long_chaine); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = PyObject_GetIter(__pyx_v_self->long_chaine); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_8 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 56, __pyx_L1_error)
   for (;;) {
     {
-      __pyx_t_2 = __pyx_t_7(__pyx_t_1);
+      __pyx_t_2 = __pyx_t_8(__pyx_t_1);
       if (unlikely(!__pyx_t_2)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 46, __pyx_L1_error)
+          else __PYX_ERR(0, 56, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_2);
     }
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 46, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_str_, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
     __pyx_v_i = __pyx_t_6;
     __pyx_t_6 = (__pyx_t_6 + 1);
 
-    /* "checking_tabulation.pyx":47
+    /* "checking_tab_for_Inter.pyx":57
  * 
  *         for i, str_ in enumerate( self.long_chaine ):
  *             if i == 0  :             # <<<<<<<<<<<<<<
  * 
  *                 # checking if tabulation key was pressed or not on keyboard or if space was also set
  */
-    __pyx_t_8 = ((__pyx_v_i == 0) != 0);
-    if (__pyx_t_8) {
+    __pyx_t_9 = ((__pyx_v_i == 0) != 0);
+    if (__pyx_t_9) {
 
-      /* "checking_tabulation.pyx":53
+      /* "checking_tab_for_Inter.pyx":63
  *                 # _id_ is an integer and take theirs values in this range [0, .... N] and set the indent blocks
  * 
  *                 if str_ not in ['\t', ' ']: pass             # <<<<<<<<<<<<<<
@@ -1721,25 +1750,25 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
  *                     self.error = SE.ERROR( self.line ).ERROR9( )
  */
       __Pyx_INCREF(__pyx_v_str_);
-      __pyx_t_9 = __pyx_v_str_;
-      __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_NE)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
-      __pyx_t_11 = (__pyx_t_10 != 0);
-      if (__pyx_t_11) {
+      __pyx_t_10 = __pyx_v_str_;
+      __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_10, __pyx_kp_s__2, Py_NE)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 63, __pyx_L1_error)
+      __pyx_t_12 = (__pyx_t_11 != 0);
+      if (__pyx_t_12) {
       } else {
-        __pyx_t_8 = __pyx_t_11;
+        __pyx_t_9 = __pyx_t_12;
         goto __pyx_L7_bool_binop_done;
       }
-      __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_NE)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
-      __pyx_t_10 = (__pyx_t_11 != 0);
-      __pyx_t_8 = __pyx_t_10;
+      __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_10, __pyx_kp_s__3, Py_NE)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 63, __pyx_L1_error)
+      __pyx_t_11 = (__pyx_t_12 != 0);
+      __pyx_t_9 = __pyx_t_11;
       __pyx_L7_bool_binop_done:;
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_10 = (__pyx_t_8 != 0);
-      if (__pyx_t_10) {
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_11 = (__pyx_t_9 != 0);
+      if (__pyx_t_11) {
         goto __pyx_L6;
       }
 
-      /* "checking_tabulation.pyx":55
+      /* "checking_tab_for_Inter.pyx":65
  *                 if str_ not in ['\t', ' ']: pass
  *                 else:
  *                     self.error = SE.ERROR( self.line ).ERROR9( )             # <<<<<<<<<<<<<<
@@ -1747,55 +1776,55 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
  *             else: pass
  */
       /*else*/ {
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_SE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_SE); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_5);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_12 = NULL;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
-          __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_5);
-          if (likely(__pyx_t_12)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-            __Pyx_INCREF(__pyx_t_12);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __pyx_t_7 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_5 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+          __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+          if (likely(__pyx_t_5)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+            __Pyx_INCREF(__pyx_t_5);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_5, function);
+            __Pyx_DECREF_SET(__pyx_t_3, function);
           }
         }
-        __pyx_t_4 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_12, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
-        __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+        __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_7);
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_ERROR9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_ERROR9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_4 = NULL;
-        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_5);
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
           if (likely(__pyx_t_4)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
             __Pyx_INCREF(__pyx_t_4);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_5, function);
+            __Pyx_DECREF_SET(__pyx_t_3, function);
           }
         }
-        __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
+        __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 55, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GIVEREF(__pyx_t_2);
         __Pyx_GOTREF(__pyx_v_self->error);
         __Pyx_DECREF(__pyx_v_self->error);
         __pyx_v_self->error = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "checking_tabulation.pyx":56
+        /* "checking_tab_for_Inter.pyx":66
  *                 else:
  *                     self.error = SE.ERROR( self.line ).ERROR9( )
  *                     break             # <<<<<<<<<<<<<<
@@ -1806,7 +1835,7 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
       }
       __pyx_L6:;
 
-      /* "checking_tabulation.pyx":47
+      /* "checking_tab_for_Inter.pyx":57
  * 
  *         for i, str_ in enumerate( self.long_chaine ):
  *             if i == 0  :             # <<<<<<<<<<<<<<
@@ -1816,18 +1845,18 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
       goto __pyx_L5;
     }
 
-    /* "checking_tabulation.pyx":57
+    /* "checking_tab_for_Inter.pyx":67
  *                     self.error = SE.ERROR( self.line ).ERROR9( )
  *                     break
  *             else: pass             # <<<<<<<<<<<<<<
  * 
- *         if not self.error :
+ *         if not self.error:
  */
     /*else*/ {
     }
     __pyx_L5:;
 
-    /* "checking_tabulation.pyx":46
+    /* "checking_tab_for_Inter.pyx":56
  *             str str_
  * 
  *         for i, str_ in enumerate( self.long_chaine ):             # <<<<<<<<<<<<<<
@@ -1838,82 +1867,82 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "checking_tabulation.pyx":59
+  /* "checking_tab_for_Inter.pyx":69
  *             else: pass
  * 
- *         if not self.error :             # <<<<<<<<<<<<<<
+ *         if not self.error:             # <<<<<<<<<<<<<<
  * 
  *             # if the first character of the line is < # > it means comment line was defined then the function < COMMENT_LINE >
  */
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __pyx_t_8 = ((!__pyx_t_10) != 0);
-  if (__pyx_t_8) {
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_9 = ((!__pyx_t_11) != 0);
+  if (__pyx_t_9) {
 
-    /* "checking_tabulation.pyx":65
+    /* "checking_tab_for_Inter.pyx":75
  *             # to set comment line it's very easy simple by using < # > as a first character
  * 
  *             self.string_check, idd, self.error = comment_line.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()             # <<<<<<<<<<<<<<
- * 
- *             if not self.error:
+ *             if not  self.error :
+ *                 if self.string_check in [ 'string', 'stringcomment' ]:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_comment_line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_COMMENT_LINE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_comment_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_COMMENT_LINE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = NULL;
-    __pyx_t_13 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_7 = NULL;
+    __pyx_t_6 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_3)) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_7)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_7);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_4, function);
-        __pyx_t_13 = 1;
+        __pyx_t_6 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_self->master, __pyx_v_self->data_base, __pyx_t_5};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 3+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_v_self->master, __pyx_v_self->data_base, __pyx_t_3};
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_self->master, __pyx_v_self->data_base, __pyx_t_5};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 3+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_v_self->master, __pyx_v_self->data_base, __pyx_t_3};
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_12 = PyTuple_New(3+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 65, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
-      if (__pyx_t_3) {
-        __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_3); __pyx_t_3 = NULL;
+      __pyx_t_5 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      if (__pyx_t_7) {
+        __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
       }
       __Pyx_INCREF(__pyx_v_self->master);
       __Pyx_GIVEREF(__pyx_v_self->master);
-      PyTuple_SET_ITEM(__pyx_t_12, 0+__pyx_t_13, __pyx_v_self->master);
+      PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_6, __pyx_v_self->master);
       __Pyx_INCREF(__pyx_v_self->data_base);
       __Pyx_GIVEREF(__pyx_v_self->data_base);
-      PyTuple_SET_ITEM(__pyx_t_12, 1+__pyx_t_13, __pyx_v_self->data_base);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_12, 2+__pyx_t_13, __pyx_t_5);
-      __pyx_t_5 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_12, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
+      PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_v_self->data_base);
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_6, __pyx_t_3);
+      __pyx_t_3 = 0;
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_COMMENT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_COMMENT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -1928,7 +1957,7 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
     }
     __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -1937,264 +1966,250 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 65, __pyx_L1_error)
+        __PYX_ERR(0, 75, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
         __pyx_t_4 = PyTuple_GET_ITEM(sequence, 0); 
         __pyx_t_2 = PyTuple_GET_ITEM(sequence, 1); 
-        __pyx_t_12 = PyTuple_GET_ITEM(sequence, 2); 
+        __pyx_t_5 = PyTuple_GET_ITEM(sequence, 2); 
       } else {
         __pyx_t_4 = PyList_GET_ITEM(sequence, 0); 
         __pyx_t_2 = PyList_GET_ITEM(sequence, 1); 
-        __pyx_t_12 = PyList_GET_ITEM(sequence, 2); 
+        __pyx_t_5 = PyList_GET_ITEM(sequence, 2); 
       }
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_12);
+      __Pyx_INCREF(__pyx_t_5);
       #else
-      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
+      __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 65, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
+      __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_14 = Py_TYPE(__pyx_t_5)->tp_iternext;
-      index = 0; __pyx_t_4 = __pyx_t_14(__pyx_t_5); if (unlikely(!__pyx_t_4)) goto __pyx_L10_unpacking_failed;
+      __pyx_t_13 = Py_TYPE(__pyx_t_3)->tp_iternext;
+      index = 0; __pyx_t_4 = __pyx_t_13(__pyx_t_3); if (unlikely(!__pyx_t_4)) goto __pyx_L10_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_4);
-      index = 1; __pyx_t_2 = __pyx_t_14(__pyx_t_5); if (unlikely(!__pyx_t_2)) goto __pyx_L10_unpacking_failed;
+      index = 1; __pyx_t_2 = __pyx_t_13(__pyx_t_3); if (unlikely(!__pyx_t_2)) goto __pyx_L10_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_2);
-      index = 2; __pyx_t_12 = __pyx_t_14(__pyx_t_5); if (unlikely(!__pyx_t_12)) goto __pyx_L10_unpacking_failed;
-      __Pyx_GOTREF(__pyx_t_12);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_5), 3) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
-      __pyx_t_14 = NULL;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      index = 2; __pyx_t_5 = __pyx_t_13(__pyx_t_3); if (unlikely(!__pyx_t_5)) goto __pyx_L10_unpacking_failed;
+      __Pyx_GOTREF(__pyx_t_5);
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_3), 3) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_13 = NULL;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       goto __pyx_L11_unpacking_done;
       __pyx_L10_unpacking_failed:;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_14 = NULL;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 65, __pyx_L1_error)
+      __PYX_ERR(0, 75, __pyx_L1_error)
       __pyx_L11_unpacking_done:;
     }
-    if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 65, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_6 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_12))||((__pyx_t_12) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_12)->tp_name), 0))) __PYX_ERR(0, 65, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->string_check);
     __Pyx_DECREF(__pyx_v_self->string_check);
     __pyx_v_self->string_check = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
     __pyx_v_idd = __pyx_t_6;
-    __Pyx_GIVEREF(__pyx_t_12);
+    __Pyx_GIVEREF(__pyx_t_5);
     __Pyx_GOTREF(__pyx_v_self->error);
     __Pyx_DECREF(__pyx_v_self->error);
-    __pyx_v_self->error = ((PyObject*)__pyx_t_12);
-    __pyx_t_12 = 0;
+    __pyx_v_self->error = ((PyObject*)__pyx_t_5);
+    __pyx_t_5 = 0;
 
-    /* "checking_tabulation.pyx":67
- *             self.string_check, idd, self.error = comment_line.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
+    /* "checking_tab_for_Inter.pyx":76
  * 
- *             if not self.error:             # <<<<<<<<<<<<<<
+ *             self.string_check, idd, self.error = comment_line.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
+ *             if not  self.error :             # <<<<<<<<<<<<<<
  *                 if self.string_check in [ 'string', 'stringcomment' ]:
  * 
  */
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 67, __pyx_L1_error)
-    __pyx_t_10 = ((!__pyx_t_8) != 0);
-    if (__pyx_t_10) {
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_11 = ((!__pyx_t_9) != 0);
+    if (__pyx_t_11) {
 
-      /* "checking_tabulation.pyx":68
- * 
- *             if not self.error:
+      /* "checking_tab_for_Inter.pyx":77
+ *             self.string_check, idd, self.error = comment_line.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
+ *             if not  self.error :
  *                 if self.string_check in [ 'string', 'stringcomment' ]:             # <<<<<<<<<<<<<<
  * 
  *                     # in first of all after checking if comment line was or not difined the next step is to control
  */
       __Pyx_INCREF(__pyx_v_self->string_check);
-      __pyx_t_9 = __pyx_v_self->string_check;
-      __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_n_s_string, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
-      __pyx_t_11 = (__pyx_t_8 != 0);
-      if (!__pyx_t_11) {
+      __pyx_t_10 = __pyx_v_self->string_check;
+      __pyx_t_9 = (__Pyx_PyString_Equals(__pyx_t_10, __pyx_n_s_string, Py_EQ)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
+      __pyx_t_12 = (__pyx_t_9 != 0);
+      if (!__pyx_t_12) {
       } else {
-        __pyx_t_10 = __pyx_t_11;
+        __pyx_t_11 = __pyx_t_12;
         goto __pyx_L14_bool_binop_done;
       }
-      __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_n_s_stringcomment, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
-      __pyx_t_8 = (__pyx_t_11 != 0);
-      __pyx_t_10 = __pyx_t_8;
+      __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_10, __pyx_n_s_stringcomment, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
+      __pyx_t_9 = (__pyx_t_12 != 0);
+      __pyx_t_11 = __pyx_t_9;
       __pyx_L14_bool_binop_done:;
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_8 = (__pyx_t_10 != 0);
-      if (__pyx_t_8) {
+      __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      __pyx_t_9 = (__pyx_t_11 != 0);
+      if (__pyx_t_9) {
 
-        /* "checking_tabulation.pyx":73
- *                     # if the backslash key was set or not to check that i create a function called < BACKSLASH >.
+        /* "checking_tab_for_Inter.pyx":83
  *                     # backslash function is used to split the main string.
- *                     if idd == -1: pass             # <<<<<<<<<<<<<<
+ * 
+ *                     if self.master[0] in ['"', "'"] and self.master[-1] == self.master[0]:  pass             # <<<<<<<<<<<<<<
  *                     else:
- *                         if self.master[0] in  ['"', "'"] and self.master[-1] == self.master[0]: pass
+ *                         if idd == -1: pass
  */
-        __pyx_t_8 = ((__pyx_v_idd == -1L) != 0);
-        if (__pyx_t_8) {
+        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->master, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 83, __pyx_L1_error)
+        if (!__pyx_t_12) {
+        } else {
+          __pyx_t_11 = __pyx_t_12;
+          goto __pyx_L19_bool_binop_done;
+        }
+        __pyx_t_12 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__5, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_11 = __pyx_t_12;
+        __pyx_L19_bool_binop_done:;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_12 = (__pyx_t_11 != 0);
+        if (__pyx_t_12) {
+        } else {
+          __pyx_t_9 = __pyx_t_12;
+          goto __pyx_L17_bool_binop_done;
+        }
+        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->master, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_self->master, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_9 = __pyx_t_12;
+        __pyx_L17_bool_binop_done:;
+        if (__pyx_t_9) {
           goto __pyx_L16;
         }
 
-        /* "checking_tabulation.pyx":75
- *                     if idd == -1: pass
+        /* "checking_tab_for_Inter.pyx":85
+ *                     if self.master[0] in ['"', "'"] and self.master[-1] == self.master[0]:  pass
  *                     else:
- *                         if self.master[0] in  ['"', "'"] and self.master[-1] == self.master[0]: pass             # <<<<<<<<<<<<<<
- *                         else:
- *                             if idd == -1: pass
+ *                         if idd == -1: pass             # <<<<<<<<<<<<<<
+ *                         else: self.master = self.master[: idd]
+ * 
  */
         /*else*/ {
-          __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->master, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__4, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
-          if (!__pyx_t_11) {
-          } else {
-            __pyx_t_10 = __pyx_t_11;
-            goto __pyx_L20_bool_binop_done;
-          }
-          __pyx_t_11 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__5, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
-          __pyx_t_10 = __pyx_t_11;
-          __pyx_L20_bool_binop_done:;
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_11 = (__pyx_t_10 != 0);
-          if (__pyx_t_11) {
-          } else {
-            __pyx_t_8 = __pyx_t_11;
-            goto __pyx_L18_bool_binop_done;
-          }
-          __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->master, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_self->master, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 75, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_12);
-          __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_12, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_8 = __pyx_t_11;
-          __pyx_L18_bool_binop_done:;
-          if (__pyx_t_8) {
-            goto __pyx_L17;
+          __pyx_t_9 = ((__pyx_v_idd == -1L) != 0);
+          if (__pyx_t_9) {
+            goto __pyx_L21;
           }
 
-          /* "checking_tabulation.pyx":77
- *                         if self.master[0] in  ['"', "'"] and self.master[-1] == self.master[0]: pass
- *                         else:
- *                             if idd == -1: pass             # <<<<<<<<<<<<<<
- *                             else: self.master = self.master[: idd]
+          /* "checking_tab_for_Inter.pyx":86
+ *                     else:
+ *                         if idd == -1: pass
+ *                         else: self.master = self.master[: idd]             # <<<<<<<<<<<<<<
  * 
+ *                     self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,
  */
           /*else*/ {
-            __pyx_t_8 = ((__pyx_v_idd == -1L) != 0);
-            if (__pyx_t_8) {
-              goto __pyx_L22;
+            if (unlikely(__pyx_v_self->master == Py_None)) {
+              PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+              __PYX_ERR(0, 86, __pyx_L1_error)
             }
-
-            /* "checking_tabulation.pyx":78
- *                         else:
- *                             if idd == -1: pass
- *                             else: self.master = self.master[: idd]             # <<<<<<<<<<<<<<
- * 
- *                     self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,
- */
-            /*else*/ {
-              if (unlikely(__pyx_v_self->master == Py_None)) {
-                PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 78, __pyx_L1_error)
-              }
-              __pyx_t_2 = PySequence_GetSlice(__pyx_v_self->master, 0, __pyx_v_idd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_2);
-              __Pyx_GIVEREF(__pyx_t_2);
-              __Pyx_GOTREF(__pyx_v_self->master);
-              __Pyx_DECREF(__pyx_v_self->master);
-              __pyx_v_self->master = ((PyObject*)__pyx_t_2);
-              __pyx_t_2 = 0;
-            }
-            __pyx_L22:;
+            __pyx_t_2 = PySequence_GetSlice(__pyx_v_self->master, 0, __pyx_v_idd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_GIVEREF(__pyx_t_2);
+            __Pyx_GOTREF(__pyx_v_self->master);
+            __Pyx_DECREF(__pyx_v_self->master);
+            __pyx_v_self->master = ((PyObject*)__pyx_t_2);
+            __pyx_t_2 = 0;
           }
-          __pyx_L17:;
+          __pyx_L21:;
         }
         __pyx_L16:;
 
-        /* "checking_tabulation.pyx":80
- *                             else: self.master = self.master[: idd]
+        /* "checking_tab_for_Inter.pyx":88
+ *                         else: self.master = self.master[: idd]
  * 
- *                     self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,             # <<<<<<<<<<<<<<
- *                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )
- *                     if not self.error :
+ *                     self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,             # <<<<<<<<<<<<<<
+ *                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )
+ *                     if not self.error:
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_CBS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_BSI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_BACKSSLASH); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 80, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_12);
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_BACKSSLASH); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_master, __pyx_v_self->master) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_master, __pyx_v_self->master) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
 
-        /* "checking_tabulation.pyx":81
+        /* "checking_tab_for_Inter.pyx":89
  * 
- *                     self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,
- *                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )             # <<<<<<<<<<<<<<
- *                     if not self.error :
+ *                     self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,
+ *                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )             # <<<<<<<<<<<<<<
+ *                     if not self.error:
  * 
  */
-        if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_data_base, __pyx_v_self->data_base) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
-        __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_data_base, __pyx_v_self->data_base) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_line, __pyx_t_1) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_line, __pyx_t_1) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "checking_tabulation.pyx":80
- *                             else: self.master = self.master[: idd]
+        /* "checking_tab_for_Inter.pyx":88
+ *                         else: self.master = self.master[: idd]
  * 
- *                     self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,             # <<<<<<<<<<<<<<
- *                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )
- *                     if not self.error :
+ *                     self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,             # <<<<<<<<<<<<<<
+ *                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )
+ *                     if not self.error:
  */
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "checking_tabulation.pyx":81
+        /* "checking_tab_for_Inter.pyx":89
  * 
- *                     self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,
- *                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )             # <<<<<<<<<<<<<<
- *                     if not self.error :
+ *                     self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,
+ *                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )             # <<<<<<<<<<<<<<
+ *                     if not self.error:
  * 
  */
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_BACKSLASH); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_BACKSLASH); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_12 = __Pyx_PyInt_From_unsigned_long(__pyx_v__id_); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 81, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_12);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_id, __pyx_t_12) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 81, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_12);
+        __pyx_t_5 = __Pyx_PyInt_From_unsigned_long(__pyx_v__id_); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_id, __pyx_t_5) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_MainList, __pyx_v_MainList) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if ((likely(PyTuple_CheckExact(__pyx_t_12))) || (PyList_CheckExact(__pyx_t_12))) {
-          PyObject* sequence = __pyx_t_12;
+        if ((likely(PyTuple_CheckExact(__pyx_t_5))) || (PyList_CheckExact(__pyx_t_5))) {
+          PyObject* sequence = __pyx_t_5;
           Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 80, __pyx_L1_error)
+            __PYX_ERR(0, 88, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -2207,43 +2222,43 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
           __Pyx_INCREF(__pyx_t_1);
           __Pyx_INCREF(__pyx_t_2);
           #else
-          __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+          __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
-          __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_4 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
+          __pyx_t_4 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
-          __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_14 = Py_TYPE(__pyx_t_4)->tp_iternext;
-          index = 0; __pyx_t_1 = __pyx_t_14(__pyx_t_4); if (unlikely(!__pyx_t_1)) goto __pyx_L23_unpacking_failed;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_13 = Py_TYPE(__pyx_t_4)->tp_iternext;
+          index = 0; __pyx_t_1 = __pyx_t_13(__pyx_t_4); if (unlikely(!__pyx_t_1)) goto __pyx_L22_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_1);
-          index = 1; __pyx_t_2 = __pyx_t_14(__pyx_t_4); if (unlikely(!__pyx_t_2)) goto __pyx_L23_unpacking_failed;
+          index = 1; __pyx_t_2 = __pyx_t_13(__pyx_t_4); if (unlikely(!__pyx_t_2)) goto __pyx_L22_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_2);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_4), 2) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
-          __pyx_t_14 = NULL;
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_4), 2) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+          __pyx_t_13 = NULL;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          goto __pyx_L24_unpacking_done;
-          __pyx_L23_unpacking_failed:;
+          goto __pyx_L23_unpacking_done;
+          __pyx_L22_unpacking_failed:;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_14 = NULL;
+          __pyx_t_13 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 80, __pyx_L1_error)
-          __pyx_L24_unpacking_done:;
+          __PYX_ERR(0, 88, __pyx_L1_error)
+          __pyx_L23_unpacking_done:;
         }
 
-        /* "checking_tabulation.pyx":80
- *                             else: self.master = self.master[: idd]
+        /* "checking_tab_for_Inter.pyx":88
+ *                         else: self.master = self.master[: idd]
  * 
- *                     self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,             # <<<<<<<<<<<<<<
- *                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )
- *                     if not self.error :
+ *                     self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,             # <<<<<<<<<<<<<<
+ *                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )
+ *                     if not self.error:
  */
-        if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 80, __pyx_L1_error)
-        if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 80, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 88, __pyx_L1_error)
+        if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 88, __pyx_L1_error)
         __Pyx_GIVEREF(__pyx_t_1);
         __Pyx_GOTREF(__pyx_v_self->string_check);
         __Pyx_DECREF(__pyx_v_self->string_check);
@@ -2255,239 +2270,235 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
         __pyx_v_self->error = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "checking_tabulation.pyx":82
- *                     self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,
- *                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )
- *                     if not self.error :             # <<<<<<<<<<<<<<
+        /* "checking_tab_for_Inter.pyx":90
+ *                     self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,
+ *                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )
+ *                     if not self.error:             # <<<<<<<<<<<<<<
  * 
  *                         # after checking if backslash is defined i rebuild the entire main string
  */
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 82, __pyx_L1_error)
-        __pyx_t_11 = ((!__pyx_t_8) != 0);
-        if (__pyx_t_11) {
+        __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
+        __pyx_t_12 = ((!__pyx_t_9) != 0);
+        if (__pyx_t_12) {
 
-          /* "checking_tabulation.pyx":88
+          /* "checking_tab_for_Inter.pyx":96
  *                         # surch as the parentheses, backets .....
  * 
- *                         self.string_check, self.error   = segmentation.SEGMENTATION(self.string_check, self.string_check,             # <<<<<<<<<<<<<<
- *                                                             self.data_base, self.line).TREATEMENT(_id_, self.color)
+ *                         self.string_check, self.error   = SI.SEGMENTATION(self.string_check, self.string_check,             # <<<<<<<<<<<<<<
+ *                                                             self.data_base, self.line).TREATEMENT(_id_, MainList)
  *                     else: pass
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_segmentation); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SEGMENTATION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_SEGMENTATION); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "checking_tabulation.pyx":89
+          /* "checking_tab_for_Inter.pyx":97
  * 
- *                         self.string_check, self.error   = segmentation.SEGMENTATION(self.string_check, self.string_check,
- *                                                             self.data_base, self.line).TREATEMENT(_id_, self.color)             # <<<<<<<<<<<<<<
+ *                         self.string_check, self.error   = SI.SEGMENTATION(self.string_check, self.string_check,
+ *                                                             self.data_base, self.line).TREATEMENT(_id_, MainList)             # <<<<<<<<<<<<<<
  *                     else: pass
  *                 else: pass
  */
-          __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_5 = NULL;
-          __pyx_t_13 = 0;
+          __pyx_t_3 = NULL;
+          __pyx_t_6 = 0;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-            __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-            if (likely(__pyx_t_5)) {
+            __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+            if (likely(__pyx_t_3)) {
               PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-              __Pyx_INCREF(__pyx_t_5);
+              __Pyx_INCREF(__pyx_t_3);
               __Pyx_INCREF(function);
               __Pyx_DECREF_SET(__pyx_t_4, function);
-              __pyx_t_13 = 1;
+              __pyx_t_6 = 1;
             }
           }
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_4)) {
-            PyObject *__pyx_temp[5] = {__pyx_t_5, __pyx_v_self->string_check, __pyx_v_self->string_check, __pyx_v_self->data_base, __pyx_t_1};
-            __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
-            __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+            PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_v_self->string_check, __pyx_v_self->string_check, __pyx_v_self->data_base, __pyx_t_1};
+            __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+            __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           } else
           #endif
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-            PyObject *__pyx_temp[5] = {__pyx_t_5, __pyx_v_self->string_check, __pyx_v_self->string_check, __pyx_v_self->data_base, __pyx_t_1};
-            __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 4+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
-            __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+            PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_v_self->string_check, __pyx_v_self->string_check, __pyx_v_self->data_base, __pyx_t_1};
+            __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 4+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+            __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           } else
           #endif
           {
-            __pyx_t_3 = PyTuple_New(4+__pyx_t_13); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_3);
-            if (__pyx_t_5) {
-              __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5); __pyx_t_5 = NULL;
+            __pyx_t_7 = PyTuple_New(4+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 96, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_7);
+            if (__pyx_t_3) {
+              __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
             }
             __Pyx_INCREF(__pyx_v_self->string_check);
             __Pyx_GIVEREF(__pyx_v_self->string_check);
-            PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_13, __pyx_v_self->string_check);
+            PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_v_self->string_check);
             __Pyx_INCREF(__pyx_v_self->string_check);
             __Pyx_GIVEREF(__pyx_v_self->string_check);
-            PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_13, __pyx_v_self->string_check);
+            PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_self->string_check);
             __Pyx_INCREF(__pyx_v_self->data_base);
             __Pyx_GIVEREF(__pyx_v_self->data_base);
-            PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_13, __pyx_v_self->data_base);
+            PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, __pyx_v_self->data_base);
             __Pyx_GIVEREF(__pyx_t_1);
-            PyTuple_SET_ITEM(__pyx_t_3, 3+__pyx_t_13, __pyx_t_1);
+            PyTuple_SET_ITEM(__pyx_t_7, 3+__pyx_t_6, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_TREATEMENT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_TREATEMENT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v__id_); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v__id_); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_color); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_1 = NULL;
-          __pyx_t_13 = 0;
+          __pyx_t_7 = NULL;
+          __pyx_t_6 = 0;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-            __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_4);
-            if (likely(__pyx_t_1)) {
+            __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_4);
+            if (likely(__pyx_t_7)) {
               PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-              __Pyx_INCREF(__pyx_t_1);
+              __Pyx_INCREF(__pyx_t_7);
               __Pyx_INCREF(function);
               __Pyx_DECREF_SET(__pyx_t_4, function);
-              __pyx_t_13 = 1;
+              __pyx_t_6 = 1;
             }
           }
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_4)) {
-            PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_2, __pyx_t_3};
-            __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 89, __pyx_L1_error)
-            __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __Pyx_GOTREF(__pyx_t_12);
+            PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_2, __pyx_v_MainList};
+            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
+            __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+            __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           } else
           #endif
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-            PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_2, __pyx_t_3};
-            __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 89, __pyx_L1_error)
-            __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __Pyx_GOTREF(__pyx_t_12);
+            PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_2, __pyx_v_MainList};
+            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
+            __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+            __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           } else
           #endif
           {
-            __pyx_t_5 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_5);
-            if (__pyx_t_1) {
-              __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1); __pyx_t_1 = NULL;
+            __pyx_t_1 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            if (__pyx_t_7) {
+              __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_7); __pyx_t_7 = NULL;
             }
             __Pyx_GIVEREF(__pyx_t_2);
-            PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_13, __pyx_t_2);
-            __Pyx_GIVEREF(__pyx_t_3);
-            PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_13, __pyx_t_3);
+            PyTuple_SET_ITEM(__pyx_t_1, 0+__pyx_t_6, __pyx_t_2);
+            __Pyx_INCREF(__pyx_v_MainList);
+            __Pyx_GIVEREF(__pyx_v_MainList);
+            PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_6, __pyx_v_MainList);
             __pyx_t_2 = 0;
-            __pyx_t_3 = 0;
-            __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 89, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_12);
-            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_5);
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if ((likely(PyTuple_CheckExact(__pyx_t_12))) || (PyList_CheckExact(__pyx_t_12))) {
-            PyObject* sequence = __pyx_t_12;
+          if ((likely(PyTuple_CheckExact(__pyx_t_5))) || (PyList_CheckExact(__pyx_t_5))) {
+            PyObject* sequence = __pyx_t_5;
             Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 88, __pyx_L1_error)
+              __PYX_ERR(0, 96, __pyx_L1_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             if (likely(PyTuple_CheckExact(sequence))) {
               __pyx_t_4 = PyTuple_GET_ITEM(sequence, 0); 
-              __pyx_t_5 = PyTuple_GET_ITEM(sequence, 1); 
+              __pyx_t_1 = PyTuple_GET_ITEM(sequence, 1); 
             } else {
               __pyx_t_4 = PyList_GET_ITEM(sequence, 0); 
-              __pyx_t_5 = PyList_GET_ITEM(sequence, 1); 
+              __pyx_t_1 = PyList_GET_ITEM(sequence, 1); 
             }
             __Pyx_INCREF(__pyx_t_4);
-            __Pyx_INCREF(__pyx_t_5);
+            __Pyx_INCREF(__pyx_t_1);
             #else
-            __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
+            __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_5);
+            __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
             #endif
-            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_3 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_3);
-            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_t_14 = Py_TYPE(__pyx_t_3)->tp_iternext;
-            index = 0; __pyx_t_4 = __pyx_t_14(__pyx_t_3); if (unlikely(!__pyx_t_4)) goto __pyx_L26_unpacking_failed;
+            __pyx_t_2 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+            __pyx_t_13 = Py_TYPE(__pyx_t_2)->tp_iternext;
+            index = 0; __pyx_t_4 = __pyx_t_13(__pyx_t_2); if (unlikely(!__pyx_t_4)) goto __pyx_L25_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_4);
-            index = 1; __pyx_t_5 = __pyx_t_14(__pyx_t_3); if (unlikely(!__pyx_t_5)) goto __pyx_L26_unpacking_failed;
-            __Pyx_GOTREF(__pyx_t_5);
-            if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_3), 2) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
-            __pyx_t_14 = NULL;
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            goto __pyx_L27_unpacking_done;
-            __pyx_L26_unpacking_failed:;
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            __pyx_t_14 = NULL;
+            index = 1; __pyx_t_1 = __pyx_t_13(__pyx_t_2); if (unlikely(!__pyx_t_1)) goto __pyx_L25_unpacking_failed;
+            __Pyx_GOTREF(__pyx_t_1);
+            if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_2), 2) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+            __pyx_t_13 = NULL;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            goto __pyx_L26_unpacking_done;
+            __pyx_L25_unpacking_failed:;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_13 = NULL;
             if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-            __PYX_ERR(0, 88, __pyx_L1_error)
-            __pyx_L27_unpacking_done:;
+            __PYX_ERR(0, 96, __pyx_L1_error)
+            __pyx_L26_unpacking_done:;
           }
 
-          /* "checking_tabulation.pyx":88
+          /* "checking_tab_for_Inter.pyx":96
  *                         # surch as the parentheses, backets .....
  * 
- *                         self.string_check, self.error   = segmentation.SEGMENTATION(self.string_check, self.string_check,             # <<<<<<<<<<<<<<
- *                                                             self.data_base, self.line).TREATEMENT(_id_, self.color)
+ *                         self.string_check, self.error   = SI.SEGMENTATION(self.string_check, self.string_check,             # <<<<<<<<<<<<<<
+ *                                                             self.data_base, self.line).TREATEMENT(_id_, MainList)
  *                     else: pass
  */
-          if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 88, __pyx_L1_error)
-          if (!(likely(PyString_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 88, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 96, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 96, __pyx_L1_error)
           __Pyx_GIVEREF(__pyx_t_4);
           __Pyx_GOTREF(__pyx_v_self->string_check);
           __Pyx_DECREF(__pyx_v_self->string_check);
           __pyx_v_self->string_check = ((PyObject*)__pyx_t_4);
           __pyx_t_4 = 0;
-          __Pyx_GIVEREF(__pyx_t_5);
+          __Pyx_GIVEREF(__pyx_t_1);
           __Pyx_GOTREF(__pyx_v_self->error);
           __Pyx_DECREF(__pyx_v_self->error);
-          __pyx_v_self->error = ((PyObject*)__pyx_t_5);
-          __pyx_t_5 = 0;
+          __pyx_v_self->error = ((PyObject*)__pyx_t_1);
+          __pyx_t_1 = 0;
 
-          /* "checking_tabulation.pyx":82
- *                     self.string_check, self.error             = CBS.BACKSSLASH(master=self.master,
- *                                                                 data_base=self.data_base, line=self.line).BACKSLASH( _id_=_id_ )
- *                     if not self.error :             # <<<<<<<<<<<<<<
+          /* "checking_tab_for_Inter.pyx":90
+ *                     self.string_check, self.error             = BSI.BACKSSLASH( master=self.master,
+ *                                                             data_base=self.data_base, line=self.line ).BACKSLASH(_id_= _id_, MainList=MainList )
+ *                     if not self.error:             # <<<<<<<<<<<<<<
  * 
  *                         # after checking if backslash is defined i rebuild the entire main string
  */
-          goto __pyx_L25;
+          goto __pyx_L24;
         }
 
-        /* "checking_tabulation.pyx":90
- *                         self.string_check, self.error   = segmentation.SEGMENTATION(self.string_check, self.string_check,
- *                                                             self.data_base, self.line).TREATEMENT(_id_, self.color)
+        /* "checking_tab_for_Inter.pyx":98
+ *                         self.string_check, self.error   = SI.SEGMENTATION(self.string_check, self.string_check,
+ *                                                             self.data_base, self.line).TREATEMENT(_id_, MainList)
  *                     else: pass             # <<<<<<<<<<<<<<
  *                 else: pass
  *             else: pass
  */
         /*else*/ {
         }
-        __pyx_L25:;
+        __pyx_L24:;
 
-        /* "checking_tabulation.pyx":68
- * 
- *             if not self.error:
+        /* "checking_tab_for_Inter.pyx":77
+ *             self.string_check, idd, self.error = comment_line.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
+ *             if not  self.error :
  *                 if self.string_check in [ 'string', 'stringcomment' ]:             # <<<<<<<<<<<<<<
  * 
  *                     # in first of all after checking if comment line was or not difined the next step is to control
@@ -2495,8 +2506,8 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
         goto __pyx_L13;
       }
 
-      /* "checking_tabulation.pyx":91
- *                                                             self.data_base, self.line).TREATEMENT(_id_, self.color)
+      /* "checking_tab_for_Inter.pyx":99
+ *                                                             self.data_base, self.line).TREATEMENT(_id_, MainList)
  *                     else: pass
  *                 else: pass             # <<<<<<<<<<<<<<
  *             else: pass
@@ -2506,17 +2517,17 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
       }
       __pyx_L13:;
 
-      /* "checking_tabulation.pyx":67
- *             self.string_check, idd, self.error = comment_line.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
+      /* "checking_tab_for_Inter.pyx":76
  * 
- *             if not self.error:             # <<<<<<<<<<<<<<
+ *             self.string_check, idd, self.error = comment_line.COMMENT_LINE( self.master, self.data_base, self.line ).COMMENT()
+ *             if not  self.error :             # <<<<<<<<<<<<<<
  *                 if self.string_check in [ 'string', 'stringcomment' ]:
  * 
  */
       goto __pyx_L12;
     }
 
-    /* "checking_tabulation.pyx":92
+    /* "checking_tab_for_Inter.pyx":100
  *                     else: pass
  *                 else: pass
  *             else: pass             # <<<<<<<<<<<<<<
@@ -2527,17 +2538,17 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
     }
     __pyx_L12:;
 
-    /* "checking_tabulation.pyx":59
+    /* "checking_tab_for_Inter.pyx":69
  *             else: pass
  * 
- *         if not self.error :             # <<<<<<<<<<<<<<
+ *         if not self.error:             # <<<<<<<<<<<<<<
  * 
  *             # if the first character of the line is < # > it means comment line was defined then the function < COMMENT_LINE >
  */
     goto __pyx_L9;
   }
 
-  /* "checking_tabulation.pyx":93
+  /* "checking_tab_for_Inter.pyx":101
  *                 else: pass
  *             else: pass
  *         else: pass             # <<<<<<<<<<<<<<
@@ -2548,117 +2559,117 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
   }
   __pyx_L9:;
 
-  /* "checking_tabulation.pyx":97
- *         # returning expression, cleaning main string and error got during all processes
+  /* "checking_tab_for_Inter.pyx":104
  * 
+ *         # returning expression, cleaning main string and error got during all processes
  *         if (not self.string_check ) and (not self.error)    :  return None, None             # <<<<<<<<<<<<<<
  *         elif (not self.string_check ) and (self.error)      :  return None, self.error
  *         elif (self.string_check ) and (not self.error)      :  self.string_check, None
  */
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_self->string_check); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 97, __pyx_L1_error)
-  __pyx_t_10 = ((!__pyx_t_8) != 0);
-  if (__pyx_t_10) {
-  } else {
-    __pyx_t_11 = __pyx_t_10;
-    goto __pyx_L29_bool_binop_done;
-  }
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 97, __pyx_L1_error)
-  __pyx_t_8 = ((!__pyx_t_10) != 0);
-  __pyx_t_11 = __pyx_t_8;
-  __pyx_L29_bool_binop_done:;
+  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_v_self->string_check); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_11 = ((!__pyx_t_9) != 0);
   if (__pyx_t_11) {
+  } else {
+    __pyx_t_12 = __pyx_t_11;
+    goto __pyx_L28_bool_binop_done;
+  }
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_9 = ((!__pyx_t_11) != 0);
+  __pyx_t_12 = __pyx_t_9;
+  __pyx_L28_bool_binop_done:;
+  if (__pyx_t_12) {
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_tuple__6);
     __pyx_r = __pyx_tuple__6;
     goto __pyx_L0;
   }
 
-  /* "checking_tabulation.pyx":98
- * 
+  /* "checking_tab_for_Inter.pyx":105
+ *         # returning expression, cleaning main string and error got during all processes
  *         if (not self.string_check ) and (not self.error)    :  return None, None
  *         elif (not self.string_check ) and (self.error)      :  return None, self.error             # <<<<<<<<<<<<<<
  *         elif (self.string_check ) and (not self.error)      :  self.string_check, None
  *         else:  return self.string_check, self.error
  */
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_self->string_check); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
-  __pyx_t_10 = ((!__pyx_t_8) != 0);
-  if (__pyx_t_10) {
-  } else {
-    __pyx_t_11 = __pyx_t_10;
-    goto __pyx_L31_bool_binop_done;
-  }
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
-  __pyx_t_11 = __pyx_t_10;
-  __pyx_L31_bool_binop_done:;
+  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_v_self->string_check); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_11 = ((!__pyx_t_9) != 0);
   if (__pyx_t_11) {
+  } else {
+    __pyx_t_12 = __pyx_t_11;
+    goto __pyx_L30_bool_binop_done;
+  }
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_12 = __pyx_t_11;
+  __pyx_L30_bool_binop_done:;
+  if (__pyx_t_12) {
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 98, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    PyTuple_SET_ITEM(__pyx_t_12, 0, Py_None);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, Py_None);
     __Pyx_INCREF(__pyx_v_self->error);
     __Pyx_GIVEREF(__pyx_v_self->error);
-    PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_self->error);
-    __pyx_r = __pyx_t_12;
-    __pyx_t_12 = 0;
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_self->error);
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L0;
   }
 
-  /* "checking_tabulation.pyx":99
+  /* "checking_tab_for_Inter.pyx":106
  *         if (not self.string_check ) and (not self.error)    :  return None, None
  *         elif (not self.string_check ) and (self.error)      :  return None, self.error
  *         elif (self.string_check ) and (not self.error)      :  self.string_check, None             # <<<<<<<<<<<<<<
  *         else:  return self.string_check, self.error
  */
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_self->string_check); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
-  if (__pyx_t_10) {
-  } else {
-    __pyx_t_11 = __pyx_t_10;
-    goto __pyx_L33_bool_binop_done;
-  }
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __pyx_t_8 = ((!__pyx_t_10) != 0);
-  __pyx_t_11 = __pyx_t_8;
-  __pyx_L33_bool_binop_done:;
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_self->string_check); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
   if (__pyx_t_11) {
-    __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 99, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
+  } else {
+    __pyx_t_12 = __pyx_t_11;
+    goto __pyx_L32_bool_binop_done;
+  }
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_9 = ((!__pyx_t_11) != 0);
+  __pyx_t_12 = __pyx_t_9;
+  __pyx_L32_bool_binop_done:;
+  if (__pyx_t_12) {
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_self->string_check);
     __Pyx_GIVEREF(__pyx_v_self->string_check);
-    PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_v_self->string_check);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_self->string_check);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    PyTuple_SET_ITEM(__pyx_t_12, 1, Py_None);
-    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    goto __pyx_L28;
+    PyTuple_SET_ITEM(__pyx_t_5, 1, Py_None);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    goto __pyx_L27;
   }
 
-  /* "checking_tabulation.pyx":100
+  /* "checking_tab_for_Inter.pyx":107
  *         elif (not self.string_check ) and (self.error)      :  return None, self.error
  *         elif (self.string_check ) and (not self.error)      :  self.string_check, None
  *         else:  return self.string_check, self.error             # <<<<<<<<<<<<<<
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 100, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_self->string_check);
     __Pyx_GIVEREF(__pyx_v_self->string_check);
-    PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_v_self->string_check);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_self->string_check);
     __Pyx_INCREF(__pyx_v_self->error);
     __Pyx_GIVEREF(__pyx_v_self->error);
-    PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_self->error);
-    __pyx_r = __pyx_t_12;
-    __pyx_t_12 = 0;
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_self->error);
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L0;
   }
-  __pyx_L28:;
+  __pyx_L27:;
 
-  /* "checking_tabulation.pyx":39
- *         self.string_check   = ''
+  /* "checking_tab_for_Inter.pyx":50
  * 
- *     cpdef CHECK_LINE(self, unsigned long int _id_ ):             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef CHECK_LINE(self,  unsigned long _id_, list  MainList ) :             # <<<<<<<<<<<<<<
  * 
  *         cdef :
  */
@@ -2672,9 +2683,9 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.CHECK_LINE", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.CHECK_LINE", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_str_);
@@ -2684,32 +2695,75 @@ static PyObject *__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(struct __py
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_3CHECK_LINE(PyObject *__pyx_v_self, PyObject *__pyx_arg__id_); /*proto*/
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_3CHECK_LINE(PyObject *__pyx_v_self, PyObject *__pyx_arg__id_) {
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_3CHECK_LINE(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_3CHECK_LINE(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   unsigned long __pyx_v__id_;
+  PyObject *__pyx_v_MainList = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("CHECK_LINE (wrapper)", 0);
-  assert(__pyx_arg__id_); {
-    __pyx_v__id_ = __Pyx_PyInt_As_unsigned_long(__pyx_arg__id_); if (unlikely((__pyx_v__id_ == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 39, __pyx_L3_error)
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_id,&__pyx_n_s_MainList,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_id)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_MainList)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("CHECK_LINE", 1, 2, 2, 1); __PYX_ERR(0, 50, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "CHECK_LINE") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v__id_ = __Pyx_PyInt_As_unsigned_long(values[0]); if (unlikely((__pyx_v__id_ == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L3_error)
+    __pyx_v_MainList = ((PyObject*)values[1]);
   }
   goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("CHECK_LINE", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.CHECK_LINE", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.CHECK_LINE", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_2CHECK_LINE(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self), ((unsigned long)__pyx_v__id_));
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_MainList), (&PyList_Type), 1, "MainList", 1))) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_2CHECK_LINE(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self), __pyx_v__id_, __pyx_v_MainList);
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_2CHECK_LINE(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, unsigned long __pyx_v__id_) {
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_2CHECK_LINE(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, unsigned long __pyx_v__id_, PyObject *__pyx_v_MainList) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2718,7 +2772,7 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_2CHECK_LINE(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("CHECK_LINE", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE(__pyx_v_self, __pyx_v__id_, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_CHECK_LINE(__pyx_v_self, __pyx_v__id_, __pyx_v_MainList, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2727,7 +2781,7 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_2CHECK_LINE(struct __
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.CHECK_LINE", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.CHECK_LINE", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2735,28 +2789,28 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_2CHECK_LINE(struct __
   return __pyx_r;
 }
 
-/* "checking_tabulation.pyx":22
- * cdef class CHECK_TAB:
- *     cdef public:
+/* "checking_tab_for_Inter.pyx":22
+ * cdef class CHECK_TAB_FOR_INTERPRETER:
+ *     cdef public :
  *         str master             # <<<<<<<<<<<<<<
  *         str long_chaine
  *         dict data_base
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_6master_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_6master_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_6master___get__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master___get__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_6master___get__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self) {
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master___get__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -2773,19 +2827,19 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_6master___get__(struc
 }
 
 /* Python wrapper */
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_6master_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_6master_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_2__set__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_2__set__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_2__set__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_2__set__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2807,7 +2861,7 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_2__set__(struct __p
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.master.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.master.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2815,19 +2869,19 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_2__set__(struct __p
 }
 
 /* Python wrapper */
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_6master_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_6master_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_4__del__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_4__del__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_4__del__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self) {
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_4__del__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -2843,8 +2897,8 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_4__del__(struct __p
   return __pyx_r;
 }
 
-/* "checking_tabulation.pyx":23
- *     cdef public:
+/* "checking_tab_for_Inter.pyx":23
+ *     cdef public :
  *         str master
  *         str long_chaine             # <<<<<<<<<<<<<<
  *         dict data_base
@@ -2852,19 +2906,19 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_6master_4__del__(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine___get__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine___get__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine___get__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self) {
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine___get__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -2881,19 +2935,19 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine___get__
 }
 
 /* Python wrapper */
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_2__set__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_2__set__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_2__set__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_2__set__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2915,7 +2969,7 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_2__set__(stru
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.long_chaine.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.long_chaine.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2923,19 +2977,19 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_2__set__(stru
 }
 
 /* Python wrapper */
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_4__del__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_4__del__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_4__del__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self) {
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_4__del__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -2951,7 +3005,7 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_4__del__(stru
   return __pyx_r;
 }
 
-/* "checking_tabulation.pyx":24
+/* "checking_tab_for_Inter.pyx":24
  *         str master
  *         str long_chaine
  *         dict data_base             # <<<<<<<<<<<<<<
@@ -2960,19 +3014,19 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_11long_chaine_4__del__(stru
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base___get__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base___get__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base___get__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self) {
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base___get__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -2989,19 +3043,19 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base___get__(st
 }
 
 /* Python wrapper */
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_2__set__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_2__set__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_2__set__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_2__set__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3023,7 +3077,7 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_2__set__(struct 
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.data_base.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.data_base.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3031,19 +3085,19 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_2__set__(struct 
 }
 
 /* Python wrapper */
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_4__del__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_4__del__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_4__del__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self) {
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_4__del__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -3059,7 +3113,7 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_4__del__(struct 
   return __pyx_r;
 }
 
-/* "checking_tabulation.pyx":25
+/* "checking_tab_for_Inter.pyx":25
  *         str long_chaine
  *         dict data_base
  *         unsigned long int line             # <<<<<<<<<<<<<<
@@ -3068,19 +3122,19 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_9data_base_4__del__(struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_4line_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_4line_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_4line___get__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line___get__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_4line___get__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self) {
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line___get__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3098,7 +3152,7 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_4line___get__(struct 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.line.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.line.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3107,19 +3161,19 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_4line___get__(struct 
 }
 
 /* Python wrapper */
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_4line_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_19checking_tabulation_9CHECK_TAB_4line_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_4line_2__set__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_2__set__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_19checking_tabulation_9CHECK_TAB_4line_2__set__(struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_2__set__(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   unsigned long __pyx_t_1;
@@ -3134,7 +3188,7 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_4line_2__set__(struct __pyx
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.line.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.line.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3148,19 +3202,19 @@ static int __pyx_pf_19checking_tabulation_9CHECK_TAB_4line_2__set__(struct __pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_4__reduce_cython__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4__reduce_cython__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self) {
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3190,7 +3244,7 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_4__reduce_cython__(CY
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3205,19 +3259,19 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_4__reduce_cython__(CY
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_19checking_tabulation_9CHECK_TAB_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_19checking_tabulation_9CHECK_TAB_6__setstate_cython__(((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6__setstate_cython__(((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_19checking_tabulation_CHECK_TAB *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3247,16 +3301,16 @@ static PyObject *__pyx_pf_19checking_tabulation_9CHECK_TAB_6__setstate_cython__(
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("checking_tabulation.CHECK_TAB.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static struct __pyx_vtabstruct_19checking_tabulation_CHECK_TAB __pyx_vtable_19checking_tabulation_CHECK_TAB;
+static struct __pyx_vtabstruct_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER __pyx_vtable_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER;
 
-static PyObject *__pyx_tp_new_19checking_tabulation_CHECK_TAB(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_19checking_tabulation_CHECK_TAB *p;
+static PyObject *__pyx_tp_new_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -3264,22 +3318,22 @@ static PyObject *__pyx_tp_new_19checking_tabulation_CHECK_TAB(PyTypeObject *t, P
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_19checking_tabulation_CHECK_TAB *)o);
-  p->__pyx_vtab = __pyx_vtabptr_19checking_tabulation_CHECK_TAB;
+  p = ((struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)o);
+  p->__pyx_vtab = __pyx_vtabptr_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER;
   p->master = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->long_chaine = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->data_base = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->error = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->string_check = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  if (unlikely(__pyx_pw_19checking_tabulation_9CHECK_TAB_1__cinit__(o, a, k) < 0)) goto bad;
+  if (unlikely(__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_19checking_tabulation_CHECK_TAB(PyObject *o) {
-  struct __pyx_obj_19checking_tabulation_CHECK_TAB *p = (struct __pyx_obj_19checking_tabulation_CHECK_TAB *)o;
+static void __pyx_tp_dealloc_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER(PyObject *o) {
+  struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *p = (struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -3294,70 +3348,70 @@ static void __pyx_tp_dealloc_19checking_tabulation_CHECK_TAB(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static int __pyx_tp_traverse_19checking_tabulation_CHECK_TAB(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_19checking_tabulation_CHECK_TAB *p = (struct __pyx_obj_19checking_tabulation_CHECK_TAB *)o;
+  struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *p = (struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)o;
   if (p->data_base) {
     e = (*v)(p->data_base, a); if (e) return e;
   }
   return 0;
 }
 
-static int __pyx_tp_clear_19checking_tabulation_CHECK_TAB(PyObject *o) {
+static int __pyx_tp_clear_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_19checking_tabulation_CHECK_TAB *p = (struct __pyx_obj_19checking_tabulation_CHECK_TAB *)o;
+  struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *p = (struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *)o;
   tmp = ((PyObject*)p->data_base);
   p->data_base = ((PyObject*)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 
-static PyObject *__pyx_getprop_19checking_tabulation_9CHECK_TAB_master(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_19checking_tabulation_9CHECK_TAB_6master_1__get__(o);
+static PyObject *__pyx_getprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_master(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_1__get__(o);
 }
 
-static int __pyx_setprop_19checking_tabulation_9CHECK_TAB_master(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_master(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_19checking_tabulation_9CHECK_TAB_6master_3__set__(o, v);
+    return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_3__set__(o, v);
   }
   else {
-    return __pyx_pw_19checking_tabulation_9CHECK_TAB_6master_5__del__(o);
+    return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_6master_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_19checking_tabulation_9CHECK_TAB_long_chaine(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_1__get__(o);
+static PyObject *__pyx_getprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_long_chaine(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_1__get__(o);
 }
 
-static int __pyx_setprop_19checking_tabulation_9CHECK_TAB_long_chaine(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_long_chaine(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_3__set__(o, v);
+    return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_3__set__(o, v);
   }
   else {
-    return __pyx_pw_19checking_tabulation_9CHECK_TAB_11long_chaine_5__del__(o);
+    return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_11long_chaine_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_19checking_tabulation_9CHECK_TAB_data_base(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_1__get__(o);
+static PyObject *__pyx_getprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_data_base(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_1__get__(o);
 }
 
-static int __pyx_setprop_19checking_tabulation_9CHECK_TAB_data_base(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_data_base(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_3__set__(o, v);
+    return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_3__set__(o, v);
   }
   else {
-    return __pyx_pw_19checking_tabulation_9CHECK_TAB_9data_base_5__del__(o);
+    return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_9data_base_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_19checking_tabulation_9CHECK_TAB_line(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_19checking_tabulation_9CHECK_TAB_4line_1__get__(o);
+static PyObject *__pyx_getprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_line(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_1__get__(o);
 }
 
-static int __pyx_setprop_19checking_tabulation_9CHECK_TAB_line(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_line(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_19checking_tabulation_9CHECK_TAB_4line_3__set__(o, v);
+    return __pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_4line_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -3365,27 +3419,27 @@ static int __pyx_setprop_19checking_tabulation_9CHECK_TAB_line(PyObject *o, PyOb
   }
 }
 
-static PyMethodDef __pyx_methods_19checking_tabulation_CHECK_TAB[] = {
-  {"CHECK_LINE", (PyCFunction)__pyx_pw_19checking_tabulation_9CHECK_TAB_3CHECK_LINE, METH_O, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_19checking_tabulation_9CHECK_TAB_5__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_19checking_tabulation_9CHECK_TAB_7__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER[] = {
+  {"CHECK_LINE", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_3CHECK_LINE, METH_VARARGS|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_5__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_7__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_19checking_tabulation_CHECK_TAB[] = {
-  {(char *)"master", __pyx_getprop_19checking_tabulation_9CHECK_TAB_master, __pyx_setprop_19checking_tabulation_9CHECK_TAB_master, (char *)0, 0},
-  {(char *)"long_chaine", __pyx_getprop_19checking_tabulation_9CHECK_TAB_long_chaine, __pyx_setprop_19checking_tabulation_9CHECK_TAB_long_chaine, (char *)0, 0},
-  {(char *)"data_base", __pyx_getprop_19checking_tabulation_9CHECK_TAB_data_base, __pyx_setprop_19checking_tabulation_9CHECK_TAB_data_base, (char *)0, 0},
-  {(char *)"line", __pyx_getprop_19checking_tabulation_9CHECK_TAB_line, __pyx_setprop_19checking_tabulation_9CHECK_TAB_line, (char *)0, 0},
+static struct PyGetSetDef __pyx_getsets_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER[] = {
+  {(char *)"master", __pyx_getprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_master, __pyx_setprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_master, (char *)0, 0},
+  {(char *)"long_chaine", __pyx_getprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_long_chaine, __pyx_setprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_long_chaine, (char *)0, 0},
+  {(char *)"data_base", __pyx_getprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_data_base, __pyx_setprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_data_base, (char *)0, 0},
+  {(char *)"line", __pyx_getprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_line, __pyx_setprop_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_line, (char *)0, 0},
   {0, 0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_19checking_tabulation_CHECK_TAB = {
+static PyTypeObject __pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER = {
   PyVarObject_HEAD_INIT(0, 0)
-  "checking_tabulation.CHECK_TAB", /*tp_name*/
-  sizeof(struct __pyx_obj_19checking_tabulation_CHECK_TAB), /*tp_basicsize*/
+  "checking_tab_for_Inter.CHECK_TAB_FOR_INTERPRETER", /*tp_name*/
+  sizeof(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_19checking_tabulation_CHECK_TAB, /*tp_dealloc*/
+  __pyx_tp_dealloc_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -3412,15 +3466,15 @@ static PyTypeObject __pyx_type_19checking_tabulation_CHECK_TAB = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_19checking_tabulation_CHECK_TAB, /*tp_traverse*/
-  __pyx_tp_clear_19checking_tabulation_CHECK_TAB, /*tp_clear*/
+  __pyx_tp_traverse_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER, /*tp_traverse*/
+  __pyx_tp_clear_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_19checking_tabulation_CHECK_TAB, /*tp_methods*/
+  __pyx_methods_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_19checking_tabulation_CHECK_TAB, /*tp_getset*/
+  __pyx_getsets_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -3428,7 +3482,7 @@ static PyTypeObject __pyx_type_19checking_tabulation_CHECK_TAB = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_19checking_tabulation_CHECK_TAB, /*tp_new*/
+  __pyx_tp_new_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -3456,17 +3510,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_checking_tabulation(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_checking_tab_for_Inter(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_checking_tabulation},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_checking_tab_for_Inter},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "checking_tabulation",
+    "checking_tab_for_Inter",
     __pyx_k_this_function_is_created_to_con, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -3498,9 +3552,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_, __pyx_k_, sizeof(__pyx_k_), 0, 0, 1, 0},
   {&__pyx_n_s_BACKSLASH, __pyx_k_BACKSLASH, sizeof(__pyx_k_BACKSLASH), 0, 0, 1, 1},
   {&__pyx_n_s_BACKSSLASH, __pyx_k_BACKSSLASH, sizeof(__pyx_k_BACKSSLASH), 0, 0, 1, 1},
-  {&__pyx_n_s_CBS, __pyx_k_CBS, sizeof(__pyx_k_CBS), 0, 0, 1, 1},
+  {&__pyx_n_s_BSI, __pyx_k_BSI, sizeof(__pyx_k_BSI), 0, 0, 1, 1},
   {&__pyx_n_s_CHECK_LINE, __pyx_k_CHECK_LINE, sizeof(__pyx_k_CHECK_LINE), 0, 0, 1, 1},
-  {&__pyx_n_s_CHECK_TAB, __pyx_k_CHECK_TAB, sizeof(__pyx_k_CHECK_TAB), 0, 0, 1, 1},
+  {&__pyx_n_s_CHECK_TAB_FOR_INTERPRETER, __pyx_k_CHECK_TAB_FOR_INTERPRETER, sizeof(__pyx_k_CHECK_TAB_FOR_INTERPRETER), 0, 0, 1, 1},
   {&__pyx_n_s_COMMENT, __pyx_k_COMMENT, sizeof(__pyx_k_COMMENT), 0, 0, 1, 1},
   {&__pyx_n_s_COMMENT_LINE, __pyx_k_COMMENT_LINE, sizeof(__pyx_k_COMMENT_LINE), 0, 0, 1, 1},
   {&__pyx_n_s_CythonModules_Windows_LEXER, __pyx_k_CythonModules_Windows_LEXER, sizeof(__pyx_k_CythonModules_Windows_LEXER), 0, 0, 1, 1},
@@ -3508,17 +3562,18 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_CythonModules_Windows_LEXER_seg, __pyx_k_CythonModules_Windows_LEXER_seg, sizeof(__pyx_k_CythonModules_Windows_LEXER_seg), 0, 0, 1, 1},
   {&__pyx_n_s_ERROR, __pyx_k_ERROR, sizeof(__pyx_k_ERROR), 0, 0, 1, 1},
   {&__pyx_n_s_ERROR9, __pyx_k_ERROR9, sizeof(__pyx_k_ERROR9), 0, 0, 1, 1},
+  {&__pyx_n_s_MainList, __pyx_k_MainList, sizeof(__pyx_k_MainList), 0, 0, 1, 1},
   {&__pyx_n_s_SE, __pyx_k_SE, sizeof(__pyx_k_SE), 0, 0, 1, 1},
   {&__pyx_n_s_SEGMENTATION, __pyx_k_SEGMENTATION, sizeof(__pyx_k_SEGMENTATION), 0, 0, 1, 1},
+  {&__pyx_n_s_SI, __pyx_k_SI, sizeof(__pyx_k_SI), 0, 0, 1, 1},
   {&__pyx_n_s_TREATEMENT, __pyx_k_TREATEMENT, sizeof(__pyx_k_TREATEMENT), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_kp_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 0},
   {&__pyx_kp_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 0},
   {&__pyx_kp_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 0},
   {&__pyx_kp_s__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 0, 1, 0},
-  {&__pyx_n_s_checking_if_backslash, __pyx_k_checking_if_backslash, sizeof(__pyx_k_checking_if_backslash), 0, 0, 1, 1},
+  {&__pyx_n_s_bs_interpretor, __pyx_k_bs_interpretor, sizeof(__pyx_k_bs_interpretor), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_color, __pyx_k_color, sizeof(__pyx_k_color), 0, 0, 1, 1},
   {&__pyx_n_s_comment_line, __pyx_k_comment_line, sizeof(__pyx_k_comment_line), 0, 0, 1, 1},
   {&__pyx_n_s_data_base, __pyx_k_data_base, sizeof(__pyx_k_data_base), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
@@ -3536,7 +3591,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
   {&__pyx_n_s_segError, __pyx_k_segError, sizeof(__pyx_k_segError), 0, 0, 1, 1},
-  {&__pyx_n_s_segmentation, __pyx_k_segmentation, sizeof(__pyx_k_segmentation), 0, 0, 1, 1},
+  {&__pyx_n_s_seg_interpretor, __pyx_k_seg_interpretor, sizeof(__pyx_k_seg_interpretor), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_string, __pyx_k_string, sizeof(__pyx_k_string), 0, 0, 1, 1},
@@ -3545,7 +3600,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 56, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -3556,14 +3611,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "checking_tabulation.pyx":97
- *         # returning expression, cleaning main string and error got during all processes
+  /* "checking_tab_for_Inter.pyx":104
  * 
+ *         # returning expression, cleaning main string and error got during all processes
  *         if (not self.string_check ) and (not self.error)    :  return None, None             # <<<<<<<<<<<<<<
  *         elif (not self.string_check ) and (self.error)      :  return None, self.error
  *         elif (self.string_check ) and (not self.error)      :  self.string_check, None
  */
-  __pyx_tuple__6 = PyTuple_Pack(2, Py_None, Py_None); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(2, Py_None, Py_None); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
@@ -3638,19 +3693,19 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  __pyx_vtabptr_19checking_tabulation_CHECK_TAB = &__pyx_vtable_19checking_tabulation_CHECK_TAB;
-  __pyx_vtable_19checking_tabulation_CHECK_TAB.CHECK_LINE = (PyObject *(*)(struct __pyx_obj_19checking_tabulation_CHECK_TAB *, unsigned long, int __pyx_skip_dispatch))__pyx_f_19checking_tabulation_9CHECK_TAB_CHECK_LINE;
-  if (PyType_Ready(&__pyx_type_19checking_tabulation_CHECK_TAB) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_vtabptr_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER = &__pyx_vtable_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER;
+  __pyx_vtable_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER.CHECK_LINE = (PyObject *(*)(struct __pyx_obj_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER *, unsigned long, PyObject *, int __pyx_skip_dispatch))__pyx_f_22checking_tab_for_Inter_25CHECK_TAB_FOR_INTERPRETER_CHECK_LINE;
+  if (PyType_Ready(&__pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_19checking_tabulation_CHECK_TAB.tp_print = 0;
+  __pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_19checking_tabulation_CHECK_TAB.tp_dictoffset && __pyx_type_19checking_tabulation_CHECK_TAB.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_19checking_tabulation_CHECK_TAB.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER.tp_dictoffset && __pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_19checking_tabulation_CHECK_TAB.tp_dict, __pyx_vtabptr_19checking_tabulation_CHECK_TAB) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CHECK_TAB, (PyObject *)&__pyx_type_19checking_tabulation_CHECK_TAB) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_19checking_tabulation_CHECK_TAB) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
-  __pyx_ptype_19checking_tabulation_CHECK_TAB = &__pyx_type_19checking_tabulation_CHECK_TAB;
+  if (__Pyx_SetVtable(__pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER.tp_dict, __pyx_vtabptr_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CHECK_TAB_FOR_INTERPRETER, (PyObject *)&__pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_ptype_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER = &__pyx_type_22checking_tab_for_Inter_CHECK_TAB_FOR_INTERPRETER;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3701,11 +3756,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initchecking_tabulation(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initchecking_tabulation(void)
+__Pyx_PyMODINIT_FUNC initchecking_tab_for_Inter(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initchecking_tab_for_Inter(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_checking_tabulation(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_checking_tabulation(void)
+__Pyx_PyMODINIT_FUNC PyInit_checking_tab_for_Inter(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_checking_tab_for_Inter(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -3772,7 +3827,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_checking_tabulation(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_checking_tab_for_Inter(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -3785,7 +3840,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_checking_tabulation(PyObject *__py
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'checking_tabulation' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'checking_tab_for_Inter' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -3800,7 +3855,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_checking_tabulation(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_checking_tab_for_Inter(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -3837,7 +3892,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("checking_tabulation", __pyx_methods, __pyx_k_this_function_is_created_to_con, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("checking_tab_for_Inter", __pyx_methods, __pyx_k_this_function_is_created_to_con, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -3855,14 +3910,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_checking_tabulation) {
+  if (__pyx_module_is_main_checking_tab_for_Inter) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "checking_tabulation")) {
-      if (unlikely(PyDict_SetItemString(modules, "checking_tabulation", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "checking_tab_for_Inter")) {
+      if (unlikely(PyDict_SetItemString(modules, "checking_tab_for_Inter", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -3883,75 +3938,75 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "checking_tabulation.pyx":15
+  /* "checking_tab_for_Inter.pyx":15
  * """
  * 
- * from CythonModules.Windows.LEXER.seg        import segmentation             # <<<<<<<<<<<<<<
- * from CythonModules.Windows.LEXER            import comment_line
- * from CythonModules.Windows.LEXER.backslash  import checking_if_backslash as CBS
+ * from CythonModules.Windows.LEXER.backslash      import bs_interpretor as BSI             # <<<<<<<<<<<<<<
+ * from CythonModules.Windows.LEXER.seg            import seg_interpretor as SI
+ * from CythonModules.Windows.LEXER                import comment_line
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_segmentation);
-  __Pyx_GIVEREF(__pyx_n_s_segmentation);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_segmentation);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_CythonModules_Windows_LEXER_seg, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_bs_interpretor);
+  __Pyx_GIVEREF(__pyx_n_s_bs_interpretor);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_bs_interpretor);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_CythonModules_Windows_LEXER_back, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_segmentation); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_bs_interpretor); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_segmentation, __pyx_t_1) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_BSI, __pyx_t_1) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "checking_tabulation.pyx":16
+  /* "checking_tab_for_Inter.pyx":16
  * 
- * from CythonModules.Windows.LEXER.seg        import segmentation
- * from CythonModules.Windows.LEXER            import comment_line             # <<<<<<<<<<<<<<
- * from CythonModules.Windows.LEXER.backslash  import checking_if_backslash as CBS
- * from CythonModules.Windows.LEXER.seg        import segError as SE
+ * from CythonModules.Windows.LEXER.backslash      import bs_interpretor as BSI
+ * from CythonModules.Windows.LEXER.seg            import seg_interpretor as SI             # <<<<<<<<<<<<<<
+ * from CythonModules.Windows.LEXER                import comment_line
+ * from CythonModules.Windows.LEXER.seg            import segError as SE
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_comment_line);
-  __Pyx_GIVEREF(__pyx_n_s_comment_line);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_comment_line);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_CythonModules_Windows_LEXER, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_seg_interpretor);
+  __Pyx_GIVEREF(__pyx_n_s_seg_interpretor);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_seg_interpretor);
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_CythonModules_Windows_LEXER_seg, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_comment_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_seg_interpretor); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_comment_line, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_SI, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "checking_tabulation.pyx":17
- * from CythonModules.Windows.LEXER.seg        import segmentation
- * from CythonModules.Windows.LEXER            import comment_line
- * from CythonModules.Windows.LEXER.backslash  import checking_if_backslash as CBS             # <<<<<<<<<<<<<<
- * from CythonModules.Windows.LEXER.seg        import segError as SE
+  /* "checking_tab_for_Inter.pyx":17
+ * from CythonModules.Windows.LEXER.backslash      import bs_interpretor as BSI
+ * from CythonModules.Windows.LEXER.seg            import seg_interpretor as SI
+ * from CythonModules.Windows.LEXER                import comment_line             # <<<<<<<<<<<<<<
+ * from CythonModules.Windows.LEXER.seg            import segError as SE
  * 
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_checking_if_backslash);
-  __Pyx_GIVEREF(__pyx_n_s_checking_if_backslash);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_checking_if_backslash);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_CythonModules_Windows_LEXER_back, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_comment_line);
+  __Pyx_GIVEREF(__pyx_n_s_comment_line);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_comment_line);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_CythonModules_Windows_LEXER, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_checking_if_backslash); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_comment_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_CBS, __pyx_t_1) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_comment_line, __pyx_t_1) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "checking_tabulation.pyx":18
- * from CythonModules.Windows.LEXER            import comment_line
- * from CythonModules.Windows.LEXER.backslash  import checking_if_backslash as CBS
- * from CythonModules.Windows.LEXER.seg        import segError as SE             # <<<<<<<<<<<<<<
+  /* "checking_tab_for_Inter.pyx":18
+ * from CythonModules.Windows.LEXER.seg            import seg_interpretor as SI
+ * from CythonModules.Windows.LEXER                import comment_line
+ * from CythonModules.Windows.LEXER.seg            import segError as SE             # <<<<<<<<<<<<<<
  * 
- * cdef class CHECK_TAB:
+ * cdef class CHECK_TAB_FOR_INTERPRETER:
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -3967,7 +4022,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "checking_tabulation.pyx":1
+  /* "checking_tab_for_Inter.pyx":1
  * """             # <<<<<<<<<<<<<<
  * this function is created to control the first part of string syntax.
  * is the first function of the lexer that a created is based on 3 differents modules
@@ -3985,11 +4040,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init checking_tabulation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init checking_tab_for_Inter", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init checking_tabulation");
+    PyErr_SetString(PyExc_ImportError, "init checking_tab_for_Inter");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4216,29 +4271,6 @@ static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UIN
 }
 #endif
 
-/* PyCFunctionFastCall */
-#if CYTHON_FAST_PYCCALL
-static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
-    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
-    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
-    PyObject *self = PyCFunction_GET_SELF(func);
-    int flags = PyCFunction_GET_FLAGS(func);
-    assert(PyCFunction_Check(func));
-    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS | METH_STACKLESS)));
-    assert(nargs >= 0);
-    assert(nargs == 0 || args != NULL);
-    /* _PyCFunction_FastCallDict() must not be called with an exception set,
-       because it may clear it (directly or indirectly) and so the
-       caller loses its exception */
-    assert(!PyErr_Occurred());
-    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
-        return (*((__Pyx_PyCFunctionFastWithKeywords)(void*)meth)) (self, args, nargs, NULL);
-    } else {
-        return (*((__Pyx_PyCFunctionFast)(void*)meth)) (self, args, nargs);
-    }
-}
-#endif
-
 /* PyFunctionFastCall */
 #if CYTHON_FAST_PYCALL
 static PyObject* __Pyx_PyFunction_FastCallNoKw(PyCodeObject *co, PyObject **args, Py_ssize_t na,
@@ -4358,6 +4390,29 @@ done:
 #endif
 #endif
 
+/* PyCFunctionFastCall */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
+    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
+    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
+    PyObject *self = PyCFunction_GET_SELF(func);
+    int flags = PyCFunction_GET_FLAGS(func);
+    assert(PyCFunction_Check(func));
+    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS | METH_STACKLESS)));
+    assert(nargs >= 0);
+    assert(nargs == 0 || args != NULL);
+    /* _PyCFunction_FastCallDict() must not be called with an exception set,
+       because it may clear it (directly or indirectly) and so the
+       caller loses its exception */
+    assert(!PyErr_Occurred());
+    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
+        return (*((__Pyx_PyCFunctionFastWithKeywords)(void*)meth)) (self, args, nargs, NULL);
+    } else {
+        return (*((__Pyx_PyCFunctionFast)(void*)meth)) (self, args, nargs);
+    }
+}
+#endif
+
 /* PyObjectCall */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
@@ -4374,95 +4429,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
             PyExc_SystemError,
             "NULL result without error in PyObject_Call");
     }
-    return result;
-}
-#endif
-
-/* PyObjectCall2Args */
-static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
-    PyObject *args, *result = NULL;
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(function)) {
-        PyObject *args[2] = {arg1, arg2};
-        return __Pyx_PyFunction_FastCall(function, args, 2);
-    }
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(function)) {
-        PyObject *args[2] = {arg1, arg2};
-        return __Pyx_PyCFunction_FastCall(function, args, 2);
-    }
-    #endif
-    args = PyTuple_New(2);
-    if (unlikely(!args)) goto done;
-    Py_INCREF(arg1);
-    PyTuple_SET_ITEM(args, 0, arg1);
-    Py_INCREF(arg2);
-    PyTuple_SET_ITEM(args, 1, arg2);
-    Py_INCREF(function);
-    result = __Pyx_PyObject_Call(function, args, NULL);
-    Py_DECREF(args);
-    Py_DECREF(function);
-done:
-    return result;
-}
-
-/* PyObjectCallMethO */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
-    PyObject *self, *result;
-    PyCFunction cfunc;
-    cfunc = PyCFunction_GET_FUNCTION(func);
-    self = PyCFunction_GET_SELF(func);
-    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
-        return NULL;
-    result = cfunc(self, arg);
-    Py_LeaveRecursiveCall();
-    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
-        PyErr_SetString(
-            PyExc_SystemError,
-            "NULL result without error in PyObject_Call");
-    }
-    return result;
-}
-#endif
-
-/* PyObjectCallOneArg */
-#if CYTHON_COMPILING_IN_CPYTHON
-static PyObject* __Pyx__PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-    PyObject *result;
-    PyObject *args = PyTuple_New(1);
-    if (unlikely(!args)) return NULL;
-    Py_INCREF(arg);
-    PyTuple_SET_ITEM(args, 0, arg);
-    result = __Pyx_PyObject_Call(func, args, NULL);
-    Py_DECREF(args);
-    return result;
-}
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-#if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(func)) {
-        return __Pyx_PyFunction_FastCall(func, &arg, 1);
-    }
-#endif
-    if (likely(PyCFunction_Check(func))) {
-        if (likely(PyCFunction_GET_FLAGS(func) & METH_O)) {
-            return __Pyx_PyObject_CallMethO(func, arg);
-#if CYTHON_FAST_PYCCALL
-        } else if (__Pyx_PyFastCFunction_Check(func)) {
-            return __Pyx_PyCFunction_FastCall(func, &arg, 1);
-#endif
-        }
-    }
-    return __Pyx__PyObject_CallOneArg(func, arg);
-}
-#else
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-    PyObject *result;
-    PyObject *args = PyTuple_Pack(1, arg);
-    if (unlikely(!args)) return NULL;
-    result = __Pyx_PyObject_Call(func, args, NULL);
-    Py_DECREF(args);
     return result;
 }
 #endif
@@ -4651,6 +4617,95 @@ static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
     return __Pyx_GetBuiltinName(name);
 }
 
+/* PyObjectCall2Args */
+static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
+    PyObject *args, *result = NULL;
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(function)) {
+        PyObject *args[2] = {arg1, arg2};
+        return __Pyx_PyFunction_FastCall(function, args, 2);
+    }
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(function)) {
+        PyObject *args[2] = {arg1, arg2};
+        return __Pyx_PyCFunction_FastCall(function, args, 2);
+    }
+    #endif
+    args = PyTuple_New(2);
+    if (unlikely(!args)) goto done;
+    Py_INCREF(arg1);
+    PyTuple_SET_ITEM(args, 0, arg1);
+    Py_INCREF(arg2);
+    PyTuple_SET_ITEM(args, 1, arg2);
+    Py_INCREF(function);
+    result = __Pyx_PyObject_Call(function, args, NULL);
+    Py_DECREF(args);
+    Py_DECREF(function);
+done:
+    return result;
+}
+
+/* PyObjectCallMethO */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
+    PyObject *self, *result;
+    PyCFunction cfunc;
+    cfunc = PyCFunction_GET_FUNCTION(func);
+    self = PyCFunction_GET_SELF(func);
+    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+        return NULL;
+    result = cfunc(self, arg);
+    Py_LeaveRecursiveCall();
+    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
+        PyErr_SetString(
+            PyExc_SystemError,
+            "NULL result without error in PyObject_Call");
+    }
+    return result;
+}
+#endif
+
+/* PyObjectCallOneArg */
+#if CYTHON_COMPILING_IN_CPYTHON
+static PyObject* __Pyx__PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *result;
+    PyObject *args = PyTuple_New(1);
+    if (unlikely(!args)) return NULL;
+    Py_INCREF(arg);
+    PyTuple_SET_ITEM(args, 0, arg);
+    result = __Pyx_PyObject_Call(func, args, NULL);
+    Py_DECREF(args);
+    return result;
+}
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+#if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(func)) {
+        return __Pyx_PyFunction_FastCall(func, &arg, 1);
+    }
+#endif
+    if (likely(PyCFunction_Check(func))) {
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_O)) {
+            return __Pyx_PyObject_CallMethO(func, arg);
+#if CYTHON_FAST_PYCCALL
+        } else if (__Pyx_PyFastCFunction_Check(func)) {
+            return __Pyx_PyCFunction_FastCall(func, &arg, 1);
+#endif
+        }
+    }
+    return __Pyx__PyObject_CallOneArg(func, arg);
+}
+#else
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *result;
+    PyObject *args = PyTuple_Pack(1, arg);
+    if (unlikely(!args)) return NULL;
+    result = __Pyx_PyObject_Call(func, args, NULL);
+    Py_DECREF(args);
+    return result;
+}
+#endif
+
 /* PyObjectCallNoArg */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
@@ -4818,6 +4873,27 @@ static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, 
     }
 #endif
     return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+}
+
+/* ArgTypeTest */
+static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
+{
+    if (unlikely(!type)) {
+        PyErr_SetString(PyExc_SystemError, "Missing type object");
+        return 0;
+    }
+    else if (exact) {
+        #if PY_MAJOR_VERSION == 2
+        if ((type == &PyBaseString_Type) && likely(__Pyx_PyBaseString_CheckExact(obj))) return 1;
+        #endif
+    }
+    else {
+        if (likely(__Pyx_TypeCheck(obj, type))) return 1;
+    }
+    PyErr_Format(PyExc_TypeError,
+        "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
+        name, type->tp_name, Py_TYPE(obj)->tp_name);
+    return 0;
 }
 
 /* PyErrFetchRestore */
@@ -5745,240 +5821,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_long(unsigned long valu
 }
 
 /* CIntFromPy */
-static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const long neg_one = (long) -1, const_zero = (long) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-#if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_Check(x))) {
-        if (sizeof(long) < sizeof(long)) {
-            __PYX_VERIFY_RETURN_INT(long, long, PyInt_AS_LONG(x))
-        } else {
-            long val = PyInt_AS_LONG(x);
-            if (is_unsigned && unlikely(val < 0)) {
-                goto raise_neg_overflow;
-            }
-            return (long) val;
-        }
-    } else
-#endif
-    if (likely(PyLong_Check(x))) {
-        if (is_unsigned) {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (long) 0;
-                case  1: __PYX_VERIFY_RETURN_INT(long, digit, digits[0])
-                case 2:
-                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 2 * PyLong_SHIFT) {
-                            return (long) (((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 3 * PyLong_SHIFT) {
-                            return (long) (((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 4 * PyLong_SHIFT) {
-                            return (long) (((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-            }
-#endif
-#if CYTHON_COMPILING_IN_CPYTHON
-            if (unlikely(Py_SIZE(x) < 0)) {
-                goto raise_neg_overflow;
-            }
-#else
-            {
-                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
-                if (unlikely(result < 0))
-                    return (long) -1;
-                if (unlikely(result == 1))
-                    goto raise_neg_overflow;
-            }
-#endif
-            if (sizeof(long) <= sizeof(unsigned long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned long, PyLong_AsUnsignedLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
-#endif
-            }
-        } else {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (long) 0;
-                case -1: __PYX_VERIFY_RETURN_INT(long, sdigit, (sdigit) (-(sdigit)digits[0]))
-                case  1: __PYX_VERIFY_RETURN_INT(long,  digit, +digits[0])
-                case -2:
-                    if (8 * sizeof(long) - 1 > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 2:
-                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                            return (long) ((((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case -3:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                            return (long) ((((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case -4:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                            return (long) ((((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-            }
-#endif
-            if (sizeof(long) <= sizeof(long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, long, PyLong_AsLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, PY_LONG_LONG, PyLong_AsLongLong(x))
-#endif
-            }
-        }
-        {
-#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
-            PyErr_SetString(PyExc_RuntimeError,
-                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
-#else
-            long val;
-            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
- #if PY_MAJOR_VERSION < 3
-            if (likely(v) && !PyLong_Check(v)) {
-                PyObject *tmp = v;
-                v = PyNumber_Long(tmp);
-                Py_DECREF(tmp);
-            }
- #endif
-            if (likely(v)) {
-                int one = 1; int is_little = (int)*(unsigned char *)&one;
-                unsigned char *bytes = (unsigned char *)&val;
-                int ret = _PyLong_AsByteArray((PyLongObject *)v,
-                                              bytes, sizeof(val),
-                                              is_little, !is_unsigned);
-                Py_DECREF(v);
-                if (likely(!ret))
-                    return val;
-            }
-#endif
-            return (long) -1;
-        }
-    } else {
-        long val;
-        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
-        if (!tmp) return (long) -1;
-        val = __Pyx_PyInt_As_long(tmp);
-        Py_DECREF(tmp);
-        return val;
-    }
-raise_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "value too large to convert to long");
-    return (long) -1;
-raise_neg_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "can't convert negative value to long");
-    return (long) -1;
-}
-
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const long neg_one = (long) -1, const_zero = (long) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(long) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(long) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(long) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(long),
-                                     little, !is_unsigned);
-    }
-}
-
-/* CIntFromPy */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic push
@@ -6172,6 +6014,240 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to int");
     return (int) -1;
+}
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const long neg_one = (long) -1, const_zero = (long) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(long) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(long) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(long) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(long),
+                                     little, !is_unsigned);
+    }
+}
+
+/* CIntFromPy */
+static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const long neg_one = (long) -1, const_zero = (long) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if (sizeof(long) < sizeof(long)) {
+            __PYX_VERIFY_RETURN_INT(long, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (long) val;
+        }
+    } else
+#endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (long) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(long, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 2 * PyLong_SHIFT) {
+                            return (long) (((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 3 * PyLong_SHIFT) {
+                            return (long) (((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 4 * PyLong_SHIFT) {
+                            return (long) (((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (long) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(long) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (long) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(long, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(long,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(long) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                            return (long) ((((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                            return (long) ((((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                            return (long) ((((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(long) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            long val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (long) -1;
+        }
+    } else {
+        long val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (long) -1;
+        val = __Pyx_PyInt_As_long(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to long");
+    return (long) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to long");
+    return (long) -1;
 }
 
 /* FastTypeChecks */
