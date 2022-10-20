@@ -56,7 +56,7 @@ cdef class DOT:
         self.accepted_chars = CS.STRING_ANALYSE(self.data_base, self.line).UPPER_CASE() + \
                         CS.STRING_ANALYSE(self.data_base, self.line).LOWER_CASE()
 
-    cdef CHAR_SELECTION(self, str _char_ = ""):
+    cdef DOT(self, str _char_ = ""):
         cdef :
             unsigned long long int i, Len
             str str_, Open
