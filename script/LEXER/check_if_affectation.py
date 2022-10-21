@@ -1,7 +1,7 @@
 from script                             import control_string
 from script.LEXER                       import segmentation
 from script.LEXER                       import particular_str_selection
-from script.LEXER.error.CythonWIN       import affectationError         as AE
+from script.LEXER.error.Cython          import affectationError         as AE
 
 
 class AFFECTATION:

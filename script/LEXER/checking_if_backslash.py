@@ -1,7 +1,7 @@
 from script                                 import control_string
 from script.STDIN.WinSTDIN                  import stdin
 from script.LEXER                           import segmentation
-from script.LEXER.error.CythonWIN           import backslashError   as BE
+from script.LEXER.error.Cython              import backslashError   as BE
 from script.STDIN.LinuxSTDIN                import bm_configure     as bm
 
 

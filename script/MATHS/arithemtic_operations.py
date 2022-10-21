@@ -1,7 +1,13 @@
 from script.MATHS import arithmetic_modules
 
 class MAGIC_MATH_BASE:
-    def __init__(self, master:str, data_base:dict, line: int, operator: bool = False):
+    def __init__(self, 
+        master      :str, 
+        data_base   :dict, 
+        line        :int, 
+        operator    :bool = False
+        ) -> None:
+        
         self.line           = line
         self.master         = master
         self.data_base      = data_base

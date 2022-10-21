@@ -4,7 +4,6 @@ from script.MATHS                       import mathematics
 from CythonModules.Linux                import NumeriCal  as nc
 from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
 
-
 cdef class ARITHMETIC:
     cdef :
         public dict     master

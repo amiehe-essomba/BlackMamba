@@ -1,8 +1,6 @@
 from colorama 			    			import Fore, Style
 from CythonModules.Linux 				import fileError as fe 
 from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
-#from CythonModules.Linux				import arithmetic_analyze as aa
-
 
 cdef DIFF( str string1, str string2 ):
 	cdef :

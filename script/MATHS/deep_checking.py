@@ -6,8 +6,7 @@ class DEEP_CHECKING:
         self.string         = ''
         self.store          = []
 
-        if len( self.master ) <= 1:
-            pass
+        if len( self.master ) <= 1: pass
         else:
             for i, str_ in enumerate( self.master ):
                 if str_:
@@ -16,13 +15,10 @@ class DEEP_CHECKING:
                             self.string = str_ + _sign_ + self.master[ i + 1]
                             self.store.append( (self.string, i ) )
                             self.string = ''
-                        else:
-                            pass
-                    else:
-                        pass
-                else:
-                    pass
-
+                        else: pass
+                    else:  pass
+                else: pass 
+                
             if self.store:
                 for str_index in self.store:
                     self.string, self.idd = str_index
@@ -31,7 +27,6 @@ class DEEP_CHECKING:
                 for str_index in self.store:
                     self.string, self.idd = str_index
                     del self.master[ self.idd + 1 ]
-            else:
-                pass
+            else: pass
 
         return  self.master

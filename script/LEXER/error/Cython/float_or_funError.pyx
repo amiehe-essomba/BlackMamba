@@ -1,3 +1,6 @@
+from script.STDIN.LinuxSTDIN                import bm_configure as bm
+from CythonModules.Linux                    import fileError as fe
+
 cdef class ERRORS:
     cdef public:
         unsigned long long int line 

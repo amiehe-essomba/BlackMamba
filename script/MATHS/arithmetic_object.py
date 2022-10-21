@@ -1,13 +1,8 @@
-from script.PARXER import numerical_value
-from script.PARXER.LEXER_CONFIGURE      import  numeric_lexer
+from script.PARXER                      import numerical_value
+from script.PARXER.LEXER_CONFIGURE      import numeric_lexer
 from script.STDIN.LinuxSTDIN            import bm_configure as bm
-try:
-    from CythonModules.Linux            import fileError as fe 
-    from CythonModules.Linux            import making_arr as ma
-except ImportError:
-    from CythonModules.Windows          import fileError as fe
-    from CythonModules.Windows          import making_arr as ma
-
+from CythonModules.Linux                import fileError as fe 
+from CythonModules.Linux                import making_arr as ma
 
 class ARITHMETICS:
 

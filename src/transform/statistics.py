@@ -1,9 +1,6 @@
 from src.transform                  import error as er
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
-try:
-    from CythonModules.Linux        import making_stat as ms
-except ImportError:
-    from CythonModules.Windows      import making_stat as ms
+from CythonModules.Linux            import making_stat as ms
 
 
 class STAT:
