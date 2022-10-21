@@ -16,18 +16,26 @@ from script.STDIN.LinuxSTDIN        import bm_configure as bm
 try:
     from CythonModules.Linux        import making_stat as ms
     from CythonModules.Linux        import fileError as fe 
+    from CythonModules.Linux        import bm_statistics as bms
 except ImportError:
     from CythonModules.Windows      import making_stat as ms
     from CythonModules.Windows      import fileError as fe 
     from CythonModules.Windows      import bm_statistics as bms
+    
 try: from CythonModules.Linux       import help
-except : from CythonModules.Windows import help
-try: from CythonModules.Linux       import Tuple
-except : from CythonModules.Windows import Tuple
+except ImportError :
+    from CythonModules.Windows      import help
+try:from CythonModules.Linux        import Tuple
+except ImportError :
+    from CythonModule.Windows       import Tuple 
+
 try: from CythonModules.Windows     import arithmetic_analyze as aa
-except: from CythonModules.Linux    import arithmetic_analyze as aa
+except ImportError: 
+    from CythonModules.Linux        import arithmetic_analyze as aa
+
 try: from CythonModules.Windows     import array_to_list as atl
-except: from CythonModules.Linux    import array_to_list as atl
+except ImportError: 
+    from CythonModules.Linux        import array_to_list as atl
 
 
 class C_F_I_S:

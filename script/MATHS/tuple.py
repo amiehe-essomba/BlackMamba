@@ -1,20 +1,13 @@
-from colorama import Fore, init, Back, Style
-from script import control_string
-from script.LEXER import particular_str_selection
-from script.MATHS import integer
-from script.MATHS import real
-from script.MATHS import complex as cplx
-from script.MATHS import string as string_init
-from script.MATHS import boolean
+from script         import control_string
+from script.LEXER   import particular_str_selection
+from script.MATHS   import integer
+from script.MATHS   import real
+from script.MATHS   import complex as cplx
+from script.MATHS   import string as string_init
+from script.MATHS   import boolean
+from script.STDIN.LinuxSTDIN               import bm_configure as bm
+from CythonModules.Linux                   import fileError as fe 
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
 
 class TUPLE:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -47,25 +40,19 @@ class TUPLE:
                                     if len( self.check ) == 1:
                                         self.num, self.error = integer.INTEGER( self._string_ , self.data_base,
                                                                     self.line).INTEGER()
-                                        if self.error is None:
-                                            pass
-                                        else:
-                                            break
+                                        if self.error is None:  pass
+                                        else: break
                                     else:
                                         self.num, self.error = real.REAL( self._string_, self.data_base, self.line ).REAL()
-                                        if self.error is None:
-                                            pass
-                                        else:
-                                            break
+                                        if self.error is None: pass
+                                        else: break
                                 else:
                                     self.error = self.error
                                     break
                             else:
                                 self.num, self.error = cplx.COMPLEX( self._string_, self.data_base, self.line).COMPLEX()
-                                if self.error is None:
-                                    pass
-                                else:
-                                    break
+                                if self.error is None: pass
+                                else:  break
 
                             self._return_.append( self.num )
 
@@ -82,20 +69,13 @@ class TUPLE:
                                 if self.error is None:
                                     if len( self.sub_init ) == 1:
                                         self.num, self.error = cplx.COMPLEX( self._string_, self.data_base, self.line ).COMPLEX()
-                                        if self.error is None:
-                                            self._return_.append( self.num )
-                                        else:
-                                            break
+                                        if self.error is None:  self._return_.append( self.num )
+                                        else: break
                                     else:
                                         self.num, self.error = TUPLE( self._string_, self.data_base, self.line ).TUPLE()
-                                        if self.error is None:
-                                            self._return_.append( self.num )
-                                        else:
-                                            self.error = self.error
-                                            break
-                                else:
-                                    self.error = self.error
-                                    break
+                                        if self.error is None: self._return_.append( self.num )
+                                        else:  break
+                                else:  break
                             else:
                                 self.error = None
                                 self._return_.append( () )
@@ -118,20 +98,15 @@ class TUPLE:
                         elif self._string_ in [ 'inf' ]:
                             self.num, self.error = real.REAL(self._string_, self.data_base,
                                                                    self.line).REAL()
-                            if self.error is None:
-                                self._return_.append( self.num )
-                            else:
-                                break
-
+                            if self.error is None: self._return_.append( self.num )
+                            else: break
                         else:
                             self.error = ERRORS( self.line ).ERROR0( self.master )
                             break
-
                     else:
                         self.error = ERRORS( self.line ).ERROR0( self.master )
                         break
-            else:
-                self.error = self.error
+            else: pass
 
         else:
             self.error = None
@@ -162,25 +137,17 @@ class TUPLE:
                                     if len( self.check ) == 1:
                                         self.num, self.error = integer.INTEGER( self._string_ , self.data_base,
                                                                     self.line).INTEGER()
-                                        if self.error is None:
-                                            pass
-                                        else:
-                                            break
+                                        if self.error is None:  pass
+                                        else: break
                                     else:
                                         self.num, self.error = real.REAL( self._string_, self.data_base, self.line ).REAL()
-                                        if self.error is None:
-                                            pass
-                                        else:
-                                            break
-                                else:
-                                    self.error = self.error
-                                    break
+                                        if self.error is None: pass
+                                        else:  break
+                                else: break
                             else:
                                 self.num, self.error = cplx.COMPLEX( self._string_, self.data_base, self.line).COMPLEX()
-                                if self.error is None:
-                                    pass
-                                else:
-                                    break
+                                if self.error is None: pass
+                                else: break
 
                             self._return_.append( self.num )
 
@@ -197,20 +164,14 @@ class TUPLE:
                                 if self.error is None:
                                     if len( self.sub_init ) == 1:
                                         self.num, self.error = cplx.COMPLEX( self._string_, self.data_base, self.line ).COMPLEX()
-                                        if self.error is None:
-                                            self._return_.append( self.num )
-                                        else:
-                                            break
+                                        if self.error is None:  self._return_.append( self.num )
+                                        else:  break
                                     else:
                                         self.num, self.error = TUPLE( self._string_, self.data_base, self.line ).MAIN_TUPLE()
                                         if self.error is None:
                                             self._return_.append( self.num )
-                                        else:
-                                            self.error = self.error
-                                            break
-                                else:
-                                    self.error = self.error
-                                    break
+                                        else: break    
+                                else:  break
                             else:
                                 self.error = None
                                 self._return_.append( () )
@@ -230,23 +191,18 @@ class TUPLE:
                         elif self._string_ in [ 'inf' ]:
                             self.num, self.error = real.REAL(self._string_, self.data_base,
                                                                                     self.line).REAL()
-                            if self.error is None:
-                                self._return_.append(self.num)
-                            else:
-                                break
+                            if self.error is None: self._return_.append(self.num)
+                            else:   break
 
                         elif self._string_ in [ 'None' ]:
                             self._return_.append( None )
-
                         else:
                             self.error = ERRORS( self.line ).ERROR0( self.master )
                             break
-
                     else:
                         self.error = ERRORS( self.line ).ERROR0( self.master )
                         break
-            else:
-                self.error = self.error
+            else:  pass
         else:
             self.error = None
             self._return_ = self._return_
@@ -256,18 +212,26 @@ class TUPLE:
 class ERRORS:
     def __init__(self, line ):
         self.line           = line
+        self.cyan       = bm.fg.cyan_L
+        self.red        = bm.fg.red_L
+        self.green      = bm.fg.green_L
+        self.yellow     = bm.fg.yellow_L
+        self.magenta    = bm.fg.magenta_M
+        self.white      = bm.fg.white_L
+        self.blue       = bm.fg.blue_L
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR1(self, string: str = 'a list'):
-        error = '{}{}. {}line: {}{}'.format(ie, string, we, ke, self.line)
-        self.error = '{}{} : {}tuple {}object cannot contains '.format(te, 'TypeError', ae, we) + error
+        error = '{}{}. {}line: {}{}'.format(self.red, string, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}tuple {}object cannot contains '.format(self.cyan, self.white) + error
 
-        return self.error
+        return self.error+self.reset
 
 
 

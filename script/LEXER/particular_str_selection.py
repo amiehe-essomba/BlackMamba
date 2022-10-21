@@ -1,8 +1,8 @@
-from colorama                       import  Fore
-from script.LEXER                   import segmentation
-from script                         import control_string
-from script.LEXER.error.CythonWIN   import affectationError as AE
-from CythonModules.Windows.LEXER.seg    import segError
+from colorama                           import Fore
+from script.LEXER                       import segmentation
+from script                             import control_string
+from script.LEXER.error.Cython          import affectationError as AE
+from CythonModules.Linux.LEXER.seg     import segError
 
 ne = Fore.LIGHTRED_EX
 ie = Fore.LIGHTBLUE_EX

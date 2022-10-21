@@ -1,22 +1,16 @@
-from colorama import Fore, init, Back, Style
-from script import control_string
-from script.LEXER import particular_str_selection
-from script.MATHS import integer
-from script.MATHS import real
-from script.MATHS import complex
-from script.MATHS import dictionary
-from script.MATHS import string as string_init
-from script.MATHS import tuple as TP
-from script.MATHS import boolean
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
+from script         import control_string
+from script.LEXER   import particular_str_selection
+from script.MATHS   import integer
+from script.MATHS   import real
+from script.MATHS   import complex
+from script.MATHS   import dictionary
+from script.MATHS   import string as string_init
+from script.MATHS   import tuple as TP
+from script.MATHS   import boolean
+from script.STDIN.LinuxSTDIN               import bm_configure as bm
+from CythonModules.Linux                   import fileError as fe 
+
 
 class LIST:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -50,45 +44,31 @@ class LIST:
                                     if len( self.check ) == 1:
                                         self.num, self.error = integer.INTEGER( self._string_ , self.data_base,
                                                                     self.line).INTEGER()
-                                        if self.error is None:
-                                            pass
-                                        else:
-                                            break
+                                        if self.error is None:  pass
+                                        else:  break
                                     else:
                                         self.num , self.error = real.REAL( self._string_, self.data_base,
                                                               self.line ).REAL()
-                                        if self.error is None:
-                                            pass
-                                        else:
-                                            break
-                                else:
-                                    self.error = self.error
-                                    break
+                                        if self.error is None:  pass
+                                        else:  break
+                                else:  break
                             else:
                                 self.num, self.error = complex.COMPLEX( self._string_, self.data_base, self.line).COMPLEX()
-                                if self.error is None:
-                                    pass
-                                else:
-                                    break
+                                if self.error is None:  pass
+                                else: break
 
                             self._return_.append( self.num )
 
                         elif self._string_[ 0 ] in ['{']:
                             self.num, self.error = dictionary.DICTIONARY( self._string_, self.data_base,
                                                                           self.line).MAIN_DICTIONARY()
-                            if self.error is None:
-                                self._return_.append( self.num )
-                            else:
-                                self.error = self.error
-                                break
+                            if self.error is None:  self._return_.append( self.num )
+                            else:  break
 
                         elif self._string_[ 0 ] in ['[']:
                             self.num, self.error = LIST( self._string_, self.data_base, self.line ).LIST()
-                            if self.error is None:
-                                self._return_.append( self.num )
-                            else:
-                                self.error = self.error
-                                break
+                            if self.error is None: self._return_.append( self.num )
+                            else:  break
 
                         elif self._string_[ 0 ] in ['"', "'"]:
                             self.num = string_init.STRING( self._string_, self.data_base, self.line ).STRING()
@@ -104,18 +84,13 @@ class LIST:
                                 if len(self.sub_string_) == 1:
                                     self.num, self.error = complex.COMPLEX(self._string_, self.data_base,
                                                                                             self.line).COMPLEX()
-                                    if self.error is None:
-                                        self._return_.append( self.num )
-                                    else:
-                                        break
+                                    if self.error is None: self._return_.append( self.num )
+                                    else:  break
                                 else:
                                     self.num, self.error = TP.TUPLE(self._string_, self.data_base,
                                                                                         self.line).TUPLE()
-                                    if self.error is None:
-                                        self._return_.append( self.num )
-                                    else:
-                                        self.error = self.error
-                                        break
+                                    if self.error is None: self._return_.append( self.num )
+                                    else:  break
                             else:
                                 self.error = None
                                 self._return_.append( () )
@@ -129,20 +104,16 @@ class LIST:
 
                         elif self._string_ in ['inf']:
                             self.num, self.error = real.REAL(self._string_, self.data_base, self.line).REAL()
-                            if self.error is None:
-                                self._return_.append( self.num )
-                            else:
-                                self.error = self.error
+                            if self.error is None: self._return_.append( self.num )
+                            else:  self.error = self.error
 
                         else:
                             self.error = ERRORS( self.line ).ERROR0( self.master )
                             break
-
                     else:
                         self.error = ERRORS( self.line ).ERROR0( self.master )
                         break
-            else:
-                self.error = self.error
+            else: pass
         else:
             self.error = None
             self._return_ = self._return_
@@ -173,45 +144,31 @@ class LIST:
                                     if len(self.check) == 1:
                                         self.num, self.error = integer.INTEGER(self._string_, self.data_base,
                                                                    self.line).INTEGER()
-                                        if self.error is None:
-                                            pass
-                                        else:
-                                            break
+                                        if self.error is None:  pass
+                                        else:  break
                                     else:
                                         self.num, self.error = real.REAL(self._string_, self.data_base, self.line).REAL()
-                                        if self.error is None:
-                                            pass
-                                        else:
-                                            break
-                                else:
-                                    self.error = self.error
-                                    break
+                                        if self.error is None: pass
+                                        else: break
+                                else:  break
                             else:
                                 self.num, self.error = complex.COMPLEX(self._string_, self.data_base, self.line).COMPLEX()
-                                if self.error is None:
-                                    pass
-                                else:
-                                    break
+                                if self.error is None: pass
+                                else:  break
 
                             self._return_.append(self.num)
 
                         elif self._string_[0] in ['{']:
                             self.num, self.error = dictionary.DICTIONARY(self._string_, self.data_base,
                                                                          self.line).MAIN_DICTIONARY()
-                            if self.error is None:
-                                self._return_.append(self.num)
-                            else:
-                                self.error = self.error
-                                break
+                            if self.error is None: self._return_.append(self.num)
+                            else:  break
 
                         elif self._string_[0] in ['[']:
 
                             self.num, self.error = LIST( self._string_, self.data_base, self.line ).MAIN_LIST()
-                            if self.error is None:
-                                self._return_.append( self.num )
-                            else:
-                                self.error = self.error
-                                break
+                            if self.error is None: self._return_.append( self.num )
+                            else:  break
 
                         elif self._string_[0] in ['"', "'"]:
                             self.num = string_init.STRING(self._string_, self.data_base, self.line).STRING()
@@ -227,18 +184,13 @@ class LIST:
                                 if len(self.sub_string_) == 1:
                                     self.num, self.error = complex.COMPLEX(self._string_, self.data_base,
                                                                                             self.line).COMPLEX()
-                                    if self.error is None:
-                                        self._return_.append( self.num )
-                                    else:
-                                        break
+                                    if self.error is None: self._return_.append( self.num )
+                                    else:  break
                                 else:
                                     self.num, self.error = TP.TUPLE(self._string_, self.data_base,
                                                                                         self.line).TUPLE()
-                                    if self.error is None:
-                                        self._return_.append( self.num )
-                                    else:
-                                        self.error = self.error
-                                        break
+                                    if self.error is None: self._return_.append( self.num )
+                                    else:  break
                             else:
                                 self.error = None
                                 self._return_.append( () )
@@ -252,19 +204,16 @@ class LIST:
 
                         elif self._string_ in [ 'inf' ]:
                             self.num, self.error = real.REAL(self._string_, self.data_base, self.line).REAL()
-                            if self.error is None:
-                                self._return_.append(self.num)
-                            else:
-                                self.error = self.error
+                            if self.error is None: self._return_.append(self.num)
+                            else: pass
+                                 
                         else:
                             self.error = ERRORS( self.line ).ERROR0( self.master )
                             break
-
                     else:
                         self.error = ERRORS( self.line ).ERROR0( self.master )
                         break
-            else:
-                self.error = self.error
+            else: pass 
         else:
             self.error = None
             self._return_ = self._return_
@@ -274,9 +223,17 @@ class LIST:
 class ERRORS:
     def __init__(self, line ):
         self.line           = line
+        self.cyan       = bm.fg.cyan_L
+        self.red        = bm.fg.red_L
+        self.green      = bm.fg.green_L
+        self.yellow     = bm.fg.yellow_L
+        self.magenta    = bm.fg.magenta_M
+        self.white      = bm.fg.white_L
+        self.blue       = bm.fg.blue_L
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset

@@ -1,27 +1,23 @@
-from colorama import Fore, init, Back, Style
-from script.LEXER import particular_str_selection
-from script.MATHS import integer
-from script.MATHS import real
-from script.MATHS import complex
-from script.MATHS import dictionary
-from script.MATHS import my_list
-from script.MATHS import string as string_int
-from script.MATHS import tuple as TP
-from script.MATHS import boolean
-from script import control_string
-from script.STDIN.WinSTDIN import stdin
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
+from script.LEXER           import particular_str_selection
+from script.MATHS           import integer
+from script.MATHS           import real
+from script.MATHS           import complex
+from script.MATHS           import dictionary
+from script.MATHS           import my_list
+from script.MATHS           import string as string_int
+from script.MATHS           import tuple as TP
+from script.MATHS           import boolean
+from script                 import control_string
+from script.STDIN.WinSTDIN  import stdin
 
 class MAGIC_MATH_BASE:
-    def __init__(self, master: str, data_base: dict, line: int):
+    def __init__(self, 
+        master      : str, 
+        data_base   : dict, 
+        line        : int
+        ) -> None:
+        
         self.line               = line
         self.master             = master
         self.data_base          = data_base
@@ -47,17 +43,14 @@ class MAGIC_MATH_BASE:
                         self.type = type( float() )
                         self.final_value, self.error = real.REAL( self.master, self.data_base, self.line ).REAL()
 
-                else:
-                    self.error = self.error
-
+                else: pass
             else:
                 self.final_value, self.error = complex.COMPLEX( self.master, self.data_base, self.line ).COMPLEX()
                 self.type = type( self.final_value )
 
         elif self.master[ 0 ] in [ '{' ]:
             self.type = type( dict() )
-            self.final_value, self.error = dictionary.DICTIONARY( self.master, self.data_base,
-                                                                  self.line ).MAIN_DICTIONARY()
+            self.final_value, self.error = dictionary.DICTIONARY( self.master, self.data_base, self.line ).MAIN_DICTIONARY()
 
         elif self.master[ 0 ] in [ '[' ]:
             self.type = type( list() )
