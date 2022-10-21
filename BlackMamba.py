@@ -1,8 +1,31 @@
-from script.LEXER.FUNCTION      import main
-from script.PARXER              import parxer_assembly
-from script.DATA_BASE           import data_base as db
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
+#############################################################
+#############################################################
+# Black Mamba Windows Interpretor                           #
+# This version has currently two code iditors:              #
+#                                                           #
+#                                                           #
+# * pegasus is the default editor                           #
+# * orion is the optimized code editor with a syntaxis      #
+#   color                                                   #
+# basically we can use both without any problems because    #
+# they work very well.                                      #
+#                                                           #
+#                                                           #
+# * to select a terminal it's very simple, just do this     #
+#                                                           #
+#       * mamba --T orion                                   #
+#       * mamba --T pegasus                                 #
+#############################################################
+# **created by : amiehe-essomba                             #
+# **updating by: amiehe-essomba                             #
+#############################################################
+
+
 from script                     import control_string
+from script.LEXER.FUNCTION      import main
+from script.DATA_BASE           import data_base                as db
+from script.STDIN.LinuxSTDIN    import bm_configure             as bm
+from script.PARXER.WINParxer    import parxer_for_interpreter   as PFI
 import os
 
 
@@ -15,7 +38,7 @@ control         = control_string.STRING_ANALYSE( {}, 1 )
 
 
 try:
-    path_library    = 'D:\\black_mamba\\Library\\iris.bm'
+    path_library    = 'E:\\bb\\elena\\BlackMamba\\Library\\iris.bm'
     
     with open(file=path_library, mode='r') as file:
         for line in file.readlines():  
@@ -56,8 +79,9 @@ if __name__ == '__main__':
                         lexer, normal_string, error = main.MAIN(string, data_base, line).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
                         if error is None:
                             if lexer is not None:
-                                num, key, error = parxer_assembly.ASSEMBLY(lexer, data_base, line).GLOBAL_ASSEMBLY_FOR_INTERPRETER(normal_string, True,
+                                num, key, error = PFI.ASSEMBLY(lexer, data_base, line).GLOBAL_ASSEMBLY_FOR_INTERPRETER(normal_string, True,
                                                                                     MainList = data_from_file[x+1: ], baseFileName = currunt_file)
+                                
                                 if error is None: pass
                                 else: 
                                     print('{}\n'.format( error ) )
@@ -75,8 +99,9 @@ if __name__ == '__main__':
                             lexer, normal_string, error = main.MAIN(string, data_base, line).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
                             if error is None:
                                 if lexer is not None:
-                                    num, key, error = parxer_assembly.ASSEMBLY(lexer, data_base, line).GLOBAL_ASSEMBLY_FOR_INTERPRETER(normal_string, 
-                                                                            True, MainList = data_from_file[x+1: ], baseFileName = currunt_file)
+                                    num, key, error = PFI.ASSEMBLY(lexer, data_base, line).GLOBAL_ASSEMBLY_FOR_INTERPRETER(normal_string, True,
+                                                                                    MainList = data_from_file[x+1: ], baseFileName = currunt_file)
+                                    
                                     if error is None: pass
                                     else:
                                         print('{}\n'.format( error ) )

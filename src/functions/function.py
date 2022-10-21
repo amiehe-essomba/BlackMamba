@@ -17,6 +17,7 @@ class FUNCTION:
 
     def INIT_FUNCTION(self, main_string: str, info_data: dict):
         self.error              = None
+        self.function_type      = None
         ###########################################################################
         self.keys               = list( self.master.keys() )
         self.function_name      = self.keys[ 0 ]
@@ -27,7 +28,10 @@ class FUNCTION:
         self.values             = self.get_informations[ 'value' ][ : ]
         self.int_values         = self.values[ : ]
         self.emty_values        = []
-
+        try:
+            self.function_type      = self.get_informations[ 'type_return' ]
+        except KeyError: pass 
+        
         ###########################################################################
         self.computed_values    = info_data[ 'values_computed' ]
         self.external_vars      = info_data[ 'vars' ]
@@ -185,7 +189,8 @@ class FUNCTION:
         self._return_     = {
             'data_base'         : self.def_data_base,
             'vars'              : self.arguments,
-            'values'            : self.int_values
+            'values'            : self.int_values,
+            'type'              : self.function_type
         }
 
         return  self._return_, self.error

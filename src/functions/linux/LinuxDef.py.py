@@ -44,11 +44,11 @@ class EXTERNAL_DEF_LINUX:
 
     def TERMINAL(self,
              tabulation : int,
-             class_name : str  = '',
-             class_key  : bool = False,
-             c          : str  = '',
-             function   : str  = 'def',
-             _type_     : str  = 'def'
+             class_name : str    = '',
+             class_key  : bool   = False,
+             c          : str    = '',
+             function   : str    = 'def',
+             _type_     : str    = 'def'
             ):
 
         # set color on yellow
@@ -141,7 +141,7 @@ class EXTERNAL_DEF_LINUX:
         while True:
             try:
                 # get input 
-                self.char = readchar() 
+                self.char = readchar.readchar() 
                 #breaking loop while with the keyboardError
                 if self.char == 3: 
                     self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
@@ -439,7 +439,7 @@ class EXTERNAL_DEF_LINUX:
 
                     if self.string:
                         # calling the main module DEF
-                        self.def_cancel, self.error = ED.EXTERNAL_DEF(master=self.mainString, data_base=self.data_base,
+                        self.def_cancel, self.error = ED.EXTERNAL_DEF(master=self.string, data_base=self.data_base,
                                 line=self.if_line,  history=self.history, store_value=self.store_value,
                                 space=self.space).DEF(tabulation=self.tabulation, def_starage=self.def_starage,
                                 subFunc=self.subFunc,  class_name=class_name,  class_key=class_key, c=c,
@@ -453,8 +453,8 @@ class EXTERNAL_DEF_LINUX:
                         # if no string
                         if self.space <= self.max_emtyLine:
                             self.space += 1
-                            self.mainString = self.analyse.BUILD_NON_CON(string=self.mainString, tabulation=self.tabulation)
-                            self.def_starage.append((self.mainString, False))
+                            self.string = self.analyse.BUILD_NON_CON(string=self.string, tabulation=self.tabulation)
+                            self.def_starage.append((self.string, False))
                         else:
                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                             break

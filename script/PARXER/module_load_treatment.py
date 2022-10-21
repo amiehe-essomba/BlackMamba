@@ -497,3 +497,4 @@ class INIT:
         self.db['historyOfErrors']['classes']                   = []
         self.db['historyOfErrors']['functions']                 = []
         self.db['historyOfErrors']['line']                      = []
+        self.db['def_return']                                   = None

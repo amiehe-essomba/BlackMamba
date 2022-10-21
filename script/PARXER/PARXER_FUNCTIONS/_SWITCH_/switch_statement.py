@@ -1,11 +1,11 @@
+import cython
 from script                                     import control_string
 from script.PARXER.LEXER_CONFIGURE              import lexer_and_parxer
-from statement                                  import externalSwitch as ES
-from script.PARXER.PARXER_FUNCTIONS._SWITCH_    import switchError as sE
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_    import case
-from statement                                  import InternalStatement as IS
 from updatingDataBase                           import updating
-import cython
+from statement                                  import InternalStatement    as IS
+from statement                                  import externalSwitch       as ES
+from script.PARXER.PARXER_FUNCTIONS._SWITCH_    import switchError          as sE
 
 @cython.cclass
 class SWITCH_LOOP_STATEMENT:
@@ -28,12 +28,12 @@ class SWITCH_LOOP_STATEMENT:
 
     @cython.cfunc
     def SWITCH(self,
-                    main_values     : any,
-                    tabulation      : int   = 1, 
-                    loop_list       : any   = None, 
-                    _type_          : str   = 'conditional', 
-                    keyPass         : bool  = False
-                    ) -> str :
+        main_values     : any,
+        tabulation      : int   = 1, 
+        loop_list       : any   = None, 
+        _type_          : str   = 'conditional', 
+        keyPass         : bool  = False
+        ) -> str :
 
         ##############################################################################
         self.error                  = None              # error

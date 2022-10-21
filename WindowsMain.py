@@ -2,26 +2,25 @@
 # Main IDE for windows called when BM      #  
 # is running un windows sys                #
 #                                          #
-# The default terminal running is pegasus  #
-# and the performed one is the orion       #
+# *The default terminal running is pegasus #
+# *and the performed one is the orion      #
 # with a syntaxis coloration               #
 #                                          #
 # to call them just typed                  #
 #                                          #
-# mamba --T orion                          #
-# mamba --T pegasus                        #
+# *mamba --T orion                         #
+# *mamba --T pegasus                       #
 ############################################
-# created by : amiehe-essomba              #
-# updating by: amiehe-essomba              #
+# **created by : amiehe-essomba            #
+# **updating by: amiehe-essomba            #
 ############################################
 
-from socketserver import ThreadingUDPServer
 import sys, os
 from script.LEXER.FUNCTION      import main
-from script.DATA_BASE           import data_base as db
 from script                     import control_string
-from script.PARXER              import parxer_assembly
-from script.STDIN.LinuxSTDIN    import bm_configure as bm
+from script.PARXER.WINParxer    import parxer
+from script.STDIN.LinuxSTDIN    import bm_configure     as bm
+from script.DATA_BASE           import data_base        as db
 
 
 class windows:
@@ -29,7 +28,7 @@ class windows:
         # main data base
         self.data_base  = data_base
         # string module analyses 
-        self.analyse    = control_string.STRING_ANALYSE({}, 1)
+        self.analyse    = control_string.STRING_ANALYSE(self.data_base, 1)
 
     def terminal(self, c: str = '', terminal_name : str = 'pegasus'):
         # input initialization
@@ -151,7 +150,7 @@ class windows:
                             if self.lexer is not None:
                                 
                                 # running parser 
-                                self.num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.data_base,
+                                self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
                                         self.line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
                                 if self.error is None: self.cursor.append(bm.get_cursor_pos.pos)   
                                 else:
@@ -201,7 +200,7 @@ class windows:
                 print(self._keyboard_)
                 return
             # EOF
-            except IndentationError:
+            except IndexError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset+bm.init.reset
                 print(self._end_of_file_)
                 self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
@@ -218,4 +217,4 @@ if __name__ == '__main__':
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
     except KeyboardInterrupt:  pass
-    except IndentationError: pass
+    except IndexError: pass

@@ -11,6 +11,10 @@ class ndarray:
 		_std_ * [master, nrow, ncol, reverse, None, axis, 'matrix']
 	end: 
 	
+	def summ( reverse : bool = False,  axis : none/int=None ):
+		_std_ * [master, nrow, ncol, reverse, 'sum', axis, 'matrix'] 
+	end:
+	
 	def sum( reverse : bool = False,  axis : none/int=None ):
 		_std_ * [master, nrow, ncol, reverse, 'sum', axis, 'matrix'] 
 	end:

@@ -43,3 +43,10 @@ class ERRORS:
         self.error =  fe.FileErrors( 'IndentationError' ).Errors()+'{}unexpected an indented block, {}line: {}{}'.format(self.yellow,
                                                                                     self.white, self.yellow, self.line )
         return self.error+self.reset
+    
+    def ERROR5(self, _str_ : str = 'if'):
+        error = '{}close the opening statement {}<< {} >> {}block. {}line: {}{}'.format(self.yellow, self.blue, _str_, self.yellow,
+                                                                                        self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax. '.format( self.white ) + error
+
+        return self.error+self.reset

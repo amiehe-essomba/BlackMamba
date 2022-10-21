@@ -8,7 +8,7 @@ class MAGIC_MATH_BASE:
         self.history_of_operators   = history_of_operators
         self.math_modules   = arithmetic_modules.MATHS(self.master, self.data_base, self.history_of_operators, self.line )
 
-    def MATHS_OPERATIONS(self ):
+    def MATHS_OPERATIONS(self, name: str = 'python' ):
         self.value                  = None
         self.error                  = None
 
@@ -115,6 +115,12 @@ class MAGIC_MATH_BASE:
         elif MAGIC_MATH_BASE(self.master, self.data_base, None, self.line).OPERATORS(self.history_of_operators, '3_10'):
             self.value, self.error = self.math_modules.ADD_DIV_POW_MOD()
 
+        if name == 'cython':
+            self.value = [self.value]
+            if self.error is None: self.error = ""
+            else: pass 
+        else: pass
+            
         return self.value, self.error
 
     def OPERATORS(self, master, n: str):

@@ -7,18 +7,17 @@ from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement, if_inter
 from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement, unless_interpreter
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import end_else_elif as _end_else_elif_
-from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import end_case_default, switch_statement
+from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS.WHILE               import while_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else, for_interpreter
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_interpreter
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment as cmt
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmt_interpreter as cmt_int
 from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_try
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS import WindowsIF as wIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN       import WindowsTry           as wTry
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import WindowsIF as wIF
 from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import WindowsUnless as wU
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS import WindowsSwitch as WSw
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment, for_begin
+from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_block_treatment
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import def_interpreter
 from script.PARXER.PARXER_FUNCTIONS.CLASSES             import class_interpreter
 from script.PARXER                                      import module_load_treatment 
@@ -26,9 +25,10 @@ from script.STDIN.LinuxSTDIN                            import bm_configure as b
 from src.modulesLoading                                 import modules, moduleMain 
 from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
-#
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import WindowsFor as wFor
 from src.functions.windows                              import windowsDef as WD
 from src.classes.windows                                import windowsClass as WC
+from loop                                               import mainFor
 try:
     from CythonModules.Windows                          import fileError as fe 
 except ImportError:
@@ -71,8 +71,11 @@ class ASSEMBLY( ):
                     if self._return_ is not None:
                         if interpreter is False:
                             if locked is False: 
-                                for value in self._return_:
-                                    show_data.SHOW( value, self.data_base, key ).SHOW()
+                                if self.data_base['def_return'] is True:
+                                    for value in self._return_:
+                                        show_data.SHOW( value, self.data_base, key ).SHOW()
+                                    self.data_base['def_return'] = False 
+                                else: pass
                             else: pass
                         else: pass
                     else: pass
@@ -338,37 +341,43 @@ class ASSEMBLY( ):
                     else: pass
                 else: pass
             elif self.master[ 'function' ] == 'for'     :
-                self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
-                                                                self.line ).BOCKS( main_string )
-
+                self._, self.value, self.error =  mainFor.FOR_BLOCK(normal_string =main_string,
+                                                data_base=self.data_base, line=self.line).FOR( function = 'loop',
+                                                interpreter = interpreter,   locked=False)
                 if self.error is None:
                     self.data_base[ 'print' ] = []
-                    self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
-                                                    self.line ).FOR( main_string, self.value, self.name )
-
+                    
+                    self.listTransform, self.tab, self.error = wFor.EXTERNAL_FOR_WINDOWS(data_base=self.data_base,
+                                    line=self.line, term=term).TERMINAL( tabulation=1, _type_='loop', c = bm.fg.rbg(255,255,255) )
+                                    
                     if self.error is None:
-                        if self.data_base[ 'print' ] is not None:
-                            self.list_of_values = self.data_base[ 'print' ]
-                            for i, value in enumerate( self.list_of_values ):
-                                if len( self.value ) == 1 :
-                                    for sub_value in value:
-                                        if i < len( self.list_of_values) - 1:
-                                            show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = True)
-                                        else:
-                                           show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
-                                else:
-                                    if i < len( self.list_of_values) - 1:
-                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                        self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
+                                                self.line ).FOR( main_string, self.value['value'], self.value['variable'],
+                                                loop_list = (self.listTransform, self.tab, self.error) )
+
+                        if self.error is None:
+                            if self.data_base[ 'print' ] is not None:
+                                self.list_of_values = self.data_base[ 'print' ]
+                                for i, value in enumerate( self.list_of_values ):
+                                    if len( self.value ) == 1 :
+                                        for sub_value in value:
+                                            if i < len( self.list_of_values) - 1:
+                                                show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = True)
+                                            else:  show_data.SHOW( sub_value, self.data_base, False ).SHOW( loop = False) 
                                     else:
-                                        print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = False )
+                                        if i < len( self.list_of_values) - 1:
+                                            print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                                        else:
+                                            print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = False )
 
-                                if self.got_errors:
-                                    print( self.got_errors[ i ])
-                                else: pass
+                                    if self.got_errors:
+                                        print( self.got_errors[ i ])
+                                    else: pass
+                            else: pass
                         else: pass
+                        self.data_base['print'] = []
                     else: pass
-                    self.data_base['print'] = []
-
+                    
                 else: self.error = self.error
             elif self.master[ 'function' ] == 'while'   :
                 self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
@@ -405,8 +414,8 @@ class ASSEMBLY( ):
                 self.data_base[ 'print' ] = []
                 self.newLine                    = self.line 
 
-                self.listTransform, self.error = for_try.EXTERNAL_TRY_STATEMENT( None,
-                                            self.data_base, self.newLine ).TRY_STATEMENT( tabulation = 1)
+                self.listTransform, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.newLine, term=term ).TERMINAL(
+                               tabulation=1, _type_ = 'try', c=bm.fg.rbg(255,255,255) )
             
                 if self.error is None:
                     self._finally_key_, self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT(None,
@@ -510,8 +519,8 @@ class ASSEMBLY( ):
                 else:
                     self.error = self.error
             elif self.master[ 'function' ] == 'unless'  : 
-                self._return_, self.error = _end_else_elif_.MAIN_UNLESS(main_string, self.data_base,
-                                                                  self.line).BOCKS()
+                self._return_, self.error = MS.MAIN( main_string, self.data_base, self.line).MAIN(  typ='unless',
+                                                                    opposite=True, interpreter=True )
                 if self.error is None:
                     self.NewLIST                    = stdin.STDIN(self.data_base, self.line ).GROUPBY(1, MainList)
                     self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
@@ -533,18 +542,21 @@ class ASSEMBLY( ):
                     else: pass
                 else: pass
             elif self.master[ 'function' ] == 'switch'  :
-                self._return_, self.error = end_case_default.MAIN_SWITCH( main_string, self.data_base,
-                                                                  self.line).BOCKS()
+                self._return_, self.error = MS.MAIN(main_string, self.data_base, self.line).MAIN(typ='switch',
+                                                opposite=False, interpreter=True)
                 if self.error is None:
                     self.error = switch_statement.SWITCH_STATEMENT (None, self.data_base,
                                                         self.line).SWITCH(self._return_, 1)
                 else:
                     self.error = self.error
             elif self.master[ 'function' ] == 'for'     :
-                self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
-                                                                self.line ).BOCKS( main_string )
+                self._, self.val, self.error =  mainFor.FOR_BLOCK(normal_string =main_string,
+                                                data_base=self.data_base, line=self.line).FOR( function = 'loop',
+                                                interpreter = interpreter,   locked=False)
                 
                 if self.error is None:
+                    self.value = self.val['value']
+                    self.name  = self.val['variable']
                     self.data_base['variables']['vars'].append(self.name)
                     self.data_base['variables']['values'].append(self.value[-1])
                     
@@ -685,10 +697,15 @@ class ASSEMBLY( ):
                                                                          self.line ).IF_STATEMENT(1, self.NewLIST )
                 else: pass
             elif self.master[ 'function' ] == 'for'     :
-                self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
-                                                                self.line ).BOCKS( main_string )
+                self._, self.val, self.error =  mainFor.FOR_BLOCK(normal_string =main_string,
+                                                data_base=self.data_base, line=self.line).FOR( function = 'loop',
+                                                interpreter = interpreter,   locked=False)
+                #self.value, self.name, self.operator, self.error = end_for_else.MAIN_FOR( self.master, self.data_base,
+                #                                                self.line ).BOCKS( main_string )
                 
                 if self.error is None:
+                    self.value = self.val['value']
+                    self.name  = self.val['variable']
                     self.data_base['variables']['vars'].append(self.name)
                     self.data_base['variables']['values'].append(self.value[-1])
                     
@@ -721,7 +738,7 @@ class ASSEMBLY( ):
                 self.MainStringTransform        = main_string
                 self.listTransform              = self.NewLIST 
                 
-                self.error = class_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES(  tabulation = 1, 
+                self.error = class_interpreter.EXTERNAL_CLASS_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES(  tabulation = 1, 
                                                                     loop_list = self.listTransform )
                 if self.error is None: pass
                 else: pass           

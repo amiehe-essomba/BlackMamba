@@ -12,18 +12,18 @@ i am gonna to show you further how it's possible to set multi-line = comments. b
 
 """
 
-from colorama                       import Fore
 from script.LEXER                   import segmentation
 from script                         import control_string
 from script.LEXER                   import checking_if_backslash
 from script.LEXER                   import comment_line
+from script.STDIN.LinuxSTDIN        import bm_configure as bm
 
 class CHECK_TAB:
     def __init__(self,
-                        master      : str,      #   that's the concatenate main string
-                        long_chaine : str,      #   non-concatenate main string
-                        data_base   : dict,     #   the data base containing all informations that will be used by the parxer
-                        line        : int       #   current line number
+                master      : str,      #   that's the concatenate main string
+                long_chaine : str,      #   non-concatenate main string
+                data_base   : dict,     #   the data base containing all informations that will be used by the parxer
+                line        : int       #   current line number
                 ):
 
         self.master         = master                                                                                    # concatenate main string
@@ -33,13 +33,13 @@ class CHECK_TAB:
         self.error_init     = segmentation.ERROR( self.line )                                                           # errror
         self.treatment      = segmentation.SEGMENTATION( self.master, self.long_chaine, self.data_base, self.line )     # segmentation anylises
         self.analyze        = control_string.STRING_ANALYSE( self.data_base, self.line )                                # string controlling function
-        self.color          = Fore.CYAN                                                                                 # color
-        self.backslash      = checking_if_backslash#.BACKSSLASH( self.master, self.data_base, self.line )                # backslash initialization
+        self.backslash      = checking_if_backslash                                                                     # backslash initialization
         self.comment        = comment_line                                                                              # comment line line initialization
+        self.color          = bm.fg.cyan_L
 
     def CHECK_LINE(self,
-                        _id_: int       # tab number
-                   ):
+            _id_: int       # tab number
+           ):
 
         self.error          = None
         self.string_check   = None
@@ -110,7 +110,7 @@ class CHECK_TAB_FOR_INTERPRETER:
         self.data_base      = data_base                                                                                 # data base where data are stored
         self.error_init     = segmentation.ERROR( self.line )                                                           # errror
         self.analyze        = control_string.STRING_ANALYSE( self.data_base, self.line )                                # string controlling function
-        self.backslash      = checking_if_backslash#.BACKSSLASH_FOR_INTERPRETER( self.master, self.data_base, self.line )# backslash initialization
+        self.backslash      = checking_if_backslash                                                                     # backslash initialization
         self.comment        = comment_line                                                                              # comment line line initialization
 
     def CHECK_LINE(self,

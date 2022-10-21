@@ -19,8 +19,7 @@ setup(
             'help.pyx',
             'Tuple.pyx',
             'if_statement.pyx',
-            'array_to_list.pyx',
-            'test.pyx'
+            'array_to_list.pyx'
             ], 
         annotate = True
         )

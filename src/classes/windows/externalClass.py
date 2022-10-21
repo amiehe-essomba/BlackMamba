@@ -1,4 +1,3 @@
-from script.PARXER.PARXER_FUNCTIONS.CLASSES     import end_class
 from src.functions.windows                      import windowsDef as WD
 from script.LEXER.FUNCTION                      import main
 from src.classes                                import errorClass as EC

@@ -29,7 +29,7 @@ class EXTERNAL_BLOCKS:
                     if   self.normal_string[ : 3 ] == 'end'  :
                         if self.normal_string[-1] == ':':
                             self._return_ = 'end:'
-                            self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(snum=3, normal_string=self.normal_string)
+                            self.error = externalBlocks.EXTERNAL(self.data_base, self.line).EXTERNAL(num=3, normal_string=self.normal_string)
                         else:
                             if self.normal_string in ['end']: self.error = er.ERRORS(self.line).ERROR1('end')
                             else:  self.error = er.ERRORS(self.line).ERROR4()

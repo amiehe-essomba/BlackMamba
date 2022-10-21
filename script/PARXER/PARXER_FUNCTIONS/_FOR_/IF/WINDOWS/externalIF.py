@@ -1,14 +1,15 @@
 from script                                                 import control_string
-from statement                                              import InternalStatement as IS
-from statement                                              import externalIF as eIF
+from statement                                              import InternalStatement    as IS
+from statement                                              import externalIF           as eIF
 from script.PARXER.PARXER_FUNCTIONS._IF_                    import IfError
-from script.PARXER.PARXER_FUNCTIONS._FOR_                   import for_try, for_statement
 from script.LEXER.FUNCTION                                  import main
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import subWindowsIF as swIF
-from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless as wU
-from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch as WSw
-from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile as WWh
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import subWindowsIF         as swIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless        as wU
+from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch        as WSw
+from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile         as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import WindowsTry           as wTry
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import subWindowsFor        as sWFor
 
 class EXTERNAL_IF:
     def __init__(self, 
@@ -78,7 +79,7 @@ class EXTERNAL_IF:
                 # build normal string 
                 self.normal_string = self.analyse.BUILD_NON_CON(string=self.master, tabulation=self.tabulation)
 
-                 # when indentation is True
+                # when indentation is True
                 if self.active_tab is True:
                     self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string,
                             data_base=self.data_base, line=self.if_line).BLOCKS(tabulation = self.tabulation + 1, function = _type_,
@@ -112,9 +113,8 @@ class EXTERNAL_IF:
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
 
-                            self._values_, self.error = for_try.INTERNAL_TRY_STATEMENT( master=self.master,
-                                    data_base=self.data_base, line=self.if_line ).TRY_STATEMENT(
-                                                                tabulation = self.tabulation + 1, _type_=_type_)
+                            self._values_, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
+                               tabulation=self.tabulation + 1, _type_ = _type_, c=c )
 
                             if self.error is None:
                                 self.history.append( 'try' )
@@ -149,13 +149,14 @@ class EXTERNAL_IF:
                         elif self.get_block == 'for:'    :
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
-                            loop, tab, self.error = for_statement.EXTERNAL_FOR_STATEMENT( master=self.master,
-                                                        data_base=self.data_base, line=self.if_line ).FOR_STATEMENT( tabulation = self.tabulation+1 )
+                            
+                            self._loop_, self.tab, self.error  = sWFor.INTERNAL_FOR_WINDOWS(data_base=self.data_base, line=self.line,
+                                    term=term ).TERMINAL( tabulation=self.tabulation + 1, _type_ = _type_, c=c )
                             if self.error is None:
                                 self.history.append( 'for' )
                                 self.space = 0
-                                self.loop.append( (loop, tab, self.error) )
-                            else: break
+                                self.loop.append( (self._loop_, self.tab, self.error) )
+                            else: break 
                         # switch block
                         elif self.get_block == 'switch:' :
                             self.store_value.append(self.normal_string)

@@ -1,9 +1,9 @@
-from script         import control_string as ctrl
-from colorama       import Fore, Style
-from script.LEXER   import particular_str_selection as pss
+from script                         import control_string as ctrl
+from colorama                       import Fore, Style
+from script.LEXER                   import particular_str_selection as pss
+from script.STDIN.LinuxSTDIN        import bm_configure as bm
 
-
-cdef list String() :
+cdef list  String() :
     cdef :
         list type1
         list type2
@@ -177,6 +177,7 @@ cdef tuple NumeriCal( dict DictValue, list variables, list _values_, int line, d
                     if Value in variables:
                         index       = variables.index( Value )
                         numeric     = _values_[ index ]
+
                     else: error     = ERRORS( line ).ERROR2( Value )
                 else: error         = ERRORS( line ).ERROR2( Value )
             else : pass

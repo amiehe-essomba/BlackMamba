@@ -648,8 +648,7 @@ class ARITHMETIC_OPERATORS:
                         else:
                             self.error = ERRORS(self.line).ERROR3(self.master, str_)
                             break
-        else:
-            self.error = ERRORS( self.line ).ERROR0( self.master )
+        else:  self.error = ERRORS( self.line ).ERROR0( self.master )
 
         return  self.storage_data, self.storage_operators, self.error
 

@@ -1,34 +1,10 @@
-from re import I
-from colorama           import Fore, init, Style
-from script             import control_string
-from script.STDIN.WinSTDIN       import stdin
-import cython
-
-from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
-from script.PARXER.PARXER_FUNCTIONS._TRY_               import try_statement
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import end_for_else
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
-from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
-from script.PARXER                                      import parxer_assembly
-from script.PARXER.PARXER_FUNCTIONS._FOR_               import for_statement
+from updatingDataBase                                   import updating
 try:
     from CythonModules.Linux                            import loop_for
 except ImportError:
     from CythonModules.Windows                          import loop_for
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
-me = Fore.LIGHTCYAN_EX
-le = Fore.RED
-he = Fore.GREEN
-be = Fore.BLUE
 
 class TREATMENT:
     def __init__(self, data_base:dict, line:int):
@@ -47,7 +23,7 @@ class TREATMENT:
             ):
         
         self.error                  = None
-        self.before                 = end_for_else.CHECK_VALUES(self.data_base).BEFORE()
+        self.before                 = updating.UPDATE( data_base=self.data_base ).BEFORE()
         self.for_values_init        = for_values[ : ]
         self.var_name               = name_var
         self.loop_for               = None
@@ -179,13 +155,11 @@ class TREATMENT:
         """
 
         
-        self.error = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init), self.var_name, interpreter, loop_list )
-
-        self.after = end_for_else.CHECK_VALUES( self.data_base ).AFTER()
-        self.error = end_for_else.CHECK_VALUES( self.data_base ).UPDATE( self.before, self.after, self.error )
+        self.error      = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init), self.var_name, loop_list )
+        self.after      = updating.UPDATE( data_base=self.data_base ).AFTER()
+        self.error      = updating.UPDATE( data_base=self.data_base ).UPDATE( before=self.before, after=self.after, error=self.error )
 
         return  self.finally_values, self.error
-
 
 class UPDATE_VAR_NAME:
     def __init__(self, data_base:dict):

@@ -1,7 +1,8 @@
-from colorama import  Fore
-from script.LEXER import segmentation
-from script.LEXER import check_if_affectation
-from script import control_string
+from colorama                       import  Fore
+from script.LEXER                   import segmentation
+from script                         import control_string
+from script.LEXER.error.CythonWIN   import affectationError as AE
+from CythonModules.Windows.LEXER.seg    import segError
 
 ne = Fore.LIGHTRED_EX
 ie = Fore.LIGHTBLUE_EX
@@ -13,14 +14,14 @@ se = Fore.YELLOW
 we = Fore.LIGHTWHITE_EX
 
 class SELECTION:
-    def __init__(self, master, long_chaine, data_base, line):
+    def __init__(self, master: str, long_chaine: str , data_base: dict, line: int):
         self.master         = master
         self.long_chaine    = long_chaine
         self.data_base      = data_base
         self.line           = line
         self.number         = segmentation.NUMBER()
-        self.string_error   = segmentation.ERROR(self.line)
-        self.string_error_  = check_if_affectation.ERRORS(self.line)
+        self.string_error   = segError.ERROR(self.line)
+        self.string_error_  = AE.ERRORS(self.line)
         self.str_control    = control_string.STRING_ANALYSE(self.data_base, self.line)
 
     def CHAR_SELECTION(self, _char_: str):
@@ -41,111 +42,71 @@ class SELECTION:
         self.type_of_chaine             = ['.eq.', '.ne.', '.le.', '.ge.', '.lt.', '.gt.']
 
         for i, str_ in enumerate( self.master ):
-
             if str_ in ['[', '(', '{', '"', "'"]:
 
-                if str_ == '(':
-                    char1 = str_.index('(')
-                else:
-                    char1 = int(self.number.number)
-
-                if str_ == '[':
-                    char2 = str_.index('[')
-                else:
-                    char2 = int(self.number.number)
-
-                if str_ == '{':
-                    char3 = str_.index('{')
-                else:
-                    char3 = int(self.number.number)
-
-                if str_ == '"':
-                    char4 = str_.index('"')
-                else:
-                    char4 = int(self.number.number)
-
-                if str_ == "'":
-                    char5 = str_.index("'")
-                else:
-                    char5 = int(self.number.number)
+                if str_ == '(': char1 = str_.index('(')
+                else:  char1 = int(self.number.number)
+                
+                if str_ == '[': char2 = str_.index('[')
+                else: char2 = int(self.number.number)
+                
+                if str_ == '{': char3 = str_.index('{')
+                else: char3 = int(self.number.number)
+                
+                if str_ == '"': char4 = str_.index('"')
+                else: char4 = int(self.number.number)
+                
+                if str_ == "'": char5 = str_.index("'")
+                else: char5 = int(self.number.number)
 
                 if self.initialize[0] is None:
 
-                    if char1 < char2 and char1 < char3 and char1 < char4 and char1 < char5:
-                        self.initialize[0] = '('
-
-                    if char2 < char1 and char2 < char3 and char2 < char4 and char2 < char5:
-                        self.initialize[0] = '['
-
-                    if char3 < char1 and char3 < char2 and char3 < char4 and char3 < char5:
-                        self.initialize[0] = '{'
-
-                    if char4 < char1 and char4 < char2 and char4 < char3 and char4 < char5:
-                        self.initialize[0] = '"'
-
-                    if char5 < char1 and char5 < char2 and char5 < char3 and char5 < char4:
-                        self.initialize[0] = "'"
-
+                    if char1 < char2 and char1 < char3 and char1 < char4 and char1 < char5: self.initialize[0] = '('
+                    if char2 < char1 and char2 < char3 and char2 < char4 and char2 < char5: self.initialize[0] = '['
+                    if char3 < char1 and char3 < char2 and char3 < char4 and char3 < char5: self.initialize[0] = '{'
+                    if char4 < char1 and char4 < char2 and char4 < char3 and char4 < char5: self.initialize[0] = '"'
+                    if char5 < char1 and char5 < char2 and char5 < char3 and char5 < char4: self.initialize[0] = "'"
                     self.key_bracket = True
 
-                else:
-                    self.initialize = self.initialize
+                else:  self.initialize = self.initialize
 
             else:
                 if str_ in [']', ')', '}'] and self.key_bracket is None:
                     self.open = self.number.OPENING(str_)
                     self.error = self.string_error.ERROR_TREATMENT2(self.long_chaine, str_)
                     break
-
-                else:
-                    pass
+                else: pass
 
             if self.initialize[0] is not None:
-                if self.initialize[0] == '(':
-                    self.left, self.rigth = self.left + str_.count('('), self.rigth + str_.count(')')
-
-                if self.initialize[0] == '[':
-                    self.left, self.rigth = self.left + str_.count('['), self.rigth + str_.count(']')
-
-                if self.initialize[0] == '{':
-                    self.left, self.rigth = self.left + str_.count('{'), self.rigth + str_.count('}')
-
+                if self.initialize[0] == '(': self.left, self.rigth = self.left + str_.count('('), self.rigth + str_.count(')')
+                if self.initialize[0] == '[': self.left, self.rigth = self.left + str_.count('['), self.rigth + str_.count(']')
+                if self.initialize[0] == '{': self.left, self.rigth = self.left + str_.count('{'), self.rigth + str_.count('}')
                 if self.initialize[0] == '"':
                     if self.str_id == False:
                         self.left, self.rigth = 1, 0
                         self.str_id = True
-
                     else:
                         if self.rigth <= 1:
                             self.rigth = self.rigth + str_.count('"')
                             self.left = self.left
-
                         else:
                             self.error = self.string_error.ERROR_TREATMENT3(self.long_chaine)
                             break
-
                 if self.initialize[0] == "'":
                     if self.str_id_ == False:
-                        self.left, self.rigth = 1, 0
-                        self.str_id_ = True
-
+                        self.left, self.rigth   = 1, 0
+                        self.str_id_            = True
                     else:
                         if self.rigth <= 1:
                             self.rigth = self.rigth + str_.count("'")
                             self.left = self.left
-
                         else:
                             self.error = self.string_error.ERROR_TREATMENT3(self.long_chaine)
                             break
+            else:  pass
 
-            else:
-                pass
-
-            if self.left != self.rigth:
-                self.active_key = True
-
-            else:
-                self.active_key = False
+            if self.left != self.rigth: self.active_key = True
+            else:  self.active_key = False
 
             if self.active_key == True:
                 self.string += str_
@@ -160,14 +121,10 @@ class SELECTION:
                 if str_ in list( _char_ ):
                     self.chaine += str_
                     if _char_ in self.type_of_chaine:
-                        if self.chaine[ 0 ] == '.':
-                            pass
-                        else:
-                            self.chaine = ''
-                    else:
-                        pass
-                else:
-                    pass
+                        if self.chaine[ 0 ] == '.':  pass
+                        else:  self.chaine = ''
+                    else:  pass
+                else:  pass
                 if i < len( self.master ) - 1:
                     #if str_ == _char_:
                     if self.chaine == _char_:
@@ -178,7 +135,6 @@ class SELECTION:
                                 self.var_attribute.append( self.string )
                                 self.string = ''
                                 self.chaine = ''
-
                             else:
                                 if _char_ == '-':
                                     self.var_attribute.append( self.string )
@@ -198,16 +154,12 @@ class SELECTION:
                             else:
                                 self.error = self.string_error_.ERROR7(self.master, _char_)
                                 break
-                    else:
-                        pass
-
+                    else:  pass
                 else:
-                    #if str_ != _char_:
                     if self.chaine != _char_:
                         self.string, self.error = self.str_control.DELETE_SPACE(self.string)
                         self.var_attribute.append( self.string )
                         self.chaine = ''
-
                     else:
                         self.error = self.string_error_.ERROR6( self.master, _char_ )
                         break
