@@ -1,5 +1,5 @@
 import sys, os   
-import bm_configure as bm
+from   script.STDIN.LinuxSTDIN    import bm_configure as bm
 from   pathlib import Path
 import LinuxMain as LM  
 import WindowsMain as WM
