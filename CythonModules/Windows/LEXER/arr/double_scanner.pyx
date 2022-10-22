@@ -1,5 +1,6 @@
-from CythonModules.Windows.LEXER.arr                import arrError as AE
-from script                                         import control_string as CS
+from CythonModules.Windows.LEXER.arr                import arrError             as AE
+from script                                         import control_string       as CS
+from CythonModules.Windows.LEXER.arr                import looking_for_arr_op   as LFO
 
 cdef class SCANNER:
     cdef public:
@@ -45,8 +46,8 @@ cdef class SCANNER:
 
             if not self.error:
                 self.store_value.append( self.master[ : self.len ] )
-                self.data , self.opeators, self.error = ARITHMETIC_OPERATORS( self.string_init, self.data_base,
-                                                                            self.line).ARITHMETIC_OPAERATORS()#####
+                self.data , self.opeators, self.error = LFO.ARITHMETIC_OPERATORS( self.string_init, self.data_base,
+                                                                            self.line).ARITHMETIC_OPAERATORS()
                 if not self.error :
                     if self.opeators:
                         self.store_value.append( self.data )
