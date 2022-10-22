@@ -8,7 +8,7 @@ from CythonModules.Windows.LEXER.arr                import double_scanner       
 from CythonModules.Windows.LEXER.arr                import scanner              as S
 from CythonModules.Windows.LEXER                    import float_or_function    as FOF
 from CythonModules.Windows.LEXER.arr                import arrError             as AE
-from CythonModules.Windows.LEXER.arr                import sub_checking_arr_op  as LFO
+from CythonModules.Windows.LEXER.arr                import looking_for_arr_op   as LFO
 
 cdef class ARITHMETIC_OPERATORS:
     cdef public:
@@ -24,10 +24,10 @@ cdef class ARITHMETIC_OPERATORS:
     cdef:
         unsigned long long int number, left, rigth
         list initialize,storage_operators, storage_data, store_operators
-        bint if_key_is_true
+        bint if_key_is_true, numerical_num, activation_operators
         str string_in_true, string, chaine, _string_, new_string, string_num
         str new_left_string, new_right_string
-        bint str_id, str_id_, key_bracket, numerical_num, activation_operators
+        bint str_id, str_id_, key_bracket
         list type_of_chaine, var_attribute
         dict active_key, final_value
 
@@ -233,7 +233,7 @@ cdef class ARITHMETIC_OPERATORS:
                             if not self.error:
                                 if self.new_string[ 0 ] in self.accpeted_chars:
                                     self.storage_operators.append( str_ )
-                                    self.string                 = ""
+                                    self.string                 = ''
                                     self.activation_operators   = True
                                 else: break
                             else:
@@ -380,7 +380,7 @@ cdef class ARITHMETIC_OPERATORS:
 
                                                             if not self.error:
                                                                 store_data, self.store_operators, self.error = LFO.ARITHMETIC_OPERATORS(
-                                                                            __string__, self.data_base, self.line).ARITHMETIC_OPAERATORS() 
+                                                                            __string__, self.data_base, self.line).ARITHMETIC_OPAERATORS()
                                                                 if not self.error:
                                                                     if self.store_operators:
                                                                         if len( store_data ) > 1:
@@ -425,7 +425,6 @@ cdef class ARITHMETIC_OPERATORS:
                                                                     dict_store[ 'operators' ]   = self.store_operators
 
                                                                     for k in range(len(dict_value[ 1 : ])):
-
                                                                         __string__, self.error = CS.STRING_ANALYSE(self.data_base, 
                                                                                     self.line).DELETE_SPACE( dict_value[ 1 : ][k], name="cython" )
                                                                         if not self.error :
@@ -512,7 +511,7 @@ cdef class ARITHMETIC_OPERATORS:
                                                 'operators' : None,
                                                 'type'      : 'dictionnary'
                                             }
-                                       
+                                            
                                             if self.numerical_num is True :
                                                 self.error = AE.ERRORS( self.line ).ERROR0( self.master )
                                                 break

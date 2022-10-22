@@ -8,12 +8,12 @@ cdef class BRACKET:
         unsigned long long int line 
         dict data_base
     cdef:
-        str error, string , left, right, _string
+        str error, string, _string
         dict key
-        list value
+        list value, left, right,
         unsigned long long count
 
-    cdef __cinit__(self, data_base, line):
+    def __cinit__(self, data_base, line):
         self.error          = ""
         self.string         = ""
         self._string        = ""
