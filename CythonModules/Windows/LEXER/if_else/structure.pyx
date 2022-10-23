@@ -1,9 +1,10 @@
-from script.LEXER                       import segmentation
-from script                             import control_string
-from script.LEXER.error.CythonWIN       import affectationError as AE
-from CythonModules.Windows.LEXER.seg    import num
-from CythonModules.Windows.LEXER.seg    import segError
-from CythonModules.Windows.LEXER.particular   import particular_str_selection as PSS
+from script                                     import control_string   as CS
+from script.LEXER.error.CythonWIN               import affectationError as AE
+from CythonModules.Windows.LEXER.seg            import num
+from CythonModules.Windows.LEXER.seg            import segError
+from CythonModules.Windows.LEXER.particular     import particular_str_selection as PSS 
+from CythonModules.Windows.LEXER.logical        import logicalError as LE
+
 
 cdef class IF_ELSE:
     cdef public:
@@ -38,7 +39,7 @@ cdef class IF_ELSE:
         self.var_attribute  = []
         self.number         = int(num.NUMBER().number)
 
-    cdef STRUCTURE(self, signed long int ID):
+    cpdef STRUCTURE(self, unsigned long int ID):
         cdef :
             unsigned long long int i, Len
             str str_, Open
@@ -118,14 +119,16 @@ cdef class IF_ELSE:
                         break
                 else:
                     if str_ not in [' ']:
-                        self.string += str_
-                        
-                        if i < len( self.master ) - 1: pass    
-                        else: 
-                            if self.string: self.var_attribute.append( self.string )
-                            else: pass
+                        if i < len( self.master ) - 1: self.string += str_    
+                        else:
+                            self.var_attribute.append( self.string )
+                            self.var_attribute.append( str_ )
+                    elif str_ == ':':
+                        self.var_attribute.append( self.string )
+                        self.var_attribute.append( str_ )
+                        self.string = ""
                     else: 
-                        if self.sring: 
+                        if self.string: 
                             self.var_attribute.append( self.string )
                             self.var_attribute.append( str_ )
                         else: pass 
@@ -140,107 +143,130 @@ cdef class IF_ELSE:
 
         else: pass 
         
+        self.var_attribute, self.error = IF_ELSE(self.master, self.long_chaine, self.data_base, self.line).STRUC( self.var_attribute, ID )
+        
         return self.var_attribute, self.error
     
-    cdef STRUC1(self, list data, signed long int ID):
+    cdef STRUC(self, list data, signed long int ID):
         cdef :
-            unsigned long i
+            unsigned long int i
             list struc = []
             list index = []
             list _return_ = []
-            str string1, string2, s1, s2, str_, end, ss1, ss2
+            str string1="", string2="", s1="", s2="", str_, end="", ss1="", ss2=""
             bint key = False
             unsigned int dot = 0
-            string1, string2, s1, s2, end,ss1, ss2 = "", "", "", "", "", "", ""
 
+            functions   = ['if', 'unless', 'for', 'while', 'else']
+            bad_Funcs   = ['class', 'def', 'switch', 'begin', 'until', 
+                            'elif', 'case', 'default', 'except', 'finally',
+                            'save', 'with', 'open', 'close', 'from', 'module', 
+                            'load', 'as', 'func']
 
         for i in range(len(data)):
-            if data[i] in ['if', 'else']:
+            if data[i] in functions:
                 if not struc: 
-                    if data[i] == 'if':
-                        struc.append(data[i])
-                        index.append(i)
-                    else: break
+                    if data[ i ] in functions[ : -1]:
+                        struc.append(data[ i ])
+                        index.append( i )
+                    else: 
+                        self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                        break
                 else:
-                    if len(struc) <= 2:
-                        if data[i] == 'else': 
-                            struc.append(data[i])
-                            index.append(i)
-                        else: break
-                    else: pass 
-            elif data[i] == ':' :
-                if dot == 0:
-                    dot = i
-                else:  break
+                    if struc[ 0 ] in ['if', 'unless']:
+                        if len(struc) <= 2:
+                            if data[ i ] == 'else': 
+                                struc.append(data[ i ])
+                                index.append( i )
+                            else: 
+                                self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                                break
+                        else: 
+                            self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                            break 
+                    else:
+                        self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                        break
+            elif data[ i ] == ':' :
+                if dot == 0:  dot = i
+                else:
+                    self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                    break
 
         if not self.error:
-            if struc:
-                index = sorted(index, reverse=True)
-                if len(struc) == 2:
-                    if data[0] not in ['if', 'else']:
-                        key = True
-                        if data[-1] == ':'
-                            for str_ in data[ : index[0]]:
-                                s1 += str_
-                            for str_ in data[index[1]+1 : -1]:
-                                s2 += str_
-                            for str_ in data[index[0] + 1: index[1]]:
-                                ss1 += str_
-                        
-                            string1 = 't'*(ID-1) + struc[0] + ' ' + ss1 + ' ' + ':'
-                            string2 = 't'*(ID-1) + struc[1] + ' ' + ':'
-                            end     = 't'*(ID-1) + "end:"
-                            s1, s2  = 't'*ID+s1, 't'*ID+s2
-                            _return_.append((string1, True))
-                            _return_.append([(s1, True), (string2, False), (s2, True), (end, False)])
-                        else:
-                            try:
-                                if data[-1][-1] == ':'
-                                    for str_ in data[ : index[0]]:
+            if data[ 0 ] not in bad_Funcs:
+                if struc:
+                    if data[ -1 ] == ':':
+                        try:
+                            if   len(struc) == 2:
+                                if data[ 0 ] not in functions:
+                                    key = True
+                                    for str_ in data[ : index[ 0 ]]:
                                         s1 += str_
-                                    for str_ in data[index[1]+1 : -1]:
+                                    for str_ in data[index[ 1 ] + 1 : -1]:
                                         s2 += str_
-                                    s2 += data[-1][:-1]
-
-                                    for str_ in data[index[0] + 1: index[1]]:
+                                    for str_ in data[index[ 0 ] + 1: index[1]]:
                                         ss1 += str_
-                        
-                                    string1 = 't'*(ID-1) + struc[0] + ' ' + ss1 + ' ' + ':'
-                                    string2 = 't'*(ID-1) + struc[1] + ' ' + ':'
-                                    end     = 't'*(ID-1) + "end:"
-                                    s1, s2  = 't'*ID+s1, 't'*ID+s2
-                                    _return_.append((string1, True))
-                                    _return_.append([(s1, True), (string2, False), (s2, True), (end, False)])
-                                else: pass
-                            except IndexError: pass
-                    else: pass
-                elif len(struc) == 1:
-                    key = True
-                    if data[0] != 'if':
-                        if data[-1] == ':':
-                            for str_ in data[ : index[0]]:
-                                s1 += str_
-                            for str_ in data[index[0] + 1: -1]:
-                                ss1 += str_
-                            end     = 't'*(ID-1) + "end:"
-                            string1 = 't'*(ID-1) + struc[0] + ' ' + ss1 + ' ' + ':'
-                            _return_.append((string1, True))
-                            _return_.append([(s1, True), (end, False)])
-                        elif data[-1][-1] == ':'
-                            for str_ in data[ : index[0]]:
-                                s1 += str_
-                            for str_ in data[index[0] + 1: -1]:
-                                ss1 += str_
-                            ss1 += data[-1][:-1]
-                            end     = 't'*(ID-1) + "end:"
-                            string1 = 't'*(ID-1) + struc[0] + ' ' + ss1 + ' ' + ':'
-                            _return_.append((string1, True))
-                            _return_.append([(s1, True), (end, False)])
-                        else: pass
-
+                                    s1, self.error = CS.STRING_ANALYSE(self.data_base, self.line ).DELETE_SPACE( s1, name="cython" )
+                                    if not self.error:
+                                        s2, self.error = CS.STRING_ANALYSE(self.data_base, self.line ).DELETE_SPACE( s2, name="cython" )
+                                        if not self.error:
+                                            string1 = 't'*(ID-1) + struc[0] + ' ' + ss1 + ' ' + ':'
+                                            string2 = 't'*(ID-1) + struc[1] + ' ' + ':'
+                                            end     = 't'*(ID-1) + "end:"
+                                            s1, s2  = 't'*ID+s1, 't'*ID+s2
+                                            _return_.append((string1, True))
+                                            _return_.append([(s1, True), (string2, False), (s2, True), (end, False)])
+                                        else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                                    else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                                else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                            elif len(struc) == 1:
+                                if struc[ 0 ] in ['if', 'unless']:
+                                    if data[ 0 ] not in functions[ : -1]:
+                                        key = True
+                                        for str_ in data[ : index[ 0 ]]:
+                                            s1 += str_
+                                        for str_ in data[index[ 0 ] + 1: -1]:
+                                            ss1 += str_
+                                        s1, self.error = CS.STRING_ANALYSE(self.data_base, self.line ).DELETE_SPACE( s1, name="cython" )
+                                        if not self.error:
+                                            end     = 't'*(ID-1) + "end:"
+                                            string1 = 't'*(ID-1) + struc[ 0 ] + ' ' + ss1 + ' ' + ':'
+                                            s1      = 't'*ID+s1
+                                            _return_.append((string1, True))
+                                            _return_.append([(s1, True), (end, False)])
+                                        else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                                    else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                                else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                            else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                        except IndexError : self.error = LE.ERRORS(self.line).ERROR0(self.master)
                     else:
-                        if dot == 0: pass
-                        else: pass
-                else: pass
-            else: pass 
+                        if len(struc) == 1:
+                            if dot != 0:
+                                try:
+                                    if struc[ 0 ] in functions[ : -1]:
+                                        for str_ in data[1 : dot]:
+                                            s11 += str_ 
+                                        for str_ in data[dot + 1 : ]:
+                                            s1 += str_ 
+                                        
+                                        s1, self.error = CS.STRING_ANALYSE(self.data_base, self.line ).DELETE_SPACE( s1, name="cython" )
+                                        if not self.error:
+                                            string1 = 't'*(ID-1) + struc[ 0 ] + ' ' + ss1 + ' ' + ':'
+                                            end     = 't'*(ID-1) + "end:"
+                                            s1      = 't'*ID+s1
+                                            _return_.append((string1, True))
+                                            _return_.append([(s1, True), (string2, False), (s2, True), (end, False)])
+                                        else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                                except IndexError: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                            else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                        else: self.error = LE.ERRORS(self.line).ERROR0(self.master)
+                else: pass 
+            else: pass
         else: pass
+
+        if not _return_: return [self.master], self.error 
+        else:            return _return_, self.error 
+
+
+

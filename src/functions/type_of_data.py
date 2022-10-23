@@ -62,16 +62,16 @@ class CHECK_TYPE_OF_DATA:
     
     def RETURNING_TYPE(self):
         self._return_, self.s = None, None
-        if   self.value == 'none'       : self._return_, self.s = type(None)            , '{}a none(){}'.format(bm.fg.rbg(252, 127, 0 ), bm.init.reset)
-        elif self.value == 'integer'    : self._return_, self.s = type(int())           , '{}an integer(){}'.format(bm.fg.red_L, bm.init.reset)
-        elif self.value == 'float'      : self._return_, self.s = type(float())         , '{}a float(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
-        elif self.value == 'complex'    : self._return_, self.s = type(complex())       , '{}a complex(){}'.format(bm.fg.blue, bm.init.reset)
-        elif self.value == 'range'      : self._return_, self.s = type(range(1))        , '{}a range(){}'.format(bm.fg.green_L, bm.init.reset)
-        elif self.value == 'tuple'      : self._return_, self.s = type(tuple())         , '{}a tuple(){}'.format(bm.fg.blue_L, bm.init.reset)
-        elif self.value == 'list'       : self._return_, self.s = type(list())          , '{}a list(){}'.format(bm.fg.rbg(255,255,0), bm.init.reset)
-        elif self.value == 'dictionary' : self._return_, self.s = type(dict())          , '{}a dictionary(){}'.format(bm.fg.magenta_M, bm.init.reset)
-        elif self.value == 'boolean'    : self._return_, self.s = type(bool())          , '{}a boolean(){}'.format(bm.fg.cyan_L, bm.init.reset)
-        elif self.value == 'string'     : self._return_, self.s = type(str())           , '{}a string(){}'.format(bm.fg.cyan, bm.init.reset)
-        elif self.value == 'ndarray'    : self._return_, self.s = type(np.array([1]))   , '{}ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
+        if   self.value == 'none'           : self._return_, self.s = type(None)            , '{}a none(){}'.format(bm.fg.rbg(252, 127, 0 ), bm.init.reset)
+        elif self.value == 'integer'        : self._return_, self.s = type(int())           , '{}an integer(){}'.format(bm.fg.red_L, bm.init.reset)
+        elif self.value == 'float'          : self._return_, self.s = type(float())         , '{}a float(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
+        elif self.value == 'complex'        : self._return_, self.s = type(complex())       , '{}a complex(){}'.format(bm.fg.blue, bm.init.reset)
+        elif self.value == 'range'          : self._return_, self.s = type(range(1))        , '{}a range(){}'.format(bm.fg.green_L, bm.init.reset)
+        elif self.value == 'tuple'          : self._return_, self.s = type(tuple())         , '{}a tuple(){}'.format(bm.fg.blue_L, bm.init.reset)
+        elif self.value == 'list'           : self._return_, self.s = type(list())          , '{}a list(){}'.format(bm.fg.rbg(255,255,0), bm.init.reset)
+        elif self.value == 'dictionary'     : self._return_, self.s = type(dict())          , '{}a dictionary(){}'.format(bm.fg.magenta_M, bm.init.reset)
+        elif self.value == 'boolean'        : self._return_, self.s = type(bool())          , '{}a boolean(){}'.format(bm.fg.cyan_L, bm.init.reset)
+        elif self.value == 'string'         : self._return_, self.s = type(str())           , '{}a string(){}'.format(bm.fg.cyan, bm.init.reset)
+        elif self.value == 'ndarray'        : self._return_, self.s = type(np.array([1]))   , '{}ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
         
         return self._return_, self.s

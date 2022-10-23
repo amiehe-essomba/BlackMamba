@@ -56,27 +56,29 @@ class RUN_FUNCTION:
 
                 if self.new_data_base[ 'return' ] is not None:
                     self.DataBase['def_return'] = True
-                            
-                    if len( self.new_data_base[ 'return' ] ) == 1:
-                        self.final_values = self.new_data_base[ 'return' ][ 0 ]
-                        if _type_ is None: pass 
-                        else:
-                            self.typ = tod.CHECK_TYPE_OF_DATA(value=_type_).RETURNING_TYPE()
-                            if type(self.final_values) == self.typ[0] : pass
-                            else: 
-                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
-                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
-                                self.error = err.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
-                    else: 
-                        self.final_values = tuple( self.new_data_base[ 'return' ] )
-                        if _type_ is None: pass
-                        else:
-                            self.typ = tod.CHECK_TYPE_OF_DATA(value='tuple').RETURNING_TYPE()
-                            if self._type_ == 'tuple': pass
-                            else: 
-                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
-                                self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
-                                self.error = err.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
+                    
+                    if _type_ != 'None':
+                        if len( self.new_data_base[ 'return' ] ) == 1:
+                            self.final_values = self.new_data_base[ 'return' ][ 0 ]
+                            if _type_ in [None, 'any']: pass 
+                            else:
+                                self.typ = tod.CHECK_TYPE_OF_DATA(value=_type_).RETURNING_TYPE()
+                                if type(self.final_values) == self.typ[0] : pass
+                                else: 
+                                    self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                    self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                    self.error = err.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
+                        else: 
+                            self.final_values = tuple( self.new_data_base[ 'return' ] )
+                            if _type_ in [None, 'any']: pass
+                            else:
+                                self.typ = tod.CHECK_TYPE_OF_DATA(value='tuple').RETURNING_TYPE()
+                                if _type_ == 'tuple': pass
+                                else: 
+                                    self.false = tod.CHECK_TYPE_OF_DATA(value=self.final_values).DATA()
+                                    self.false = tod.CHECK_TYPE_OF_DATA(value=self.false).TYPE()
+                                    self.error = err.ERRORS(self.line).ERROR24(self.false, self.typ[1] )
+                    else:self.error= er.ERRORS(self.line).ERROR25(name=self.function_name )
                     
                     if self.error is None:
                         if self.new_data_base[ 'print' ] is not None:
@@ -92,7 +94,7 @@ class RUN_FUNCTION:
                     updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
                                                             self._new_data_base_ )
                 else:
-                    if _type_ in [None, 'none']:
+                    if _type_ in [None, 'None']:
                         if self.new_data_base[ 'sub_print' ] is None:
                             if self.new_data_base[ 'transformation' ] is None:
                                 if self.new_data_base[ 'return' ] is not None:

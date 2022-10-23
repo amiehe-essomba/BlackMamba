@@ -52,3 +52,8 @@ cdef class ERRORS:
                                                                                 self.yellow, self.line)
         self.error = fe.FileErrors('SyntaxError').Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + self.error
         return self.error+self.reset
+
+    cpdef str ERROR6(self, str string):
+        self.error = '{}<< : >> {}were not defined at the {}end:. {}line: {}{}'.format(self.red, self.white, self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('SyntaxError').Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + self.error
+        return self.error+self.reset

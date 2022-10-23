@@ -6,10 +6,11 @@ from script.PARXER.LEXER_CONFIGURE  import numeric_lexer
 
 class FUNCTION:
     def __init__(self, 
-                master          : list, 
-                data_base       : dict, 
-                line            : int
-                ):
+        master          : list, 
+        data_base       : dict, 
+        line            : int
+        ):
+        
         self.master             = master[ 0 ]
         self.line               = line
         self.data_base          = data_base
