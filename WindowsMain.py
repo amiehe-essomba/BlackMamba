@@ -200,7 +200,7 @@ class windows:
                 print(self._keyboard_)
                 return
             # EOF
-            except IndexError:
+            except TypeError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset+bm.init.reset
                 print(self._end_of_file_)
                 self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
@@ -217,4 +217,4 @@ if __name__ == '__main__':
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
     except KeyboardInterrupt:  pass
-    except IndexError: pass
+    except TypeError: pass

@@ -1,6 +1,6 @@
 from script                     import control_string
 from script.LEXER               import particular_str_selection
-from script.LEXER.segmentation import ERROR
+from script.LEXER.segmentation  import ERROR
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
 try:
     from CythonModules.Windows  import fileError as fe 
@@ -17,7 +17,8 @@ class FUNCTION:
         self.accepted_chars = self.control.LOWER_CASE()+self.control.LOWER_CASE()+['_']
 
     def FUNCTION_INIT(self, main_string: str, method = '1st', _type_ = 'direct'):
-        self.type           = ['none', 'integer', 'float', 'boolean', 'complex', 'list', 'tuple', 'dictionary', 'string', 'ndarray', 'range']
+        self.type           = ['none', 'integer', 'float', 'boolean', 'complex', 'list', 'tuple', 
+                               'dictionary', 'string', 'ndarray', 'range', "None", 'any']
         self.master         = self.master[ 0 ]
         self.master, _e_    = self.control.DELETE_SPACE( self.master )
         self.error          = None
@@ -337,6 +338,7 @@ class FUNCTION:
             else:pass
         else: pass 
         
+            
         return self.function_info, self.error
 
     def TYPE(self, string: str):

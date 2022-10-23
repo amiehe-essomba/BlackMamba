@@ -186,11 +186,11 @@ class INTERNAL_FOR:
                         # checking variables
                         elif self.get_block == 'any'            :
                             self.store_value.append( self.normal_string )
-                            self._lexer_, self.error = self.lex_par.MAIN(self.value, self.data_base,
-                                                                self.line).MAIN_LEXER( _id_=1, _type_='loop' )
+                            #self._lexer_, self.error = self.lex_par.MAIN(self.value, self.data_base,
+                            #                                    self.line).MAIN_LEXER( _id_=1, _type_= _type_ )
                             if self.error is None:
                                 self.loop_for.append( {'any' : (self.value, True), 'value' : None,
-                                                        'tabulation' : (self.tabulation + 1), 'lex' : self._lexer_} )
+                                                        'tabulation' : (self.tabulation + 1), 'lex' : {}} )
                                 self.space  = 0
                             else:break
                     else:break

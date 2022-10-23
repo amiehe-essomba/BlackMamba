@@ -175,3 +175,8 @@ class ERRORS:
         error = '{}instead {} {}type. {}line: {}{}'.format(self.white, string2, self.white, self.white, self.yellow,self.line)
         self.error = fe.FileErrors('TypeError').Errors() + '{}returning type error. got {} '.format(self.white,  string1) + error
         return self.error + self.reset
+    
+    def ERROR25( self, name: str  ):
+        error = '{}cannot return any values. {}line: {}{}'.format(self.yellow, self.white, self.yellow,self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} '.format(self.cyan,  name) + error
+        return self.error + self.reset

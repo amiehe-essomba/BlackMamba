@@ -31,19 +31,10 @@ cdef class LOOP:
     cpdef LOOP( self, list for_values, str var_name, tuple loop_list = () ):
         cdef:
             str     error, normal_string, err
-            dict    before
-            dict    loop
-            list    print_values
-            list    finally_values
-            list    any_values
-            list    keys
-            dict    lexer, lr
-            long    counting
-            long    index
-            int     i, j
-            long    for_line
-            int     tabulation
-            list    master
+            dict    before, loop, lexer, lr
+            list    print_values, keys, finally_values, any_values, master
+            long    counting, index, for_line
+            int     i, j, tabulation
             bint    active_tab
             bint    boolean_value
             list    if_values
@@ -51,7 +42,7 @@ cdef class LOOP:
             bint    broke
             bint    locked
             list    unless_values
-            dict    subfor_value
+            dict    subfor_value, already = {}
             list    subfor_values
             tuple   all_for_values
 
@@ -84,6 +75,9 @@ cdef class LOOP:
 
                 if not error :
                     for j, _string_ in enumerate( master[ : ] ):
+                        try: already["j"] = already["j"]
+                        except KeyError: already["j"] = False
+
                         if locked is False:
                             for_line    += 1 
 
@@ -95,11 +89,17 @@ cdef class LOOP:
                                     active_tab      = any_values[ 1 ]
                                     lexer           = _string_[ 'lex' ]
                                     
-                                    error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
-                                            ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer )
+                                    lexer['j'], error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
+                                                ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop' )
 
-                                    #error    = for_statement.NEXT_ANALYZE( normal_string, self.DataBase,
-                                    #        ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop', _lexer_ = lexer )
+                                    #error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
+                                    #        ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer )
+                                    #if already['j'] is False:
+                                    #    lexer['j'], error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
+                                    #            ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop' )
+                                    #else:
+                                    #    error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
+                                    #        ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer )
                                     
                                     if not error: 
                                         if   self.DataBase[ 'break' ] is None: pass 
@@ -124,15 +124,17 @@ cdef class LOOP:
                                         if self.DataBase[ 'next' ] is None: pass
                                         else: locked      = True
 
+                                        already['j']      = True
+
                                     else : break
                                 
                                 elif 'if'     in keys           :
                                         if_values      = _string_[ 'if' ]
                                         #tabulation     = _string_[ 'tabulation' ]
                                         boolean_value  = _string_[ 'value' ]
-                                        
+                            
                                         error = loop_if_statement.INTERNAL_IF_LOOP_STATEMENT( None , self.DataBase,
-                                                (self.line+for_line) ).IF_STATEMENT( boolean_value, tabulation , if_values, 'loop' )
+                                                (self.line+for_line) ).IF_STATEMENT( True, tabulation , if_values, 'loop' )
                                         if error is None: 
                                             if   self.DataBase[ 'break' ] is None: pass 
                                             else:
@@ -152,7 +154,7 @@ cdef class LOOP:
                                     #tabulation     = _string_[ 'tabulation' ]
                                     boolean_value  = _string_[ 'value' ]
                                     error = loop_unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( None , self.DataBase,
-                                            (self.line+for_line) ).UNLESS_STATEMENT( boolean_value, tabulation, unless_values, 'loop' )
+                                            (self.line+for_line) ).UNLESS_STATEMENT( True, tabulation, unless_values, 'loop' )
                                                                                             
                                     if error is None:
                                         if   self.DataBase[ 'break' ] is None: pass 
