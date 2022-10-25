@@ -59,6 +59,10 @@ mamba --T pegasus
 
 ## Project Description 
 
+> Example of a code
+
+![logo](/images/code.jpg)
+
 ## Roadmap
 
 ## Contributing

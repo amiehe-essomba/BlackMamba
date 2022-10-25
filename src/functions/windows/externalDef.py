@@ -92,8 +92,8 @@ class EXTERNAL_DEF:
         
         for i in range(1): 
             # concatening string and extraction of string concatenated , tabulation for and indensation and error        
-            self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.master,
-                                                                        tabulation=self.tabulation)
+            self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.master, tabulation=self.tabulation)
+            
             if self.error is None:
                 # build normal string 
                 self.normal_string = self.analyse.BUILD_NON_CON(string=self.master, tabulation=self.tabulation)
@@ -101,14 +101,13 @@ class EXTERNAL_DEF:
                 # when idendation is True
                 if self.active_tab is True :
                     if self.error is None:
-                        
                         # get key and value for different functions which can be defined inside a function 
                         self.get_block, self.value, self.error = ID.INTERNAL_BLOCKS( string=self.string,
                                         normal_string=self.normal_string, data_base=self.data_base, 
                                         line=self.if_line ).BLOCKS( tabulation=self.tabulation + 1,
                                         function=function, interpreter = False, class_name= class_name, class_key=class_key,
-                                        func_name=self.data_base[ 'current_func' ], loop = False )
-                                        
+                                        func_name=self.data_base[ 'current_func' ], loop = False, locked=True )
+                        
                         if self.error is None:
                             # only in class, when initialize function if defined
                             if class_key is False: pass 

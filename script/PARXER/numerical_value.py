@@ -589,14 +589,13 @@ class NUMERICAL:
                             else:
                                 self.sign = ''
 
-                    if self.sign in [ '-' ]:
-                        self.calculations.append( self.sign )
-                    else:
-                        pass
+                    if self.sign in [ '-' ]:  self.calculations.append( self.sign )
+                    else: pass
 
                     self.len_val = len( self.values[ i ] )
 
                     if len( op ) == 1:
+                        
                         self._get_values_ = self.values[ i ][ 0 ]
 
                         try:
@@ -627,7 +626,7 @@ class NUMERICAL:
                                 break
 
                         except TypeError :
-
+                            
                             self._return_, self.error   = ARRITHMETIC_DEEP_CHECKING( self.master, self._get_values_,
                                                             op[ 0 ], self.data_base, self.line ).INIT( main__main )
                             if self.error is None:
@@ -654,10 +653,12 @@ class NUMERICAL:
                                 break
 
                     else:
+                        
                         for j in range( self.len_val ):
                             self._get_values_ = self.values[ i ][ j ]
 
                             if type( self._get_values_ ) == type( dict() ) :
+                                
                                 self.type = self._get_values_[ 'type' ]
                                 self._return_, self.error = TYPE( self.master, self._get_values_, self.data_base, self.line,
                                                             self.type ).TYPE( main__main )
@@ -668,35 +669,29 @@ class NUMERICAL:
                                             if self.calculations[ 0 ] == '-':
                                                 self.calculations.append( op[ j + 1 ] )
                                             else:
-                                                self.calculations.append(op[ j + 1 ])
+                                                self.calculations.append(op[ j ]) ### here
                                         except TypeError:
                                             self.calculations.append( [ self._return_ ] )
                                             self.calculations.append( op[ j ] )
                                     else:
                                         self.calculations.append( [ self._return_ ] )
-                                else:
-                                    self.error = self.error
-                                    break
-
+                                else: break
+                                
                             else:
                                 self._return_, self.error = ARRITHMETIC_DEEP_CHECKING(self.master, self._get_values_,
                                                              op[ j ], self.data_base, self.line).INIT( main__main )
-
+                        
                                 if self.error is None :
                                     if j != self.len_val - 1:
                                         try:
                                             self.calculations.append( [ self._return_[ 0 ] ] )
                                             self.calculations.append( op[ j + 1 ] )
-
                                         except TypeError:
                                             self.calculations.append( [ self._return_[ 0 ] ] )
                                             self.calculations.append( op[ j ] )
 
-                                    else:
-                                        self.calculations.append( [ self._return_[ 0 ] ] )
-                                else:
-                                    self.error = self.error
-                                    break
+                                    else:  self.calculations.append( [ self._return_[ 0 ] ] )
+                                else:  break
 
                         if self.error is None:
                             self.history_of_op          = ''
@@ -704,7 +699,7 @@ class NUMERICAL:
                                 if type( string ) == type( str() ):
                                     self.history_of_op += string
                                 else: pass
-
+                        
                             self.__values__, self.error = mathematics.MAGIC_MATH_BASE(self.calculations,
                                                 self.data_base,self.history_of_op, self.line) .MATHS_OPERATIONS()
 

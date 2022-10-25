@@ -27,7 +27,7 @@ class MAIN_FOR:
         self._return_value_ = None
         self._return_op_    = None
         self.values         = self.all_data['value']
-
+        
         if self.if_egal is not True:
             if len(self.boolean_op) == 1:
                 if self.boolean_op[0] is None:
@@ -58,7 +58,7 @@ class MAIN_FOR:
                                             }
                                             self.get_values, self.error = self.num.NUMERICAL(self.rebuild_value,
                                                         self.data_base, self.line).ANALYSE( main_string, loop=True )
-
+                                            
                                             if self.error is None:
                                                 if type(self.get_values[0]) in [type(tuple()), type(list()),
                                                                                 type(str()), type(range(1))]:

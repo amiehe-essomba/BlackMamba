@@ -11,14 +11,14 @@ class NEXT_ANALYZE:
         self.main               = main
         
     @cython.cfunc
-    def SUB_ANALYZE(self, _id_:int = 1, _type_:any = None, _lexer_ : dict = None):
+    def SUB_ANALYZE(self, _id_:int = 1, _type_:any = None):
         self.error          = None
         self.lexer, self.string, self.error = self.main.MAIN(self.master, self.data_base, self.line).MAIN(_id_, _type_, True)
         if self.error is None:
             self.error = parxer_assembly.ASSEMBLY(self.lexer, self.data_base, self.line).ASSEMBLY( self.master, True )
         else: pass
 
-        return self.error
+        return self.lexer, self.error
 
     @cython.cfunc
     def SUB_SUB_ANALYZE(self, _lexer_ : dict = None):

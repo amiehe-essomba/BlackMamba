@@ -17,7 +17,7 @@ class MAGIC_MATH_BASE:
     def MATHS_OPERATIONS(self):
         self.value          = None
         self.error          = None
-
+        
         if   MAGIC_MATH_BASE(self.master, self.data_base, self.line ).OPERATORS(self.master, '0_0'):
             self.value, self.error = self.math_modules.ADD()
         elif MAGIC_MATH_BASE(self.master, self.data_base, self.line ).OPERATORS(self.master, 's_0_0'):
