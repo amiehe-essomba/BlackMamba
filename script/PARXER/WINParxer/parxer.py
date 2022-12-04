@@ -22,6 +22,7 @@ from script.PARXER                                          import partial_assem
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import WindowsFor           as wFor
 from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import WindowsTry           as wTry
 from loop                                                   import mainFor
+from CythonModules.Windows.PARTIAL_PARSER                   import partial
 
 class ASSEMBLY( ):
     def __init__(self, 
@@ -71,6 +72,7 @@ class ASSEMBLY( ):
             # numerical calculation 
             if   self.master[ 'function' ] is None      :
                 self.error = partial_assembly.ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
+                #self.error = partial.ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
                 self.data_base['matrix'] = None
             # active_function detected if function 
             elif self.master[ 'function' ] == 'if'      :

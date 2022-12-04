@@ -35,6 +35,7 @@ class FUNCTION:
         self.variable       = []
         self._type_         = []
         self.last_parent    = 0
+        self.anonymous      = False
         self.function_info  = {
             'type'                      : 'any', # items type
             'value'                     : None,  # default values issigned 
@@ -48,7 +49,9 @@ class FUNCTION:
                 'defaultValues'         : None,  # defualt values
                 'description'           : None   # description of function using <begin> inside function
             },
-            'type_return'               : None   # type returning, default value None( for any type)
+            'type_return'               : None,  # type returning, default value None( for any type)
+            'anonymous'                 : False
+            
         }
 
         self.string_type  = self.__str.SELECTION(self.master, self.master, self.data_base, self.line)
@@ -112,93 +115,182 @@ class FUNCTION:
                             self.value, self.error  = self.string_select.CHAR_SELECTION( ',' )
 
                             if self.error is None:
-                                for val in self.value:
-                                    self.string_select = self.__str.SELECTION(val, val, self.data_base, self.line)
-                                    self.sub_value, self.error = self.string_select.CHAR_SELECTION( '=' )
+                                if len(self.value) == 1 and self.value[0] == 'anonymous': self.anonymous = True
+                                else:
+                                    for val in self.value:
+                                        self.string_select = self.__str.SELECTION(val, val, self.data_base, self.line)
+                                        self.sub_value, self.error = self.string_select.CHAR_SELECTION( '=' )
 
-                                    if self.error is None:
-                                        if len( self.sub_value ) == 2:
-                                            self.arg_ , self.error = self.control.DELETE_SPACE( self.sub_value [ 0 ] )
-                                            if self.error is None:
-                                                self.sub_value_, self.error = self.__str.SELECTION( self.arg_, self.arg_,
-                                                                        self.data_base, self.line).CHAR_SELECTION( ':' )
+                                        if self.error is None:
+                                            if   len( self.sub_value ) == 2:
+                                                self.arg_ , self.error = self.control.DELETE_SPACE( self.sub_value [ 0 ] )
                                                 if self.error is None:
-                                                    if len( self.sub_value_ ) == 1:
-                                                        self.name, self.error = self.control.DELETE_SPACE( self.sub_value_[ 0 ] )
-                                                        if self.error is None:
-                                                            self.name, self.error = self.control.CHECK_NAME( self.name )
-                                                            if self.error is None:
-                                                                self.variable.append( self.name )
-                                                                self._type_.append( [ 'any' ] )
-
-                                                            else:
-                                                                self.name = self.sub_value_[ 0 ]
-                                                                self.error = self.error = ERRORS( self.line ).ERROR4( self.name )
-                                                                break
-
-                                                        else:
-                                                            self.error = ERRORS(self.line ).ERROR0( val )
-                                                            break
-
-                                                    elif len( self.sub_value_ ) == 2:
-                                                        if _type_ in [ 'direct' ]:
-                                                            self.name, self.error = self.control.DELETE_SPACE(
-                                                                                                        self.sub_value_[ 0 ])
+                                                    self.sub_value_, self.error = self.__str.SELECTION( self.arg_, self.arg_,
+                                                                            self.data_base, self.line).CHAR_SELECTION( ':' )
+                                                    if self.error is None:
+                                                        if len( self.sub_value_ ) == 1:
+                                                            self.name, self.error = self.control.DELETE_SPACE( self.sub_value_[ 0 ] )
                                                             if self.error is None:
                                                                 self.name, self.error = self.control.CHECK_NAME( self.name )
                                                                 if self.error is None:
-                                                                    self.type, self.error = self.control.DELETE_SPACE( self.sub_value_[ 1 ] )
-                                                                    if self.error is None:
-                                                                        self.type, self.error = self.__str.SELECTION( self.type, self.type,
-                                                                                        self.data_base, self.line).CHAR_SELECTION( '/' )
-                                                                        if self.error is None:
-                                                                            for s, typ in enumerate( self.type ):
-                                                                                typ, self.error = self.control.DELETE_SPACE( typ )
-                                                                                if self.error is None:
-                                                                                    self.type[ s ], self.error = FUNCTION( val, self.data_base,
-                                                                                                            self.line ).TYPE( typ )
-                                                                                    if self.error is None: pass 
-                                                                                    else: break 
-                                                                                else:
-                                                                                    self.error = ERRORS( self.line ).ERROR0( val )
-                                                                                    break
-                                                                                
-                                                                            if self.error is None:
-                                                                                self.variable.append( self.name )
-                                                                                self._type_.append( self.type )
+                                                                    self.variable.append( self.name )
+                                                                    self._type_.append( [ 'any' ] )
 
-                                                                            else: break
-                                                                        else: break
-                                                                    else:
-                                                                        self.error = ERRORS( self.line ).ERROR0( val )
-                                                                        break
                                                                 else:
                                                                     self.name = self.sub_value_[ 0 ]
                                                                     self.error = self.error = ERRORS( self.line ).ERROR4( self.name )
                                                                     break
 
                                                             else:
-                                                                self.error = ERRORS( self.line ).ERROR0( val )
+                                                                self.error = ERRORS(self.line ).ERROR0( val )
                                                                 break
 
-                                                        else:
-                                                            self.error = ERRORS( self.line ).ERROR5( val )
-                                                            break
+                                                        elif len( self.sub_value_ ) == 2:
+                                                            if _type_ in [ 'direct' ]:
+                                                                self.name, self.error = self.control.DELETE_SPACE(
+                                                                                                            self.sub_value_[ 0 ])
+                                                                if self.error is None:
+                                                                    self.name, self.error = self.control.CHECK_NAME( self.name )
+                                                                    if self.error is None:
+                                                                        self.type, self.error = self.control.DELETE_SPACE( self.sub_value_[ 1 ] )
+                                                                        if self.error is None:
+                                                                            self.type, self.error = self.__str.SELECTION( self.type, self.type,
+                                                                                            self.data_base, self.line).CHAR_SELECTION( '/' )
+                                                                            if self.error is None:
+                                                                                for s, typ in enumerate( self.type ):
+                                                                                    typ, self.error = self.control.DELETE_SPACE( typ )
+                                                                                    if self.error is None:
+                                                                                        self.type[ s ], self.error = FUNCTION( val, self.data_base,
+                                                                                                                self.line ).TYPE( typ )
+                                                                                        if self.error is None: pass 
+                                                                                        else: break 
+                                                                                    else:
+                                                                                        self.error = ERRORS( self.line ).ERROR0( val )
+                                                                                        break
+                                                                                    
+                                                                                if self.error is None:
+                                                                                    self.variable.append( self.name )
+                                                                                    self._type_.append( self.type )
 
-                                                    else:
-                                                        self.error = ERRORS( self.line ).ERROR0( val )
-                                                        break
+                                                                                else: break
+                                                                            else: break
+                                                                        else:
+                                                                            self.error = ERRORS( self.line ).ERROR0( val )
+                                                                            break
+                                                                    else:
+                                                                        self.name = self.sub_value_[ 0 ]
+                                                                        self.error = self.error = ERRORS( self.line ).ERROR4( self.name )
+                                                                        break
 
-                                                    if self.error is None:
-                                                        self.val_, self.error = self.control.DELETE_SPACE( self.sub_value[ 1 ] )
-                                                        if self.error is None:
-                                                            self.data_storage.append( self.val_ )
+                                                                else:
+                                                                    self.error = ERRORS( self.line ).ERROR0( val )
+                                                                    break
+
+                                                            else:
+                                                                self.error = ERRORS( self.line ).ERROR5( val )
+                                                                break
 
                                                         else:
                                                             self.error = ERRORS( self.line ).ERROR0( val )
                                                             break
+
+                                                        if self.error is None:
+                                                            self.val_, self.error = self.control.DELETE_SPACE( self.sub_value[ 1 ] )
+                                                            if self.error is None:
+                                                                self.data_storage.append( self.val_ )
+
+                                                            else:
+                                                                self.error = ERRORS( self.line ).ERROR0( val )
+                                                                break
+                                                        else:
+                                                            self.error = self.error
+                                                            break
                                                     else:
-                                                        self.error = self.error
+                                                        self.error = ERRORS( self.line ).ERROR0( val )
+                                                        break
+                                                else:
+                                                    self.error = ERRORS( self.line ).ERROR0( val )
+                                                    break
+
+                                            elif len( self.sub_value ) == 1:
+                                                self.arg_   = None
+                                                self.val_, self.error = self.control.DELETE_SPACE( self.sub_value[ 0 ] )
+
+                                                if self.error is None:
+                                                    self.string_select_ = self.__str.SELECTION(self.val_, self.val_,
+                                                                                                    self.data_base, self.line)
+                                                    self.sub_value_, self.error = self.string_select_.CHAR_SELECTION( ':' )
+
+                                                    if self.error is None:
+                                                        if len( self.sub_value_ ) == 1:
+                                                            self.val_, self.error = self.control.DELETE_SPACE( self.sub_value_[ 0 ] )
+                                                            if self.error is None:
+                                                                if _type_ in [ 'direct' ]:        
+                                                                    self.name, self.error = self.control.CHECK_NAME( self.val_ )
+                                                                elif _type_ in [ 'indirect' ]:
+                                                                    self.name   = self.val_
+                                                                    self.error  = None
+
+                                                                if self.error is None:
+                                                                    self.data_storage.append( None )
+                                                                    self.variable.append( self.name )
+                                                                    self._type_.append( [ 'any' ] )
+                                                                else:
+                                                                    self.error = ERRORS( self.line ).ERROR4( self.val_ )
+                                                                    break
+                                                            else:
+                                                                self.error = ERRORS( self.line ).ERROR0( val )
+                                                                break
+
+                                                        elif len( self.sub_value_ ) == 2:
+                                                            if _type_ in [ 'direct' ]:
+                                                                self.type, self.error = self.control.DELETE_SPACE( self.sub_value_[ 1 ])
+                                                                
+                                                                if self.error is None:
+                                                                    self._typ_  = self.__str.SELECTION(self.type, self.type, self.data_base, self.line)
+                                                                    self.type, self.error = self._typ_.CHAR_SELECTION( '/' )
+                                                                    
+                                                                    if self.error is None:
+                                                                        for s, typ in enumerate( self.type ):
+                                                                            typ, self.error = self.control.DELETE_SPACE( typ )
+                                                                            if self.error is None:
+                                                                                self.type[ s ], self.error = FUNCTION(val, self.data_base,
+                                                                                                        self.line ).TYPE( typ )
+                                                                                if self.error is None: pass 
+                                                                                else: break
+                                                                            else:
+                                                                                self.error  = ERRORS( self.line ).ERROR0( val )
+                                                                                break
+                                                                                
+                                                                        if self.error is None:
+                                                                            self.val_, self.error = self.control.DELETE_SPACE(
+                                                                                                                self.sub_value_[ 0 ])
+                                                                            if self.error is None:    
+                                                                                self.name, self.error = self.control.CHECK_NAME( self.val_ )
+                                                                                                                            
+                                                                                if self.error is None:
+                                                                                    self.data_storage.append( None )
+                                                                                    self.variable.append( self.name )
+                                                                                    self._type_.append( self.type )
+                                                                                else:
+                                                                                    self.error = self.error = ERRORS( self.line ).ERROR4( self.val_ )                                      
+                                                                                    break
+                                                                            else:
+                                                                                self.error  = ERRORS( self.line ).ERROR0( val )
+                                                                                break
+                                                                        else: break
+                                                                    else: break
+                                                                else: 
+                                                                    self.error = ERRORS( self.line ).ERROR0( val )
+                                                                    break
+                                                            else:
+                                                                self.error = ERRORS( self.line ).ERROR5( val )
+                                                                break
+                                                        else:
+                                                            self.error = ERRORS( self.line ).ERROR0( val )
+                                                            break
+                                                    else:
+                                                        self.error  = ERRORS( self.line ).ERROR0( val )
                                                         break
                                                 else:
                                                     self.error = ERRORS( self.line ).ERROR0( val )
@@ -206,96 +298,9 @@ class FUNCTION:
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR0( val )
                                                 break
-
-                                        elif len( self.sub_value ) == 1:
-                                            self.arg_   = None
-                                            self.val_, self.error = self.control.DELETE_SPACE( self.sub_value[ 0 ] )
-
-                                            if self.error is None:
-                                                self.string_select_ = self.__str.SELECTION(self.val_, self.val_,
-                                                                                                self.data_base, self.line)
-                                                self.sub_value_, self.error = self.string_select_.CHAR_SELECTION( ':' )
-
-                                                if self.error is None:
-                                                    if len( self.sub_value_ ) == 1:
-                                                        self.val_, self.error = self.control.DELETE_SPACE( self.sub_value_[ 0 ] )
-                                                        if self.error is None:
-                                                            if _type_ in [ 'direct' ]:        
-                                                                self.name, self.error = self.control.CHECK_NAME( self.val_ )
-                                                            elif _type_ in [ 'indirect' ]:
-                                                                self.name   = self.val_
-                                                                self.error  = None
-
-                                                            if self.error is None:
-                                                                self.data_storage.append( None )
-                                                                self.variable.append( self.name )
-                                                                self._type_.append( [ 'any' ] )
-                                                            else:
-                                                                self.error = ERRORS( self.line ).ERROR4( self.val_ )
-                                                                break
-                                                        else:
-                                                            self.error = ERRORS( self.line ).ERROR0( val )
-                                                            break
-
-                                                    elif len( self.sub_value_ ) == 2:
-                                                        if _type_ in [ 'direct' ]:
-                                                            self.type, self.error = self.control.DELETE_SPACE( self.sub_value_[ 1 ])
-                                                            
-                                                            if self.error is None:
-                                                                self._typ_  = self.__str.SELECTION(self.type, self.type, self.data_base, self.line)
-                                                                self.type, self.error = self._typ_.CHAR_SELECTION( '/' )
-                                                                
-                                                                if self.error is None:
-                                                                    for s, typ in enumerate( self.type ):
-                                                                        typ, self.error = self.control.DELETE_SPACE( typ )
-                                                                        if self.error is None:
-                                                                            self.type[ s ], self.error = FUNCTION(val, self.data_base,
-                                                                                                    self.line ).TYPE( typ )
-                                                                            if self.error is None: pass 
-                                                                            else: break
-                                                                        else:
-                                                                            self.error  = ERRORS( self.line ).ERROR0( val )
-                                                                            break
-                                                                            
-                                                                    if self.error is None:
-                                                                        self.val_, self.error = self.control.DELETE_SPACE(
-                                                                                                            self.sub_value_[ 0 ])
-                                                                        if self.error is None:    
-                                                                            self.name, self.error = self.control.CHECK_NAME( self.val_ )
-                                                                                                                        
-                                                                            if self.error is None:
-                                                                                self.data_storage.append( None )
-                                                                                self.variable.append( self.name )
-                                                                                self._type_.append( self.type )
-                                                                            else:
-                                                                                self.error = self.error = ERRORS( self.line ).ERROR4( self.val_ )                                      
-                                                                                break
-                                                                        else:
-                                                                            self.error  = ERRORS( self.line ).ERROR0( val )
-                                                                            break
-                                                                    else: break
-                                                                else: break
-                                                            else: 
-                                                                self.error = ERRORS( self.line ).ERROR0( val )
-                                                                break
-                                                        else:
-                                                            self.error = ERRORS( self.line ).ERROR5( val )
-                                                            break
-                                                    else:
-                                                        self.error = ERRORS( self.line ).ERROR0( val )
-                                                        break
-                                                else:
-                                                    self.error  = ERRORS( self.line ).ERROR0( val )
-                                                    break
-                                            else:
-                                                self.error = ERRORS( self.line ).ERROR0( val )
-                                                break
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( val )
                                             break
-                                    else:
-                                        self.error = ERRORS( self.line ).ERROR0( val )
-                                        break
                             else: pass
                         else:
                             self.error = None
@@ -304,27 +309,31 @@ class FUNCTION:
                             self._type_.append( 'any' )
                     else: pass
 
-                    self.function_info[ 'value' ]       = self.data_storage
-                    self.function_info[ 'type' ]        = self._type_
-                    self._variable_                     = []
-                    
-                    self.function_info[ 'function_info' ]['VarsType']       = self._type_.copy()
-                    self.function_info[ 'function_info' ]['defaultValues']  = self.data_storage.copy()
-                    
-                    if _type_ in [ 'direct' ]:
-                        for name in self.variable:
-                            if name in self._variable_:
-                                if name == None: self._variable_.append( name )
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR3( main_string, name )
-                                    break
-                            else: self._variable_.append( name )
-                        if self.error is None: self.function_info[ 'arguments' ]   = self._variable_
-                        else: self.error = self.error
-                    else: self.function_info[ 'arguments' ] = self.variable
+                    if self.anonymous is False:
+                        self.function_info[ 'value' ]       = self.data_storage
+                        self.function_info[ 'type' ]        = self._type_
+                        self._variable_                     = []
+                        self.function_info[ 'function_info' ]['VarsType']       = self._type_.copy()
+                        self.function_info[ 'function_info' ]['defaultValues']  = self.data_storage.copy()
+                        
+                        if _type_ in [ 'direct' ]:
+                            for name in self.variable:
+                                if name in self._variable_:
+                                    if name == None: self._variable_.append( name )
+                                    else:
+                                        self.error = ERRORS( self.line ).ERROR3( main_string, name )
+                                        break
+                                else: self._variable_.append( name )
+                            if self.error is None: self.function_info[ 'arguments' ]   = self._variable_
+                            else: self.error = self.error
+                        else: self.function_info[ 'arguments' ] = self.variable
 
-                    try:  self.function_info[ 'function_info' ]['args']  = self.function_info[ 'arguments' ].copy()
-                    except AttributeError:  self.function_info[ 'function_info' ]['args']   = self.function_info[ 'arguments' ]
+                        try:  self.function_info[ 'function_info' ]['args']  = self.function_info[ 'arguments' ].copy()
+                        except AttributeError:  self.function_info[ 'function_info' ]['args']   = self.function_info[ 'arguments' ]
+                    else: 
+                        self.function_info['anonymous'] = self.anonymous
+                        self.function_info[ 'arguments' ] = [None]
+                        self.function_info[ 'value' ]  = [None]
                 else: pass
             else: self.error = ERRORS( self.line).ERROR0( main_string )
 

@@ -31,6 +31,8 @@ class FUNCTION:
         self.emty_values        = []
         try:
             self.function_type      = self.get_informations[ 'type_return' ]
+            self.anonymous          = self.get_informations[ 'anonymous' ]
+            self.anonymous_data     = []
         except KeyError: pass 
         
         ###########################################################################
@@ -55,86 +57,92 @@ class FUNCTION:
 
         if self.arguments:
             if self.external_vars:
-                self.check_arguments = []
-                for args in self.external_vars:
-                    if not  self.check_arguments:  self.check_arguments.append( args )
-                    else:
-                        if args not in self.check_arguments:  self.check_arguments.append( args )
+                if self.anonymous is False:
+                    self.check_arguments = []
+                    for args in self.external_vars:
+                        if not  self.check_arguments:  self.check_arguments.append( args )
                         else:
-                            self.error = er.ERRORS( self.line ).ERROR16( self.function_name, args )
-                            break
-
-                if self.error is None:
-                    if self.lenght_exernal <= self.lenght_internal:
-                        for w, vars in enumerate( self.external_vars ):
-                            if vars in self.arguments :
-                                self.idd    = self.arguments.index( vars )
-                                self.values[ self.idd ] = self.computed_values[ self.location[ w ] ]
-                            else:  self.error  = er.ERRORS(self.line).ERROR11(self.function_name, vars)
-
-                        if self.error is None:
-                            if self.lenght_exernal == len( self.external_vars ): pass
+                            if args not in self.check_arguments:  self.check_arguments.append( args )
                             else:
-                                loc             = self.location[ : ]
-                                self.location   = sorted( loc, reverse = True )
-                                for i in self.location:
-                                    del self.computed_values[ i ]
+                                self.error = er.ERRORS( self.line ).ERROR16( self.function_name, args )
+                                break
 
-                                for value in self.computed_values:
-                                    if None in self.values:
-                                        self.index = self.values.index( None )
-                                        self.values[ self.index ] = value
+                    if self.error is None:
+                        if self.lenght_exernal <= self.lenght_internal:
+                            for w, vars in enumerate( self.external_vars ):
+                                if vars in self.arguments :
+                                    self.idd    = self.arguments.index( vars )
+                                    self.values[ self.idd ] = self.computed_values[ self.location[ w ] ]
+                                else:  self.error  = er.ERRORS(self.line).ERROR11(self.function_name, vars)
+
+                            if self.error is None:
+                                if self.lenght_exernal == len( self.external_vars ): pass
+                                else:
+                                    loc             = self.location[ : ]
+                                    self.location   = sorted( loc, reverse = True )
+                                    for i in self.location:
+                                        del self.computed_values[ i ]
+
+                                    for value in self.computed_values:
+                                        if None in self.values:
+                                            self.index = self.values.index( None )
+                                            self.values[ self.index ] = value
+                                        else: pass
+
+                                for i, value in enumerate( self.values ):
+                                    if value is None: self.emty_values.append( ( self.arguments[ i ], i ) )
                                     else: pass
 
+                                if self.emty_values:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
+                                else: pass
+                            else: pass
+                        else:  self.error = er.ERRORS(self.line).ERROR12(self.function_name, self.lenght_internal)
+                    else: pass
+                else: self.error = er.ERRORS( self.line ).ERROR26()
+            else:
+                if self.computed_values:
+                    if self.anonymous is False:
+                        if self.lenght_internal == 1 :
+                            if self.arguments[ 0 ] is None:  self.error = er.ERRORS(self.line).ERROR14( self.function_name )
+                            else:
+                                if self.lenght_exernal == 1:
+                                    for s, value in enumerate( self.computed_values ):
+                                        self.values[ s ] = value
+                                else: self.error = er.ERRORS(self.line).ERROR12(self.function_name, self.lenght_internal)
+                        else:
+                            if self.lenght_internal >= self.lenght_exernal:
+                                try:
+                                    for s, value in enumerate( self.computed_values ):
+                                        self.values[ s ] = value
+
+                                    for i, value in enumerate( self.values ):
+                                        if value is None:
+                                            self.emty_values.append( ( self.arguments[ i ], i ) )
+                                        else: pass
+                                    if self.emty_values:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
+                                    else : pass
+                                except IndexError: pass
+                            else:  self.error = er.ERRORS(self.line).ERROR12( self.function_name, self.lenght_internal )
+                    else: self.anonymous_data = self.computed_values.copy()
+                else:
+                    if self.anonymous is False:
+                        if self.lenght_internal == 1:
+                            if self.arguments[ 0 ] is None:
+                                del self.values[ 0 ]
+                                del self.arguments[ 0 ]
+                            else:
+                                if self.values[ 0 ] is None:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, [(self.arguments[0],0) ])
+                                else: pass
+                        else:
                             for i, value in enumerate( self.values ):
-                                if value is None: self.emty_values.append( ( self.arguments[ i ], i ) )
+                                if value is None: self.emty_values.append( (self.arguments[ i ], i ) )
                                 else: pass
 
                             if self.emty_values:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
                             else: pass
-                        else: pass
-                    else:  self.error = er.ERRORS(self.line).ERROR12(self.function_name, self.lenght_internal)
-                else: pass
-
-            else:
-                if self.computed_values:
-                    if self.lenght_internal == 1 :
-                        if self.arguments[ 0 ] is None:  self.error = er.ERRORS(self.line).ERROR14( self.function_name )
-                        else:
-                            if self.lenght_exernal == 1:
-                                for s, value in enumerate( self.computed_values ):
-                                    self.values[ s ] = value
-                            else: self.error = er.ERRORS(self.line).ERROR12(self.function_name, self.lenght_internal)
-                    else:
-                        if self.lenght_internal >= self.lenght_exernal:
-                            try:
-                                for s, value in enumerate( self.computed_values ):
-                                    self.values[ s ] = value
-
-                                for i, value in enumerate( self.values ):
-                                    if value is None:
-                                        self.emty_values.append( ( self.arguments[ i ], i ) )
-                                    else: pass
-                                if self.emty_values:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
-                                else : pass
-                            except IndexError: pass
-                        else:  self.error = er.ERRORS(self.line).ERROR12( self.function_name, self.lenght_internal )
-                else:
-                    if self.lenght_internal == 1:
-                        if self.arguments[ 0 ] is None:
-                            del self.values[ 0 ]
-                            del self.arguments[ 0 ]
-
-                        else:
-                            if self.values[ 0 ] is None:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, [(self.arguments[0],0) ])
-                            else: pass
-                    else:
-                        for i, value in enumerate( self.values ):
-                            if value is None: self.emty_values.append( (self.arguments[ i ], i ) )
-                            else: pass
-
-                        if self.emty_values:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
-                        else: pass
+                    else: 
+                        del self.values[ 0 ]
+                        del self.arguments[ 0 ]
         else:
             if self.external_vars:  self.error = er.ERRORS(self.line).ERROR11( self.function_name, self.external_vars[0] )
             elif self.computed_values:  self.error = er.ERRORS(self.line).ERROR12(self.function_name, 0 )
@@ -143,6 +151,7 @@ class FUNCTION:
         if self.error is None:
             self.list_types = ''
             self.func = bm.fg.rbg(0,255,0)+' in {}( ).'.format(self.function_name)+bm.init.reset
+            
             if self.values:
                 for i, value in enumerate( self.values ):
                     self.error = type_of_data.CHECK_TYPE_OF_DATA( self.type_of_data[ i ] ).CHECK_TYPE( self.line, self.arguments[ i ], self.function_name )
@@ -181,9 +190,23 @@ class FUNCTION:
                     else: break
             else: pass
 
+            if self.anonymous_data:
+                for i, value in enumerate(self.anonymous_data):
+                    self._values_, self.error = numeric_lexer.NUMERCAL_LEXER( value, self.data_base,  self.line).LEXER( value )
+                    if self.error is None:  self.anonymous_data[ i ] = self._values_
+                    else: break
+                if self.error is None:
+                    if "anonymous" in self.global_vars['vars']:
+                        self.idd = self.global_vars['vars'].index("anonymous")
+                        self.global_vars['values'][self.idd] = self.anonymous_data
+                    else:
+                        self.global_vars['vars'].append("anonymous")
+                        self.global_vars['values'].append(self.anonymous_data)
+                else: pass
+            else: self.error = er.ERRORS(self.line).ERROR27(self.function_name )
+            
             if self.error is None:
                 updating_data.UPDATE_DATA_BASE( self.values, self.arguments, self.global_vars ).UPDATE( self.def_data_base )
-
             else: pass
         else: pass
 
@@ -191,7 +214,8 @@ class FUNCTION:
             'data_base'         : self.def_data_base,
             'vars'              : self.arguments,
             'values'            : self.int_values,
-            'type'              : self.function_type
+            'type'              : self.function_type,
+            'anonymous'         : self.anonymous
         }
 
         return  self._return_, self.error

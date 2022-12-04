@@ -89,7 +89,7 @@ class MAIN:
                             if self._error_ not in ['SyntaxError']: self.error = None
                             else:  pass
                         else: pass
-                    else:  pass
+                    else: pass
             else: pass
         else:  self.error = er.ERRORS(self.line).ERROR0(self.master)
 

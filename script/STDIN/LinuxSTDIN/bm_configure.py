@@ -266,7 +266,7 @@ class words:
                 if self.count % 2 == 0 :self.newString += fg.rbg(255,165,0) + self.string + init.reset
                 else: self.newString += self.color + self.string + init.reset
             elif    self.string in ['initialize', 'integer', 'dictionary', 'set', 'get',
-                                    'object', 'settings', 'print']:
+                                    'object', 'settings', 'print', 'boolean', 'complex', 'ndarray', 'anonymous']:
                 if self.count % 2 == 0: self.newString += fg.rbg(25,165,200) + self.string + init.reset
                 else: self.newString += self.color + self.string + init.reset
             else:
@@ -330,8 +330,8 @@ class words:
         self.ss         = ''
         self.active     = False
         self.count      = {'int' : 0, 'sys' : []}
-        self.c          = fg.rbg(255, 153, 204)
-        self.cc         = fg.rbg(255,255,255)
+        self.c          = init.bold+fg.rbg(255, 153, 204)
+        self.cc         = init.bold+fg.rbg(255,255,255)
 
         if locked is False:
             for i, s in enumerate( self.string) :
@@ -397,9 +397,11 @@ class words:
         return self.newS
 
 class chars:
+    def __init__(self):
+        pass
     def ansi_remove_chars( self, name : str ):
-        ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-        return ansi_escape.sub ('', name)
+        self.ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+        return self.ansi_escape.sub ('', name)
 
 class timer:
     def timer():
@@ -412,5 +414,3 @@ class timer:
             stdout.write( move_cursor.LEFT( 1000 ) )
             stdout.write( updateClock() )
             stdout.flush()
-
-    #updateClock()

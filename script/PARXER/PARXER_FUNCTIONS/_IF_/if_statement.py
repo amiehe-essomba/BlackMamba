@@ -306,7 +306,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                             self.get_block, self.value, self.error = eIF.EXTERNAL_BLOCKS(string=self.string,
                                             normal_string=self.normal_string, data_base=self.data_base,  line=self.line).BLOCKS(
                                             tabulation=self.tabulation, function=_type_, interpreter=True)
-
+                            
                             if self.error is None:
                                 if   self.get_block == 'end:'  :
                                     if self.store_value:
@@ -685,14 +685,13 @@ class INTERNAL_IF_LOOP_STATEMENT:
                             self.get_block, self.value, self.error = eIF.EXTERNAL_BLOCKS(string=self.string,
                                                         normal_string=self.normal_string, data_base=self.data_base, line=self.line).BLOCKS(
                                                         tabulation=self.tabulation,  function=_type_, interpreter=True)
-
+                            
                             if self.error is None:
                                 if self.get_block   == 'end:' :
                                     if self.store_value:
                                         del self.store_value[ : ]
                                         del self.history[ : ]
                                         del self.boolean_store[ : ]
-                                        
                                         if self.tabulation == 1:  self.data_base['pass'] = None 
                                         else: pass
 
@@ -709,7 +708,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
                                             self.bool_key           = None
 
                                             for _bool_ in self.boolean_store:
-                                                if _bool_ == True:
+                                                if _bool_ is True:
                                                     self.bool_key = True
                                                     break
                                                 else:   self.bool_key = False

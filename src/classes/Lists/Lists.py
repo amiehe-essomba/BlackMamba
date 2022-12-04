@@ -30,7 +30,7 @@ class LIST:
         self._return_       = ''
         self.arguments      = self.FunctionInfo[ self.function ][ 'arguments' ] 
         self.value          = self.FunctionInfo[ self.function ][ 'value' ] 
-            
+        
         if   self.function in [ 'empty' ]            :
             if None in self.arguments: 
                 if    self.master: self._return_ = False
@@ -180,6 +180,17 @@ class LIST:
                                                         self._return_ = self.master[ : ]
                                                     except IndexError : self.error =  er.ERRORS( self.line ).ERROR28( )
                                                 else: self.error =  er.ERRORS( self.line ).ERROR3( "master" )
+                                            elif self.function in [ 'insert' ]          :
+                                                if type( self.final_val[ 0 ] ) == type( tuple() ):
+                                                    try: 
+                                                        if len( self.final_val[ 0 ] ) == 2:
+                                                            if type( self.final_val[ 0 ][ 0 ] ) == type( int() ) :
+                                                                self.master.insert( self.final_val[ 0 ][ 0 ], self.final_val[ 0 ][ 1 ] )
+                                                                self._return_ = self.master[ : ]
+                                                            else: self.error =  er.ERRORS( self.line ).ERROR3( "master[ 0 ]" )
+                                                        else: self.error =  er.ERRORS( self.line ).ERROR29()
+                                                    except IndexError : self.error =  er.ERRORS( self.line ).ERROR28( )
+                                                else: self.error =  er.ERRORS( self.line ).ERROR3( "master", 'a tuple()' )
                                             elif self.function in [ 'add' ]             :
                                                 self.master.append( self.final_val[ 0 ] )
                                                 self._return_ = self.master[ : ]
@@ -209,6 +220,7 @@ class LIST:
                     else:  er.ERRORS( self.line ).ERROR11( self.function, self.arguments[ 0 ] )
             else: self.error =  er.ERRORS( self.line ).ERROR12( self.function, 1)                   
         
+       
         return self._return_, self.error  
             
     

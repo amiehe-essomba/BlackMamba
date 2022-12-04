@@ -1,12 +1,12 @@
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import def_interpreter
-from src.classes                                import errorClass as classes
+from src.classes                                import errorClass           as classes
 from script.STDIN.WinSTDIN                      import stdin
 from script.LEXER.FUNCTION                      import main
 from statement                                  import externalRest
 from script                                     import control_string
-from script.PARXER.PARXER_FUNCTIONS._IF_        import if_inter
 from src.classes                                import db
-from classes                                    import internalClass as IC
+from classes                                    import internalClass        as IC
+from script.PARXER.PARXER_FUNCTIONS._IF_        import IfError              as Ie
 
 
 class EXTERNAL_CLASS_STATEMENT:
@@ -73,7 +73,7 @@ class EXTERNAL_CLASS_STATEMENT:
                             if self.error is None:
                                 if self.get_block   == 'def:'           :
                                     self.next_line  = j+1
-                                    self.NewLIST    = stdin.STDIN(self.data_base, self.line ).GROUPBY(k, self.loop_list[self.next_line : ],
+                                    self.NewLIST    = stdin.STDIN(self.data_base, self.line ).GROUPBY(k, self.loop_list[self.next_line: ],
                                                                                                     index = 'int', _class_ = True)
                                     
                                     self.db = db.DB.def_data_base
@@ -88,7 +88,7 @@ class EXTERNAL_CLASS_STATEMENT:
                                                 self.next_line  += len(self.NewLIST)
                                                 self.error = def_interpreter.EXTERNAL_DEF_STATEMENT( self.master, self.db, 
                                                                     self.line ).DEF( k, self.data_base[ 'current_class' ], self.key_init, _type_,
-                                                                                self.NewLIST, loop = True )
+                                                                                self.NewLIST[:-1], loop = True )# herre
                                                 
                                                 if self.error is None:
                                                     
@@ -107,7 +107,7 @@ class EXTERNAL_CLASS_STATEMENT:
                                                     else: break
                                                 else: break
                                             else: 
-                                                self.error = if_inter.ERRORS( self.line ).ERROR4()
+                                                self.error = Ie.ERRORS( self.line ).ERROR4()
                                                 break  
                                         else: break
                                     else: break
@@ -143,7 +143,7 @@ class EXTERNAL_CLASS_STATEMENT:
                                                     break
                                             else: break
                                         else:
-                                            self.error = if_inter.ERRORS( self.line ).ERROR4()
+                                            self.error = Ie.ERRORS( self.line ).ERROR4()
                                             break 
                                     else: break
                                 elif self.get_block == 'empty'          :
@@ -168,14 +168,13 @@ class EXTERNAL_CLASS_STATEMENT:
                                         
                                     else:
                                         self.error =  classes.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
-                                        break
-                            
+                                        break                        
                             else: break
                         else:
                             self.get_block, self.value, self.error = externalRest.EXTERNAL_BLOCKS(normal_string=self.normal_string, 
                                                                 data_base=self.data_base, line=self.line).BLOCKS(tabulation=self.tabulation)
                             if self.error is None:
-                                if self.get_block   == 'end:'           :
+                                if   self.get_block   == 'end:'           :
                                     if self.store_value:
                                         del self.store_value[ : ]
                                         del self.history[ : ]
@@ -184,7 +183,7 @@ class EXTERNAL_CLASS_STATEMENT:
                                     else:
                                         self.error =  classes.ERRORS( self.line ).ERROR17( self.history[ -1 ] )
                                         break
-                                elif self.get_block == 'empty'          :
+                                elif self.get_block   == 'empty'          :
                                     if self.space <= 2:
                                         self.space += 1
                                         self.class_starage.append( ( self.normal_string, False ) )
@@ -198,11 +197,10 @@ class EXTERNAL_CLASS_STATEMENT:
                     else: break
                 else: pass
             else:
-                self.error = if_inter.ERRORS( self.line ).ERROR4()
+                self.error = Ie.ERRORS( self.line ).ERROR4()
                 break
 
-        if self.error is None:
-            EXTERNAL_CLASS_STATEMENT( self.master, self.data_base, self.line, {} ).UPDATE_CLASS( self.class_starage )
+        if self.error is None: EXTERNAL_CLASS_STATEMENT( self.master, self.data_base, self.line, {} ).UPDATE_CLASS( self.class_starage )
         else:
             self.data_base[ 'classes' ]     = self.classes_before
             self.data_base[ 'class_names' ] = self.names_before
@@ -410,7 +408,7 @@ class INTERNAL_CLASS_STATTEMENT:
                                                         else: break
                                                     else: break
                                                 else: 
-                                                    self.error = if_inter.ERRORS( self.line ).ERROR4()
+                                                    self.error = Ie.ERRORS( self.line ).ERROR4()
                                                     break  
                                             else: break
                                         else: break
@@ -476,7 +474,7 @@ class INTERNAL_CLASS_STATTEMENT:
                     else: pass
                 else: pass
             else:
-                self.error = if_inter.ERRORS( self.line ).ERROR4()
+                self.error = Ie.ERRORS( self.line ).ERROR4()
                 break
 
         if self.error is None:

@@ -1,5 +1,6 @@
 from script.STDIN.LinuxSTDIN      import bm_configure as bm
 from CythonModules.Windows        import fileError as fe 
+#from cython.parallel              import prange
 
 cdef class Tuple:
     cdef public :
@@ -61,7 +62,7 @@ cdef str ERROR1( int line, str string = 'a list' ):
 
     return error+reset
 
-cdef str ERROR2( int line, str string, str _char_ = 'an integer', str func = ''):
+cdef str ERROR2( int line, str string, str _char_ = 'an integer', str func = '') :
     cdef :
         str error , err
         str cyan, white, yellow, reset 
@@ -77,7 +78,7 @@ cdef str ERROR2( int line, str string, str _char_ = 'an integer', str func = '')
     
     return error+reset
 
-cdef str ERROR3( int line,  str _char_ = 'an integer', str func = ''):
+cdef str ERROR3( int line,  str _char_ = 'an integer', str func = '') :
     cdef :
         str error , err
         str cyan, white, yellow, reset 

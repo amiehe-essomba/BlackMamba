@@ -37,7 +37,7 @@ cdef class FileErrors:
     cpdef initError( self )             :
         cdef list stringSplit
 
-        self.stringType     =  bm.remove_ansi_chars.chars( self.stringType )
+        self.stringType     =  bm.remove_ansi_chars().chars( self.stringType )
         stringSplit         = self.stringType.split( ':' )
 
         return stringSplit[ 0 ]

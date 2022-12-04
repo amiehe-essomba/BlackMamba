@@ -92,7 +92,7 @@ class CLASS_TREATMENT:
                                     
                     self.function_names     = self.main_body[ 'function_names' ]
                     self.inheritanceClass   = self.main_body[ 'class_inheritance' ]
-                                
+                    
                     if self.main_body[ 'init_function' ] is None: 
                         
                         self._variables_        = None
@@ -542,7 +542,6 @@ class CLASS_TREATMENT:
                 
                 if self.main_name not in self.DataBase['modulesImport']['fileNames']: 
                     self.mod = load.LOAD(self.DataBase['modulesImport']['mainClassNames'], self.main_name).LOAD()
-                    
                     if self.mod['key'] is False:
                         self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
                                                                        self.DataBase, self.line ).TREATMENT( )                    

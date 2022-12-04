@@ -172,8 +172,10 @@ class INTERNAL_BLOCKS:
 
     def INTERPRETER_BLOCKS(self,
                 tabulation      : int,              # tabulation
-                function        : any = None,       # function type [class, def , loop, try]
-                typ             : str = 'if'        # type of structure
+                function        : any  = None,       # function type [class, def , loop, try]
+                typ             : str  = 'if',       # type of structure
+                interpreter     : bool = False,
+                locked          : bool = False
                 ):
         """
         :param tabulation:
@@ -201,7 +203,7 @@ class INTERNAL_BLOCKS:
                             if self.normal_string[ 2 ] in [ ' ' ]:
                                 self._return_ = 'if:'
                                 self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
-                                    typ='if', opposite=False, interpreter=True, function=function)
+                                    typ='if', opposite=False, interpreter=interpreter, function=function)
                             else: self.error = er.ERRORS(self.line).ERROR5(self.normal_string)
                         else:
                             try:
@@ -302,7 +304,7 @@ class INTERNAL_BLOCKS:
                                 if self.normal_string[ 4 ] in [ ' ' ]:
                                     self._return_ = 'elif:'
                                     self.value, self.error = MS.MAIN(master=self.normal_string, data_base=self.data_base, line=self.line).MAIN(
-                                        typ='elif', opposite=False, interpreter=True, function=function)
+                                        typ='elif', opposite=False, interpreter=interpreter, function=function)
                                 else:
                                     try:
                                         if self.normal_string[ 4 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1('elif')
