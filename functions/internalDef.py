@@ -82,8 +82,7 @@ class INTERNAL_BLOCKS:
                                 except IndexError: self.error = er.ERRORS(self.line).ERROR1('if')
                         elif self.normal_string[: 3] == 'for'       :
                             self._return_, self.value, self.error = mainFor.FOR_BLOCK(self.data_base, self.line, 
-                                                  self.normal_string).FOR( function=function, interpreter=interpreter, locked=locked)
-                            
+                                                  self.normal_string).FOR( function=function, interpreter=interpreter, locked=locked)  
                         elif self.normal_string[: 6] == 'unless'    :
                             if self.normal_string[-1] == ':':
                                 if self.normal_string[6] in [' ']:
@@ -192,7 +191,6 @@ class INTERNAL_BLOCKS:
                 self.error += self.err
             else:  self.error += bm.fg.rbg(0, 255, 0) + ' in {}( )'.format( func_name ) + bm.init.reset
 
-        
         return self._return_, self.value, self.error
 
 class SELF_METHOD:

@@ -422,8 +422,4 @@ class math:
 			return "-"
 		end:
 	end:
-	
-	def div():
-		return 10
-	end:
 end:

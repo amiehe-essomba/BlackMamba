@@ -100,6 +100,27 @@ class STDIN:
         else: pass 
         
         return self.newList
+    def IF(self, 
+            tabulation  : int    = 1,            # tabulation 
+            LIST        : list   = [],           # list of values 
+            _class_     : bool   = False
+            ):
+        self.newList = []
+        
+        if LIST:
+            for i, _str_ in enumerate(LIST):
+                self.n = STDIN( self.data_base, self.line).ENCODING( _str_ )
+                
+                if self.n > tabulation:
+                    self.newList.append( _str_ ) 
+                    #if _class_ is False: pass
+                    #else:
+                    #    if _str_[tabulation : ] == 'end:' : break 
+                    #    else: pass
+                else: break
+        else: pass 
+        
+        return self.newList
     
     def FOR_STRING(self, tabulation: int = 1,  LIST: list = []):
         self.newList = []

@@ -58,7 +58,7 @@ class FUNCTION_TREATMENT:
             self.function_info          = self.data_base[ 'functions' ][ self.function_location ]
             self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
                                                                         self.line ).MAIN( def_key = 'indirect' )
-
+            
             if self.error is None:
                 self._return_,  self.error = function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name )
@@ -175,7 +175,7 @@ class FUNCTION_TREATMENT:
             if self.error is None:
                 self._return_,  self.error =function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name )
-
+            
                 if self.error is None:
                     self._new_data_base_, self.error  = function.FUNCTION( [ self.function_info ], self.data_base,
                                                     self.line).INIT_FUNCTION( self.normal_expression, self._return_ )

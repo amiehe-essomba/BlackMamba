@@ -13,6 +13,9 @@ from src.transform                  import matrix_modules as mm
 from src.transform                  import matrix_statistics as mstat
 from src.transform                  import open_check as oc
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
+from CythonModules.Windows          import Trigo
+from CythonModules.Windows          import dictionary as dic
+from CythonModules.Windows          import Open
 try:
     from CythonModules.Linux        import making_stat as ms
     from CythonModules.Linux        import fileError as fe 
@@ -28,6 +31,7 @@ try: from CythonModules.Windows     import arithmetic_analyze as aa
 except: from CythonModules.Linux    import arithmetic_analyze as aa
 try: from CythonModules.Windows     import array_to_list as atl
 except: from CythonModules.Linux    import array_to_list as atl
+
 
 
 class C_F_I_S:
@@ -403,26 +407,7 @@ class C_F_I_S:
                                             self._open_, self.error = oc.OPEN_CHECK( self._open_, self.data_base, self.line ).CHECK()
                                             
                                             if self.error is None:
-                                                if not self.data_base[ 'open' ][ 'name' ]:
-                                                    self.data_base[ 'open' ][ 'name' ].append(self._open_[ 0 ])
-                                                    self.data_base[ 'open' ][ 'file' ].append(self._open_[ 1 ])   
-                                                    self.data_base[ 'open' ][ 'action' ].append(self._open_[ 2 ])   
-                                                    self.data_base[ 'open' ][ 'status' ].append(self._open_[ 3 ])  
-                                                    self.data_base[ 'open' ][ 'encoding' ].append(self._open_[ 4 ])
-                                                    self.data_base[ 'open'][ 'nonCloseKey' ].append( self._open_[ 0 ] )
-                                                    self.data_base[ 'open' ]
-                                                else:
-                                                    if self._open_[ 0 ] in self.data_base[ 'open' ][ 'name' ]:
-                                                        self.error = er.ERRORS( self.line ).ERROR18( self._open_[ 0 ] )
-                                                    else:
-                                                        self.data_base[ 'open' ][ 'name' ].append(self._open_[ 0 ])
-                                                        self.data_base[ 'open' ][ 'file' ].append(self._open_[ 1 ])   
-                                                        self.data_base[ 'open' ][ 'action' ].append(self._open_[ 2 ])   
-                                                        self.data_base[ 'open' ][ 'status' ].append(self._open_[ 3 ])  
-                                                        self.data_base[ 'open' ][ 'encoding' ].append(self._open_[ 4 ])
-                                                        self.data_base[ 'open'][ 'nonCloseKey' ].append( self._open_[ 0 ] )
-                                                        self.final_value = self.data_base[ 'open' ]
-                                                self.final_value = self.data_base[ 'open']
+                                                self.final_value, self.error = Open.Open(self.data_base, self.line).Open(self._open_)
                                             else: pass
                                     else: self.error = er.ERRORS( self.line ).ERROR3( self.value )
                                 else: self.error = self.error
@@ -435,37 +420,9 @@ class C_F_I_S:
                                                                     self.data_base, self.line).LEXER(  self.value )
                                 if self.error is None: self._values_.append( self._value_ )
                                 else: break
-
                             if self.error is None:
                                 if   function == '_dictionary_' :
-                                    func = bm.fg.rbg(0, 255, 0   )+' in dictionary( ).' + bm.init.reset 
-                                    if len(self._values_[ 0 ]) == len( self._values_[ 1 ]):
-                                        if  type( self._values_[ 0 ]) == type(list()):
-                                            if type( self._values_[ 1 ]) == type( list()):
-                                                self._dictionary_ = {}
-                                                if len( self._values_[ 0 ] ) == 1 :
-                                                    if self._values_[ 0 ][ 0 ] is None:
-                                                        if self._values_[ 1 ][ 0 ] is None: pass
-                                                        else: self.error = er.ERRORS( self.line ).ERROR5( self.list_of_values[ 0 ], func = func )
-                                                    else:
-                                                        if type( self._values_[ 0 ][ 0 ] ) == type( str() ):
-                                                            self.name = self._values_[ 0 ][ 0 ]
-                                                            self._dictionary_[ self.name ] = self._values_[ 1 ][ 0 ]
-                                                        else: self.error = er.ERRORS( self.line ).ERROR5( self.list_of_values[ 0 ], func = func )
-                                                else:
-                                                    for i, name in enumerate( self._values_[ 0 ] ):
-                                                        if type( name ) == type( str() ):
-                                                            self._dictionary_[ name ] = self._values_[ 1 ][ i ]
-                                                        else:
-                                                            self.error = er.ERRORS( self.line ).ERROR5( name, func = func )
-                                                            break
-
-                                                if self.error is None:
-                                                    self.final_value = self._dictionary_
-                                                else: self.error = self.error
-                                            else: self.error = er.ERRORS(self.line).ERROR5('values', 'a list', func = func)
-                                        else: self.error = er.ERRORS(self.line).ERROR5('keys', 'a list', func = func)
-                                    else: self.error = er.ERRORS(self.line).ERROR6('keys', 'values', func = func)
+                                    self.final_value, self.error = dic.dic(self.line).dic(self._values_, self.list_of_values)
                                 elif function == '__rand__'     :
                                     self.__type__       = self._values_[ 1 ]
                                     self.__value__      = self._values_[ 0 ]
@@ -476,36 +433,7 @@ class C_F_I_S:
                                     elif self.__type__ == 'norm':
                                         self.final_value = random.random()
                                 elif function == '__maths__'    :
-                                    try:
-                                        if      self._values_[ 0 ] == 'sin'     : self.final_value = math.sin( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'cos'     : self.final_value = math.cos( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'tan'     : self.final_value = math.tan( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'asin'    : self.final_value = math.asin( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'acos'    : self.final_value = math.acos( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'atan'    : self.final_value = math.atan( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'sinh'    : self.final_value = math.sinh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'cosh'    : self.final_value = math.cosh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'tanh'    : self.final_value = math.tanh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'deg'     : self.final_value = math.degrees( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'rad'     : self.final_value = math.radians( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'asinh'   : self.final_value = math.asinh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'acosh'   : self.final_value = math.acosh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'atanh'   : self.final_value = math.atanh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'gamma'   : self.final_value = math.gamma( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'exp'     : self.final_value = math.exp( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'log'     : self.final_value = math.log( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'log2'    : self.final_value = math.log2( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'log10'   : self.final_value = math.log10( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'sqrt'    : self.final_value = math.sqrt( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'erf'     : self.final_value = math.erf( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'erfc'    : self.final_value = math.erfc( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'facto'   : self.final_value = math.factorial( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'floor'   : self.final_value = math.floor( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'ceil'    : self.final_value = math.ceil( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'round'   : self.final_value = round( self._values_[ 1 ][ 0 ], self._values_[ 1 ][ 1 ])
-                                    except TypeError: pass
-                                    except ZeroDivisionError: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
-                                    except ValueError: pass
+                                    self.final_value, self.error = Trigo.Maths( self.line).Maths( self._values_ )
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                             else: pass
                         else:self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )

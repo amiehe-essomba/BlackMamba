@@ -259,7 +259,7 @@ class ERRORS:
         return self.error+self.reset
     
     def ERROR35(self, value: int): #
-        error = '{}is not {}string(), {}a float() or {}an integer() {}type. {}line: {}{}.'.format(self.white, self.magenta, self.green, 
+        error = '{}is not a {}boolean(), {}a float() or {}an integer() {}type. {}line: {}{}.'.format(self.white, self.magenta, self.green, 
                                                                     self.red, self.yellow,self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}list index {}<< {} >> '.format(self.white, self.cyan, value) + error
         return self.error+self.reset

@@ -4,6 +4,7 @@ from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_state
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import for_analyze 
 from loop                                               import mainFor
 
+
 cdef dict UPDATING(dict base, str name, value):
     cdef :
         long idd 
@@ -27,11 +28,10 @@ cdef class LOOP:
             self.line           = line
             self.variables      = self.DataBase[ 'variables' ][ 'vars' ]
             self._values_       = self.DataBase[ 'variables' ][ 'values' ]
-
     cpdef LOOP( self, list for_values, str var_name, tuple loop_list = () ):
         cdef:
             str     error, normal_string, err
-            dict    before, loop, lexer, lr
+            dict    before, loop, lexer={}, lr, lex
             list    print_values, keys, finally_values, any_values, master
             long    counting, index, for_line
             int     i, j, tabulation
@@ -45,6 +45,7 @@ cdef class LOOP:
             dict    subfor_value, already = {}
             list    subfor_values
             tuple   all_for_values
+            unsigned long long int m
 
         counting    = 0
         doubleKey   = False
@@ -65,8 +66,8 @@ cdef class LOOP:
                 self._values_.append( for_values[ 0 ] )
                 self.DataBase[ 'variables' ][ 'values' ] = self._values_
                 self.DataBase[ 'variables' ][ 'vars' ] = self.variables 
-        
-            for i in range( len( for_values ) ):
+
+            for i in range( len( for_values )):
                 for_line    = 0
                 counting   += 1
                 locked      = False
@@ -75,8 +76,10 @@ cdef class LOOP:
 
                 if not error :
                     for j, _string_ in enumerate( master[ : ] ):
-                        try: already["j"] = already["j"]
-                        except KeyError: already["j"] = False
+                        if i == 0:
+                            try: already["j"] = already["j"]
+                            except KeyError: already["j"] = False 
+                        else: pass
 
                         if locked is False:
                             for_line    += 1 
@@ -84,22 +87,23 @@ cdef class LOOP:
                             if type( _string_ ) == type( dict() ):
                                 keys = list( _string_.keys() )
                                 if   'any'    in keys           :
-                                    any_values      = list( _string_[ 'any' ] )
-                                    normal_string   = any_values[ 0 ]
-                                    active_tab      = any_values[ 1 ]
-                                    lexer           = _string_[ 'lex' ]
-                                    
-                                    lexer['j'], error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
-                                                ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop' )
+                                    if i == 0:
+                                        any_values      = list( _string_[ 'any' ] )
+                                        normal_string   = any_values[ 0 ]
+                                        active_tab      = any_values[ 1 ]
+                                        #lexer           = _string_[ 'lex' ]
+                                        lexer[f'{j}'], error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
+                                                    ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop' )
 
-                                    #error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
-                                    #        ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer )
-                                    #if already['j'] is False:
-                                    #    lexer['j'], error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
-                                    #            ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop' )
-                                    #else:
-                                    #    error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
-                                    #        ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer )
+                                        #error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
+                                        #        ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer )
+                                        #if already['j'] is False:
+                                        #    lexer['j'], error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
+                                        #            ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop' )
+                                    else:
+                                        error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
+                                            ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer[f'{j}'] )
+                                       
                                     
                                     if not error: 
                                         if   self.DataBase[ 'break' ] is None: pass 
@@ -207,7 +211,7 @@ cdef class LOOP:
                         else: pass
                     if not error: 
                         if doubleKey is False: 
-                            if broke is True:  exit()
+                            if broke is True: exit()
                             else: pass 
                         else: break
 

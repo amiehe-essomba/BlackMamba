@@ -21,6 +21,8 @@ from script                     import control_string
 from script.PARXER.WINParxer    import parxer
 from script.STDIN.LinuxSTDIN    import bm_configure     as bm
 from script.DATA_BASE           import data_base        as db
+from rich.console               import Console
+console = Console()
 
 
 class windows:
@@ -156,13 +158,13 @@ class windows:
                                 else:
                                     sys.stdout.write(bm.clear.line(2))
                                     sys.stdout.write(bm.move_cursor.LEFT(1000))
-                                    print('{}\n'.format(self.error))
+                                    print('{}\n'.format(bm.init.bold+self.error))
                                     self.error = None
                             else:  pass
                         else:
                             sys.stdout.write(bm.clear.line(2))
                             sys.stdout.write(bm.move_cursor.LEFT(1000))
-                            print('{}\n'.format(self.error))
+                            print('{}\n'.format(bm.init.bold+self.error))
                             self.error = None
                     else:  pass
 
@@ -197,12 +199,12 @@ class windows:
             #keyboardInterrupt
             except KeyboardInterrupt:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset+bm.init.reset
-                print(self._keyboard_)
+                print(bm.init.bold+self._keyboard_)
                 return
             # EOF
-            except TypeError:
+            except IndexError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset+bm.init.reset
-                print(self._end_of_file_)
+                print(bm.init.bold+self._end_of_file_)
                 self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
                 sys.stdout.write(bm.string().syntax_highlight(name=self.input))
                 sys.stdout.flush()
@@ -217,4 +219,4 @@ if __name__ == '__main__':
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
     except KeyboardInterrupt:  pass
-    except TypeError: pass
+    except IndexError: pass
