@@ -2,6 +2,7 @@ from script.STDIN.WinSTDIN                      import stdin
 from script                                     import control_string
 from statement                                  import externalRest
 from script.PARXER.PARXER_FUNCTIONS._IF_        import if_inter
+from script.PARXER.PARXER_FUNCTIONS._IF_        import IfError    as Ie
 from script.LEXER.FUNCTION                      import main
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import functions
 from script.PARXER                              import module_load_treatment    as mlt
@@ -55,14 +56,15 @@ class EXTERNAL_DEF_STATEMENT:
                     k = stdin.STDIN(self.data_base, self.line ).ENCODING(_string_)                   
                     self.string, self.normal_string, self.active_tab, self.error =  stdin.STDIN(self.data_base,
                                                                         self.line ).STDIN_FOR_INTERPRETER( k, _string_ )
+                    
                     if self.error is None:    
                         if self.active_tab is True:
                             self.get_block, self.value, self.error = ID.INTERNAL_BLOCKS( string=self.string,
                                         normal_string=self.normal_string, data_base=self.data_base, 
                                         line=self.if_line ).BLOCKS( tabulation=k+ 1,
                                         function=_type_, interpreter = False, class_name= class_name, class_key=class_key,
-                                        func_name=self.data_base[ 'current_func' ], loop = True)
-                                        
+                                        func_name=self.data_base[ 'current_func' ], loop = True, locked=True)
+                            
                             if self.error is None:
                                 if class_key is False: pass 
                                 else: 
@@ -91,7 +93,7 @@ class EXTERNAL_DEF_STATEMENT:
                                             
                                             else: break
                                         else: 
-                                            self.error = if_inter.ERRORS( self.line ).ERROR4()
+                                            self.error = Ie.ERRORS( self.line ).ERROR4()
                                             break                  
                                     elif self.get_block == 'empty'  :
                                         if self.space <= 2:
@@ -179,7 +181,7 @@ class EXTERNAL_DEF_STATEMENT:
                     else: break
                 else: pass
             else:
-                self.error = if_inter.ERRORS( self.line ).ERROR4()
+                self.error = Ie.ERRORS( self.line ).ERROR4()
                 break
                 
         EXTERNAL_DEF_STATEMENT( self.master, self.data_base, self.line ).UPDATE_FUNCTION( self.def_starage, self.subFunc )#self.subFunc
@@ -280,7 +282,7 @@ class INTERNAL_DEF_STATEMENT:
                                             
                                             else: break
                                         else: 
-                                            self.error = if_inter.ERRORS( self.line ).ERROR4()
+                                            self.error = Ie.ERRORS( self.line ).ERROR4()
                                             break
                                     elif self.get_block == 'empty'  :
                                         if self.space <= 2:
@@ -350,7 +352,7 @@ class INTERNAL_DEF_STATEMENT:
                     else: break
                 else: pass
             else:
-                self.error = if_inter.ERRORS( self.line ).ERROR4()
+                self.error = Ie.ERRORS( self.line ).ERROR4()
                 break
 
         EXTERNAL_DEF_STATEMENT( self.master, self.data_base, self.line ).UPDATE_FUNCTION( self.def_starage, {} )

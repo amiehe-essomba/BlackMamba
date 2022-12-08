@@ -48,22 +48,23 @@ class LOAD:
                     n   : int, 
                     typ : str = 'def'
                     ):
-        
-        self.vars, self.val = var['vars'][ n ], var['values'][n]
-
-        if typ == 'def':
-            if self.vars:
-                for i, name in enumerate(self.vars) :
-                    if name in db['variables']['vars']: pass 
-                    else:
-                        db['variables']['vars'].append( name )
-                        db['variables']['values'].append(self.val[i])
-            else: pass
-        else:
-            if self.vars:
-                for i, name in enumerate(self.vars) :
-                    if name in db['global_vars']['vars']: pass 
-                    else:
-                        db['global_vars']['vars'].append( name )
-                        db['global_vars']['values'].append(self.val[i])
-            else: pass
+        try:
+            self.vars, self.val = var['vars'][ n ], var['values'][n]
+      
+            if typ == 'def':
+                if self.vars:
+                    for i, name in enumerate(self.vars) :
+                        if name in db['variables']['vars']: pass 
+                        else:
+                            db['variables']['vars'].append( name )
+                            db['variables']['values'].append(self.val[i])
+                else: pass
+            else:
+                if self.vars:
+                    for i, name in enumerate(self.vars) :
+                        if name in db['global_vars']['vars']: pass 
+                        else:
+                            db['global_vars']['vars'].append( name )
+                            db['global_vars']['values'].append(self.val[i])
+                else: pass
+        except IndexError: pass

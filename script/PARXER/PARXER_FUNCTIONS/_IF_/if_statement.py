@@ -84,7 +84,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
         self.keyPass                = keyPass 
         self.max_emtyLine           = 5
         ############################################################################
-    
+
         if self.keyPass is False:
             for j, _string_ in enumerate( self.loop_list ):
                 if j != self.next_line :
@@ -98,7 +98,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                             self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string,
                                                     normal_string=self.normal_string, data_base=self.data_base, line=self.line).BLOCKS(
                                                     tabulation=self.tabulation + 1, function=_type_, interpreter=True)
-
+                            
                             if self.error  is None:
                                 if self.get_block   == 'begin:'  :
                                     self.next_line  = j + 1
@@ -306,7 +306,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                             self.get_block, self.value, self.error = eIF.EXTERNAL_BLOCKS(string=self.string,
                                             normal_string=self.normal_string, data_base=self.data_base,  line=self.line).BLOCKS(
                                             tabulation=self.tabulation, function=_type_, interpreter=True)
-
+                            
                             if self.error is None:
                                 if   self.get_block == 'end:'  :
                                     if self.store_value:
@@ -365,8 +365,7 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                             else: self.bool_value = True
                                             
                                             self.data_base[ 'pass' ]    = None
-                                            self.keyPass                = False
-                                                
+                                            self.keyPass                = False                                                
                                         else:
                                             self.error = IfError.ERRORS( self.line ).ERROR2( self.history[ -1 ] )
                                             break
@@ -486,7 +485,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
                             self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string,
                                                     normal_string=self.normal_string,data_base=self.data_base, line=self.line).BLOCKS(
                                                     tabulation=self.tabulation + 1, function=_type_, interpreter=True)
-
+                            
                             if self.error  is None:
                                 if self.get_block   == 'begin:' :
                                     self.next_line  = j + 1
@@ -685,7 +684,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
                             self.get_block, self.value, self.error = eIF.EXTERNAL_BLOCKS(string=self.string,
                                                         normal_string=self.normal_string, data_base=self.data_base, line=self.line).BLOCKS(
                                                         tabulation=self.tabulation,  function=_type_, interpreter=True)
-
+                            
                             if self.error is None:
                                 if self.get_block   == 'end:' :
                                     if self.store_value:

@@ -1,5 +1,6 @@
 import                              random
 import                              math
+import                              sys
 import                              numpy as np
 from statistics                     import variance, pvariance
 from script                         import control_string
@@ -13,30 +14,29 @@ from src.transform                  import matrix_modules as mm
 from src.transform                  import matrix_statistics as mstat
 from src.transform                  import open_check as oc
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
-try:
-    from CythonModules.Linux        import making_stat as ms
-    from CythonModules.Linux        import fileError as fe 
-    from CythonModules.Linux        import bm_statistics as bms
-except ImportError:
-    from CythonModules.Windows      import making_stat as ms
-    from CythonModules.Windows      import fileError as fe 
-    from CythonModules.Windows      import bm_statistics as bms
-    
-try: from CythonModules.Linux       import help
-except ImportError :
-    from CythonModules.Windows      import help
-try:from CythonModules.Linux        import Tuple
-except ImportError :
-    from CythonModule.Windows       import Tuple 
+from CythonModules.Linux            import dictionary as dic 
+from CythonModules.Linux            import Trigo 
+from CythonModules.Linux            import Open 
+from CythonModules.Linux            import making_stat as ms
+from CythonModules.Linux            import fileError as fe 
+from CythonModules.Linux            import bm_statistics as bms
+from CythonModules.Linux            import help
+from CythonModules.Linux            import Tuple
+from CythonModules.Linux            import arithmetic_analyze as aa
+from CythonModules.Linux            import array_to_list as atl  
+from IDE.EDITOR                     import scan
+from IDE.EDITOR                     import test 
+from IDE.EDITOR                     import true_cursor_pos as cursor_pos
 
-try: from CythonModules.Windows     import arithmetic_analyze as aa
-except ImportError: 
-    from CythonModules.Linux        import arithmetic_analyze as aa
-
-try: from CythonModules.Windows     import array_to_list as atl
-except ImportError: 
-    from CythonModules.Linux        import array_to_list as atl
-
+def color_ansi( master, func, line):
+    err = None
+    list_ = ['r', 'g', 'b']
+    for i, j in enumerate(master):
+        if 0 <= j <= 256: pass 
+        else: 
+            err = er.ERRORS( line ).ERROR40( func, list_[i] )
+            break 
+    return err
 
 class C_F_I_S:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -61,7 +61,7 @@ class C_F_I_S:
                     self.list_of_values, self.error = self.selection.SELECTION( self.master, self.master,
                                                                         self.data_base, self.line).CHAR_SELECTION( ',' )
                     if self.error is None:
-                        if len( self.list_of_values )   == 1:
+                        if   len( self.list_of_values ) == 1:
                             self.value, self.error = self.control.DELETE_SPACE( self.list_of_values[ 0 ] )
                             if self.error is None:
                                 self._value_, self.error = self.lex_par.NUMERCAL_LEXER( self.value, self.data_base,
@@ -401,36 +401,31 @@ class C_F_I_S:
                                                 else: self.error = er.ERRORS( self.line ).ERROR15( self.value , func=func )
                                             else: self.error = er.ERRORS( self.line ).ERROR14( self.value, 'a tuple()', func=func )
                                         elif function in [ '__show__'  ]    :
-                                            self.final_value = u"{}".format(self._value_)
+                                            self.final_value = u"{}".format(self._value_)           
                                         elif function in [ '_get_line_']    :
                                             self.final_value = self.line-1
                                         elif function in [ '__scan__'  ]    :
-                                            self.final_value = input( self._value_ )
+                                            func = bm.fg.rbg(0, 255, 0   )+' in sget( ).' + bm.init.reset
+                                            s1, s2, s3 =  self._value_[0],  self._value_[1],  self._value_[2]
+                                
+                                            self.final_value = f"{bm.init.bold}{input( s1 )}" 
+                                            self.final_value = bm.remove_ansi_chars().chars( self.final_value)
+                                            if s2 is None:
+                                                if s3 is False: pass 
+                                                else: 
+                                                    if len(self.final_value) == 1: pass 
+                                                    else: self.error = er.ERRORS( self.line ).ERROR39( func=func)
+                                            else: 
+                                                if s3 is False: self.final_value = self.final_value.split(s2)
+                                                else:
+                                                    if len(self.final_value) == 1: pass 
+                                                    else: self.error = er.ERRORS( self.line ).ERROR39( func=func)
                                         elif function in [ '__open__'  ]    :
                                             self._open_  = self._value_[ 'open']
                                             self._open_, self.error = oc.OPEN_CHECK( self._open_, self.data_base, self.line ).CHECK()
                                             
                                             if self.error is None:
-                                                if not self.data_base[ 'open' ][ 'name' ]:
-                                                    self.data_base[ 'open' ][ 'name' ].append(self._open_[ 0 ])
-                                                    self.data_base[ 'open' ][ 'file' ].append(self._open_[ 1 ])   
-                                                    self.data_base[ 'open' ][ 'action' ].append(self._open_[ 2 ])   
-                                                    self.data_base[ 'open' ][ 'status' ].append(self._open_[ 3 ])  
-                                                    self.data_base[ 'open' ][ 'encoding' ].append(self._open_[ 4 ])
-                                                    self.data_base[ 'open'][ 'nonCloseKey' ].append( self._open_[ 0 ] )
-                                                    self.data_base[ 'open' ]
-                                                else:
-                                                    if self._open_[ 0 ] in self.data_base[ 'open' ][ 'name' ]:
-                                                        self.error = er.ERRORS( self.line ).ERROR18( self._open_[ 0 ] )
-                                                    else:
-                                                        self.data_base[ 'open' ][ 'name' ].append(self._open_[ 0 ])
-                                                        self.data_base[ 'open' ][ 'file' ].append(self._open_[ 1 ])   
-                                                        self.data_base[ 'open' ][ 'action' ].append(self._open_[ 2 ])   
-                                                        self.data_base[ 'open' ][ 'status' ].append(self._open_[ 3 ])  
-                                                        self.data_base[ 'open' ][ 'encoding' ].append(self._open_[ 4 ])
-                                                        self.data_base[ 'open'][ 'nonCloseKey' ].append( self._open_[ 0 ] )
-                                                        self.final_value = self.data_base[ 'open' ]
-                                                self.final_value = self.data_base[ 'open']
+                                                self.final_value, self.error = Open.Open(self.data_base, self.line).Open(self._open_)
                                             else: pass
                                     else: self.error = er.ERRORS( self.line ).ERROR3( self.value )
                                 else: self.error = self.error
@@ -446,34 +441,7 @@ class C_F_I_S:
 
                             if self.error is None:
                                 if   function == '_dictionary_' :
-                                    func = bm.fg.rbg(0, 255, 0   )+' in dictionary( ).' + bm.init.reset 
-                                    if len(self._values_[ 0 ]) == len( self._values_[ 1 ]):
-                                        if  type( self._values_[ 0 ]) == type(list()):
-                                            if type( self._values_[ 1 ]) == type( list()):
-                                                self._dictionary_ = {}
-                                                if len( self._values_[ 0 ] ) == 1 :
-                                                    if self._values_[ 0 ][ 0 ] is None:
-                                                        if self._values_[ 1 ][ 0 ] is None: pass
-                                                        else: self.error = er.ERRORS( self.line ).ERROR5( self.list_of_values[ 0 ], func = func )
-                                                    else:
-                                                        if type( self._values_[ 0 ][ 0 ] ) == type( str() ):
-                                                            self.name = self._values_[ 0 ][ 0 ]
-                                                            self._dictionary_[ self.name ] = self._values_[ 1 ][ 0 ]
-                                                        else: self.error = er.ERRORS( self.line ).ERROR5( self.list_of_values[ 0 ], func = func )
-                                                else:
-                                                    for i, name in enumerate( self._values_[ 0 ] ):
-                                                        if type( name ) == type( str() ):
-                                                            self._dictionary_[ name ] = self._values_[ 1 ][ i ]
-                                                        else:
-                                                            self.error = er.ERRORS( self.line ).ERROR5( name, func = func )
-                                                            break
-
-                                                if self.error is None:
-                                                    self.final_value = self._dictionary_
-                                                else: self.error = self.error
-                                            else: self.error = er.ERRORS(self.line).ERROR5('values', 'a list', func = func)
-                                        else: self.error = er.ERRORS(self.line).ERROR5('keys', 'a list', func = func)
-                                    else: self.error = er.ERRORS(self.line).ERROR6('keys', 'values', func = func)
+                                    self.final_value, self.error = dic.dic(self.line).dic( dict(s=self._values_), self.list_of_values)
                                 elif function == '__rand__'     :
                                     self.__type__       = self._values_[ 1 ]
                                     self.__value__      = self._values_[ 0 ]
@@ -484,36 +452,80 @@ class C_F_I_S:
                                     elif self.__type__ == 'norm':
                                         self.final_value = random.random()
                                 elif function == '__maths__'    :
-                                    try:
-                                        if      self._values_[ 0 ] == 'sin'     : self.final_value = math.sin( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'cos'     : self.final_value = math.cos( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'tan'     : self.final_value = math.tan( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'asin'    : self.final_value = math.asin( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'acos'    : self.final_value = math.acos( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'atan'    : self.final_value = math.atan( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'sinh'    : self.final_value = math.sinh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'cosh'    : self.final_value = math.cosh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'tanh'    : self.final_value = math.tanh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'deg'     : self.final_value = math.degrees( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'rad'     : self.final_value = math.radians( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'asinh'   : self.final_value = math.asinh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'acosh'   : self.final_value = math.acosh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'atanh'   : self.final_value = math.atanh( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'gamma'   : self.final_value = math.gamma( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'exp'     : self.final_value = math.exp( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'log'     : self.final_value = math.log( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'log2'    : self.final_value = math.log2( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'log10'   : self.final_value = math.log10( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'sqrt'    : self.final_value = math.sqrt( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'erf'     : self.final_value = math.erf( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'erfc'    : self.final_value = math.erfc( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'facto'   : self.final_value = math.factorial( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'floor'   : self.final_value = math.floor( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'ceil'    : self.final_value = math.ceil( self._values_[ 1 ] )
-                                        elif    self._values_[ 0 ] == 'round'   : self.final_value = round( self._values_[ 1 ][ 0 ], self._values_[ 1 ][ 1 ])
-                                    except TypeError: pass
-                                    except ZeroDivisionError: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
-                                    except ValueError: pass
+                                    self.final_value, self.error = Trigo.Maths( self.line).Maths( self._values_)
+                                elif function == '__scan__'    :
+                                    func = bm.fg.rbg(0, 255, 0   )+f' in {self._values_[ 0 ]}( ).' + bm.init.reset 
+                                    if self._values_[0] == "ascii":
+                                        try:
+                                            self.final_value = ord(self._values_[1])
+                                        except TypeError: self.error = er.ERRORS( self.line ).ERROR41( func )
+                                    elif self._values_[ 0 ] == "ansi":
+                                        try: self.final_value = ""+chr(self._values_[1])
+                                        except ValueError: self.error = er.ERRORS( self.line ).ERROR42( func )
+                                        except OverflowError: self.error = er.ERRORS( self.line ).ERROR43( func )
+                                    elif self._values_[ 0 ] == "fg":
+                                        self.error = color_ansi(self._values_[ 1 ], func, self.line)
+                                        if self.error is None:
+                                            self.final_value = bm.fg.rbg(self._values_[ 1 ][0], self._values_[ 1 ][1], self._values_[ 1 ][2])
+                                        else: pass
+                                    elif self._values_[ 0 ] == "bg":
+                                        self.error = color_ansi(self._values_[ 1 ], func, self.line)
+                                        if self.error is None:
+                                            self.final_value = bm.bg.rgb(self._values_[ 1 ][0], self._values_[ 1 ][1], self._values_[ 1 ][2])
+                                        else: pass
+                                    elif self._values_[ 0 ] == "reset"           : self.final_value = ""+bm.init.reset
+                                    elif self._values_[ 0 ] == "bold"            : self.final_value = ""+bm.init.bold
+                                    elif self._values_[ 0 ] == "blink"           : self.final_value = ""+bm.init.blink
+                                    elif self._values_[ 0 ] == "underline"       : self.final_value = ""+bm.init.underline
+                                    elif self._values_[ 0 ] == "italic"          : self.final_value = ""+bm.init.italic
+                                    elif self._values_[ 0 ] == "reverse"         : self.final_value = ""+bm.init.reverse
+                                    elif self._values_[ 0 ] == "hide"            : self.final_value = ""+bm.init.hide
+                                    elif self._values_[ 0 ] == "rapid_blink"     : self.final_value = ""+bm.init.rapid_blink
+                                    elif self._values_[ 0 ] == "double_underline": self.final_value = ""+bm.init.double_underline
+                                    elif self._values_[ 0 ] == "position"        : self.final_value = cursor_pos.cursor()    
+                                    elif self._values_[ 0 ] == "up"              : self.final_value = ""; sys.stdout.write(bm.move_cursor.UP(pos=self._values_[1]) )
+                                    elif self._values_[ 0 ] == "down"            : self.final_value = ""; sys.stdout.write(bm.move_cursor.DOWN(pos=self._values_[1]) )
+                                    elif self._values_[ 0 ] == "left"            : self.final_value = ""; sys.stdout.write(bm.move_cursor.LEFT(pos=self._values_[1]) ) 
+                                    elif self._values_[ 0 ] == "right"           : self.final_value = ""; sys.stdout.write(bm.move_cursor.RIGHT(pos=self._values_[1]) ) 
+                                    elif self._values_[ 0 ] == "save"            : self.final_value = ""; sys.stdout.write(bm.save.save)  
+                                    elif self._values_[ 0 ] == "restore"         : self.final_value = ""; sys.stdout.write(bm.save.restore)
+                                    elif self._values_[ 0 ] == "move_to"         : self.final_value = ""; sys.stdout.write(bm.cursorPos().to(self._values_[1][0], self._values_[1][1])) #cursorPos
+                                    elif self._values_[ 0 ] == "dim"             : self.final_value = test.get_linux_ter()
+                                    elif self._values_[ 0 ] == "unicode"         : 
+                                        self.seg = self._values_[ 1 ].split("[")
+                                        if len(self.seg) > 1:
+                                            if self.seg[0] in ['\\u001b']:
+                                                self.sub_s = u"\u001b["
+                                                for n, s in enumerate(self.seg[1:]):
+                                                    if n != len(self.seg[1:])-1: self.sub_s += s + "["
+                                                    else:self.sub_s += s
+                                                self.final_value = self.sub_s
+                                            else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
+                                        else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
+                                else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
+                            else: pass                   
+                        elif len(self.list_of_values )  == 5:
+                            self._values_ = []
+                            for value in self.list_of_values:
+                                self.value = value
+                                self._value_, self.error = self.lex_par.NUMERCAL_LEXER(self.value,
+                                                                    self.data_base, self.line).LEXER(  self.value )
+                                if self.error is None: self._values_.append( self._value_ )
+                                else: break
+                            if self.error is None:
+                                if function == '__scan__'    :
+                                    func = bm.fg.rbg(0, 255, 0   )+' in scan( ).' + bm.init.reset 
+    
+                                    if self._values_[1] in ['orion', 'pegasus']: 
+                                        _colors_ = ['white', 'blue', 'black', 'red', 'cyan', 'magenta', 'orange', 'green', 'yellow']
+                                        if self._values_[2] in _colors_:
+                                            blink = self._values_[3]
+                                            hide  = self._values_[4]
+                                            c =  scan.colors(cc=self._values_[2], blink=blink).color()
+                                            self.final_value, self.error = scan.scan(self.data_base, 
+                                                self.line).STR(key=self._values_[0], terminal_name=self._values_[1], c=c, blink=blink, hide=hide)
+                                        else: self.error = er.ERRORS( self.line ).ERROR38( func, _colors_ )
+                                    else: self.error = er.ERRORS( self.line ).ERROR37(func )
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                             else: pass
                         else:self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )

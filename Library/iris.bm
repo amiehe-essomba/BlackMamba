@@ -48,3 +48,11 @@ save as cmt:
 end:
 
 print * cmt
+
+from module input load scan
+from module prompt load prompt 
+
+
+str = scan(input="==", termios="orion", fg="yellow", blink=False)
+prompt(str)
+

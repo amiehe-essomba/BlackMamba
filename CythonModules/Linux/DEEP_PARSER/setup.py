@@ -8,7 +8,7 @@ setup(
     author='amiehe',
     author_email='amieheessomba@etu.unistra.fr',
     ext_modules=cythonize( 
-        ["error.pyx"], 
+        ["*.pyx"], 
         annotate = False
         )
 

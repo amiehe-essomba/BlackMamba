@@ -13,15 +13,20 @@ class constants:
 		self.atm	= 1.0132500E+5
 		self.rho_water	= 1.0E+3
 		self.sigmaB	= 5.67E-8
-		self.mu		= 3.14 * 4.0 * 1.0E-7
+		self.mu_0	= 3.14 * 4.0 * 1.0E-7
 		self.epsilon	= 8.85E-12
 		self.C		= 9.0E+9
 		self.F		= 96485
 		self.me		= 9.11E-31
 		self.mp		= 1.6726E-27
-		self.mn		= 1.6749E-27
+		self.mn		= 1.6749E-274
+		self.m_muon = 1.88351E-28
+		self.m_tau  = 3.16754E-27
+		self.m_quark= 3.0784E-25
 		self.B_magneton	= 9.27E-24
 		self.B_radius	= 0.529E-10
 		self.Wien	= 2.9E-3
+		self.S_speed= 1000.0/3.0
+		self.mu_c   = 376.730313668 
 	end:
 end:  

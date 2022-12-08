@@ -57,7 +57,7 @@ class INTERNAL_BLOCKS:
         try:
             self.string, self.error         = self.control.DELETE_SPACE( self.string )
             self.normal_string, self.error  = self.control.DELETE_SPACE( self.normal_string )
-
+   
             if self.error is None:
                 try:
                     if   self.normal_string[ : 2 ] == 'if'      :
@@ -86,7 +86,7 @@ class INTERNAL_BLOCKS:
                             else: self.error = er.ERRORS(self.line).ERROR5(self.normal_string)
                         else:
                             try:
-                                if self.normal_string[ 6 ] in [ ' ' ]:  self.error = er.ERRORS(self.line).ERROR1( 'if' )
+                                if self.normal_string[ 6 ] in [ ' ' ]:  self.error = er.ERRORS(self.line).ERROR1( 'unless' )
                                 else:
                                     self._return_   = 'any'
                                     self.value      = self.normal_string
@@ -155,6 +155,7 @@ class INTERNAL_BLOCKS:
                                 if self.error is None:
                                     self._return_       = 'any'
                                     self.value          = self.normal_string
+                                    
                                 else: pass
                             else:  _, self.error    = self.control.CHECK_NAME(self.normal_string)
                         else: self.error = er.ERRORS(self.line).ERROR0(self.normal_string)
@@ -171,9 +172,11 @@ class INTERNAL_BLOCKS:
         return self._return_, self.value, self.error
 
     def INTERPRETER_BLOCKS(self,
-                tabulation      : int,              # tabulation
-                function        : any = None,       # function type [class, def , loop, try]
-                typ             : str = 'if'        # type of structure
+                tabulation      : int,                  # tabulation
+                function        : any   = None,         # function type [class, def , loop, try]
+                typ             : str   = 'if',         # type of structure
+                interpreter     : bool  = False, 
+                locked          : bool  = False  
                 ):
         """
         :param tabulation:
@@ -201,7 +204,7 @@ class INTERNAL_BLOCKS:
                             if self.normal_string[ 2 ] in [ ' ' ]:
                                 self._return_ = 'if:'
                                 self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
-                                    typ='if', opposite=False, interpreter=True, function=function)
+                                    typ='if', opposite=False, interpreter=interpreter, function=function)
                             else: self.error = er.ERRORS(self.line).ERROR5(self.normal_string)
                         else:
                             try:
@@ -213,19 +216,19 @@ class INTERNAL_BLOCKS:
                             except IndexError:  self.error = er.ERRORS(self.line).ERROR1('if')
                     elif self.normal_string[ : 3 ] == 'for'         :
                         self._return_, self.value, self.error = mainFor.FOR_BLOCK(  self.data_base, self.line, 
-                                                                                self.normal_string,).FOR( function=function, interpreter=True)
+                                        self.normal_string,).FOR( function = function, interpreter = interpreter, locked=locked)
                     elif self.normal_string[ : 6 ] == 'unless'      :
                         if self.normal_string[-1] == ':':
                             if self.normal_string[6] in [' ']:
                                 self._return_ = 'unless:'
                                 self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
-                                    typ='unless', opposite=True, interpreter=True, function=function)
+                                    typ='unless', opposite=True, interpreter=interpreter, function=function)
                             else:
                                 self.error = er.ERRORS(self.line).ERROR5(self.normal_string)
                         else:
                             try:
                                 if self.normal_string[6] in [' ']:
-                                    self.error = er.ERRORS(self.line).ERROR1('if')
+                                    self.error = er.ERRORS(self.line).ERROR1('unless')
                                 else:
                                     self._return_ = 'any'
                                     self.value = self.normal_string
@@ -253,7 +256,7 @@ class INTERNAL_BLOCKS:
                             if self.normal_string[5] in [' ']:
                                 self._return_ = 'while:'
                                 self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
-                                    typ='while', opposite=False, interpreter=True, function=function)
+                                    typ='while', opposite=False, interpreter=interpreter, function=function)
                             else:
                                 self.error = er.ERRORS(self.line).ERROR5(self.normal_string)
                         else:
@@ -270,7 +273,7 @@ class INTERNAL_BLOCKS:
                             if self.normal_string[6] in [' ']:
                                 self._return_ = 'switch:'
                                 self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
-                                    typ='switch', opposite=False, interpreter=True, function=function)
+                                    typ='switch', opposite=False, interpreter=interpreter, function=function)
                             else:
                                 self.error = er.ERRORS(self.line).ERROR5(self.normal_string)
                         else:
@@ -302,7 +305,7 @@ class INTERNAL_BLOCKS:
                                 if self.normal_string[ 4 ] in [ ' ' ]:
                                     self._return_ = 'elif:'
                                     self.value, self.error = MS.MAIN(master=self.normal_string, data_base=self.data_base, line=self.line).MAIN(
-                                        typ='elif', opposite=False, interpreter=True, function=function)
+                                        typ='elif', opposite=False, interpreter=interpreter, function=function)
                                 else:
                                     try:
                                         if self.normal_string[ 4 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1('elif')
@@ -319,7 +322,7 @@ class INTERNAL_BLOCKS:
                                 if self.normal_string[ 4 ] in [ ' ' ]:
                                     self._return_ = 'case:'
                                     self.value, self.error = MS.MAIN(self.normal_string, self.data_base, self.line).MAIN(
-                                        typ='case', opposite=False, interpreter=True, function=function)
+                                        typ='case', opposite=False, interpreter=interpreter, function=function)
                                 else:
                                     try:
                                         if self.normal_string[ 4 ] in [ ' ' ]: self.error = er.ERRORS(self.line).ERROR1('case')

@@ -1,4 +1,4 @@
-from CythonModules.Windows.DEEP_PARSER          import logical_operator as LO
+from CythonModules.Linux.DEEP_PARSER          import logical_operator as LO
 
 cdef class FINAL_VALUE:
     cdef public:
@@ -20,7 +20,7 @@ cdef class FINAL_VALUE:
 
     cdef FINAL_VALUE(self, bint _key_= False):
         cdef:
-            unsigned long int i , k
+            signed long int i , k
             bint check 
             str string, _op_
             list _val_, _value_
@@ -72,7 +72,7 @@ cdef class FINAL_VALUE:
                 
                 elif len( self.logical [ i ]) == 3:
                     _op_       = '?'
-                    _value_    = [ value[ 0 ], value[ -1 ]]
+                    _value_    = [ self.master[ i ][ 0 ], self.master[ i ][ -1 ]]
                     for k in range(len(_value_ )):
                         _val_, self.error, check = LO.LOGICAL(_value_[k] , self.logical, self.data_base, 
                                 self.line).OPERATIONS(_op_,  _key_=_key_)

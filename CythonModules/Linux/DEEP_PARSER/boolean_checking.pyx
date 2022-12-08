@@ -6,7 +6,7 @@ cdef class NUMERICAL:
         unsigned long int line 
         dict master, data_base
     
-    def:
+    cdef:
         list value, arithmetic_operator, logical_operator, get_values
         list ar_op, num, numeric, _get_values_, boolean_operator, l_op
         str error
@@ -29,7 +29,7 @@ cdef class NUMERICAL:
         self.l_op               = []
         self.error              = ''
 
-    cdef BOOLEAN_CHECKING(self, list values, lost arithmetic, list logical, list boolean ):
+    cdef BOOLEAN_CHECKING(self, list values, list arithmetic, list logical, list boolean, str main_string ):
         cdef:
             unsigned long int i, j
             unsigned long long int len_val 
@@ -48,7 +48,7 @@ cdef class NUMERICAL:
                 self.ar_op              = [ self.arithmetic_operator[ i ] ]
                 
                 self.num, self.error    = LO_C.NUMERICAL( self.master, self.data_base,
-                                                  self.line ).LOGICAL_CHECKING(self.get_values, self.ar_op, self.l_op )
+                                                  self.line ).LOGICAL_CHECKING(self.get_values, self.ar_op, self.l_op, main_string )
                 if self.error is None:  self.numeric.append( self.num )
                 else:  break
             
@@ -74,7 +74,7 @@ cdef class NUMERICAL:
                     else:  self._get_values_   = [ self.get_values[ j ] ]
 
                     self.num, self.error = LO_C.NUMERICAL( self.master, self.data_base,
-                                            self.line).LOGICAL_CHECKING( self._get_values_, self._ar_op_, self._l_op_)
+                                            self.line).LOGICAL_CHECKING( self._get_values_, self._ar_op_, self._l_op_, main_string)
                     if not self.error :  _num_.append( self.num )
                     else: break
                     

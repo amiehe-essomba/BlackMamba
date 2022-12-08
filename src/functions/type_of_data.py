@@ -72,6 +72,6 @@ class CHECK_TYPE_OF_DATA:
         elif self.value == 'dictionary'     : self._return_, self.s = type(dict())          , '{}a dictionary(){}'.format(bm.fg.magenta_M, bm.init.reset)
         elif self.value == 'boolean'        : self._return_, self.s = type(bool())          , '{}a boolean(){}'.format(bm.fg.cyan_L, bm.init.reset)
         elif self.value == 'string'         : self._return_, self.s = type(str())           , '{}a string(){}'.format(bm.fg.cyan, bm.init.reset)
-        elif self.value == 'ndarray'        : self._return_, self.s = type(np.array([1]))   , '{}ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
+        elif self.value == 'array'          : self._return_, self.s = type(np.array([1]))   , '{}a ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
         
         return self._return_, self.s

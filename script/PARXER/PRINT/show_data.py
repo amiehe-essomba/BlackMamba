@@ -33,7 +33,6 @@ class SHOW :
     def SHOW(self, 
              loop : bool = False        # for loop statement ( for, while ), default value is False
              ):
-
         # get master type
         self.type       = type( self.master )
         self.color      = ''
@@ -44,8 +43,8 @@ class SHOW :
         # convert master to a string()
         self.master     = str( self.master )
 
-        self.string2    = '{}{}{}'.format(self.color, self.master, self.reset)
-        self.string1    = '{}[{} result{} ]{} : {}'.format( self.blue, self.orange, self.blue,  self.white, self.reset )
+        self.string2    = bm.init.bold+'{}{}{}'.format(self.color, self.master, self.reset)
+        self.string1    = bm.init.bold+'{}[{} result{} ]{} : {}'.format( self.blue, self.orange, self.blue,  self.white, self.reset )
 
         if self.type == type( str() ):
             try:
@@ -59,7 +58,7 @@ class SHOW :
         else: pass
 
         self.string2 = LineFeed(self.string2, self.type)
-        self.string = self.string1 + self.string2
+        self.string = bm.init.bold+self.string1 + self.string2
 
         # print master if key is set on False
         if loop is False:

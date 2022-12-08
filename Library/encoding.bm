@@ -1,0 +1,21 @@
+def ascii( char : string ):
+	__scan__ * "ascii", char
+end:
+
+def inv_ascii( input : int):
+	__scan__ * "ansi", input
+end:
+
+def fg(r:int=255, g:int=255, b:int=255):
+	__scan__ * "fg", [r, g, b]
+end:
+
+def bg(r:int=255, g:int=255, b:int=255):
+	__scan__ * "bg", [r, g, b]
+end:
+
+unicode = func(master: string):
+	__scan__ * "unicode", master
+end:
+
+

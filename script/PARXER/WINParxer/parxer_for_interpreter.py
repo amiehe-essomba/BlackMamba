@@ -7,7 +7,7 @@ from script.PARXER.PARXER_FUNCTIONS._TRY_                   import try_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_                   import for_block_treatment
 from script.PARXER                                          import module_load_treatment 
 from script.PARXER                                          import partial_assembly
-from script.STDIN.WinSTDIN                                  import stdin
+from script.STDIN.WinSTDIN                                  import stdin, if_stdin
 from script.PARXER.PARXER_FUNCTIONS._IF_                    import if_inter
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_                import switch_inter
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import unless_interpreter
@@ -63,17 +63,21 @@ class ASSEMBLY( ):
                            
                 self.data_base[ 'print' ]       = []
                 self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine ).GROUPBY(1, MainList)
+                #self.NewLIST                    = if_stdin.STDIN(self.data_base, self.line ).STRUCT(1, MainList)
                 self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
-                
                 
                 self.listTransform ,self.error  = if_inter.EXTERNAL_IF_STATEMENT( None, self.data_base,
                                                                         self.newLine ).IF_STATEMENT(1, self.NewLIST )
+                self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
+                                line=self.newLine).MAIN(typ = 'if', opposite = False, interpreter = True, function = None)
+                #print(self.NewLIST, "########")
+                #print(self.listTransform, "@@", self._return_)
                 if self.error is None:
                     self.MainStringTransform        = 't'+main_string
                     self.listTransform              = [(self.MainStringTransform , True), self.listTransform]
                     
                     self.error = if_statement.EXTERNAL_IF_LOOP_STATEMENT( None , self.data_base,
-                                        self.newLine ).IF_STATEMENT( bool_value=True, tabulation=1, loop_list=self.listTransform )
+                                        self.newLine ).IF_STATEMENT( bool_value=self._return_, tabulation=1, loop_list=self.listTransform )
                     if self.error is None:
                         if self.data_base[ 'print' ] is not None:
                             self.list_of_values = self.data_base[ 'print' ]
@@ -241,7 +245,7 @@ class ASSEMBLY( ):
                     self.newLine = self.line
                     self.modules = self.data_base[ 'importation' ] 
                     self.dataS, self.info, self.error = moduleMain.TREATMENT( self.modules, self.data_base, 
-                                                                    self.newLine ).MODULE_MAIN( main_string, baseFileName = baseFileName )
+                                                                    self.newLine, 'linux' ).MODULE_MAIN( main_string, baseFileName = baseFileName )
                     if self.error is None:
                         self.error = modules.MODULES( self.data_base, self.newLine, self.dataS, self.info ).LOAD()
                         if self.error is None:

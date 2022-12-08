@@ -1,11 +1,13 @@
-from CythonModules.Windows.DEEP_PARSER import arr_deep_checking_init as arr
-
+from CythonModules.Windows.DEEP_PARSER  import arr_deep_checking_init as arr
+from CythonModules.Linux.DEEP_PARSER    import error
+from script.MATHS                       import mathematics
+from script.PARSER                      import numerical_value as NV
 
 cdef class NUMERICAL:
     cdef public:
         unsigned long int line 
         dict master, data_base
-    def:
+    cdef:
         list value, arithmetic_operator, numeric, calculations, _return_
         dict get_values, _get_values_
         str error, type
@@ -24,36 +26,39 @@ cdef class NUMERICAL:
             self._get_values_       = {}
             self.type               = ''
 
-    def ARITHMETIC_CHECKING(self, list values, list arithmetic):
+    cdef ARITHMETIC_CHECKING(self, list values, list arithmetic, str main_string):
         self.values                     = values
         self.arithmetic_operator        = arithmetic
 
         cdef:
             unsigned int i , j, w
             unsigned long int len_val
-            str history_of_op, string, sign
+            str history_of_op = "", string, sign
             list __values__, operators
             bint key
             unsigned long long int length_values = len(self.arithmetic_operator)
-
-            history_of_op = ""
+            str main__main = main_string
 
         for i in range(length_values):
             if self.arithmetic_operator[i] is None:
-                self.get_values             = self.values[ i ][ 0 ]
-                self.type                   = self.get_values[ 'type' ]
+                try:
+                    self.get_values             = self.values[ i ][ 0 ]
+                    self.type                   = self.get_values[ 'type' ]
 
-                self._return_, self.error   = TYPE( self.master, self.get_values, self.data_base, self.line, 
-                                            self.type ).TYPE( main__main, name="cython" )
-                if not self.error : self.numeric.append( self._return_[ 0 ] )
-                else:  break
+                    self._return_, self.error   = NV.TYPE( self.master, self.get_values, self.data_base, self.line, 
+                                                self.type ).TYPE( main__main, name="cython" )
+                    if not self.error : self.numeric.append( self._return_[ 0 ] )
+                    else:  break
+                except IndexError:
+                    self.error = error.ERRORS( self.line ).ERROR0( main_string)
+                    break
             else:
                 if len( self.values[ i ] ) > len( self.arithmetic_operator[i] ):
                     len_val                             = len( self.values[ i ] )
                     for j in range( len_val ):
                         self.type                        = self.values[ i ][ j ][ 'type' ]
 
-                        self._return_, self.error       = TYPE( self.master, self.values[ i ][ j ], self.data_base,
+                        self._return_, self.error       = NV.TYPE( self.master, self.values[ i ][ j ], self.data_base,
                                                           self.line, self.type ).TYPE( main__main, name="cython" )
                         if  not self.error:
                             if j != len_val - 1:
@@ -82,7 +87,7 @@ cdef class NUMERICAL:
                         if len( self.arithmetic_operator[i] ) == 1:  sign = self.arithmetic_operator[i][ 0 ]
                         else:
                             key = False
-                            for w in range(len(self.arithmetic_operator[i]))
+                            for w in range(len(self.arithmetic_operator[i])):
                                 if type( self.arithmetic_operator[i][w] ) == type( list( ) ):
                                     key = True
                                     break
@@ -101,7 +106,7 @@ cdef class NUMERICAL:
 
                         try:
                             self.type                   = self._get_values_[ 'type' ]
-                            self._return_, self.error   = TYPE( self.master, self._get_values_, self.data_base, self.line,
+                            self._return_, self.error   = NV.TYPE( self.master, self._get_values_, self.data_base, self.line,
                                                                               self.type ).TYPE( main__main, name='cython' )
                             if not self.error :
                                 self.calculations.append( [ self._return_[ 0 ] ] )
@@ -125,7 +130,7 @@ cdef class NUMERICAL:
                             if not self.error:
                                 self.calculations.append( [ self._return_[ 0 ] ])
                                 history_of_op      = ''
-                                for w i range(len(self.calculations)):
+                                for w in range(len(self.calculations)):
                                     if type( self.calculations[w] ) == type( str() ):
                                         history_of_op += self.calculations[w]
                                     else:  pass
@@ -143,7 +148,7 @@ cdef class NUMERICAL:
                             if type( self.values[ i ][ j ] ) == type( dict() ) :
                                 self._get_values_ = self.values[ i ][ j ]
                                 self.type = self._get_values_[ 'type' ]
-                                self._return_, self.error = TYPE( self.master, self._get_values_, self.data_base, self.line,
+                                self._return_, self.error = NV.TYPE( self.master, self._get_values_, self.data_base, self.line,
                                                             self.type ).TYPE( main__main, name='cython' )
                                 if not self.error:
                                     if j != self.len_val - 1:
@@ -151,7 +156,7 @@ cdef class NUMERICAL:
                                             self.calculations.append( [ self._return_[ 0 ] ] )
                                             if self.calculations[ 0 ] == '-':  
                                                 self.calculations.append( self.arithmetic_operator[i][ j + 1 ] )
-                                            else:  self.calculations.append(self.arithmetic_operator[i][ j + 1 ])
+                                            else:  self.calculations.append(self.arithmetic_operator[i][ j ])
                                         except TypeError:
                                             self.calculations.append( [ self._return_[ 0 ] ] )
                                             self.calculations.append( self.arithmetic_operator[i][ j ] )

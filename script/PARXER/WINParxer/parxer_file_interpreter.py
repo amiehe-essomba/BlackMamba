@@ -107,7 +107,7 @@ class ASSEMBLY( ):
                 self.data_base[ 'loading' ]    = True
                 self.modules = self.data_base[ 'importation' ] 
                 self.dataS, self.info, self.error = moduleMain.TREATMENT( self.modules, self.data_base, 
-                                                                                    self.line ).MODULE_MAIN( main_string )
+                                                                                    self.line, system='linux' ).MODULE_MAIN( main_string )
                 if self.error is None:
                     self.error = modules.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
                     if self.error is None:

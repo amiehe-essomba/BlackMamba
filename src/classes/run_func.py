@@ -5,7 +5,6 @@ from src.functions                                      import error            
 from src.functions                                      import updating_data
 from script.LEXER.FUNCTION                              import print_value
 
-
 class RUN_FUNCTION:
     def __init__(self, 
         DataBase        : dict, 
@@ -34,15 +33,14 @@ class RUN_FUNCTION:
         self.vars               = None 
         self._values_           = None
         
-        
-        self.new_data_base[ 'classes' ]         = self.DataBase[ 'classes' ]
-        self.new_data_base[ 'class_names' ]     = self.DataBase[ 'class_names' ]
-        self.new_data_base[ 'func_names' ]      = self.DataBase[ 'func_names' ]
-        self.new_data_base[ 'functions' ]       = self.DataBase[ 'functions' ]
+        self.new_data_base[ 'classes' ]         = self.DataBase[ 'classes' ].copy()
+        self.new_data_base[ 'class_names' ]     = self.DataBase[ 'class_names' ].copy()
+        self.new_data_base[ 'func_names' ]      = self.DataBase[ 'func_names' ].copy()
+        self.new_data_base[ 'functions' ]       = self.DataBase[ 'functions' ].copy()
         
         self.new_data_base[ 'print' ]   = []
         updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION(self.DataBase, self.new_data_base)
-
+        
         if self.new_data_base[ 'empty_values' ] is None:
             
             self.error = func.EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,

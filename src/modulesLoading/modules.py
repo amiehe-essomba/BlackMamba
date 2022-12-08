@@ -80,9 +80,14 @@ class MODULES:
                     else:
                         # updating old module loading before 
                         if self.moduleMain[ 0 ] in self.fileNames:
-                            self.idd = self.fileNames.index( self.moduleMain[ 0 ] )
-                            self.moduleNames[ self.idd ] = self.modules
-                            self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
+                            try:
+                                self.idd = self.fileNames.index( self.moduleMain[ 0 ])
+                                self.moduleNames[ self.idd ] = self.modules
+                                self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
+                            except IndexError:
+                                self.fileNames.append( self.moduleMain[ 0 ] )
+                                self.moduleNames.append( self.modules )
+                                self.expressions.append( self.values[ self.moduleMain[ 0 ] ] )
                         else:
                             self.fileNames.append( self.moduleMain[ 0 ] )
                             self.moduleNames.append( self.modules )
@@ -114,9 +119,14 @@ class MODULES:
                 else:
                     # adding new alias
                     if self.alias in self.fileNames:
-                        self.idd = self.fileNames.index( self.alias )
-                        self.moduleNames[ self.idd ] = self.modules
-                        self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
+                        try:
+                            self.idd = self.fileNames.index( self.alias )
+                            self.moduleNames[ self.idd ] = self.modules
+                            self.expressions[ self.idd ] = self.values[ self.moduleMain[ 0 ]  ] 
+                        except IndexError:
+                            self.fileNames.append( self.alias )
+                            self.moduleNames.append( self.modules )
+                            self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
                     else:
                         # updating alias already load before 
                         self.fileNames.append( self.alias )

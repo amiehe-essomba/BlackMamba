@@ -63,6 +63,10 @@ class DATA_BASE:
                 'line'      : []            # line error
                 },
             'fileNames'     : [],           # names of files
+            'moduleLoading' : {
+                'names'     : [], # names of file
+                'loading'   : []
+            },
             'expressions'   : [],           # values for each files
             'variables'     :{              # global variables and their values
                 'vars'      : [],           # variables
@@ -104,15 +108,29 @@ class DATA_BASE:
             'classes'       : [],           # classes
             'functions'     : [],           # functions
             'line'          : []            # line
-        }
+        },
+        'Transpiler_for'    : {
+            'key'           : None,
+            'residus_head'  : {
+                'val'       : None, 
+                'ope'       : None,
+                'var'       : None,
+                'complete'  : False
+                },
+            'variables'     : {
+                'vars'      : [],
+                'values'    : []
+                }
+            
+            } 
         }
 
         return self.data_base
 
     def FUNCTIONS(self):
         self.function_name  = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
-                               'length', 'range', 'ansi', 'rand', 'GetLine', 'scan', 
-                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1']
+                               'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 
+                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1', 'sget']
         
         self.function_expressions   = [
             {
@@ -362,12 +380,12 @@ class DATA_BASE:
             },
             {
                 'scan'             : {
-                'type'              : [ ['string'] ],
-                'value'             : [ '""'     ],
-                'arguments'         : [ 'input'  ],
+                'type'              : [ ['string'], ['string'], ['string'], ['bool'], ['bool'] ],
+                'value'             : [ '"BM:"', '"pegasus"', '"white"', 'False', 'False' ],
+                'arguments'         : [ 'input', 'terminal', 'fg', 'blink', 'hide' ],
                 'history_of_data'   : [
-                                        ('t__scan__ * input                         ', True),
-                                        ('end:                                      ', False),
+                                        ('t__scan__ * input, terminal, fg, blink, hide  ', True),
+                                        ('end:                                          ', False),
                                       ]
                 }
             },
@@ -453,6 +471,17 @@ class DATA_BASE:
                     ]
                 }
             },
+            {
+                'sget'              : {
+                'type'              : [['string'], ['none', 'string'], ['bool']],
+                'value'             : [ '"BM: "', 'None', 'False'  ],
+                'arguments'         : [ 'input', 'sep', 'char'  ],
+                'history_of_data'   : [
+                                        ('t__scan__ * [input, sep, char]                ', True),
+                                        ('end:                                          ', False),
+                                      ]
+                }
+            }
         ]
 
         return self.function_name, self.function_expressions

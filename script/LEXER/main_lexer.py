@@ -94,11 +94,7 @@ class LEXER_ASSEMBLY:
                                         else:
                                             self._value_.append( self.store_data__ )
                                             self._op__.append( None )
-
-                                    else:
-                                        self.error = self.error
-                                        break
-
+                                    else: break
                                 else:
                                     self._op_.append( self.store_op_ )
                                     self.store_d, self.store_o = [], []
@@ -115,23 +111,12 @@ class LEXER_ASSEMBLY:
                                             else:
                                                 self.store_d.append( self.store_data__ )
                                                 self.store_o.append( None )
-
-                                        else:
-                                            self.error = self.error
-                                            break
-
+                                        else: break
                                     if self.error is None:
                                         self._value_.append( self.store_d)
                                         self._op__.append( self.store_o )
-
-                                    else:
-                                        self.error = self.error
-                                        break
-
-                            else:
-                                self.error = self.error
-                                break
-
+                                    else: break
+                            else: break
                     else:
                         self.store_data_, self.store_op_, self.error = self.logical.LOGICAL_OPERATORS(value,
                                                                 self.data_base, self.line).LOGICAL_OPAERATORS_INIT()
@@ -153,14 +138,9 @@ class LEXER_ASSEMBLY:
                                         else:
                                             self._value_.append( self.store_data__[ 0 ] )
                                             self._op__.append( None )
-
-                                    else:
-                                        self.error = self.error
-                                        break
-
+                                    else: break
                             else:
                                 self._op_     = None
-
                                 self.store_data__, self.store_op__, self.error = self.arithmetic.ARITHMETIC_OPERATORS(
                                             self.store_data_[0], self.data_base, self.line).ARITHMETIC_OPAERATORS_INIT()
 
@@ -168,18 +148,11 @@ class LEXER_ASSEMBLY:
                                     if self.store_op__:
                                         self._value_                    = self.store_data__
                                         self._op__                      = self.store_op__
-
                                     else:
                                         self._value_                    = self.store_data__
                                         self._op__                      = None
-
-                                else:
-                                    self.error = self.error
-                                    break
-
-                        else:
-                            self.error = self.error
-                            break
+                                else: break
+                        else:  break
 
                     if self.error is None:
                         self.storage_data.append( self._value_ )
@@ -189,10 +162,7 @@ class LEXER_ASSEMBLY:
                         self.master['value']                    = self.storage_data
                         self.master['logical_operator']         = self.store_logical_op
                         self.master['arithmetic_operator']      = self.store_arithmetic_op
-
-                    else:
-                        self.error = self.error
-                        break
+                    else: break
 
             else:
                 self.value                      = self.master['value']
@@ -221,26 +191,16 @@ class LEXER_ASSEMBLY:
                                     if not self.store_op__:
                                         self.store_main_val.append( self.store_data__[0] )
                                         self.store_ar_op.append( None )
-
                                     else:
                                         self.store_main_val.append( self.store_data__ )
                                         self.store_ar_op.append( self.store_op__ )
-
-                                else:
-                                    self.error = self.error
-                                    break
-
+                                else:  break
                             if self.error is None:
                                 self.storage_data.append( self.store_main_val )
                                 self.store_arithmetic_op.append( self.store_ar_op )
-
                                 self.master['value']                = self.storage_data
                                 self.master['arithmetic_operator']  = self.store_arithmetic_op
-
-                            else:
-                                self.error = self.error
-                                break
-
+                            else: break
                         else:
                             self.store_logical_op.append( None )
                             self.master['logical_operator']                 = self.store_logical_op
@@ -252,7 +212,6 @@ class LEXER_ASSEMBLY:
                                 if not self.store_op__:
                                     self.storage_data.append( self.store_data__[ 0 ] )
                                     self.store_arithmetic_op.append( None )
-
                                     self.master['value']                    = self.storage_data
                                     self.master['arithmetic_operator']      = self.store_arithmetic_op
 
@@ -262,16 +221,9 @@ class LEXER_ASSEMBLY:
 
                                     self.master['value']                    = self.storage_data
                                     self.master['arithmetic_operator']      = self.store_arithmetic_op
-
-                            else:
-                                self.error = self.error
-
-                    else:
-                        self.error = self.error
-                        break
-
-        else:
-            self.error = self.error
+                            else: break
+                    else:  break
+        else:  pass
 
         return self.master, self.error
 
@@ -389,11 +341,11 @@ class FINAL_LEXER:
                             elif self.new_function[ 0 ] in [ '_int_', '_float_', '_complex_', '_string_', '_length_',
                                                 '_boolean_', '_list_', '_tuple_', '_dictionary_', '_sqrt_', '_sum_',
                                                 '_rang_', '__ansii__', '__show__', '__rand__', '_get_line_', '_mean_',
-                                                '__scan__','_max_', '_min_', '_var_', '_std_','__open__', '__maths__' ]:
+                                                '__scan__','_max_', '_min_', '_var_', '_std_','__open__', '__maths__', '__prompt__' ]:
                                 self.get_values, self.error = transformation.C_F_I_S( self.new_data[ 0 ], self.data_base,
                                                                     self.line ).FUNCTION(self.new_function[ 0 ] )
                                 if self.error is None:
-                                    if self.new_function[ 0 ] == '__show__':
+                                    if self.new_function[ 0 ] in ['__show__']: 
                                         self.main_lexer_storage[ 'sub_print' ]      = self.get_values
                                     else:
                                         self.main_lexer_storage[ 'transformation' ] = self.get_values

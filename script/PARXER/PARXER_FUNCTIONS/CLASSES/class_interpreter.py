@@ -4,7 +4,7 @@ from script.STDIN.WinSTDIN                      import stdin
 from script.LEXER.FUNCTION                      import main
 from statement                                  import externalRest
 from script                                     import control_string
-from script.PARXER.PARXER_FUNCTIONS._IF_        import if_inter
+from script.PARXER.PARXER_FUNCTIONS._IF_        import IfError    as if_inter
 from src.classes                                import db
 from classes                                    import internalClass as IC
 
@@ -56,15 +56,16 @@ class EXTERNAL_CLASS_STATEMENT:
         ##########################################################
         
         for j, _string_ in enumerate( self.loop_list):
-           
             if _string_:
                 self.if_line        += 1
                 self.line           += 1
                 
                 if j >= self.next_line:
-                    k = stdin.STDIN(self.data_base, self.line ).ENCODING(_string_)                   
+                    k = stdin.STDIN(self.data_base, self.line ).ENCODING(_string_)  
+                    #print(_string_)                 
                     self.string, self.normal_string, self.active_tab, self.error =  stdin.STDIN(self.data_base,
-                                                                        self.line ).STDIN_FOR_INTERPRETER( k, _string_ ) 
+                    self.line ).STDIN_FOR_INTERPRETER( k, _string_ )  
+                                                            
                     if self.error is None:
                         if self.active_tab is True:
                             self.get_block, self.value, self.error = IC.INTERNAL_BLOCKS(normal_string=self.normal_string, data_base=self.data_base,
@@ -84,11 +85,12 @@ class EXTERNAL_CLASS_STATEMENT:
                                                 self.line, self.extra_class_data).UPDATE_FUNCTION_BEFORE( self.lexer )
                                         if self.error is None:
                                             
-                                            if self.NewLIST:
+                                            if self.NewLIST:	
                                                 self.next_line  += len(self.NewLIST)
+                                                
                                                 self.error = def_interpreter.EXTERNAL_DEF_STATEMENT( self.master, self.db, 
                                                                     self.line ).DEF( k, self.data_base[ 'current_class' ], self.key_init, _type_,
-                                                                                self.NewLIST, loop = True )
+                                                                                self.NewLIST[:-1], loop = True )
                                                 
                                                 if self.error is None:
                                                     
@@ -97,8 +99,7 @@ class EXTERNAL_CLASS_STATEMENT:
                                                         ( self.normal_string, True ), self.db )
                                                     
                                                     if self.error is None:
-                                                        if not self.class_starage:
-                                                            self.class_starage.append( ( self.extra_class_data, True) )
+                                                        if not self.class_starage: self.class_starage.append( ( self.extra_class_data, True) )
                                                         else: self.class_starage[ 0 ] = ( self.extra_class_data, True)
                                                         self.store_value.append( self.normal_string )
                                                         self.history.append( 'class' )
@@ -173,8 +174,9 @@ class EXTERNAL_CLASS_STATEMENT:
                             else: break
                         else:
                             self.get_block, self.value, self.error = externalRest.EXTERNAL_BLOCKS(normal_string=self.normal_string, 
-                                                                data_base=self.data_base, line=self.line).BLOCKS(tabulation=self.tabulation)
-                            if self.error is None:
+                                                                data_base=self.data_base,  line=self.line).BLOCKS(tabulation=self.tabulation)    
+                                                                           
+                            if self.error is None:     
                                 if self.get_block   == 'end:'           :
                                     if self.store_value:
                                         del self.store_value[ : ]

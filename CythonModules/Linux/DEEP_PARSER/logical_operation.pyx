@@ -1,6 +1,6 @@
-from CythonModules.Windows.DEEP_PARSER          import error as err
-from CythonModules.Windows.DEEP_PARSER          import conversion
-from CythonModules.Windows.DEEP_PARSER          import get_data
+from CythonModules.Linux.DEEP_PARSER          import error as err
+from CythonModules.Linux.DEEP_PARSER          import conversion
+from CythonModules.Linux.DEEP_PARSER          import get_data
 
 cdef class LOGICAL:
     cdef public:
@@ -25,7 +25,7 @@ cdef class LOGICAL:
         self.number         = []
 
     
-    cdef bint OPERATIONS(self, str operation, bint _key_ = False):
+    cdef bint OPERATIONS(self, str operator, bint _key_ = False):
         cdef:
             str ob1, ob2
             str string = ""

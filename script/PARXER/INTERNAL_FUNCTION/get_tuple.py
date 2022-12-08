@@ -35,13 +35,13 @@ class TUPLE:
 
         self.string     = self.main_dict[ 1: -1]
         self.string, self.error = self.control.DELETE_SPACE( self.string )
-
         if self.error is None:
             self.value, self.error = self.selection.SELECTION( self.string, self.string, self.data_base,
                                                         self.line).CHAR_SELECTION( ',' )
             if self.error is None:
                 for _value_ in self.value:
                     self.true_value, self.error = self.control.DELETE_SPACE( _value_ )
+                    
                     if self.error is None:
                         self.check_dot, self.error = self.selection.SELECTION(self.true_value, self.true_value,
                                                                 self.data_base,self.line).CHAR_SELECTION( ':' )

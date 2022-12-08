@@ -79,7 +79,7 @@ class ARITHMETICS:
 
             for val in self.result:
                 self.sum += val
-            self.result = self.su
+            self.result = self.sum
         elif self.get_type1 in self.type1 and self.get_type2 in [type( list() )]            :
             if self.get_type1 == type( int() ):
                 self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).SousListInt( object1, inv = True )

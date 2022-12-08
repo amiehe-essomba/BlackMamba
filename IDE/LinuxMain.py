@@ -1,4 +1,4 @@
-#############################################################
+############################################################
 #############################################################
 # Black Mamba orion and pegasus code iditor for Linux       #
 # This version has currently two code iditors:              #
@@ -16,46 +16,38 @@
 #       * mamba --T orion                                   #
 #       * mamba --T pegasus                                 #
 #############################################################
+############################################
+# **created by : amiehe-essomba            #
+# **updating by: amiehe-essomba            #
+# ** copyright 2022 amiehe-essomba         #         
+############################################
 #############################################################
 
+
 import sys, os
-from script.STDIN.LinuxSTDIN import bm_configure as bm
-from script.STDIN.LinuxSTDIN import readchar
-from script.PARXER.PARXER_FUNCTIONS._IF_ import IfError
-from src.functions.windows import updatingDef as UD
-from src.functions.windows import externalDef as ED
-from script import control_string
+from script.STDIN.LinuxSTDIN                import readchar
+from script.LEXER.FUNCTION                  import main
+from script.PARXER.WINParxer                import parxer
+from script.DATA_BASE                       import data_base as db
+from script                                 import control_string
+from script.STDIN.LinuxSTDIN                import bm_configure as bm
+from script                                 import drop_down_menus as ddm 
 
+class linux:
+    def __init__(self, data_base: dict):
 
-class EXTERNAL_DEF_LINUX:
-    def __init__(self,
-                 data_base: dict,
-                 line: int,
-                 term: str
-                 ):
-
-        # current line
-        self.line = line
         # main data base
-        self.data_base = data_base
-        # terminal name
-        self.term = term
+        self.data_base  = data_base
         # contriling string
-        self.analyse = control_string.STRING_ANALYSE(self.data_base, self.line)
+        self.analyse    = control_string.STRING_ANALYSE(self.data_base, 1)
 
-    def TERMINAL(self,
-                 tabulation: int,
-                 class_name: str = '',
-                 class_key: bool = False,
-                 c: str = '',
-                 function: str = 'def',
-                 _type_: str = 'def'
-                 ):
+    def terminal(self, c: str = '', terminal_name : str = 'pegasus'):
 
         # set color on yellow
+        self.bold           = bm.init.bold
         self.c              = bm.fg.rbg(255, 255, 0)
-        if self.term == 'orion':  pass
-        else:  self.c = bm.fg.rbg(255, 255, 255)
+        if terminal_name == 'orion': pass
+        else: self.c        = c
         # reset color
         self.reset          = bm.init.reset
         # input initialized
@@ -112,21 +104,7 @@ class EXTERNAL_DEF_LINUX:
         self.space          = 0
         # detecting if indentation was used
         self.active_tab     = None
-        # tabulation key
-        self.tabulation     = tabulation
         # history of commands
-        self.history        = ['def']
-        # storing values of functions
-        self.def_starage    = []
-        # checking if command is typed
-        self.store_value    = []
-        # canceling loop while
-        self.def_cancel     = False
-        # struc for sub-function
-        self.subFunc = {
-            'func_names': [],
-            'functions': []
-        }
         ###########################################################
         # clear entire line
         sys.stdout.write(bm.clear.line(pos=0))
@@ -135,7 +113,7 @@ class EXTERNAL_DEF_LINUX:
         # print the input value
         sys.stdout.write(self.input)
         # save cursor position
-        sys.stdout.write(bm.save.save)
+        #sys.stdout.write(bm.save.save)
         # flush
         sys.stdout.flush()
         ###########################################################
@@ -143,19 +121,21 @@ class EXTERNAL_DEF_LINUX:
             try:
                 # get input
                 self.char = readchar.readchar()
+                
                 # breaking loop while with the keyboardError
                 if self.char == 3:
                     self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                     print(self._keyboard_)
                     return
                 # writing char
-                elif 32 <= self.char <= 126 :
+                elif 32 <= self.char <= 126:
                     ######################################
                     # each character has 1 as length     #
                     # have a look on ansi char           #
                     ######################################
                     # building input
-                    self.input  = self.input[: self.index + self.last] + chr(self.char) + self.input[ self.index + self.last:]
+                    self.input  = self.input[: self.index + self.last] + chr(self.char) + self.input[
+                                                                                         self.index + self.last:]
                     # building s
                     self.s      = self.s[: self.I] + chr(self.char) + self.s[self.I:]
                     # building string
@@ -169,7 +149,7 @@ class EXTERNAL_DEF_LINUX:
                     # storing char in get
                     self.get.append(self.char)
                 # moving cursor up, down, left, reight
-                elif self.char == 27        :
+                elif self.char == 27:
                     next1, next2 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1))
                     if next1 == 91:
                         try:
@@ -188,27 +168,27 @@ class EXTERNAL_DEF_LINUX:
                                             self.I     -= 4
                                             self.index += 4
                                             self.last  -= 8
-                                            self.I_S  -= 4
+                                            self.I_S   -= 4
                                     except IndexError: pass
-                                else:   pass
+                                else:  pass
                             # move cursor to right
                             elif next2 == 67:
                                 if self.I < len(self.s):
                                     try:
                                         # without indentation
                                         if 32 <= self.get[self.I] <= 126:
-                                            self.I     += 1
+                                            self.I += 1
                                             self.index -= 1
-                                            self.last  += 2
-                                            self.I_S   += 1
+                                            self.last += 2
+                                            self.I_S += 1
                                         # when identation is detected
                                         elif self.get[self.I] == 9:
-                                            self.I     += 4
+                                            self.I += 4
                                             self.index -= 4
-                                            self.last  += 8
-                                            self.I_S   += 4
+                                            self.last += 8
+                                            self.I_S += 4
                                     except IndexError: pass
-                                else: pass
+                                else:  pass
                             # get the previous value stored in the list
                             elif next2 == 65:  # up
                                 if self.liste:
@@ -217,28 +197,28 @@ class EXTERNAL_DEF_LINUX:
                                         self.idd -= 1
                                         if len(self.liste) >= abs(self.idd):
                                             # previous input
-                                            self.input      = self.liste[self.idd]
+                                            self.input  = self.liste[self.idd]
                                             # previous s
-                                            self.s          = self.sub_liste[self.idd]
+                                            self.s      = self.sub_liste[self.idd]
                                             # previous string
-                                            self.string     = self.string_tabular[self.idd]
+                                            self.string = self.string_tabular[self.idd]
                                             # restoring the prvious get of s
-                                            self.get        = self.memory[self.idd]
+                                            self.get    = self.memory[self.idd]
                                             # restoring cursor position in the input
-                                            self.index      = self.tabular[self.idd]
+                                            self.index  = self.tabular[self.idd]
                                             # restoring cursor position in s
-                                            self.I          = self.sub_tabular[self.idd]
+                                            self.I      = self.sub_tabular[self.idd]
                                             # restoring cursor position in string
-                                            self.I_S        = self.string_tab[self.idd]
+                                            self.I_S    = self.string_tab[self.idd]
                                             # restoring the value of last
-                                            self.last       = self.last_tabular[self.idd]
+                                            self.last   = self.last_tabular[self.idd]
                                             # restoring remove_tab from index
                                             self.remove_tab = self.remove_tabular[self.idd]
                                         else:  self.idd += 1
                                     except IndexError:
                                         # any changes here when local IndexError is detected
                                         pass
-                                else: pass
+                                else:   pass
                             # get the next value stored in the list
                             elif next2 == 66:
                                 if self.liste:
@@ -264,15 +244,16 @@ class EXTERNAL_DEF_LINUX:
                                             self.last   = self.last_tabular[self.idd]
                                             # restoring remove_tab from index
                                             self.remove_tab = self.remove_tabular[self.idd]
-                                        else: self.idd -= 1
+                                        else:
+                                            self.idd -= 1
                                     except IndexError:
                                         # any changes here when local IndexError is detected
                                         pass
-                                else: pass
-                        except IndexError: pass
-                    else: pass
+                                else:   pass
+                        except IndexError:  pass
+                    else:  pass
                 # delecting char
-                elif self.char == 127       :
+                elif self.char == 127:
                     # if s is not empty
                     if self.s:
                         # initialize key name of an indentation case
@@ -299,26 +280,26 @@ class EXTERNAL_DEF_LINUX:
                                         self.input = self.input[: self.index + self.last - self.name] + self.input[
                                                                                                         self.index + self.last:]
                                         # decreasing index of -1
-                                        self.index -= 1
+                                        self.index     -= 1
                                         # building s
-                                        self.s      = self.s[: self.I - 1] + self.s[self.I:]
+                                        self.s          = self.s[: self.I - 1] + self.s[self.I:]
                                         # decreating I of -1
-                                        self.I     -= 1
+                                        self.I         -= 1
                                         # delecting the value in get associated to the index I-1
                                         del self.get[self.I]
 
                                     # building string
-                                    self.string    = self.string[: self.I_S - 1] + self.string[self.I_S:]
+                                    self.string = self.string[: self.I_S - 1] + self.string[self.I_S:]
                                     # decreasing I_S of -1
-                                    self.I_S      -= 1
+                                    self.I_S -= 1
                                     # set key of True
-                                    self.key       = True
+                                    self.key = True
                                 else:  pass
 
                                 # if key is False it means s has not indentation
                                 if self.key is False:
                                     # building input
-                                    self.input  = self.input[: self.index + self.last - self.name] + self.input[
+                                    self.input = self.input[: self.index + self.last - self.name] + self.input[
                                                                                                     self.index + self.last:]
                                     # decreasing index of -name with name = 1
                                     self.index -= self.name
@@ -329,26 +310,27 @@ class EXTERNAL_DEF_LINUX:
                                     # decreasing I and I_S of -1
                                     self.I     -= 1
                                     self.I_S   -= 1
-                                else:  pass
-                            else: pass
-                        except IndexError: pass
-                    else:   pass
+                                else:   pass
+                            else:  pass
+                        except IndexError:  pass
+                    else: pass
                 # indentation
-                elif self.char == 9         :
+                elif self.char == 9:
 
-                    self.tt          = '    '
-                    self.input       = self.input[: self.index + self.last] + str(self.tt) + self.input[ self.index + self.last:]
-                    self.s           = self.s[: self.I] + str(self.tt) + self.s[self.I:]
+                    self.tt         = '    '
+                    self.input      = self.input[: self.index + self.last] + str(self.tt) + self.input[
+                                                                                       self.index + self.last:]
+                    self.s          = self.s[: self.I] + str(self.tt) + self.s[self.I:]
                     # string takes the true value of char
-                    self.string      = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
-                    self.index      += 4
-                    self.I          += 4
-                    self.I_S        += 1
+                    self.string     = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
+                    self.index     += 4
+                    self.I         += 4
+                    self.I_S       += 1
 
                     for i in range(4):
                         self.get.append(self.char)
                 # clear entire string
-                elif self.char == 12        :
+                elif self.char == 12:
                     # move cursor left
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     # clear entire line
@@ -370,7 +352,7 @@ class EXTERNAL_DEF_LINUX:
                     self.last   = 0
                     self.remove_tab = 0
                 # move cursor at end of line
-                elif self.char == 4         :
+                elif self.char == 4:
                     while self.I < len(self.s):
                         try:
                             # without indentation
@@ -385,9 +367,9 @@ class EXTERNAL_DEF_LINUX:
                                 self.index -= 4
                                 self.last  += 8
                                 self.I_S   += 4
-                        except IndexError: pass
+                        except IndexError:  pass
                 # move cursor at the beginning of line
-                elif self.char == 17        :
+                elif self.char == 17:
                     while self.I > 0:
                         try:
                             # without indentation
@@ -404,22 +386,22 @@ class EXTERNAL_DEF_LINUX:
                                 self.I_S   -= 4
                         except IndexError:  pass
                 # clear entire screen and restore cursor position
-                elif self.char == 19        :
+                elif self.char == 19:
                     sys.stdout.write(bm.clear.screen(pos=2))
                     sys.stdout.write(bm.save.restore)
                 # End-Of-File Error
-                elif self.char == 26        :
+                elif self.char == 26:
                     self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                     print(self._end_of_file_)
                     return
                 # printing and initializing of values
-                elif self.char in {10, 13}  :
+                elif self.char in {10, 13}:
                     self.if_line += 1
                     # move cursor of left
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     # print the final input with its transformations
-                    if self.term == 'orion':  print(self.main_input + bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final())
-                    else: print(self.main_input + bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                    if terminal_name == 'orion': print(self.main_input + self.bold+bm.words(string=self.s, color=bm.fg.rbg(255,  255, 255)).final())
+                    else:   print(self.main_input + self.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
 
                     # storing input
                     self.liste.append(self.input)
@@ -441,46 +423,48 @@ class EXTERNAL_DEF_LINUX:
                     self.memory.append(self.get)
 
                     if self.string:
-                        # calling the main module DEF
-                        self.def_cancel, self.error = ED.EXTERNAL_DEF(master=self.string, data_base=self.data_base,
-                                    ine=self.if_line, history=self.history,  store_value=self.store_value, space=self.space).DEF(tabulation=self.tabulation,
-                                    def_starage=self.def_starage, subFunc=self.subFunc, class_name=class_name,  class_key=class_key, c=c, function=function,
-                                    _type_=_type_, term=self.term)
-                                    
-                        # break while loop if error is not None
-                        if self.error is None:
-                            if self.def_cancel is True:  break
+                        # running lexer
+                        self.lexer, self.normal_string, self.error = main.MAIN(self.string, self.data_base, self.if_line).MAIN()
+                        if self.error is None :
+                            if self.lexer is not None:
+                               
+                                # running parser
+                                self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
+                                        self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
+                                if self.error is None: pass
+                                else:
+                                    sys.stdout.write(bm.clear.line(2))
+                                    sys.stdout.write(bm.move_cursor.LEFT(1000))
+                                    print('{}\n'.format(self.error))
+                                    self.error = None
                             else:  pass
-                        else: break
-                    else:
-                        # if no string
-                        if self.space <= self.max_emtyLine:
-                            self.space += 1
-                            self.string = self.analyse.BUILD_NON_CON(string=self.string, tabulation=self.tabulation)
-                            self.def_starage.append((self.string, False))
                         else:
-                            self.error = IfError.ERRORS(self.if_line).ERROR4()
-                            break
+                            sys.stdout.write(bm.clear.line(2))
+                            sys.stdout.write(bm.move_cursor.LEFT(1000))
+                            print('{}\n'.format(self.error))
+                            self.error = None
+                    else: pass
 
                     # initialization block
-                    self.input  = self.main_input
-                    self.index  = self.length
-                    self.s      = ''
-                    self.string = ''
-                    self.I      = 0
-                    self.I_S    = 0
-                    self.get    = []
-                    self.idd    = 0
-                    self.last   = 0
+                    self.input      = self.main_input
+                    self.index      = self.length
+                    self.s          = ''
+                    self.string     = ''
+                    self.I          = 0
+                    self.I_S        = 0
+                    self.get        = []
+                    self.idd        = 0
+                    self.last       = 0
                     self.remove_tab = 0
                 # move cursor on left
                 sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                 # clear entire line
                 sys.stdout.write(bm.clear.line(pos=0))
 
-                if self.term == 'orion'     :
+                if terminal_name == 'orion':
                     # key word activation
-                    sys.stdout.write(self.main_input + bm.string().syntax_highlight(name=bm.words(string=self.s, color=bm.fg.white_L).final()))
+                    sys.stdout.write(self.main_input + bm.string().syntax_highlight(
+                        name=bm.words(string=self.s, color=self.bold+bm.fg.rbg(255, 255, 255)).final()))
                 else:
                     # any activation keyword
                     sys.stdout.write(self.main_input + bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
@@ -491,16 +475,30 @@ class EXTERNAL_DEF_LINUX:
                 if self.index > 0:
                     pos = len(self.s) + self.size + len(self.input) - self.index
                     sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
-                else:  pass
+                else: pass
+            
                 sys.stdout.flush()
+                
             except KeyboardInterrupt:
-                self.error = IfError.ERRORS(self.if_line).ERROR4()
-                break
-            except TypeError:
-                self.error = IfError.ERRORS(self.if_line).ERROR4()
-                break
+                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
+                print(self._keyboard_)
+                return
+            except SyntaxError:
+                self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
+                print(self._end_of_file_)
+                self.input = '{}>>> {}'.format(self.c, bm.init.reset)
+                sys.stdout.write(bm.string().syntax_highlight(name=self.input))
+                sys.stdout.flush()
 
-        # updating function
-        UD.UPDATING(self.data_base).UPDATE_FUNCTION(self.def_starage, self.subFunc)
-
-        return self.error
+    
+if __name__ == '__main__':
+    
+    terminal = 'orion'
+    try:
+        os.system('clear')
+        sys.stdout.write(bm.save.save)
+        bm.head().head(sys='Linux', term = terminal)
+        data_base = db.DATA_BASE().STORAGE().copy()
+        linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=terminal)
+    except KeyboardInterrupt:  pass
+    except SyntaxError: pass
