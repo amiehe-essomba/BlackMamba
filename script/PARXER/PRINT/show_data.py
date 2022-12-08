@@ -5,9 +5,12 @@
 Returns:
     no returned values
 """
-from    urllib.parse import parse_qs
+
+from CythonModules.Linux           import frame
 from    script.STDIN.LinuxSTDIN    import bm_configure as bm
 import numpy
+import pandas as pd
+
 
 class SHOW :
     def __init__(self,
@@ -36,10 +39,14 @@ class SHOW :
         # get master type
         self.type       = type( self.master )
         self.color      = ''
-
+        
         # calor set in function of the master type
         self.color      = SHOW( self.type, self.data_base, self.key ).TYPE()
 
+        if self.type == type(pd.DataFrame({'r':[0, 0]})):
+            s,  self.master, tt, err = frame.FRAME({"s": self.master}, 1).FRAME(False, 'DataFrame')
+        else: pass 
+        
         # convert master to a string()
         self.master     = str( self.master )
 
@@ -80,7 +87,10 @@ class SHOW :
 
         # get color
         self.color  = SHOW( self.type, self.data_base, self.key ).TYPE()
-
+        
+        if self.type == type(pd.DataFrame({'r':[0, 0]})):
+            s, master, tt, err = frame.FRAME({"s": self.master},  1).FRAME(False, "DataFrame")
+        else: pass 
         # put master as a string()
         self.master = str( self.master )
 
@@ -122,16 +132,17 @@ class SHOW :
         elif self.master in self.all_Float      :   self._return_ = bm.fg.rbg(0, 255, 0)
         elif self.master in self.all_Int        :   self._return_ = self.red
         elif self.master == type(numpy.array([0])): self._return_ = bm.fg.rbg(255,165,0)
+        elif self.master == type(pd.DataFrame({'r':[0, 0]})) : self._return_ = bm.fg.rbg(255,165,40)
         else:                                       self._return_ = bm.fg.rbg(255, 0, 0)
 
         return self._return_
 
 def LineFeed( string : str, typ : any):
-    if typ in [type(str()), type(numpy.array([0]))]:
+    if typ in [type(str()), type(numpy.array([0])),type(pd.DataFrame({'r':[0, 0]}))]:
         if '\n' in string:
             if '\n' == string[0]: pass 
             else: string = '\n'+string 
-        else: pass 
+        else: pass       
     else: pass
     
     return string

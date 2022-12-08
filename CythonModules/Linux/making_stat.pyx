@@ -441,7 +441,7 @@ cdef class GetValue:
         if not error: 
             error   = None 
             if mod == 'quantiles': result  = quantiles( self.listOfValue, n = numeric )
-            else: result  = quantile( self.listOfValue, numeric )
+            else: result  = float( quantile( self.listOfValue, numeric ) )
         else: result = None
 
         return result, error

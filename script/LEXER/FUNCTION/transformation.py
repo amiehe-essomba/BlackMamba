@@ -24,6 +24,7 @@ from CythonModules.Linux            import help
 from CythonModules.Linux            import Tuple
 from CythonModules.Linux            import arithmetic_analyze as aa
 from CythonModules.Linux            import array_to_list as atl  
+from CythonModules.Linux            import frame
 from IDE.EDITOR                     import scan
 from IDE.EDITOR                     import test 
 from IDE.EDITOR                     import true_cursor_pos as cursor_pos
@@ -264,6 +265,8 @@ class C_F_I_S:
                                                 bm.open_graven().open_graven_web()
                                             elif self._value_[ -1 ] in [ 'help' ]:
                                                 help.HELP(self._value_[ 0 ]).HELP()
+                                            elif self._value_[ -1 ] in [ 'DataFrame' ]:
+                                                self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
                                                 
                                                 self.typ = [type(list()), type(tuple()), type(range(1))]
@@ -453,7 +456,7 @@ class C_F_I_S:
                                         self.final_value = random.random()
                                 elif function == '__maths__'    :
                                     self.final_value, self.error = Trigo.Maths( self.line).Maths( self._values_)
-                                elif function == '__scan__'    :
+                                elif function == '__scan__'     :
                                     func = bm.fg.rbg(0, 255, 0   )+f' in {self._values_[ 0 ]}( ).' + bm.init.reset 
                                     if self._values_[0] == "ascii":
                                         try:

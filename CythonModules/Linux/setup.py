@@ -23,7 +23,8 @@ setup(
             'Open.pyx',
             'dictionary.pyx',
             'Trigo.pyx',
-            'show.pyx'
+            'show.pyx', 
+            'frame.pyx'
             ], 
         annotate = True
         )

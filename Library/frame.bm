@@ -1,0 +1,4 @@
+def frame(values:dict/list/tuple, columns : list/tuple/none=None, index : int/none=None):
+	_std_ * [values, "DataFrame"]
+end:
+

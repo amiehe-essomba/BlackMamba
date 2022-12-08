@@ -12445,7 +12445,7 @@ static PyObject *__pyx_f_11making_stat_8GetValue_quantiles(struct __pyx_obj_11ma
  *         if not error:
  *             error   = None             # <<<<<<<<<<<<<<
  *             if mod == 'quantiles': result  = quantiles( self.listOfValue, n = numeric )
- *             else: result  = quantile( self.listOfValue, numeric )
+ *             else: result  = float( quantile( self.listOfValue, numeric ) )
  */
     __Pyx_INCREF(Py_None);
     __Pyx_DECREF_SET(__pyx_v_error, Py_None);
@@ -12454,7 +12454,7 @@ static PyObject *__pyx_f_11making_stat_8GetValue_quantiles(struct __pyx_obj_11ma
  *         if not error:
  *             error   = None
  *             if mod == 'quantiles': result  = quantiles( self.listOfValue, n = numeric )             # <<<<<<<<<<<<<<
- *             else: result  = quantile( self.listOfValue, numeric )
+ *             else: result  = float( quantile( self.listOfValue, numeric ) )
  *         else: result = None
  */
     __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_v_mod, __pyx_n_s_quantiles, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 443, __pyx_L1_error)
@@ -12483,7 +12483,7 @@ static PyObject *__pyx_f_11making_stat_8GetValue_quantiles(struct __pyx_obj_11ma
     /* "making_stat.pyx":444
  *             error   = None
  *             if mod == 'quantiles': result  = quantiles( self.listOfValue, n = numeric )
- *             else: result  = quantile( self.listOfValue, numeric )             # <<<<<<<<<<<<<<
+ *             else: result  = float( quantile( self.listOfValue, numeric ) )             # <<<<<<<<<<<<<<
  *         else: result = None
  * 
  */
@@ -12535,8 +12535,11 @@ static PyObject *__pyx_f_11making_stat_8GetValue_quantiles(struct __pyx_obj_11ma
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_v_result = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_v_result = __pyx_t_1;
+      __pyx_t_1 = 0;
     }
     __pyx_L17:;
 
@@ -12552,7 +12555,7 @@ static PyObject *__pyx_f_11making_stat_8GetValue_quantiles(struct __pyx_obj_11ma
 
   /* "making_stat.pyx":445
  *             if mod == 'quantiles': result  = quantiles( self.listOfValue, n = numeric )
- *             else: result  = quantile( self.listOfValue, numeric )
+ *             else: result  = float( quantile( self.listOfValue, numeric ) )
  *         else: result = None             # <<<<<<<<<<<<<<
  * 
  *         return result, error
@@ -12571,16 +12574,16 @@ static PyObject *__pyx_f_11making_stat_8GetValue_quantiles(struct __pyx_obj_11ma
  *     cpdef mod_mulmod( self, str cal_type = 'mode', str ob_type = 'list' )  :
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_result);
   __Pyx_GIVEREF(__pyx_v_result);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_result);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_result);
   __Pyx_INCREF(__pyx_v_error);
   __Pyx_GIVEREF(__pyx_v_error);
-  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_error);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_error);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
   /* "making_stat.pyx":425

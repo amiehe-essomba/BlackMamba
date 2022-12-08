@@ -1,5 +1,6 @@
 from colorama       import Fore, init, Back, Style
 import numpy
+import pandas       as pd
 from script         import control_string
 from script.LEXER   import particular_str_selection
 from script.MATHS   import arithemtic_operations, mathematics
@@ -1664,6 +1665,7 @@ class FINAL_VALUE:
         elif type( self.master ) in self.all_Float      :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
         elif type( self.master ) in self.all_Int        :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
         elif type( self.master ) == type( numpy.array([1])):self._return_ = '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0), bm.fg.blue)
+        elif type( self.master ) == type( pd.DataFrame({'r':[0, 0]})) : self._return_ = '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,40), bm.fg.blue) 
         else:  self._return_ = 'type not found'
 
         return self._return_+bm.init.reset
