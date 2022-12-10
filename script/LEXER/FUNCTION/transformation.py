@@ -266,7 +266,37 @@ class C_F_I_S:
                                             elif self._value_[ -1 ] in [ 'help' ]:
                                                 help.HELP(self._value_[ 0 ]).HELP()
                                             elif self._value_[ -1 ] in [ 'DataFrame' ]:
-                                                self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
+                                                func = bm.fg.rbg(0, 255, 0   )+f' in {self._value_[ 1 ]}( ).' + bm.init.reset 
+                                                if self._value_[ 1 ] == "frame":
+                                                    self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
+                                                elif self._value_[ 1 ] == "set_id":
+                                                    self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
+                                                    if self.error is None:
+                                                        self.id_ = self._value_[2]
+                                                        self.keys_ = list(self.final_value.keys())
+                                                        if self.id_< len(self.keys_):
+                                                            self.final_value = self.final_value.set_index(self.keys_[self.id_], inplace=True)    
+                                                        else: self.error = er.ERRORS( self.line ).ERROR45( func=func )
+                                                    else: pass
+                                                elif self._value_[ 1 ] == "select":
+                                                    self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
+                                                    if self.error is None:
+                                                        self.id_ = self._value_[2]
+                                                        self.keys_ = list(self.final_value.keys())
+                                                        if self.id_< len(self.keys_):
+                                                            self.final_value = self.final_value[self.keys_[self.id_]].tolist()
+                                                        else: self.error = er.ERRORS( self.line ).ERROR45( func=func )
+                                                    else:pass
+                                                elif self._value_[ 1 ] == "show":
+                                                    show, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
+                                                    if self.error is None:
+                                                        show_id = self._value_[2]
+                                                        show, s, ss, self.error  = frame.FRAME({"s":show, 'id':list(show.index)}, self.line).FRAME(False, 'DataFrame', show_id)
+                                                        if self.error is None:
+                                                            print(s)
+                                                        else: pass 
+                                                    else: pass
+                                                    
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
                                                 
                                                 self.typ = [type(list()), type(tuple()), type(range(1))]

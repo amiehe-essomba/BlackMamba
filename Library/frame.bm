@@ -1,4 +1,23 @@
-def frame(values:dict/list/tuple, columns : list/tuple/none=None, index : int/none=None):
-	_std_ * [values, "DataFrame"]
-end:
 
+class data:
+	def initialize(values:dict/list/tuple, columns : list/tuple/none=None, index : int/none=None):
+		self.values 	= values
+		self.columns 	= columns
+		self.index 		= index
+	end:
+	def frame():
+		_std_ * [values, "frame", "DataFrame"]
+	end:
+	
+	def show(show_id :bool=True ):
+		_std_ * [values, "show", show_id, "DataFrame"]
+	end:
+	
+	def set_id(column : int = 0):
+		_std_ * [values, "set_id", column, "DataFrame"]
+	end:
+	
+	def select(column : int = 0):
+		_std_ * [values, "select", column, "DataFrame"]
+	end:
+end:

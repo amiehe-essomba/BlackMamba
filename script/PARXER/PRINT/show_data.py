@@ -44,7 +44,7 @@ class SHOW :
         self.color      = SHOW( self.type, self.data_base, self.key ).TYPE()
 
         if self.type == type(pd.DataFrame({'r':[0, 0]})):
-            s,  self.master, tt, err = frame.FRAME({"s": self.master}, 1).FRAME(False, 'DataFrame')
+            s,  self.master, tt, err = frame.FRAME({"s": self.master, 'id':list(self.master.index)}, 1).FRAME(False, 'DataFrame', True)
         else: pass 
         
         # convert master to a string()
@@ -89,7 +89,7 @@ class SHOW :
         self.color  = SHOW( self.type, self.data_base, self.key ).TYPE()
         
         if self.type == type(pd.DataFrame({'r':[0, 0]})):
-            s, master, tt, err = frame.FRAME({"s": self.master},  1).FRAME(False, "DataFrame")
+            s, master, tt, err = frame.FRAME({"s": self.master,'id':list(self.master.index)},  1).FRAME(False, "DataFrame", True)
         else: pass 
         # put master as a string()
         self.master = str( self.master )

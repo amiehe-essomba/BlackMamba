@@ -3,7 +3,8 @@ from script.STDIN.LinuxSTDIN      import bm_configure as bm
 from CythonModules.Linux          import fileError as fe 
 import pandas as pd
 
-cdef str head(unsigned long int nraw,  unsigned long int ncol, list data):
+cdef str head(unsigned long int nraw,  unsigned long int ncol, list data, unsigned int max_id = 1, 
+                            bint show_id = False):
     cdef:
         str chaine =  "" 
         unsigned long i
@@ -12,10 +13,14 @@ cdef str head(unsigned long int nraw,  unsigned long int ncol, list data):
         if i != nraw-1: chaine += a.frame()["h"]*data[i]+a.frame()['m1']
         else:chaine += a.frame()["h"]*data[i]
     chaine = a.frame()["ul"]+chaine+a.frame()["ur"]
+    
+    if show_id is False: pass 
+    else: chaine = " "*(max_id+1) + chaine
 
     return chaine
 
-cdef str top(unsigned long int nraw,  unsigned long int ncol, list data):
+cdef str top(unsigned long int nraw,  unsigned long int ncol, list data, unsigned int max_id = 1, 
+                            bint show_id = False, unsigned int style = 1):
     cdef:
         str chaine = ""
         unsigned long i
@@ -23,11 +28,19 @@ cdef str top(unsigned long int nraw,  unsigned long int ncol, list data):
     for i in range(nraw):
         if i != nraw-1: chaine += a.frame()["h"]*data[i]+a.frame()['m3']
         else:chaine += a.frame()["h"]*data[i]
-    chaine = a.frame()["vl"]+chaine+a.frame()["vr"]
+    
 
+    if show_id is False: chaine = a.frame()["vl"]+chaine+a.frame()["vr"]
+    else:
+        chaine = a.frame()['m3']+chaine+a.frame()["vr"]
+        if style == 0:
+            chaine = a.frame()["ul"] + a.frame()["h"] * max_id + chaine
+        else:
+            chaine = a.frame()["vl"] + a.frame()["h"] * max_id + chaine
+            
     return chaine
 
-cdef str bottom(unsigned long int nraw,  unsigned long int ncol, list data):
+cdef str bottom(unsigned long int nraw,  unsigned long int ncol, list data, unsigned int max_id = 1, bint show_id = False):
     cdef:
         str chaine = ""
         unsigned long i
@@ -35,29 +48,43 @@ cdef str bottom(unsigned long int nraw,  unsigned long int ncol, list data):
     for i in range(nraw):
         if i != nraw-1: chaine += a.frame()["h"]*data[i]+a.frame()['m2']
         else:chaine += a.frame()["h"]*data[i]
-    chaine = a.frame()["dl"]+chaine+a.frame()["dr"]
+    
+    if show_id is False: chaine = a.frame()["dl"]+chaine+a.frame()["dr"]
+    else: 
+        chaine = a.frame()['m2']+chaine+a.frame()["dr"]
+        chaine =  a.frame()["dl"]+ a.frame()["h"]*max_id + chaine
 
     return chaine
 
-cdef midle(unsigned long int nraw,  unsigned long int ncol, list data, dict all_data, dict all_len, list keys):
+cdef midle(unsigned long int nraw,  unsigned long int ncol, list data, dict all_data, dict all_len, list keys,
+                        unsigned int max_id = 1, bint show_id = False, list frame_id_data = []):
     cdef:
-        str chaine = a.frame()['v']
-        unsigned long i, j, n
+        str chaine = ""
+        unsigned long i, j, n,  m
         list sub_len 
     
+    if show_id is False: chaine += a.frame()['v']
+    else: chaine += " "*(max_id+1) +a.frame()['v']
+
     for i in range(nraw):
         n = data[i]-len(keys[i])
         chaine += " "*n+bm.words(str(keys[i]), bm.fg.rbg(255, 255, 255)).final()+bm.init.reset +a.frame()['v']
-    chaine += '\n'+top(nraw, ncol, data)+"\n"
+        
+    chaine += '\n'+top(nraw, ncol, data, max_id, show_id, 0)+"\n"
 
 
     for j in range(ncol):
         sub_len = []
         chaine += a.frame()['v']
+        if show_id is False: pass
+        else: 
+            m = max_id - len(frame_id_data[j])
+            chaine +=" "*m+bm.words(frame_id_data[j], bm.fg.rbg(255, 255, 255)).final()+bm.init.reset+a.frame()['v']
+
         for i in range(nraw):
            n = data[i]-all_len[i][j]
            chaine += " "*n+bm.words(all_data[i][j], bm.fg.rbg(255, 255, 255)).final()+bm.init.reset +a.frame()['v']
-        if j != ncol -1: chaine += '\n'+top(nraw, ncol, data)+"\n"#+a.frame()['v']
+        if j != ncol -1: chaine += '\n'+top(nraw, ncol, data, max_id, show_id, 1)+"\n" 
         else: pass
 
     return chaine
@@ -73,7 +100,7 @@ cdef class FRAME:
         self.line   = line
         self.error  = {"s":None}
     
-    cpdef FRAME(self, bint Frame = True, str _typ_ = "dictionary"):
+    cpdef FRAME(self, bint Frame = True, str _typ_ = "dictionary", bint show_index = False):
         cdef:
             list keys, values, typ
             unsigned long length, i, j
@@ -84,6 +111,9 @@ cdef class FRAME:
             str chaine = bm.fg.rbg(255,255,255)
             dict pan = {'s':None}
             unsigned long int nraw, ncol
+            list frame_id, frame_id_
+            unsigned long int frame_id_max 
+            list _values_
 
         typ=[type(None), type(int()), type(float()), type(bool()), type(str())]
 
@@ -92,11 +122,16 @@ cdef class FRAME:
                 keys = list(self.master.keys())
                 values = list(self.master.values())
             else:
+                values = []
                 keys = list(self.master['s'].keys())
-                values = list(self.master['s'].values)
+
+                for i in range(len(keys)):
+                    values.append(self.master['s'][keys[i]].tolist())
+                frame_id = self.master['id']
                 self.master = {}
 
             length = len(keys)
+
             if len(keys) <= 15:
                 if values:
                     for i in range(length):
@@ -135,13 +170,14 @@ cdef class FRAME:
 
                     if self.error['s'] is None:
                         if len(values[0]) <=15:
-                            #if Frame is True: 
-                            #else:
-                            pan['s'] = pd.DataFrame(self.master)
-                            chaine += head(length, len(data[0]), store)+"\n"
-                            chaine += midle(length, len(data[0]), store, data, str_len, keys)+"\n"
-                            chaine += bottom(length, len(data[0]), store)
-                            #print(chaine)
+                            if Frame is True: pan['s'] = pd.DataFrame(self.master)
+                            else:
+                                frame_id_ = [len(str(x)) for x in frame_id]
+                                frame_id_max = max(frame_id_)
+                                frame_id_ = [str(x) for x in frame_id]
+                                chaine += head(length, len(data[0]), store, frame_id_max, show_index)+"\n"
+                                chaine += midle(length, len(data[0]), store, data, str_len, keys, frame_id_max, show_index, frame_id_)+"\n"
+                                chaine += bottom(length, len(data[0]), store, frame_id_max, show_index)
                         else: pass 
                     else:pass      
                 else: self.error['s'] = ERRORS( self.line).ERROR0()

@@ -342,3 +342,9 @@ class ERRORS:
         self.error = fe.FileErrors('UnicodeError').Errors() + error + func
 
         return self.error + self.reset
+    
+    def ERROR45(self, func: str = "", s = 'column'):
+        error = '{}{} {}out of range. {}line: {}{}'.format(self.red, s, self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('IndexError').Errors() + error + func
+
+        return self.error + self.reset
