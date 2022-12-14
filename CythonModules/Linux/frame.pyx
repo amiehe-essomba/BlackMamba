@@ -4,15 +4,15 @@ from CythonModules.Linux          import fileError as fe
 import pandas as pd
 
 cdef str head(unsigned long int nraw,  unsigned long int ncol, list data, unsigned int max_id = 1, 
-                            bint show_id = False):
+                            bint show_id = False, bint s = False):
     cdef:
         str chaine =  "" 
         unsigned long i
 
     for i in range(nraw):
-        if i != nraw-1: chaine += a.frame()["h"]*data[i]+a.frame()['m1']
-        else:chaine += a.frame()["h"]*data[i]
-    chaine = a.frame()["ul"]+chaine+a.frame()["ur"]
+        if i != nraw-1: chaine += a.frame(s)["h"]*data[i]+a.frame(s)['m1']
+        else:chaine += a.frame(s)["h"]*data[i]
+    chaine = a.frame(s)["ul"]+chaine+a.frame(s)["ur"]
     
     if show_id is False: pass 
     else: chaine = " "*(max_id+1) + chaine
@@ -20,71 +20,72 @@ cdef str head(unsigned long int nraw,  unsigned long int ncol, list data, unsign
     return chaine
 
 cdef str top(unsigned long int nraw,  unsigned long int ncol, list data, unsigned int max_id = 1, 
-                            bint show_id = False, unsigned int style = 1):
+                            bint show_id = False, unsigned int style = 1, bint s = False):
     cdef:
         str chaine = ""
         unsigned long i
     
     for i in range(nraw):
-        if i != nraw-1: chaine += a.frame()["h"]*data[i]+a.frame()['m3']
-        else:chaine += a.frame()["h"]*data[i]
+        if i != nraw-1: chaine += a.frame(s)["h"]*data[i]+a.frame(s)['m3']
+        else:chaine += a.frame(s)["h"]*data[i]
     
 
-    if show_id is False: chaine = a.frame()["vl"]+chaine+a.frame()["vr"]
+    if show_id is False: chaine = a.frame(s)["vl"]+chaine+a.frame(s)["vr"]
     else:
-        chaine = a.frame()['m3']+chaine+a.frame()["vr"]
+        chaine = a.frame(s)['m3']+chaine+a.frame(s)["vr"]
         if style == 0:
-            chaine = a.frame()["ul"] + a.frame()["h"] * max_id + chaine
+            chaine = a.frame(s)["ul"] + a.frame(s)["h"] * max_id + chaine
         else:
-            chaine = a.frame()["vl"] + a.frame()["h"] * max_id + chaine
+            chaine = a.frame(s)["vl"] + a.frame(s)["h"] * max_id + chaine
             
     return chaine
 
-cdef str bottom(unsigned long int nraw,  unsigned long int ncol, list data, unsigned int max_id = 1, bint show_id = False):
+cdef str bottom(unsigned long int nraw,  unsigned long int ncol, list data, unsigned int max_id = 1, 
+                bint show_id = False, bint s = False):
     cdef:
         str chaine = ""
         unsigned long i
     
     for i in range(nraw):
-        if i != nraw-1: chaine += a.frame()["h"]*data[i]+a.frame()['m2']
-        else:chaine += a.frame()["h"]*data[i]
+        if i != nraw-1: chaine += a.frame(s)["h"]*data[i]+a.frame(s)['m2']
+        else:chaine += a.frame(s)["h"]*data[i]
     
-    if show_id is False: chaine = a.frame()["dl"]+chaine+a.frame()["dr"]
+    if show_id is False: chaine = a.frame(s)["dl"]+chaine+a.frame(s)["dr"]
     else: 
-        chaine = a.frame()['m2']+chaine+a.frame()["dr"]
-        chaine =  a.frame()["dl"]+ a.frame()["h"]*max_id + chaine
+        chaine = a.frame(s)['m2']+chaine+a.frame(s)["dr"]
+        chaine =  a.frame(s)["dl"]+ a.frame(s)["h"]*max_id + chaine
 
     return chaine
 
 cdef midle(unsigned long int nraw,  unsigned long int ncol, list data, dict all_data, dict all_len, list keys,
-                        unsigned int max_id = 1, bint show_id = False, list frame_id_data = []):
+                        unsigned int max_id = 1, bint show_id = False, list frame_id_data = [], bint s = False):
     cdef:
         str chaine = ""
         unsigned long i, j, n,  m
         list sub_len 
     
-    if show_id is False: chaine += a.frame()['v']
-    else: chaine += " "*(max_id+1) +a.frame()['v']
+    if show_id is False: chaine += a.frame(s)['v']
+    else: chaine += " "*(max_id+1) +a.frame(s)['v']
 
     for i in range(nraw):
         n = data[i]-len(keys[i])
-        chaine += " "*n+bm.words(str(keys[i]), bm.fg.rbg(255, 255, 255)).final()+bm.init.reset +a.frame()['v']
+        chaine += " "*n+bm.words(str(keys[i]), bm.fg.rbg(255, 255, 255)).final()+bm.init.reset +a.frame(s)['v']
         
-    chaine += '\n'+top(nraw, ncol, data, max_id, show_id, 0)+"\n"
+    chaine += '\n'+top(nraw, ncol, data, max_id, show_id, 0, s)+"\n"
 
 
     for j in range(ncol):
         sub_len = []
-        chaine += a.frame()['v']
+        chaine += a.frame(s)['v']
         if show_id is False: pass
         else: 
             m = max_id - len(frame_id_data[j])
-            chaine +=" "*m+bm.words(frame_id_data[j], bm.fg.rbg(255, 255, 255)).final()+bm.init.reset+a.frame()['v']
+            chaine +=" "*m+bm.words(frame_id_data[j], bm.fg.rbg(255, 255, 255)).final()+bm.init.reset+a.frame(s)['v']
 
         for i in range(nraw):
            n = data[i]-all_len[i][j]
-           chaine += " "*n+bm.words(all_data[i][j], bm.fg.rbg(255, 255, 255)).final()+bm.init.reset +a.frame()['v']
-        if j != ncol -1: chaine += '\n'+top(nraw, ncol, data, max_id, show_id, 1)+"\n" 
+           chaine += " "*n+bm.words(all_data[i][j], bm.fg.rbg(255, 255, 255)).final()+bm.init.reset +a.frame(s)['v']
+        if j != ncol -1: chaine += '\n'+top(nraw, ncol, data, max_id, show_id, 1, s)+"\n" 
         else: pass
 
     return chaine
@@ -96,11 +97,11 @@ cdef class FRAME:
     cdef:
         dict error 
     def __cinit__(self, master, line):
-        self.master = master
+        self.master = master.copy()
         self.line   = line
         self.error  = {"s":None}
     
-    cpdef FRAME(self, bint Frame = True, str _typ_ = "dictionary", bint show_index = False):
+    cpdef FRAME(self, bint Frame = True, str _typ_ = "dictionary", bint show_index = False, bint _s_ = False):
         cdef:
             list keys, values, typ
             unsigned long length, i, j
@@ -175,15 +176,17 @@ cdef class FRAME:
                                 frame_id_ = [len(str(x)) for x in frame_id]
                                 frame_id_max = max(frame_id_)
                                 frame_id_ = [str(x) for x in frame_id]
-                                chaine += head(length, len(data[0]), store, frame_id_max, show_index)+"\n"
-                                chaine += midle(length, len(data[0]), store, data, str_len, keys, frame_id_max, show_index, frame_id_)+"\n"
-                                chaine += bottom(length, len(data[0]), store, frame_id_max, show_index)
+                                chaine += head(length, len(data[0]), store, frame_id_max, show_index, _s_)+"\n"
+                                chaine += midle(length, len(data[0]), store, data, str_len, keys, frame_id_max, show_index, frame_id_, _s_)+"\n"
+                                chaine += bottom(length, len(data[0]), store, frame_id_max, show_index, _s_)
+                                pan['s'] = pd.DataFrame(self.master)
                         else: pass 
                     else:pass      
                 else: self.error['s'] = ERRORS( self.line).ERROR0()
             else: pass
 
-        return pan['s'], chaine+bm.init.reset, self.master, self.error['s']
+        if _s_ is False: return pan['s'], chaine+bm.init.reset, self.master, self.error['s']
+        else: return f"\n{chaine}"+bm.init.reset
 
 cdef class ERRORS:
     cdef public:

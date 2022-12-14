@@ -1658,14 +1658,14 @@ class FINAL_VALUE:
         elif type( self.master ) == type( complex() )   :   self._return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
         elif type( self.master ) == type( list() )      :   self._return_ = '{}{}list(){}'.format(bm.fg.blue, self.yellow , bm.fg.blue)
         elif type( self.master ) == type( tuple() )     :   self._return_ = '{}{}tuple(){}'.format(bm.fg.blue, self.blue, bm.fg.blue)
-        elif type( self.master ) == type( dict() )      :   self._return_ = '{}{}dictionary(){}'.format( bm.fg.blue, self.magenta, bm.fg.blue)
+        elif type( self.master ) == type( dict() )      :   self._return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.rbg(186,85,211), bm.fg.blue)
         elif type( self.master ) == type( str() )       :   self._return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.rbg(255,140,100 ), bm.fg.blue)
         elif type( self.master ) == type( range( 1 ) )  :   self._return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
         elif type( self.master ) == type( None )        :   self._return_ = '{}{}none(){}'.format(bm.fg.blue, self.orange, bm.fg.blue)
         elif type( self.master ) in self.all_Float      :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
         elif type( self.master ) in self.all_Int        :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
         elif type( self.master ) == type( numpy.array([1])):self._return_ = '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0), bm.fg.blue)
-        elif type( self.master ) == type( pd.DataFrame({'r':[0, 0]})) : self._return_ = '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,40), bm.fg.blue) 
+        elif type( self.master ) == type( pd.DataFrame({'r':[0, 0]})) : self._return_ = '{}{}table(){}'.format(bm.fg.blue, bm.fg.rbg(204,153,255), bm.fg.blue) 
         else:  self._return_ = 'type not found'
 
         return self._return_+bm.init.reset

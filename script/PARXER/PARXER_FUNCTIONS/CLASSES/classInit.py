@@ -1,3 +1,4 @@
+import pandas as pd
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import error as er
@@ -5,6 +6,7 @@ from src.classes                                    import loading, readfile, ch
 from src.classes.Chars                              import Char
 from src.classes.Lists                              import Lists
 from src.classes.Cplx                               import cplx 
+from src.classes.frame                              import frame
 from src.classes.Tuples                             import Tuples
 from src.classes.Unions                             import union    
 from src.functions                                  import loading as load         
@@ -402,6 +404,9 @@ class CLASS_TREATMENT:
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
                                             'size', 'round', 'rand', 'choice' ]
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
+                self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
+                                           'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis']
+                self.table              = ['frame', 'show', 'set_id', 'select', 'keys']
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
                     
@@ -508,6 +513,25 @@ class CLASS_TREATMENT:
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                     
+                    elif type(self.value) == type(pd.DataFrame({"s":[1]})):
+                        if self.main_name == self.main_expr: 
+                            if self.name != self.expr:
+                                if self.name in self.table:
+                                    self.historyOfFunctions.append( self.name )
+                                    self.expression         = 'def '+self.expr+ ':'
+                                    self.dictionary         = {
+                                    'functions'             : [],
+                                    'func_names'            : []
+                                    }
+                                    self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
+                                                                                self.line ).MAIN( def_key = 'indirect' )
+                                    if self.error is None: 
+                                        self.final_values, self.error = frame.DATA( self.DataBase, self.line, self.value,
+                                                                            self.name, self.dictionary[ 'functions' ]).FRAME( self.main_name, self.normal_expr )
+                                    else: pass    
+                                else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'table( )' )
+                            else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                     else: self.error = er.ERRORS( self.line ).ERROR31( self.main_name )
                 
                 elif self.main_name in  self.DataBase[ 'open' ][ 'name' ]:

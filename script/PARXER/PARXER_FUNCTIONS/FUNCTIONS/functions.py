@@ -351,6 +351,7 @@ class FUNCTION_TREATMENT:
                                     if self.new_data_base[ 'empty_values' ] is None:
                                         self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
                                                                         self.line).DEF_STATEMENT( 1, self.all_data_analyses )
+                                        
                                         if self.error is None:
                                             self.data_base['irene']     = self.new_data_base['irene']
                                             self.initialize_values      = self.new_data_base[ 'variables' ]

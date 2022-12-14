@@ -1,9 +1,13 @@
 import numpy as np 
 from script.STDIN.LinuxSTDIN     import bm_configure as bm
 from script.STDIN.LinuxSTDIN     import ascii
+import pandas as pd
+from CythonModules.Linux         import frame
 
 
 cdef run( master):
+    cdef:
+        bint table = False
     if type(master) in [type(int()), type(float()), type(complex()) , type(bool()), type(None)]: master = str(master)
     elif type(master) == type(list()): master = str( LIST(master).LIST())
     elif type(master) == type(tuple()): master = str( TUPLE(master).TUPLE())
@@ -211,9 +215,10 @@ cdef class show:
         if self.master: 
             for i in range(len(self.master)):
                 if type(self.master[i]) == type(complex()): self.final[i] = bm.fg.cyan+str(self.master[i])+bm.init.reset
+                elif type(self.master[i]) == type(pd.DataFrame({"s":[1,2]})): 
+                    self.final[i] = frame.FRAME({"s": self.master[i], 'id':list(self.master[i].index)}, 1).FRAME(False, 'DataFrame', True, True)
                 else: self.final[i] = run( self.master[i] )
         else: pass 
-
         return self.final
 
 

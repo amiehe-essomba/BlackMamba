@@ -1,3 +1,4 @@
+from module encoding load fg, bg
 
 class data:
 	def initialize(values:dict/list/tuple, columns : list/tuple/none=None, index : int/none=None):
@@ -19,5 +20,28 @@ class data:
 	
 	def select(column : int = 0):
 		_std_ * [values, "select", column, "DataFrame"]
+	end:
+	
+	def keys():	
+		if ? values == ? {}:
+			if values:
+				return values.get("keys")
+			else:
+				return None
+			end:
+		else:
+			if columns:
+				return columns
+			else:
+				y = config.bold()+fg(255, 255, 0)
+				w = config.bold()+fg(255,255,255)
+				g = config.bold()+fg(0,255,0)
+				r = config.bold()+fg(255,0,0)
+				re = config.reset()
+				line = GetLine()
+				b = config.bold()+fg(0,0,255)
+				__show__ * "{g}ValueError : {r}columns {w} is {g}empty. {w}line : {y}{line} {w}in {g}keys( ){w} / {r} class {b}data( ) {re}"
+			end:
+		end:
 	end:
 end:

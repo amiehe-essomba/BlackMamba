@@ -24,7 +24,8 @@ setup(
             'dictionary.pyx',
             'Trigo.pyx',
             'show.pyx', 
-            'frame.pyx'
+            'frame.pyx',
+            'progress_bar.pyx'
             ], 
         annotate = True
         )

@@ -352,6 +352,7 @@ class SUB_STRING:
         self.storage        = storage[ : ]                                                                              # a storing list
         self.len_storage    = len( self.storage )
         self.key_break      = False
+        self.if_line        = self.line
         #######################################################################
         self.max_emtyLine        = 5
         # set color on yellow
@@ -688,6 +689,7 @@ class SUB_STRING:
                 #printing and initializing of values
                 elif self.char in {10, 13}:
                     self.string_line += 1
+                    self.if_line += 1
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     # print the final input with its transformations 
                     if self.term == 'orion':  print(self.main_input+bm.words(string=self.s, color=bm.fg.rbg(255,255,255)).final())

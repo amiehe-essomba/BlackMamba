@@ -120,7 +120,7 @@ class SHOW :
         self.all_Int        = [ numpy.int8, numpy.int16, numpy.int32, numpy.int64 ]
 
         if   self.master == type( list())       :   self._return_ = bm.fg.rbg(255, 255, 0)
-        elif self.master == type( dict() )      :   self._return_ = self.magenta
+        elif self.master == type( dict() )      :   self._return_ = bm.fg.rbg(186,85,211)
         elif self.master == type( int() )       :   self._return_ = self.red
         elif self.master == type( float() )     :   self._return_ = bm.fg.rbg(0, 255, 0)
         elif self.master == type( tuple() )     :   self._return_ = self.blue

@@ -131,3 +131,29 @@ class cursor:
 		__scan__ * "dim", None
 	end:
 end:
+
+class progress:
+	def bar(Start : int = 0, Stop:int=100, style: int = 0):
+		if Start >= 0:
+			if Stop > Start:
+				__scan__ * "progress_bar", [Start, Stop, style]
+			else:
+				y = config.bold()+fg(255, 255, 0)
+				w = config.bold()+fg(255,255,255)
+				g = config.bold()+fg(0,255,0)
+				r = config.bold()+fg(255,0,0)
+				re = config.reset()
+				line = GetLine()
+				__show__ * "{g}ValueError : {r}Start {w} is bigger than {r}Stop. {w}line : {y}{line} {w}in {g}progress_bar( ){re}"
+			end:
+		else:
+			y = config.bold()+fg(255, 255, 0)
+			w = config.bold()+fg(255,255,255)
+			g = config.bold()+fg(0,255,0)
+			r = config.bold()+fg(255,0,0)
+			re = config.reset()
+			line = GetLine()
+			__show__ * "{g}ValueError : {r}Start {w} is negative. {w}line : {y}{line} {w}in {g}progress_bar( ){re}"
+		end:
+	end:
+end:

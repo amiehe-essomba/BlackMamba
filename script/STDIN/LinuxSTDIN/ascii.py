@@ -47,3 +47,9 @@ def frame(custom : bool = False):
 		
 		f = {'ul':up_l, 'ur':up_r, 'dl':down_l, 'dr':down_r, 'm1':med1,'m2':med2, 'm3':med3, 'v':ver, 'h':hor, 'vl':vl, 'vr': vr}
 	return f
+
+def progress_bar(style : int = 0, c:str="", r:str=""):
+    if 		style == 1: return c+chr(10074)+r
+    elif 	style == 2: return c+chr(9632)+r
+    
+    

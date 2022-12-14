@@ -25,6 +25,7 @@ from CythonModules.Linux            import Tuple
 from CythonModules.Linux            import arithmetic_analyze as aa
 from CythonModules.Linux            import array_to_list as atl  
 from CythonModules.Linux            import frame
+from CythonModules.Linux            import progress_bar
 from IDE.EDITOR                     import scan
 from IDE.EDITOR                     import test 
 from IDE.EDITOR                     import true_cursor_pos as cursor_pos
@@ -266,7 +267,8 @@ class C_F_I_S:
                                             elif self._value_[ -1 ] in [ 'help' ]:
                                                 help.HELP(self._value_[ 0 ]).HELP()
                                             elif self._value_[ -1 ] in [ 'DataFrame' ]:
-                                                func = bm.fg.rbg(0, 255, 0   )+f' in {self._value_[ 1 ]}( ).' + bm.init.reset 
+                                                func = bm.fg.rbg(0, 255, 0   )+f' in {self._value_[ 1 ]}( ).' +bm.fg.rbg(255,255,255)+\
+                                                            ' / '+bm.fg.rbg(255, 255, 0)+"class " +bm.fg.rbg(0, 0, 255) +"data"+ bm.init.reset 
                                                 if self._value_[ 1 ] == "frame":
                                                     self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
                                                 elif self._value_[ 1 ] == "set_id":
@@ -275,17 +277,18 @@ class C_F_I_S:
                                                         self.id_ = self._value_[2]
                                                         self.keys_ = list(self.final_value.keys())
                                                         if self.id_< len(self.keys_):
-                                                            self.final_value = self.final_value.set_index(self.keys_[self.id_], inplace=True)    
+                                                            self.final_value.set_index(self.keys_[self.id_], inplace=True)    
                                                         else: self.error = er.ERRORS( self.line ).ERROR45( func=func )
                                                     else: pass
                                                 elif self._value_[ 1 ] == "select":
                                                     self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
                                                     if self.error is None:
-                                                        self.id_ = self._value_[2]
-                                                        self.keys_ = list(self.final_value.keys())
-                                                        if self.id_< len(self.keys_):
-                                                            self.final_value = self.final_value[self.keys_[self.id_]].tolist()
-                                                        else: self.error = er.ERRORS( self.line ).ERROR45( func=func )
+                                                        self.id_    = self._value_[2]
+                                                        self.keys_  = list(self.final_value.keys())
+                                                        try: 
+                                                            self.name = self.keys_[ self.id_]
+                                                            self.final_value = self._value_[0][ self.name ]
+                                                        except IndexError : self.error = er.ERRORS( self.line ).ERROR45( func=func )
                                                     else:pass
                                                 elif self._value_[ 1 ] == "show":
                                                     show, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
@@ -524,6 +527,7 @@ class C_F_I_S:
                                     elif self._values_[ 0 ] == "restore"         : self.final_value = ""; sys.stdout.write(bm.save.restore)
                                     elif self._values_[ 0 ] == "move_to"         : self.final_value = ""; sys.stdout.write(bm.cursorPos().to(self._values_[1][0], self._values_[1][1])) #cursorPos
                                     elif self._values_[ 0 ] == "dim"             : self.final_value = test.get_linux_ter()
+                                    elif self._values_[ 0 ] == "progress_bar"    : progress_bar.progress(self._values_[1][0], self._values_[1][1]).bar(self._values_[1][2])
                                     elif self._values_[ 0 ] == "unicode"         : 
                                         self.seg = self._values_[ 1 ].split("[")
                                         if len(self.seg) > 1:
