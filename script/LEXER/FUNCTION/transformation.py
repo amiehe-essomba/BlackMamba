@@ -26,6 +26,7 @@ from CythonModules.Linux            import arithmetic_analyze as aa
 from CythonModules.Linux            import array_to_list as atl  
 from CythonModules.Linux            import frame
 from CythonModules.Linux            import progress_bar
+from CythonModules.Linux            import Trees
 from IDE.EDITOR                     import scan
 from IDE.EDITOR                     import test 
 from IDE.EDITOR                     import true_cursor_pos as cursor_pos
@@ -528,6 +529,9 @@ class C_F_I_S:
                                     elif self._values_[ 0 ] == "move_to"         : self.final_value = ""; sys.stdout.write(bm.cursorPos().to(self._values_[1][0], self._values_[1][1])) #cursorPos
                                     elif self._values_[ 0 ] == "dim"             : self.final_value = test.get_linux_ter()
                                     elif self._values_[ 0 ] == "progress_bar"    : progress_bar.progress(self._values_[1][0], self._values_[1][1]).bar(self._values_[1][2])
+                                    elif self._values_[ 0 ] == "Trees"           : 
+                                        self.s = Trees.Trees( self._values_[1][0]).Trees(self._values_[1][1]) 
+                                        sys.stdout.write( self.s+'\n' )
                                     elif self._values_[ 0 ] == "unicode"         : 
                                         self.seg = self._values_[ 1 ].split("[")
                                         if len(self.seg) > 1:

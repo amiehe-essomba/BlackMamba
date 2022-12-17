@@ -163,6 +163,14 @@ class black_mamba:
                 # breaking loop while with the keyboardError
                 if self.char == 3:
                     self.error = IfError.ERRORS(self.if_line).ERROR4()
+                    sys.stdout.write(bm.clear.screen(pos=1))
+                    sys.stdout.write(bm.cursorPos.to(0,0))
+                    sys.stdout.write(bm.clear.screen(pos=0))
+                    sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                    sys.stdout.write(bm.clear.line(pos=0))
+                    self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
+                    print(self._keyboard_)
                     break
                 # writing char
                 elif 32 <= self.char <= 126:
@@ -557,5 +565,8 @@ class black_mamba:
     
 
 if __name__ == '__main__':
+    terminal = "orion"
+    os.system('clear')
     c= bm.fg.rbg(255,255,0)
-    s, n = black_mamba({}, 0).editor(c, "orion")
+    sys.stdout.write(bm.save.save)
+    s, n = black_mamba({}, 0).editor(c, terminal)

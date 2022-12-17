@@ -19,8 +19,8 @@ cdef run( master):
 
 def String( str master):
     if master:
-        if len( master ) <= 10: pass
-        else: master = master[: 9 ] + '....' + master[-1]
+        if len( master ) <= 20: pass
+        else: master = master[: 19 ] + '....' + master[-1]
     else: pass
 
     return master 

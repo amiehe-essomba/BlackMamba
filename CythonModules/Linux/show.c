@@ -2066,7 +2066,7 @@ static PyObject *__pyx_f_4show_run(PyObject *__pyx_v_master) {
  * 
  * def String( str master):             # <<<<<<<<<<<<<<
  *     if master:
- *         if len( master ) <= 10: pass
+ *         if len( master ) <= 20: pass
  */
 
 /* Python wrapper */
@@ -2109,8 +2109,8 @@ static PyObject *__pyx_pf_4show_String(CYTHON_UNUSED PyObject *__pyx_self, PyObj
  * 
  * def String( str master):
  *     if master:             # <<<<<<<<<<<<<<
- *         if len( master ) <= 10: pass
- *         else: master = master[: 9 ] + '....' + master[-1]
+ *         if len( master ) <= 20: pass
+ *         else: master = master[: 19 ] + '....' + master[-1]
  */
   __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_master); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
   if (__pyx_t_1) {
@@ -2118,20 +2118,20 @@ static PyObject *__pyx_pf_4show_String(CYTHON_UNUSED PyObject *__pyx_self, PyObj
     /* "show.pyx":22
  * def String( str master):
  *     if master:
- *         if len( master ) <= 10: pass             # <<<<<<<<<<<<<<
- *         else: master = master[: 9 ] + '....' + master[-1]
+ *         if len( master ) <= 20: pass             # <<<<<<<<<<<<<<
+ *         else: master = master[: 19 ] + '....' + master[-1]
  *     else: pass
  */
     __pyx_t_2 = PyObject_Length(__pyx_v_master); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 22, __pyx_L1_error)
-    __pyx_t_1 = ((__pyx_t_2 <= 10) != 0);
+    __pyx_t_1 = ((__pyx_t_2 <= 20) != 0);
     if (__pyx_t_1) {
       goto __pyx_L4;
     }
 
     /* "show.pyx":23
  *     if master:
- *         if len( master ) <= 10: pass
- *         else: master = master[: 9 ] + '....' + master[-1]             # <<<<<<<<<<<<<<
+ *         if len( master ) <= 20: pass
+ *         else: master = master[: 19 ] + '....' + master[-1]             # <<<<<<<<<<<<<<
  *     else: pass
  * 
  */
@@ -2140,7 +2140,7 @@ static PyObject *__pyx_pf_4show_String(CYTHON_UNUSED PyObject *__pyx_self, PyObj
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
         __PYX_ERR(0, 23, __pyx_L1_error)
       }
-      __pyx_t_3 = PySequence_GetSlice(__pyx_v_master, 0, 9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __pyx_t_3 = PySequence_GetSlice(__pyx_v_master, 0, 19); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = PyNumber_Add(__pyx_t_3, __pyx_kp_s__2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
@@ -2161,15 +2161,15 @@ static PyObject *__pyx_pf_4show_String(CYTHON_UNUSED PyObject *__pyx_self, PyObj
  * 
  * def String( str master):
  *     if master:             # <<<<<<<<<<<<<<
- *         if len( master ) <= 10: pass
- *         else: master = master[: 9 ] + '....' + master[-1]
+ *         if len( master ) <= 20: pass
+ *         else: master = master[: 19 ] + '....' + master[-1]
  */
     goto __pyx_L3;
   }
 
   /* "show.pyx":24
- *         if len( master ) <= 10: pass
- *         else: master = master[: 9 ] + '....' + master[-1]
+ *         if len( master ) <= 20: pass
+ *         else: master = master[: 19 ] + '....' + master[-1]
  *     else: pass             # <<<<<<<<<<<<<<
  * 
  *     return master
@@ -2195,7 +2195,7 @@ static PyObject *__pyx_pf_4show_String(CYTHON_UNUSED PyObject *__pyx_self, PyObj
  * 
  * def String( str master):             # <<<<<<<<<<<<<<
  *     if master:
- *         if len( master ) <= 10: pass
+ *         if len( master ) <= 20: pass
  */
 
   /* function exit code */
@@ -8859,7 +8859,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * def String( str master):             # <<<<<<<<<<<<<<
  *     if master:
- *         if len( master ) <= 10: pass
+ *         if len( master ) <= 20: pass
  */
   __pyx_tuple__15 = PyTuple_Pack(1, __pyx_n_s_master); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
@@ -9312,7 +9312,7 @@ if (!__Pyx_RefNanny) {
  * 
  * def String( str master):             # <<<<<<<<<<<<<<
  *     if master:
- *         if len( master ) <= 10: pass
+ *         if len( master ) <= 20: pass
  */
   __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_4show_1String, NULL, __pyx_n_s_show); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);

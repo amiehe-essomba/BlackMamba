@@ -25,7 +25,8 @@ setup(
             'Trigo.pyx',
             'show.pyx', 
             'frame.pyx',
-            'progress_bar.pyx'
+            'progress_bar.pyx',
+            'Trees.pyx'
             ], 
         annotate = True
         )

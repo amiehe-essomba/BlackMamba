@@ -157,3 +157,9 @@ class progress:
 		end:
 	end:
 end:
+
+class Tree:
+	def Tree(master : dict, main : string = "Tree"):
+		__scan__ * "Trees", [master, main]
+	end:
+end:
