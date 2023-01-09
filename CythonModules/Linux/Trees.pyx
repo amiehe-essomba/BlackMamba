@@ -18,7 +18,8 @@ cdef class Trees:
         cdef:
             list values, keys
             unsigned long int i, length, len_
-            str string , s
+            str string , s, _str_
+            list _key_ = []
 
         if m == 0 :
             string = " " * m + bm.init.bold+bm.fg.rbg(255,0,0)+"{}\n".format(main)+bm.init.reset+"{}\n".format(sym(0))
@@ -33,6 +34,8 @@ cdef class Trees:
             len_    = 0
 
             for i in range( length):
+                _str_ =bm.words(keys[i], bm.fg.rbg(255, 255, 255)).final()
+
                 if len(keys[i]) > len_: len_ = len(keys[i])
                 else: pass
 
@@ -68,6 +71,7 @@ cdef class Trees:
             length_ = len(keys_)
 
             for i in range( length_):
+                keys_[i] =bm.words(keys_[i], bm.fg.rbg(255, 255, 255)).final()
                 if len(keys_[i]) > len_: len_ = len(keys_[i])
                 else: pass
 
@@ -102,6 +106,7 @@ cdef class Trees:
             length_ = len(keys_)
             
             for i in range( length_):
+                keys_[i] =bm.words(keys_[i], bm.fg.rbg(255, 255, 255)).final()
                 if len(keys_[i]) > len_: len_ = len(keys_[i])
                 else: pass
 

@@ -26,7 +26,8 @@ setup(
             'show.pyx', 
             'frame.pyx',
             'progress_bar.pyx',
-            'Trees.pyx'
+            'Trees.pyx',
+            'handling_list.pyx'
             ], 
         annotate = True
         )
