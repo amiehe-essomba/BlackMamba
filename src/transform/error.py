@@ -48,7 +48,7 @@ class ERRORS:
         error = '{}line: {}{}'.format( self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
         
-        return self.error+self.resert
+        return self.error+self.reset
 
     def ERROR5(self, string: str, _char_ = 'a string', func: str = ''):
         error = '{}is not  {}{}() {}type. {}line: {}{}'.format(self.white, self.yellow, _char_, self.yellow, self.white, self.yellow, self.line)
@@ -75,7 +75,7 @@ class ERRORS:
       
         self.error = fe.FileErrors( 'TypeError' ).Errors() + '{}<< {} >> '.format(self.cyan, string) + error + func
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR9(self, string: str, func: str = ''):
         error = '{}is not  {}a list(), {}a tuple(), {}a range() {}or a string() {}type. {}line: {}{}'.format(self.white, self.yellow, self.blue,
@@ -282,3 +282,69 @@ class ERRORS:
         self.error = fe.FileErrors( 'ZeroDivisionError' ).Errors() +'{}division by zero. {}line: {}{}'.format(self.yellow, self.white, 
                                                                                                             self.yellow, self.line)
         return self.error+self.reset
+    
+    def ERROR36(self, string: str ="", func: str = ""):
+        error = '{}dictionary. {}line: {}{}'.format(self.magenta, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('KeyError').Errors() + 'The key {}{} {}is already defined in the'.format(self.white, self.cyan, string, self.white) + error + func
+
+        return self.error + self.reset
+    
+    def ERROR37(self, func: str = ""):
+        error = '{}[{}"orion"{}, {}"pegasus"{}]. {}line: {}{}'.format(self.white, self.cyan, self.white, self.cyan ,self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}Terminal name not in '.format(self.white) + error + func
+
+        return self.error + self.reset
+    
+    def ERROR38(self, func: str = "", lists: list = []):
+        s=['white', 'blue', 'black', 'red', 'cyan', 'magenta', 'orange', 'green', 'yellow']
+        s=self.white+'['+self.reset
+        for i, w in enumerate(lists):
+            if i < len(lists)-1: s += self.cyan+w+self.white+", "
+            else: s += self.cyan+w+self.white+"]"+self.reset
+        error = '{}. {}line: {}{}'.format(s, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}fg {}not in '.format(self.red, self.white) + error + func
+
+        return self.error + self.reset
+    
+    def ERROR39(self, func: str = ""):
+        error = '{}string length sould be {}1. {}line: {}{}'.format(self.white, self.red, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}char {}argument is defined on {}True '.format(self.red, self.white, self.cyan) + error + func
+
+        return self.error + self.reset
+    
+    def ERROR40(self, func: str = "", s: str="r"):
+        error = '{}not in {}[{}0{}:{}256{}]. {}line: {}{}'.format(self.white, self.cyan, self.red, self.white, self.red, self.cyan,
+                                                        self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} '.format(self.red, s) + error + func
+
+        return self.error + self.reset
+    
+    def ERROR41(self, func: str = ""):
+        error = ', {}but string found. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('TypeError').Errors() + '{}expected a {}char'.format(self.white, self.cyan) + error + func
+
+        return self.error + self.reset
+    
+    def ERROR42(self, func: str = ""):
+        error = '{}entry. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}ansi '.format(self.cyan) + error + func
+
+        return self.error + self.reset
+    
+    def ERROR43(self, func: str = ""):
+        error = '{}entry. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('OverFlowError').Errors() + '{}ansi '.format(self.cyan) + error + func
+
+        return self.error + self.reset
+    
+    def ERROR44(self, func: str = ""):
+        error = '{}Bad entry use{}\u001b[. {}line: {}{}'.format(self.red, self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('UnicodeError').Errors() + error + func
+
+        return self.error + self.reset
+    
+    def ERROR45(self, func: str = "", s = 'column'):
+        error = '{}{} {}out of range. {}line: {}{}'.format(self.red, s, self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('IndexError').Errors() + error + func
+
+        return self.error + self.reset

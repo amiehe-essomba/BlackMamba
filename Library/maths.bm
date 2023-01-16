@@ -359,7 +359,65 @@ class statistics:
 end:
 
 class math:
-	def sorted( master : list, reverse : bool = False) : 
-		return master.sorted(reverse = reverse)
+	def initialize():
+		self.pi = 4.0 * getPI.atan( 1.0 )
+		self.tau =  2.0* pi
+		self.e = getPI.exp( 1.0 )
+	end:
+	
+	def sorted( master : list/tuple/dict, reverse : bool = False, key : string = 'keys') -> any: 
+		if ? master == ? []:
+			return master.sorted(reverse = reverse)
+		elif ? master == ? ():
+			master = list( master )
+			return tuple( master.sorted(reverse=reverse))
+		else:
+			return master.sorted((reverse, key))
+		end:
+	end:
+	def round( master : float, n : int) -> float:
+		sp = string( master )
+		s1, s2 = sp.split( "." )[0], sp.split( "." )[1]
+		if n > 0:
+			if length(s2) <= n:
+				return master 
+			else:	
+				sub = sp[1]
+				ss = "{s1}.{s2[_:n]}"
+				return float( ss )
+			end:
+		else:
+			line = GetLine()
+			re, b, w, y, g = ansi("r", "reset"), ansi("bd", "bold"), ansi("fgl", "W"), ansi("fg", "Y"), ansi("fg", "G")
+			r, be=ansi("fg", "R"), ansi("fgl", "B")
+			error = "{b}{g}ValueError : {y}n {w}cannot be negative. line : {y}{line}{re}."
+			details = "\n{w}in {b}{be}module({y}'maths'{be}){w}/{r}class({y}'math'{r}){w}/{g}function({y}'round'{g}){re}."
+			__show__ * error+details
+		end:
+	end:
+	def floor( master: float) -> integer:
+		str = string( master )
+		str = str.split(".")[0]
+		return integer( str )	
+	end:	
+	def modulo( x:int/cplx/float/bool, y:float/int/bool) -> any:
+		if y != 0:
+			return x % y
+		else:
+			line = GetLine()
+			re, b, w, y, g = ansi("r", "reset"), ansi("bd", "bold"), ansi("fgl", "W"), ansi("fg", "Y"), ansi("fg", "G")
+			r, be, c=ansi("fg", "R"), ansi("fgl", "B"), ansi("fgl", "C")
+			error = "{b}{c}ZeroDivisionError : {y}modulo by zero. {w}line : {y}{line}{re}."
+			details = "\n{w}in {b}{be}module({y}'maths'{be}){w}/{r}class({y}'math'{r}){w}/{g}function({y}'modulo'{g}){re}."
+			__show__ * error+details
+		end:
+	end:
+	
+	def sign( master:float/int/bool ) -> string:
+		if master >= 0:
+			return "+"
+		else:
+			return "-"
+		end:
 	end:
 end:

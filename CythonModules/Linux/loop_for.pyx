@@ -1,8 +1,11 @@
-#from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer import NEXT_ANALYZE
+#from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer    import NEXT_ANALYZE
 from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import for_analyze 
 from loop                                               import mainFor
+from CythonModules.Linux.TRANSPILER                     import all_data as AD
+from script.PARXER.WINParxer                            import transpiler as trans
+from numba import njit, jit, cfunc
 
 cdef dict UPDATING(dict base, str name, value):
     cdef :
@@ -28,9 +31,10 @@ cdef class LOOP:
             self.variables      = self.DataBase[ 'variables' ][ 'vars' ]
             self._values_       = self.DataBase[ 'variables' ][ 'values' ]
 
+    #@njit(parallel=True)
     cpdef LOOP( self, list for_values, str var_name, tuple loop_list = () ):
         cdef:
-            str     error, normal_string, err
+            str     error, normal_string, err, _str_
             dict    before
             dict    loop
             list    print_values
@@ -54,6 +58,7 @@ cdef class LOOP:
             dict    subfor_value
             list    subfor_values
             tuple   all_for_values
+            list    _history_ = []
 
         counting    = 0
         doubleKey   = False
@@ -97,11 +102,13 @@ cdef class LOOP:
                                     
                                     error    = for_analyze.NEXT_ANALYZE( normal_string, self.DataBase,
                                             ( self.line+for_line ) ).SUB_SUB_ANALYZE( _lexer_ = lexer )
-
-                                    #error    = for_statement.NEXT_ANALYZE( normal_string, self.DataBase,
-                                    #        ( self.line+for_line ) ).SUB_ANALYZE( _type_ = 'loop', _lexer_ = lexer )
                                     
-                                    if not error: 
+                                    if not error:
+                                        #if i == 0: 
+                                        #    _str_ = AD.DATA(lexer, self.DataBase, 1).SORTING()
+                                        #    _history_.append(_str_)
+                                        #else: pass
+
                                         if   self.DataBase[ 'break' ] is None: pass 
                                         else:
                                             self.DataBase[ 'break' ] = None 
@@ -204,6 +211,10 @@ cdef class LOOP:
                             else: pass
                         else: pass
                     if not error: 
+                        #if i == 0:
+                        #    trans.TRansPiler(self.DataBase, ( self.line+for_line ), _history_).Transformation()
+                        #else: pass
+
                         if doubleKey is False: 
                             if broke is True:  exit()
                             else: pass 
@@ -214,6 +225,7 @@ cdef class LOOP:
             return [None if not error else error ][0]
         else: return [None if not error else error ][0]
 
+    #@njit(parallel=True)
     cdef SubLOOP( self, list for_values, str var_name, tuple loop_list = () ):
         cdef:
             str     error, normal_string, err

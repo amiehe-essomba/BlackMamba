@@ -18,10 +18,13 @@ from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile 
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
 from src.functions.windows                                  import windowsDef           as WD
 from src.classes.windows                                    import windowsClass         as WC
-from script.PARXER                                          import partial_assembly
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import WindowsFor           as wFor
 from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import WindowsTry           as wTry
 from loop                                                   import mainFor
+from CythonModules.Linux.PARTIAL_PARSER                     import partial
+
+#################transpiler #####################
+from script.PARXER.WINParxer import transpiler as trans
 
 class ASSEMBLY( ):
     def __init__(self, 
@@ -55,6 +58,7 @@ class ASSEMBLY( ):
         self.all_data_vars      = list( self.master.keys() )
         # list of function which can be returned by the lexer 
         self.structure          = [ 'begin', 'if', 'loop_for', 'loop_until', 'loop_while', 'try', 'unless', 'switch' ]
+        self.sys                = "linux" 
 
         # checking data 
         for i , data in enumerate( self.all_data_vars ):
@@ -70,10 +74,11 @@ class ASSEMBLY( ):
         if self.active_function == 'all_data':
             # numerical calculation 
             if   self.master[ 'function' ] is None      :
-                self.error = partial_assembly.ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
+                self.error = partial.ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
                 self.data_base['matrix'] = None
             # active_function detected if function 
             elif self.master[ 'function' ] == 'if'      :
+                
                 self.newLine                    = self.line 
                 # computing the boolean value
                 self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
@@ -159,11 +164,22 @@ class ASSEMBLY( ):
                 else: pass
             # active_function detected for function 
             elif self.master[ 'function' ] == 'for'     :
+                self.data_base['Transpiler_for']['key'] = 'for'
+                
                 self.newLine                    = self.line 
                 self._, self.value, self.error =  mainFor.FOR_BLOCK(normal_string =main_string, data_base=self.data_base, 
                                                 line=self.newLine).FOR( function = 'loop', interpreter = interpreter,   locked=False)
 
                 if self.error is None:
+                    self.data_base['Transpiler_for']['residus_head']['ope']     = 'in'
+                    self.data_base['Transpiler_for']['residus_head']['var']     = self.value['variable']
+                    self.data_base['Transpiler_for']['residus_head']['val']     = self.value['value']
+                    self.data_base['Transpiler_for']['variables']               = self.data_base['variables'].copy()
+                    
+                    #################transpiler#########################################  
+                    #trans.TRansPiler(self.data_base, self.newLine).Transformation()
+                    ####################################################################
+                    
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.tab, self.error = wFor.EXTERNAL_FOR_WINDOWS(data_base=self.data_base,
                                     line=self.newLine , term=term).TERMINAL( tabulation=1, _type_='loop', c = bm.fg.rbg(255,255,255) )
@@ -216,6 +232,7 @@ class ASSEMBLY( ):
                         else: pass 
                     else: pass
                 else: pass
+            
             else: pass
         # no functions detected 
         else:
@@ -273,7 +290,7 @@ class ASSEMBLY( ):
                 elif self.data_base[ 'importation' ]   is not None:
                     self.modules = self.data_base[ 'importation' ] 
                     # checking the modules loaded exist in Lib or current directory
-                    self.dataS, self.info, self.error = moduleMain.TREATMENT( self.modules, self.data_base,  self.line ).MODULE_MAIN( main_string )
+                    self.dataS, self.info, self.error = moduleMain.TREATMENT( self.modules, self.data_base,  self.line, system=self.sys ).MODULE_MAIN( main_string )
                     if self.error is None:
                         # load module defined 
                         self.error = modules.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()

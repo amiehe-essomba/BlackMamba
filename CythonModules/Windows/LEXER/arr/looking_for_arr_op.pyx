@@ -1,4 +1,5 @@
 from CythonModules.Windows.LEXER.seg                import segError
+from CythonModules.Windows.LEXER.seg                import num
 from script                                         import control_string       as CS
 from CythonModules.Windows.LEXER                    import Dictionary           as DIC
 from CythonModules.Windows.LEXER.arr                import func_check           as FC
@@ -7,6 +8,7 @@ from CythonModules.Windows.LEXER.arr                import double_scanner       
 from CythonModules.Windows.LEXER.arr                import scanner              as S
 from CythonModules.Windows.LEXER                    import float_or_function    as FOF
 from CythonModules.Windows.LEXER.arr                import arrError             as AE
+from CythonModules.Windows.LEXER.arr                import sub_checking_arr_op  as LFO
 
 cdef class ARITHMETIC_OPERATORS:
     cdef public:
@@ -20,8 +22,7 @@ cdef class ARITHMETIC_OPERATORS:
         list arithmetic_operators, accpeted_chars, accpeted_chars_, upper , lower
 
     cdef:
-        unsigned long long int number
-        unsigned long long int left, rigth
+        unsigned long long int number, left, rigth
         list initialize,storage_operators, storage_data, store_operators
         bint if_key_is_true
         str string_in_true, string, chaine, _string_, new_string, string_num
@@ -67,7 +68,7 @@ cdef class ARITHMETIC_OPERATORS:
         self.final_value            = {}
         self.chaine                 = ""
         
-    cdef CHAR_SELECTION(self, str _char_ = ""):
+    cdef ARITHMETIC_OPAERATORS(self):
         cdef :
             unsigned long long int Len
             signed long long int i, k
@@ -193,12 +194,12 @@ cdef class ARITHMETIC_OPERATORS:
                                             self.error = S.SCANNER( __string__, self.data_base, self.line ).SCANNER( self.new_string )
 
                                             if not self.error :
-                                                store_data, store_operators, self.error = ARITHMETIC_OPERATORS(
-                                                                self.__string__, self.data_base,  self.line).ARITHMETIC_OPAERATORS() ###
+                                                store_data, store_operators, self.error = LFO.ARITHMETIC_OPERATORS(
+                                                                __string__, self.data_base,  self.line).ARITHMETIC_OPAERATORS()
                                                 if not self.error:
                                                     if store_operators:
                                                         if len( store_data ) > 1:
-                                                            self.storage_data.append( op )
+                                                            self.storage_data.append( store_data )
                                                             self.storage_operators.append( store_operators )
                                                         else:
                                                             if len( store_operators ) <= 1 :
@@ -232,7 +233,7 @@ cdef class ARITHMETIC_OPERATORS:
                             if not self.error:
                                 if self.new_string[ 0 ] in self.accpeted_chars:
                                     self.storage_operators.append( str_ )
-                                    self.string                 = ''
+                                    self.string                 = ""
                                     self.activation_operators   = True
                                 else: break
                             else:
@@ -378,8 +379,8 @@ cdef class ARITHMETIC_OPERATORS:
                                                             self.error = S.SCANNER(__string__, self.data_base, self.line).SCANNER( self.new_string )
 
                                                             if not self.error:
-                                                                store_data, self.store_operators, self.error = ARITHMETIC_OPERATORS(
-                                                                            __string__, self.data_base, self.line).ARITHMETIC_OPAERATORS() #########
+                                                                store_data, self.store_operators, self.error = LFO.ARITHMETIC_OPERATORS(
+                                                                            __string__, self.data_base, self.line).ARITHMETIC_OPAERATORS() 
                                                                 if not self.error:
                                                                     if self.store_operators:
                                                                         if len( store_data ) > 1:
@@ -417,7 +418,7 @@ cdef class ARITHMETIC_OPERATORS:
                                                                     'type'          : 'dictionnary'
                                                                 }
 
-                                                                store_data, self.store_operators, self.error = ARITHMETIC_OPERATORS( __string__, 
+                                                                store_data, self.store_operators, self.error = LFO.ARITHMETIC_OPERATORS( __string__, 
                                                                         self.data_base, self.line  ).ARITHMETIC_OPAERATORS()
                                                                 if not self.error:
                                                                     dict_store[ 'values' ]      = store_data
@@ -429,7 +430,7 @@ cdef class ARITHMETIC_OPERATORS:
                                                                                     self.line).DELETE_SPACE( dict_value[ 1 : ][k], name="cython" )
                                                                         if not self.error :
                                                                             __string__, self.error = CS.STRING_ANALYSE(self.data_base, 
-                                                                                    self.line.CHECK_NAME( __string__, name="cython" )
+                                                                                    self.line).CHECK_NAME( __string__, name="cython" )
 
                                                                             if not self.error: dict_store[ 'names' ].append( __string__ )
                                                                             else: break
@@ -511,20 +512,20 @@ cdef class ARITHMETIC_OPERATORS:
                                                 'operators' : None,
                                                 'type'      : 'dictionnary'
                                             }
-                                            self._main_string   = store_data[ 0 ] # to delete
+                                       
                                             if self.numerical_num is True :
                                                 self.error = AE.ERRORS( self.line ).ERROR0( self.master )
                                                 break
                                             else:
                                                 if self.new_string[ 0 ] not in ['[', '(', '"', "'"]:
-                                                    s1, op1, self.error = ARITHMETIC_OPERATORS( store_data[ 0 ],
-                                                            self.data_base, self.line).ARITHMETIC_OPAERATORS() #########
+                                                    s1, op1, self.error = LFO.ARITHMETIC_OPERATORS( store_data[ 0 ],
+                                                            self.data_base, self.line).ARITHMETIC_OPAERATORS()
 
                                                     if not self.error:
                                                         self.dict_store[ 'values' ]     = s1
                                                         self.dict_store[ 'operators' ]  = op1
 
-                                                        for k in range(len(store_data[1:]))
+                                                        for k in range(len(store_data[1:])):
                                                             __string__, self.error = CS.STRING_ANALYSE(self.data_base, 
                                                                                     self.line).DELETE_SPACE( store_data[1:][k], name="cython" )
                                                             if not self.error:

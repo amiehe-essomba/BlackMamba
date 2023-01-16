@@ -1,12 +1,12 @@
-from CythonModules.Windows.DEEP_PARSER import arithmetic_checking as AR_C
-from CythonModules.Windows.DEEP_PARSER import final_result
+from CythonModules.Linux.DEEP_PARSER import arithmetic_checking as AR_C
+from CythonModules.Linux.DEEP_PARSER import final_result
 
 cdef class NUMERICAL:
     cdef public:
         unsigned long int line 
         dict master, data_base
     
-    def:
+    cdef:
         list value, arithmetic_operator, logical_operator, get_values
         list ar_op, num, numeric, _get_values_
         str error
@@ -27,10 +27,10 @@ cdef class NUMERICAL:
         self._get_values_       = []
         self.error              = ''
         
-    cdef LOGICAL_CHECKING(self, list values, list arithmetic, list logical):
+    cdef LOGICAL_CHECKING(self, list values, list arithmetic, list logical, str main_string):
   
         cdef:
-            unsigned long int i
+            signed long int i
             list _num_
 
         self.arithmetic_operator    = arithmetic
@@ -41,7 +41,8 @@ cdef class NUMERICAL:
             if self.logical_operator[i] is None:
                 self.get_values = [ self.values[ i ] ]
                 self.ar_op      = [ self.arithmetic_operator[ i ] ]
-                self.num, self.error = AR_C.NUMERICAL( self.master, self.data_base,  self.line ).ARITHMETIC_CHECKING( self.get_values, self.ar_op )
+                self.num, self.error = AR_C.NUMERICAL( self.master, self.data_base,  
+                        self.line ).ARITHMETIC_CHECKING( self.get_values, self.ar_op, main_string )
                 
                 if not self.error:  self.numeric.append( self.num[ 0 ] )
                 else:  break
@@ -59,7 +60,8 @@ cdef class NUMERICAL:
                     else:  self._get_values_   = [ self.get_values[ j ] ]
 
                     self.ar_op              = [ self.arithmetic_operator[ i ][ j ] ]
-                    self.num, self.error    = AR_C.NUMERICAL(self.master, self.data_base, self.line).ARITHMETIC_CHECK( self._get_values_, self.ar_op )
+                    self.num, self.error    = AR_C.NUMERICAL(self.master, self.data_base, 
+                            self.line).ARITHMETIC_CHECK( self._get_values_, self.ar_op, main_string )
 
                     if not self.error :  _num_.append( self.num[ 0 ] )
                     else:  break

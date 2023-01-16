@@ -16,7 +16,7 @@ class STAT:
         
         self.type_accepted  = [type(list()), type(tuple()), type(range(1))]
         func = bm.fg.rbg(0, 255, 0   )+' in {}( ).'.format(self._value_[ 2 ]) + bm.init.reset 
-    
+        
         if type( self._value_[ 0 ] ) in self.type_accepted:
             if self._value_[ 0 ]:
                 if self._value_[ 1 ]:

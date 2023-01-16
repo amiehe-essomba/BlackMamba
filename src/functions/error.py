@@ -175,3 +175,18 @@ class ERRORS:
         error = '{}instead {} {}type. {}line: {}{}'.format(self.white, string2, self.white, self.white, self.yellow,self.line)
         self.error = fe.FileErrors('TypeError').Errors() + '{}returning type error. got {} '.format(self.white,  string1) + error
         return self.error + self.reset
+    
+    def ERROR25( self, name: str  ):
+        error = '{}cannot return any values. {}line: {}{}'.format(self.yellow, self.white, self.yellow,self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} '.format(self.cyan,  name) + error
+        return self.error + self.reset
+    
+    def ERROR26( self ):
+        error = '{}function is used you cannot assigned any value to an argument. {}line: {}{}'.format(self.white, self.white, self.yellow,self.line)
+        self.error = fe.FileErrors('AttributeError').Errors() + '{}anonymous '.format(self.self.red ) + error
+        return self.error + self.reset
+    
+    def ERROR27( self, name ):
+        error = '{}function is used {}{}( ) {}cannot be empty. {}line: {}{}'.format(self.white, self.green, name, self.white, self.white, self.yellow,self.line)
+        self.error = fe.FileErrors('AttributeError').Errors() + '{}anonymous '.format(self.red ) + error
+        return self.error + self.reset

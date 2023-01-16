@@ -47,12 +47,13 @@ try:
             data_from_file.append( line )
             
 except FileNotFoundError:
-    path_library    = '/media/amiehe/KEY/black_mamba/Library/iris.bm'
+    path_library    = '/home/amiehe/Desktop/python_bmamba_test/elena-royer/BlackMamba/Library/iris.bm'
+    #'/media/amiehe/KEY/black_mamba/Library/iris.bm'
     
     with open(file=path_library, mode='r') as file:
         for line in file.readlines():
             data_from_file.append( line.rstrip() )
-    
+
 if __name__ == '__main__':
     data_base   = db.DATA_BASE().STORAGE().copy()
     line        = 0
@@ -66,7 +67,7 @@ if __name__ == '__main__':
     data_base['modulesImport']['TrueFileNames']['line'].append(line)
     data_base['modulesImport']['TrueFileNames']['path'].append(None)
     data_base['modulesImport']['TrueFileNames']['names'].append('iris')
-    
+  
     if not data_from_file: pass 
     else:
         for x, string in enumerate( data_from_file ):

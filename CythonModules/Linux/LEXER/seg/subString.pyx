@@ -15,7 +15,7 @@ cdef class SUB_STRING:
     
     cdef :
         str error, chars, upper_case, lower_case
-        unsigned int space, string_line
+        unsigned int space, string_line, if_line
         str string, normal_string, close, string_rebuild
         list storage
         unsigned long long int len_storage
@@ -32,6 +32,7 @@ cdef class SUB_STRING:
         self.data_base      = data_base      
         # current line                                                                            
         self.line           = line     
+        self.if_line        = line
         # line inside while loop
         self.string_line    = 0           
         # space                                                                               

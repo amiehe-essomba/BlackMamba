@@ -4,11 +4,10 @@ __pycache__/
 *$py.class
 
 #modules c produced by Cython
+CythonModules/**/*.c
 
-CythonModules/*.c
-CythonModules/LEXER/*.c 
-CythonModules/LEXER/seg/*.c 
-CythonModules/DEEP_PARSER/*.c
+#modules html produced by Cython
+CythonModules/**/*.html
 
 # HTML
 *.html

@@ -12,7 +12,7 @@ cdef class BOOLEAN:
 
     cdef bint BOOLEAN_OPERATION(self, list operator):
         cdef:
-            unsigned long int i
+            signed long int i
             bint final = False
       
         for i in range(len(self.master)):
@@ -23,7 +23,7 @@ cdef class BOOLEAN:
         self._return_   = self.master[ 0 ]
         self.master     = self.master[ 1 : ]
 
-        for i range(len(operator)):
+        for i in range(len(operator)):
             if   operator[i] == 'or'    : self._return_ += self.master[ i ]
             elif operator[i] == 'and'   : self._return_ *= self.master[ i ]
 

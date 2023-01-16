@@ -11,8 +11,13 @@ from script.STDIN.LinuxSTDIN                        import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._TRY_           import tryError     as tryE
 from statement                                      import externalTry
 from updatingDataBase                               import updating
-try:  from CythonModules.Linux                      import loop_for
-except ImportError: from CythonModules.Windows      import loop_for
+
+try:
+    from CythonModules.Windows                      import loop_for
+except ImportError: 
+    from CythonModules.Linux                        import loop_for
+#except ImportError: from CythonModules.Windows      import loop_for
+
 try:
     from CythonModules.Windows                      import fileError as fe 
 except ImportError:

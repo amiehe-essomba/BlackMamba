@@ -142,14 +142,12 @@ class DICTIONARY:
         self.numeric            = self.master[ 'numeric' ]
         self._return_           = []
         self.historyOfFunctions = []
-        self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init'] 
+        self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted'] 
 
         if self.numeric is not None:
             self.dict_values, self.error = DICTIONARY( self.master, self.data_base, self.line ).DICT()
-            if self.error is None:
-                self._return_ = self.dict_values
-            else:
-                self.error = self.error
+            if self.error is None: self._return_ = self.dict_values
+            else:  pass 
 
         else:
             self._names_        = self.master[ 'names' ]
@@ -216,14 +214,12 @@ class DICT_FUNCTION:
                 self.len  = len( self.names )
                 for name in self.names:
                     name, self.error = self.control.DELETE_SPACE( name )
-                    if not check:
-                        check.append( name )
+                    if not check:  check.append( name )
                     else:
                         if name in check:
                             self.error = ERRORS( self.line ).ERROR6(self.master, name )
                             break
-                        else:
-                            check.append( name )
+                        else:  check.append( name )
 
                 if self.error is None:
                     self.names = check[ : ]
@@ -233,16 +229,10 @@ class DICT_FUNCTION:
                         else:
                             self.error = ERRORS( self.line ).ERROR7( name )
                             break
-                    if self.error is None:
-                        self._return_ = self.names
-                    else:
-                        self.error = self.error
-                else:
-                    self.error = self.error
-
-            else:
-                self.error = self.error
-
+                    if    self.error is None: self._return_ = self.names
+                    else: self.error = self.error
+                else:  self.error = self.error
+            else: self.error = self.error
         else:
             self.error = ERRORS( self.line ).ERROR4( main_string, self.master)
 
@@ -256,18 +246,15 @@ class KEYS:
     def KEY(self):
         self._return_       = None
 
-        if self.key == 'items':
-            self._return_ = self.master.items()
-        elif self.key == 'keys':
-            self._return_ = list( self.master.keys() )
+        if   self.key == 'items' : self._return_ = self.master.items()
+        elif self.key == 'keys'  : self._return_ = list( self.master.keys() )
         elif self.key == 'values':
             values = []
             for item,  value in self.master.items():
                 value.append( values )
             self._return_ = value
 
-        else:
-            pass
+        else: pass
 
 class ERRORS:
     def __init__(self, line:int):

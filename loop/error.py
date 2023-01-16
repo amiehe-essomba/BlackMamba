@@ -35,12 +35,12 @@ class ERRORS:
     def ERROR5(self, value):
         error = '{}a tuple(), {}a range(), {}or a string(), {}type. {}line: {}{}'.format(self.blue, self.green,
                                             self.cyan, self.yellow,self.white, self.yellow,  self.line)
-        self.error = fe.FileErrors('TypeError') + '{}<< {} >> {}is not {}a list(), '.format(self.white, value,
+        self.error = fe.FileErrors('TypeError').Errors() + '{}<< {} >> {}is not {}a list(), '.format(self.white, value,
                                                                         self.magenta, self.yellow) + error
         return self.error + self.reset
 
     def ERROR6(self, value):
         error = ' {}line: {}{}'.format(self.white, self.yellow, self.line)
-        self.error = fe.FileErrors('ValueError') + '{}<< {} >> {}is {}EMPTY.'.format(self.cyan, value, self.white,
+        self.error = fe.FileErrors('ValueError').Errors() + '{}<< {} >> {}is {}EMPTY.'.format(self.cyan, value, self.white,
                                                                                      self.yellow) + error
         return self.error + self.reset

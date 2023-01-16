@@ -16,8 +16,11 @@
 #       * mamba --T orion                                   #
 #       * mamba --T pegasus                                 #
 #############################################################
-# **created by : amiehe-essomba                             #
-# **updating by: amiehe-essomba                             #
+############################################
+# **created by : amiehe-essomba            #
+# **updating by: amiehe-essomba            #
+# ** copyright 2022 amiehe-essomba         #         
+############################################
 #############################################################
 
 
@@ -28,7 +31,8 @@ from script.PARXER.WINParxer                import parxer
 from script.DATA_BASE                       import data_base as db
 from script                                 import control_string
 from script.STDIN.LinuxSTDIN                import bm_configure as bm
-
+from IDE.EDITOR                     		import header
+from IDE.EDITOR                             import true_cursor_pos as cursor_pos
 
 class linux:
     def __init__(self, data_base: dict):
@@ -41,15 +45,16 @@ class linux:
     def terminal(self, c: str = '', terminal_name : str = 'pegasus'):
 
         # set color on yellow
+        self.bold           = bm.init.bold
         self.c              = bm.fg.rbg(255, 255, 0)
         if terminal_name == 'orion': pass
         else: self.c        = c
         # reset color
         self.reset          = bm.init.reset
         # input initialized
-        self.input          = '{}>>> {}'.format(self.c, self.reset)
+        self.input          = '{}{} {}'.format(self.c, chr(9654)*3, self.reset)
         # input main used to build the final string s
-        self.main_input     = '{}>>> {}'.format(self.c, self.reset)
+        self.main_input     = '{}{} {}'.format(self.c, chr(9654)*3, self.reset)
         # initial length of the input
         self.length         = len(self.input)
         # initialisation of index associated to the input
@@ -109,14 +114,18 @@ class linux:
         # print the input value
         sys.stdout.write(self.input)
         # save cursor position
-        sys.stdout.write(bm.save.save)
+        #sys.stdout.write(bm.save.save)
         # flush
         sys.stdout.flush()
+        ###########################################################
+        self.pos_x = 0
+        self.pos_y = 0
         ###########################################################
         while True:
             try:
                 # get input
                 self.char = readchar.readchar()
+                
                 # breaking loop while with the keyboardError
                 if self.char == 3:
                     self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
@@ -248,7 +257,7 @@ class linux:
                         except IndexError:  pass
                     else:  pass
                 # delecting char
-                elif self.char == 127:
+                elif self.char in {127, 8}:
                     # if s is not empty
                     if self.s:
                         # initialize key name of an indentation case
@@ -395,8 +404,8 @@ class linux:
                     # move cursor of left
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                     # print the final input with its transformations
-                    if terminal_name == 'orion': print(self.main_input + bm.words(string=self.s, color=bm.fg.rbg(255,  255, 255)).final())
-                    else:   print(self.main_input + bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                    if terminal_name == 'orion': print(self.main_input + self.bold+bm.words(string=self.s, color=bm.fg.rbg(255,  255, 255)).final())
+                    else:   print(self.main_input + self.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
 
                     # storing input
                     self.liste.append(self.input)
@@ -422,6 +431,7 @@ class linux:
                         self.lexer, self.normal_string, self.error = main.MAIN(self.string, self.data_base, self.if_line).MAIN()
                         if self.error is None :
                             if self.lexer is not None:
+                               
                                 # running parser
                                 self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
                                         self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
@@ -450,6 +460,7 @@ class linux:
                     self.idd        = 0
                     self.last       = 0
                     self.remove_tab = 0
+                    self.pos_x, self.pos_y    = cursor_pos.cursor()
                 # move cursor on left
                 sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                 # clear entire line
@@ -458,7 +469,7 @@ class linux:
                 if terminal_name == 'orion':
                     # key word activation
                     sys.stdout.write(self.main_input + bm.string().syntax_highlight(
-                        name=bm.words(string=self.s, color=bm.fg.white_L).final()))
+                        name=bm.words(string=self.s, color=self.bold+bm.fg.rbg(255, 255, 255)).final()))
                 else:
                     # any activation keyword
                     sys.stdout.write(self.main_input + bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
@@ -470,13 +481,14 @@ class linux:
                     pos = len(self.s) + self.size + len(self.input) - self.index
                     sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                 else: pass
+            
                 sys.stdout.flush()
                 
             except KeyboardInterrupt:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-            except TypeError:
+            except SyntaxError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                 print(self._end_of_file_)
                 self.input = '{}>>> {}'.format(self.c, bm.init.reset)
@@ -490,8 +502,9 @@ if __name__ == '__main__':
     try:
         os.system('clear')
         sys.stdout.write(bm.save.save)
-        bm.head().head(sys='Linux', term = terminal)
+        #bm.head().head(sys='Linux', term = terminal)
+        header.header()
         data_base = db.DATA_BASE().STORAGE().copy()
         linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=terminal)
     except KeyboardInterrupt:  pass
-    except TypeError: pass
+    except SyntaxError: pass

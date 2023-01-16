@@ -101,7 +101,7 @@ class INTERNAL_DEF:
                                         normal_string=self.normal_string, data_base=self.data_base, 
                                         line=self.if_line ).BLOCKS( tabulation=self.tabulation + 1,
                                         function=function, interpreter = False, class_name= class_name, class_key=class_key,
-                                        func_name=self.data_base[ 'current_func' ], loop = False )
+                                        func_name=self.data_base[ 'current_func' ], loop = False, locked=True )
                                         
                         if self.error is None:
                             

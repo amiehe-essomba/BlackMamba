@@ -19,7 +19,15 @@ setup(
             'help.pyx',
             'Tuple.pyx',
             'if_statement.pyx',
-            'array_to_list.pyx'
+            'array_to_list.pyx',
+            'Open.pyx',
+            'dictionary.pyx',
+            'Trigo.pyx',
+            'show.pyx', 
+            'frame.pyx',
+            'progress_bar.pyx',
+            'Trees.pyx',
+            'handling_list.pyx'
             ], 
         annotate = True
         )

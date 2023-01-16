@@ -1,3 +1,4 @@
+import pandas as pd
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import error as er
@@ -5,10 +6,12 @@ from src.classes                                    import loading, readfile, ch
 from src.classes.Chars                              import Char
 from src.classes.Lists                              import Lists
 from src.classes.Cplx                               import cplx 
+from src.classes.frame                              import frame
 from src.classes.Tuples                             import Tuples
 from src.classes.Unions                             import union    
 from src.functions                                  import loading as load         
-from src.functions                                  import function                 
+from src.functions                                  import function            
+from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import externalLoading as extL      
 
     
 class CLASS_TREATMENT:
@@ -89,10 +92,14 @@ class CLASS_TREATMENT:
                                 else:
                                     self.id = self.DataBase['class_names'].index(name)
                                     self.DataBase['classes'][self.id] =  self.DataBase['modulesImport']['classes'][idd1][x]
-                                    
+                    
+                    if type(self.main_body) == type(tuple()):
+                        self.main_body = self.main_body[0]
+                     
                     self.function_names     = self.main_body[ 'function_names' ]
                     self.inheritanceClass   = self.main_body[ 'class_inheritance' ]
-                                
+                    
+                    #print(self.function_names, self.inheritanceClass,self.DataBase['class_names'])
                     if self.main_body[ 'init_function' ] is None: 
                         
                         self._variables_        = None
@@ -163,9 +170,20 @@ class CLASS_TREATMENT:
                                                         self.all_data_analyses       = self.my_function[ 1 ][ 0 ]
                                                         self.all_data_analyses       = self.all_data_analyses[ self.name  ][ 'history_of_data' ]
                                                         
+                                                        self.old_DataBase = self.DataBase.copy()
+                                                        self.original_module = self.DataBase['modulesImport']['modules'][ 0 ]
+                                                        extL.UPDATING(self.DataBase, self.DataBase).UPDATING(self.original_module)
+                                                        
+                                                        #print(self.DataBase['modulesImport']['moduleLoading'])
+                                                        #print(self.DataBase['modulesImport'][ 'moduleLoading' ]['names'])
+                                                        #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+                                                        #print(self.new_data_base['modulesImport']['moduleLoading'])
+                                                        #print(self.new_data_base['func_names'], self.DataBase['func_names']  )
+                                                        
                                                         self.final_values, self.value_from_db, self.initialize_values, self.error = run_func.RUN_FUNCTION( self.DataBase, self.line,
                                                                 self.new_data_base, self._new_data_base_).RUN( self.all_data_analyses, self.name ,
                                                                                                         tabulation = tabulation, _type_ = self._types_ )
+                                                        self.DataBase = self.old_DataBase.copy()
                                                     else: pass 
                                                 else: pass 
                                             else: pass
@@ -318,6 +336,10 @@ class CLASS_TREATMENT:
                                                                     
                                                                     self.all_data_analyses       = self.my_function[ 1 ][ 0 ]
                                                                     self.all_data_analyses       = self.all_data_analyses[ self.name ][ 'history_of_data' ]
+
+                                                                    #self.original_module = self.DataBase['modulesImport']['modules'][ 0 ]
+                                                                    #extL.UPDATING(self.DataBase, self.DataBase).UPDATING(self.original_module)
+                                                                    
                                                                     self.final_values, self.value_from_db, self.initialize_values, self.error = run_func.RUN_FUNCTION( self.DataBase, self.line,
                                                                                 self.new_data_base, self._new_data_base_).RUN( self.all_data_analyses, self.name,
                                                                                                                               tabulation = tabulation, _type_ = self._types_ )
@@ -376,12 +398,15 @@ class CLASS_TREATMENT:
             else: 
                 self.strFunctions       = [ 'upper', 'lower', 'capitalize', 'empty', 'enumerate', 'split', 'join', 'format', 'index', 'rstrip', 'lstrip',
                                             'count', 'endwith', 'startwith', 'replace', 'size']
-                self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init'] 
+                self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted'] 
                 self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
                 self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size', 'choice', 'index', 'count'] 
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
                                             'size', 'round', 'rand', 'choice' ]
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
+                self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
+                                           'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis']
+                self.table              = ['frame', 'show', 'set_id', 'select', 'keys']
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
                     
@@ -488,6 +513,25 @@ class CLASS_TREATMENT:
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                     
+                    elif type(self.value) == type(pd.DataFrame({"s":[1]})):
+                        if self.main_name == self.main_expr: 
+                            if self.name != self.expr:
+                                if self.name in self.table:
+                                    self.historyOfFunctions.append( self.name )
+                                    self.expression         = 'def '+self.expr+ ':'
+                                    self.dictionary         = {
+                                    'functions'             : [],
+                                    'func_names'            : []
+                                    }
+                                    self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
+                                                                                self.line ).MAIN( def_key = 'indirect' )
+                                    if self.error is None: 
+                                        self.final_values, self.error = frame.DATA( self.DataBase, self.line, self.value,
+                                                                            self.name, self.dictionary[ 'functions' ]).FRAME( self.main_name, self.normal_expr )
+                                    else: pass    
+                                else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'table( )' )
+                            else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                     else: self.error = er.ERRORS( self.line ).ERROR31( self.main_name )
                 
                 elif self.main_name in  self.DataBase[ 'open' ][ 'name' ]:
@@ -537,20 +581,20 @@ class CLASS_TREATMENT:
         
         if len( self.master[ 'names' ]) <= 4:
             if len( self.master[ 'names' ])   == 2:
+                
                 self.sub_name  = self.master[ 'names' ][ 1 ]
                 self.sub_expr  = self.master[ 'expressions' ][ 1 ]
                 
                 if self.main_name not in self.DataBase['modulesImport']['fileNames']: 
                     self.mod = load.LOAD(self.DataBase['modulesImport']['mainClassNames'], self.main_name).LOAD()
-                    
                     if self.mod['key'] is False:
                         self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
                                                                        self.DataBase, self.line ).TREATMENT( )                    
                     else:
-                        self.n1 = self.DataBase['modulesImport']['class_names'][self.mod['id1']] .index( self.main_name )
+                        self.n1 = self.DataBase['modulesImport']['class_names'][self.mod['id1']].index( self.main_name )
                         self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
                                                                         self.DataBase, self.line ).TREATMENT( loading = True, idd1 = self.mod['id1'],
-                                                                                                idd2 = self.n1, length = 2)
+                                                                                           idd2 = self.n1, length = 2)
                 else:
                     self.mod = loading.LOAD(self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ], self.sub_name).LOAD()
                     if self.mod['key'] is True: 
@@ -561,15 +605,14 @@ class CLASS_TREATMENT:
                             
                             self.allNames               = self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.mod['id1']]['func_names']
                             self._functions_            = self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.mod['id1']]['functions']
-                                
+                
                             self.DataBase[ 'modulesImport' ]['mainFuncNames'].append(self.allNames )
                             self.DataBase[ 'modulesImport' ]['func_names'].append(self.allNames )
                             self.DataBase[ 'modulesImport' ]['functions'].append(self._functions_)
-                                  
+                         
                             self.final_values, self.value_from_db, self.initialize_values, self.error = func.FUNCTION_TREATMENT( self.master,
                                                                     self.DataBase, self.line ).TREATMENT( self.normal_expr, self.master, 
                                                                                                          _main_ = self.main_name )
-                            
                             self.DataBase[ 'modulesImport' ]['mainFuncNames']   = self.DataBase[ 'modulesImport' ]['mainFuncNames'][ : -1]
                             self.DataBase[ 'modulesImport' ]['func_names']      = self.DataBase[ 'modulesImport' ]['func_names'][ : -1]
                             self.DataBase[ 'modulesImport' ]['functions']       = self.DataBase[ 'modulesImport' ]['functions'][ : -1 ]

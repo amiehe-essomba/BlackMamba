@@ -1,9 +1,6 @@
 from script                     import control_string 
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
-try:
-    from CythonModules.Windows  import fileError as fe 
-except ImportError:
-    from CythonModules.Linux    import fileError as fe
+from CythonModules.Linux    	import fileError as fe
 
 class MODULE_LOAD:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -371,161 +368,167 @@ class FINAL_MODULE_LOAD:
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
 
     def LOAD(self, main_string: str):
-        self.master         = self.master[ 'value' ]
+        
         self.main_string    = main_string
-
-        self.data_storage   = []
-        self.modules        = []
         self.error          = None
-        self.count          = 0
-
-        for value in self.master:
-            self.path_and_module, self.error = MODULE_LOAD( value, self.data_base, self.line ).MODULE_LOAD()
-            if   type( self.path_and_module ) == type( str() )  :
-                self.error == None
-            elif type( self.path_and_module ) == type( dict() ) :
-                if self.error is None : pass
-                else:  break
-
-            if self.error is None:
-                if type( self.path_and_module ) == type( str() ):
-                    if self.data_storage:
-                        self.path_and_module, self.error = self.control.CHECK_NAME( self.path_and_module )
-                        if self.error is None: self.modules.append( self.path_and_module )
-                        else:
-                            self.error = ERRORS( self.line ).ERROR1( value )
-                            break
-                    else: self.count += 1
-
-                else:
-                    if not self.data_storage:
-                        if self.count == 0: self.data_storage.append( self.path_and_module )
-                        else:
-                            self.error = ERRORS( self.line ).ERROR0( main_string )
-                            break
-                    else:
-                        self.error = ERRORS( self.line ).ERROR0( self.main_string )
-                        break
-            else: break
+        
+        try: self.master         = self.master[ 'value' ]
+        except KeyError: self.error = ERRORS( self.line ).ERROR0( main_string )
 
         if self.error is None:
+            self.data_storage   = []
+            self.modules        = []
+            
+            self.count          = 0
 
-            if not self.data_storage:
-                self.main_string                = self.main_string
+            for value in self.master:
+                self.path_and_module, self.error = MODULE_LOAD( value, self.data_base, self.line ).MODULE_LOAD()
+                if   type( self.path_and_module ) == type( str() )  :
+                    self.error == None
+                elif type( self.path_and_module ) == type( dict() ) :
+                    if self.error is None : pass
+                    else:  break
 
-            else:
-                if self.modules:
-                    self.main_string                            = self.data_storage[ 0 ]
-                    self.init                                   = self.main_string[ 'path' ]
-                    self.alias                                  = self.main_string[ 'alias' ]
+                if self.error is None:
+                    if type( self.path_and_module ) == type( str() ):
+                        if self.data_storage:
+                            self.path_and_module, self.error = self.control.CHECK_NAME( self.path_and_module )
+                            if self.error is None: self.modules.append( self.path_and_module )
+                            else:
+                                self.error = ERRORS( self.line ).ERROR1( value )
+                                break
+                        else: self.count += 1
 
-                    if len( self.main_string[ 'module' ]) == 2:
-                        if len( self.init ) == 1:
-                            self.modules.append( self.init[ 0 ] )
-                            self.main_string[ 'path' ]            = None
-                            self.main_string[ 'module_load' ]     = None
-                            self.main_string[ 'module_main' ]     = self.modules
+                    else:
+                        if not self.data_storage:
+                            if self.count == 0: self.data_storage.append( self.path_and_module )
+                            else:
+                                self.error = ERRORS( self.line ).ERROR0( main_string )
+                                break
+                        else:
+                            self.error = ERRORS( self.line ).ERROR0( self.main_string )
+                            break
+                else: break
 
-                        else: self.error = ERRORS( self.line ).ERROR0( main_string )
+            if self.error is None:
 
-                    elif len( self.main_string[ 'module' ]) == 3:
-                        if self.main_string[ 'module' ][ -1 ] == 'load':
-                            if len( self.init ) == 2:
-                                if self.init[ -1 ] != '*':
-                                    self.modules.append( self.init[ 1 ] )
-                                    self.main_string[ 'module_main' ]     = [ self.init[ 0 ] ]
-                                    self.main_string[ 'path' ]            = None
-                                    self.main_string[ 'module_load' ]     = self.modules
-                                    self.main_string[ 'alias' ]           = None
-
-                                else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
-                            elif len( self.init ) == 3:
-                                if self.init[ 2 ] != '*':
-                                    self.modules.append( self.init[ 2 ] )
-                                    self.main_string[ 'path' ]              = [ self.init[ 0 ] ]
-                                    self.main_string[ 'module_load' ]       = self.modules
-                                    self.main_string[ 'module_main' ]       = [ self.init[ 1 ] ]
-                                    self.main_string[ 'alias' ]             = None
-
-                                else: self.error = ERRORS( self.line ).ERROR0( main_string )
-                            else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
-                        elif self.main_string[ 'module' ][ -1 ] == 'as':
-                            if self.init[ -1 ] != '*':
-                                if len( self.init ) <= 1:
-                                    self.modules.append( self.init[ 1 ] )
-                                    self.main_string[ 'module_main' ]     = [ self.init[ 0 ] ]
-                                    self.main_string[ 'path' ]            = None
-                                    self.main_string[ 'module_load' ]     = self.modules
-                                    self.main_string[ 'alias' ]           = self.alias
-
-                                else: self.error = ERRORS( self.line ).ERROR0( main_string )
-                            else: self.error = ERRORS( self.line ).ERROR0( main_string )
-                        else: self.error = ERRORS( self.line ).ERROR0( main_string )
-                    else: self.error = ERRORS( self.line ).ERROR0( main_string )
+                if not self.data_storage:
+                    self.main_string                = self.main_string
 
                 else:
-                    self.main_string    = self.data_storage[ 0 ]
-                    self.init           = self.main_string[ 'path' ]
-                    self.alias          = self.main_string[ 'alias' ]
+                    if self.modules:
+                        self.main_string                            = self.data_storage[ 0 ]
+                        self.init                                   = self.main_string[ 'path' ]
+                        self.alias                                  = self.main_string[ 'alias' ]
 
-                    if len( self.main_string[ 'module' ] ) == 2:
-                        if len( self.init ) == 1:
-                            self.main_string[ 'path' ]            = None
-                            self.main_string[ 'module_load' ]     = None
-                            self.main_string[ 'module_main' ]     = self.init
-
-                        else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
-                    elif len( self.main_string[ 'module' ] ) == 3:
-                        if self.main_string[ 'module' ][ -1 ] == 'load':
-                            if len( self.init ) == 2:
-                                self.main_string[ 'module_main' ]   = [ self.init[ 0 ] ]
-                                self.main_string[ 'path' ]          = None
-                                self.main_string[ 'module_load' ]   = [ self.init[ 1 ] ]
-                                self.main_string['alias']           = self.alias
-
-                            elif len( self.init ) == 3:
-                                self.main_string[ 'path' ]          = [ self.init[ 0 ] ]
-                                self.main_string[ 'module_load' ]   = [ self.init[ 2 ] ]
-                                self.main_string[ 'module_main' ]   = [ self.init[ 1 ] ]
-                                self.main_string['alias']           = self.alias
+                        if len( self.main_string[ 'module' ]) == 2:
+                            if len( self.init ) == 1:
+                                self.modules.append( self.init[ 0 ] )
+                                self.main_string[ 'path' ]            = None
+                                self.main_string[ 'module_load' ]     = None
+                                self.main_string[ 'module_main' ]     = self.modules
 
                             else: self.error = ERRORS( self.line ).ERROR0( main_string )
 
-                        elif self.main_string[ 'module' ][ -1 ] == 'as':
-                            if len( self.init ) <= 1:
-                                self.main_string['module_main']     = [ self.init[ 0 ] ]
-                                self.main_string['path']            = None
-                                self.main_string['module_load']     = None
-                                self.main_string['alias']           = self.alias
+                        elif len( self.main_string[ 'module' ]) == 3:
+                            if self.main_string[ 'module' ][ -1 ] == 'load':
+                                if len( self.init ) == 2:
+                                    if self.init[ -1 ] != '*':
+                                        self.modules.append( self.init[ 1 ] )
+                                        self.main_string[ 'module_main' ]     = [ self.init[ 0 ] ]
+                                        self.main_string[ 'path' ]            = None
+                                        self.main_string[ 'module_load' ]     = self.modules
+                                        self.main_string[ 'alias' ]           = None
 
+                                    else: self.error = ERRORS( self.line ).ERROR0( main_string )
+
+                                elif len( self.init ) == 3:
+                                    if self.init[ 2 ] != '*':
+                                        self.modules.append( self.init[ 2 ] )
+                                        self.main_string[ 'path' ]              = [ self.init[ 0 ] ]
+                                        self.main_string[ 'module_load' ]       = self.modules
+                                        self.main_string[ 'module_main' ]       = [ self.init[ 1 ] ]
+                                        self.main_string[ 'alias' ]             = None
+
+                                    else: self.error = ERRORS( self.line ).ERROR0( main_string )
+                                else: self.error = ERRORS( self.line ).ERROR0( main_string )
+
+                            elif self.main_string[ 'module' ][ -1 ] == 'as':
+                                if self.init[ -1 ] != '*':
+                                    if len( self.init ) <= 1:
+                                        self.modules.append( self.init[ 1 ] )
+                                        self.main_string[ 'module_main' ]     = [ self.init[ 0 ] ]
+                                        self.main_string[ 'path' ]            = None
+                                        self.main_string[ 'module_load' ]     = self.modules
+                                        self.main_string[ 'alias' ]           = self.alias
+
+                                    else: self.error = ERRORS( self.line ).ERROR0( main_string )
+                                else: self.error = ERRORS( self.line ).ERROR0( main_string )
                             else: self.error = ERRORS( self.line ).ERROR0( main_string )
                         else: self.error = ERRORS( self.line ).ERROR0( main_string )
 
-                    elif len(self.main_string[ 'module' ]) == 4:
-                        if  self.main_string[ 'module' ][ -1 ] == 'as':
-                            if len( self.init ) == 3:
-                                if self.init[ 2 ] != '*':
-                                    self.main_string['path']             = [ self.init[ 0 ] ]
-                                    self.main_string['module_load']      = [ self.init[ 2 ] ]
-                                    self.main_string['module_main']      = [ self.init[ 1 ] ]
+                    else:
+                        self.main_string    = self.data_storage[ 0 ]
+                        self.init           = self.main_string[ 'path' ]
+                        self.alias          = self.main_string[ 'alias' ]
+
+                        if len( self.main_string[ 'module' ] ) == 2:
+                            if len( self.init ) == 1:
+                                self.main_string[ 'path' ]            = None
+                                self.main_string[ 'module_load' ]     = None
+                                self.main_string[ 'module_main' ]     = self.init
+
+                            else: self.error = ERRORS( self.line ).ERROR0( main_string )
+
+                        elif len( self.main_string[ 'module' ] ) == 3:
+                            if self.main_string[ 'module' ][ -1 ] == 'load':
+                                if len( self.init ) == 2:
+                                    self.main_string[ 'module_main' ]   = [ self.init[ 0 ] ]
+                                    self.main_string[ 'path' ]          = None
+                                    self.main_string[ 'module_load' ]   = [ self.init[ 1 ] ]
+                                    self.main_string['alias']           = self.alias
+
+                                elif len( self.init ) == 3:
+                                    self.main_string[ 'path' ]          = [ self.init[ 0 ] ]
+                                    self.main_string[ 'module_load' ]   = [ self.init[ 2 ] ]
+                                    self.main_string[ 'module_main' ]   = [ self.init[ 1 ] ]
+                                    self.main_string['alias']           = self.alias
+
+                                else: self.error = ERRORS( self.line ).ERROR0( main_string )
+
+                            elif self.main_string[ 'module' ][ -1 ] == 'as':
+                                if len( self.init ) <= 1:
+                                    self.main_string['module_main']     = [ self.init[ 0 ] ]
+                                    self.main_string['path']            = None
+                                    self.main_string['module_load']     = None
+                                    self.main_string['alias']           = self.alias
+
+                                else: self.error = ERRORS( self.line ).ERROR0( main_string )
+                            else: self.error = ERRORS( self.line ).ERROR0( main_string )
+
+                        elif len(self.main_string[ 'module' ]) == 4:
+                            if  self.main_string[ 'module' ][ -1 ] == 'as':
+                                if len( self.init ) == 3:
+                                    if self.init[ 2 ] != '*':
+                                        self.main_string['path']             = [ self.init[ 0 ] ]
+                                        self.main_string['module_load']      = [ self.init[ 2 ] ]
+                                        self.main_string['module_main']      = [ self.init[ 1 ] ]
+                                        self.main_string['alias']            = self.alias
+
+                                    else: self.error = ERRORS( self.line ).ERROR0( main_string )
+
+                                elif len( self.init ) == 2:
+                                    self.main_string['path']             = None
+                                    self.main_string['module_load']      = [ self.init[ 1 ] ]
+                                    self.main_string['module_main']      = [ self.init[ 0 ] ]
                                     self.main_string['alias']            = self.alias
 
                                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
-                            elif len( self.init ) == 2:
-                                self.main_string['path']             = None
-                                self.main_string['module_load']      = [ self.init[ 1 ] ]
-                                self.main_string['module_main']      = [ self.init[ 0 ] ]
-                                self.main_string['alias']            = self.alias
-
                             else: self.error = ERRORS( self.line ).ERROR0( main_string )
                         else: self.error = ERRORS( self.line ).ERROR0( main_string )
-                    else: self.error = ERRORS( self.line ).ERROR0( main_string )
-        else: pass
-
+            else: pass
+        else: pass 
+        
         return self.main_string, self.error
 
     def REBUILD(self):

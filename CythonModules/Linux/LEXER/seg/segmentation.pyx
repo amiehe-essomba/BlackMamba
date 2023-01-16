@@ -219,12 +219,14 @@ cdef class SEGMENTATION:
 
                         if self.left == self.right: pass
                         else:
-                            if self.left > self.right:
-                                self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
-                                break
-                            else:
-                                self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )
-                                break
+                            if self.string[0] not in ['"', "'"]:
+                                if self.left > self.right:
+                                    self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
+                                    break
+                                else:
+                                    self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )
+                                    break
+                            else: pass
                     else: pass
 
                 if not self.error:
@@ -236,12 +238,14 @@ cdef class SEGMENTATION:
 
                             if self.left == self.right: pass
                             else:
-                                if self.left > self.right:
-                                    self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
-                                    break
-                                else:
-                                    self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )
-                                    break
+                                if self.string[0] not in ['"', "'"]:
+                                    if self.left > self.right:
+                                        self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
+                                        break
+                                    else:
+                                        self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )
+                                        break
+                                else: pass
                         else: pass
 
                     if not self.error:

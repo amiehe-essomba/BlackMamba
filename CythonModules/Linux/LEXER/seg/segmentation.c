@@ -5064,7 +5064,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  * 
  *                         if self.left == self.right: pass             # <<<<<<<<<<<<<<
  *                         else:
- *                             if self.left > self.right:
+ *                             if self.string[0] not in ['"', "'"]:
  */
             __pyx_t_16 = ((__pyx_v_self->left == __pyx_v_self->right) != 0);
             if (__pyx_t_16) {
@@ -5074,211 +5074,252 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
             /* "segmentation.pyx":222
  *                         if self.left == self.right: pass
  *                         else:
- *                             if self.left > self.right:             # <<<<<<<<<<<<<<
- *                                 self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
- *                                 break
+ *                             if self.string[0] not in ['"', "'"]:             # <<<<<<<<<<<<<<
+ *                                 if self.left > self.right:
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
  */
             /*else*/ {
-              __pyx_t_16 = ((__pyx_v_self->left > __pyx_v_self->right) != 0);
-              if (__pyx_t_16) {
+              __pyx_t_26 = __Pyx_GetItemInt(__pyx_v_self->string, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 222, __pyx_L3_error)
+              __Pyx_GOTREF(__pyx_t_26);
+              __pyx_t_21 = (__Pyx_PyString_Equals(__pyx_t_26, __pyx_kp_s__5, Py_NE)); if (unlikely(__pyx_t_21 < 0)) __PYX_ERR(0, 222, __pyx_L3_error)
+              if (__pyx_t_21) {
+              } else {
+                __pyx_t_16 = __pyx_t_21;
+                goto __pyx_L90_bool_binop_done;
+              }
+              __pyx_t_21 = (__Pyx_PyString_Equals(__pyx_t_26, __pyx_kp_s__6, Py_NE)); if (unlikely(__pyx_t_21 < 0)) __PYX_ERR(0, 222, __pyx_L3_error)
+              __pyx_t_16 = __pyx_t_21;
+              __pyx_L90_bool_binop_done:;
+              __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+              __pyx_t_21 = (__pyx_t_16 != 0);
+              if (__pyx_t_21) {
 
                 /* "segmentation.pyx":223
  *                         else:
- *                             if self.left > self.right:
- *                                 self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )             # <<<<<<<<<<<<<<
- *                                 break
- *                             else:
+ *                             if self.string[0] not in ['"', "'"]:
+ *                                 if self.left > self.right:             # <<<<<<<<<<<<<<
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
+ *                                     break
  */
-                __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_SE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 223, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_9);
-                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 223, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_10);
-                __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                __pyx_t_9 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 223, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_9);
-                __pyx_t_13 = NULL;
-                if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
-                  __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_10);
-                  if (likely(__pyx_t_13)) {
-                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-                    __Pyx_INCREF(__pyx_t_13);
-                    __Pyx_INCREF(function);
-                    __Pyx_DECREF_SET(__pyx_t_10, function);
-                  }
-                }
-                __pyx_t_8 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_13, __pyx_t_9) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9);
-                __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-                __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 223, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_8);
-                __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_ERROR_TREATMENT1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 223, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_10);
-                __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                __pyx_t_8 = NULL;
-                __pyx_t_12 = 0;
-                if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
-                  __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
-                  if (likely(__pyx_t_8)) {
-                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-                    __Pyx_INCREF(__pyx_t_8);
-                    __Pyx_INCREF(function);
-                    __Pyx_DECREF_SET(__pyx_t_10, function);
-                    __pyx_t_12 = 1;
-                  }
-                }
-                #if CYTHON_FAST_PYCALL
-                if (PyFunction_Check(__pyx_t_10)) {
-                  PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_self->string, __pyx_v_str_};
-                  __pyx_t_26 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 223, __pyx_L3_error)
-                  __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  __Pyx_GOTREF(__pyx_t_26);
-                } else
-                #endif
-                #if CYTHON_FAST_PYCCALL
-                if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
-                  PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_self->string, __pyx_v_str_};
-                  __pyx_t_26 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 223, __pyx_L3_error)
-                  __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  __Pyx_GOTREF(__pyx_t_26);
-                } else
-                #endif
-                {
-                  __pyx_t_9 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 223, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_9);
-                  if (__pyx_t_8) {
-                    __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
-                  }
-                  __Pyx_INCREF(__pyx_v_self->string);
-                  __Pyx_GIVEREF(__pyx_v_self->string);
-                  PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_12, __pyx_v_self->string);
-                  __Pyx_INCREF(__pyx_v_str_);
-                  __Pyx_GIVEREF(__pyx_v_str_);
-                  PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_12, __pyx_v_str_);
-                  __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_9, NULL); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 223, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_26);
-                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                }
-                __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 223, __pyx_L3_error)
-                __Pyx_GIVEREF(__pyx_t_26);
-                __Pyx_GOTREF(__pyx_v_self->error);
-                __Pyx_DECREF(__pyx_v_self->error);
-                __pyx_v_self->error = ((PyObject*)__pyx_t_26);
-                __pyx_t_26 = 0;
+                __pyx_t_21 = ((__pyx_v_self->left > __pyx_v_self->right) != 0);
+                if (__pyx_t_21) {
 
-                /* "segmentation.pyx":224
- *                             if self.left > self.right:
- *                                 self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
- *                                 break             # <<<<<<<<<<<<<<
- *                             else:
- *                                 self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )
+                  /* "segmentation.pyx":224
+ *                             if self.string[0] not in ['"', "'"]:
+ *                                 if self.left > self.right:
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )             # <<<<<<<<<<<<<<
+ *                                     break
+ *                                 else:
  */
-                goto __pyx_L86_break;
+                  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_SE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 224, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_9);
+                  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 224, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_10);
+                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                  __pyx_t_9 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 224, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_9);
+                  __pyx_t_13 = NULL;
+                  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
+                    __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_10);
+                    if (likely(__pyx_t_13)) {
+                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+                      __Pyx_INCREF(__pyx_t_13);
+                      __Pyx_INCREF(function);
+                      __Pyx_DECREF_SET(__pyx_t_10, function);
+                    }
+                  }
+                  __pyx_t_8 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_13, __pyx_t_9) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9);
+                  __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 224, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_8);
+                  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+                  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_ERROR_TREATMENT1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 224, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_10);
+                  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                  __pyx_t_8 = NULL;
+                  __pyx_t_12 = 0;
+                  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
+                    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
+                    if (likely(__pyx_t_8)) {
+                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+                      __Pyx_INCREF(__pyx_t_8);
+                      __Pyx_INCREF(function);
+                      __Pyx_DECREF_SET(__pyx_t_10, function);
+                      __pyx_t_12 = 1;
+                    }
+                  }
+                  #if CYTHON_FAST_PYCALL
+                  if (PyFunction_Check(__pyx_t_10)) {
+                    PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_self->string, __pyx_v_str_};
+                    __pyx_t_26 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 224, __pyx_L3_error)
+                    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+                    __Pyx_GOTREF(__pyx_t_26);
+                  } else
+                  #endif
+                  #if CYTHON_FAST_PYCCALL
+                  if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
+                    PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_self->string, __pyx_v_str_};
+                    __pyx_t_26 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 224, __pyx_L3_error)
+                    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+                    __Pyx_GOTREF(__pyx_t_26);
+                  } else
+                  #endif
+                  {
+                    __pyx_t_9 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 224, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_9);
+                    if (__pyx_t_8) {
+                      __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
+                    }
+                    __Pyx_INCREF(__pyx_v_self->string);
+                    __Pyx_GIVEREF(__pyx_v_self->string);
+                    PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_12, __pyx_v_self->string);
+                    __Pyx_INCREF(__pyx_v_str_);
+                    __Pyx_GIVEREF(__pyx_v_str_);
+                    PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_12, __pyx_v_str_);
+                    __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_9, NULL); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 224, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_26);
+                    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                  }
+                  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+                  if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 224, __pyx_L3_error)
+                  __Pyx_GIVEREF(__pyx_t_26);
+                  __Pyx_GOTREF(__pyx_v_self->error);
+                  __Pyx_DECREF(__pyx_v_self->error);
+                  __pyx_v_self->error = ((PyObject*)__pyx_t_26);
+                  __pyx_t_26 = 0;
+
+                  /* "segmentation.pyx":225
+ *                                 if self.left > self.right:
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
+ *                                     break             # <<<<<<<<<<<<<<
+ *                                 else:
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )
+ */
+                  goto __pyx_L86_break;
+
+                  /* "segmentation.pyx":223
+ *                         else:
+ *                             if self.string[0] not in ['"', "'"]:
+ *                                 if self.left > self.right:             # <<<<<<<<<<<<<<
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
+ *                                     break
+ */
+                }
+
+                /* "segmentation.pyx":227
+ *                                     break
+ *                                 else:
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )             # <<<<<<<<<<<<<<
+ *                                     break
+ *                             else: pass
+ */
+                /*else*/ {
+                  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_SE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 227, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_9);
+                  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 227, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_8);
+                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                  __pyx_t_9 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 227, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_9);
+                  __pyx_t_13 = NULL;
+                  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
+                    __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_8);
+                    if (likely(__pyx_t_13)) {
+                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+                      __Pyx_INCREF(__pyx_t_13);
+                      __Pyx_INCREF(function);
+                      __Pyx_DECREF_SET(__pyx_t_8, function);
+                    }
+                  }
+                  __pyx_t_10 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_13, __pyx_t_9) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9);
+                  __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                  if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 227, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_10);
+                  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_ERROR_TREATMENT2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 227, __pyx_L3_error)
+                  __Pyx_GOTREF(__pyx_t_8);
+                  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+                  __pyx_t_10 = NULL;
+                  __pyx_t_12 = 0;
+                  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+                    __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_8);
+                    if (likely(__pyx_t_10)) {
+                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+                      __Pyx_INCREF(__pyx_t_10);
+                      __Pyx_INCREF(function);
+                      __Pyx_DECREF_SET(__pyx_t_8, function);
+                      __pyx_t_12 = 1;
+                    }
+                  }
+                  #if CYTHON_FAST_PYCALL
+                  if (PyFunction_Check(__pyx_t_8)) {
+                    PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_self->string, __pyx_v_Close};
+                    __pyx_t_26 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 227, __pyx_L3_error)
+                    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+                    __Pyx_GOTREF(__pyx_t_26);
+                  } else
+                  #endif
+                  #if CYTHON_FAST_PYCCALL
+                  if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
+                    PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_self->string, __pyx_v_Close};
+                    __pyx_t_26 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 227, __pyx_L3_error)
+                    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+                    __Pyx_GOTREF(__pyx_t_26);
+                  } else
+                  #endif
+                  {
+                    __pyx_t_9 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 227, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_9);
+                    if (__pyx_t_10) {
+                      __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_10); __pyx_t_10 = NULL;
+                    }
+                    __Pyx_INCREF(__pyx_v_self->string);
+                    __Pyx_GIVEREF(__pyx_v_self->string);
+                    PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_12, __pyx_v_self->string);
+                    __Pyx_INCREF(__pyx_v_Close);
+                    __Pyx_GIVEREF(__pyx_v_Close);
+                    PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_12, __pyx_v_Close);
+                    __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, NULL); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 227, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_26);
+                    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                  }
+                  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                  if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 227, __pyx_L3_error)
+                  __Pyx_GIVEREF(__pyx_t_26);
+                  __Pyx_GOTREF(__pyx_v_self->error);
+                  __Pyx_DECREF(__pyx_v_self->error);
+                  __pyx_v_self->error = ((PyObject*)__pyx_t_26);
+                  __pyx_t_26 = 0;
+
+                  /* "segmentation.pyx":228
+ *                                 else:
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )
+ *                                     break             # <<<<<<<<<<<<<<
+ *                             else: pass
+ *                     else: pass
+ */
+                  goto __pyx_L86_break;
+                }
 
                 /* "segmentation.pyx":222
  *                         if self.left == self.right: pass
  *                         else:
- *                             if self.left > self.right:             # <<<<<<<<<<<<<<
- *                                 self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
- *                                 break
+ *                             if self.string[0] not in ['"', "'"]:             # <<<<<<<<<<<<<<
+ *                                 if self.left > self.right:
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str_ )
  */
               }
 
-              /* "segmentation.pyx":226
- *                                 break
- *                             else:
- *                                 self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )             # <<<<<<<<<<<<<<
- *                                 break
- *                     else: pass
- */
-              /*else*/ {
-                __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_SE); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 226, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_9);
-                __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 226, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_8);
-                __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                __pyx_t_9 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 226, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_9);
-                __pyx_t_13 = NULL;
-                if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
-                  __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_8);
-                  if (likely(__pyx_t_13)) {
-                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-                    __Pyx_INCREF(__pyx_t_13);
-                    __Pyx_INCREF(function);
-                    __Pyx_DECREF_SET(__pyx_t_8, function);
-                  }
-                }
-                __pyx_t_10 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_13, __pyx_t_9) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9);
-                __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-                __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 226, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_10);
-                __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_ERROR_TREATMENT2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 226, __pyx_L3_error)
-                __Pyx_GOTREF(__pyx_t_8);
-                __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                __pyx_t_10 = NULL;
-                __pyx_t_12 = 0;
-                if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
-                  __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_8);
-                  if (likely(__pyx_t_10)) {
-                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-                    __Pyx_INCREF(__pyx_t_10);
-                    __Pyx_INCREF(function);
-                    __Pyx_DECREF_SET(__pyx_t_8, function);
-                    __pyx_t_12 = 1;
-                  }
-                }
-                #if CYTHON_FAST_PYCALL
-                if (PyFunction_Check(__pyx_t_8)) {
-                  PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_self->string, __pyx_v_Close};
-                  __pyx_t_26 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 226, __pyx_L3_error)
-                  __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  __Pyx_GOTREF(__pyx_t_26);
-                } else
-                #endif
-                #if CYTHON_FAST_PYCCALL
-                if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
-                  PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_self->string, __pyx_v_Close};
-                  __pyx_t_26 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 226, __pyx_L3_error)
-                  __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  __Pyx_GOTREF(__pyx_t_26);
-                } else
-                #endif
-                {
-                  __pyx_t_9 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 226, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_9);
-                  if (__pyx_t_10) {
-                    __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_10); __pyx_t_10 = NULL;
-                  }
-                  __Pyx_INCREF(__pyx_v_self->string);
-                  __Pyx_GIVEREF(__pyx_v_self->string);
-                  PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_12, __pyx_v_self->string);
-                  __Pyx_INCREF(__pyx_v_Close);
-                  __Pyx_GIVEREF(__pyx_v_Close);
-                  PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_12, __pyx_v_Close);
-                  __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, NULL); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 226, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_26);
-                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                }
-                __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 226, __pyx_L3_error)
-                __Pyx_GIVEREF(__pyx_t_26);
-                __Pyx_GOTREF(__pyx_v_self->error);
-                __Pyx_DECREF(__pyx_v_self->error);
-                __pyx_v_self->error = ((PyObject*)__pyx_t_26);
-                __pyx_t_26 = 0;
-
-                /* "segmentation.pyx":227
- *                             else:
- *                                 self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )
- *                                 break             # <<<<<<<<<<<<<<
+              /* "segmentation.pyx":229
+ *                                     self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )
+ *                                     break
+ *                             else: pass             # <<<<<<<<<<<<<<
  *                     else: pass
  * 
  */
-                goto __pyx_L86_break;
+              /*else*/ {
               }
             }
             __pyx_L88:;
@@ -5293,9 +5334,9 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
             goto __pyx_L87;
           }
 
-          /* "segmentation.pyx":228
- *                                 self.error  = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, Close )
- *                                 break
+          /* "segmentation.pyx":230
+ *                                     break
+ *                             else: pass
  *                     else: pass             # <<<<<<<<<<<<<<
  * 
  *                 if not self.error:
@@ -5315,18 +5356,18 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
         __pyx_L86_break:;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "segmentation.pyx":230
+        /* "segmentation.pyx":232
  *                     else: pass
  * 
  *                 if not self.error:             # <<<<<<<<<<<<<<
  *                     for str_ in [']', ')', '}']:
  *                         if str_ in self.string:
  */
-        __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 230, __pyx_L3_error)
-        __pyx_t_21 = ((!__pyx_t_16) != 0);
-        if (__pyx_t_21) {
+        __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_21 < 0)) __PYX_ERR(0, 232, __pyx_L3_error)
+        __pyx_t_16 = ((!__pyx_t_21) != 0);
+        if (__pyx_t_16) {
 
-          /* "segmentation.pyx":231
+          /* "segmentation.pyx":233
  * 
  *                 if not self.error:
  *                     for str_ in [']', ')', '}']:             # <<<<<<<<<<<<<<
@@ -5337,35 +5378,35 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
           for (;;) {
             if (__pyx_t_24 >= 3) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_26 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_24); __Pyx_INCREF(__pyx_t_26); __pyx_t_24++; if (unlikely(0 < 0)) __PYX_ERR(0, 231, __pyx_L3_error)
+            __pyx_t_26 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_24); __Pyx_INCREF(__pyx_t_26); __pyx_t_24++; if (unlikely(0 < 0)) __PYX_ERR(0, 233, __pyx_L3_error)
             #else
-            __pyx_t_26 = PySequence_ITEM(__pyx_t_1, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 231, __pyx_L3_error)
+            __pyx_t_26 = PySequence_ITEM(__pyx_t_1, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 233, __pyx_L3_error)
             __Pyx_GOTREF(__pyx_t_26);
             #endif
             __Pyx_XDECREF_SET(__pyx_v_str_, ((PyObject*)__pyx_t_26));
             __pyx_t_26 = 0;
 
-            /* "segmentation.pyx":232
+            /* "segmentation.pyx":234
  *                 if not self.error:
  *                     for str_ in [']', ')', '}']:
  *                         if str_ in self.string:             # <<<<<<<<<<<<<<
  *                             Open            = num.NUMBER().OPENING( str_ )
  *                             self.left       = self.string.count( Open )
  */
-            __pyx_t_21 = (__Pyx_PySequence_ContainsTF(__pyx_v_str_, __pyx_v_self->string, Py_EQ)); if (unlikely(__pyx_t_21 < 0)) __PYX_ERR(0, 232, __pyx_L3_error)
-            __pyx_t_16 = (__pyx_t_21 != 0);
-            if (__pyx_t_16) {
+            __pyx_t_16 = (__Pyx_PySequence_ContainsTF(__pyx_v_str_, __pyx_v_self->string, Py_EQ)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 234, __pyx_L3_error)
+            __pyx_t_21 = (__pyx_t_16 != 0);
+            if (__pyx_t_21) {
 
-              /* "segmentation.pyx":233
+              /* "segmentation.pyx":235
  *                     for str_ in [']', ')', '}']:
  *                         if str_ in self.string:
  *                             Open            = num.NUMBER().OPENING( str_ )             # <<<<<<<<<<<<<<
  *                             self.left       = self.string.count( Open )
  *                             self.right      = self.string.count( str_ )
  */
-              __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_num); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 233, __pyx_L3_error)
+              __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_num); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 235, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_9);
-              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_NUMBER); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 233, __pyx_L3_error)
+              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_NUMBER); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 235, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
               __pyx_t_9 = NULL;
@@ -5380,68 +5421,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
               }
               __pyx_t_8 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_10);
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-              if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 233, __pyx_L3_error)
+              if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 235, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_8);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_OPENING); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 233, __pyx_L3_error)
+              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_OPENING); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 235, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-              __pyx_t_8 = NULL;
-              if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
-                __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
-                if (likely(__pyx_t_8)) {
-                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-                  __Pyx_INCREF(__pyx_t_8);
-                  __Pyx_INCREF(function);
-                  __Pyx_DECREF_SET(__pyx_t_10, function);
-                }
-              }
-              __pyx_t_26 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_8, __pyx_v_str_) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_str_);
-              __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-              if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 233, __pyx_L3_error)
-              __Pyx_GOTREF(__pyx_t_26);
-              __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 233, __pyx_L3_error)
-              __Pyx_XDECREF_SET(__pyx_v_Open, ((PyObject*)__pyx_t_26));
-              __pyx_t_26 = 0;
-
-              /* "segmentation.pyx":234
- *                         if str_ in self.string:
- *                             Open            = num.NUMBER().OPENING( str_ )
- *                             self.left       = self.string.count( Open )             # <<<<<<<<<<<<<<
- *                             self.right      = self.string.count( str_ )
- * 
- */
-              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->string, __pyx_n_s_count); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 234, __pyx_L3_error)
-              __Pyx_GOTREF(__pyx_t_10);
-              __pyx_t_8 = NULL;
-              if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
-                __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
-                if (likely(__pyx_t_8)) {
-                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-                  __Pyx_INCREF(__pyx_t_8);
-                  __Pyx_INCREF(function);
-                  __Pyx_DECREF_SET(__pyx_t_10, function);
-                }
-              }
-              __pyx_t_26 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_8, __pyx_v_Open) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_Open);
-              __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-              if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 234, __pyx_L3_error)
-              __Pyx_GOTREF(__pyx_t_26);
-              __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              __pyx_t_23 = __Pyx_PyInt_As_unsigned_long(__pyx_t_26); if (unlikely((__pyx_t_23 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L3_error)
-              __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-              __pyx_v_self->left = __pyx_t_23;
-
-              /* "segmentation.pyx":235
- *                             Open            = num.NUMBER().OPENING( str_ )
- *                             self.left       = self.string.count( Open )
- *                             self.right      = self.string.count( str_ )             # <<<<<<<<<<<<<<
- * 
- *                             if self.left == self.right: pass
- */
-              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->string, __pyx_n_s_count); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 235, __pyx_L3_error)
-              __Pyx_GOTREF(__pyx_t_10);
               __pyx_t_8 = NULL;
               if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
                 __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
@@ -5457,256 +5442,353 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
               if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 235, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_26);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              __pyx_t_23 = __Pyx_PyInt_As_unsigned_long(__pyx_t_26); if (unlikely((__pyx_t_23 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L3_error)
+              if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 235, __pyx_L3_error)
+              __Pyx_XDECREF_SET(__pyx_v_Open, ((PyObject*)__pyx_t_26));
+              __pyx_t_26 = 0;
+
+              /* "segmentation.pyx":236
+ *                         if str_ in self.string:
+ *                             Open            = num.NUMBER().OPENING( str_ )
+ *                             self.left       = self.string.count( Open )             # <<<<<<<<<<<<<<
+ *                             self.right      = self.string.count( str_ )
+ * 
+ */
+              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->string, __pyx_n_s_count); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 236, __pyx_L3_error)
+              __Pyx_GOTREF(__pyx_t_10);
+              __pyx_t_8 = NULL;
+              if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
+                __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
+                if (likely(__pyx_t_8)) {
+                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+                  __Pyx_INCREF(__pyx_t_8);
+                  __Pyx_INCREF(function);
+                  __Pyx_DECREF_SET(__pyx_t_10, function);
+                }
+              }
+              __pyx_t_26 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_8, __pyx_v_Open) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_Open);
+              __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+              if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 236, __pyx_L3_error)
+              __Pyx_GOTREF(__pyx_t_26);
+              __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+              __pyx_t_23 = __Pyx_PyInt_As_unsigned_long(__pyx_t_26); if (unlikely((__pyx_t_23 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 236, __pyx_L3_error)
+              __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+              __pyx_v_self->left = __pyx_t_23;
+
+              /* "segmentation.pyx":237
+ *                             Open            = num.NUMBER().OPENING( str_ )
+ *                             self.left       = self.string.count( Open )
+ *                             self.right      = self.string.count( str_ )             # <<<<<<<<<<<<<<
+ * 
+ *                             if self.left == self.right: pass
+ */
+              __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->string, __pyx_n_s_count); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 237, __pyx_L3_error)
+              __Pyx_GOTREF(__pyx_t_10);
+              __pyx_t_8 = NULL;
+              if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
+                __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
+                if (likely(__pyx_t_8)) {
+                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+                  __Pyx_INCREF(__pyx_t_8);
+                  __Pyx_INCREF(function);
+                  __Pyx_DECREF_SET(__pyx_t_10, function);
+                }
+              }
+              __pyx_t_26 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_8, __pyx_v_str_) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_str_);
+              __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+              if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 237, __pyx_L3_error)
+              __Pyx_GOTREF(__pyx_t_26);
+              __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+              __pyx_t_23 = __Pyx_PyInt_As_unsigned_long(__pyx_t_26); if (unlikely((__pyx_t_23 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L3_error)
               __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
               __pyx_v_self->right = __pyx_t_23;
 
-              /* "segmentation.pyx":237
+              /* "segmentation.pyx":239
  *                             self.right      = self.string.count( str_ )
  * 
  *                             if self.left == self.right: pass             # <<<<<<<<<<<<<<
  *                             else:
- *                                 if self.left > self.right:
+ *                                 if self.string[0] not in ['"', "'"]:
  */
-              __pyx_t_16 = ((__pyx_v_self->left == __pyx_v_self->right) != 0);
-              if (__pyx_t_16) {
-                goto __pyx_L94;
+              __pyx_t_21 = ((__pyx_v_self->left == __pyx_v_self->right) != 0);
+              if (__pyx_t_21) {
+                goto __pyx_L97;
               }
 
-              /* "segmentation.pyx":239
+              /* "segmentation.pyx":241
  *                             if self.left == self.right: pass
  *                             else:
- *                                 if self.left > self.right:             # <<<<<<<<<<<<<<
- *                                     self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
- *                                     break
+ *                                 if self.string[0] not in ['"', "'"]:             # <<<<<<<<<<<<<<
+ *                                     if self.left > self.right:
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
  */
               /*else*/ {
-                __pyx_t_16 = ((__pyx_v_self->left > __pyx_v_self->right) != 0);
+                __pyx_t_26 = __Pyx_GetItemInt(__pyx_v_self->string, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 241, __pyx_L3_error)
+                __Pyx_GOTREF(__pyx_t_26);
+                __pyx_t_16 = (__Pyx_PyString_Equals(__pyx_t_26, __pyx_kp_s__5, Py_NE)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 241, __pyx_L3_error)
+                if (__pyx_t_16) {
+                } else {
+                  __pyx_t_21 = __pyx_t_16;
+                  goto __pyx_L99_bool_binop_done;
+                }
+                __pyx_t_16 = (__Pyx_PyString_Equals(__pyx_t_26, __pyx_kp_s__6, Py_NE)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 241, __pyx_L3_error)
+                __pyx_t_21 = __pyx_t_16;
+                __pyx_L99_bool_binop_done:;
+                __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+                __pyx_t_16 = (__pyx_t_21 != 0);
                 if (__pyx_t_16) {
 
-                  /* "segmentation.pyx":240
+                  /* "segmentation.pyx":242
  *                             else:
- *                                 if self.left > self.right:
- *                                     self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )             # <<<<<<<<<<<<<<
- *                                     break
- *                                 else:
+ *                                 if self.string[0] not in ['"', "'"]:
+ *                                     if self.left > self.right:             # <<<<<<<<<<<<<<
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
+ *                                         break
  */
-                  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_SE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 240, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_8);
-                  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 240, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_9);
-                  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  __pyx_t_8 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 240, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_8);
-                  __pyx_t_13 = NULL;
-                  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
-                    __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_9);
-                    if (likely(__pyx_t_13)) {
-                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-                      __Pyx_INCREF(__pyx_t_13);
-                      __Pyx_INCREF(function);
-                      __Pyx_DECREF_SET(__pyx_t_9, function);
-                    }
-                  }
-                  __pyx_t_10 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_13, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8);
-                  __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-                  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 240, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_10);
-                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_ERROR_TREATMENT1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 240, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_9);
-                  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  __pyx_t_10 = NULL;
-                  __pyx_t_12 = 0;
-                  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
-                    __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_9);
-                    if (likely(__pyx_t_10)) {
-                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-                      __Pyx_INCREF(__pyx_t_10);
-                      __Pyx_INCREF(function);
-                      __Pyx_DECREF_SET(__pyx_t_9, function);
-                      __pyx_t_12 = 1;
-                    }
-                  }
-                  #if CYTHON_FAST_PYCALL
-                  if (PyFunction_Check(__pyx_t_9)) {
-                    PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_self->string, __pyx_v_Open};
-                    __pyx_t_26 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 240, __pyx_L3_error)
-                    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-                    __Pyx_GOTREF(__pyx_t_26);
-                  } else
-                  #endif
-                  #if CYTHON_FAST_PYCCALL
-                  if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
-                    PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_self->string, __pyx_v_Open};
-                    __pyx_t_26 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 240, __pyx_L3_error)
-                    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-                    __Pyx_GOTREF(__pyx_t_26);
-                  } else
-                  #endif
-                  {
-                    __pyx_t_8 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 240, __pyx_L3_error)
+                  __pyx_t_16 = ((__pyx_v_self->left > __pyx_v_self->right) != 0);
+                  if (__pyx_t_16) {
+
+                    /* "segmentation.pyx":243
+ *                                 if self.string[0] not in ['"', "'"]:
+ *                                     if self.left > self.right:
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )             # <<<<<<<<<<<<<<
+ *                                         break
+ *                                     else:
+ */
+                    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_SE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 243, __pyx_L3_error)
                     __Pyx_GOTREF(__pyx_t_8);
-                    if (__pyx_t_10) {
-                      __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10); __pyx_t_10 = NULL;
-                    }
-                    __Pyx_INCREF(__pyx_v_self->string);
-                    __Pyx_GIVEREF(__pyx_v_self->string);
-                    PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_12, __pyx_v_self->string);
-                    __Pyx_INCREF(__pyx_v_Open);
-                    __Pyx_GIVEREF(__pyx_v_Open);
-                    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_12, __pyx_v_Open);
-                    __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_8, NULL); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 240, __pyx_L3_error)
-                    __Pyx_GOTREF(__pyx_t_26);
+                    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 243, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_9);
                     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                    __pyx_t_8 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 243, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_8);
+                    __pyx_t_13 = NULL;
+                    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
+                      __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_9);
+                      if (likely(__pyx_t_13)) {
+                        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+                        __Pyx_INCREF(__pyx_t_13);
+                        __Pyx_INCREF(function);
+                        __Pyx_DECREF_SET(__pyx_t_9, function);
+                      }
+                    }
+                    __pyx_t_10 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_13, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8);
+                    __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+                    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                    if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 243, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_10);
+                    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_ERROR_TREATMENT1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 243, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_9);
+                    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+                    __pyx_t_10 = NULL;
+                    __pyx_t_12 = 0;
+                    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+                      __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_9);
+                      if (likely(__pyx_t_10)) {
+                        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+                        __Pyx_INCREF(__pyx_t_10);
+                        __Pyx_INCREF(function);
+                        __Pyx_DECREF_SET(__pyx_t_9, function);
+                        __pyx_t_12 = 1;
+                      }
+                    }
+                    #if CYTHON_FAST_PYCALL
+                    if (PyFunction_Check(__pyx_t_9)) {
+                      PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_self->string, __pyx_v_Open};
+                      __pyx_t_26 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 243, __pyx_L3_error)
+                      __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+                      __Pyx_GOTREF(__pyx_t_26);
+                    } else
+                    #endif
+                    #if CYTHON_FAST_PYCCALL
+                    if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
+                      PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_self->string, __pyx_v_Open};
+                      __pyx_t_26 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 243, __pyx_L3_error)
+                      __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+                      __Pyx_GOTREF(__pyx_t_26);
+                    } else
+                    #endif
+                    {
+                      __pyx_t_8 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 243, __pyx_L3_error)
+                      __Pyx_GOTREF(__pyx_t_8);
+                      if (__pyx_t_10) {
+                        __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10); __pyx_t_10 = NULL;
+                      }
+                      __Pyx_INCREF(__pyx_v_self->string);
+                      __Pyx_GIVEREF(__pyx_v_self->string);
+                      PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_12, __pyx_v_self->string);
+                      __Pyx_INCREF(__pyx_v_Open);
+                      __Pyx_GIVEREF(__pyx_v_Open);
+                      PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_12, __pyx_v_Open);
+                      __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_8, NULL); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 243, __pyx_L3_error)
+                      __Pyx_GOTREF(__pyx_t_26);
+                      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                    }
+                    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                    if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 243, __pyx_L3_error)
+                    __Pyx_GIVEREF(__pyx_t_26);
+                    __Pyx_GOTREF(__pyx_v_self->error);
+                    __Pyx_DECREF(__pyx_v_self->error);
+                    __pyx_v_self->error = ((PyObject*)__pyx_t_26);
+                    __pyx_t_26 = 0;
+
+                    /* "segmentation.pyx":244
+ *                                     if self.left > self.right:
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
+ *                                         break             # <<<<<<<<<<<<<<
+ *                                     else:
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )
+ */
+                    goto __pyx_L95_break;
+
+                    /* "segmentation.pyx":242
+ *                             else:
+ *                                 if self.string[0] not in ['"', "'"]:
+ *                                     if self.left > self.right:             # <<<<<<<<<<<<<<
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
+ *                                         break
+ */
                   }
-                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                  if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 240, __pyx_L3_error)
-                  __Pyx_GIVEREF(__pyx_t_26);
-                  __Pyx_GOTREF(__pyx_v_self->error);
-                  __Pyx_DECREF(__pyx_v_self->error);
-                  __pyx_v_self->error = ((PyObject*)__pyx_t_26);
-                  __pyx_t_26 = 0;
+
+                  /* "segmentation.pyx":246
+ *                                         break
+ *                                     else:
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )             # <<<<<<<<<<<<<<
+ *                                         break
+ *                                 else: pass
+ */
+                  /*else*/ {
+                    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_SE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 246, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_8);
+                    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 246, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_10);
+                    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                    __pyx_t_8 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 246, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_8);
+                    __pyx_t_13 = NULL;
+                    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
+                      __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_10);
+                      if (likely(__pyx_t_13)) {
+                        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+                        __Pyx_INCREF(__pyx_t_13);
+                        __Pyx_INCREF(function);
+                        __Pyx_DECREF_SET(__pyx_t_10, function);
+                      }
+                    }
+                    __pyx_t_9 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_13, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_8);
+                    __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+                    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 246, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_9);
+                    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+                    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_ERROR_TREATMENT2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 246, __pyx_L3_error)
+                    __Pyx_GOTREF(__pyx_t_10);
+                    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+                    __pyx_t_9 = NULL;
+                    __pyx_t_12 = 0;
+                    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
+                      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_10);
+                      if (likely(__pyx_t_9)) {
+                        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+                        __Pyx_INCREF(__pyx_t_9);
+                        __Pyx_INCREF(function);
+                        __Pyx_DECREF_SET(__pyx_t_10, function);
+                        __pyx_t_12 = 1;
+                      }
+                    }
+                    #if CYTHON_FAST_PYCALL
+                    if (PyFunction_Check(__pyx_t_10)) {
+                      PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_v_self->string, __pyx_v_str_};
+                      __pyx_t_26 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 246, __pyx_L3_error)
+                      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+                      __Pyx_GOTREF(__pyx_t_26);
+                    } else
+                    #endif
+                    #if CYTHON_FAST_PYCCALL
+                    if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
+                      PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_v_self->string, __pyx_v_str_};
+                      __pyx_t_26 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 246, __pyx_L3_error)
+                      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+                      __Pyx_GOTREF(__pyx_t_26);
+                    } else
+                    #endif
+                    {
+                      __pyx_t_8 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 246, __pyx_L3_error)
+                      __Pyx_GOTREF(__pyx_t_8);
+                      if (__pyx_t_9) {
+                        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9); __pyx_t_9 = NULL;
+                      }
+                      __Pyx_INCREF(__pyx_v_self->string);
+                      __Pyx_GIVEREF(__pyx_v_self->string);
+                      PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_12, __pyx_v_self->string);
+                      __Pyx_INCREF(__pyx_v_str_);
+                      __Pyx_GIVEREF(__pyx_v_str_);
+                      PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_12, __pyx_v_str_);
+                      __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_8, NULL); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 246, __pyx_L3_error)
+                      __Pyx_GOTREF(__pyx_t_26);
+                      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+                    }
+                    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+                    if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 246, __pyx_L3_error)
+                    __Pyx_GIVEREF(__pyx_t_26);
+                    __Pyx_GOTREF(__pyx_v_self->error);
+                    __Pyx_DECREF(__pyx_v_self->error);
+                    __pyx_v_self->error = ((PyObject*)__pyx_t_26);
+                    __pyx_t_26 = 0;
+
+                    /* "segmentation.pyx":247
+ *                                     else:
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )
+ *                                         break             # <<<<<<<<<<<<<<
+ *                                 else: pass
+ *                         else: pass
+ */
+                    goto __pyx_L95_break;
+                  }
 
                   /* "segmentation.pyx":241
- *                                 if self.left > self.right:
- *                                     self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
- *                                     break             # <<<<<<<<<<<<<<
- *                                 else:
- *                                     self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )
- */
-                  goto __pyx_L92_break;
-
-                  /* "segmentation.pyx":239
  *                             if self.left == self.right: pass
  *                             else:
- *                                 if self.left > self.right:             # <<<<<<<<<<<<<<
- *                                     self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
- *                                     break
+ *                                 if self.string[0] not in ['"', "'"]:             # <<<<<<<<<<<<<<
+ *                                     if self.left > self.right:
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, Open )
  */
                 }
 
-                /* "segmentation.pyx":243
- *                                     break
- *                                 else:
- *                                     self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )             # <<<<<<<<<<<<<<
- *                                     break
- *                         else: pass
- */
-                /*else*/ {
-                  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_SE); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 243, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_8);
-                  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 243, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_10);
-                  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  __pyx_t_8 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 243, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_8);
-                  __pyx_t_13 = NULL;
-                  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
-                    __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_10);
-                    if (likely(__pyx_t_13)) {
-                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-                      __Pyx_INCREF(__pyx_t_13);
-                      __Pyx_INCREF(function);
-                      __Pyx_DECREF_SET(__pyx_t_10, function);
-                    }
-                  }
-                  __pyx_t_9 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_13, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_8);
-                  __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-                  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 243, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_9);
-                  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_ERROR_TREATMENT2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 243, __pyx_L3_error)
-                  __Pyx_GOTREF(__pyx_t_10);
-                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                  __pyx_t_9 = NULL;
-                  __pyx_t_12 = 0;
-                  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
-                    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_10);
-                    if (likely(__pyx_t_9)) {
-                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-                      __Pyx_INCREF(__pyx_t_9);
-                      __Pyx_INCREF(function);
-                      __Pyx_DECREF_SET(__pyx_t_10, function);
-                      __pyx_t_12 = 1;
-                    }
-                  }
-                  #if CYTHON_FAST_PYCALL
-                  if (PyFunction_Check(__pyx_t_10)) {
-                    PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_v_self->string, __pyx_v_str_};
-                    __pyx_t_26 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 243, __pyx_L3_error)
-                    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-                    __Pyx_GOTREF(__pyx_t_26);
-                  } else
-                  #endif
-                  #if CYTHON_FAST_PYCCALL
-                  if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
-                    PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_v_self->string, __pyx_v_str_};
-                    __pyx_t_26 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 243, __pyx_L3_error)
-                    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-                    __Pyx_GOTREF(__pyx_t_26);
-                  } else
-                  #endif
-                  {
-                    __pyx_t_8 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 243, __pyx_L3_error)
-                    __Pyx_GOTREF(__pyx_t_8);
-                    if (__pyx_t_9) {
-                      __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9); __pyx_t_9 = NULL;
-                    }
-                    __Pyx_INCREF(__pyx_v_self->string);
-                    __Pyx_GIVEREF(__pyx_v_self->string);
-                    PyTuple_SET_ITEM(__pyx_t_8, 0+__pyx_t_12, __pyx_v_self->string);
-                    __Pyx_INCREF(__pyx_v_str_);
-                    __Pyx_GIVEREF(__pyx_v_str_);
-                    PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_12, __pyx_v_str_);
-                    __pyx_t_26 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_8, NULL); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 243, __pyx_L3_error)
-                    __Pyx_GOTREF(__pyx_t_26);
-                    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  }
-                  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  if (!(likely(PyString_CheckExact(__pyx_t_26))||((__pyx_t_26) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_26)->tp_name), 0))) __PYX_ERR(0, 243, __pyx_L3_error)
-                  __Pyx_GIVEREF(__pyx_t_26);
-                  __Pyx_GOTREF(__pyx_v_self->error);
-                  __Pyx_DECREF(__pyx_v_self->error);
-                  __pyx_v_self->error = ((PyObject*)__pyx_t_26);
-                  __pyx_t_26 = 0;
-
-                  /* "segmentation.pyx":244
- *                                 else:
- *                                     self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )
- *                                     break             # <<<<<<<<<<<<<<
+                /* "segmentation.pyx":248
+ *                                         self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )
+ *                                         break
+ *                                 else: pass             # <<<<<<<<<<<<<<
  *                         else: pass
  * 
  */
-                  goto __pyx_L92_break;
+                /*else*/ {
                 }
               }
-              __pyx_L94:;
+              __pyx_L97:;
 
-              /* "segmentation.pyx":232
+              /* "segmentation.pyx":234
  *                 if not self.error:
  *                     for str_ in [']', ')', '}']:
  *                         if str_ in self.string:             # <<<<<<<<<<<<<<
  *                             Open            = num.NUMBER().OPENING( str_ )
  *                             self.left       = self.string.count( Open )
  */
-              goto __pyx_L93;
+              goto __pyx_L96;
             }
 
-            /* "segmentation.pyx":245
- *                                     self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str_ )
- *                                     break
+            /* "segmentation.pyx":249
+ *                                         break
+ *                                 else: pass
  *                         else: pass             # <<<<<<<<<<<<<<
  * 
  *                     if not self.error:
  */
             /*else*/ {
             }
-            __pyx_L93:;
+            __pyx_L96:;
 
-            /* "segmentation.pyx":231
+            /* "segmentation.pyx":233
  * 
  *                 if not self.error:
  *                     for str_ in [']', ')', '}']:             # <<<<<<<<<<<<<<
@@ -5714,21 +5796,21 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  *                             Open            = num.NUMBER().OPENING( str_ )
  */
           }
-          __pyx_L92_break:;
+          __pyx_L95_break:;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "segmentation.pyx":247
+          /* "segmentation.pyx":251
  *                         else: pass
  * 
  *                     if not self.error:             # <<<<<<<<<<<<<<
  *                         str__          = ""
  *                         _idd_          = -1
  */
-          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 247, __pyx_L3_error)
+          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 251, __pyx_L3_error)
           __pyx_t_21 = ((!__pyx_t_16) != 0);
           if (__pyx_t_21) {
 
-            /* "segmentation.pyx":248
+            /* "segmentation.pyx":252
  * 
  *                     if not self.error:
  *                         str__          = ""             # <<<<<<<<<<<<<<
@@ -5738,7 +5820,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
             __Pyx_INCREF(__pyx_kp_s_);
             __pyx_v_str__ = __pyx_kp_s_;
 
-            /* "segmentation.pyx":249
+            /* "segmentation.pyx":253
  *                     if not self.error:
  *                         str__          = ""
  *                         _idd_          = -1             # <<<<<<<<<<<<<<
@@ -5747,7 +5829,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
             __pyx_v__idd_ = -1;
 
-            /* "segmentation.pyx":250
+            /* "segmentation.pyx":254
  *                         str__          = ""
  *                         _idd_          = -1
  *                         transform      = False             # <<<<<<<<<<<<<<
@@ -5756,31 +5838,31 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
             __pyx_v_transform = 0;
 
-            /* "segmentation.pyx":252
+            /* "segmentation.pyx":256
  *                         transform      = False
  * 
  *                         if ( self.string[ 0 ] == "'" )  and ( self.string[ -1 ]== "'" ) :             # <<<<<<<<<<<<<<
  *                             self.string     = '"' + self.string[ 1 : -1 ] + '"'
  *                             transform  = True
  */
-            __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->string, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L3_error)
+            __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->string, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L3_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_16 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__6, Py_EQ)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 252, __pyx_L3_error)
+            __pyx_t_16 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__6, Py_EQ)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 256, __pyx_L3_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             if (__pyx_t_16) {
             } else {
               __pyx_t_21 = __pyx_t_16;
-              goto __pyx_L98_bool_binop_done;
+              goto __pyx_L104_bool_binop_done;
             }
-            __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->string, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L3_error)
+            __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->string, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L3_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_16 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__6, Py_EQ)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 252, __pyx_L3_error)
+            __pyx_t_16 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__6, Py_EQ)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 256, __pyx_L3_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_21 = __pyx_t_16;
-            __pyx_L98_bool_binop_done:;
+            __pyx_L104_bool_binop_done:;
             if (__pyx_t_21) {
 
-              /* "segmentation.pyx":253
+              /* "segmentation.pyx":257
  * 
  *                         if ( self.string[ 0 ] == "'" )  and ( self.string[ -1 ]== "'" ) :
  *                             self.string     = '"' + self.string[ 1 : -1 ] + '"'             # <<<<<<<<<<<<<<
@@ -5789,14 +5871,14 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
               if (unlikely(__pyx_v_self->string == Py_None)) {
                 PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 253, __pyx_L3_error)
+                __PYX_ERR(0, 257, __pyx_L3_error)
               }
-              __pyx_t_1 = PySequence_GetSlice(__pyx_v_self->string, 1, -1L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L3_error)
+              __pyx_t_1 = PySequence_GetSlice(__pyx_v_self->string, 1, -1L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_1);
-              __pyx_t_26 = PyNumber_Add(__pyx_kp_s__5, __pyx_t_1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 253, __pyx_L3_error)
+              __pyx_t_26 = PyNumber_Add(__pyx_kp_s__5, __pyx_t_1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 257, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_26);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-              __pyx_t_1 = PyNumber_Add(__pyx_t_26, __pyx_kp_s__5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L3_error)
+              __pyx_t_1 = PyNumber_Add(__pyx_t_26, __pyx_kp_s__5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
               __Pyx_GIVEREF(__pyx_t_1);
@@ -5805,7 +5887,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
               __pyx_v_self->string = ((PyObject*)__pyx_t_1);
               __pyx_t_1 = 0;
 
-              /* "segmentation.pyx":254
+              /* "segmentation.pyx":258
  *                         if ( self.string[ 0 ] == "'" )  and ( self.string[ -1 ]== "'" ) :
  *                             self.string     = '"' + self.string[ 1 : -1 ] + '"'
  *                             transform  = True             # <<<<<<<<<<<<<<
@@ -5814,17 +5896,17 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
               __pyx_v_transform = 1;
 
-              /* "segmentation.pyx":252
+              /* "segmentation.pyx":256
  *                         transform      = False
  * 
  *                         if ( self.string[ 0 ] == "'" )  and ( self.string[ -1 ]== "'" ) :             # <<<<<<<<<<<<<<
  *                             self.string     = '"' + self.string[ 1 : -1 ] + '"'
  *                             transform  = True
  */
-              goto __pyx_L97;
+              goto __pyx_L103;
             }
 
-            /* "segmentation.pyx":255
+            /* "segmentation.pyx":259
  *                             self.string     = '"' + self.string[ 1 : -1 ] + '"'
  *                             transform  = True
  *                         else: pass             # <<<<<<<<<<<<<<
@@ -5833,9 +5915,9 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
             /*else*/ {
             }
-            __pyx_L97:;
+            __pyx_L103:;
 
-            /* "segmentation.pyx":257
+            /* "segmentation.pyx":261
  *                         else: pass
  * 
  *                         for str_ in ['"', "'"]:             # <<<<<<<<<<<<<<
@@ -5846,26 +5928,26 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
             for (;;) {
               if (__pyx_t_24 >= 2) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_26 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_24); __Pyx_INCREF(__pyx_t_26); __pyx_t_24++; if (unlikely(0 < 0)) __PYX_ERR(0, 257, __pyx_L3_error)
+              __pyx_t_26 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_24); __Pyx_INCREF(__pyx_t_26); __pyx_t_24++; if (unlikely(0 < 0)) __PYX_ERR(0, 261, __pyx_L3_error)
               #else
-              __pyx_t_26 = PySequence_ITEM(__pyx_t_1, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 257, __pyx_L3_error)
+              __pyx_t_26 = PySequence_ITEM(__pyx_t_1, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 261, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_26);
               #endif
               __Pyx_XDECREF_SET(__pyx_v_str_, ((PyObject*)__pyx_t_26));
               __pyx_t_26 = 0;
 
-              /* "segmentation.pyx":258
+              /* "segmentation.pyx":262
  * 
  *                         for str_ in ['"', "'"]:
  *                             if str_ in  self.string :             # <<<<<<<<<<<<<<
  *                                 str__ = str_
  *                                 _idd_ = self.string.index( str__ )
  */
-              __pyx_t_21 = (__Pyx_PySequence_ContainsTF(__pyx_v_str_, __pyx_v_self->string, Py_EQ)); if (unlikely(__pyx_t_21 < 0)) __PYX_ERR(0, 258, __pyx_L3_error)
+              __pyx_t_21 = (__Pyx_PySequence_ContainsTF(__pyx_v_str_, __pyx_v_self->string, Py_EQ)); if (unlikely(__pyx_t_21 < 0)) __PYX_ERR(0, 262, __pyx_L3_error)
               __pyx_t_16 = (__pyx_t_21 != 0);
               if (__pyx_t_16) {
 
-                /* "segmentation.pyx":259
+                /* "segmentation.pyx":263
  *                         for str_ in ['"', "'"]:
  *                             if str_ in  self.string :
  *                                 str__ = str_             # <<<<<<<<<<<<<<
@@ -5875,14 +5957,14 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                 __Pyx_INCREF(__pyx_v_str_);
                 __Pyx_DECREF_SET(__pyx_v_str__, __pyx_v_str_);
 
-                /* "segmentation.pyx":260
+                /* "segmentation.pyx":264
  *                             if str_ in  self.string :
  *                                 str__ = str_
  *                                 _idd_ = self.string.index( str__ )             # <<<<<<<<<<<<<<
  *                                 break
  *                             else: pass
  */
-                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->string, __pyx_n_s_index); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 260, __pyx_L3_error)
+                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->string, __pyx_n_s_index); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 264, __pyx_L3_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 __pyx_t_8 = NULL;
                 if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
@@ -5896,23 +5978,23 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                 }
                 __pyx_t_26 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_8, __pyx_v_str__) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_str__);
                 __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-                if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 260, __pyx_L3_error)
+                if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 264, __pyx_L3_error)
                 __Pyx_GOTREF(__pyx_t_26);
                 __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                __pyx_t_27 = __Pyx_PyInt_As_int(__pyx_t_26); if (unlikely((__pyx_t_27 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L3_error)
+                __pyx_t_27 = __Pyx_PyInt_As_int(__pyx_t_26); if (unlikely((__pyx_t_27 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 264, __pyx_L3_error)
                 __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
                 __pyx_v__idd_ = __pyx_t_27;
 
-                /* "segmentation.pyx":261
+                /* "segmentation.pyx":265
  *                                 str__ = str_
  *                                 _idd_ = self.string.index( str__ )
  *                                 break             # <<<<<<<<<<<<<<
  *                             else: pass
  * 
  */
-                goto __pyx_L101_break;
+                goto __pyx_L107_break;
 
-                /* "segmentation.pyx":258
+                /* "segmentation.pyx":262
  * 
  *                         for str_ in ['"', "'"]:
  *                             if str_ in  self.string :             # <<<<<<<<<<<<<<
@@ -5921,7 +6003,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
               }
 
-              /* "segmentation.pyx":262
+              /* "segmentation.pyx":266
  *                                 _idd_ = self.string.index( str__ )
  *                                 break
  *                             else: pass             # <<<<<<<<<<<<<<
@@ -5931,7 +6013,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
               /*else*/ {
               }
 
-              /* "segmentation.pyx":257
+              /* "segmentation.pyx":261
  *                         else: pass
  * 
  *                         for str_ in ['"', "'"]:             # <<<<<<<<<<<<<<
@@ -5939,27 +6021,27 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  *                                 str__ = str_
  */
             }
-            __pyx_L101_break:;
+            __pyx_L107_break:;
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "segmentation.pyx":264
+            /* "segmentation.pyx":268
  *                             else: pass
  * 
  *                         if str__ :             # <<<<<<<<<<<<<<
  *                             count = self.string.count( str__ )
  *                             if count % 2 == 0: pass
  */
-            __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_v_str__); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 264, __pyx_L3_error)
+            __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_v_str__); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 268, __pyx_L3_error)
             if (__pyx_t_16) {
 
-              /* "segmentation.pyx":265
+              /* "segmentation.pyx":269
  * 
  *                         if str__ :
  *                             count = self.string.count( str__ )             # <<<<<<<<<<<<<<
  *                             if count % 2 == 0: pass
  *                             else:
  */
-              __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->string, __pyx_n_s_count); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 265, __pyx_L3_error)
+              __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->string, __pyx_n_s_count); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 269, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_26);
               __pyx_t_10 = NULL;
               if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_26))) {
@@ -5973,14 +6055,14 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
               }
               __pyx_t_1 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_26, __pyx_t_10, __pyx_v_str__) : __Pyx_PyObject_CallOneArg(__pyx_t_26, __pyx_v_str__);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L3_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L3_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-              __pyx_t_23 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_23 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 265, __pyx_L3_error)
+              __pyx_t_23 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_23 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 269, __pyx_L3_error)
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
               __pyx_v_count = __pyx_t_23;
 
-              /* "segmentation.pyx":266
+              /* "segmentation.pyx":270
  *                         if str__ :
  *                             count = self.string.count( str__ )
  *                             if count % 2 == 0: pass             # <<<<<<<<<<<<<<
@@ -5989,10 +6071,10 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
               __pyx_t_16 = (((__pyx_v_count % 2) == 0) != 0);
               if (__pyx_t_16) {
-                goto __pyx_L104;
+                goto __pyx_L110;
               }
 
-              /* "segmentation.pyx":268
+              /* "segmentation.pyx":272
  *                             if count % 2 == 0: pass
  *                             else:
  *                                 if _idd_ == 0: self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str__ )             # <<<<<<<<<<<<<<
@@ -6002,12 +6084,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
               /*else*/ {
                 __pyx_t_16 = ((__pyx_v__idd_ == 0) != 0);
                 if (__pyx_t_16) {
-                  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_SE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 268, __pyx_L3_error)
+                  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_SE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 272, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_10);
-                  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 268, __pyx_L3_error)
+                  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 272, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_8);
                   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 268, __pyx_L3_error)
+                  __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 272, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_10);
                   __pyx_t_9 = NULL;
                   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -6022,10 +6104,10 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                   __pyx_t_26 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_t_10) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_10);
                   __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
                   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 268, __pyx_L3_error)
+                  if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 272, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_26);
                   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_26, __pyx_n_s_ERROR_TREATMENT1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 268, __pyx_L3_error)
+                  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_26, __pyx_n_s_ERROR_TREATMENT1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 272, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_8);
                   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
                   __pyx_t_26 = NULL;
@@ -6043,7 +6125,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                   #if CYTHON_FAST_PYCALL
                   if (PyFunction_Check(__pyx_t_8)) {
                     PyObject *__pyx_temp[3] = {__pyx_t_26, __pyx_v_self->string, __pyx_v_str__};
-                    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L3_error)
+                    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L3_error)
                     __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
                     __Pyx_GOTREF(__pyx_t_1);
                   } else
@@ -6051,13 +6133,13 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                   #if CYTHON_FAST_PYCCALL
                   if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
                     PyObject *__pyx_temp[3] = {__pyx_t_26, __pyx_v_self->string, __pyx_v_str__};
-                    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L3_error)
+                    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L3_error)
                     __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
                     __Pyx_GOTREF(__pyx_t_1);
                   } else
                   #endif
                   {
-                    __pyx_t_10 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 268, __pyx_L3_error)
+                    __pyx_t_10 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 272, __pyx_L3_error)
                     __Pyx_GOTREF(__pyx_t_10);
                     if (__pyx_t_26) {
                       __Pyx_GIVEREF(__pyx_t_26); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_26); __pyx_t_26 = NULL;
@@ -6068,21 +6150,21 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                     __Pyx_INCREF(__pyx_v_str__);
                     __Pyx_GIVEREF(__pyx_v_str__);
                     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_12, __pyx_v_str__);
-                    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L3_error)
+                    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L3_error)
                     __Pyx_GOTREF(__pyx_t_1);
                     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                   }
                   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-                  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 268, __pyx_L3_error)
+                  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 272, __pyx_L3_error)
                   __Pyx_GIVEREF(__pyx_t_1);
                   __Pyx_GOTREF(__pyx_v_self->error);
                   __Pyx_DECREF(__pyx_v_self->error);
                   __pyx_v_self->error = ((PyObject*)__pyx_t_1);
                   __pyx_t_1 = 0;
-                  goto __pyx_L105;
+                  goto __pyx_L111;
                 }
 
-                /* "segmentation.pyx":269
+                /* "segmentation.pyx":273
  *                             else:
  *                                 if _idd_ == 0: self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str__ )
  *                                 else: self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str__ )             # <<<<<<<<<<<<<<
@@ -6090,12 +6172,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  *                     else: pass
  */
                 /*else*/ {
-                  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_SE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 269, __pyx_L3_error)
+                  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_SE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 273, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_10);
-                  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 269, __pyx_L3_error)
+                  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 273, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_26);
                   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 269, __pyx_L3_error)
+                  __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 273, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_10);
                   __pyx_t_9 = NULL;
                   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_26))) {
@@ -6110,10 +6192,10 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                   __pyx_t_8 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_26, __pyx_t_9, __pyx_t_10) : __Pyx_PyObject_CallOneArg(__pyx_t_26, __pyx_t_10);
                   __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
                   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-                  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 269, __pyx_L3_error)
+                  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 273, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_8);
                   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-                  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_ERROR_TREATMENT2); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 269, __pyx_L3_error)
+                  __pyx_t_26 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_ERROR_TREATMENT2); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 273, __pyx_L3_error)
                   __Pyx_GOTREF(__pyx_t_26);
                   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
                   __pyx_t_8 = NULL;
@@ -6131,7 +6213,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                   #if CYTHON_FAST_PYCALL
                   if (PyFunction_Check(__pyx_t_26)) {
                     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_self->string, __pyx_v_str__};
-                    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_26, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L3_error)
+                    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_26, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L3_error)
                     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
                     __Pyx_GOTREF(__pyx_t_1);
                   } else
@@ -6139,13 +6221,13 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                   #if CYTHON_FAST_PYCCALL
                   if (__Pyx_PyFastCFunction_Check(__pyx_t_26)) {
                     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_self->string, __pyx_v_str__};
-                    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_26, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L3_error)
+                    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_26, __pyx_temp+1-__pyx_t_12, 2+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L3_error)
                     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
                     __Pyx_GOTREF(__pyx_t_1);
                   } else
                   #endif
                   {
-                    __pyx_t_10 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 269, __pyx_L3_error)
+                    __pyx_t_10 = PyTuple_New(2+__pyx_t_12); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 273, __pyx_L3_error)
                     __Pyx_GOTREF(__pyx_t_10);
                     if (__pyx_t_8) {
                       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -6156,33 +6238,33 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
                     __Pyx_INCREF(__pyx_v_str__);
                     __Pyx_GIVEREF(__pyx_v_str__);
                     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_12, __pyx_v_str__);
-                    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_26, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L3_error)
+                    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_26, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L3_error)
                     __Pyx_GOTREF(__pyx_t_1);
                     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                   }
                   __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-                  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 269, __pyx_L3_error)
+                  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 273, __pyx_L3_error)
                   __Pyx_GIVEREF(__pyx_t_1);
                   __Pyx_GOTREF(__pyx_v_self->error);
                   __Pyx_DECREF(__pyx_v_self->error);
                   __pyx_v_self->error = ((PyObject*)__pyx_t_1);
                   __pyx_t_1 = 0;
                 }
-                __pyx_L105:;
+                __pyx_L111:;
               }
-              __pyx_L104:;
+              __pyx_L110:;
 
-              /* "segmentation.pyx":264
+              /* "segmentation.pyx":268
  *                             else: pass
  * 
  *                         if str__ :             # <<<<<<<<<<<<<<
  *                             count = self.string.count( str__ )
  *                             if count % 2 == 0: pass
  */
-              goto __pyx_L103;
+              goto __pyx_L109;
             }
 
-            /* "segmentation.pyx":270
+            /* "segmentation.pyx":274
  *                                 if _idd_ == 0: self.error = SE.ERROR( self.line ).ERROR_TREATMENT1( self.string, str__ )
  *                                 else: self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str__ )
  *                         else: pass             # <<<<<<<<<<<<<<
@@ -6191,19 +6273,19 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
             /*else*/ {
             }
-            __pyx_L103:;
+            __pyx_L109:;
 
-            /* "segmentation.pyx":247
+            /* "segmentation.pyx":251
  *                         else: pass
  * 
  *                     if not self.error:             # <<<<<<<<<<<<<<
  *                         str__          = ""
  *                         _idd_          = -1
  */
-            goto __pyx_L96;
+            goto __pyx_L102;
           }
 
-          /* "segmentation.pyx":271
+          /* "segmentation.pyx":275
  *                                 else: self.error = SE.ERROR( self.line ).ERROR_TREATMENT2( self.string, str__ )
  *                         else: pass
  *                     else: pass             # <<<<<<<<<<<<<<
@@ -6212,19 +6294,19 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
           /*else*/ {
           }
-          __pyx_L96:;
+          __pyx_L102:;
 
-          /* "segmentation.pyx":230
+          /* "segmentation.pyx":232
  *                     else: pass
  * 
  *                 if not self.error:             # <<<<<<<<<<<<<<
  *                     for str_ in [']', ')', '}']:
  *                         if str_ in self.string:
  */
-          goto __pyx_L90;
+          goto __pyx_L93;
         }
 
-        /* "segmentation.pyx":272
+        /* "segmentation.pyx":276
  *                         else: pass
  *                     else: pass
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -6233,7 +6315,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  */
         /*else*/ {
         }
-        __pyx_L90:;
+        __pyx_L93:;
 
         /* "segmentation.pyx":213
  *             else: pass
@@ -6245,7 +6327,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
         goto __pyx_L84;
       }
 
-      /* "segmentation.pyx":273
+      /* "segmentation.pyx":277
  *                     else: pass
  *                 else: pass
  *             else: pass             # <<<<<<<<<<<<<<
@@ -6279,7 +6361,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "segmentation.pyx":274
+    /* "segmentation.pyx":278
  *                 else: pass
  *             else: pass
  *         except IndexError: pass             # <<<<<<<<<<<<<<
@@ -6314,7 +6396,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
     __pyx_L8_try_end:;
   }
 
-  /* "segmentation.pyx":276
+  /* "segmentation.pyx":280
  *         except IndexError: pass
  * 
  *         return self.string, self.error             # <<<<<<<<<<<<<<
@@ -6322,7 +6404,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
  *     cdef tuple STRING_IN_TRUE_BLOCK(self,  str string  , str main_string ):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_self->string);
   __Pyx_GIVEREF(__pyx_v_self->string);
@@ -6371,7 +6453,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_TREATEMENT(struct __pyx_o
   return __pyx_r;
 }
 
-/* "segmentation.pyx":278
+/* "segmentation.pyx":282
  *         return self.string, self.error
  * 
  *     cdef tuple STRING_IN_TRUE_BLOCK(self,  str string  , str main_string ):             # <<<<<<<<<<<<<<
@@ -6411,19 +6493,19 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("STRING_IN_TRUE_BLOCK", 0);
 
-  /* "segmentation.pyx":280
+  /* "segmentation.pyx":284
  *     cdef tuple STRING_IN_TRUE_BLOCK(self,  str string  , str main_string ):
  *         cdef:
  *             list storage = []             # <<<<<<<<<<<<<<
  *             unsigned int i
  *             str str_, String = "", test_string
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_storage = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "segmentation.pyx":282
+  /* "segmentation.pyx":286
  *             list storage = []
  *             unsigned int i
  *             str str_, String = "", test_string             # <<<<<<<<<<<<<<
@@ -6433,7 +6515,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
   __Pyx_INCREF(__pyx_kp_s_);
   __pyx_v_String = __pyx_kp_s_;
 
-  /* "segmentation.pyx":284
+  /* "segmentation.pyx":288
  *             str str_, String = "", test_string
  * 
  *         for i, str_ in enumerate( string ):             # <<<<<<<<<<<<<<
@@ -6441,9 +6523,9 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
  * 
  */
   __pyx_t_2 = 0;
-  __pyx_t_1 = PyObject_GetIter(__pyx_v_string); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_1 = PyObject_GetIter(__pyx_v_string); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
   for (;;) {
     {
       __pyx_t_4 = __pyx_t_3(__pyx_t_1);
@@ -6451,42 +6533,42 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 284, __pyx_L1_error)
+          else __PYX_ERR(0, 288, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_4);
     }
-    if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 284, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 288, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_str_, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
     __pyx_v_i = __pyx_t_2;
     __pyx_t_2 = (__pyx_t_2 + 1);
 
-    /* "segmentation.pyx":285
+    /* "segmentation.pyx":289
  * 
  *         for i, str_ in enumerate( string ):
  *             String        += str_             # <<<<<<<<<<<<<<
  * 
  *             if i != len( string ) - 1:
  */
-    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_String, __pyx_v_str_); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 285, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_String, __pyx_v_str_); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF_SET(__pyx_v_String, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "segmentation.pyx":287
+    /* "segmentation.pyx":291
  *             String        += str_
  * 
  *             if i != len( string ) - 1:             # <<<<<<<<<<<<<<
  *                 if str_ in [ ',' ]:
  *                     try:  test_string, self.error = control_string.STRING_ANALYSE( self.data_base, self.line ).DELETE_SPACE( String[ 1 : -1 ], 'cython' )
  */
-    __pyx_t_5 = PyObject_Length(__pyx_v_string); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_5 = PyObject_Length(__pyx_v_string); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 291, __pyx_L1_error)
     __pyx_t_6 = ((__pyx_v_i != (__pyx_t_5 - 1)) != 0);
     if (__pyx_t_6) {
 
-      /* "segmentation.pyx":288
+      /* "segmentation.pyx":292
  * 
  *             if i != len( string ) - 1:
  *                 if str_ in [ ',' ]:             # <<<<<<<<<<<<<<
@@ -6495,12 +6577,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
  */
       __Pyx_INCREF(__pyx_v_str_);
       __pyx_t_7 = __pyx_v_str_;
-      __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_7, __pyx_kp_s__17, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 288, __pyx_L1_error)
+      __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_7, __pyx_kp_s__17, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 292, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_8 = ((__pyx_t_6 != 0) != 0);
       if (__pyx_t_8) {
 
-        /* "segmentation.pyx":289
+        /* "segmentation.pyx":293
  *             if i != len( string ) - 1:
  *                 if str_ in [ ',' ]:
  *                     try:  test_string, self.error = control_string.STRING_ANALYSE( self.data_base, self.line ).DELETE_SPACE( String[ 1 : -1 ], 'cython' )             # <<<<<<<<<<<<<<
@@ -6515,12 +6597,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __Pyx_XGOTREF(__pyx_t_10);
           __Pyx_XGOTREF(__pyx_t_11);
           /*try:*/ {
-            __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_control_string); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 289, __pyx_L7_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_control_string); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 293, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_STRING_ANALYSE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 289, __pyx_L7_error)
+            __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_STRING_ANALYSE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 293, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-            __pyx_t_13 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 289, __pyx_L7_error)
+            __pyx_t_13 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 293, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_13);
             __pyx_t_15 = NULL;
             __pyx_t_16 = 0;
@@ -6537,7 +6619,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_v_self->data_base, __pyx_t_13};
-              __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
@@ -6546,14 +6628,14 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_v_self->data_base, __pyx_t_13};
-              __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             } else
             #endif
             {
-              __pyx_t_17 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_17 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_17);
               if (__pyx_t_15) {
                 __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -6564,15 +6646,15 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_GIVEREF(__pyx_t_13);
               PyTuple_SET_ITEM(__pyx_t_17, 1+__pyx_t_16, __pyx_t_13);
               __pyx_t_13 = 0;
-              __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_17, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_17, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
             }
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-            __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_DELETE_SPACE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 289, __pyx_L7_error)
+            __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_DELETE_SPACE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 293, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_t_12 = PySequence_GetSlice(__pyx_v_String, 1, -1L); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 289, __pyx_L7_error)
+            __pyx_t_12 = PySequence_GetSlice(__pyx_v_String, 1, -1L); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 293, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_12);
             __pyx_t_17 = NULL;
             __pyx_t_16 = 0;
@@ -6589,7 +6671,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[3] = {__pyx_t_17, __pyx_t_12, __pyx_n_s_cython};
-              __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -6598,14 +6680,14 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[3] = {__pyx_t_17, __pyx_t_12, __pyx_n_s_cython};
-              __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             } else
             #endif
             {
-              __pyx_t_13 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_13 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_13);
               if (__pyx_t_17) {
                 __Pyx_GIVEREF(__pyx_t_17); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_17); __pyx_t_17 = NULL;
@@ -6616,7 +6698,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_GIVEREF(__pyx_n_s_cython);
               PyTuple_SET_ITEM(__pyx_t_13, 1+__pyx_t_16, __pyx_n_s_cython);
               __pyx_t_12 = 0;
-              __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_13, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_13, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             }
@@ -6627,7 +6709,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               if (unlikely(size != 2)) {
                 if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                 else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                __PYX_ERR(0, 289, __pyx_L7_error)
+                __PYX_ERR(0, 293, __pyx_L7_error)
               }
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
               if (likely(PyTuple_CheckExact(sequence))) {
@@ -6640,15 +6722,15 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_INCREF(__pyx_t_14);
               __Pyx_INCREF(__pyx_t_13);
               #else
-              __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_14);
-              __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_13);
               #endif
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             } else {
               Py_ssize_t index = -1;
-              __pyx_t_12 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 289, __pyx_L7_error)
+              __pyx_t_12 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 293, __pyx_L7_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               __pyx_t_18 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -6656,7 +6738,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_GOTREF(__pyx_t_14);
               index = 1; __pyx_t_13 = __pyx_t_18(__pyx_t_12); if (unlikely(!__pyx_t_13)) goto __pyx_L15_unpacking_failed;
               __Pyx_GOTREF(__pyx_t_13);
-              if (__Pyx_IternextUnpackEndCheck(__pyx_t_18(__pyx_t_12), 2) < 0) __PYX_ERR(0, 289, __pyx_L7_error)
+              if (__Pyx_IternextUnpackEndCheck(__pyx_t_18(__pyx_t_12), 2) < 0) __PYX_ERR(0, 293, __pyx_L7_error)
               __pyx_t_18 = NULL;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               goto __pyx_L16_unpacking_done;
@@ -6664,11 +6746,11 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               __pyx_t_18 = NULL;
               if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-              __PYX_ERR(0, 289, __pyx_L7_error)
+              __PYX_ERR(0, 293, __pyx_L7_error)
               __pyx_L16_unpacking_done:;
             }
-            if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 289, __pyx_L7_error)
-            if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) __PYX_ERR(0, 289, __pyx_L7_error)
+            if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 293, __pyx_L7_error)
+            if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) __PYX_ERR(0, 293, __pyx_L7_error)
             __Pyx_XDECREF_SET(__pyx_v_test_string, ((PyObject*)__pyx_t_14));
             __pyx_t_14 = 0;
             __Pyx_GIVEREF(__pyx_t_13);
@@ -6690,7 +6772,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "segmentation.pyx":290
+          /* "segmentation.pyx":294
  *                 if str_ in [ ',' ]:
  *                     try:  test_string, self.error = control_string.STRING_ANALYSE( self.data_base, self.line ).DELETE_SPACE( String[ 1 : -1 ], 'cython' )
  *                     except TypeError: pass             # <<<<<<<<<<<<<<
@@ -6705,7 +6787,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           goto __pyx_L9_except_error;
           __pyx_L9_except_error:;
 
-          /* "segmentation.pyx":289
+          /* "segmentation.pyx":293
  *             if i != len( string ) - 1:
  *                 if str_ in [ ',' ]:
  *                     try:  test_string, self.error = control_string.STRING_ANALYSE( self.data_base, self.line ).DELETE_SPACE( String[ 1 : -1 ], 'cython' )             # <<<<<<<<<<<<<<
@@ -6725,27 +6807,27 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __pyx_L14_try_end:;
         }
 
-        /* "segmentation.pyx":292
+        /* "segmentation.pyx":296
  *                     except TypeError: pass
  * 
  *                     if not  self.error :             # <<<<<<<<<<<<<<
  *                         storage.append( String )
  *                         String = ''
  */
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 292, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 296, __pyx_L1_error)
         __pyx_t_6 = ((!__pyx_t_8) != 0);
         if (__pyx_t_6) {
 
-          /* "segmentation.pyx":293
+          /* "segmentation.pyx":297
  * 
  *                     if not  self.error :
  *                         storage.append( String )             # <<<<<<<<<<<<<<
  *                         String = ''
  *                     else:
  */
-          __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_storage, __pyx_v_String); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 293, __pyx_L1_error)
+          __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_storage, __pyx_v_String); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 297, __pyx_L1_error)
 
-          /* "segmentation.pyx":294
+          /* "segmentation.pyx":298
  *                     if not  self.error :
  *                         storage.append( String )
  *                         String = ''             # <<<<<<<<<<<<<<
@@ -6755,7 +6837,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __Pyx_INCREF(__pyx_kp_s_);
           __Pyx_DECREF_SET(__pyx_v_String, __pyx_kp_s_);
 
-          /* "segmentation.pyx":292
+          /* "segmentation.pyx":296
  *                     except TypeError: pass
  * 
  *                     if not  self.error :             # <<<<<<<<<<<<<<
@@ -6765,7 +6847,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           goto __pyx_L17;
         }
 
-        /* "segmentation.pyx":296
+        /* "segmentation.pyx":300
  *                         String = ''
  *                     else:
  *                         self.error = SE.ERROR( self.line ).ERROR5( main_string )             # <<<<<<<<<<<<<<
@@ -6773,12 +6855,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
  *                 else: pass
  */
         /*else*/ {
-          __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_SE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 296, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_SE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 300, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 296, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 300, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          __pyx_t_14 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 296, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 300, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_17 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
@@ -6793,10 +6875,10 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __pyx_t_13 = (__pyx_t_17) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_17, __pyx_t_14) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_14);
           __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 296, __pyx_L1_error)
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 300, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_ERROR5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 296, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_ERROR5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 300, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           __pyx_t_13 = NULL;
@@ -6811,17 +6893,17 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           }
           __pyx_t_4 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_13, __pyx_v_main_string) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_main_string);
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 296, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 296, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 300, __pyx_L1_error)
           __Pyx_GIVEREF(__pyx_t_4);
           __Pyx_GOTREF(__pyx_v_self->error);
           __Pyx_DECREF(__pyx_v_self->error);
           __pyx_v_self->error = ((PyObject*)__pyx_t_4);
           __pyx_t_4 = 0;
 
-          /* "segmentation.pyx":297
+          /* "segmentation.pyx":301
  *                     else:
  *                         self.error = SE.ERROR( self.line ).ERROR5( main_string )
  *                         break             # <<<<<<<<<<<<<<
@@ -6832,7 +6914,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
         }
         __pyx_L17:;
 
-        /* "segmentation.pyx":288
+        /* "segmentation.pyx":292
  * 
  *             if i != len( string ) - 1:
  *                 if str_ in [ ',' ]:             # <<<<<<<<<<<<<<
@@ -6842,7 +6924,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
         goto __pyx_L6;
       }
 
-      /* "segmentation.pyx":298
+      /* "segmentation.pyx":302
  *                         self.error = SE.ERROR( self.line ).ERROR5( main_string )
  *                         break
  *                 else: pass             # <<<<<<<<<<<<<<
@@ -6853,7 +6935,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
       }
       __pyx_L6:;
 
-      /* "segmentation.pyx":287
+      /* "segmentation.pyx":291
  *             String        += str_
  * 
  *             if i != len( string ) - 1:             # <<<<<<<<<<<<<<
@@ -6863,7 +6945,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
       goto __pyx_L5;
     }
 
-    /* "segmentation.pyx":300
+    /* "segmentation.pyx":304
  *                 else: pass
  *             else:
  *                 if str_ in [ ',' ]:             # <<<<<<<<<<<<<<
@@ -6873,12 +6955,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
     /*else*/ {
       __Pyx_INCREF(__pyx_v_str_);
       __pyx_t_7 = __pyx_v_str_;
-      __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_7, __pyx_kp_s__17, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 300, __pyx_L1_error)
+      __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_7, __pyx_kp_s__17, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 304, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_8 = ((__pyx_t_6 != 0) != 0);
       if (__pyx_t_8) {
 
-        /* "segmentation.pyx":301
+        /* "segmentation.pyx":305
  *             else:
  *                 if str_ in [ ',' ]:
  *                     try:  test_string, self.error = control_string.STRING_ANALYSE( self.data_base, self.line ).DELETE_SPACE( String[ 1 : -1 ], 'cython' )             # <<<<<<<<<<<<<<
@@ -6893,12 +6975,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __Pyx_XGOTREF(__pyx_t_10);
           __Pyx_XGOTREF(__pyx_t_9);
           /*try:*/ {
-            __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_control_string); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 301, __pyx_L19_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_control_string); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 305, __pyx_L19_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_STRING_ANALYSE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 301, __pyx_L19_error)
+            __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_STRING_ANALYSE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 305, __pyx_L19_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-            __pyx_t_13 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 301, __pyx_L19_error)
+            __pyx_t_13 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 305, __pyx_L19_error)
             __Pyx_GOTREF(__pyx_t_13);
             __pyx_t_17 = NULL;
             __pyx_t_16 = 0;
@@ -6915,7 +6997,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[3] = {__pyx_t_17, __pyx_v_self->data_base, __pyx_t_13};
-              __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
@@ -6924,14 +7006,14 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[3] = {__pyx_t_17, __pyx_v_self->data_base, __pyx_t_13};
-              __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             } else
             #endif
             {
-              __pyx_t_15 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_15 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_GOTREF(__pyx_t_15);
               if (__pyx_t_17) {
                 __Pyx_GIVEREF(__pyx_t_17); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_17); __pyx_t_17 = NULL;
@@ -6942,15 +7024,15 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_GIVEREF(__pyx_t_13);
               PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_16, __pyx_t_13);
               __pyx_t_13 = 0;
-              __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             }
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-            __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_DELETE_SPACE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 301, __pyx_L19_error)
+            __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_DELETE_SPACE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 305, __pyx_L19_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_t_12 = PySequence_GetSlice(__pyx_v_String, 1, -1L); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 301, __pyx_L19_error)
+            __pyx_t_12 = PySequence_GetSlice(__pyx_v_String, 1, -1L); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 305, __pyx_L19_error)
             __Pyx_GOTREF(__pyx_t_12);
             __pyx_t_15 = NULL;
             __pyx_t_16 = 0;
@@ -6967,7 +7049,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_t_12, __pyx_n_s_cython};
-              __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -6976,14 +7058,14 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_t_12, __pyx_n_s_cython};
-              __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             } else
             #endif
             {
-              __pyx_t_13 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_13 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_GOTREF(__pyx_t_13);
               if (__pyx_t_15) {
                 __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -6994,7 +7076,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_GIVEREF(__pyx_n_s_cython);
               PyTuple_SET_ITEM(__pyx_t_13, 1+__pyx_t_16, __pyx_n_s_cython);
               __pyx_t_12 = 0;
-              __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_13, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_13, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             }
@@ -7005,7 +7087,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               if (unlikely(size != 2)) {
                 if (size > 2) __Pyx_RaiseTooManyValuesError(2);
                 else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                __PYX_ERR(0, 301, __pyx_L19_error)
+                __PYX_ERR(0, 305, __pyx_L19_error)
               }
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
               if (likely(PyTuple_CheckExact(sequence))) {
@@ -7018,15 +7100,15 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_INCREF(__pyx_t_14);
               __Pyx_INCREF(__pyx_t_13);
               #else
-              __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_14 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_GOTREF(__pyx_t_14);
-              __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_GOTREF(__pyx_t_13);
               #endif
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             } else {
               Py_ssize_t index = -1;
-              __pyx_t_12 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 301, __pyx_L19_error)
+              __pyx_t_12 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 305, __pyx_L19_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               __pyx_t_18 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -7034,7 +7116,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_GOTREF(__pyx_t_14);
               index = 1; __pyx_t_13 = __pyx_t_18(__pyx_t_12); if (unlikely(!__pyx_t_13)) goto __pyx_L27_unpacking_failed;
               __Pyx_GOTREF(__pyx_t_13);
-              if (__Pyx_IternextUnpackEndCheck(__pyx_t_18(__pyx_t_12), 2) < 0) __PYX_ERR(0, 301, __pyx_L19_error)
+              if (__Pyx_IternextUnpackEndCheck(__pyx_t_18(__pyx_t_12), 2) < 0) __PYX_ERR(0, 305, __pyx_L19_error)
               __pyx_t_18 = NULL;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               goto __pyx_L28_unpacking_done;
@@ -7042,11 +7124,11 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               __pyx_t_18 = NULL;
               if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-              __PYX_ERR(0, 301, __pyx_L19_error)
+              __PYX_ERR(0, 305, __pyx_L19_error)
               __pyx_L28_unpacking_done:;
             }
-            if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 301, __pyx_L19_error)
-            if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) __PYX_ERR(0, 301, __pyx_L19_error)
+            if (!(likely(PyString_CheckExact(__pyx_t_14))||((__pyx_t_14) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_14)->tp_name), 0))) __PYX_ERR(0, 305, __pyx_L19_error)
+            if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) __PYX_ERR(0, 305, __pyx_L19_error)
             __Pyx_XDECREF_SET(__pyx_v_test_string, ((PyObject*)__pyx_t_14));
             __pyx_t_14 = 0;
             __Pyx_GIVEREF(__pyx_t_13);
@@ -7068,7 +7150,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "segmentation.pyx":302
+          /* "segmentation.pyx":306
  *                 if str_ in [ ',' ]:
  *                     try:  test_string, self.error = control_string.STRING_ANALYSE( self.data_base, self.line ).DELETE_SPACE( String[ 1 : -1 ], 'cython' )
  *                     except TypeError: pass             # <<<<<<<<<<<<<<
@@ -7083,7 +7165,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           goto __pyx_L21_except_error;
           __pyx_L21_except_error:;
 
-          /* "segmentation.pyx":301
+          /* "segmentation.pyx":305
  *             else:
  *                 if str_ in [ ',' ]:
  *                     try:  test_string, self.error = control_string.STRING_ANALYSE( self.data_base, self.line ).DELETE_SPACE( String[ 1 : -1 ], 'cython' )             # <<<<<<<<<<<<<<
@@ -7103,21 +7185,21 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __pyx_L26_try_end:;
         }
 
-        /* "segmentation.pyx":304
+        /* "segmentation.pyx":308
  *                     except TypeError: pass
  * 
  *                     if  not self.error:  storage.append( String )             # <<<<<<<<<<<<<<
  *                     else:
  *                         self.error = SE.ERROR( self.line ).ERROR5( main_string )
  */
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 304, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_self->error); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 308, __pyx_L1_error)
         __pyx_t_6 = ((!__pyx_t_8) != 0);
         if (__pyx_t_6) {
-          __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_storage, __pyx_v_String); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 304, __pyx_L1_error)
+          __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_storage, __pyx_v_String); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 308, __pyx_L1_error)
           goto __pyx_L29;
         }
 
-        /* "segmentation.pyx":306
+        /* "segmentation.pyx":310
  *                     if  not self.error:  storage.append( String )
  *                     else:
  *                         self.error = SE.ERROR( self.line ).ERROR5( main_string )             # <<<<<<<<<<<<<<
@@ -7125,12 +7207,12 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
  *                 else: storage.append( String )
  */
         /*else*/ {
-          __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_SE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 306, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_SE); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 310, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 306, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_ERROR); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 310, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          __pyx_t_14 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 306, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_v_self->line); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 310, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_15 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
@@ -7145,10 +7227,10 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           __pyx_t_13 = (__pyx_t_15) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_15, __pyx_t_14) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_14);
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 306, __pyx_L1_error)
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 310, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_ERROR5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 306, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_ERROR5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 310, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           __pyx_t_13 = NULL;
@@ -7163,17 +7245,17 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
           }
           __pyx_t_4 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_13, __pyx_v_main_string) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_main_string);
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 306, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 310, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 306, __pyx_L1_error)
+          if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 310, __pyx_L1_error)
           __Pyx_GIVEREF(__pyx_t_4);
           __Pyx_GOTREF(__pyx_v_self->error);
           __Pyx_DECREF(__pyx_v_self->error);
           __pyx_v_self->error = ((PyObject*)__pyx_t_4);
           __pyx_t_4 = 0;
 
-          /* "segmentation.pyx":307
+          /* "segmentation.pyx":311
  *                     else:
  *                         self.error = SE.ERROR( self.line ).ERROR5( main_string )
  *                         break             # <<<<<<<<<<<<<<
@@ -7184,7 +7266,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
         }
         __pyx_L29:;
 
-        /* "segmentation.pyx":300
+        /* "segmentation.pyx":304
  *                 else: pass
  *             else:
  *                 if str_ in [ ',' ]:             # <<<<<<<<<<<<<<
@@ -7194,7 +7276,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
         goto __pyx_L18;
       }
 
-      /* "segmentation.pyx":308
+      /* "segmentation.pyx":312
  *                         self.error = SE.ERROR( self.line ).ERROR5( main_string )
  *                         break
  *                 else: storage.append( String )             # <<<<<<<<<<<<<<
@@ -7202,13 +7284,13 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
  *         return storage, self.error
  */
       /*else*/ {
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_storage, __pyx_v_String); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 308, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_storage, __pyx_v_String); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 312, __pyx_L1_error)
       }
       __pyx_L18:;
     }
     __pyx_L5:;
 
-    /* "segmentation.pyx":284
+    /* "segmentation.pyx":288
  *             str str_, String = "", test_string
  * 
  *         for i, str_ in enumerate( string ):             # <<<<<<<<<<<<<<
@@ -7219,13 +7301,13 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "segmentation.pyx":310
+  /* "segmentation.pyx":314
  *                 else: storage.append( String )
  * 
  *         return storage, self.error             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_storage);
   __Pyx_GIVEREF(__pyx_v_storage);
@@ -7237,7 +7319,7 @@ static PyObject *__pyx_f_12segmentation_12SEGMENTATION_STRING_IN_TRUE_BLOCK(stru
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "segmentation.pyx":278
+  /* "segmentation.pyx":282
  *         return self.string, self.error
  * 
  *     cdef tuple STRING_IN_TRUE_BLOCK(self,  str string  , str main_string ):             # <<<<<<<<<<<<<<
@@ -8109,7 +8191,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 81, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 85, __pyx_L1_error)
-  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 278, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -8130,25 +8212,25 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "segmentation.pyx":231
+  /* "segmentation.pyx":233
  * 
  *                 if not self.error:
  *                     for str_ in [']', ')', '}']:             # <<<<<<<<<<<<<<
  *                         if str_ in self.string:
  *                             Open            = num.NUMBER().OPENING( str_ )
  */
-  __pyx_tuple__15 = PyTuple_Pack(3, __pyx_kp_s__7, __pyx_kp_s__8, __pyx_kp_s__9); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(3, __pyx_kp_s__7, __pyx_kp_s__8, __pyx_kp_s__9); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "segmentation.pyx":257
+  /* "segmentation.pyx":261
  *                         else: pass
  * 
  *                         for str_ in ['"', "'"]:             # <<<<<<<<<<<<<<
  *                             if str_ in  self.string :
  *                                 str__ = str_
  */
-  __pyx_tuple__16 = PyTuple_Pack(2, __pyx_kp_s__5, __pyx_kp_s__6); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(2, __pyx_kp_s__5, __pyx_kp_s__6); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
 

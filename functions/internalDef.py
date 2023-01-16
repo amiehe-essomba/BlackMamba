@@ -34,7 +34,8 @@ class INTERNAL_BLOCKS:
                class_name       : str   = '',       # class name
                class_key        : bool  = False,    # if initialize function was created
                func_name        : str   = '',       # function name
-               loop             : any   = None      # if loop
+               loop             : any   = None,     # if loop
+               locked           : bool  = False
                ):
         """
         this module is used to make a treatment of internal function in the function < def of func >
@@ -61,7 +62,7 @@ class INTERNAL_BLOCKS:
         try:
             self.string, self.error = self.control.DELETE_SPACE(self.string)
             self.normal_string, self.error = self.control.DELETE_SPACE(self.normal_string)
-
+            
             if self.error is None:
                 try:
                     if self.normal_string[ 0 ] != '#':
@@ -80,8 +81,9 @@ class INTERNAL_BLOCKS:
                                         self.value = self.normal_string
                                 except IndexError: self.error = er.ERRORS(self.line).ERROR1('if')
                         elif self.normal_string[: 3] == 'for'       :
-                            self._return_, self.value, self.error = mainFor.FOR_BLOCK(self.normal_string,
-                                                  self.data_base, self.line).FOR( function=function, interpreter=interpreter)
+                            self._return_, self.value, self.error = mainFor.FOR_BLOCK(self.data_base, self.line, 
+                                                  self.normal_string).FOR( function=function, interpreter=interpreter, locked=locked)
+                            
                         elif self.normal_string[: 6] == 'unless'    :
                             if self.normal_string[-1] == ':':
                                 if self.normal_string[6] in [' ']:
@@ -174,8 +176,7 @@ class INTERNAL_BLOCKS:
                                         else: pass
                                 else:  _, self.error = self.control.CHECK_NAME(self.normal_string)
                             else: self.error = er.ERRORS(self.line).ERROR0(self.normal_string)
-                    else:
-                        self._return_ = 'comment_line'
+                    else:  self._return_ = 'comment_line'
                 except IndexError: self.error = er.ERRORS(self.line).ERROR4()
             else:
                 self._return_   = 'empty'
@@ -191,6 +192,7 @@ class INTERNAL_BLOCKS:
                 self.error += self.err
             else:  self.error += bm.fg.rbg(0, 255, 0) + ' in {}( )'.format( func_name ) + bm.init.reset
 
+        
         return self._return_, self.value, self.error
 
 class SELF_METHOD:

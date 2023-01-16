@@ -1,7 +1,8 @@
-from CythonModules.Windows.DEEP_PARSER   import arr_deep_checking as arr
-from script.MATHS                       import mathematics
+from CythonModules.Linux.DEEP_PARSER        import arr_deep_checking as arr
+from script.MATHS                           import mathematics
+from script.PARSER                          import numerical_value as NV
 
-class AR_DEEP_CHECKING:
+cdef class AR_DEEP_CHECKING:
     cdef public:
         dict data_base
         unsigned long int line 
@@ -42,7 +43,7 @@ class AR_DEEP_CHECKING:
                     sub_values     = self._get_values_[ k ]
                     typ = sub_values[ 'type' ]
 
-                    self.num, self.error = TYPE( self.master, sub_values, self.data_base, 
+                    self.num, self.error = NV.TYPE( self.master, sub_values, self.data_base, 
                                         self.line, typ ).TYPE( main__main, name='cython' )
                     if not self.error:
                         if k != (sub_len_val - 1):
@@ -81,17 +82,17 @@ class AR_DEEP_CHECKING:
                 self.operators  = self.operators[ 1 : ]
                 self.calculations.append( sign )
 
-            for k in range( len(self._get_values_ ))
+            for k in range( len(self._get_values_ )):
                 if type( self._get_values_[ k ] ) == type( dict() ):
                     typ               = self._get_values_[ k ][ 'type' ]
-                    self.num, self.error    = TYPE( self.master, self._get_values_[ k ], self.data_base, self.line,
+                    self.num, self.error    = NV.TYPE( self.master, self._get_values_[ k ], self.data_base, self.line,
                                                                         typ ).TYPE( main__main, name="cython" )
                     if not self.error:
                         if k != (sub_len_val - 1):
                             if not self.index:
                                 try:
                                     self.calculations.append( [ self.num[ 0 ]] )
-                                    self.calculations.append( self.operators[ k + 1 ])
+                                    self.calculations.append( self.operators[ k ])
                                 except IndexError: self.calculations.append( self.operators[ k ] )
                             else:
                                 self.calculations.append( [ self.num[ 0 ] ] )
@@ -128,7 +129,7 @@ class AR_DEEP_CHECKING:
 
             if not self.error:
                 history_of_op = ""
-                for k in range(len(self.calculations))
+                for k in range(len(self.calculations)):
                     if type(self.calculations[ k ]) == type(str()):  
                         string = self.calculations[ k ]
                         history_of_op += string

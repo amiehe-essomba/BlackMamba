@@ -950,7 +950,7 @@ struct __pyx_opt_args_5error_6ERRORS_ERROR9 {
 };
 
 /* "error.pyx":4
- * from CythonModules.Linux                      import fileError as fe
+ * from CythonModules.Linux                        import fileError as fe
  * 
  * cdef class ERRORS:             # <<<<<<<<<<<<<<
  *     cdef public:
@@ -5231,7 +5231,7 @@ if (!__Pyx_RefNanny) {
 
   /* "error.pyx":1
  * from script.STDIN.LinuxSTDIN                    import bm_configure as bm             # <<<<<<<<<<<<<<
- * from CythonModules.Linux                      import fileError as fe
+ * from CythonModules.Linux                        import fileError as fe
  * 
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
@@ -5250,7 +5250,7 @@ if (!__Pyx_RefNanny) {
 
   /* "error.pyx":2
  * from script.STDIN.LinuxSTDIN                    import bm_configure as bm
- * from CythonModules.Linux                      import fileError as fe             # <<<<<<<<<<<<<<
+ * from CythonModules.Linux                        import fileError as fe             # <<<<<<<<<<<<<<
  * 
  * cdef class ERRORS:
  */
@@ -5270,7 +5270,7 @@ if (!__Pyx_RefNanny) {
 
   /* "error.pyx":1
  * from script.STDIN.LinuxSTDIN                    import bm_configure as bm             # <<<<<<<<<<<<<<
- * from CythonModules.Linux                      import fileError as fe
+ * from CythonModules.Linux                        import fileError as fe
  * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)

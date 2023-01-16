@@ -40,6 +40,7 @@ class MATHS:
         else: self.result = self.storage[ 0 ]
 
         return self.result, self.error
+    
     def SOUS(self)          :
         self.result         = None
         self.error          = None
@@ -4734,6 +4735,7 @@ class SPLIT_DATA:
         self.index_sum      = 0
         self.return_index   = []
 
+        
         for i, values in enumerate( self.master ):
             if i < len( self.master ) - 1:
                 if values == self.operator:

@@ -9,9 +9,9 @@ class Lib_Path:
         # system name
         self.sys        = sys
 
-    def getPath(self) -> str :
+    def getPath(self):
         self.second_part = ''
-
+       
         # get Windows path
         if   self.sys in [ 'windows' ]  : self.second_part = "\\Library"
         # get Linux path

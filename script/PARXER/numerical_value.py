@@ -1,5 +1,6 @@
 from colorama       import Fore, init, Back, Style
 import numpy
+import pandas       as pd
 from script         import control_string
 from script.LEXER   import particular_str_selection
 from script.MATHS   import arithemtic_operations, mathematics
@@ -61,7 +62,7 @@ class NUMERICAL:
         self.index                  = None
         self.sum                    = ''
 
-        #print( self.main_value )
+        #print( self.master )
         if self.main_value is not None:
 
             self.values                 = self.main_value[ 'value' ]
@@ -74,7 +75,7 @@ class NUMERICAL:
             if loop is False:
                 self.numeric, self.error = NUMERICAL(self.master, self.data_base,
                                     self.line).BOOLEAN_CHECK( self.values, self.arithmetic_operator, self.logical_operator,
-                                                                                              self.boolean_operator)
+                                                                                              self.boolean_operator, main_string)
                 
                 #self.numeric, self.error = NUMERICAL(self.master, self.data_base,
                 #                                    self.line).ARITHMETIC_CHECK(self.values, self.arithmetic_operator)
@@ -307,212 +308,8 @@ class NUMERICAL:
 
         return self.numeric, self.error
 
-    def _ARITHMETIC_CHECK(self, values: list, arithmetic: list): #to remove
-        self.values                     = values
-        self.arithmetic_operator        = arithmetic
-        self.numeric                    = []
-        self.sum                        = ''
-        self.error                      = None
-
-        for i, op in enumerate( self.arithmetic_operator ):
-            if op is None:
-                self.get_values             = self.values[ i ][ 0 ]
-                self.type                   = self.get_values[ 'type' ]
-
-                self.num, self.error        = TYPE( self.master, self.get_values, self.data_base, self.line,
-                                                                                self.type ).TYPE( main__main )
-
-                if self.error is None:
-                    self._sum_, self.error  = self.maths_operation.MAGIC_MATH_BASE( str( self.num ), self.data_base,
-                                                                    self.line, False ).MATHS_OPERATIONS()
-                    if self.error is None:
-                        self.numeric.append( self._sum_ )
-                    else:
-                        self.error = self.error
-                        break
-                else:
-                    self.error = self.error
-                    break
-
-            else:
-                if len( self.values[ i ] ) > len( op ):
-                    self.len_val                = len(self.values[ i ])
-                    for j in range( self.len_val ):
-                        self._get_values_       = self.values[ i ][ j ]
-                        self.type               = self._get_values_[ 'type' ]
-                        self.num, self.error    = TYPE( self.master, self._get_values_, self.data_base,
-                                                                            self.line, self.type ).TYPE( main__main )
-
-                        if self.error is None:
-                            if j != self.len_val - 1:
-                                self.sum += str( self.num ) + op[ j ]
-                            else:
-                                self.sum += str( self.num )
-                        else:
-                            self.error = self.error
-                            break
-
-                    if self.error is None:
-                        self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE( self.sum, self.data_base,
-                                                                                self.line, True ).MATHS_OPERATIONS()
-                        if self.error is None:
-                            self.numeric.append( self._sum_ )
-                        else:
-                            self.error = self.error
-                            break
-                        self.sum = ''
-
-                    else:
-                        self.error = self.error
-                        break
-
-                elif len( self.values[ i ] ) == len( op ):
-
-                    if type( op[ 0 ] ) == type( list() ):
-                        self.sign       = '+'
-                    else:
-                        if len( op ) == 1:
-                            self.sign   = op[ 0 ]
-                        else:
-                            key = False
-                            for _op_ in op:
-                                if type( _op_ ) == type( list( ) ):
-                                    key = True
-                                    break
-                            if key == False:
-                                self.sign = op[ 0 ]
-                            else:
-                                self.sign = ''
-
-                    self.len_val = len( self.values[ i ] )
-                    if len( op ) == 1:
-                        self._get_values_ = self.values[ i ][ 0 ]
-
-                        try:
-                            self.type               = self._get_values_[ 'type' ]
-                            self.num, self.error    = TYPE( self.master, self._get_values_, self.data_base, self.line,
-                                                                                    self.type ).TYPE( main__main )
-                            if self.error is None:
-                                if self.sign == '+':
-                                    self.sum = str( self.num )
-                                else:
-                                    self.sum = self.sign + str( self.num )
-
-                                self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE(self.sum,
-                                                                self.data_base, self.line, True).MATHS_OPERATIONS()
-                                if self.error is None:
-                                    self.numeric.append( self._sum_ )
-                                else:
-                                    self.error = self.error
-                                    break
-                            else:
-                                self.error = self.error
-                                break
-
-                        except TypeError :
-                            self.num, self.error = NUMERICAL( self.master, self.data_base,
-                                                self.line ).ARITHMETIC_DEEP_CHECKING_INIT( self._get_values_, op[ 0 ])
-
-                            if self.error is None:
-                                self.sum = self.num[ 0 ]
-                                self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE( self.sum, self.data_base,
-                                                                    self.line, True).MATHS_OPERATIONS()
-                                if self.error is None:
-                                    self.numeric.append( self._sum_ )
-                                    self.sum = ''
-                                else:
-                                    self.error = self.error
-                                    break
-                            else:
-                                self.error = self.error
-                                break
-
-                    else:
-                        for j in range( self.len_val ):
-                            self._get_values_ = self.values[ i ][ j ]
-
-                            if type( self._get_values_ ) == type( dict() ) :
-                                self.type = self._get_values_[ 'type' ]
-                                self.num, self.error = TYPE( self.master, self._get_values_, self.data_base, self.line,
-                                                            self.type ).TYPE( main__main )
-                                if self.error is None:
-                                    if j != self.len_val - 1:
-                                        try:
-                                            self.sum += str( self.num ) + op[ j + 1 ]
-                                        except TypeError:
-                                            self.sum += str( self.num ) + op[ j ]
-                                    else:
-                                        self.sum += str( self.num )
-                                else:
-                                    self.error = self.error
-                                    break
-
-                            else:
-                                self.num, self.error = NUMERICAL(self.master, self.data_base,
-                                                self.line).ARITHMETIC_DEEP_CHECKING_INIT( self._get_values_, op[ j ])
-
-                                if self.error is None :
-                                    if j != self.len_val - 1:
-                                        try:
-                                            self.sum += str( self.num[ 0 ] ) + op[ j + 1 ]
-                                        except TypeError:
-                                            self.sum += str(self.num[ 0 ]) + op[ j ]
-                                    else:
-                                        self.sum += str( self.num [ 0 ] )
-                                else:
-                                    self.error = self.error
-                                    break
-
-                        if self.error is None:
-                            if self.sign == '+':
-                                self.sum = self.sum
-                            else:
-                                self.sum = self.sign + self.sum
-
-                            self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE( self.sum, self.data_base,
-                                                                self.line, True).MATHS_OPERATIONS()
-                            if self.error is None:
-                                self.numeric.append( self._sum_ )
-                                self.sum = ''
-                            else:
-                                self.error = self.error
-                                break
-
-                        else:
-                            self.error = self.error
-                            break
-
-                else:
-                    self.sign               = ''
-                    self.operators          = op[ : ]
-                    self._get_values_       = self.values[ i ]
-
-                    self.num, self.error    = NUMERICAL( self.master, self.data_base,
-                                            self.line ).ARITHMETIC_DEEP_CHECKING_INIT (self._get_values_, self.operators)
-
-                    if self.error is None:
-                        self.sum            = self.num[ 0 ]
-                        if self.sign == '+':
-                            self.sum        = self.sum
-                        else:
-                            self.sum        = self.sign + self.sum
-
-                        self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE( self.sum, self.data_base,
-                                                                    self.line, True ).MATHS_OPERATIONS()
-                        if self.error is None:
-                            self.numeric.append( self._sum_ )
-                            self.sum        = ''
-                        else:
-                            self.error = self.error
-                            break
-                    else:
-                        self.error = self.error
-                        break
-
-        return  self.numeric, self.error
-
     @cython.cfunc
-    def ARITHMETIC_CHECK(self, values: list, arithmetic: list):
+    def ARITHMETIC_CHECK(self, values: list, arithmetic: list, main_string: str=""):
         self.values                     = values
         self.arithmetic_operator        = arithmetic
         self.numeric                    = []
@@ -521,15 +318,17 @@ class NUMERICAL:
 
         for i, op in enumerate( self.arithmetic_operator ):
             if op is None:
-                self.get_values             = self.values[ i ][ 0 ]
-                self.type                   = self.get_values[ 'type' ]
+                try:
+                    self.get_values             = self.values[ i ][ 0 ]
+                    self.type                   = self.get_values[ 'type' ]
 
-                self._return_, self.error   = TYPE( self.master, self.get_values, self.data_base, self.line,
-                                                                                self.type ).TYPE( main__main )
-                if self.error is None:
-                    self.numeric.append( self._return_ )
-                else:
-                    self.error = self.error
+                    self._return_, self.error   = TYPE( self.master, self.get_values, self.data_base, self.line,
+                                                                                    self.type ).TYPE( main__main )
+                    if self.error is None:
+                        self.numeric.append( self._return_ )
+                    else:  break
+                except IndexError: 
+                    self.error = ERRORS( self.line).ERROR0(main_string)
                     break
 
             else:
@@ -589,14 +388,13 @@ class NUMERICAL:
                             else:
                                 self.sign = ''
 
-                    if self.sign in [ '-' ]:
-                        self.calculations.append( self.sign )
-                    else:
-                        pass
+                    if self.sign in [ '-' ]:  self.calculations.append( self.sign )
+                    else: pass
 
                     self.len_val = len( self.values[ i ] )
 
                     if len( op ) == 1:
+                        
                         self._get_values_ = self.values[ i ][ 0 ]
 
                         try:
@@ -627,7 +425,7 @@ class NUMERICAL:
                                 break
 
                         except TypeError :
-
+                            
                             self._return_, self.error   = ARRITHMETIC_DEEP_CHECKING( self.master, self._get_values_,
                                                             op[ 0 ], self.data_base, self.line ).INIT( main__main )
                             if self.error is None:
@@ -668,35 +466,29 @@ class NUMERICAL:
                                             if self.calculations[ 0 ] == '-':
                                                 self.calculations.append( op[ j + 1 ] )
                                             else:
-                                                self.calculations.append(op[ j + 1 ])
+                                                self.calculations.append(op[ j ]) ### here
                                         except TypeError:
                                             self.calculations.append( [ self._return_ ] )
                                             self.calculations.append( op[ j ] )
                                     else:
                                         self.calculations.append( [ self._return_ ] )
-                                else:
-                                    self.error = self.error
-                                    break
-
+                                else: break
+                                
                             else:
                                 self._return_, self.error = ARRITHMETIC_DEEP_CHECKING(self.master, self._get_values_,
                                                              op[ j ], self.data_base, self.line).INIT( main__main )
-
+                        
                                 if self.error is None :
                                     if j != self.len_val - 1:
                                         try:
                                             self.calculations.append( [ self._return_[ 0 ] ] )
                                             self.calculations.append( op[ j + 1 ] )
-
                                         except TypeError:
                                             self.calculations.append( [ self._return_[ 0 ] ] )
                                             self.calculations.append( op[ j ] )
 
-                                    else:
-                                        self.calculations.append( [ self._return_[ 0 ] ] )
-                                else:
-                                    self.error = self.error
-                                    break
+                                    else:  self.calculations.append( [ self._return_[ 0 ] ] )
+                                else:  break
 
                         if self.error is None:
                             self.history_of_op          = ''
@@ -704,7 +496,7 @@ class NUMERICAL:
                                 if type( string ) == type( str() ):
                                     self.history_of_op += string
                                 else: pass
-
+                        
                             self.__values__, self.error = mathematics.MAGIC_MATH_BASE(self.calculations,
                                                 self.data_base,self.history_of_op, self.line) .MATHS_OPERATIONS()
 
@@ -725,15 +517,13 @@ class NUMERICAL:
 
                     self._return_, self.error = ARRITHMETIC_DEEP_CHECKING(self.master, self._get_values_,
                                                         self.operators, self.data_base, self.line).INIT( main__main )
-
                     if self.error is None:
                         self.history_of_op  =  ''
                         self.calculations.append( [ self._return_[ 0 ] ] )
                         for string in self.calculations:
                             if type( string ) == type( str() ):
                                 self.history_of_op += string
-                            else:
-                                pass
+                            else:  pass
 
                         self.__values__, self.error = mathematics.MAGIC_MATH_BASE(self.calculations,
                                             self.data_base, self.history_of_op, self.line).MATHS_OPERATIONS()
@@ -741,17 +531,13 @@ class NUMERICAL:
                         if self.error is None:
                             self.numeric.append( self.__values__[ 0 ] )
                             self.calculations = []
-                        else:
-                            self.error = self.error
-                            break
-                    else:
-                        self.error = self.error
-                        break
+                        else: break
+                    else: break
        
         return  self.numeric, self.error
     
     @cython.cfunc
-    def LOGICAL_CHECK(self, values: list, arithmetic: list, logical: list):
+    def LOGICAL_CHECK(self, values: list, arithmetic: list, logical: list, main_string: str=""):
         self.error                  = None
         self.arithmetic_operator    = arithmetic
         self.logical_operator       = logical
@@ -764,7 +550,7 @@ class NUMERICAL:
                 self.get_values = [ self.values[ i ] ]
                 self.ar_op      = [ self.arithmetic_operator[ i ] ]
                 self.num, self.error = NUMERICAL( self.master, self.data_base,
-                                            self.line ).ARITHMETIC_CHECK( self.get_values, self.ar_op )
+                                            self.line ).ARITHMETIC_CHECK( self.get_values, self.ar_op, main_string )
                 if self.error is None:  self.numeric.append( self.num[ 0 ] )
                 else:  break
 
@@ -783,7 +569,7 @@ class NUMERICAL:
 
                     self.ar_op              = [ self.arithmetic_operator[ i ][ j ] ]
                     self.num, self.error    = NUMERICAL(self.master, self.data_base,
-                                                     self.line).ARITHMETIC_CHECK( self._get_values_, self.ar_op )
+                                                     self.line).ARITHMETIC_CHECK( self._get_values_, self.ar_op, main_string )
                     if self.error is None:  self._num_.append( self.num[ 0 ] )
                     else:  break
 
@@ -797,7 +583,7 @@ class NUMERICAL:
         return self._return_, self.error
 
     @cython.cfunc
-    def BOOLEAN_CHECK(self, values: list, arithmetic: list, logical: list, boolean: list):
+    def BOOLEAN_CHECK(self, values: list, arithmetic: list, logical: list, boolean: list, main_string: str = ""):
         self.error                      = None
         self.arithmetic_operator        = arithmetic
         self.logical_operator           = logical
@@ -812,7 +598,7 @@ class NUMERICAL:
                 self.ar_op              = [ self.arithmetic_operator[ i ] ]
                 
                 self.num, self.error    = NUMERICAL( self.master, self.data_base,
-                                                  self.line ).LOGICAL_CHECK(self.get_values, self.ar_op, self.l_op )
+                                                  self.line ).LOGICAL_CHECK(self.get_values, self.ar_op, self.l_op, main_string )
                 if self.error is None:  self.numeric.append( self.num )
                 else:  break
 
@@ -841,7 +627,7 @@ class NUMERICAL:
                     else:  self._get_values_   = [ self._get_values_ ]
 
                     self.num, self.error = NUMERICAL( self.master, self.data_base,
-                                            self.line).LOGICAL_CHECK( self._get_values_, self._ar_op_, self._l_op_)
+                                            self.line).LOGICAL_CHECK( self._get_values_, self._ar_op_, self._l_op_, main_string)
                     if self.error is None:  self._num_.append( self.num )
                     else: break
                     
@@ -1587,7 +1373,6 @@ class TYPE:
 
             else: pass
         elif self.type in [ 'tuple' ]                   :
-            
             if type( self.master ) == type( dict() ):
                 self.lists = list( self.master.keys() )
                 if 'values' not in self.lists:
@@ -1873,13 +1658,14 @@ class FINAL_VALUE:
         elif type( self.master ) == type( complex() )   :   self._return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
         elif type( self.master ) == type( list() )      :   self._return_ = '{}{}list(){}'.format(bm.fg.blue, self.yellow , bm.fg.blue)
         elif type( self.master ) == type( tuple() )     :   self._return_ = '{}{}tuple(){}'.format(bm.fg.blue, self.blue, bm.fg.blue)
-        elif type( self.master ) == type( dict() )      :   self._return_ = '{}{}dictionary(){}'.format( bm.fg.blue, self.magenta, bm.fg.blue)
+        elif type( self.master ) == type( dict() )      :   self._return_ = '{}{}dictionary(){}'.format( bm.fg.blue, bm.fg.rbg(186,85,211), bm.fg.blue)
         elif type( self.master ) == type( str() )       :   self._return_ = '{}{}string(){}'.format(bm.fg.blue, bm.fg.rbg(255,140,100 ), bm.fg.blue)
         elif type( self.master ) == type( range( 1 ) )  :   self._return_ = '{}{}range(){}'.format(bm.fg.blue, bm.fg.green_L, bm.fg.blue)
         elif type( self.master ) == type( None )        :   self._return_ = '{}{}none(){}'.format(bm.fg.blue, self.orange, bm.fg.blue)
         elif type( self.master ) in self.all_Float      :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
         elif type( self.master ) in self.all_Int        :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
         elif type( self.master ) == type( numpy.array([1])):self._return_ = '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0), bm.fg.blue)
+        elif type( self.master ) == type( pd.DataFrame({'r':[0, 0]})) : self._return_ = '{}{}table(){}'.format(bm.fg.blue, bm.fg.rbg(204,153,255), bm.fg.blue) 
         else:  self._return_ = 'type not found'
 
         return self._return_+bm.init.reset
@@ -2038,20 +1824,21 @@ class ARRITHMETIC_DEEP_CHECKING:
                     self.type       = self.sub_values[ 'type' ]
                     self._return_, self.error = TYPE(self.master, self.sub_values, self.data_base, self.line,
                                                                                 self.type).TYPE( main_string )
-
+                    
                     if self.error is None:
                         if k != self.length_of_values - 1:
                             if not self.index:
                                 try:
+                                    print( self.operators[ k ], self.operators, k, self.sign )
                                     self.calculations.append( [ self._return_ ] )
-                                    self.calculations.append( self.operators[ k + 1 ])
+                                    #self.calculations.append( self.operators[ k + 1 ])
+                                    self.calculations.append( self.operators[ k ])
                                 except IndexError:
                                     self.calculations.append( self.operators[ k ] )
                             else:
                                 self.calculations.append( [ self._return_ ] )
                                 self.calculations.append( self.operators[ k + self.index[ -1 ] + 1 ])
                         else:  self.calculations.append( [ self._return_ ] )
-
                     else: break
 
                 else:
@@ -2078,27 +1865,22 @@ class ARRITHMETIC_DEEP_CHECKING:
                             try:
                                 self.calculations.append( [ self._return_[ 0 ] ] )
                                 self.calculations.append( self.operators[ k + 1 ] )
-
                             except TypeError:
                                 self.calculations.append( [ self._return_[ 0 ] ] )
                                 self.calculations.append( self.operators[ k + 2 ] )
-                        else:
-                            self.calculations.append( [ self._return_[ 0 ] ] )
+                        else: self.calculations.append( [ self._return_[ 0 ] ] )
                     else: break
 
             if self.error is None:
                 for string in self.calculations:
                     if type(string) == type(str()):
                         self.history_of_op += string
-                    else:
-                        pass
+                    else:  pass
                 self._values_, self.error = mathematics.MAGIC_MATH_BASE(self.calculations, self.data_base,
                                                             self.history_of_op, self.line).MATHS_OPERATIONS()
 
-                if self.error is None:
-                    self.numeric.append( self._values_ )
-                else:
-                    self.error = self.error
+                if self.error is None: self.numeric.append( self._values_ )
+                else: pass
             else: pass
 
         return self.numeric, self.error
@@ -2327,7 +2109,7 @@ class ERRORS:
     def ERROR7(self, op, ob1, ob2):
         error = '{}<< {}{} >>, {} and {}<< {}{} >>. {}type. {}line: {}{}'.format(self.white, ob1, self.white, self.magenta, 
                                                     self.white, ob2, self.white, self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}<< {}{}{} >> {}not supported between '.format(self.cyan, self.yllow, op, 
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}<< {}{}{} >> {}not supported between '.format(self.cyan, self.yellow, op, 
                                                                                             self.cyan, self.green) + error
         return self.error+self.reset
 

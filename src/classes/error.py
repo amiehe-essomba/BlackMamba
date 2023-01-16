@@ -256,7 +256,7 @@ class ERRORS:
         return self.error+self.reset
     
     def ERROR35(self, value: int): #
-        error = '{}is not {}string(), {}a float() or {}an integer() {}type. {}line: {}{}.'.format(self.white, self.magenta, self.green, 
+        error = '{}is not a{}boolean(), {}a float() or {}an integer() {}type. {}line: {}{}.'.format(self.white, self.magenta, self.green, 
                                                                     self.red, self.yellow,self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}list index {}<< {} >> '.format(self.white, self.cyan, value) + error
         return self.error+self.reset
@@ -359,4 +359,24 @@ class ERRORS:
         error = '{}a tuple(), {}or {}a list(), {}type. {}line: {}{}'.format(self.blue, self.white, self.yellow, self.yellow, self.white,
                                                                                 self.yellow, self.line)
         self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> {}is not '.format(self.cyan, value, self.white) + error
+        return self.error+self.reset
+    
+    def ERROR51(self, value : str = 'a boolean()', s : str = "reverse"):
+        error = '{}{} {}type. {}line: {}{}'.format(self.blue, value, self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}The first value of {}{} {}is not a '.format(self.white, self.green, s, self.white) + error
+        return self.error+self.reset
+    
+    def ERROR52(self, s : str = 'reverse'):
+        error = '{}!=  {}2. {}line: {}{}'.format(self.red, self.cyan, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}length( {}{}{} ) '.format(self.white, self.green, s, self.white) + error
+        return self.error+self.reset
+    
+    def ERROR53(self, value : str = ['keys', 'values'], s : str = "reverse"):
+        error = '{}{}. {}line: {}{}'.format(self.blue, str(value), self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}The first value of {}{} {}is not in '.format(self.white, self.green, s, self.white) + error
+        return self.error+self.reset
+    
+    def ERROR54(self):
+        error = '. {}line: {}{}'.format(  self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}Sorting impossible '.format( self.cyan ) + error
         return self.error+self.reset

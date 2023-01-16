@@ -263,9 +263,13 @@ class AFFECTATION:
                     else:  pass
             else: pass
         except IndexError:  pass
+        except KeyError: self.error = AE.ERRORS(self.line).ERROR0( self.long_chaine )
 
-        self.var_attribute, self.error  = AFFECTATION( self.var_attribute, self.long_chaine, self.data_base,
+        if self.error is None:
+            self.var_attribute, self.error  = AFFECTATION( self.var_attribute, self.long_chaine, self.data_base,
                                                                         self.line ).DATA_TRANSFORMATION()
+        else: pass 
+        
         return self.var_attribute, self.error
 
     def ATTRIBUTES(self, master_init: str):

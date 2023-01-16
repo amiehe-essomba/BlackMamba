@@ -31,9 +31,9 @@ class FUNCTION_INIT:
                                'until', 'unless','next', 'lambda', 'begin', 'delete', 'print', '_int_',
                                 '_float_', '_string_', '_complex_', '_list_', '_tuple_', '_dictionary_', '_boolean_',
                                 '_sqrt_', '_length_', '_sum_', '_rang_', '__ansii__', '__show__', '__rand__',
-                                '_get_line_', '_mean_', '__scan__', '_max_', '_min_', '_var_', '_std_', '__open__', '__maths__']
+                                '_get_line_', '_mean_', '__scan__', '_max_', '_min_', '_var_', '_std_', '__open__', '__maths__', '__prompt__']
         self.count          = [ 2, 3, 3, 3, 5, 5, 6, 6, 6, 4, 4, 5, 8, 4, 4, 4, 7, 7, 6, 3, 5, 6, 4, 6, 5, 6, 5, 5, 7, 8,
-                                9, 6, 7, 12, 9, 6, 8, 5, 5, 9, 8, 8, 10, 6, 8, 5, 5, 5, 5, 8]
+                                9, 6, 7, 12, 9, 6, 8, 5, 5, 9, 8, 8, 10, 6, 8, 5, 5, 5, 5, 8, len('__prompt__')]
         self.sub_function   = [ 'if', 'def', 'for', 'try', 'while', 'class', 'switch',
                                'global', 'return' 'unless', 'until', 'begin', 'delete', 'print', '_int_', '_float_',
                                 '_string_', '_complex_', 'lambda' ]
@@ -202,7 +202,7 @@ class FUNCTION_INIT:
                                                         '_list_', '_tuple_', '_dictionary_', '_boolean_', '_sqrt_',
                                                           '_sum_', '_rang_', '__ansii__', '__show__', '__rand__',
                                                           '_get_line_', '_mean_', '__scan__', '_max_', '_min_', '_var_', 
-                                                          '_std_', '__open__', '__maths__']:
+                                                          '_std_', '__open__', '__maths__', '__prompt__']:
                                         self.function_type.append( self.string )
                                         self.string = ''
 
@@ -314,7 +314,7 @@ class FUNCTION_INIT:
                                                                 '_list_', '_tuple_', '_dictionary_', '_boolean_',
                                                                 '_sum_', '_rang_', '__ansii__', '__show__', '__rand__',
                                                                 '_get_line_', '_mean_', '__scan__','_max_', '_min_', '_var_', 
-                                                                '_std_', '__open__', '__maths__', 'lambda']:
+                                                                '_std_', '__open__', '__maths__', 'lambda', '__prompt__']:
                                         self.data.append( self.string )
 
                                     elif self.function_type[ 0 ] in self.break_function+self.anotherfunc:

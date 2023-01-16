@@ -1,5 +1,6 @@
-from CythonModules.Windows.DEEP_PARSER          import error as err
-from CythonModules.Windows.DEEP_PARSER          import conversion
+from CythonModules.Linux.DEEP_PARSER          import error as err
+from CythonModules.Linux.DEEP_PARSER          import conversion
+from CythonModules.Linux.DEEP_PARSER          import error
 
 cdef class GET:
     cdef public:
@@ -46,9 +47,9 @@ cdef class GET:
                 except TypeError:
                     ob1 = conversion.CONVERSION( line = self.line  ).CONVERSION( master=self.master[i] )
                     ob2 = conversion.CONVERSION( line = self.line  ).CONVERSION( master=object )
-                    self.error = ERRORS( self.line ).ERROR7( self.logical, ob1, ob2)
+                    self.error = error.ERRORS( self.line ).ERROR7( self.logical, ob1, ob2)
                     break
-        else:  self.error = ERRORS( self.line ).ERROR8( self.master )
+        else:  self.error = error.ERRORS( self.line ).ERROR8( self.master )
 
         if type( self.master ) == type(list()):   return self._return_, self.number, self.error
         else:   return list( self._return_ ), self.number, self.error

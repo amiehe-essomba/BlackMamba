@@ -6,7 +6,7 @@ cdef class CONVERSION:
         unsigned long int line 
     cdef:
         str _return_ 
-        str str cyan, red, green, yellow, magenta, white, blue, reset
+        str  error, cyan, red, green, yellow, magenta, white, blue, reset
 
     def __cinit__(self, line):
         self.line           = line 

@@ -1,7 +1,8 @@
-from CythonModules.Windows.DEEP_PARSER   import arr_deep_checking_init as arr
-from script.MATHS                       import  mathematics
+from CythonModules.Linux.DEEP_PARSER        import arr_deep_checking_init as arr
+from script.MATHS                           import mathematics
+from script.PARSER                          import numerical_value as NV
 
-class AR_DEEP_CHECKING:
+cdef class AR_DEEP_CHECKING:
     cdef public:
         dict data_base
         unsigned long int line 
@@ -33,6 +34,7 @@ class AR_DEEP_CHECKING:
             str typ , sign, string
             bint key = False
             str history_of_op = ""
+            str main_string = main__main 
 
         if sub_len_val > sub_len_op     :
             for k in range( len(self._get_values_ )):
@@ -40,7 +42,7 @@ class AR_DEEP_CHECKING:
                     sub_values     = self._get_values_[ k ]
                     typ = sub_values[ 'type' ]
 
-                    self.num, self.error = TYPE( self.master, sub_values, self.data_base, 
+                    self.num, self.error = NV.TYPE( self.master, sub_values, self.data_base, 
                                         self.line, typ ).TYPE( main__main, name='cython' )
                     if not self.error:
                         if k != (sub_len_val - 1):
@@ -85,7 +87,7 @@ class AR_DEEP_CHECKING:
             for k in range(len(self._get_values_)):
                 if type( self._get_values_[ k ]) == type( dict() ):
                     typ       = self._get_values_[ k ][ 'type' ]
-                    self.num, self.error = TYPE( self.master, self._get_values_[ k ], self.data_base, self.line,
+                    self.num, self.error = NV.TYPE( self.master, self._get_values_[ k ], self.data_base, self.line,
                                                                                 typ ).TYPE( main_string, name="cython" )
                     if not self.error:
                         if k != (sub_len_val - 1):
@@ -129,7 +131,7 @@ class AR_DEEP_CHECKING:
             for k in range(len(self._get_values_)):
                 if type( self._get_values_[ k ] ) == type( dict() ):
                     typ               = self._get_values_[ k ] [ 'type' ]
-                    self.num, self.error    = TYPE( self.master, self._get_values_[ k ], self.data_base, self.line,
+                    self.num, self.error    = NV.TYPE( self.master, self._get_values_[ k ], self.data_base, self.line,
                                                                                 typ ).TYPE( main_string , name='cython')
 
                     if not self.error:
