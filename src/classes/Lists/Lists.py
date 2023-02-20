@@ -9,12 +9,12 @@ from src.classes.Lists                              import inserting, random_ini
 
 class LIST:
     def __init__(self, 
-                DataBase    : dict, 
-                line        : int, 
-                master      : str, 
-                function    : any, 
-                FunctionInfo: list 
-                ):
+            DataBase    : dict, 
+            line        : int, 
+            master      : str, 
+            function    : any, 
+            FunctionInfo: list 
+            ):
         self.master         = master
         self.function       = function
         self.FunctionInfo   = FunctionInfo[ 0 ]

@@ -297,7 +297,6 @@ class FUNCTION_TREATMENT:
                 else: pass
             else: pass
         else:
-            #
             #print( self.data_base['func_names'], self.function_name)#[0][0]
             self.original_module = self.data_base['modulesImport']['modules'][ 0 ]
             self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
@@ -326,7 +325,6 @@ class FUNCTION_TREATMENT:
                             #self.n = self.data_base['modulesImport']['fileNames'].index(self.function_name) #    index(_main_)
                             #self.n = 0
                             #print(self.mod, self.data_base[ 'modulesImport' ][ 'mainFuncNames' ], self.data_base[ 'modulesImport' ][ 'func_names' ])#try:
-                           
                             self.n = self.mod['id2']#self.mod['id1']#self.data_base[ 'modulesImport' ][ 'func_names' ][self.mod['id1']].index( self.function_name)
                             loading.LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
                             self.new_data_base[ 'print' ]   = []
@@ -346,7 +344,7 @@ class FUNCTION_TREATMENT:
                                     #***************************************
                                     
                                     extL.UPDATING(self.new_data_base, self.data_base).UPDATING(self.original_module)
-                                    
+                                
                                     #***************************************
                                     if self.new_data_base[ 'empty_values' ] is None:
                                         self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,

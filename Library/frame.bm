@@ -1,7 +1,7 @@
 from module encoding load fg, bg
 
 class data:
-	def initialize(values:dict/list/tuple, columns : list/tuple/none=None, index : int/none=None):
+	def initialize(values:dict list tuple, columns : list tuple none=None, index : int none=None):
 		self.values 	= values
 		self.columns 	= columns
 		self.index 		= index

@@ -460,7 +460,7 @@ class INTERNAL_CLASS_WINDOWS:
                         if self.space <= self.max_emtyLine:
                             self.space += 1
                             self.string = self.analyse.BUILD_NON_CON(string=self.string, tabulation=self.tabulation)
-                            self.def_starage.append((self.string, False))
+                            self.class_starage .append((self.string, False))
                         else:
                             self.error = IfError.ERRORS(self.if_line).ERROR4()
                             break

@@ -270,7 +270,7 @@ class C_F_I_S:
                                             elif self._value_[ -1 ] in [ 'DataFrame' ]:
                                                 func = bm.fg.rbg(0, 255, 0   )+f' in {self._value_[ 1 ]}( ).' +bm.fg.rbg(255,255,255)+\
                                                             ' / '+bm.fg.rbg(255, 255, 0)+"class " +bm.fg.rbg(0, 0, 255) +"data"+ bm.init.reset 
-                                                if self._value_[ 1 ] == "frame":
+                                                if   self._value_[ 1 ] == "frame":
                                                     self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
                                                 elif self._value_[ 1 ] == "set_id":
                                                     self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
@@ -296,8 +296,14 @@ class C_F_I_S:
                                                     if self.error is None:
                                                         show_id = self._value_[2]
                                                         show, s, ss, self.error  = frame.FRAME({"s":show, 'id':list(show.index)}, self.line).FRAME(False, 'DataFrame', show_id)
-                                                        if self.error is None:
-                                                            print(s)
+                                                        if self.error is None: 
+                                                            b = bm.fg.blue_L
+                                                            o = bm.fg.rbg(252, 127, 0 )
+                                                            w = bm.fg.white_L
+                                                            r = bm.init.reset
+                                                            self.s1    = bm.init.bold+'{}[{} result{} ]{} : {}'.format(b, o, b,  w, r )
+                                                            sys.stdout.write( self.s1+"\n\n"+s+'\n')
+                                                            #print(s)
                                                         else: pass 
                                                     else: pass
                                                     
@@ -492,7 +498,7 @@ class C_F_I_S:
                                     self.final_value, self.error = Trigo.Maths( self.line).Maths( self._values_)
                                 elif function == '__scan__'     :
                                     func = bm.fg.rbg(0, 255, 0   )+f' in {self._values_[ 0 ]}( ).' + bm.init.reset 
-                                    if self._values_[0] == "ascii":
+                                    if   self._values_[ 0 ] == "ascii":
                                         try:
                                             self.final_value = ord(self._values_[1])
                                         except TypeError: self.error = er.ERRORS( self.line ).ERROR41( func )
@@ -530,8 +536,13 @@ class C_F_I_S:
                                     elif self._values_[ 0 ] == "dim"             : self.final_value = test.get_linux_ter()
                                     elif self._values_[ 0 ] == "progress_bar"    : progress_bar.progress(self._values_[1][0], self._values_[1][1]).bar(self._values_[1][2])
                                     elif self._values_[ 0 ] == "Trees"           : 
+                                        b = bm.fg.blue_L
+                                        o = bm.fg.rbg(252, 127, 0 )
+                                        w = bm.fg.white_L
+                                        r = bm.init.reset
+                                        self.s1    = bm.init.bold+'{}[{} result{} ]{} : {}'.format(b, o, b,  w, r )
                                         self.s = Trees.Trees( self._values_[1][0]).Trees(self._values_[1][1]) 
-                                        sys.stdout.write( self.s+'\n' )
+                                        sys.stdout.write( self.s1+"\n\n"+self.s+'\n')
                                     elif self._values_[ 0 ] == "unicode"         : 
                                         self.seg = self._values_[ 1 ].split("[")
                                         if len(self.seg) > 1:
