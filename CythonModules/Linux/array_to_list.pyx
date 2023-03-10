@@ -17,6 +17,8 @@ cdef class ndarray:
     cpdef list List(self):
         cdef :
             int x 
+            list my_list = []
+            bint key = False
 
         for x in range(len(self.listOfValue)):
             if type(self.listOfValue[ x ]) == self.typ1: 
@@ -25,13 +27,17 @@ cdef class ndarray:
             elif type(self.listOfValue[ x ]) == self.typ2:
                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L1()
                 else: self.listOfValue[ x ] = []
-            else:  pass
-
-        return self.listOfValue
+            else:  
+                key = True
+                my_list.append(self.listOfValue[ x ])
+        if key is True: return my_list
+        else: return self.listOfValue
     
     cdef list L1(self):
         cdef :
             int x 
+            list my_list = []
+            bint key = False
 
         for x in range(len(self.listOfValue)):
             if type(self.listOfValue[ x ]) == self.typ1: 
@@ -40,13 +46,17 @@ cdef class ndarray:
             elif type(self.listOfValue[ x ]) == self.typ2:
                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L2()
                 else: self.listOfValue[ x ] = []
-            else:  pass
-
-        return self.listOfValue
+            else:  
+                key = True
+                my_list.append(self.listOfValue[ x ])
+        if key is True: return my_list
+        else: return self.listOfValue
 
     cdef list L2(self):
         cdef :
             int x
+            list my_list = []
+            bint key = False
 
         for x in range(len(self.listOfValue)):
             if type(self.listOfValue[ x ]) == self.typ1: 
@@ -55,6 +65,10 @@ cdef class ndarray:
             elif type(self.listOfValue[ x ]) == self.typ2:
                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L1()
                 else: self.listOfValue[ x ] = []
-            else:  pass
+            else:  
+                key = True
+                my_list.append(self.listOfValue[ x ])
+        if key is True: return my_list
+        else: return self.listOfValue
 
         return self.listOfValue

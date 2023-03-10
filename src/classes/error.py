@@ -380,3 +380,13 @@ class ERRORS:
         error = '. {}line: {}{}'.format(  self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}Sorting impossible '.format( self.cyan ) + error
         return self.error+self.reset
+    
+    def ERROR55(self, ncol : int = 0):
+        error = '. {}line: {}{}'.format(  self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}axis {}cannot be higher than {}{}'.format( self.cyan, self.white, self.red, ncol-1 ) + error
+        return self.error+self.reset
+    
+    def ERROR56(self, name: str = "round"):
+        error = 'as a function. {}line: {}{}'.format(  self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'NameError' ).Errors()+'{}ndarray {}has not {}{} {}'.format( self.cyan, self.white, self.red, name,  self.white) + error
+        return self.error+self.reset

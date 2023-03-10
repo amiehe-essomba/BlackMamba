@@ -315,7 +315,7 @@ class C_F_I_S:
 
                                                 self.final_value, self.error = mm.MATRIX(self._value_[0], self._value_[1],self._value_[2],
                                                                           self._value_[3], self.line).MATRIX(self._value_[5], ctype=self._value_[4])
-
+                                                
                                                 if self.error is None:
                                                     self.func = bm.fg.rbg(0, 255, 0) + ' in {}( ).'.format( self._value_[4] ) + bm.init.reset
                                                     if self._value_[4] is None:  self.final_value = np.array( self.final_value )
@@ -452,7 +452,7 @@ class C_F_I_S:
                                             s1, s2, s3 =  self._value_[0],  self._value_[1],  self._value_[2]
                                 
                                             self.final_value = f"{bm.init.bold}{input( s1 )}" 
-                                            self.final_value = bm.remove_ansi_chars().chars( self.final_value)
+                                            self.final_value = bm.remove_ansi_chars().chars( self.final_value )
                                             if s2 is None:
                                                 if s3 is False: pass 
                                                 else: 

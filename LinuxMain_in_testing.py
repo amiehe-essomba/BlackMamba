@@ -188,7 +188,7 @@ class linux:
                         self.str_drop_down = ""
                         sys.stdout.write(bm.clear.screen(pos=0))
     
-                # breaking loop while with the keyboardError
+                # breaking loop while with the keyboardError ctrl+c
                 if self.char == 3:
                     sys.stdout.write(bm.clear.screen(pos=1))
                     sys.stdout.write(bm.cursorPos.to(0,0))
@@ -226,7 +226,7 @@ class linux:
                     #rint(next1, next2)
                     if next1 == 91:
                         try:
-                            # move cursor to left
+                            # move cursor to left <-
                             if   next2 == 68:
                                 if self.I > 0:
                                     try:
@@ -246,7 +246,7 @@ class linux:
                                             self.I_S   -= 4
                                     except IndexError: pass
                                 else:  pass
-                            # move cursor to right
+                            # move cursor to right ->
                             elif next2 == 67:
                                 if self.I < len(self.s):
                                     try:
@@ -415,7 +415,7 @@ class linux:
                             else:  pass
                         except IndexError:  pass
                     else: pass
-                # indentation
+                # indentation Tab
                 elif self.char == 9:
 
                     self.tt         = '    '
@@ -430,7 +430,7 @@ class linux:
 
                     for i in range(4):
                         self.get.append(self.char)
-                # clear entire string
+                # clear entire string ctrl+l
                 elif self.char == 12:
                     # move cursor left
                     sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
@@ -452,7 +452,7 @@ class linux:
                     self.idd    = 0
                     self.last   = 0
                     self.remove_tab = 0
-                # move cursor at end of line
+                # move cursor at end of line ctrl+d
                 elif self.char == 4:
                     while self.I < len(self.s):
                         try:
@@ -469,8 +469,8 @@ class linux:
                                 self.last  += 8
                                 self.I_S   += 4
                         except IndexError:  pass
-                # move cursor at the beginning of line
-                elif self.char == 17:
+                # move cursor at the beginning of line ctrl+q
+                elif self.char == 17: 
                     while self.I > 0:
                         try:
                             # without indentation
@@ -486,20 +486,20 @@ class linux:
                                 self.last  -= 8
                                 self.I_S   -= 4
                         except IndexError:  pass
-                # clear entire screen and restore cursor position
-                elif self.char == 19:
+                # clear entire screen and restore cursor position ctrl+s
+                elif self.char == 19: 
                     sys.stdout.write(bm.clear.screen(pos=1))
                     sys.stdout.write(bm.cursorPos.to( self.pos_x, 0))
                     sys.stdout.write(bm.save.save)
                     #header.header()
                     self.pos_x, self.pos_y = cursor_pos.cursor()
                     self.pos_x, self.posy = int(self.pos_x), int( self.pos_y)
-                elif self.char == 7:
+                elif self.char == 7: # crtl+g
                     self.indicator = self.char               
-                # auto slection mode
+                # auto slection mode ctrl+n
                 elif self.char == 14:
                     self.indicator = self.char
-                # End-Of-File Error
+                # End-Of-File Error ctrl+z
                 elif self.char == 26:
                     sys.stdout.write(bm.clear.screen(pos=1))
                     sys.stdout.write(bm.cursorPos.to(0,0))
@@ -510,7 +510,7 @@ class linux:
                     self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
                     print(self._end_of_file_)
                     return
-                # printing and initializing of values
+                # printing and initializing of values "enter"
                 elif self.char in {10, 13}:
                     sys.stdout.write(bm.clear.screen(pos=0))
                     if self.index > 0:

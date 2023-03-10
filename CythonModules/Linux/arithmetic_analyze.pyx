@@ -1,4 +1,7 @@
-from script.PARXER                      import numerical_value as nv
+try:
+    from script.PARXER                  import numerical_value as nv
+except ImportError:      
+    from script.PARXER.WINParxer        import num_val as nv                   
 from colorama                           import Fore, Style
 from script.MATHS                       import mathematics
 from CythonModules.Linux                import NumeriCal  as nc

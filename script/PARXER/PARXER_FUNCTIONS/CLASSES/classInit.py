@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import error as er
@@ -8,7 +9,9 @@ from src.classes.Lists                              import Lists
 from src.classes.Cplx                               import cplx 
 from src.classes.frame                              import frame
 from src.classes.Tuples                             import Tuples
-from src.classes.Unions                             import union    
+from src.classes.Unions                             import union   
+from src.classes.matrix                             import matrix_2D as m2D  
+from src.classes.matrix                             import arguments as argm
 from src.functions                                  import loading as load         
 from src.functions                                  import function            
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import externalLoading as extL      
@@ -417,7 +420,7 @@ class CLASS_TREATMENT:
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
                                            'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis']
-                self.table              = ['set_id', 'select', 'keys']#['show', 'set_id', 'select', 'keys']
+                self.table              = ['set_id', 'select', 'keys']  #['show', 'set_id', 'select', 'keys']
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
                     
@@ -537,7 +540,28 @@ class CLASS_TREATMENT:
                                     else: pass    
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'table( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )       
+                    elif type( self.value ) == type(np.array([1])):
+                        if self.main_name == self.main_expr: 
+                            if self.name != self.expr:
+                                if self.name in self.ndarrays:
+                                    self.historyOfFunctions.append( self.name )
+                                    self.expression         = 'def '+self.expr+ ':'
+                                    self.dictionary         = {
+                                    'functions'             : [],
+                                    'func_names'            : []
+                                    }
+                                    self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
+                                                                                self.line ).MAIN( def_key = 'indirect' )
+                                    if self.error is None: 
+                                        self.list_of_args = argm.arg( self.name).arguments()
+                                        self.final_values, self.error = m2D.MATRIX_2D( self.DataBase, self.line, self.value,
+                                                        self.name, self.dictionary[ 'functions' ]).MATRIX_2D( self.main_name, self.normal_expr, self.list_of_args )
+                                    else: pass    
+                                else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'ndarray( )' )
+                            else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
+                    
                     else: self.error = er.ERRORS( self.line ).ERROR31( self.main_name )
                 
                 elif self.main_name in  self.DataBase[ 'open' ][ 'name' ]:

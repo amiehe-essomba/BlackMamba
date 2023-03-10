@@ -3,16 +3,19 @@ from script.STDIN.LinuxSTDIN     import bm_configure as bm
 from script.STDIN.LinuxSTDIN     import ascii
 import pandas as pd
 from CythonModules.Linux         import frame
+from src.classes.matrix          import checking_2D as c2D
 
 
 cdef run( master):
     cdef:
         bint table = False
+        unsigned long int n
     if type(master) in [type(int()), type(float()), type(complex()) , type(bool()), type(None)]: master = str(master)
     elif type(master) == type(list()): master = str( LIST(master).LIST())
     elif type(master) == type(tuple()): master = str( TUPLE(master).TUPLE())
     elif type(master) == type(str()): master = String( master)
     elif type(master) == type(dict()): master = str( DICT(master).DICT())
+    elif type(master) == type(np.array([1])): master, n = ARRAY({"s": master}).ARRAY()
     else: pass 
 
     return bm.words(master, bm.fg.rbg(255, 255, 255)).final()+bm.init.reset
@@ -34,6 +37,8 @@ cdef class LIST:
     cdef list LIST(self):
         cdef:
             list my_list = []
+            list master_init
+            unsigned long int ncol, nrow
         
         if self.master:
             if len( self.master ) <= 5: my_list = self.master.copy()
@@ -48,6 +53,9 @@ cdef class LIST:
                 elif type(my_list[i]) in [type(str())]   : my_list[i] = String( my_list[i] )
                 elif type(my_list[i]) in [type(tuple())] : my_list[i] = TUPLE( my_list[i] ).TUPLE() 
                 elif type(my_list[i]) in [type(dict())]  : my_list[i] = DICT( my_list[i] ).DICT() 
+                elif type(my_list[i]) in [type(np.array([1]))]:
+                    master_init, nrow, ncol = c2D.Array( my_list[i] )
+                    my_list[i] = LIST( master_init ).SubLIST()
                 else: pass 
         else: pass 
 
@@ -69,6 +77,9 @@ cdef class LIST:
                 elif type(my_list[i]) in [type(str())]   : my_list[i] = String( my_list[i] )
                 elif type(my_list[i]) in [type(tuple())] : my_list[i] = TUPLE( my_list[i] ).TUPLE() 
                 elif type(my_list[i]) in [type(dict())]  : my_list[i] = DICT( my_list[i] ).DICT() 
+                elif type(my_list[i]) in [type(np.array([1]))]:
+                    master_init, nrow, ncol = c2D.Array( my_list[i] )
+                    my_list[i] = LIST( master_init ).LIST()
                 else: pass
         return my_list
 
@@ -187,18 +198,89 @@ cdef class ARRAY:
         cdef:
             list shape = list( self.master['s'].shape)
             list brackets = ascii.parenthesis('2')
-            str  string
-        try:
-            if shape[1] == 1: 
-                for j in range(shape[0]):
-                    if type(self.master['s'][0]) == type(complex()): string = "( {bm.fg.cyan+str(self.master['s'][0])+bm.init.reset} )"
-                    else: string = ""#f"( {run( self.master['s'][0] )} )"
-            for i in range(shape[0]):
-                pass
-        except IndexError:
-            pass
+            unsigned long int nrow, ncol
+            list master_init 
+            unsigned long int i, j, k, max_ = 0, m = 0
+            list store = []
+            str string = "\n[", str_
+            list store_
+        
+        master_init, nrow, ncol, store_ = c2D.Array( self.master['s'] )
+        
+        for i in range(len(master_init)):
+            if type(master_init[i]) == type(list()):
+                for j in range(len(master_init[i])):
+                    if max_ > len(str(master_init[i][j])): pass 
+                    else: max_ = len(str(master_init[i][j])) 
+                store.append(max_)
+            else: store.append( len( str( master_init[i] ) ) )
 
-            
+        max_ = max(store) 
+        for i in range(len(master_init)):
+            if type( master_init[i]) == type(list()):
+                if i == 0: string += "["
+                else: string += " ["
+                for j in range( len( master_init[i] ) ):
+                    if type(master_init[i][j]) not in [type(list()), type(tuple())]:
+                        string += " "*(max_-len(str(master_init[i][j]))) + str(master_init[i][j])
+                        if j < len(master_init[i])-1: string += " "
+                        else: string += "]"
+                    else:  str_, k = ARRAY({"s" : np.array(master_init[i])}).subARRAY1()
+                
+                if i < len(master_init)-1: 
+                    string += "\n" 
+                    m += 1
+                else: string += "]"
+            else:
+                string += " "*(max_-len(str(master_init[i]))) + str(master_init[i])
+                if i < len(master_init)-1: string += " " 
+                else: string += "]"
+        
+        return string,  m
+
+    cdef subARRAY1(self):
+        cdef:
+            list shape = list( self.master['s'].shape)
+            list brackets = ascii.parenthesis('2')
+            unsigned long int nrow, ncol
+            list master_init 
+            unsigned long int i, j, k, max_ = 0, m = 0
+            list store = [], store_
+            str string = "\n["
+
+        master_init, nrow, ncol, store_ = c2D.Array( self.master['s'] )
+        
+        for i in range(len(master_init)):
+            if type(master_init[i]) == type(list()):
+                for j in range(len(master_init[i])):
+                    if max_ > len(str(master_init[i][j])): pass 
+                    else: max_ = len(str(master_init[i][j])) 
+                store.append(max_)
+            else: store.append( len( str( master_init[i] ) ) )
+
+        max_ = max(store) 
+        for i in range(len(master_init)):
+            if type( master_init[i]) == type(list()):
+                if i == 0: string += "["
+                else: string += " ["
+                for j in range( len( master_init[i] ) ):
+                    if type(master_init[i][j]) not in [type(list()), type(tuple())]:
+                        string += " "*(max_-len(str(master_init[i][j]))) + str(master_init[i][j])
+                        if j < len(master_init[i])-1: string += " "
+                        else: string += "]"
+                    else:  str_, k = ARRAY({"s" : np.array(master_init[i])}).subARRAY()
+                
+                if i < len(master_init)-1: 
+                    string += "\n" 
+                    m += 1
+                else: string += "]"
+            else:
+                string += " "*(max_-len(str(master_init[i]))) + str(master_init[i])
+                if i < len(master_init)-1: string += " " 
+                else: string += "]"
+        
+        return string, m
+
 
 cdef class show:
     cdef public:
