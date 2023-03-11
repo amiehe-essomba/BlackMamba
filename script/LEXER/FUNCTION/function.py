@@ -33,6 +33,8 @@ class FUNCTION:
         self._type_         = []
         self.last_parent    = 0
         self.anonymous      = False
+        self._sep_          = " "
+        self._sep_1         = ":"
         self.function_info  = {
             'type'                      : 'any', # items type
             'value'                     : None,  # default values issigned 
@@ -150,7 +152,7 @@ class FUNCTION:
                                                                         self.type, self.error = self.control.DELETE_SPACE( self.sub_value_[ 1 ] )
                                                                         if self.error is None:
                                                                             self.type, self.error = self.__str.SELECTION( self.type, self.type,
-                                                                                            self.data_base, self.line).CHAR_SELECTION( '/' )
+                                                                                            self.data_base, self.line).CHAR_SELECTION( self._sep_ )
                                                                             if self.error is None:
                                                                                 for s, typ in enumerate( self.type ):
                                                                                     typ, self.error = self.control.DELETE_SPACE( typ )
@@ -166,7 +168,6 @@ class FUNCTION:
                                                                                 if self.error is None:
                                                                                     self.variable.append( self.name )
                                                                                     self._type_.append( self.type )
-
                                                                                 else: break
                                                                             else: break
                                                                         else:
@@ -176,30 +177,23 @@ class FUNCTION:
                                                                         self.name = self.sub_value_[ 0 ]
                                                                         self.error = self.error = ERRORS( self.line ).ERROR4( self.name )
                                                                         break
-
                                                                 else:
                                                                     self.error = ERRORS( self.line ).ERROR0( val )
                                                                     break
-
                                                             else:
                                                                 self.error = ERRORS( self.line ).ERROR5( val )
                                                                 break
-
                                                         else:
                                                             self.error = ERRORS( self.line ).ERROR0( val )
                                                             break
 
                                                         if self.error is None:
                                                             self.val_, self.error = self.control.DELETE_SPACE( self.sub_value[ 1 ] )
-                                                            if self.error is None:
-                                                                self.data_storage.append( self.val_ )
-
+                                                            if self.error is None: self.data_storage.append( self.val_ )
                                                             else:
                                                                 self.error = ERRORS( self.line ).ERROR0( val )
                                                                 break
-                                                        else:
-                                                            self.error = self.error
-                                                            break
+                                                        else: break
                                                     else:
                                                         self.error = ERRORS( self.line ).ERROR0( val )
                                                         break
@@ -243,7 +237,7 @@ class FUNCTION:
                                                                 
                                                                 if self.error is None:
                                                                     self._typ_  = self.__str.SELECTION(self.type, self.type, self.data_base, self.line)
-                                                                    self.type, self.error = self._typ_.CHAR_SELECTION( '/' )
+                                                                    self.type, self.error = self._typ_.CHAR_SELECTION( self._sep_ )
                                                                     
                                                                     if self.error is None:
                                                                         for s, typ in enumerate( self.type ):
@@ -348,7 +342,7 @@ class FUNCTION:
 
     def TYPE(self, string: str):
         self.string, self.error = self.control.DELETE_SPACE( string )
-        self.type   = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray']
+        self.type   = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table']
         self.error  = None
 
         if self.error is None :

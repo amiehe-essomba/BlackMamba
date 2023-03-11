@@ -21,6 +21,7 @@ class STRING:
         self._return_       = ''
         self.arguments      = self.FunctionInfo[ self.function ][ 'arguments' ] 
         self.value          = self.FunctionInfo[ self.function ][ 'value' ] 
+        self.main_dict      = mainString
         
         if len( self.arguments ) == 2:
             if   self.arguments[ 0 ] == 'oldStr'   :

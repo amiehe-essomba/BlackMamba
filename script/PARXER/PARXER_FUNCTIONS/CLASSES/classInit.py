@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import error as er
@@ -8,7 +9,9 @@ from src.classes.Lists                              import Lists
 from src.classes.Cplx                               import cplx 
 from src.classes.frame                              import frame
 from src.classes.Tuples                             import Tuples
-from src.classes.Unions                             import union    
+from src.classes.Unions                             import union   
+from src.classes.matrix                             import matrix_2D as m2D  
+from src.classes.matrix                             import arguments as argm
 from src.functions                                  import loading as load         
 from src.functions                                  import function            
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import externalLoading as extL      
@@ -141,16 +144,18 @@ class CLASS_TREATMENT:
                                             'functions'             : [],
                                             'func_names'            : []
                                             }
-
+                                          
                                             self.expression              = 'def '+self.expr+ ':'
                                             self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
                                                                                                     self.line ).MAIN( def_key = 'indirect' )
+                                        
                                             if self.error is None: 
                                                 self._return_, self.error = function.FUNCTION(  self.dictionary[ 'functions' ] , self.DataBase, 
                                                                                         self.line ).DOUBLE_INIT_FUNCTION( self.normal_expr, self.name )
                                                 if self.error is None:
                                                     self._new_data_base_, self.error = function.FUNCTION( self.my_function[ 1 ], self.DataBase,
                                                                     self.line).INIT_FUNCTION( self.normal_expr, self._return_ )
+                                                     
                                                     if self.error is None: 
                                                         self.new_data_base           = self._new_data_base_[ 'data_base' ]
                                                         self._types_                 = self._new_data_base_[ 'type' ]
@@ -166,13 +171,18 @@ class CLASS_TREATMENT:
                                                                 else: pass
                                                             else: pass
                                                         else: pass
-                                                        
+                                                         
                                                         self.all_data_analyses       = self.my_function[ 1 ][ 0 ]
                                                         self.all_data_analyses       = self.all_data_analyses[ self.name  ][ 'history_of_data' ]
-                                                        
                                                         self.old_DataBase = self.DataBase.copy()
-                                                        self.original_module = self.DataBase['modulesImport']['modules'][ 0 ]
-                                                        extL.UPDATING(self.DataBase, self.DataBase).UPDATING(self.original_module)
+                                                         
+                                                        if self.DataBase['modulesImport']['modules']:
+                                                            self.original_module = self.DataBase['modulesImport']['modules'][ 0 ]
+                                                            extL.UPDATING(self.DataBase, self.DataBase).UPDATING(self.original_module)
+                                                        else: pass
+                                                        
+                                                        #self.original_module = self.DataBase['modulesImport']['modules'][ 0 ]
+                                                        #extL.UPDATING(self.DataBase, self.DataBase).UPDATING(self.original_module)
                                                         
                                                         #print(self.DataBase['modulesImport']['moduleLoading'])
                                                         #print(self.DataBase['modulesImport'][ 'moduleLoading' ]['names'])
@@ -339,6 +349,10 @@ class CLASS_TREATMENT:
 
                                                                     #self.original_module = self.DataBase['modulesImport']['modules'][ 0 ]
                                                                     #extL.UPDATING(self.DataBase, self.DataBase).UPDATING(self.original_module)
+                                                                    if self.DataBase['modulesImport']['modules']:
+                                                                        self.original_module = self.DataBase['modulesImport']['modules'][ 0 ]
+                                                                        extL.UPDATING(self.DataBase, self.DataBase).UPDATING(self.original_module)
+                                                                    else: pass
                                                                     
                                                                     self.final_values, self.value_from_db, self.initialize_values, self.error = run_func.RUN_FUNCTION( self.DataBase, self.line,
                                                                                 self.new_data_base, self._new_data_base_).RUN( self.all_data_analyses, self.name,
@@ -398,7 +412,7 @@ class CLASS_TREATMENT:
             else: 
                 self.strFunctions       = [ 'upper', 'lower', 'capitalize', 'empty', 'enumerate', 'split', 'join', 'format', 'index', 'rstrip', 'lstrip',
                                             'count', 'endwith', 'startwith', 'replace', 'size']
-                self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted'] 
+                self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted', 'frame'] 
                 self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
                 self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size', 'choice', 'index', 'count'] 
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
@@ -406,7 +420,7 @@ class CLASS_TREATMENT:
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
                                            'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis']
-                self.table              = ['frame', 'show', 'set_id', 'select', 'keys']
+                self.table              = ['set_id', 'select', 'keys']  #['show', 'set_id', 'select', 'keys']
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
                     
@@ -431,8 +445,7 @@ class CLASS_TREATMENT:
                                     else: pass    
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                        
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                       
                     elif type( self.value ) == type( dict() )   :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
@@ -451,8 +464,7 @@ class CLASS_TREATMENT:
                                     else: pass    
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'dictionary( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                    
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                   
                     elif type( self.value ) == type( list() )   :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
@@ -471,8 +483,7 @@ class CLASS_TREATMENT:
                                     else: pass    
                                 else: self.error =er. ERRORS( self.line ).ERROR22( self.name, 'list( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                    
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                    
                     elif type( self.value ) == type( tuple() )  :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
@@ -491,8 +502,7 @@ class CLASS_TREATMENT:
                                     else: pass    
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'tuple( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                    
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                    
                     elif type( self.value ) == type( complex() ):
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
@@ -511,9 +521,8 @@ class CLASS_TREATMENT:
                                     else: pass    
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'complex( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                    
-                    elif type(self.value) == type(pd.DataFrame({"s":[1]})):
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                    
+                    elif type( self.value ) == type(pd.DataFrame({"s":[1]})):
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.table:
@@ -531,7 +540,28 @@ class CLASS_TREATMENT:
                                     else: pass    
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'table( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )       
+                    elif type( self.value ) == type(np.array([1])):
+                        if self.main_name == self.main_expr: 
+                            if self.name != self.expr:
+                                if self.name in self.ndarrays:
+                                    self.historyOfFunctions.append( self.name )
+                                    self.expression         = 'def '+self.expr+ ':'
+                                    self.dictionary         = {
+                                    'functions'             : [],
+                                    'func_names'            : []
+                                    }
+                                    self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
+                                                                                self.line ).MAIN( def_key = 'indirect' )
+                                    if self.error is None: 
+                                        self.list_of_args = argm.arg( self.name).arguments()
+                                        self.final_values, self.error = m2D.MATRIX_2D( self.DataBase, self.line, self.value,
+                                                        self.name, self.dictionary[ 'functions' ]).MATRIX_2D( self.main_name, self.normal_expr, self.list_of_args )
+                                    else: pass    
+                                else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'ndarray( )' )
+                            else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
+                    
                     else: self.error = er.ERRORS( self.line ).ERROR31( self.main_name )
                 
                 elif self.main_name in  self.DataBase[ 'open' ][ 'name' ]:
@@ -557,8 +587,7 @@ class CLASS_TREATMENT:
                                 else: pass    
                             else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'iosfile()' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                    else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                
+                    else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )               
                 else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
         
         else: self.error = er.ERRORS( self.line ).ERROR0( self.normal_expr )
