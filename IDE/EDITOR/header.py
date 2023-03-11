@@ -32,15 +32,15 @@ def header(string : str = 'Linux Version', terminal = 'orion terminal'):
 	top = f"{a}"
 	mid = f"{b}{e}{b}"
 	bot = b+chr(9607)*(n-2)+b
-	box = [f'{shaka[3]} BLACK MAMBA {shaka[3]}', 'Version 22.11.28']
+	box = [f'{shaka[3]} BLACK MAMBA {shaka[3]}', 'Version 23.03.11']
 
 	l1 = m-int( len(box[0])/2.0 )
 	l2 = m-len(string)+len(terminal)-11
-	l3 = m-len('-version 22.11.28-')+len('MIT License')+3
+	l3 = m-len('-version 23.03.11-')+len('MIT License')+3
 	l4 = m-len("For more informations run:")
 
 	sec1 = bold+w+'[ '+g+string+ w+' ]'+ r+" and "+w+'[ '+c+terminal+w+' ]'+re
-	sec2 = bold+ma+'-Version 23.01.1.0- '+w+chr(169)+c +' MIT License'+re
+	sec2 = bold+ma+'-Version 23.03.11.- '+w+chr(169)+c +' MIT License'+re
 	sec3 = bold+w+f"{chr(9989)} For more informations,run:"+re
 	sec4 = bold+w+f"{chr(9654)} help( " + r+"arg"+w+" )"+re
 	sec5 = bold+w+f"{chr(9654)} License( )"+re

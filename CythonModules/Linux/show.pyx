@@ -4,19 +4,41 @@ from script.STDIN.LinuxSTDIN     import ascii
 import pandas as pd
 from CythonModules.Linux         import frame
 from src.classes.matrix          import checking_2D as c2D
+from CythonModules.Linux                    import fileError as fe
 
+cdef str ERROR(unsigned long int line, unsigned long int nc1, unsigned long int nc2, unsigned long int nr):
+    cdef : 
+        str error      =""
+        str cyan       = bm.fg.cyan_L
+        str red        = bm.fg.red_L
+        str green      = bm.fg.green_L
+        str yellow     = bm.fg.yellow_L
+        str magenta    = bm.fg.magenta_M
+        str white      = bm.fg.white_L
+        str blue       = bm.fg.blue_L
+        str reset      = bm.init.reset
+
+    error = '{}are not the same type. {}ncol = {};{}, {}nrow = {}. {}line: {}{}'.format(white, blue, nc1, nc2, red, nr, white, yellow, line)
+    error =  fe.FileErrors( 'TypeError' ).Errors()+'{}a conflict was detected, all the data'.format( white ) + error
+        
+    return error+reset
 
 cdef run( master):
     cdef:
         bint table = False
         unsigned long int n
+        str str_ 
+        
     if type(master) in [type(int()), type(float()), type(complex()) , type(bool()), type(None)]: master = str(master)
     elif type(master) == type(list()): master = str( LIST(master).LIST())
     elif type(master) == type(tuple()): master = str( TUPLE(master).TUPLE())
     elif type(master) == type(str()): master = String( master)
     elif type(master) == type(dict()): master = str( DICT(master).DICT())
-    elif type(master) == type(np.array([1])): master, n = ARRAY({"s": master}).ARRAY()
-    else: pass 
+    elif type(master) == type(np.array([1])): master, str_ = ARRAY({"s": master}).ARRAY()
+    else: 
+        try:
+            master = str(float(master))
+        except ValueError:pass
 
     return bm.words(master, bm.fg.rbg(255, 255, 255)).final()+bm.init.reset
 
@@ -192,8 +214,10 @@ cdef class DICT:
 cdef class ARRAY:
     cdef public :
         dict master 
-    def __cinit__(self, master):
+        unsigned long int line
+    def __cinit__(self, master, line = 1):
         self.master = master
+        self.line = line
     cdef ARRAY(self):
         cdef:
             list shape = list( self.master['s'].shape)
@@ -204,11 +228,15 @@ cdef class ARRAY:
             list store = []
             str string = "\n[", str_
             list store_
+            dict key1, key2
+            str error = ""
+            bint locked = False
+            unsigned int a = 3
         
         master_init, nrow, ncol, store_ = c2D.Array( self.master['s'] )
-        
+         
         for i in range(len(master_init)):
-            if type(master_init[i]) == type(list()):
+            if type(master_init[i]) in [type(list()), type(tuple())]:
                 for j in range(len(master_init[i])):
                     if max_ > len(str(master_init[i][j])): pass 
                     else: max_ = len(str(master_init[i][j])) 
@@ -217,26 +245,60 @@ cdef class ARRAY:
 
         max_ = max(store) 
         for i in range(len(master_init)):
-            if type( master_init[i]) == type(list()):
-                if i == 0: string += "["
-                else: string += " ["
+            key1, key2 = {'s':False, 'nc':0}, {'s':False, 'nc':0}
+            if type( master_init[i]) in [type(list()), type(tuple())]:
+                master_init[i] = list(master_init[i])
+            
+                if locked is False:
+                    if i == 0: string += "[" 
+                    else: string += " [" 
+                else: pass 
                 for j in range( len( master_init[i] ) ):
                     if type(master_init[i][j]) not in [type(list()), type(tuple())]:
-                        string += " "*(max_-len(str(master_init[i][j]))) + str(master_init[i][j])
-                        if j < len(master_init[i])-1: string += " "
-                        else: string += "]"
-                    else:  str_, k = ARRAY({"s" : np.array(master_init[i])}).subARRAY1()
-                
-                if i < len(master_init)-1: 
-                    string += "\n" 
-                    m += 1
-                else: string += "]"
+                        if key2['s'] is False:
+                            key1['s'], key1['nc'] = True, j
+                            string += " "*(max_-len(str(master_init[i][j]))) + str(master_init[i][j])
+                            if j < len(master_init[i])-1: 
+                                string += " " 
+                            else: string += "]" 
+                        else: error =ERROR(self.line, i, key2['nc'], j)
+                    else:  
+                        if key1['s'] is False: 
+                            str_, error = ARRAY({"s" : np.array(master_init[i][j])}).subARRAY1( )
+                            if not error: 
+                                key2['s'], key2['nc'] = True, j
+                                if (i <= a) or (i == ncol-1) :
+                                    string += str_
+                                    if j < len(master_init[i])-1: pass
+                                    else: string += "]\n" 
+                                    if ncol > a:
+                                        if i == a: locked = True 
+                                        else: pass
+                                    else: pass
+                                else:
+                                    if ncol > a+1:
+                                        if i == ncol-2:
+                                            if j < len(master_init[i])-1: locked=False
+                                            else: string += ".....\n" 
+                                        else: pass
+                                    else: pass
+                            else: break
+                        else: 
+                            error = ERROR(self.line, i, key1['nc'], j)
+                            break
+                if not error :
+                    if i < len(master_init)-1: 
+                        if locked is False: string += "\n" 
+                        else: pass
+                        m += 1
+                    else: string += "]"
+                else: break
             else:
                 string += " "*(max_-len(str(master_init[i]))) + str(master_init[i])
                 if i < len(master_init)-1: string += " " 
                 else: string += "]"
-        
-        return string,  m
+    
+        return string,  error
 
     cdef subARRAY1(self):
         cdef:
@@ -245,13 +307,18 @@ cdef class ARRAY:
             unsigned long int nrow, ncol
             list master_init 
             unsigned long int i, j, k, max_ = 0, m = 0
-            list store = [], store_
-            str string = "\n["
-
+            list store = []
+            str string = "\n[", str_
+            list store_
+            dict key1 , key2
+            str error = ""
+            bint locked = False
+            unsigned int a = 3
+         
         master_init, nrow, ncol, store_ = c2D.Array( self.master['s'] )
         
         for i in range(len(master_init)):
-            if type(master_init[i]) == type(list()):
+            if type(master_init[i]) in [type(list()), type(tuple())]:
                 for j in range(len(master_init[i])):
                     if max_ > len(str(master_init[i][j])): pass 
                     else: max_ = len(str(master_init[i][j])) 
@@ -260,27 +327,59 @@ cdef class ARRAY:
 
         max_ = max(store) 
         for i in range(len(master_init)):
-            if type( master_init[i]) == type(list()):
-                if i == 0: string += "["
-                else: string += " ["
+            if type( master_init[i]) in [type(list()), type(tuple())]:
+                master_init[i] = list(master_init[i])
+                key1, key2 = {'s':False, 'nc':0}, {'s':False, 'nc':0}
+                if locked is False:
+                    if i == 0: string += "[" 
+                    else: string += " [" 
+                else: pass
                 for j in range( len( master_init[i] ) ):
                     if type(master_init[i][j]) not in [type(list()), type(tuple())]:
-                        string += " "*(max_-len(str(master_init[i][j]))) + str(master_init[i][j])
-                        if j < len(master_init[i])-1: string += " "
-                        else: string += "]"
-                    else:  str_, k = ARRAY({"s" : np.array(master_init[i])}).subARRAY()
-                
-                if i < len(master_init)-1: 
-                    string += "\n" 
-                    m += 1
-                else: string += "]"
+                        if key2['s'] is False:
+                            key1['s'], key1['nc'] = True, j
+                            string += " "*(max_-len(str(master_init[i][j]))) + str(master_init[i][j])
+                            if j < len(master_init[i])-1: 
+                                string += " " 
+                            else: string += "]" 
+                        else: 
+                            error =ERROR(self.line, i, key2['nc'], j)
+                            break
+                    else:  
+                        if key1['s'] is False: 
+                            str_, error = ARRAY({"s" : np.array(master_init[i][j])}).ARRAY( )
+                            if not error: 
+                                key2['s'], key2['nc'] = True, j
+                                if (i <= a) or (i == ncol-1) :
+                                    string += str_
+                                    if j < len(master_init[i])-1: pass
+                                    else: string += "]\n" 
+                                    if ncol > a:
+                                        if i == a: locked = True 
+                                        else: pass
+                                    else: pass
+                                else:
+                                    if ncol > a+1:
+                                        if i == ncol-2:
+                                            if j < len(master_init[i])-1: locked=False
+                                            else: string += ".....\n" 
+                                        else: pass
+                                    else: pass
+                            else: break
+                        else: error =ERROR(self.line, i, key1['nc'], j)
+                if not error :
+                    if i < len(master_init)-1: 
+                        if locked is False: string += "\n" 
+                        else: pass
+                        m += 1
+                    else: string += "]"
+                else: break
             else:
                 string += " "*(max_-len(str(master_init[i]))) + str(master_init[i])
                 if i < len(master_init)-1: string += " " 
                 else: string += "]"
-        
-        return string, m
 
+        return string,  error
 
 cdef class show:
     cdef public:
