@@ -16,11 +16,11 @@
 #       * mamba --T orion                                   #
 #       * mamba --T pegasus                                 #
 #############################################################
-############################################
-# **created by : amiehe-essomba            #
-# **updating by: amiehe-essomba            #
-# ** copyright 2022 amiehe-essomba         #         
-############################################
+############################################                #
+# **created by : amiehe-essomba            #                #
+# **updating by: amiehe-essomba            #                #
+# ** copyright 2023 amiehe-essomba         #                #
+############################################                #
 #############################################################
 
 
@@ -36,7 +36,7 @@ from IDE.EDITOR                             import pull_editor as PE
 from IDE.EDITOR                             import left_right as LR
 from IDE.EDITOR                             import cursor
 from IDE.EDITOR                             import test 
-from IDE.EDITOR                     		import header
+from IDE.EDITOR                             import header
 from IDE.EDITOR                             import true_cursor_pos as cursor_pos
 
 class linux:
@@ -149,7 +149,6 @@ class linux:
         self.save_cursor_position   = bm.save.save
         self.indicator_pos          = 0
         self.indicator_max          = 1
-            
         ###########################################################
         
         while True:

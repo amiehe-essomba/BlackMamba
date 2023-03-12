@@ -1,10 +1,10 @@
 # Classes
 
 To create a class, it must have a name and the choice of the name of a class is not random, it must respect a certain number of criteria: it must start with an upper or lower case letter, it cannot contain only alphabetic characters and the underscore character, its length does not matter. The creation of a __class__ is done using the keyword **class** followed by the name of the class and ends with a **:** to indicate the end of the chain, its closure is done using the keyword **end** followed by **:** 
-**A class can only contain classes and functions and nothing else**
+**A class can only contain classes and functions, but also attributes and methods. Attributes are variables that belong to the class or its instances, while methods are functions defined within the class that operate on its instances, nothing else.**
 
 ## Creating a class
-- **Using __initialize()__ function to make variables global**
+- **Using a constructor method named __initialize()__ function to make variables global**
 
 ```ruby
 class iris:
@@ -16,7 +16,9 @@ class iris:
 end:
 ```
 
-- **Defining default values inside __initialize()__**
+The constructor method initializes  attributes with  values passed as parameters.
+
+- **Defining default values inside a constructor method named __initialize()__**
 
 ```ruby
 class iris:
@@ -28,10 +30,12 @@ class iris:
 end:
 ```
 
-The **initialize()** function returning no value its output is always set to **None**.
-It is also possible to define some variables in this function to make them more accessible in all functions connected to the host class, so no need to create several variables for each function. These variables created in the **initialize()** function are called **semi-global** because in general to create a pure global variable it is necessary to use the **global** function (see later), these variables are not only accessible in all classes, and functions they can be used throughout the code it's up to you to decide which statement works best for you.
-In the **initialize()** function you can also define default values as illustrated above.
-The use of this function is really very practical and very useful, however if it is created it must be the first to appear in a class because it is an initialization function and cannot be called in the code or even the entire program.
+The **initialize()** function returning no value its output is always defined on **None**.
+It is also possible to define some variables in this function to make them more accessible in all functions connected to the host class, so no need to create several variables for each function. These variables created in the **initialize()** function are called **semi-global** because they can be accessed from any method within the class. By initializing these variables in the constructor method,
+you can ensure that they are available throughout the class without having to redefine them in each method. In Black Mamba, you can define semi-global variables in the initialize() method like this:
+To create a pure global variable it is necessary to use the **global** function (see later), these variables are not only accessible in all classes, and functions(methods) they can be used throughout the code it's up to you to decide which statement works best for you.
+In the constructor method **initialize()** you can also define default values as illustrated above.
+The use of this constructor method is really very practical and very useful, however if it is created, it must be the first to appear in a class because it is an initialization function and cannot be called in the code or even the entire program.
 
 
 ```ruby
@@ -52,7 +56,7 @@ print * iris().get()
 ```
 
 
-## Inheritance classes`
+## Inheritance classes
 
 ```ruby
 class setosa:
@@ -72,10 +76,27 @@ end:
 print * iris.get(), iris.color, iris.size, iris.width
 ```
 
-It is possible to have access to the different information of another class, namely: its different functions and thus use them in the host class, it is also possible to obtain the semi-global variables created in the **initialize()** function if it was created in this class. This could be extremely efficient, it is also possible to associate the functions of this class to the host class as shown in the example above.
-We start by creating a class setosa containing only the semi-global variables of this class just to simplify things then a second class is created ( host class ), the class iris will host the class setosa just by defining setosa between brackets and so iris can access all of setosa's information down to the smallest detail.
+Inheritance is a powerful feature in object-oriented programming that allows you to create a new class based on an existing class. The new class, known as the subclass or derived class, inherits the properties and methods of the existing class, known as the superclass or base class, and can also add its own properties and methods or modify those inherited from the base class.
+We start by creating a class setosa containing only the semi-global variables of this class using constructor method just to simplify things then a second class is created ( host class ), the class iris will host the class setosa just by defining setosa between brackets and so iris can access all of setosa's information down to the smallest detail.
+In this example, **setosa** is the base class and **iris** is the derived class. **iris** inherits the some function() method from **setosa**, but overrides it with its own implementation.
+Another advantage of the base class is that it can access all the information of the derived class without modifying it. This means that the base class can use the properties and methods of the derived class, but without affecting its internal state.
+This is particularly useful in scenarios where you need to perform operations on the derived class, but you don't want to modify its internal state. For example, if you have a base __class Animal__ and a derived __class Dog__, the base class can use the **bark()** method of the derived class to produce a **sound**, but it does not modify the state instance variable of the **Dog class**.
+In other words, the base class can use the functionality of the derived class without disrupting its internal state. This is possible thanks to the notion of encapsulation, which allows to control access to the properties and methods of a class.
+
 
 ## Multiple inheritances
+
+Multiple Inheritance is a feature in **Black Mama** programming language that allows a class to
+inherit properties and methods from multiple parent classes. This means that a derived
+class can have multiple base classes, and it can inherit their attributes and behaviors.
+To define a class with multiple inheritance, we simply list the parent classes separated by commas in the class definition. For example
+
+In this example, the class Derived inherits from both **setosa** and **versicolor**. This means that Derived has access to the methods me**get()** and **attributes of the constructor method** from its base classes.
+
+Multiple inheritance can be very powerful, but it can also lead to some design
+complexities and potential conflicts between the base classes. Therefore, it's important
+to use multiple inheritance with caution and to ensure that the class hierarchy is well-designed and easy to understand
+
 
 
 ```ruby
@@ -110,9 +131,7 @@ end:
 print * iris.info( item = 'color'), iris.get(), iris.color 
 ```
 
-It is also possible for a class to inherit the properties of several classes at the same time as the example above demonstrates.
-
-## Multidimensional classes
+## Multidimensional classes(nested classes or inner classes)
 
 ```ruby
 class math:
@@ -120,13 +139,13 @@ class math:
         self.a = a
     end:
     
-    # creating a sub-class
+    # creating a nested class or inner classs
     class arithmetic:
-        def initalize( b : int ) -> None:
-            self.b = b
+        def initialize( value : int ) -> None:
+            self.value = value
         end:
         
-        #creatng sub-function
+        #creatng nested method fuunction
         def mean( c : float) -> float:
             return (a+b+c)/3.0
         end:
@@ -135,6 +154,11 @@ end:
 
 print * math(a = 4).arithmetic(b = -4 ).sum(c = 2.0)
 ```
+
+In this example, HostClass contains a nested class called **arithmethic**. arithmetic has its own __initialize()__ method 
+that takes a value argument and sets an instance variable. math(host class) also has its own __initialize()__ method that 
+creates an instance of arithmetic and assigns it to an instance variable called nested_object.
+
 # Functions 
 There are two different methods for creating functions: the first method uses the keyword **def** generally used for creating functions in a class but can be used globally, the second method uses the keyword **func** but cannot be used to create a function in a class only used outside of classes.
 Just like classes, functions need a name the characteristics are identical (read the **Classes** section), a function can contain everything except classes which host functions.
@@ -154,6 +178,7 @@ It is possible to specify the type of a function using the keywords below:
 - [x] dictionary
 - [x] ndarray
 - [x] any
+- [x] table
 
 The default value is **any** it means that the output can be any type.
 The type of a function is defined as follows:
@@ -177,6 +202,7 @@ prod = func() -> any:
 - [x] tuple for tuple **type**
 - [x] dict for **dictionary** type
 - [x] ndarray for **ndarray** type
+- [x] table fot **table** type
 
 A variable can have more than one type
 
@@ -227,10 +253,11 @@ print * Sum()
 ```
 
 
-## Multidimensional functions
+## Multidimensional functions(nested or inner functions)
 
 ```ruby
 prod = func( a : float,  b : int) -> integer:
+    # Floor is a nested or inner function 
     def Floor():
         str = string( a )
         str_int = integer( str.split('.')[ 0 ] )
@@ -243,7 +270,7 @@ end:
 ```
 
 # Module importations.
-## Loading modules from the Library/Current Working Directory(CWD).
+## Loading modules from the Library(Lib) or the Current Working Directory(CWD).
 
 ```ruby
 1. from module matrix load ndarray
@@ -256,7 +283,8 @@ ndarray(List, 2, 2).array(reverse = True, axis = None)
 maxtrix.ndarray(List, 2, 2).array(reverse = True, axis = None) 
 ```
 
-### Multi-Importations 
+### Multiple-Importations 
+
 ```ruby
 1. from module maths load statistics, trigo
 
@@ -286,8 +314,12 @@ mt.ndarray(List, 2, 2).array(reverse = True, axis = None)
 1. from module matrix load *
 
 List = [1, 2, 3, 4]
-nd(List, 2, 2).array() 
-nd(List, 2, 2).std() 
+List_arr = ndarray(List, 2, 2).array() 
+List_std = ndarray(List, 2, 2).std() 
+
+2. from module prompt load *
+
+prompt(List_arr, List_std)
 ```
 ## Loading modules from specific directory.
 
@@ -298,10 +330,11 @@ nd(List, 2, 2).std()
 4. load module /path/matrix/
 6. load module /path/matrix/ as mx
 
-path = is the module location
+path is the module location
+matrix is the modules's name 
 ```
 
-# Handling files. 
+# Handling files(open, read, write) 
 ## Opening a file.
 
 For opening a new file, we can use the keyword **open** as defined bellow.
@@ -321,25 +354,32 @@ open(name, file, action, status, encoding, error)
 open(name=my_file, file='BlackMamba/README.md/, action='r', status='old', encoding='ascii' )
 ```
 
-## Reading the opening file.
+## Reading the opening file(Existing file).
 
 For reading the opening file we can use to keywords **readline** for specific line and **readlines** for entire file. 
 
 ```ruby
+name of the opening file = my_file (see sec. above )
+
 1. my_file.readline(n=line)
+reading a specific line 
+
 2. my_file.readlines()
+reading entire opening file until EOF.
 ```
-[ ] **n** is a specific line of the file.
+[ ] **n** is a specific line in the opening file.
 
 ## Closing the opening file
 
 For closing the opening file we can just use the keyword **close** as it is defined bellow. 
 
 ```ruby
+name of the opening file = my_file
+
 my_file.close()
 ```
 
-## Using the keyword with 
+## Using the keyword >with< 
 
 Usually for reading or writing directly in the opening file. It's **faster** and **easier**.
 
@@ -349,7 +389,66 @@ with open(name=my_file, file='BlackMamba/README.md/, action='r', status='old', e
 end:
 ```
 
+# Get user inputs 
+## Using the sget function 
 
+```ruby
+sget( input, sep, char)
+
+```
+- [ ] **input** is a character we set at the beginning of the string( always a string type )
+- [ ] **sep** is a separator, if sep is not None the output is a list due to the **split()** function (string or None type) 
+- [ ] **char** is a boolean type set on True if we only need a char or False if we need a string  
+
+> Example
+
+```ruby
+sget(input=">>>", sep = ".", char=False)
+```
+
+## Using scan function from input module
+```ruby
+
+from module input load scan 
+
+scan(input, termios, fg, blink, hide )
+```
+- [ ] **input** is the same as in sget 
+- [ ] **termios** is the inner IDE we want to use, curently version of BM only has two types of termios : **pegasus** the simplest one and **orion** the must permorming one with syntaxic coloration.
+- [ ] **fg** is the color of the string input, you can fine the database color below.
+- [ ] **blink** is a boolean type, if we want to make string blink (True if yes else False)
+- [ ] **hide** is also a boolean type   
+
+> Example 
+
+```ruby
+scan(">>>", "orion", "red", False, True)
+```
+
+[ ] **database color** = ["red", "blue", "green", "magenta", "white", "black", "yellow", "orange", "cyan"]
+
+# Print Values
+
+## Using the function print
+```python
+1. print * "Hello World !"
+2. print * "Hello "+"World!", "my name is Karole", "I am 26 years old"
+```
+- [ ] __*__ separates **print** function with the walues
+- [ ] we can print multiple values a same time just list values after **star** separated by comma.
+- [ ] **print** function is the default function to output the data with the simplest way.
+
+## Using prompt function from module prompt 
+```ruby
+from module prompt load prompt 
+
+1. prompt("Hello World !")
+2. prompt("Hello "+"World !", [1, 2], True, None)
+```
+- [ ] this **prompt** function is more powerful than **print** function it was performed to output the data with 
+a beautiful style.
+- [ ] As in **print** function we can also print multiple data by separating them using comma  
+  
 # Conditionals.
 
 ## The **if, elif and else** statement
@@ -367,9 +466,9 @@ end:
 > Example 
 
 ```ruby:
-if 1 == ? integer():
+if ? 1 == ? integer():
     print * ? integer()
-elif 1 == ? float():
+elif ? 1 == ? float():
     print * ? float()
 else:
     print * None 
