@@ -17,7 +17,6 @@
 ```
 
 #### STRUCTURE, CONTROL FLOW AND HANDLING EXCEPTIONS
-
 ```python
 1. IF, ELIF, ELSE
 2. UNLESS, ELSE
@@ -56,7 +55,6 @@
 > Learn more about  [Language Tools](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
 ## SELECT YOUR IDE 
-
 ```python
 1. mamba --T orion
 2. mamba --T pegasus
@@ -100,7 +98,7 @@ Please make sure to update tests as appropriate.
 ```
 
 ## 🤵 Author 
-**Amiehe Essomba** 
+__**Amiehe Essomba**__ 
 
 - [Profile](https://github.com/amiehe-essomba "Amiehe Essomba" )
 - [Website](https://pypi.org/user/amiehe/ "pypi")
@@ -126,15 +124,15 @@ continued support and partnership.
 
 Sincerely,
 
-Dr. Iréné Amiehe-Essomba,
-Dr. Elena Royer 
+__**Dr. Iréné Amiehe-Essomba**__,
+__**Dr. Elena Royer**__ 
 </p>
 
 ## 🤝 Support 
 Give a ⭐ if you like this project!
 
 ## License 
-Copyrihght © 2023 **Dr. Iréné Amiehe Essomba**
+Copyrihght © 2023 __**Dr. Iréné Amiehe Essomba**__
 
 
 This project is licensed under [MIT License](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/LICENSE)
