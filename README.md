@@ -2,13 +2,13 @@
 <h1 align="center"> Black Mamba </h1>
 <p align="center">Black Mamba is an open source object-oriented programming language oriented towards solving machine learning and Deep-learning problems and for the furtur it will be also used for creating web pages. But at the moment it only iused for AI, some packages are written to make it powerful and very useful. Black Mamba represents the futur of interpreted oriented-programming language.</p>
 
-## Built With 
+## BUILT WITH 
 - __**Python**__ 
 - __**Cython**__ 
 - __**C**__
 - __**C++**__
 
-## Language Tools
+## LANGUAGE TOOLS
 #### LOOP
 ```python
 1. FOR 
@@ -16,7 +16,7 @@
 3. UNTIL
 ```
 
-#### STRUCTURE.
+#### STRUCTURE, CONTROL FLOW AND HANDLING EXCEPTIONS
 
 ```python
 1. IF, ELIF, ELSE
@@ -26,7 +26,7 @@
 5. BEGIN, SAVE
 ```
 
-#### HANDLING FILE
+#### HANDLING FILES
 ```python
 1. OPEN, CLOSE
 2. WITH
@@ -43,34 +43,61 @@
 2. FUNC
 ```
 
+#### ANONYMOUS LAMBDA FUNCTION
+```python
+1. LAMBDA
+```
+
 #### CLASSES
 ```python
 1. CLASS
 ```
 
-> Leran more about  [Language Tools](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
+> Learn more about  [Language Tools](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
-## Select Your IDE 
+## SELECT YOUR IDE 
 
 ```python
-mamba --T orion
-mamba --T pegasus
+1. mamba --T orion
+2. mamba --T pegasus
 ```
 
-## Project Description 
+## PROJECT dESCRIPTION
+> Learn more about [Black Mamba Project Description](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/PROJECT_DESCRIPTION.md). 
+
+## BLACK MAMBA DESIGN 
 
 > Example of a code
 
 ![logo](/images/code.jpg)
 
-## Roadmap
+## ROADMAP
 
-## Contributing
+## CONTRIBUTING
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
 That's very impotant.
 
 Please make sure to update tests as appropriate.
->For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
+>For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
+
+## RUNNING BLACK MAMBA
+```python
+1. ./mamba --T orion my_code.md
+2. ./mamba --T pegasus my_code.md
+3. ./mamba my_code.md
+```
+
+## CHECKING BLACK MAMBA VERSION
+```python
+./mamba --V
+./mamba --Version
+```
+
+## CHECKING BLACK MAMBA AUTHOR
+```python
+./mamba --A
+./mamba --Author
+```
 
 ## 🤵 Author 
 **Amiehe Essomba** 

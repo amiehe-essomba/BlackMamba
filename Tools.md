@@ -449,7 +449,7 @@ from module prompt load prompt
 a beautiful style.
 - [ ] As in **print** function we can also print multiple data by separating them using comma  
   
-# Conditionals.
+# Control flow
 ## The **if, elif and else** statement
 
 ```ruby
