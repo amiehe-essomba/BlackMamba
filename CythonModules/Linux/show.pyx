@@ -44,6 +44,7 @@ cdef run( master):
 
 def String( str master):
     if master:
+        master = bm.remove_ansi_chars().chars(master)
         if len( master ) <= 20: pass
         else: master = master[: 19 ] + '....' + master[-1]
     else: pass

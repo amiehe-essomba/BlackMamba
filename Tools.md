@@ -22,7 +22,7 @@ The constructor method initializes  attributes with  values passed as parameters
 
 ```ruby
 class iris:
-    def initialize( color : string = 'green') -> None:
+    def initialize( color : string = "green") -> None:
         self.color  = color
         self.length = 1.5
         self.width  = 0.3
@@ -208,7 +208,7 @@ A variable can have more than one type
 
 ```ruby
 def prod( a : bool) -> float:
-def prod( a : tuple/list) -> integer:
+def prod( a : tuple list) -> integer:
 def prod( a : float = 5.0) -> None:
 ```
 
@@ -234,7 +234,7 @@ print * index(id = 4)
 ```
 
 ```ruby
-def List( id : int, max : int = 5 ) -> list:
+def List( id : int float, max : int = 5 ) -> list:
     list_of_values = [].random( id )
     return list_of_values[:max]
 end:
@@ -450,7 +450,6 @@ a beautiful style.
 - [ ] As in **print** function we can also print multiple data by separating them using comma  
   
 # Conditionals.
-
 ## The **if, elif and else** statement
 
 ```ruby
@@ -463,18 +462,39 @@ else:
 end:
 ```
 
-> Example 
+> Example1 (if and else) 
 
 ```ruby:
 if ? 1 == ? integer():
     print * ? integer()
-elif ? 1 == ? float():
-    print * ? float()
 else:
     print * None 
 end:
 ```
+> Example2 (if and elif)
 
+```ruby
+if 1 % 2 == 0:
+    print * True
+elif 3 % 2 == 1:
+    print * True 
+elif 1 not in [1:3]:
+    print * False
+end:
+```
+
+> Example3 (if, elif and else)
+
+```ruby
+List = [].random(5)
+if 1 in List:
+    print * "is found"
+elif 2 not in List:
+    print * "not found"
+else:
+    print * None
+end:
+```
 
 ## The **unless and else** statement
 
@@ -486,6 +506,16 @@ else:
 end:
 ```
 
+>Example (unless and else)
+
+```ruby:
+unless 1==2:
+    print * False
+else:
+    print * True
+end:
+```
+
 ## The **switch** statement
 ```ruby
 swicth (expression):
@@ -493,14 +523,92 @@ case value1:
     <statements>
 case value2:
     <statements>
-case value3
-    <statements>
 default:
     <statements>
 end:
 ```
 
-# Loops. 
+> Example1 (switch and case)
+
+```ruby
+List = rand("int", (0, 10))
+switch List:
+case 1:
+    print * "is 1"
+case (1, 2, 5, 9):
+    print * "is contained in (1, 2, 5, 9)"
+end:
+```
+
+> Example2 (switch, case and default)
+
+```ruby
+List = rand('norm', (0, 10))
+switch List:
+case 1:
+   print * "is 1"
+case 5:
+   print * "is 5"
+default:
+   print * "maybe 2"
+end:
+```
+
+## The **try** statement
+```ruby
+try:
+   <statements>
+except (excpetions)
+   <statements>
+finally:
+   <statements>
+end:
+``` 
+> Example1 (try and except)
+
+```ruby:
+try:
+   name = 1/0
+except:
+   print * "error"
+end:
+
+try:
+   name = 1/0
+except zeroDivisionerror:
+   print * "division by zero"
+end:
+
+try:
+   name = m + n
+except (NameError, ValueError)
+   print * "error"
+end:
+
+try:
+   name = n + m
+except NameError:
+   print * "NameError"
+except ValueError:
+   print * "ValueError"
+except Typeerror:
+   print * "TypeError"
+end:
+```
+
+> Example2 (try, except and finally)
+
+```ruby
+try:
+   name = 1%0
+except ZeroDivisionError:
+   print * "modulo by zero"
+finally:
+   name = None
+end:
+```
+
+# Loops 
 
 ## The **for**  loop 
 
@@ -509,7 +617,7 @@ for (expression):
     <statements>
 end:
 ```
->
+> Example1 (for)
 
 ```ruby
 line = 0
@@ -517,7 +625,23 @@ line = 0
 for i in range(0, 10):
     line += 1
 end:
+```
 
+> Example2 (for)
+
+```ruby
+str = ""
+chars = "1.2.3.4.5.6.7.8.9".split(".")
+line = 0
+
+for s in enumerate(chars):
+   str += s[1]
+   line += s[0]
+end:
+```
+> Example3 (for and only)
+
+```ruby
 for i in ([1:10]) only (i % 2 == 0):
     line += i
 end:
@@ -530,16 +654,28 @@ while (conditions):
 end:
 ```
 
-> Examples
+> Examples1 (while)
 
+```ruby
+line, max_n, n = 0, 100, 0
+
+while n < max_n:
+   n += 1
+end:
+```
+
+> Exapmple2 (while)
 ```ruby
 line = 10
 
 while (line > 0 ) and (line % 2 == 1) :
     line -= 1
 end:
+```
 
-key = False
+> Example3 (while)
+```ruby
+line, key = 0.0, False
 
 while key == True:
     line += 1
@@ -553,20 +689,20 @@ end:
 ```
 
 # Multiline comments
-
 ## The **begin** statement
 
 ```ruby
 begin:
     <statements>
+save as name:
 end:
 ```
 
-> Example
+> Example1 (just begin)
 
 ```ruby
 begin:
-    my name is Black Mama, I am a powerful programing language,
+    my name is Black Mamba, I am a powerful programing language,
     i was created in 2022 by amiehe-essomba, PhD student 
     at universty of Strasbourg, France.
     I was created for solving several problems specially in AI.
@@ -574,5 +710,12 @@ begin:
 end:
 ```
 
+> Example2 (begin and save)
 
+```ruby:
+begin:
+    my name is Black Mamba...................
+save as comment:
+end:
+```
 
