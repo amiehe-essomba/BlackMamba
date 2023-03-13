@@ -1,6 +1,6 @@
-# Title: Black Mamba - An Object-Oriented Programming Language for AI, Machine Learning, and Deep Learning
+# TITLE: BLACK MAMBA - An Object-Oriented Programming Language for AI, Machine Learning, and Deep Learning
 
-## Introduction:
+## INTRODUCTION:
 Black Mamba is a high-level, general-purpose, and object-oriented programming language designed specifically for the development of 
 artificial intelligence (AI), machine learning (ML), and deep learning (DL) applications. The language is named after the venomous 
 snake known for its speed, agility, and precision, which are all traits that Black Mamba aims to embody.
@@ -28,7 +28,7 @@ Overall, Black Mamba is a powerful and flexible programming language that offers
 AI, ML, and DL applications. With its support for object-oriented programming, AI-specific constructs, easy-to-learn syntax, and 
 fast execution, Black Mamba is an excellent choice for developers who want to build complex and high-performance AI projects
 
-## Features:
+## FEATURES:
 
 - [ ] Object-oriented programming: Black Mamba is based on the object-oriented programming paradigm, which allows for modularity, code reuse, and abstraction. It supports the creation of classes, objects, and class methods, as well as inheritance, polymorphism, and encapsulation.
 
@@ -38,7 +38,7 @@ fast execution, Black Mamba is an excellent choice for developers who want to bu
 
 - [ ] Fast execution: Black Mamba is designed to be fast and efficient, with a bytecode compiler and a virtual machine that can execute code quickly. It also supports just-in-time compilation and optimization, which can further improve its performance.
 
-## Language Constructs:
+## LANGUAGE cONSTRUCTS:
 Black Mamba supports a wide range of language constructs, including:
 
 - [ ] Classes and objects: Black Mamba allows for the creation of custom classes and objects, with support for constructors, class methods, and instance attributes.
@@ -54,7 +54,7 @@ Black Mamba supports a wide range of language constructs, including:
 - [ ] Type annotations: Black Mamba supports the use of type annotations, which can help improve code readability and maintainability.
 
 
-## Conclusion:
+## CONCLUSION:
 Black Mamba is a powerful and flexible programming language for AI, ML, and DL applications. With its support for object-oriented 
 programming, AI-specific constructs, easy-to-learn syntax, and fast execution, Black Mamba can help you develop applications 
 faster and more efficiently than ever before. If you're looking for a new language for your next AI project, Black Mamba 

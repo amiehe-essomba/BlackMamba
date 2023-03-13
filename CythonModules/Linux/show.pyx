@@ -4,7 +4,7 @@ from script.STDIN.LinuxSTDIN     import ascii
 import pandas as pd
 from CythonModules.Linux         import frame
 from src.classes.matrix          import checking_2D as c2D
-from CythonModules.Linux                    import fileError as fe
+from CythonModules.Linux         import fileError as fe
 
 cdef str ERROR(unsigned long int line, unsigned long int nc1, unsigned long int nc2, unsigned long int nr):
     cdef : 

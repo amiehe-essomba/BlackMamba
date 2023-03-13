@@ -65,9 +65,11 @@
 
 ## BLACK MAMBA DESIGN 
 
+![logo](/images/design.jpg)
+
 > Example of a code
 
-![logo](/images/code.jpg)
+![logo](/images/Example_of_Code.jpg)
 
 ## ROADMAP
 
@@ -88,13 +90,13 @@ Please make sure to update tests as appropriate.
 ## CHECKING BLACK MAMBA VERSION
 ```python
 ./mamba --V
-./mamba --Version
+./mamba --version
 ```
 
 ## CHECKING BLACK MAMBA AUTHOR
 ```python
 ./mamba --A
-./mamba --Author
+./mamba --author
 ```
 
 ## 🤵 Author 

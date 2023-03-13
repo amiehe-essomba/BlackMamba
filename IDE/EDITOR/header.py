@@ -1,7 +1,7 @@
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
 from IDE.EDITOR                     import test
 import sys
-from   								time  import sleep
+from 		time  import sleep
 
 def header(string : str = 'Linux Version', terminal = 'orion terminal'):
 	w = bm.fg.rbg(255,255,255)
@@ -69,6 +69,7 @@ def header(string : str = 'Linux Version', terminal = 'orion terminal'):
 	print("  "+" "*14+push+mid)
 	print(s5555a+s15+" "*s555a+"  "+b+bold+y+ " "*(l1-2)+bold+box[0]+re+" "*(l1-3)+b+"  "+s15)
 	print(s3333a+s14+" "*s333a+"  "+b+ " "*(l2-11) +sec1+" "*(l2-11)+b+"  "+s14)
+	#else:  print(s3333a+s14+" "*s333a+"  "+b+ " "*(l2-13) +sec1+" "*(l2-13)+b+"  "+s14)
 	print(s2222+s13+" "*s222+ "  "+b+ " "*(l3-14)+sec2+" " * (l3-13)+b+"  "+s13)
 	print(s1111+s12+" "*s111+"  "+b+" "*(l1-2)+ " "*len(box[0])+" "*(l1-1)+b+"  "+s12)
 	print(s1000+s10+" "*s100+"  "+b+" "+sec3+ " "*18+b, " "+s10)

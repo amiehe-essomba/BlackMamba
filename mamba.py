@@ -1,9 +1,10 @@
 import sys, os   
+from script.DATA_BASE             import data_base as db
 from   script.STDIN.LinuxSTDIN    import bm_configure as bm
 from   pathlib import Path
-import LinuxMain as LM  
+from IDE.EDITOR                   import header
 import WindowsMain as WM
-
+import LinuxMain_in_testing as LM
 
 def run_mamba():
     # get root path 
@@ -19,8 +20,15 @@ def run_mamba():
     if system in ['Linux', 'macOs']:
         # run code with pegasus code iditor
         if len(arg) == 1:
-            bm.head().head(sys=system)
-            LM.run(syst=system).run()
+            try:
+                os.system('clear')
+                sys.stdout.write(bm.save.save)
+                header.header()
+                data_base = db.DATA_BASE().STORAGE().copy()
+                LM.linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255))
+            except KeyboardInterrupt:  pass
+            except SyntaxError: pass
+
         # get mamba version && author 
         elif len(arg) == 2:
             # get version of code
@@ -38,8 +46,16 @@ def run_mamba():
             # runnning code with pegasus of orion editor it depends of the arg[2] value
             if arg[1] == '--T':
                 if arg[2] in [ 'pegasus', 'orion']:
-                    bm.head().head(sys=system, term = arg[2])
-                    LM.run(term=arg[2], syst=system).run()
+                    terminal = arg[2]+" terminal"
+
+                    try:
+                        os.system('clear')
+                        sys.stdout.write(bm.save.save)
+                        header.header(terminal=terminal)
+                        data_base = db.DATA_BASE().STORAGE().copy()
+                        LM.linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=terminal)
+                    except KeyboardInterrupt:  pass
+                    except SyntaxError: pass
                 else: print(bm.mamba_error.error2())
             else: print(bm.mamba_error.error2())
     else: print(bm.mamba_error.error1())
