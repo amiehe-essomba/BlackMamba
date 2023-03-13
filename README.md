@@ -65,11 +65,11 @@
 
 ## BLACK MAMBA DESIGN 
 
-![logo](/images/design.jpg)
+![logo](/images/design.png)
 
 > Example of a code
 
-![logo](/images/Example_of_Code.jpg)
+![logo](/images/Example_of_Code.png)
 
 ## ROADMAP
 
@@ -110,17 +110,17 @@ __**Amiehe Essomba**__
 <p align="center">We want to express my sincere gratitude to all the contributors and sponsors who made 
 Black Mamba possible. Your contributions and support have helped make Black Mamba a 
 powerful and versatile object-oriented programming language that has the potential to revolutionize the 
-way we develop tools for AI.
+way we develop tools for AI.</p>
 
-To the developers who have dedicated countless hours to the development and refinement of Black Mamba, thank you for your
+<p align="center">To the developers who have dedicated countless hours to the development and refinement of Black Mamba, thank you for your
 hard work, creativity, and ingenuity. Your commitment to excellence and passion for innovation has resulted in a programming 
-language that is not only powerful and efficient, but also elegant and easy to use.
+language that is not only powerful and efficient, but also elegant and easy to use.</p>
 
-To the sponsors who provided financial support and resources to help make Black Mamba a reality, thank you for your 
+<p align="center">To the sponsors who provided financial support and resources to help make Black Mamba a reality, thank you for your 
 generosity and vision. Your investments in this project have allowed the development team to focus on creating a language 
-that is both forward-thinking and user-friendly, which has the potential to transform the way we approach programming.
+that is both forward-thinking and user-friendly, which has the potential to transform the way we approach programming.</p>
 
-Finally, to the entire Black Mamba community, thank you for your enthusiasm, comments and contributions. Your involvement 
+<p align="center">Finally, to the entire Black Mamba community, thank you for your enthusiasm, comments and contributions. Your involvement 
 and commitment has been crucial in shaping the direction and evolution of Black Mamba, and we are grateful for your 
 continued support and partnership.
 
