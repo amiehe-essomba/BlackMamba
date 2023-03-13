@@ -419,7 +419,7 @@ class CLASS_TREATMENT:
                                             'size', 'round', 'rand', 'choice' ]
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
-                                           'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis']
+                                           'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis', 'dtype', 'size']
                 self.table              = ['set_id', 'select', 'keys']  #['show', 'set_id', 'select', 'keys']
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 

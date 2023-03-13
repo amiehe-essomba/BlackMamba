@@ -19,7 +19,7 @@ class PRINT:
         self.control            = control_string.STRING_ANALYSE( self.data_base, self.line )
         self.lex_par            = numeric_lexer
 
-    def PRINT(self, key : bool = False):
+    def PRINT(self, key : bool = False, term : str = 'orion'):
         self.error              = None
         self.normal_string      = 'print ' + self.master
         self.list_of_values     = None
@@ -46,10 +46,9 @@ class PRINT:
                                 break
 
                         if self.error is None:
-                         
                             if self.s =='*':pass 
                             else: 
-                                try:  self.list_of_values = show.show(self.list_of_values).Print()
+                                try:  self.list_of_values = show.show(self.list_of_values, term).Print()
                                 except TypeError:  ERRORS( self.line ).ERROR0( self.normal_string )
                             
                             if self.error is None:

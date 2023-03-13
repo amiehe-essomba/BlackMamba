@@ -30,6 +30,7 @@ from CythonModules.Linux            import Trees
 from IDE.EDITOR                     import scan
 from IDE.EDITOR                     import test 
 from IDE.EDITOR                     import true_cursor_pos as cursor_pos
+from src.transform                  import datatype as dt
 
 def color_ansi( master, func, line):
     err = None
@@ -50,7 +51,7 @@ class C_F_I_S:
         self.control            = control_string.STRING_ANALYSE( self.data_base, self.line )
         self.lex_par            = numeric_lexer
 
-    def FUNCTION(self, function = '_int_'):
+    def FUNCTION(self, function = '_int_', term : str = 'orion'):
         self.error              = None
         self.normal_string      = function + ' ' + self.master
         self.list_of_values     = None
@@ -308,7 +309,6 @@ class C_F_I_S:
                                                     else: pass
                                                     
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
-                                                
                                                 self.typ = [type(list()), type(tuple()), type(range(1))]
                                                 if type(self._value_[0]) == type(list()): pass
                                                 else: self._value_[0] = list(self._value_[0])
@@ -320,10 +320,10 @@ class C_F_I_S:
                                                     self.func = bm.fg.rbg(0, 255, 0) + ' in {}( ).'.format( self._value_[4] ) + bm.init.reset
                                                     if self._value_[4] is None:  self.final_value = np.array( self.final_value )
                                                     else:
-                                                        if self._value_[4] == 'sorted':
-                                                            self.final_value = np.sort( self.final_value )
-                                                        else:
-                                                            self.final_value, self.error = mstat.R(self.final_value, self._value_, self.line).R()
+                                                        if   self._value_[4] == 'sorted': self.final_value = np.sort( self.final_value )
+                                                        elif self._value_[4] == 'dtype': self.final_value = dt.data( str(np.array( self.final_value.dtype  ) ) ).type()
+                                                        elif self._value_[4] == 'size': self.final_value = np.array( self.final_value ).size
+                                                        else: self.final_value, self.error = mstat.R(self.final_value, self._value_, self.line).R()
                                                 else: pass
 
                                                 self.data_base['matrix'] = True

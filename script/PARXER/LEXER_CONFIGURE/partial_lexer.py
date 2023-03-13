@@ -21,7 +21,7 @@ class PARTIAL_LEXER:
         self.affectation    = check_if_affectation
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
 
-    def LEXER(self, main_string: str):
+    def LEXER(self, main_string: str, term : str = 'orion'):
         self.error          = None
         self._return_       = None
 
@@ -34,7 +34,7 @@ class PARTIAL_LEXER:
 
             else:
                 self.lex, self.error = self.lexer.FINAL_LEXER( main_string,
-                                            self.data_base, self.line).FINAL_LEXER(self.value, _type_=None)
+                                            self.data_base, self.line).FINAL_LEXER(self.value, _type_=None, term = term)
                 if self.error is None:
                     self.all_data = self.lex[ 'all_data' ]
                     if self.all_data is not None:
@@ -78,7 +78,7 @@ class LEXER:
         self.affectation    = check_if_affectation
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
 
-    def MAIN_LEXER(self, main_string: str, _type_:any=None, _key_:bool = False):
+    def MAIN_LEXER(self, main_string: str, _type_:any=None, _key_:bool = False, term:str='orion'):
         self.error          = None
         self._return_       = None
 
@@ -86,7 +86,7 @@ class LEXER:
                                                               self.data_base, self.line ).DEEP_CHECKING()
         if self.error is None:
             self.lex, self.error = self.lexer.FINAL_LEXER( main_string,
-                                        self.data_base, self.line).FINAL_LEXER(self.value, _type_=_type_, _key_=_key_)
+                                        self.data_base, self.line).FINAL_LEXER(self.value, _type_=_type_, _key_=_key_, term = term)
             if self.error is None: self._return_ = self.lex
             else: pass
         else: pass

@@ -64,12 +64,12 @@ def header(string : str = 'Linux Version', terminal = 'orion terminal'):
 	s13, s222, s2222 = " "*4+chr(9556)+chr(9552)*3+chr(9577)+chr(9552)*3+chr(9559),len("    ")," "*7
 	s14, s333a, s3333a = " "*4+chr(9556)+chr(9552)*3+blink+y+chr(9574)+re+chr(9552)*3+chr(9559),len("    ")," "*ww
 	s15, s555a, s5555a = " "*4+" "*4+" "+" "*4,len("    ")," "*ww
-	
+
 	print("  "+" "*14+push+top)
 	print("  "+" "*14+push+mid)
 	print(s5555a+s15+" "*s555a+"  "+b+bold+y+ " "*(l1-2)+bold+box[0]+re+" "*(l1-3)+b+"  "+s15)
-	print(s3333a+s14+" "*s333a+"  "+b+ " "*(l2-11) +sec1+" "*(l2-11)+b+"  "+s14)
-	#else:  print(s3333a+s14+" "*s333a+"  "+b+ " "*(l2-13) +sec1+" "*(l2-13)+b+"  "+s14)
+	if terminal.split()[0] == 'orion' : print(s3333a+s14+" "*s333a+"  "+b+ " "*(l2-11) +sec1+" "*(l2-11)+b+"  "+s14)
+	else:  print(s3333a+s14+" "*s333a+"  "+b+ " "*(l2-13) +sec1+" "*(l2-15)+b+"  "+s14)
 	print(s2222+s13+" "*s222+ "  "+b+ " "*(l3-14)+sec2+" " * (l3-13)+b+"  "+s13)
 	print(s1111+s12+" "*s111+"  "+b+" "*(l1-2)+ " "*len(box[0])+" "*(l1-1)+b+"  "+s12)
 	print(s1000+s10+" "*s100+"  "+b+" "+sec3+ " "*18+b, " "+s10)

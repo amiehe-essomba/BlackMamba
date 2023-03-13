@@ -11,6 +11,14 @@ class ndarray:
 		_std_ * [master, nrow, ncol, reverse, None, axis, 'matrix']
 	end: 
 	
+	def dtype( reverse: bool = False, axis : none int=None):
+		_std_ * [master, nrow, ncol, reverse, 'dtype', axis, 'matrix']
+	end:
+	
+	def size( reverse: bool = False, axis : none int=None):
+		_std_ * [master, nrow, ncol, reverse, 'size', axis, 'matrix']
+	end:
+	
 	def summ( reverse : bool = False,  axis : none int=None ):
 		_std_ * [master, nrow, ncol, reverse, 'sum', axis, 'matrix'] 
 	end:
