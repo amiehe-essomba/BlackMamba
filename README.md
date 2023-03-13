@@ -56,7 +56,7 @@
 1. CLASS
 ```
 
-> Learn more about  [Language Tools](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
+> Learn more about  [Language Tools](https://github.com/Elena-Royer/BlackMamba/blob/BlackMamba/Tools.md).
 
 ## SELECT YOUR IDE 
 ```python

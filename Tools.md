@@ -425,7 +425,7 @@ scan(input, termios, fg, blink, hide )
 scan(">>>", "orion", "red", False, True)
 ```
 
-[ ] **database color** = ["red", "blue", "green", "magenta", "white", "black", "yellow", "orange", "cyan"]
+- [ ] **database color** = ["red", "blue", "green", "magenta", "white", "black", "yellow", "orange", "cyan"]
 
 # Print Values
 
