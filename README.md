@@ -78,7 +78,7 @@ pull requests are welcome. Fore major changes, please open an issue first to dis
 That's very impotant.
 
 Please make sure to update tests as appropriate.
->For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
+>For more details read the [contribution guidelines](https://github.com/Elena-Royer/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
 ## RUNNING BLACK MAMBA
 ```python
