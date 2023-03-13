@@ -566,7 +566,7 @@ end:
 ``` 
 > Example1 (try and except)
 
-```ruby:
+```ruby
 try:
    name = 1/0
 except:
@@ -712,7 +712,7 @@ end:
 
 > Example2 (begin and save)
 
-```ruby:
+```ruby
 begin:
     my name is Black Mamba...................
 save as comment:
