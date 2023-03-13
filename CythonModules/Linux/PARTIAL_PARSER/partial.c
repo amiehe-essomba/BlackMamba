@@ -4252,7 +4252,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
  *                                                         self._return_['p'] = self._return_['p'][ self.info['s'][ j ][ k ] ]
  *                                                     else:  self._return_['p'][ self.info['s'][ j ][ k ] ] = self._return_['s'][ i ]             # <<<<<<<<<<<<<<
  *                                     except TypeError:
- *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( self._return_['p'], 'a list()')
+ *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( str(self._return_['p']), 'a list()')
  */
                           /*else*/ {
                             if (unlikely(__pyx_v_self->_return_ == Py_None)) {
@@ -4320,7 +4320,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
  *                                                         self._return_['p'] = self._return_['p'][ self.info['s'][ j ][ k ] ]
  *                                                     else:  self._return_['p'][ self.info['s'][ j ][ k ] ] = self._return_['s'][ i ]
  *                                     except TypeError:             # <<<<<<<<<<<<<<
- *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( self._return_['p'], 'a list()')
+ *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( str(self._return_['p']), 'a list()')
  *                                         break
  */
                   __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
@@ -4334,9 +4334,9 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
                     /* "partial.pyx":131
  *                                                     else:  self._return_['p'][ self.info['s'][ j ][ k ] ] = self._return_['s'][ i ]
  *                                     except TypeError:
- *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( self._return_['p'], 'a list()')             # <<<<<<<<<<<<<<
+ *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( str(self._return_['p']), 'a list()')             # <<<<<<<<<<<<<<
  *                                         break
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  */
                     __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L47_except_error)
                     __Pyx_GOTREF(__pyx_t_2);
@@ -4370,13 +4370,16 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
                     }
                     __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_self->_return_, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L47_except_error)
                     __Pyx_GOTREF(__pyx_t_3);
-                    __pyx_t_2 = NULL;
+                    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L47_except_error)
+                    __Pyx_GOTREF(__pyx_t_2);
+                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                    __pyx_t_3 = NULL;
                     __pyx_t_8 = 0;
                     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-                      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_1);
-                      if (likely(__pyx_t_2)) {
+                      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
+                      if (likely(__pyx_t_3)) {
                         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-                        __Pyx_INCREF(__pyx_t_2);
+                        __Pyx_INCREF(__pyx_t_3);
                         __Pyx_INCREF(function);
                         __Pyx_DECREF_SET(__pyx_t_1, function);
                         __pyx_t_8 = 1;
@@ -4384,34 +4387,34 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
                     }
                     #if CYTHON_FAST_PYCALL
                     if (PyFunction_Check(__pyx_t_1)) {
-                      PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_3, __pyx_kp_s_a_list};
+                      PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_2, __pyx_kp_s_a_list};
                       __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 131, __pyx_L47_except_error)
-                      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                       __Pyx_GOTREF(__pyx_t_9);
-                      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                     } else
                     #endif
                     #if CYTHON_FAST_PYCCALL
                     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-                      PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_3, __pyx_kp_s_a_list};
+                      PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_2, __pyx_kp_s_a_list};
                       __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 131, __pyx_L47_except_error)
-                      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                       __Pyx_GOTREF(__pyx_t_9);
-                      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                     } else
                     #endif
                     {
                       __pyx_t_7 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L47_except_error)
                       __Pyx_GOTREF(__pyx_t_7);
-                      if (__pyx_t_2) {
-                        __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2); __pyx_t_2 = NULL;
+                      if (__pyx_t_3) {
+                        __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
                       }
-                      __Pyx_GIVEREF(__pyx_t_3);
-                      PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_8, __pyx_t_3);
+                      __Pyx_GIVEREF(__pyx_t_2);
+                      PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_8, __pyx_t_2);
                       __Pyx_INCREF(__pyx_kp_s_a_list);
                       __Pyx_GIVEREF(__pyx_kp_s_a_list);
                       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_kp_s_a_list);
-                      __pyx_t_3 = 0;
+                      __pyx_t_2 = 0;
                       __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 131, __pyx_L47_except_error)
                       __Pyx_GOTREF(__pyx_t_9);
                       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -4426,9 +4429,9 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
 
                     /* "partial.pyx":132
  *                                     except TypeError:
- *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( self._return_['p'], 'a list()')
+ *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( str(self._return_['p']), 'a list()')
  *                                         break             # <<<<<<<<<<<<<<
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:
  */
                     goto __pyx_L61_except_break;
@@ -4464,29 +4467,9 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
               }
               __pyx_L44_break:;
 
-              /* "partial.pyx":133
- *                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( self._return_['p'], 'a list()')
- *                                         break
- *                                 self._values_[ self.idd ] = self._return_['p']             # <<<<<<<<<<<<<<
- *                                 if self.global_vars:
- *                                     if self._name_['s'] in self.global_vars:
- */
-              if (unlikely(__pyx_v_self->_return_ == Py_None)) {
-                PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 133, __pyx_L1_error)
-              }
-              __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->_return_, __pyx_n_s_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_5);
-              if (unlikely(__pyx_v_self->_values_ == Py_None)) {
-                PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 133, __pyx_L1_error)
-              }
-              if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_values_, __pyx_v_self->idd, __pyx_t_5, unsigned PY_LONG_LONG, 0, __Pyx_PyInt_From_unsigned_PY_LONG_LONG, 1, 0, 1) < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
-              __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
               /* "partial.pyx":134
  *                                         break
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:             # <<<<<<<<<<<<<<
  *                                     if self._name_['s'] in self.global_vars:
  *                                         _idd_ = self.global_vars.index( self._name_['s'] )
@@ -4495,11 +4478,11 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
               if (__pyx_t_14) {
 
                 /* "partial.pyx":135
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:
  *                                     if self._name_['s'] in self.global_vars:             # <<<<<<<<<<<<<<
  *                                         _idd_ = self.global_vars.index( self._name_['s'] )
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ]  #self._return_['p']
  */
                 if (unlikely(__pyx_v_self->_name_ == Py_None)) {
                   PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -4516,7 +4499,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
  *                                 if self.global_vars:
  *                                     if self._name_['s'] in self.global_vars:
  *                                         _idd_ = self.global_vars.index( self._name_['s'] )             # <<<<<<<<<<<<<<
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ]  #self._return_['p']
  *                                     else: pass
  */
                   __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->global_vars, __pyx_n_s_index); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
@@ -4550,15 +4533,15 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
                   /* "partial.pyx":137
  *                                     if self._name_['s'] in self.global_vars:
  *                                         _idd_ = self.global_vars.index( self._name_['s'] )
- *                                         self.global_values[ _idd_ ] = self._return_['p']             # <<<<<<<<<<<<<<
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ]  #self._return_['p']             # <<<<<<<<<<<<<<
  *                                     else: pass
  *                                 else: pass
  */
-                  if (unlikely(__pyx_v_self->_return_ == Py_None)) {
+                  if (unlikely(__pyx_v_self->_values_ == Py_None)) {
                     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
                     __PYX_ERR(0, 137, __pyx_L1_error)
                   }
-                  __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_self->_return_, __pyx_n_s_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
+                  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->_values_, __pyx_v_self->idd, unsigned PY_LONG_LONG, 0, __Pyx_PyInt_From_unsigned_PY_LONG_LONG, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_5);
                   if (unlikely(__pyx_v_self->global_values == Py_None)) {
                     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -4568,18 +4551,18 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
                   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
                   /* "partial.pyx":135
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:
  *                                     if self._name_['s'] in self.global_vars:             # <<<<<<<<<<<<<<
  *                                         _idd_ = self.global_vars.index( self._name_['s'] )
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ]  #self._return_['p']
  */
                   goto __pyx_L64;
                 }
 
                 /* "partial.pyx":138
  *                                         _idd_ = self.global_vars.index( self._name_['s'] )
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ]  #self._return_['p']
  *                                     else: pass             # <<<<<<<<<<<<<<
  *                                 else: pass
  *                             elif type( self.var_names['s'][ i ] ) == type( dict() )  :
@@ -4590,7 +4573,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
 
                 /* "partial.pyx":134
  *                                         break
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:             # <<<<<<<<<<<<<<
  *                                     if self._name_['s'] in self.global_vars:
  *                                         _idd_ = self.global_vars.index( self._name_['s'] )
@@ -4599,7 +4582,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
               }
 
               /* "partial.pyx":139
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ]  #self._return_['p']
  *                                     else: pass
  *                                 else: pass             # <<<<<<<<<<<<<<
  *                             elif type( self.var_names['s'][ i ] ) == type( dict() )  :
@@ -5077,7 +5060,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
  *                                             self._return_['p'] = self._return_['p'][ self.all_info['s'][ j ] ]
  *                                         else: self._return_['p'][ self.all_info['s'][ j ] ] = self._return_['s'][ i ]             # <<<<<<<<<<<<<<
  * 
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  */
                   /*else*/ {
                     if (unlikely(__pyx_v_self->_return_ == Py_None)) {
@@ -5114,29 +5097,9 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
               }
               __pyx_L65:;
 
-              /* "partial.pyx":162
- *                                         else: self._return_['p'][ self.all_info['s'][ j ] ] = self._return_['s'][ i ]
- * 
- *                                 self._values_[ self.idd ] = self._return_['p']             # <<<<<<<<<<<<<<
- *                                 if self.global_vars:
- *                                     if self._name_ in self.global_vars:
- */
-              if (unlikely(__pyx_v_self->_return_ == Py_None)) {
-                PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 162, __pyx_L1_error)
-              }
-              __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_self->_return_, __pyx_n_s_p); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_6);
-              if (unlikely(__pyx_v_self->_values_ == Py_None)) {
-                PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-                __PYX_ERR(0, 162, __pyx_L1_error)
-              }
-              if (unlikely(__Pyx_SetItemInt(__pyx_v_self->_values_, __pyx_v_self->idd, __pyx_t_6, unsigned PY_LONG_LONG, 0, __Pyx_PyInt_From_unsigned_PY_LONG_LONG, 1, 0, 1) < 0)) __PYX_ERR(0, 162, __pyx_L1_error)
-              __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-
               /* "partial.pyx":163
  * 
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:             # <<<<<<<<<<<<<<
  *                                     if self._name_ in self.global_vars:
  *                                         _idd_ = self.global_vars.index( self._name_ )
@@ -5145,11 +5108,11 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
               if (__pyx_t_14) {
 
                 /* "partial.pyx":164
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:
  *                                     if self._name_ in self.global_vars:             # <<<<<<<<<<<<<<
  *                                         _idd_ = self.global_vars.index( self._name_ )
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ] #self._return_['p']
  */
                 __pyx_t_14 = (__Pyx_PySequence_ContainsTF(__pyx_v_self->_name_, __pyx_v_self->global_vars, Py_EQ)); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 164, __pyx_L1_error)
                 __pyx_t_13 = (__pyx_t_14 != 0);
@@ -5159,7 +5122,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
  *                                 if self.global_vars:
  *                                     if self._name_ in self.global_vars:
  *                                         _idd_ = self.global_vars.index( self._name_ )             # <<<<<<<<<<<<<<
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ] #self._return_['p']
  *                                     else: pass
  */
                   __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->global_vars, __pyx_n_s_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
@@ -5186,15 +5149,15 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
                   /* "partial.pyx":166
  *                                     if self._name_ in self.global_vars:
  *                                         _idd_ = self.global_vars.index( self._name_ )
- *                                         self.global_values[ _idd_ ] = self._return_['p']             # <<<<<<<<<<<<<<
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ] #self._return_['p']             # <<<<<<<<<<<<<<
  *                                     else: pass
  *                                 else: pass
  */
-                  if (unlikely(__pyx_v_self->_return_ == Py_None)) {
+                  if (unlikely(__pyx_v_self->_values_ == Py_None)) {
                     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
                     __PYX_ERR(0, 166, __pyx_L1_error)
                   }
-                  __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_self->_return_, __pyx_n_s_p); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L1_error)
+                  __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->_values_, __pyx_v_self->idd, unsigned PY_LONG_LONG, 0, __Pyx_PyInt_From_unsigned_PY_LONG_LONG, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_6);
                   if (unlikely(__pyx_v_self->global_values == Py_None)) {
                     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -5204,18 +5167,18 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
                   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
                   /* "partial.pyx":164
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:
  *                                     if self._name_ in self.global_vars:             # <<<<<<<<<<<<<<
  *                                         _idd_ = self.global_vars.index( self._name_ )
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ] #self._return_['p']
  */
                   goto __pyx_L73;
                 }
 
                 /* "partial.pyx":167
  *                                         _idd_ = self.global_vars.index( self._name_ )
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ] #self._return_['p']
  *                                     else: pass             # <<<<<<<<<<<<<<
  *                                 else: pass
  * 
@@ -5226,7 +5189,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
 
                 /* "partial.pyx":163
  * 
- *                                 self._values_[ self.idd ] = self._return_['p']
+ *                                 #self._values_[ self.idd ] = self._return_['p']
  *                                 if self.global_vars:             # <<<<<<<<<<<<<<
  *                                     if self._name_ in self.global_vars:
  *                                         _idd_ = self.global_vars.index( self._name_ )
@@ -5235,7 +5198,7 @@ static PyObject *__pyx_f_7partial_8ASSEMBLY_ASSEMBLY(struct __pyx_obj_7partial_A
               }
 
               /* "partial.pyx":168
- *                                         self.global_values[ _idd_ ] = self._return_['p']
+ *                                         self.global_values[ _idd_ ] =  self._values_[ self.idd ] #self._return_['p']
  *                                     else: pass
  *                                 else: pass             # <<<<<<<<<<<<<<
  * 

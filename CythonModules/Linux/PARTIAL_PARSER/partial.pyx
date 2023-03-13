@@ -128,13 +128,13 @@ cdef class ASSEMBLY:
                                                         self._return_['p'] = self._return_['p'][ self.info['s'][ j ][ k ] ]
                                                     else:  self._return_['p'][ self.info['s'][ j ][ k ] ] = self._return_['s'][ i ]
                                     except TypeError:
-                                        self.error['s'] = pE.ERRORS( self.line ).ERROR1( self._return_['p'], 'a list()')
+                                        self.error['s'] = pE.ERRORS( self.line ).ERROR1( str(self._return_['p']), 'a list()')
                                         break
-                                self._values_[ self.idd ] = self._return_['p']
+                                #self._values_[ self.idd ] = self._return_['p']
                                 if self.global_vars:
                                     if self._name_['s'] in self.global_vars:
                                         _idd_ = self.global_vars.index( self._name_['s'] )
-                                        self.global_values[ _idd_ ] = self._return_['p']
+                                        self.global_values[ _idd_ ] =  self._values_[ self.idd ]  #self._return_['p']
                                     else: pass
                                 else: pass
                             elif type( self.var_names['s'][ i ] ) == type( dict() )  :
@@ -159,11 +159,11 @@ cdef class ASSEMBLY:
                                             self._return_['p'] = self._return_['p'][ self.all_info['s'][ j ] ]
                                         else: self._return_['p'][ self.all_info['s'][ j ] ] = self._return_['s'][ i ]
                                     
-                                self._values_[ self.idd ] = self._return_['p']
+                                #self._values_[ self.idd ] = self._return_['p']
                                 if self.global_vars:
                                     if self._name_ in self.global_vars:
                                         _idd_ = self.global_vars.index( self._name_ )
-                                        self.global_values[ _idd_ ] = self._return_['p']
+                                        self.global_values[ _idd_ ] =  self._values_[ self.idd ] #self._return_['p']
                                     else: pass
                                 else: pass
 
