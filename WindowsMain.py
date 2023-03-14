@@ -21,8 +21,9 @@ from script                     import control_string
 from script.PARXER.WINParxer    import parxer
 from script.STDIN.LinuxSTDIN    import bm_configure     as bm
 from script.DATA_BASE           import data_base        as db
-from rich.console               import Console
-console = Console()
+#from rich.console               import Console
+from IDE.EDITOR                 import header
+#console = Console()
 
 
 class windows:
@@ -198,16 +199,23 @@ class windows:
                    
             #keyboardInterrupt
             except KeyboardInterrupt:
+                sys.stdout.write(bm.clear.screen(pos=1))
+                sys.stdout.write(bm.cursorPos.to(0,0))
+                sys.stdout.write(bm.clear.screen(pos=0))
+                sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                sys.stdout.write(bm.clear.line(pos=0))
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset+bm.init.reset
                 print(bm.init.bold+self._keyboard_)
                 return
             # EOF
-            except IndexError:
+            except TypeError:
                 self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset+bm.init.reset
                 print(bm.init.bold+self._end_of_file_)
                 self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
                 sys.stdout.write(bm.string().syntax_highlight(name=self.input))
                 sys.stdout.flush()
+                return
 
 if __name__ == '__main__':
 
@@ -215,7 +223,9 @@ if __name__ == '__main__':
     try:
         os.system('cls')
         sys.stdout.write(bm.save.save)
-        bm.head().head(sys='Windows', term = term)
+        if term == 'orion': header.header(terminal='orion terminal')
+        else: header.header(terminal='pegasus terminal')
+        
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
     except KeyboardInterrupt:  pass
