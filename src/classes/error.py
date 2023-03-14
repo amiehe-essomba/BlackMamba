@@ -390,3 +390,14 @@ class ERRORS:
         error = 'as a function. {}line: {}{}'.format(  self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'NameError' ).Errors()+'{}ndarray {}has not {}{} {}'.format( self.cyan, self.white, self.red, name,  self.white) + error
         return self.error+self.reset
+    
+    def ERROR57(self, name: str = "ncol", max_ : int = 0):
+        error = '{}line: {}{}'.format(  self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} not in {}]0, {}[ '.format( self.cyan, name,  self.red, max_) + error
+        return self.error+self.reset
+
+    def ERROR58(self, name: str = "ncol", max_ : int = 0):
+        error = '{}to create {}nrow .{}line: {}{}'.format(self.white, self.green, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} % {}{} {}is not an {}ineter() {}type '.format( self.cyan, max_, self.green, name, 
+                                                                                                self.white, self.red, self.yellow) + error
+        return self.error+self.reset

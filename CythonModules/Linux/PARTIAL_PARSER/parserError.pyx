@@ -38,3 +38,9 @@ cdef class ERRORS:
         self.error = fe.FileErrors( 'AttributeError' ).Errors() +'{}{} '.format(self.cyan, func) + self.error
 
         return self.error+self.reset
+
+    cpdef str ERROR3(self, list l1, list l2):
+        self.error = '{}{} {}into {}{}. {}line: {}{}'.format(self.red, l2, self.white, self.green, l1, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}could not broadcast input array from ndim '.format( self.white ) + self.error
+        
+        return self.error+self.reset

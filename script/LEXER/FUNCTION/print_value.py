@@ -48,7 +48,7 @@ class PRINT:
                         if self.error is None:
                             if self.s =='*':pass 
                             else: 
-                                try:  self.list_of_values = show.show(self.list_of_values, term).Print()
+                                try:  self.list_of_values = show.show(self.list_of_values).Print()
                                 except TypeError:  ERRORS( self.line ).ERROR0( self.normal_string )
                             
                             if self.error is None:

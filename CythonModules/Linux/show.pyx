@@ -394,16 +394,19 @@ cdef class show:
         self.master = master[0]
         self.error  =  ""
         self.final  = {}
+        self.term = term 
     
     cpdef dict Print(self, unsigned long integer = 0):
         if self.master: 
             for i in range(len(self.master)):
                 if type(self.master[i]) == type(complex()): 
-                    if term == "orion" : self.final[i] = bm.fg.cyan+str(self.master[i])+bm.init.reset
+                    if self.term == "orion" : 
+                        self.final[i] = bm.words( str(self.master[i]), bm.fg.rbg(255, 255, 255) ).final()+bm.init.reset
+                        #bm.fg.cyan+str(self.master[i])+bm.init.reset
                     else: self.final[i] = str(self.master[i])
                 elif type(self.master[i]) == type(pd.DataFrame({"s":[1,2]})): 
                     self.final[i] = frame.FRAME({"s": self.master[i], 'id':list(self.master[i].index)}, 1).FRAME(False, 'DataFrame', True, True)
-                else: self.final[i] = run( self.master[i], term )
+                else: self.final[i] = run( self.master[i], self.term )
         else: pass 
         return self.final
 

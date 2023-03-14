@@ -31,8 +31,9 @@ class MATRIX_2D:
         self.master, self.nrow, self.ncol, self.master_one = c2D.Array( self.master )
         self._values_       = [self.master_one, self.nrow, self.ncol] 
         
-        if self.function in ['dtype', 'size']:
+        if self.function in ['dtype', 'size', 'ndim']:
             if self.function == 'dtype': self._return_ = dt.data( str( np.array( self.master).dtype ) ).type()
+            elif self.function == 'ndim' : self._return_ = list(np.array( self.master).shape)
             else: self._return_ = np.array(self.master).size
         else:
             if self.function not in ['round', "quantile"]:

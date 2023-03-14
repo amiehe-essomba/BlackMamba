@@ -2,7 +2,9 @@ from script.PARXER                                          import numerical_val
 from script.PARXER.VAR_NAME                                 import get_var_name
 from script.PARXER.PRINT                                    import show_data
 from CythonModules.Linux.PARTIAL_PARSER                     import parserError as pE
-
+from script.STDIN.LinuxSTDIN                                import bm_configure as bm
+from CythonModules.Linux                                    import fileError as fe
+import numpy as np
 
 cdef class ASSEMBLY:
     cdef public :
@@ -41,6 +43,7 @@ cdef class ASSEMBLY:
             signed long i, j, k, l
             dict name
             unsigned long _idd_
+            list l1, l2
         name = {"s":""}
         try:
             self._if_egal_['s']     = self.master[ 'if_egal' ]
@@ -130,6 +133,14 @@ cdef class ASSEMBLY:
                                     except TypeError:
                                         self.error['s'] = pE.ERRORS( self.line ).ERROR1( str(self._return_['p']), 'a list()')
                                         break
+                                    except ValueError:
+                                        if type( self._return_['p'][ self.info['s'][ j ] ]) == type(np.array([1])):
+                                            l1 = list(self._return_['p'][ self.info['s'][ j ] ].shape)
+                                            l2 = list(np.array(self._return_['s'][ i ]).shape)
+                                            self.error['s'] = pE.ERRORS( self.line ).ERROR3(l1, l2)
+                                            break
+                                        else: pass
+
                                 #self._values_[ self.idd ] = self._return_['p']
                                 if self.global_vars:
                                     if self._name_['s'] in self.global_vars:
