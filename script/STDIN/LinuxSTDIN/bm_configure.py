@@ -9,6 +9,7 @@ try:
     from   tkinter     import *
 except ModuleNotFoundError: pass
 
+    
 class fg:
     black       = u"\u001b[30m"
     red         = u"\u001b[31m"
@@ -26,7 +27,7 @@ class fg:
     blue_L      = u"\u001b[34;1m"
     magenta_M   = u"\u001b[35;1m"
     cyan_L      = u"\u001b[36;1m"
-    white_L     = u"\u001b[37;1m"
+    white_L     = u"\u001b[1m"+f"\u001b[38;2;{255};{255};{255}m"
 
     def rbg(r, g, b): 
         return f"\u001b[38;2;{r};{g};{b}m"
@@ -52,13 +53,33 @@ class bg:
 
     def rgb(r, g, b): 
         return f"\u001b[48;2;{r};{g};{b}m"
-
+    
+class screen:
+    #40 * 25 monochrome
+    s0 = u"\u001b[0h"
+    #40 * 25 color
+    s1 = u"\u001b[1h"
+   
 class init:
     reset       = u"\u001b[0m"
     bold        = u"\u001b[1m"
+    italic      = u"\u001b[3m"
     underline   = u"\u001b[4m"
+    blink       = u"\u001b[5m"
+    rapid_blink = u"\u001b[6m"
     reverse     = u"\u001b[7m"
+    hide        = u"\u001b[8m"
+    double_underline= u"\u001b[21m"
+    link        = u"\u001b[8;;https://github.com/amiehe-essomba ST"
 
+class scrolled:
+    def up(n):
+        s = u"\u001b["+f"{n}"+"S"
+        return s
+    def down(n):
+        s = u"\u001b["+f"{n}"+"T"
+        return s
+    
 class clear:
     clear       = u"\u001b[2J"
     def line( pos : int ):
@@ -101,8 +122,8 @@ class move_cursor:
         left        = u"\u001b[" + str( pos ) + "D"
         return left
 
-class cursor_pos:
-    def to(self, x:int, y:int):
+class cursorPos:
+    def to(x:int, y:int):
         return f"\u001b[{y};{x}H"
 
 class line:

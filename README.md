@@ -107,7 +107,7 @@ __**Amiehe Essomba**__
 - [Twitter](https://twitter.com/irene_essomba?t=dyzm9cjFPhktK4NEtiqtmw&s=09 "@Essomba" )
 
 ## Acknowledgement
-<p align="left">We want to express our sincere gratitude to all the contributors and sponsors who made 
+<p align="left">We want to express ours sincere gratitude to all the contributors and sponsors who made 
 Black Mamba possible. Your contributions and support have helped make Black Mamba a 
 powerful and versatile object-oriented programming language that has the potential to revolutionize the 
 way we develop tools for AI.</p>
