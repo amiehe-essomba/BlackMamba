@@ -8,7 +8,7 @@ class LEXER_AND_PARXER:
         self.data_base          = data_base
         self.main               = main
 
-    def ANALYZE(self, _id_:int = 1, _type_:any = None ):
+    def ANALYZE(self, _id_:int = 1, _type_:any = None, term :str = 'orion' ):
         self.error                  = None
         self.lexer                  = None
         

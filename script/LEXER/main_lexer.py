@@ -233,7 +233,6 @@ class FINAL_LEXER:
         self.line               = line
         self.master             = master
         self.data_base          = data_base
-
         self.class_             = class_
         self.global_            = global_
         self.return_            = return_
@@ -243,7 +242,7 @@ class FINAL_LEXER:
         self.mod_function       = looking_for_init_function
         self.rebuild_function   = function_rebuild
 
-    def FINAL_LEXER(self, value: dict, _type_: str = None, _key_:bool=False, def_key:str='direct', class_key:str='direct'):
+    def FINAL_LEXER(self, value: dict, _type_: str = None, _key_:bool=False, def_key:str='direct', class_key:str='direct', term: str = 'orion'):
         self.error              = None
         self.value              = value
         self.list_items         = list( self.value.keys() )
@@ -334,7 +333,7 @@ class FINAL_LEXER:
 
                             elif self.new_function[ 0 ] in [ 'print' ] :
                                 self.get_values, self.error = print_value.PRINT( self.new_data[ 0 ], self.data_base,
-                                                                                self.line ).PRINT( _key_ )
+                                                                                self.line ).PRINT( _key_, term)
                                 if self.error is None: self.main_lexer_storage[ 'print' ] = self.get_values
                                 else: pass
 

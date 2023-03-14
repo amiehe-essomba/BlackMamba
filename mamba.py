@@ -53,7 +53,7 @@ def run_mamba():
                         sys.stdout.write(bm.save.save)
                         header.header(terminal=terminal)
                         data_base = db.DATA_BASE().STORAGE().copy()
-                        LM.linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=terminal)
+                        LM.linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=arg[2])
                     except KeyboardInterrupt:  pass
                     except SyntaxError: pass
                 else: print(bm.mamba_error.error2())

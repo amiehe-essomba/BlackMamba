@@ -34,3 +34,9 @@ class ERRORS:
         self.error = fe.FileErrors( 'AttributeError' ).Errors() +'{}{} '.format(self.cyan, func) + error
 
         return self.error+self.reset
+    
+    def ERROR3(self, l1 : list, l2 : list):
+        error = '{}{} {}into {}{}. {}line: {}{}'.format(self.red, l2, self.white, self.green, l1, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}could not broadcast input ndarray from ndim '.format( self.white ) + error
+        
+        return self.error+self.reset

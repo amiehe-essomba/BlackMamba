@@ -5,6 +5,7 @@ from script.LEXER                                   import particular_str_select
 from script.PARXER                                  import numerical_value
 from script.LEXER                                   import check_if_affectation
 from src.classes.Lists                              import inserting, random_init, sorting
+from src.classes.Lists                              import to_array as ta
 
 
 class LIST:
@@ -64,6 +65,9 @@ class LIST:
                     self._return_ = random.choice( self.master )
                 else: self.error =  er.ERRORS( self.line ).ERROR24( 'list / tuple' )    
             else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'to_array']          :
+            self._return_, self.error = ta.TO( self.DataBase, self.line, self.master,
+                                                 self.function, [self.FunctionInfo] ).ARRAY( mainName, mainString )
         elif self.function in [ 'enumerate' ]        :
             if None in self.arguments:
                 if self.master:

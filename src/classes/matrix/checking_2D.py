@@ -1,3 +1,4 @@
+from hashlib import new
 from CythonModules.Linux            import array_to_list as atl  
 from src.transform                  import matrix_modules as mm
 
@@ -13,22 +14,25 @@ def Array(master, line=1):
     
     
     try:
-        try:
-            ncol, nraw = len(final_value), len(final_value[0])
-            new_list = []
-            for i in range(ncol):
-                new_list += final_value[i]
-        except TypeError:
-            ncol, nraw = len(final_value), 1
-            new_list = final_value.copy()
+        ncol, nraw = len(final_value[0]), len(final_value)
     except IndexError:
-        new_list = final_value.copy()
         ncol, nraw = len(final_value), 1
-        
-    return final_value, nraw, ncol, new_list
+    
+    return final_value, nraw, ncol, final_value.copy()
 
 def reverse(master, line=1):
-    final_value, error = mm.MATRIX(master[0], master[1],master[2],
-                        master[3], line).MATRIX(master[5], ctype=master[4])
+    new_matrix = []
+    error  =None
     
-    return final_value, error
+    if master:
+        if master[3] is False: new_matrix = master[0].copy()
+        else:
+            for i in range(master[2]):
+                ss = []
+                for j in range(master[1]):
+                    ss.append(master[0][j][i])
+                new_matrix.append(ss)
+    else: pass
+        #final_value, error = mm.MATRIX(master[0], master[1],master[2],
+        #                master[3], line).MATRIX(master[5], ctype=master[4])
+    return new_matrix, error

@@ -200,8 +200,7 @@ class LIST:
         self._return_               = []
         self.historyOfFunctions     = []
         self.listFunctions          = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
-                                        'size', 'round', 'rand', 'choice' ]
-
+                                        'size', 'round', 'rand', 'choice', 'to_array' ]
         if self.numeric is not None:
             self.list_values, self.info, self._all_data_, self.error = LIS_OPTIONS( self.numeric, self.master,
                                                                         self.data_base, self.line ).OPTION( )
@@ -307,16 +306,11 @@ class LIS_OPTIONS:
                             if self.error is None:
                                 self.info       = self.options
                                 self.all_data   = self.data
-                            else:
-                                self.error = self.error
-                        else:
-                            self.error = self.error
-                    else:
-                        self.error = ERRORS( self.line ).ERROR0( self.line )
-                else:
-                    self.error = self.error
-            else:
-                self.error = ERRORS( self.line ).ERROR0( self.master )
+                            else: pass
+                        else: pass
+                    else:  self.error = ERRORS( self.line ).ERROR0( self.line )
+                else: self.error = self.error
+            else: self.error = ERRORS( self.line ).ERROR0( self.master )
 
         return self._return_, self.info, self.all_data, self.error
 

@@ -416,10 +416,10 @@ class CLASS_TREATMENT:
                 self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
                 self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size', 'choice', 'index', 'count'] 
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
-                                            'size', 'round', 'rand', 'choice' ]
+                                            'size', 'round', 'rand', 'choice', 'to_array' ]
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
-                                           'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis']
+                                           'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis', 'dtype', 'size']
                 self.table              = ['set_id', 'select', 'keys']  #['show', 'set_id', 'select', 'keys']
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
@@ -675,7 +675,6 @@ class CLASS_TREATMENT:
                                                                                  idd2 = self.mod['id2'] )
                         del self.db
                     else: self.error = er.ERRORS(self.line).ERROR45(self.main_name, self.sub_name)
-                    
                 else: 
                     if  self.main_name in self.DataBase['class_names']:
                         self.sub_name       = self.master['names'][ 1 ]
@@ -703,9 +702,11 @@ class CLASS_TREATMENT:
                             
                             self.DataBase[ 'modulesImport' ]['modulesLoadC']  = self.DataBase[ 'modulesImport' ]['modulesLoadC'][ : -1]
                                               
-                        else:  self.error = er.ERRORS(self.line).ERROR44(self.main_name, self.sub_name)
-                        
-                    else: self.error = er.ERRORS(self.line).ERROR13(self.main_name)
+                        else:  self.error = er.ERRORS(self.line).ERROR44(self.main_name, self.sub_name) 
+                    else: 
+                        if  self.master[ 'expressions'][0] in self.DataBase['variables']['vars']: 
+                            self.final_values, self.value_from_db, self.initialize_values, self.error = NESTED(self.master, self.DataBase, self.line).SUB_NESTED() 
+                        else: self.error = er.ERRORS(self.line).ERROR13(self.main_name)
                 
             elif len( self.master[ 'names' ]) == 4:
                 if self.main_name in self.DataBase['modulesImport']['fileNames']: 
@@ -752,12 +753,123 @@ class CLASS_TREATMENT:
         else : self.error = er.ERRORS( self.line ).ERROR0( self.normal_expr )
         
         return self.final_values, self.value_from_db, self.initialize_values, self.error
-                       
+        
+class NESTED:
+    def __init__(self,
+            master      : dict,
+            DataBase    : dict, 
+            line        : int 
+            ) :
+        self.master         = master
+        self.DataBase       = DataBase 
+        self.line           = line 
+        self.classes        = self.DataBase[ 'classes' ] 
+        self.class_names    = self.DataBase[ 'class_names' ]     
+           
+    def NESTED(self):
+        self.error                  = None 
+        self.final_values           = None
+        self.initialize_values      = None
+        self.value_from_db          = None
+        self.normal_expr            = ''
+        self.main_name              = self.master[ 'names' ][ 0 ]
+        self.sub_name  = self.master[ 'names' ][ 1 ]
+        self.sub_expr  = self.master[ 'expressions' ][ 1 ]
+        
+        if self.main_name not in self.DataBase['modulesImport']['fileNames']: 
+            self.mod = load.LOAD(self.DataBase['modulesImport']['mainClassNames'], self.main_name).LOAD()
+            if self.mod['key'] is False:
+                self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
+                                                                self.DataBase, self.line ).TREATMENT( )                    
+            else:
+                self.n1 = self.DataBase['modulesImport']['class_names'][self.mod['id1']].index( self.main_name )
+                self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
+                                                                self.DataBase, self.line ).TREATMENT( loading = True, idd1 = self.mod['id1'],
+                                                                                    idd2 = self.n1, length = 2)
+                if self.error is None:
+                    self.idd = self.DataBase['variables']['vars'].index(main_name)
+                    if type(self.final_values) in [type(list()), type(dict())]:
+                        self.DataBase['variables']['values'][self.idd] = self.final_values.copy()
+                    else: self.DataBase['variables']['values'][self.idd] = self.final_values
+                else: pass 
+        else:
+            self.mod = loading.LOAD(self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ], self.sub_name).LOAD()
+            if self.mod['key'] is True: 
+                if self.sub_expr != self.sub_name:
+                    self.master['names']        = [self.sub_name]
+                    self.master['expressions']  = self.sub_expr 
+                    self.master['type']         = "function"
+                    
+                    self.allNames               = self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.mod['id1']]['func_names']
+                    self._functions_            = self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.mod['id1']]['functions']
+        
+                    self.DataBase[ 'modulesImport' ]['mainFuncNames'].append(self.allNames )
+                    self.DataBase[ 'modulesImport' ]['func_names'].append(self.allNames )
+                    self.DataBase[ 'modulesImport' ]['functions'].append(self._functions_)
+                    
+                    self.final_values, self.value_from_db, self.initialize_values, self.error = func.FUNCTION_TREATMENT( self.master,
+                                                            self.DataBase, self.line ).TREATMENT( self.normal_expr, self.master, 
+                                                                                                    _main_ = self.main_name )
+                    if self.error is None:
+                        self.DataBase[ 'modulesImport' ]['mainFuncNames']   = self.DataBase[ 'modulesImport' ]['mainFuncNames'][ : -1]
+                        self.DataBase[ 'modulesImport' ]['func_names']      = self.DataBase[ 'modulesImport' ]['func_names'][ : -1]
+                        self.DataBase[ 'modulesImport' ]['functions']       = self.DataBase[ 'modulesImport' ]['functions'][ : -1 ]
+                         
+                        self.idd = self.DataBase['variables']['vars'].index(main_name)
+                        if type(self.final_values) in [type(list()), type(dict())]:
+                            self.DataBase['variables']['values'][self.idd] = self.final_values.copy()
+                        else: self.DataBase['variables']['values'][self.idd] = self.final_values
+                    else: pass 
+                    
+                else: self.error = er.ERRORS(self.line).ERROR42(self.main_name, self.sub_name)
+            else: 
+                self.n1 = self.DataBase['modulesImport']['fileNames'].index( self.main_name )
+                self.new_main_name = self.DataBase['modulesImport']['alias'][ self.n1 ][self.main_name]
+                self.mod = load.LOAD(self.DataBase['modulesImport']['class_names'], self.new_main_name).LOAD()
+                if self.mod['key'] is True: 
+                    self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
+                                                                self.DataBase, self.line ).TREATMENT( loading = True, idd1 = self.mod['id1'],
+                                                                                        idd2 = self.mod['id2'], length = 2)
+                    if self.error is None:
+                        self.idd = self.DataBase['variables']['vars'].index(main_name)
+                        if type(self.final_values) in [type(list()), type(dict())]:
+                            self.DataBase['variables']['values'][self.idd] = self.final_values.copy()
+                        else: self.DataBase['variables']['values'][self.idd] = self.final_values
+                    else: pass 
+                else:  self.error = er.ERRORS(self.line).ERROR46( self.main_name, self.sub_name )
+                
+        return self.final_values, self.value_from_db, self.initialize_values, self.error
 
- 
-
-             
-   
+    def SUB_NESTED(self):
+        self.error                  = None 
+        self.final_values           = None
+        self.initialize_values      = None
+        self.value_from_db          = None
+        self.normal_expr            = ''
+        
+        self.names = self.master[ 'names' ]
+        #self.numeric = self.master[ 'numeric' ]
+        self.add_params = self.master[ 'add_params' ]
+        self.expressions = self.master[ 'expressions' ]
+        
+        self.new_master = self.master.copy()
+        
+        for i in range(len(self.names)-1):
+            self.new_master['names'] = [self.names[0], self.names[i+1]]
+            #self.new_master['numeric'] = [self.numeric[0], self.numeric[i+1]]
+            self.new_master['add_params'] = [self.add_params[0], self.add_params[i+1]]
+            self.new_master['expressions' ] = [self.expressions[0], self.expressions[i+1]]
+            
+            self.final_values, self.value_from_db, self.initialize_values, self.error = NESTED( self.new_master, self.DataBase, self.line).NESTED()
+            
+            if self.error is None: 
+                self.idd = self.DataBase['variables']['vars'].index(self.names[0])
+                if type(self.final_values) in [type(list()), type(dict())]:
+                    self.DataBase['variables']['values'][self.idd] = self.final_values.copy()
+                else: self.DataBase['variables']['values'][self.idd] = self.final_values
+            else: break 
+        
+        return self.final_values, self.value_from_db, self.initialize_values, self.error
        
 
 

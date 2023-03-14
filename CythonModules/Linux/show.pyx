@@ -23,7 +23,7 @@ cdef str ERROR(unsigned long int line, unsigned long int nc1, unsigned long int 
         
     return error+reset
 
-cdef run( master):
+cdef run( master, str term = 'orion'):
     cdef:
         bint table = False
         unsigned long int n
@@ -40,7 +40,8 @@ cdef run( master):
             master = str(float(master))
         except ValueError:pass
 
-    return bm.words(master, bm.fg.rbg(255, 255, 255)).final()+bm.init.reset
+    if term == 'orion' : return bm.words(master, bm.fg.rbg(255, 255, 255)).final()+bm.init.reset
+    else: return master
 
 def String( str master):
     if master:
@@ -384,22 +385,28 @@ cdef class ARRAY:
 
 cdef class show:
     cdef public:
-        list master 
+        list master
+        str term 
     cdef:
         str error 
         dict final
-    def __cinit__(self, master) :
+    def __cinit__(self, master, term = 'orion') :
         self.master = master[0]
         self.error  =  ""
         self.final  = {}
+        self.term = term 
     
     cpdef dict Print(self, unsigned long integer = 0):
         if self.master: 
             for i in range(len(self.master)):
-                if type(self.master[i]) == type(complex()): self.final[i] = bm.fg.cyan+str(self.master[i])+bm.init.reset
+                if type(self.master[i]) == type(complex()): 
+                    if self.term == "orion" : 
+                        self.final[i] = bm.words( str(self.master[i]), bm.fg.rbg(255, 255, 255) ).final()+bm.init.reset
+                        #bm.fg.cyan+str(self.master[i])+bm.init.reset
+                    else: self.final[i] = str(self.master[i])
                 elif type(self.master[i]) == type(pd.DataFrame({"s":[1,2]})): 
                     self.final[i] = frame.FRAME({"s": self.master[i], 'id':list(self.master[i].index)}, 1).FRAME(False, 'DataFrame', True, True)
-                else: self.final[i] = run( self.master[i] )
+                else: self.final[i] = run( self.master[i], self.term )
         else: pass 
         return self.final
 
