@@ -23,16 +23,11 @@
 ############################################
 #############################################################
 
-import sys, os
-from script.LEXER.FUNCTION      import main
-from script                     import control_string
-from script.PARXER.WINParxer    import parxer
-from script.STDIN.LinuxSTDIN    import bm_configure     as bm
-from script.DATA_BASE           import data_base        as db
-#from rich.console               import Console
-from IDE.EDITOR                 import header
-#console = Console()
 
+import sys
+from script                                                 import control_string
+from script.STDIN.LinuxSTDIN                                import bm_configure     as bm
+from script.PARXER.PARXER_FUNCTIONS._IF_                    import IfError
 
 class windows:
     def __init__(self, data_base : dict):
@@ -116,74 +111,14 @@ class windows:
                     if terminal_name == 'orion':
                         # Syntaxis color 
                         self.input = self.input[: self.length] + bm.init.bold + bm.words(string=self.mainString, color=bm.fg.rbg(255, 255, 255)).final()
-                        #moving cursor left
-                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                        # moving cursor up
-                        sys.stdout.write(bm.move_cursor.UP(1))
-                        # clear entire line
-                        sys.stdout.write(bm.clear.line(2))
                         # write the new string
                         sys.stdout.write(self.input)
-                        # flush
-                        sys.stdout.flush()
-                        if self.clear_line is False:
-                            # moving cursor down
-                            sys.stdout.write(bm.move_cursor.DOWN(1))
-                            # clear entire line
-                            sys.stdout.write(bm.clear.line(2))
-                        else: self.clear_line = False
-                        # movin cursor left
-                        sys.stdout.write(bm.move_cursor.LEFT(1000))
+                        break
                     else:
+                        # write the new string
                         self.input = self.input[: self.length] + bm.init.bold+bm.fg.rbg(255, 255, 255)+self.mainString+bm.init.reset
-                        # move cursor left
-                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                        # clear entire line 
-                        sys.stdout.write(bm.clear.line(2))
-                        # write input 
                         sys.stdout.write(self.input)
-                        # move left again 
-                        sys.stdout.write(bm.move_cursor.LEFT(1000))
-                        if self.clear_line is False: pass 
-                        else:
-                            # moving cursor up
-                            sys.stdout.write(bm.move_cursor.UP(1))
-                            # clear entire line 
-                            sys.stdout.write(bm.clear.line(2))
-                            # move cursor left
-                            sys.stdout.write(bm.move_cursor.LEFT(1000))
-                            # clear_line initialized to False
-                            self.clear_line = False
-                    ######################################################################
-                    if self.mainString:
-                        # running lexer 
-                        self.lexer, self.normal_string, self.error = main.MAIN(self.mainString, self.data_base, self.line).MAIN()
-                        if self.error is None :
-                            if self.lexer is not None:
-                                
-                                # running parser 
-                                self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
-                                        self.line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
-                                if self.error is None: self.cursor.append(bm.get_cursor_pos.pos)   
-                                else:
-                                    sys.stdout.write(bm.clear.line(2))
-                                    sys.stdout.write(bm.move_cursor.LEFT(1000))
-                                    print('{}\n'.format(bm.init.bold+self.error))
-                                    self.error = None
-                            else:  pass
-                        else:
-                            sys.stdout.write(bm.clear.line(2))
-                            sys.stdout.write(bm.move_cursor.LEFT(1000))
-                            print('{}\n'.format(bm.init.bold+self.error))
-                            self.error = None
-                    else:  pass
-
-                    # initialization 
-                    self.input      = self.main_input
-                    self.index      = self.length
-                    self.key        = False
-                    self.mainString = ''
-                    self.mainIndex  = 0
+                        break
                 # tabular
                 elif self.char == 9:  
                     self.tabular = '\t'
@@ -210,34 +145,30 @@ class windows:
                    
             #keyboardInterrupt
             except KeyboardInterrupt:
-                sys.stdout.write(bm.clear.screen(pos=1))
-                sys.stdout.write(bm.cursorPos.to(0,0))
-                sys.stdout.write(bm.clear.screen(pos=0))
-                sys.stdout.write(bm.move_cursor.DOWN(pos=1))
-                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                sys.stdout.write(bm.clear.line(pos=0))
-                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset+bm.init.reset
-                print(bm.init.bold+self._keyboard_)
-                return
+                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                break
             # EOF
             except TypeError:
-                self._end_of_file_ = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset+bm.init.reset
-                print(bm.init.bold+self._end_of_file_)
-                self.input = '{}>>> {}'.format(bm.fg.yellow_L, bm.init.reset)
-                sys.stdout.write(bm.string().syntax_highlight(name=self.input))
-                sys.stdout.flush()
-                return
-
-if __name__ == '__main__':
-
-    term = 'orion'
-    try:
-        os.system('cls')
-        sys.stdout.write(bm.save.save)
-        if term == 'orion': header.header(terminal='orion terminal')
-        else: header.header(terminal='pegasus terminal')
+                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                break
+            
+        return self.mainString, self.error 
+    
+class colors:
+    def __init__(self, cc: str, blink : bool = False):
+        self.string  = cc
+        self.blink   = blink
+    def color(self):
+        c = ""
+        if   self.string == 'white'     : c = bm.fg.rbg(255, 255, 255)
+        elif self.string == 'yellow'    : c = bm.fg.rbg(255, 255, 0)
+        elif self.string == 'red'       : c = bm.fg.rbg(255, 0, 0)
+        elif self.string == 'blue'      : c = bm.fg.rbg(0, 0, 255)
+        elif self.string == 'green'     : c = bm.fg.rbg(0, 255, 0)
+        elif self.string == 'black'     : c = bm.fg.rbg(0, 0, 0)
+        elif self.string == 'orange'    : c = bm.fg.rbg(255, 102, 0)
+        elif self.string == 'cyan'      : c = bm.fg.rbg(0, 255, 255)
+        elif self.string == 'magenta'   : c = bm.fg.rbg(255, 0, 255)
         
-        data_base = db.DATA_BASE().STORAGE().copy()
-        windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
-    except KeyboardInterrupt:  pass
-    except IndexError: pass
+        if self.blink is False: return c 
+        else: return bm.init.blink+c
