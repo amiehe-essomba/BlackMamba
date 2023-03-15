@@ -15,7 +15,7 @@ def Array(master, line=1):
     
     try:
         ncol, nraw = len(final_value[0]), len(final_value)
-    except IndexError:
+    except (IndexError, TypeError):
         ncol, nraw = len(final_value), 1
     
     return final_value, nraw, ncol, final_value.copy()

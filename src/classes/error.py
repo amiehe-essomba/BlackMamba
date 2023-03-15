@@ -227,8 +227,8 @@ class ERRORS:
         return self.error+self.reset
     
     def ERROR31(self, value): #
-        error = '{}a tuple(), {} a dictionary() {}or a string(), {}type. {}line: {}{}'.format(self.blue, self.magenta, self.cyan, self.yellow, 
-                                                                                            self.white, self.yellow, self.line)
+        error = '{}a tuple(), {} a dictionary() {}a string(), {}a ndarray() {}or a table() {}type. {}line: {}{}'.format(self.blue, self.magenta, 
+                                                                            self.cyan, self.yellow, self.red, self.yellow, self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> {}is not {}a list(), '.format(self.cyan, value, self.white, self.yellow) + error
         return self.error+self.reset
     
@@ -324,9 +324,9 @@ class ERRORS:
         return self.error+self.reset
     
     def ERROR45(self, string: str, name: str):
-        error = '{}has not {}{} {}as class. {}line: {}{}'.format(self.white, self.red, name, self.yellow,
+        error = '{}has not {}{} {}as attribute. {}line: {}{}'.format(self.white, self.red, name, self.yellow,
                                                                                  self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'NameError' ).Errors() +'{}The module {}{} '.format(self.white, self.cyan, string) + error
+        self.error = fe.FileErrors( 'AttributeError' ).Errors() +'{}The function {}{} '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
     
