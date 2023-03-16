@@ -13,20 +13,20 @@ class data:
         string = ""
         for i in range(len(List)):
             if self.master == int_[i]:
-                string, key = f"integer( {List[i]}b )", True
+                string, key = f"integer( {List[i]} )", True
                 break 
             else: pass 
         if key is False:
             for i in range(len(List)):
                 if self.master == float_[i]:
-                    string, key = f"float( {List[i]}b )", True
+                    string, key = f"float( {List[i]} )", True
                     break 
                 else: pass 
 
             if key is False:
                 for i in range(len(List)):
                     if self.master == cplx[i]:
-                        string, key = f"complex( {List[i]}b )", True
+                        string, key = f"complex( {List[i]} )", True
                         break 
                     else: pass
             else: pass

@@ -71,7 +71,7 @@ class TO:
                     else: pass
             else:
                 if self.arguments[ 0 ] is None:
-                    if self.master: self._return_   = np.array( self.master )
+                    if self.master: self._return_   = np.array( [self.master] )
                     else: self.error = er.ERRORS( self.line ).ERROR24( 'list' )
                 else:
                     if self.values[ 0 ] is None:

@@ -1,3 +1,4 @@
+from attr import Attribute
 import                              numpy as np
 from script                         import control_string
 from script.LEXER                   import particular_str_selection
@@ -242,7 +243,7 @@ class LIST:
                             else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'list()' )
                         else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'list()' )
                     else:  pass
-                else: self.error = ERRORS( self.line ).ERROR0( main_string )
+                else:   self.error = ERRORS( self.line ).ERROR0( main_string )
             else: self.error = ERRORS( self.line ).ERROR0( main_string )
             
         return self._return_, self.error
@@ -648,9 +649,13 @@ class LIS_OPTIONS:
                         self.error = ERRORS( self.line ).ERROR0( object2 )
                         break
             else: self.error = ERRORS( self.line ).ERROR0( object2 )
-        else: self.error = ERRORS( self.line ).ERROR0( self.master )
+        else: self.error = ERRORS( self.line ).ERROR0( self.master)
 
-        return object1, self.all_value, self.error
+        try:
+            return object1, self.all_value, self.error
+        except AttributeError: 
+            self.error = ERRORS( self.line ).ERROR0( self.main_master['numeric'][0])
+            return None, None, self.error 
 
 class OPERATOR_TRANSFORMATION:
     def __init__(self, operator: str):

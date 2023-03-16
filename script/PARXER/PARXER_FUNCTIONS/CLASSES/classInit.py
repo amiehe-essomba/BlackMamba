@@ -6,7 +6,9 @@ from src.classes                                    import error as er
 from src.classes                                    import loading, readfile, check_char, run_func, inheritance
 from src.classes.Chars                              import Char
 from src.classes.Lists                              import Lists
+from src.classes.Range                              import Range
 from src.classes.Cplx                               import cplx 
+from src.classes.Cplx                               import Float 
 from src.classes.frame                              import frame
 from src.classes.Tuples                             import Tuples
 from src.classes.Unions                             import union   
@@ -415,12 +417,15 @@ class CLASS_TREATMENT:
                                             'count', 'endwith', 'startwith', 'replace', 'size']
                 self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted', 'frame'] 
                 self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
+                self.floatFunctions      = [ 'round' ] 
+                self.rangeFunctions      = [ 'size', 'enumerate', 'choice', 'to_array', 'sum', 'std', 'mean', 'var' ] 
                 self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size', 'choice', 'index', 'count'] 
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
                                             'size', 'round', 'rand', 'choice', 'to_array' ]
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
-                                           'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis', 'dtype', 'size']
+                                           'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis', 'dtype', 
+                                           'size', 'copy', 'owner', 'choice']
                 self.table              = ['set_id', 'select', 'keys']  #['show', 'set_id', 'select', 'keys']
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
@@ -428,7 +433,7 @@ class CLASS_TREATMENT:
                     self.idd    = self.DataBase[ 'variables' ][ 'vars' ].index( self.main_name )
                     self.value  = self.DataBase[ 'variables' ][ 'values' ][ self.idd ]
                 
-                    if   type( self.value ) == type( str() )    :
+                    if   type( self.value ) == type( str() )        :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.strFunctions:
@@ -447,7 +452,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                       
-                    elif type( self.value ) == type( dict() )   :
+                    elif type( self.value ) == type( dict() )       :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.dictFunctions:
@@ -466,7 +471,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'dictionary( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                   
-                    elif type( self.value ) == type( list() )   :
+                    elif type( self.value ) == type( list() )       :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.listFunctions:
@@ -485,7 +490,26 @@ class CLASS_TREATMENT:
                                 else: self.error =er. ERRORS( self.line ).ERROR22( self.name, 'list( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                    
-                    elif type( self.value ) == type( tuple() )  :
+                    elif type( self.value ) == type( range(2) )     :
+                        if self.main_name == self.main_expr: 
+                            if self.name != self.expr:
+                                if self.name in self.rangeFunctions:
+                                    self.historyOfFunctions.append( self.name )
+                                    self.expression         = 'def '+self.expr+ ':'
+                                    self.dictionary         = {
+                                    'functions'             : [],
+                                    'func_names'            : []
+                                    }
+                                    self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
+                                                                                self.line ).MAIN( def_key = 'indirect' )
+                                    if self.error is None: 
+                                        self.final_values, self.error = Range.RANGE( self.DataBase, self.line, self.value,
+                                                                self.name, self.dictionary[ 'functions' ]).RANGE( self.main_name, self.normal_expr )
+                                    else: pass    
+                                else: self.error =er. ERRORS( self.line ).ERROR22( self.name, 'range( )' )
+                            else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' ) 
+                    elif type( self.value ) == type( tuple() )      :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.tupleFunctions:
@@ -504,7 +528,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'tuple( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                    
-                    elif type( self.value ) == type( complex() ):
+                    elif type( self.value ) == type( complex() )    :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.cplxFunctions:
@@ -522,7 +546,26 @@ class CLASS_TREATMENT:
                                     else: pass    
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'complex( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                    
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )    
+                    elif type( self.value ) in [type( float() ) ]   :
+                        if self.main_name == self.main_expr: 
+                            if self.name != self.expr:
+                                if self.name in self.floatFunctions:
+                                    self.historyOfFunctions.append( self.name )
+                                    self.expression         = 'def '+self.expr+ ':'
+                                    self.dictionary         = {
+                                    'functions'             : [],
+                                    'func_names'            : []
+                                    }
+                                    self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
+                                                                                self.line ).MAIN( def_key = 'indirect' )
+                                    if self.error is None: 
+                                        self.final_values, self.error = Float.Float( self.DataBase, self.line, self.value,
+                                                                self.name, self.dictionary[ 'functions' ]).Float( self.normal_expr )
+                                    else: pass    
+                                else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'float( )' )
+                            else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
+                        else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                
                     elif type( self.value ) == type(pd.DataFrame({"s":[1]})):
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
@@ -562,7 +605,6 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'ndarray( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
-                    
                     else: self.error = er.ERRORS( self.line ).ERROR31( self.main_name )
                 
                 elif self.main_name in  self.DataBase[ 'open' ][ 'name' ]:
@@ -609,7 +651,7 @@ class CLASS_TREATMENT:
                 self.normal_expr += _str_+'.'
             else: self.normal_expr += _str_
         
-        if len( self.master[ 'names' ]) <= 4:
+        if len( self.master[ 'names' ]) <= 100:
             if len( self.master[ 'names' ])   == 2:
                 self.sub_name  = self.master[ 'names' ][ 1 ]
                 self.sub_expr  = self.master[ 'expressions' ][ 1 ]
@@ -759,8 +801,38 @@ class CLASS_TREATMENT:
                                                     
                         else: self.error = er.ERRORS(self.line).ERROR44(self.sub_name, self.sub_sub_name)
                     else: self.error = er.ERRORS(self.line).ERROR45(self.main_name, self.sub_name)
+                elif  self.main_name in self.DataBase['variables']['vars']:
+                    self.index = self.DataBase['variables']['vars'].index(self.main_name)
+                    self.check_type = False 
+                    if  type(self.DataBase['variables']['values'][self.index]) in [type(list()), type(dict()), type(np.array([1]))]:
+                        self.storage_this_vars = self.DataBase['variables']['values'][self.index].copy()
+                        self.check_type = True 
+                    else: self.storage_this_vars = self.DataBase['variables']['values'][self.index]
+                    self.final_values, self.value_from_db, self.initialize_values, self.error = n_v.NESTED(self.master, 
+                                                                                self.DataBase, self.line).SUB_NESTED_VAR( self.index )
+                    if self.error is None:
+                        if self.check_type is False: self.DataBase['variables']['values'][self.index] = self.storage_this_vars
+                        else: self.DataBase['variables']['values'][self.index] = self.storage_this_vars.copy()
+                        self.check_type = False
+                    else: pass 
                 else: self.error = er.ERRORS(self.line).ERROR43(self.main_name)
-    
+            
+            else:
+                if  self.main_name in self.DataBase['variables']['vars']:
+                    self.index = self.DataBase['variables']['vars'].index(self.main_name)
+                    self.check_type = False 
+                    if  type(self.DataBase['variables']['values'][self.index]) in [type(list()), type(dict()), type(np.array([1]))]:
+                        self.storage_this_vars = self.DataBase['variables']['values'][self.index].copy()
+                        self.check_type = True 
+                    else: self.storage_this_vars = self.DataBase['variables']['values'][self.index]
+                    self.final_values, self.value_from_db, self.initialize_values, self.error = n_v.NESTED(self.master, 
+                                                                                self.DataBase, self.line).SUB_NESTED_VAR( self.index )
+                    if self.error is None:
+                        if self.check_type is False: self.DataBase['variables']['values'][self.index] = self.storage_this_vars
+                        else: self.DataBase['variables']['values'][self.index] = self.storage_this_vars.copy()
+                        self.check_type = False
+                    else: pass 
+                else: self.error = er.ERRORS(self.line).ERROR43(self.main_name)
         else : self.error = er.ERRORS( self.line ).ERROR0( self.normal_expr )
         
         return self.final_values, self.value_from_db, self.initialize_values, self.error

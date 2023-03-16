@@ -1,5 +1,5 @@
 from script.LEXER                       import segmentation
-from script                             import control_string
+from script                             import control_string as CS
 from script.LEXER.error.CythonWIN       import affectationError as AE
 from CythonModules.Windows.LEXER.seg    import num
 from CythonModules.Windows.LEXER.seg    import segError
@@ -130,13 +130,13 @@ cdef class SELECTION:
                         if self.chaine == _char_:
                             try:
                                 Len = len( _char_ ) #
-                                self.string, self.error  = control_string.STRING_ANALYSE(self.data_base, self.line).DELETE_SPACE( self.string[: - Len], name="cython")
+                                self.string, self.error  = CS.STRING_ANALYSE(self.data_base, self.line).DELETE_SPACE( self.string[: - Len], name="cython")
                                 if  not self.error:
                                     self.var_attribute.append( self.string )
                                     self.string = ""
                                     self.chaine = ""
                                 else:
-                                    if _char_ == '-':
+                                    if _char_ in ['-', " "]:
                                         self.var_attribute.append( self.string )
                                         self.string = ""
                                         self.error  = ""
@@ -145,7 +145,7 @@ cdef class SELECTION:
                                         self.error = AE.ERRORS(self.line).ERROR7( self.master, _char_)
                                         break
                             except IndexError:
-                                if _char_ == '-':
+                                if _char_ in ['-', " "]:
                                     self.var_attribute.append( self.string )
                                     self.string = ""
                                     self.error  = ""
@@ -156,7 +156,7 @@ cdef class SELECTION:
                         else:  pass
                     else:
                         if self.chaine != _char_:
-                            self.string, self.error = control_string.STRING_ANALYSE(self.data_base, self.line).DELETE_SPACE(self.string, name="cython")
+                            self.string, self.error = CS.STRING_ANALYSE(self.data_base, self.line).DELETE_SPACE(self.string, name="cython")
                             self.var_attribute.append( self.string )
                             self.chaine = ""
                         else:
