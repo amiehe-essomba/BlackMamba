@@ -69,7 +69,7 @@
 
 > Example of a code
 
-![logo](/images/code2.png)
+![logo](/images/code3.png)
 
 ## ROADMAP
 

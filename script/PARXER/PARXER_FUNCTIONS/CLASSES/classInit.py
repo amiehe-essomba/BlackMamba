@@ -725,26 +725,57 @@ class CLASS_TREATMENT:
                         
                         self.locValue       = self.DataBase['classes'][self.location][ 0 ][ 0 ]
                         
-                        if self.sub_name in self.locValue['sub_classes']['class_names']:
-                            self.allNames               = self.locValue[ 'sub_classes' ]['class_names']
-                            self._functions_            = self.locValue[ 'sub_classes' ]['classes']
+                        try:
+                            if self.sub_name in self.locValue['sub_classes']['class_names']:
+                                self.allNames               = self.locValue[ 'sub_classes' ]['class_names']
+                                self._functions_            = self.locValue[ 'sub_classes' ]['classes']
+                                
+                                self.data = {
+                                    'class_names'   : self.allNames,
+                                    'classes'       : self._functions_ 
+                                }
+                                
+                                self.DataBase[ 'modulesImport' ]['modulesLoadC'].append( self.data )
+                                self.mod = loading.LOAD(self.DataBase['modulesImport'][ 'modulesLoadC' ], self.sub_name).LOAD( 'class_names' )
+                                
+                                self.master['names']        = self.master['names'][1 : ]
+                                self.master['expressions']  = self.master['expressions'][ 1 :]
+                                self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
+                                                self.DataBase, self.line ).TREATMENT( self.main_name+'.', loading = True, idd1 = self.mod['id1'], 
+                                                                                    idd2 = self.mod['id2'], length = 3, tabulation = 3 )
+                                
+                                self.DataBase[ 'modulesImport' ]['modulesLoadC']  = self.DataBase[ 'modulesImport' ]['modulesLoadC'][ : -1]                          
+                            else:  self.error = er.ERRORS(self.line).ERROR44(self.main_name, self.sub_name) 
+                        except TypeError:
+                            self.check_type,self.is_found  = False, False
+                            self.new_master, self.rest = n_v.NESTED(self._master_, self.DataBase, self.line).SUB_NESTED_CLASS(  ) 
+                            if self.sub_name in self.DataBase['variables']['vars']:
+                                self.is_found = True
+                                self.index =  self.DataBase['variables']['vars'].index(self.sub_name)  
+                                if type(self.DataBase['variables']['values'][self.index]) in [type(list()), type(dict()), type(np.array([1]))]:
+                                    self.att_values = self.DataBase['variables']['values'][self.index].copy()
+                                    self.check_type = True
+                                else: self.att_values = self.DataBase['variables']['values'][self.index]
+                            else:
+                                self.DataBase['variables']['vars'].append(self.sub_name)
+                                self.att_values = self.DataBase['variables']['values'].append("None")
+                                self.index =  self.DataBase['variables']['vars'].index(self.sub_name)  
                             
-                            self.data = {
-                                'class_names'   : self.allNames,
-                                'classes'       : self._functions_ 
-                            }
+                            self.final_values, self.value_from_db, self.initialize_values, self.error = n_v.NESTED(self.new_master, 
+                                                                                    self.DataBase, self.line).SUB_NESTED_VAR( self.index )
                             
-                            self.DataBase[ 'modulesImport' ]['modulesLoadC'].append( self.data )
-                            self.mod = loading.LOAD(self.DataBase['modulesImport'][ 'modulesLoadC' ], self.sub_name).LOAD( 'class_names' )
-                            
-                            self.master['names']        = self.master['names'][1 : ]
-                            self.master['expressions']  = self.master['expressions'][ 1 :]
-                            self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
-                                            self.DataBase, self.line ).TREATMENT( self.main_name+'.', loading = True, idd1 = self.mod['id1'], 
-                                                                                 idd2 = self.mod['id2'], length = 3, tabulation = 3 )
-                            
-                            self.DataBase[ 'modulesImport' ]['modulesLoadC']  = self.DataBase[ 'modulesImport' ]['modulesLoadC'][ : -1]                          
-                        else:  self.error = er.ERRORS(self.line).ERROR44(self.main_name, self.sub_name) 
+                            if self.error is None:
+                                self.final_values, self.value_from_db, self.initialize_values, self.error = n_v.NESTED(self.rest, 
+                                                                                        self.DataBase, self.line).SUB_NESTED_VAR( self.index )
+                                if self.error is None:
+                                    if self.is_found is True:
+                                        if self.check_type is True: self.DataBase['variables']['values'][self.index] = self.att_values.copy()
+                                        else: self.DataBase['variables']['values'][self.index] = self.att_values
+                                    else:
+                                        del self.DataBase['variables']['values'][self.index]
+                                        del self.DataBase['variables']['vars'][self.index]
+                                else: pass
+                            else: pass
                     elif  self.main_name in self.DataBase['variables']['vars']: 
                         self.index = self.DataBase['variables']['vars'].index(self.main_name)
                         self.check_type = False 

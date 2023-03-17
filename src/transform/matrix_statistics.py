@@ -124,8 +124,7 @@ class R:
                 else: pass
             else:
                 self._value_ = [self.master, self.master_inv, self._value_[4], "pop", self._value_[4]]
-                self.master, self.error = st.STAT(self._value_, '', self.line).COV_CORR_LINEAR()
-                
+                self.master, self.error = st.STAT(self._value_, '', self.line).COV_CORR_LINEAR()     
         elif self._value_[4] in ['quantile']:
             if self._value_[5] is None:
                 for x in range(len(self.master)):

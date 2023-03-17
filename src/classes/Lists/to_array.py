@@ -24,8 +24,9 @@ class TO:
         self.values         = self.FunctionInfo[ self.function ][ 'value' ] 
         
         if len( self.arguments ) == 1:
+           
             if self.arguments[ 0 ] == 'ncol': 
-                if self.values[ 0 ] is None: self.error = er.ERRORS( self.line ).ERROR15( self.function, [['ncol']] ) 
+                if self.values[ 0 ] is None: self._return_   = np.array( [self.master] )
                 else: 
                     self.dict_value, self.error = self.affectation.AFFECTATION( self.values[ 0 ],
                                                                     self.values[ 0 ], self.DataBase, self.line ).DEEP_CHECKING()

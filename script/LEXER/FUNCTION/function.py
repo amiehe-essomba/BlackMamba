@@ -49,7 +49,7 @@ class FUNCTION:
                 'description'           : None   # description of function using <begin> inside function
             },
             'type_return'               : None,  # type returning, default value None( for any type)
-            "anonymous"                 : False
+            "anonymous"                 : False  # anonymous function
         }
 
         self.string_type  = self.__str.SELECTION(self.master, self.master, self.data_base, self.line)
@@ -97,10 +97,17 @@ class FUNCTION:
                     else:
                         self.name, self.error = self.control.CHECK_NAME( self.string )
                         if self.error is None:
-                            self.function_name                      = self.name
-                            self.function_info[ 'function_name' ]   = self.function_name
-                            self.data_base[ 'current_func' ]        = self.function_name
-
+                            if self.name == "initialize":
+                                if self.function_info['type_return']:
+                                    if self.function_info['type_return']  in ["None", "none"]: pass 
+                                    else: self.error = ERRORS( self.line ).ERROR7( )
+                                else: pass
+                            else: pass 
+                            if self.error is None:
+                                self.function_name                      = self.name
+                                self.function_info[ 'function_name' ]   = self.function_name
+                                self.data_base[ 'current_func' ]        = self.function_name
+                            else: pass
                         else: self.error = ERRORS( self.line ).ERROR1( self.string )
 
                     if self.error is None:
@@ -441,5 +448,11 @@ class ERRORS:
     def ERROR6(self):
         error = '{}line: {}{}'.format(self.white, self.yellow, self.line) 
         self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}returning {}type error. '.format(self.white, self.cyan) + error
+
+        return self.error+self.reset
+    
+    def ERROR7(self):
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line) 
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}Constructor {}type error. '.format(self.green, self.cyan) + error
 
         return self.error+self.reset

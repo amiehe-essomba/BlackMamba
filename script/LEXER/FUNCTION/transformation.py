@@ -320,9 +320,12 @@ class C_F_I_S:
                                                     self.func = bm.fg.rbg(0, 255, 0) + ' in {}( ).'.format( self._value_[4] ) + bm.init.reset
                                                     if self._value_[4] is None:  self.final_value = np.array( self.final_value )
                                                     else:
-                                                        if   self._value_[4] == 'sorted': self.final_value = np.sort( self.final_value )
-                                                        elif self._value_[4] == 'dtype': self.final_value = dt.data( str(np.array( self.final_value.dtype  ) ) ).type()
-                                                        elif self._value_[4] == 'size': self.final_value = np.array( self.final_value ).size
+                                                        if   self._value_[4] == 'sorted':
+                                                            if type(self.final_value) == type(np.array([1])): 
+                                                                self.final_value.sort()
+                                                            else: self.final_value = np.sort( self.final_value )
+                                                        elif self._value_[4] == 'dtype' : self.final_value = dt.data( str(np.array( self.final_value.dtype  ) ) ).type()
+                                                        elif self._value_[4] == 'size'  : self.final_value = np.array( self.final_value ).size
                                                         else: self.final_value, self.error = mstat.R(self.final_value, self._value_, self.line).R()
                                                 else: pass
 
@@ -446,7 +449,10 @@ class C_F_I_S:
                                         elif function in [ '__show__'  ]    :
                                             self.final_value = u"{}".format(self._value_)           
                                         elif function in [ '_get_line_']    :
-                                            self.final_value = self.line-1
+                                            if   self._value_ == 'line': self.final_value = self.line-1
+                                            elif self._value_ == 'func_names' : self.final_value = self.data_base['func_names']
+                                            elif self._value_ == 'class_names': self.final_value = self.data_base['class_names']
+                                            else: self.error = er.ERRORS( self.line ).ERROR0( self.normal_string )
                                         elif function in [ '__scan__'  ]    :
                                             func = bm.fg.rbg(0, 255, 0   )+' in sget( ).' + bm.init.reset
                                             s1, s2, s3 =  self._value_[0],  self._value_[1],  self._value_[2]

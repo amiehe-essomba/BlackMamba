@@ -31,12 +31,13 @@ class MATRIX_2D:
         self.master, self.nrow, self.ncol, self.master_one = c2D.Array( self.master )
         self._values_       = [self.master_one, self.nrow, self.ncol] 
         
-        if self.function in ['dtype', 'size', 'ndim', 'copy', 'owner', 'choice']:
+        if self.function in ['dtype', 'size', 'ndim', 'copy', 'owner', 'choice', 'sorted']:
             if type(self.master_copy) == type(np.array([1])):
-                if self.function == 'dtype': self._return_ = dt.data( str( self.master_copy.dtype ) ).type()
-                elif self.function == 'ndim' : self._return_ = list(self.master_copy.shape)
-                elif self.function == 'copy' : self._return_ = self.master_copy.copy()
-                elif self.function == 'choice' : 
+                if   self.function == 'dtype'   : self._return_ = dt.data( str( self.master_copy.dtype ) ).type()
+                elif self.function == 'ndim'    : self._return_ = list(self.master_copy.shape)
+                elif self.function == 'copy'    : self._return_ = self.master_copy.copy()
+                elif self.function == 'sorted'  : self.master_copy.sort(); self._return_ = self.master_copy.copy()
+                elif self.function == 'choice'  : 
                     if len( list( self.master_copy.shape ) ) == 1:
                         self._return_ = np.random.choice(self.master_copy)
                     elif len( list( self.master_copy.shape ) ) == 2:
@@ -46,7 +47,7 @@ class MATRIX_2D:
                             self._return_.append(np.random.choice(self.master_copy[i]))
                         self._return_ = np.array(self._return_).reshape((self.shape[0], -1))
                     else: self.error = er.ERRORS( self.line ).ERROR61( mainName )
-                elif self.function == 'owner' : 
+                elif self.function == 'owner'   : 
                     self._return_ = self.master_copy.base
                     if self._return_ is None: self._return_ = False 
                     else : self._return_ = True
