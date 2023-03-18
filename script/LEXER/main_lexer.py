@@ -1,3 +1,4 @@
+import string
 from script       import control_string
 from script.LEXER import looking_for_bool_operators
 from script.LEXER import looking_for_logical_operators
@@ -5,12 +6,15 @@ from script.LEXER import looking_for_arithmetic_operators
 from script.LEXER import looking_for_init_function
 from script.LEXER import looking_for_module_load
 
+from script.PARXER.LEXER_CONFIGURE import lexer_and_parxer as LP
+from script.LEXER               import particular_str_selection
 from script.LEXER.FUNCTION      import global_
 from script.LEXER.FUNCTION      import return_
 from script.LEXER.FUNCTION      import class_
 from script.LEXER.FUNCTION      import function
 from script.LEXER.FUNCTION      import function_rebuild
 from script.LEXER.FUNCTION      import delete
+from script.LEXER.FUNCTION      import lambda_
 from script.LEXER.FUNCTION      import print_value
 from script.LEXER.FUNCTION      import transformation
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
@@ -349,7 +353,7 @@ class FINAL_LEXER:
                                     else:
                                         self.main_lexer_storage[ 'transformation' ] = self.get_values
                                 else: pass
-
+                            elif self.new_function[ 0 ] in [ 'lambda' ]: self.error = ERRORS( self.line ).ERROR0(self.master)
                             else:
                                 self.new_data = FINAL_LEXER( self.new_data, self.data_base, self.line).REBUILD()
                                 self.value_ = {'value' : self.new_data}
@@ -390,9 +394,8 @@ class FINAL_LEXER:
         self.error                  = None
         self.value                  = value
         self.main_lexer_storage     = main_lexer_storage
-
-        self.path_and_module, self.error = self.mod_module.FINAL_MODULE_LOAD(self.value, self.data_base,
-                                                                             self.line).LOAD( self.master )
+       
+        self.path_and_module, self.error = self.mod_module.FINAL_MODULE_LOAD(self.value, self.data_base, self.line).LOAD( self.master )
         if self.error is None:
             if type( self.path_and_module ) != type( str() ):
                 self.error = ERRORS( self.line ).ERROR0( self.master )
@@ -400,71 +403,130 @@ class FINAL_LEXER:
             else:
                 self.new_data, self.new_function, self.error = self.rebuild_function.FUNCTION( self.value,
                                                          self.data_base, self.line).FUNCTION( self.master )
+                
                 if self.error is None:
-                    if self.new_function:
-                        self.error = ERRORS( self.line ).ERROR0( self.master )
-
-                    else:
-                        
+                    
+                    if self.new_function  : 
+                        if  self.new_function[0] == "lambda": pass 
+                        else: self.error = ERRORS( self.line ).ERROR0( self.master ) 
+                    else: pass 
+                    
+                    if self.error is None:
                         self.func           = 'func'
+                        self.lam            = 'lambda'
                         self.fun_value      = self.value[ 'value' ]
-                        self.len            = len( self.func )
                         self.list_items     = self.value[ 'variable' ]
+                    
+                        self.len            = len( self.func )
+                        self.len_lambda     = len( self.lam ) 
 
                         if len( self.list_items ) == 1:
                             self.string = self.fun_value[ 0 ]
+                            if self.string[0] == 'f': pass 
+                            else: self.len = self.len_lambda 
                             try:
                                 if len( self.string ) > self.len:
                                     self.root = self.string[ : self.len ]
                                     self.nex_root = self.string[self.len:]
                                     self.root, err = self.control.DELETE_SPACE( self.root )
                                     self.nex_root, err = self.control.DELETE_SPACE( self.nex_root )
+                                    
+                                    if err is None:
+                                        if   self.root == self.func:
+                                            if self.nex_root[ 0 ] == '(':
+                                                if self.string[ -1 ] == ':':
 
-                                    if self.root == self.func:
+                                                    self.string , err = self.control.DELETE_SPACE( self.string[ : -1 ] )
+                                                    self.new_data = [ self.string ]
 
-                                        if self.nex_root[ 0 ] == '(':
-                                            if self.string[ -1 ] == ':':
+                                                    self._function_, self.error = self.function_.FUNCTION( self.new_data,
+                                                        self.data_base,self.line).FUNCTION_INIT( self.string, method='2nd' )
 
-                                                self.string , err = self.control.DELETE_SPACE( self.string[ : -1 ] )
-                                                self.new_data = [ self.string ]
-
-                                                self._function_, self.error = self.function_.FUNCTION( self.new_data,
-                                                    self.data_base,self.line).FUNCTION_INIT( self.string, method='2nd' )
-
-                                                if self.error is None:
-                                                    self.name, self.error   = self.control.DELETE_SPACE(
-                                                                        self._function_[ 'function_name' ] )
                                                     if self.error is None:
-                                                        self.name               = self.control.CHECK_NAME( self.name )
-                                                        self._function_[ 'function_name' ]      = self.value[ 'variable' ][ 0 ]
-                                                        self.data_base[ 'current_func' ]        = self.value[ 'variable' ][ 0 ]
-                                                        self.main_lexer_storage[ 'def' ]        = self._function_
+                                                        self.name, self.error   = self.control.DELETE_SPACE(
+                                                                            self._function_[ 'function_name' ] )
+                                                        if self.error is None:
+                                                            self.name               = self.control.CHECK_NAME( self.name )
+                                                            self._function_[ 'function_name' ]      = self.value[ 'variable' ][ 0 ]
+                                                            self.data_base[ 'current_func' ]        = self.value[ 'variable' ][ 0 ]
+                                                            self.main_lexer_storage[ 'def' ]        = self._function_
 
-                                                        del self.value[ 'variable' ]
-                                                        del self.value[ 'operator' ]
+                                                            del self.value[ 'variable' ]
+                                                            del self.value[ 'operator' ]
 
-                                                    else: self.error = ERRORS( self.line ).ERROR2( self.name )
-                                                else: pass
-                                            else: self.error = ERRORS( self.line ).ERROR1( self.master )
-                                        else:
-                                            if self.string[ self.len + 1] in ['[', '{', '"', "'"]:
-                                                self.error = ERRORS( self.line ).ERROR0( self.master)
-
+                                                        else: self.error = ERRORS( self.line ).ERROR2( self.name )
+                                                    else: pass
+                                                else: self.error = ERRORS( self.line ).ERROR1( self.master )
                                             else:
-                                                self.final_value, self.error = LEXER_ASSEMBLY( self.value, self.data_base,
-                                                                                                    self.line).ASSEMBLY()
-                                                if self.error is None:
-                                                    self.main_lexer_storage[ 'if_egal' ]    = True
-                                                    self.main_lexer_storage[ 'all_data' ]   = self.final_value
-                                                else: pass
+                                                if self.string[ self.len + 1] in ['[', '{', '"', "'"]:
+                                                    self.error = ERRORS( self.line ).ERROR0( self.master)
 
-                                    else:
-                                        self.final_value, self.error = LEXER_ASSEMBLY(self.value, self.data_base,
-                                                                                      self.line).ASSEMBLY()
-                                        if self.error is None:
-                                            self.main_lexer_storage[ 'if_egal' ]    = True
-                                            self.main_lexer_storage[ 'all_data' ]   = self.final_value
-                                        else: pass
+                                                else:
+                                                    self.final_value, self.error = LEXER_ASSEMBLY( self.value, self.data_base,
+                                                                                                        self.line).ASSEMBLY()
+                                                    if self.error is None:
+                                                        self.main_lexer_storage[ 'if_egal' ]    = True
+                                                        self.main_lexer_storage[ 'all_data' ]   = self.final_value
+                                                    else: pass
+                                        elif self.root == self.lam:
+                                            if self.string[self.len] == " ":
+                                                self.__str          = particular_str_selection
+                                                self.string_select = self.__str.SELECTION(self.master, self.master, self.data_base, self.line)
+                                                self.sub_value, self.error = self.string_select.CHAR_SELECTION( '=' )
+                    
+                                                if self.error is None:
+                                                    if len( self.sub_value ) == 2:
+                                                        self.name, self.error = self.control.CHECK_NAME(self.sub_value[0])
+                                                        if self.error is None:
+                                                            self.list_vars_lambda, self.error = lambda_.LAMBDA( self.data_base, self.line).LAMBDA( self.nex_root )         
+                                                            if self.error is None:    
+                                                                self.new_string =  self.name + " += " + self.list_vars_lambda[1]
+                                                                self.lex, self.error = LP.MAIN(self.new_string, self.data_base, self.line).MAIN_LEXER()
+                                                                
+                                                                if self.error is None: 
+                                                                    if self.name not in self.list_vars_lambda[0]:
+                                                                        self.range = range( len( self.list_vars_lambda[0] )  )
+                                                                        self.my_lambda_function = {
+                                                                            f"{self.name}" : {
+                                                                                'type'     : [ ['any'] for x in self.range ],
+                                                                                'value'    : [ None for x in self.range ],
+                                                                                'arguments': [ x for x in self.list_vars_lambda[0] ],
+                                                                                'history_of_data'   : [
+                                                                                        (f"treturn {self.list_vars_lambda[1]}                        ",True),
+                                                                                        ( "end:                                                   ", False )
+                                                                                    ],
+                                                                                'sub_functions'  : [],
+                                                                                'function_info'             : {
+                                                                                    'args'                  : None,  
+                                                                                    'typeVars'              : None,   
+                                                                                    'defaultValues'         : None,   
+                                                                                    'description'           : None   
+                                                                                    },
+                                                                                'type_return'               : None,  
+                                                                                "anonymous"                 : False   
+                                                                                }
+                                                                            }
+                                                                        if self.name in self.data_base['func_names']: 
+                                                                            self.index = self.data_base['func_names'].index( self.name )
+                                                                            self.data_base['functions'][self.index] = self.my_lambda_function.copy()
+                                                                        else: 
+                                                                            self.data_base['func_names'].append(self.name)
+                                                                            self.data_base['functions'].append(self.my_lambda_function)
+                                                                    else: self.error = ERRORS( self.line ).ERROR0( self.master )
+                                                                else: pass 
+                                                            else: pass 
+                                                        else: self.error = ERRORS( self.line ).ERROR4()
+                                                    else: self.error = ERRORS( self.line ).ERROR0( self.master )
+                                                else: pass
+                                            else: self.error = ERRORS( self.line ).ERROR0( self.master )
+                                        else:
+                                            self.final_value, self.error = LEXER_ASSEMBLY(self.value, self.data_base,
+                                                                                        self.line).ASSEMBLY()
+                                            if self.error is None:
+                                                self.main_lexer_storage[ 'if_egal' ]    = True
+                                                self.main_lexer_storage[ 'all_data' ]   = self.final_value
+                                            else: pass
+                                    else: self.error = ERRORS( self.line ).ERROR0( self.master )
                                 else:
                                     self.final_value, self.error = LEXER_ASSEMBLY(self.value, self.data_base,
                                                                                   self.line).ASSEMBLY()
@@ -528,5 +590,11 @@ class ERRORS:
     def ERROR3(self):
         error = '{}line: {}{}.'.format(self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'SyntaxError' ).Errors() +'{}return {}was already defined. '.format(self.cyan, self.yellow) + error
+
+        return self.error+self.reset
+    
+    def ERROR4(self):
+        error = '{}line: {}{}.'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'NameError' ).Errors() +'{}lambda function {}name error. '.format(self.green, self.cyan) + error
 
         return self.error+self.reset

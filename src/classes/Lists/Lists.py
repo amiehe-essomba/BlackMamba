@@ -6,6 +6,7 @@ from script.PARXER                                  import numerical_value
 from script.LEXER                                   import check_if_affectation
 from src.classes.Lists                              import inserting, random_init, sorting
 from src.classes.Lists                              import to_array as ta
+import numpy as np
 
 
 class LIST:
@@ -63,11 +64,17 @@ class LIST:
             if None in self.arguments:
                 if self.master:
                     self._return_ = random.choice( self.master )
-                else: self.error =  er.ERRORS( self.line ).ERROR24( 'list / tuple' )    
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'list / tuple / range' )    
             else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
         elif self.function in [ 'to_array']          :
             self._return_, self.error = ta.TO( self.DataBase, self.line, self.master,
                                                  self.function, [self.FunctionInfo] ).ARRAY( mainName, mainString )
+            if self.error is None:
+                self.index = self.DataBase['variables']['vars'].index( mainName )
+                if type(self._return_) in [type(list()), type(dict()), type(np.array([1]))]:
+                    self.DataBase['variables'][ 'values'][self.index] = self._return_.copy()
+                else: self.DataBase['variables'][ 'values'][self.index] = self._return_
+            else: pass
         elif self.function in [ 'enumerate' ]        :
             if None in self.arguments:
                 if self.master:

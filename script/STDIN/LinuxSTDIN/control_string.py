@@ -20,7 +20,7 @@ class STRING_ANALYSE(object):
                                         'function', 'finally', 'load', 'module', 'from', 'exit', 'continue',   'default',
                                         'lambda', 'raise', 'assert', 'begin', 'delete', 'exit', 'stop', 'print', '_int_',
                                         '_float_', '_string_', '_complex_', '_list_', '_dictionary_', '_tuple_',
-                                        '_boolean_', '_sqrt_', '_length_', '_sum_']
+                                        '_boolean_', '_sqrt_', '_length_', '_sum_', '_lambda_',]
 
     def CHECK_NAME(self, name_string: str, _key_type_: bool=False):  # checking variable names used in list
 

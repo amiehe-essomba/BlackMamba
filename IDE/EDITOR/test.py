@@ -19,5 +19,3 @@ def get_linux_ter():
 	height= os.popen('tput lines', 'r').readline()	
 	return int(width), int(height)
 
-#if os.name == 'posix' : print( get_linux_ter())
-#else: print( get_win_ter())

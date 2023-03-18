@@ -24,17 +24,19 @@ class RETURN:
 
         self.list_of_values, self.error = self.selection.SELECTION( self.main_string, self.main_string,
                                                                     self.data_base, self.line ).CHAR_SELECTION( ',' )
-        for i, _value_ in enumerate( self.list_of_values ):
-            self.string, self.error = self.control.DELETE_SPACE( _value_ )
-            if self.error is None:
-                self._value_, self.error = numeric_lexer.NUMERCAL_LEXER( self.string, self.data_base,
-                                    self.line).LEXER( self.long_string )
-                if self.error is None:  self.list_of_values[ i ] = self._value_
-                else: break
-            else:
-                self.error = ERRORS( self.line ).ERROR0( self.string )
-                break
-
+        if self.error is None :
+            for i, _value_ in enumerate( self.list_of_values ):
+                self.string, self.error = self.control.DELETE_SPACE( _value_ )
+                if self.error is None:
+                    self._value_, self.error = numeric_lexer.NUMERCAL_LEXER( self.string, self.data_base,
+                                        self.line).LEXER( self.long_string )
+                    if self.error is None:  self.list_of_values[ i ] = self._value_
+                    else: break
+                else:
+                    self.error = ERRORS( self.line ).ERROR0( self.string )
+                    break
+        else: pass 
+        
         return self.list_of_values, self.error
 
 class ERRORS:

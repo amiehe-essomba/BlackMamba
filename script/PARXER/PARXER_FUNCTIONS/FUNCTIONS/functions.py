@@ -383,7 +383,6 @@ class FUNCTION_TREATMENT:
                                                     if self.new_data_base[ 'print' ] :
                                                         self.print_values = True
                                                         self.list_of_values = self.new_data_base[ 'print' ]
-                                                        print(value)
                                                         for i, value in enumerate( self.list_of_values ):
                                                             if self.function_name != "prompt":
                                                                 print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
@@ -422,7 +421,6 @@ class FUNCTION_TREATMENT:
                                                                     self.data_base[ 'no_printed_values' ].append( None )
                                                                     self.error = set_openfile.SET_OPEN_FILE( self.new_data_base[ 'open' ], 
                                                                                             self.data_base, self.line).SET_OPEN()
-                                                            
                                                                 else: pass
                                                             else: 
                                                                 if self.function_name == 'initialize': pass 

@@ -5,6 +5,7 @@ class ndarray:
 		self.nrow	= nrow
 		self.ncol	= ncol
 		self.dim	= [nrow, ncol]
+		self.version	= "1.0.0"
 	end:
 	
 	def array( reverse: bool = False, axis : none int=None):

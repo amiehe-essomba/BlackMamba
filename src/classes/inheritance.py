@@ -64,10 +64,9 @@ class INHERITANCE:
                     else: pass 
                 else: pass
                  
-                self.function_names = self.function_names#[1 : ] 
+                self.function_names = self.function_names.copy()#[1 : ] 
                               
-        else:                                                                                            
-            self.error = er.ERRORS( self.line ).ERROR13( self.inheritanceClass, 'class' )
+        else:  self.error = er.ERRORS( self.line ).ERROR13( self.inheritanceClass, 'class' )
         
         if self.error is None:pass 
         else: self.error += self.err 

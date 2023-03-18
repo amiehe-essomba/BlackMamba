@@ -15,7 +15,7 @@ def Array(master, line=1):
     
     try:
         ncol, nraw = len(final_value[0]), len(final_value)
-    except IndexError:
+    except (IndexError, TypeError):
         ncol, nraw = len(final_value), 1
     
     return final_value, nraw, ncol, final_value.copy()
@@ -33,6 +33,5 @@ def reverse(master, line=1):
                     ss.append(master[0][j][i])
                 new_matrix.append(ss)
     else: pass
-        #final_value, error = mm.MATRIX(master[0], master[1],master[2],
-        #                master[3], line).MATRIX(master[5], ctype=master[4])
+    
     return new_matrix, error

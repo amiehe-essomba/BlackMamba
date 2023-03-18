@@ -258,7 +258,7 @@ class words:
             elif      self.string in ['True', 'False', 'None']:
                 if self.count % 2 == 0 :self.newString  += self.b+fg.rbg(204,153,255)+self.string+init.reset
                 else: self.newString += self.b+self.color + self.string + init.reset
-            elif    self.string in ['pass', 'break', 'continue', 'exit', 'next', 'return', 'global']:
+            elif    self.string in ['pass', 'break', 'continue', 'exit', 'next', 'return', 'global',  'local']:
                 if self.count % 2 == 0 :self.newString += self.b+fg.rbg(153,204,0) + self.string + init.reset
                 else: self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['and', 'or', 'only']:
@@ -285,7 +285,7 @@ class words:
                 else: self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['initialize', 'integer', 'dictionary', 'set', 'get','min', 'max', 'scan', 'floor', 'License', 'help', 'fopen'
                                     'object', 'settings', 'print', 'boolean', 'complex', 'any', 'GetLine', 'ansi', 'rand', 'length', 'type', 
-                                    'anonymous', 'prompt', 'sget']:
+                                    'anonymous', 'prompt', 'sget', 'lambda']:
                 if self.count % 2 == 0: self.newString += self.b+fg.rbg(25,165,200) + self.string + init.reset
                 else: self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['->', '==', '!=', '>=', '<=']:

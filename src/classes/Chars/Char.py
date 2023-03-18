@@ -19,7 +19,7 @@ class STRING:
             if None in self.arguments: self._return_ = self.master.lower()
             else: self.error = er.ERRORS( self.line ).ERROR14( self.function )
         elif self.function in [ 'upper' ]            :
-            if None in self.arguments:  self._return_ = self.master.upper() 
+            if None in self.arguments:  self._return_ = self.master.upper()
             else: self.error = er.ERRORS( self.line ).ERROR14( self.function )
         elif self.function in [ 'split' ]            :
             self._return_, self.error = Split.STRING( self.DataBase, self.line, self.master,

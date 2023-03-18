@@ -53,6 +53,12 @@ Black Mamba supports a wide range of language constructs, including:
 
 - [ ] Type annotations: Black Mamba supports the use of type annotations, which can help improve code readability and maintainability.
 
+## INTEGRATED DEVELOPMENT ENVIRONMEMNT (IDE)
+<p align="letf">Black Mamba is a modern object-oriented programming language used for developing AI, ML, and DL models. It is designed to be easy to learn and use while being powerful enough to enable developers to create complex AI models. Black Mamba is inspired by other popular programming languages such as Python, Ruby, and Java, and is designed to be flexible and scalable.</p>
+
+<p align="letf">Pegasus is an integrated development environment (IDE) for Black Mamba, providing a complete suite of tools and features to help developers write, test, and debug their AI, ML, and DL code. Orion includes a sophisticated code editor, a powerful debugger, and an intuitive user interface. It is also beginner-friendly while offering enough features for professional developers.</p>
+
+<p align="letf">Orion is also an IDE for Black Mamba, focusing more on automating development tasks for AI, ML, and DL. It offers code generation and deployment tools to allow developers to save time and reduce development errors. Orion is designed to be extensible, allowing developers to add custom plugins and modules to extend the IDE's capabilities for AI, ML, and DL.</p>
 
 ## CONCLUSION:
 Black Mamba is a powerful and flexible programming language for AI, ML, and DL applications. With its support for object-oriented 

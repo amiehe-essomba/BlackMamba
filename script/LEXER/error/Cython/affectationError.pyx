@@ -65,13 +65,13 @@ cdef class ERRORS:
         return self.error + self.reset
 
     cpdef str ERROR8(self):
-        self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)
+        self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)
         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error
 
         return self.error + self.reset
 
     cpdef str ERROR9(self):
-        self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)
+        self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)
         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error
 
         return self.error + self.reset

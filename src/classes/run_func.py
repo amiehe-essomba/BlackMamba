@@ -2,8 +2,9 @@ from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import functions        
 from src.classes                                        import error                    as er 
 from src.functions                                      import type_of_data             as tod
 from src.functions                                      import error                    as err
-from src.functions                                      import updating_data
+from src.functions                                      import updating_data, set_openfile
 from script.LEXER.FUNCTION                              import print_value
+ 
 
 class RUN_FUNCTION:
     def __init__(self, 
@@ -83,12 +84,12 @@ class RUN_FUNCTION:
                             self.print_values   = True
                             self.list_of_values = self.new_data_base[ 'print' ]
                             for i, value in enumerate( self.list_of_values ):
-                                print_value.PRINT_PRINT( value, self.DataBase ).PRINT_PRINT( key = False )
-
+                                if self.function_name != "prompt":
+                                    print_value.PRINT_PRINT( value, self.DataBase ).PRINT_PRINT( key = False )
+                                else: print_value.PRINT_PRINT( value, self.DataBase ).PROMPT( key = False )
                             self.new_data_base[ 'print' ]   = []
                         else: pass
                     else: pass
-                    
                     updating_data.UPDATE_DATA_BASE( None, None, None ).INITIALIZATION( self.new_data_base,
                                                             self._new_data_base_ )
                 else:
@@ -111,11 +112,17 @@ class RUN_FUNCTION:
                                 self.list_of_values = self.new_data_base[ 'print' ]
 
                                 for i, value in enumerate( self.list_of_values ):
-                                    print_value.PRINT_PRINT( value, self.DataBase ).PRINT_PRINT( key = False )
-
+                                    if self.function_name != "prompt":
+                                        print_value.PRINT_PRINT( value, self.DataBase ).PRINT_PRINT( key = False )
+                                    else:print_value.PRINT_PRINT( value, self.DataBase ).PROMPT( key = False )
                                 self.new_data_base[ 'print' ]       = []
                             else: 
-                                if self.keyActivation is True: pass 
+                                if self.keyActivation is True: 
+                                    if self.functionName == 'fopen':  
+                                        self.DataBase[ 'no_printed_values' ].append( None )
+                                        self.error = set_openfile.SET_OPEN_FILE( self.new_data_base[ 'open' ], 
+                                                                    self.DataBase, self.line).SET_OPEN()
+                                    else: pass
                                 else: 
                                     if self.functionName == 'initialize': pass 
                                     else: self.DataBase[ 'no_printed_values' ].append( None )

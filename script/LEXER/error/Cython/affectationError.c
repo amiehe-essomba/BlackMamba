@@ -4938,7 +4938,7 @@ static PyObject *__pyx_pf_16affectationError_6ERRORS_16ERROR7(struct __pyx_obj_1
  *         return self.error + self.reset
  * 
  *     cpdef str ERROR8(self):             # <<<<<<<<<<<<<<
- *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)
+ *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)
  *         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error
  */
 
@@ -5007,7 +5007,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR8(struct __pyx_obj_16af
   /* "affectationError.pyx":68
  * 
  *     cpdef str ERROR8(self):
- *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)             # <<<<<<<<<<<<<<
+ *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)             # <<<<<<<<<<<<<<
  *         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error
  * 
  */
@@ -5029,7 +5029,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR8(struct __pyx_obj_16af
   }
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->yellow, __pyx_v_self->white, __pyx_v_self->yellow, __pyx_t_3};
+    PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->green, __pyx_v_self->white, __pyx_v_self->yellow, __pyx_t_3};
     __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 68, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
@@ -5038,7 +5038,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR8(struct __pyx_obj_16af
   #endif
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->yellow, __pyx_v_self->white, __pyx_v_self->yellow, __pyx_t_3};
+    PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->green, __pyx_v_self->white, __pyx_v_self->yellow, __pyx_t_3};
     __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 68, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
@@ -5051,9 +5051,9 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR8(struct __pyx_obj_16af
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
     }
-    __Pyx_INCREF(__pyx_v_self->yellow);
-    __Pyx_GIVEREF(__pyx_v_self->yellow);
-    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_self->yellow);
+    __Pyx_INCREF(__pyx_v_self->green);
+    __Pyx_GIVEREF(__pyx_v_self->green);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_self->green);
     __Pyx_INCREF(__pyx_v_self->white);
     __Pyx_GIVEREF(__pyx_v_self->white);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_self->white);
@@ -5077,7 +5077,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR8(struct __pyx_obj_16af
 
   /* "affectationError.pyx":69
  *     cpdef str ERROR8(self):
- *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)
+ *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)
  *         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error             # <<<<<<<<<<<<<<
  * 
  *         return self.error + self.reset
@@ -5154,7 +5154,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR8(struct __pyx_obj_16af
  *         return self.error + self.reset
  * 
  *     cpdef str ERROR8(self):             # <<<<<<<<<<<<<<
- *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)
+ *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)
  *         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error
  */
 
@@ -5216,7 +5216,7 @@ static PyObject *__pyx_pf_16affectationError_6ERRORS_18ERROR8(struct __pyx_obj_1
  *         return self.error + self.reset
  * 
  *     cpdef str ERROR9(self):             # <<<<<<<<<<<<<<
- *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)
+ *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)
  *         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error
  */
 
@@ -5285,7 +5285,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR9(struct __pyx_obj_16af
   /* "affectationError.pyx":74
  * 
  *     cpdef str ERROR9(self):
- *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)             # <<<<<<<<<<<<<<
+ *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)             # <<<<<<<<<<<<<<
  *         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error
  * 
  */
@@ -5307,7 +5307,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR9(struct __pyx_obj_16af
   }
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->yellow, __pyx_v_self->white, __pyx_v_self->yellow, __pyx_t_3};
+    PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->green, __pyx_v_self->white, __pyx_v_self->yellow, __pyx_t_3};
     __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 74, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
@@ -5316,7 +5316,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR9(struct __pyx_obj_16af
   #endif
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->yellow, __pyx_v_self->white, __pyx_v_self->yellow, __pyx_t_3};
+    PyObject *__pyx_temp[5] = {__pyx_t_4, __pyx_v_self->green, __pyx_v_self->white, __pyx_v_self->yellow, __pyx_t_3};
     __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 4+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 74, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
@@ -5329,9 +5329,9 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR9(struct __pyx_obj_16af
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
     }
-    __Pyx_INCREF(__pyx_v_self->yellow);
-    __Pyx_GIVEREF(__pyx_v_self->yellow);
-    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_self->yellow);
+    __Pyx_INCREF(__pyx_v_self->green);
+    __Pyx_GIVEREF(__pyx_v_self->green);
+    PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_self->green);
     __Pyx_INCREF(__pyx_v_self->white);
     __Pyx_GIVEREF(__pyx_v_self->white);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_self->white);
@@ -5355,7 +5355,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR9(struct __pyx_obj_16af
 
   /* "affectationError.pyx":75
  *     cpdef str ERROR9(self):
- *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)
+ *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)
  *         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error             # <<<<<<<<<<<<<<
  * 
  *         return self.error + self.reset
@@ -5430,7 +5430,7 @@ static PyObject *__pyx_f_16affectationError_6ERRORS_ERROR9(struct __pyx_obj_16af
  *         return self.error + self.reset
  * 
  *     cpdef str ERROR9(self):             # <<<<<<<<<<<<<<
- *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.yellow, self.white , self.yellow, self.line)
+ *         self.error = '{}many values and less variables. {}line: {}{}'.format(self.green, self.white , self.yellow, self.line)
  *         self.error = self.error = fe.FileErrors( 'AttributeError' ).Errors() + self.error
  */
 

@@ -179,7 +179,6 @@ class AFFECTATION:
                                                             else:
                                                                 self.error = AE.ERRORS(self.line).ERROR3(self.long_chaine)
                                                                 break
-
                                                         else:
                                                             self.op     = self.long_chaine[ j ] + self.long_chaine[ i ]
                                                             self.error  = AE.ERRORS(self.line).ERROR2(self.long_chaine,
@@ -190,7 +189,6 @@ class AFFECTATION:
                                                         self.error = AE.ERRORS(self.line).ERROR1(self.long_chaine,
                                                                     self.long_chaine[ i ],self.long_chaine[ j_plus ])
                                                         break
-
                                                 else:
                                                     self.error = AE.ERRORS(self.line).ERROR1(self.long_chaine,
                                                                     self.long_chaine[ j_moins ],self.long_chaine[ j ])
@@ -247,12 +245,10 @@ class AFFECTATION:
                         if len( self._attributes_ ) == len( self._variable_ ):
                             self.var_attribute['variable']      = self._variable_
                             self.var_attribute['value']         = self._attributes_
-
                         else:
                             if len( self._attributes_ ) > len( self._variable_ ): self.error = AE.ERRORS(self.line).ERROR8()
                             else:  self.error = AE.ERRORS(self.line).ERROR9()
                     else:  pass
-
                 else:
                     string     = self.var_attribute['value']
 

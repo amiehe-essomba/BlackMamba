@@ -227,8 +227,8 @@ class ERRORS:
         return self.error+self.reset
     
     def ERROR31(self, value): #
-        error = '{}a tuple(), {} a dictionary() {}or a string(), {}type. {}line: {}{}'.format(self.blue, self.magenta, self.cyan, self.yellow, 
-                                                                                            self.white, self.yellow, self.line)
+        error = '{}a tuple(), {} a dictionary() {}a string(), {}a ndarray(), {}a table(), {}a float() {}or a range() {}type. {}line: {}{}'.format(self.blue, self.magenta, 
+                                                                            self.cyan, self.yellow, self.red, self.green, self.blue, self.yellow, self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> {}is not {}a list(), '.format(self.cyan, value, self.white, self.yellow) + error
         return self.error+self.reset
     
@@ -324,9 +324,9 @@ class ERRORS:
         return self.error+self.reset
     
     def ERROR45(self, string: str, name: str):
-        error = '{}has not {}{} {}as class. {}line: {}{}'.format(self.white, self.red, name, self.yellow,
+        error = '{}has not {}{} {}as attribute. {}line: {}{}'.format(self.white, self.red, name, self.yellow,
                                                                                  self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'NameError' ).Errors() +'{}The module {}{} '.format(self.white, self.cyan, string) + error
+        self.error = fe.FileErrors( 'AttributeError' ).Errors() +'{}The function {}{} '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
     
@@ -401,3 +401,20 @@ class ERRORS:
         self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} % {}{} {}is not an {}ineter() {}type '.format( self.cyan, max_, self.green, name, 
                                                                                                 self.white, self.red, self.yellow) + error
         return self.error+self.reset
+    
+    def ERROR59(self, string : str = "master"): #
+        error = '{}is not a{}boolean(), {}a float() or {}an integer() {}type. {}line: {}{}.'.format(self.white, self.magenta, self.green, 
+                                                                    self.red, self.yellow,self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}{} '.format( self.cyan, string) + error
+        return self.error+self.reset
+    
+    def ERROR60(self, string : str = "master"): #
+        error = '{}not in {}[0, +-->[. {}line: {}{}.'.format(self.white, self.magenta, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format( self.cyan, string) + error
+        return self.error+self.reset
+    
+    def ERROR61(self, string : str = "master"): #
+        error = '{}should be {}1 or 2-dimensional array. {}line: {}{}.'.format( self.white, self.green, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format( self.cyan, string) + error
+        return self.error+self.reset
+    

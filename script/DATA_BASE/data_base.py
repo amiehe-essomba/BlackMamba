@@ -130,7 +130,7 @@ class DATA_BASE:
     def FUNCTIONS(self):
         self.function_name  = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
                                'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 
-                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1', 'sget']
+                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames']
         
         self.function_expressions   = [
             {
@@ -373,7 +373,7 @@ class DATA_BASE:
                 'value'             : [ None ],
                 'arguments'         : [ None ],
                 'history_of_data'   : [
-                                        ('t_get_line_ * ""                     ', True),
+                                        ('t_get_line_ * "line"                     ', True),
                                         ('end:                                 ', False),
                                       ]
                                     }
@@ -481,7 +481,29 @@ class DATA_BASE:
                                         ('end:                                          ', False),
                                       ]
                 }
-            }
+            },
+            {
+                'GetFuncNames'      : {
+                'type'              : [ ['any'] ],
+                'value'             : [ None ],
+                'arguments'         : [ None ],
+                'history_of_data'   : [
+                                        ('t_get_line_ * "func_names"           ', True),
+                                        ('end:                                 ', False),
+                                      ]
+                                    }
+            },
+            {
+                'GetClassNames'     : {
+                'type'              : [ ['any'] ],
+                'value'             : [ None ],
+                'arguments'         : [ None ],
+                'history_of_data'   : [
+                                        ('t_get_line_ * "class_names"           ', True),
+                                        ('end:                                 ', False),
+                                      ]
+                                    }
+            },
         ]
 
         return self.function_name, self.function_expressions
