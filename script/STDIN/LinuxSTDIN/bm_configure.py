@@ -81,7 +81,12 @@ class scrolled:
         return s
     
 class clear:
+    #erase enire line screen
     clear       = u"\u001b[2J"
+    #erase save line
+    clear1      = u"\u001b[3J"
+    #erase in line ( same as K =0)
+    clear2      = u"\u001b[K"
     def line( pos : int ):
         # 2 = entire line
         # 1 = from the cursor to start of line
@@ -101,7 +106,11 @@ class get_cursor_pos:
     rest    = u"\u001b[{u}"     
 
 class move_cursor:
-    move = u"\u001b[?12h"
+    move  = u"\u001b[?12h"
+    # move cursor to beginning of the next line / line down 
+    move1 = u"\u001b[1E"
+    # move cursor to beginning of the previous line / line up 
+    move2 = u"\u001b[1F"
 
     def __init__(self):
         pass
@@ -120,6 +129,13 @@ class move_cursor:
 
     def LEFT(pos: int):
         left        = u"\u001b[" + str( pos ) + "D"
+        return left
+    
+    def UP_F(pos: int):
+        left        = u"\u001b[" + str( pos ) + "F"
+        return left
+    def DOWN_F(pos: int):
+        left        = u"\u001b[" + str( pos ) + "E"
         return left
 
 class cursorPos:
@@ -225,7 +241,7 @@ class remove_ansi_chars:
 class read:
     def readchar(self):
         try:
-            fd  = sys.stdin.fileno()
+            #fd  = sys.stdin.fileno()
             ch = ord( sys.stdin.read( 1 ) )
             return ch
         except TypeError: pass
