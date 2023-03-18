@@ -1,5 +1,6 @@
 import sys
-from script.STDIN.LinuxSTDIN  import bm_configure as bm
+from IDE.EDITOR                             import string_to_chr 
+from script.STDIN.LinuxSTDIN                import bm_configure as bm
 
 class new_windows:
     def __init__(self, srt : str = ""):
@@ -51,114 +52,117 @@ class new_windows:
         
         while True:
             try:
-                self.char = bm.read().readchar()
-                # keyboardInterrupt
-                if   self.char == 3:
-                    sys.stdout.write(bm.save.restore)
-                    sys.stdout.write(bm.move_cursor.UP(pos=1))
-                    sys.stdout.write(bm.clear.screen(pos=0))
-                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                    self.value = None
-                    return
-                #moving up and down 
-                elif self.char == 27:
-                    
-                    next1, next2 = ord( sys.stdin.read(1)), ord( sys.stdin.read(1))
-                    if next1 == 91:
-                        try:
-                            # moving cursor down
-                            if   next2 == 66:
-                                if self.index < len(self.list)-1:
-                                    self.index += 1
-                                    sys.stdout.write(bm.move_cursor.DOWN(pos=1))
-                                    self.store_id.append(self.index)
-                                else: pass
-                            # moving cursor left
-                            elif next2 == 65: 
-                                if self.index > 0: 
-                                    self.index -=1 
-                                    sys.stdout.write(bm.move_cursor.UP(pos=1))
-                                    self.store_id.append(self.index)
-                                else: pass
-                            else: pass
-                        except IndexError: pass
-                    else: pass            
-                # selction 
-                elif self.char in {10, 13}: # Enter
-                    try:
-                        self.value = self.list[ self.index ]
+                self.char = string_to_chr.convert()
+                if self.char:
+                    _ = self.char[1]
+                    self.char = self.char[0]
+                    # keyboardInterrupt
+                    if   self.char == 3:
                         sys.stdout.write(bm.save.restore)
                         sys.stdout.write(bm.move_cursor.UP(pos=1))
                         sys.stdout.write(bm.clear.screen(pos=0))
                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                        break
-                    except IndexError: pass
-                # breaking without selecting (q)
-                elif self.char == 113 : 
-                    sys.stdout.write(bm.save.restore)
-                    sys.stdout.write(bm.move_cursor.UP(pos=1))
-                    sys.stdout.write(bm.clear.screen(pos=0))
-                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                    self.value = None
-                    return
-                # index selection mode [0, ...., 9]
-                elif self.char in [x for x in range(48, 58)]: 
-                    if self.index <= len(self.list)-1:
-                        self.index = int( chr(self.char))
-                        if not self.store_id: sys.stdout.write(bm.move_cursor.DOWN(pos=self.index))
-                        else: 
-                            if   self.store_id[-1] == self.index: pass
-                            elif self.store_id[-1] > self.index :
-                                new_id =  abs(self.store_id[-1] - self.index )
-                                sys.stdout.write(bm.move_cursor.UP(pos=new_id))
+                        self.value = None
+                        return
+                    #moving up and down 
+                    elif self.char == 27:
+                        
+                        next1, next2 = 91, _
+                        if next1 == 91:
+                            try:
+                                # moving cursor down
+                                if   next2 == 66:
+                                    if self.index < len(self.list)-1:
+                                        self.index += 1
+                                        sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                                        self.store_id.append(self.index)
+                                    else: pass
+                                # moving cursor left
+                                elif next2 == 65: 
+                                    if self.index > 0: 
+                                        self.index -=1 
+                                        sys.stdout.write(bm.move_cursor.UP(pos=1))
+                                        self.store_id.append(self.index)
+                                    else: pass
+                                else: pass
+                            except IndexError: pass
+                        else: pass            
+                    # selction 
+                    elif self.char in {10, 13}: # Enter
+                        try:
+                            self.value = self.list[ self.index ]
+                            sys.stdout.write(bm.save.restore)
+                            sys.stdout.write(bm.move_cursor.UP(pos=1))
+                            sys.stdout.write(bm.clear.screen(pos=0))
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                            break
+                        except IndexError: pass
+                    # breaking without selecting (q)
+                    elif self.char == 113 : 
+                        sys.stdout.write(bm.save.restore)
+                        sys.stdout.write(bm.move_cursor.UP(pos=1))
+                        sys.stdout.write(bm.clear.screen(pos=0))
+                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                        self.value = None
+                        return
+                    # index selection mode [0, ...., 9]
+                    elif self.char in [x for x in range(48, 58)]: 
+                        if self.index <= len(self.list)-1:
+                            self.index = int( chr(self.char))
+                            if not self.store_id: sys.stdout.write(bm.move_cursor.DOWN(pos=self.index))
                             else: 
-                                new_id =  abs(self.store_id[-1] - self.index )
-                                sys.stdout.write(bm.move_cursor.DOWN(pos=new_id))
-                        self.store_id.append(self.index)
-                    else: pass
-                # bottom
-                elif self.char == 98:
-                    if self.index < len(self.list)-1:
-                        self.index = len(self.list)-1
-                        if not self.store_id: sys.stdout.write(bm.move_cursor.DOWN(pos=self.index))
-                        else: 
-                            if   self.store_id[-1] == self.index: pass
+                                if   self.store_id[-1] == self.index: pass
+                                elif self.store_id[-1] > self.index :
+                                    new_id =  abs(self.store_id[-1] - self.index )
+                                    sys.stdout.write(bm.move_cursor.UP(pos=new_id))
+                                else: 
+                                    new_id =  abs(self.store_id[-1] - self.index )
+                                    sys.stdout.write(bm.move_cursor.DOWN(pos=new_id))
+                            self.store_id.append(self.index)
+                        else: pass
+                    # bottom
+                    elif self.char == 98:
+                        if self.index < len(self.list)-1:
+                            self.index = len(self.list)-1
+                            if not self.store_id: sys.stdout.write(bm.move_cursor.DOWN(pos=self.index))
                             else: 
-                                new_id =  abs(self.store_id[-1] - self.index )
-                                sys.stdout.write(bm.move_cursor.DOWN(pos=new_id))
-                        self.store_id.append(self.index)
-                    else: pass
-                # top
-                elif self.char == 116:
-                    if self.index <= len(self.list)-1:
-                        self.index = 0
-                        if not self.store_id: pass
-                        else: 
-                            if   self.store_id[-1] == self.index: pass
-                            else:  
-                                new_id =  abs(self.store_id[-1] - self.index )
-                                sys.stdout.write(bm.move_cursor.UP(pos=new_id))
-                        self.store_id.append(self.index)
-                    else: pass     
-                # middle
-                elif self.char == 109:
-                    if len(self.list) > 4 and len(self.list) % 2 == 0:
-                        self.index = int( len(self.list) / 2)
-                        if not self.store_id: sys.stdout.write(bm.move_cursor.DOWN(pos=self.index))
-                        else: 
-                            if   self.store_id[-1] == self.index: pass
-                            elif self.store_id[-1] > self.index :
-                                new_id =  abs(self.store_id[-1] - self.index )
-                                sys.stdout.write(bm.move_cursor.UP(pos=new_id))
+                                if   self.store_id[-1] == self.index: pass
+                                else: 
+                                    new_id =  abs(self.store_id[-1] - self.index )
+                                    sys.stdout.write(bm.move_cursor.DOWN(pos=new_id))
+                            self.store_id.append(self.index)
+                        else: pass
+                    # top
+                    elif self.char == 116:
+                        if self.index <= len(self.list)-1:
+                            self.index = 0
+                            if not self.store_id: pass
                             else: 
-                                new_id =  abs(self.store_id[-1] - self.index )
-                                sys.stdout.write(bm.move_cursor.DOWN(pos=new_id))              
-                        self.store_id.append(self.index)
-                    else: pass
-                else : pass
-                    
-                sys.stdout.flush() 
-                
+                                if   self.store_id[-1] == self.index: pass
+                                else:  
+                                    new_id =  abs(self.store_id[-1] - self.index )
+                                    sys.stdout.write(bm.move_cursor.UP(pos=new_id))
+                            self.store_id.append(self.index)
+                        else: pass     
+                    # middle
+                    elif self.char == 109:
+                        if len(self.list) > 4 and len(self.list) % 2 == 0:
+                            self.index = int( len(self.list) / 2)
+                            if not self.store_id: sys.stdout.write(bm.move_cursor.DOWN(pos=self.index))
+                            else: 
+                                if   self.store_id[-1] == self.index: pass
+                                elif self.store_id[-1] > self.index :
+                                    new_id =  abs(self.store_id[-1] - self.index )
+                                    sys.stdout.write(bm.move_cursor.UP(pos=new_id))
+                                else: 
+                                    new_id =  abs(self.store_id[-1] - self.index )
+                                    sys.stdout.write(bm.move_cursor.DOWN(pos=new_id))              
+                            self.store_id.append(self.index)
+                        else: pass
+                    else : pass
+                        
+                    sys.stdout.flush() 
+                else: pass
             except KeyError:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)

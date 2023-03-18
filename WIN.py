@@ -32,7 +32,7 @@ from script.STDIN.LinuxSTDIN    import bm_configure     as bm
 from script.DATA_BASE           import data_base        as db
 #from rich.console               import Console
 from IDE.EDITOR                 import header, string_to_chr 
-
+import                          keyboard
 #console = Console()
 
 
@@ -73,33 +73,6 @@ class windows:
         self.I_S            = 0
         # initialisation of index I associated to the string s value
         self.I              = 0
-        # history of data associated to the string  input
-        self.liste          = []
-        # history of data associated to the value returns by the function readchar
-        self.get            = []
-        # initialisation of integer idd used to get the next of previous
-        # values stored in the different histories of lists
-        self.idd            = 0
-        # initialization of list associated to the string s
-        self.sub_liste      = []
-        # the memory contains the history of get value
-        self.memory         = []
-        # initilization of last
-        self.last           = 0
-        # initialisation of list associated to the index value
-        self.tabular        = []
-        # initialisation of list associated to I value
-        self.sub_tabular    = []
-        # initialisation of the list associated to last value
-        self.last_tabular   = []
-        # move cursor
-        self.remove_tab     = 0
-        # storing cursor position
-        self.remove_tabular = []
-        # initialization of the list associated to string
-        self.string_tab     = []
-        # initialization of associated to I_S
-        self.string_tabular = []
         ###########################################################
         self.str_drop_down       = ''
         # dropdown index 
@@ -135,7 +108,7 @@ class windows:
                 #self.char_ = keyboard.read_key()  #bm.read().readchar()
                 self.char = string_to_chr.convert()#string( self.char_)
                 if self.char :  
-                    if 32 <= self.char[0] <= 126:
+                    if 32 <= self.char <= 126:
                         sys.stdout.write(bm.clear.screen(pos=0))
                         if chr(self.char) in self.sss:
                             self.str_drop_down = self.str_drop_down[ : self.drop] + chr( self.char ) + self.str_drop_down[ self.drop : ]
@@ -147,7 +120,7 @@ class windows:
                             self.drop = 0
                             self.str_drop_down = ""
                     #delecting char in the str_drop_down string 
-                    elif self.char[0] in {8, 127}:
+                    elif self.char in {8, 127}:
                         sys.stdout.write(bm.clear.screen(pos=0))
                         if self.str_drop_down:
                             # dropsown string :
@@ -156,7 +129,7 @@ class windows:
                             self.drop    -= 1
                         else: pass
                     else:
-                        if self.char[0] in [10, 13, 27, 7, 14]: pass 
+                        if self.char in [10, 13, 27, 7, 14]: pass 
                         else:
                             # initialization
                             self.drop_drop['id'].append( self.drop )
@@ -166,7 +139,7 @@ class windows:
                             sys.stdout.write(bm.clear.screen(pos=0))
                     
                     # breaking loop while with the keyboardError ctrl+c
-                    if self.char[0] == 3:
+                    if self.char == 3:
                         sys.stdout.write(bm.clear.screen(pos=1))
                         sys.stdout.write(bm.cursorPos.to(0,0))
                         sys.stdout.write(bm.clear.screen(pos=0))
@@ -176,127 +149,7 @@ class windows:
                         self._keyboard_ = bm.init.bold + bm.bg.rgb(255, 0, 0) + bm.fg.rbg(255,255,255) + "KeyboardInterrupt" + bm.init.reset
                         print(self._keyboard_)
                         return
-                    elif 32 <= self.char[0] <= 126:
-                        ######################################
-                        # each character has 1 as length     #
-                        # have a look on ansi char           #
-                        ######################################
-                        # building input
-                        self.input       = self.input[ : self.index + self.last ] + chr( self.char[0] ) + self.input[ self.index +self.last : ]
-                        self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char[0] ) + self.mainString[ self.mainIndex : ]
-                        self.string = self.string[: self.I_S] + chr( self.char[0] ) + self.string[self.I_S:]
-                        self.index       += 1
-                        self.mainIndex   += 1
-                        self.I_S         += 1
-                        # storing char in get
-                        self.get.append(self.char[0])
-                    elif self.char[0] == 27:
-                        next2, next1 = self.char[1],  91
-                        #rint(next1, next2)
-                        if next1 == 91:
-                            try:
-                                # move cursor to left <-
-                                if   next2 == 68:
-                                    if self.I > 0:
-                                        try:
-                                            # without indentation
-                                            if 32 <= self.get[self.I - 1] <= 126:
-                                                self.mainIndex      -= 1
-                                                self.index          += 1
-                                                self.last           -= 2
-                                                self.I_S            -= 1
-                                                
-                                                self.str_drop_down, self.drop = LR.String( self.string, self.I_S, self.sss )
-                                            # when identation is detected
-                                            elif self.get[self.I - 1] == 9:
-                                                self.mainIndex      -= 4
-                                                self.index          += 4
-                                                self.last           -= 8
-                                                self.I_S            -= 4
-                                        except IndexError: pass
-                                    else:  pass
-                                # move cursor to right ->
-                                elif next2 == 67:
-                                    if self.I < len(self.s):
-                                        try:
-                                            # without indentation
-                                            if 32 <= self.get[self.I] <= 126:
-                                                self.mainIndex  += 1
-                                                self.index      -= 1
-                                                self.last       += 2
-                                                self.I_S        += 1
-                                                self.str_drop_down, self.drop = LR.String( self.string, self.I_S, self.sss )
-                                            # when identation is detected
-                                            elif self.get[self.I] == 9:
-                                                self.mainIndex      += 4
-                                                self.index          -= 4
-                                                self.last           += 8
-                                                self.I_S            += 4
-                                        except IndexError: pass
-                                    else:  pass
-                                # get the previous value stored in the list
-                                elif next2 == 65:  # up
-                                    if self.liste:
-                                        try:
-                                            # idd is decreased of -1
-                                            self.idd -= 1
-                                            if len(self.liste) >= abs(self.idd):
-                                                # previous input
-                                                self.input          = self.liste[self.idd]
-                                                # previous s
-                                                self.s              = self.sub_liste[self.idd]
-                                                # previous string
-                                                self.string         = self.string_tabular[self.idd]
-                                                # restoring the prvious get of s
-                                                self.get            = self.memory[self.idd]
-                                                # restoring cursor position in the input
-                                                self.index          = self.tabular[self.idd]
-                                                # restoring cursor position in s
-                                                self.mainIndex      = self.sub_tabular[self.idd]
-                                                # restoring cursor position in string
-                                                self.I_S            = self.string_tab[self.idd]
-                                                # restoring the value of last
-                                                self.last   = self.last_tabular[self.idd]
-                                                # restoring remove_tab from index
-                                                self.remove_tab = self.remove_tabular[self.idd]
-                                                if self.drop_list_str:
-                                                    self.str_drop_down = self.drop_list_str[ self.idd ]
-                                                    self.drop = self.drop_list_id[ self.idd ]
-                                                else: pass 
-                                            else:  self.idd += 1
-                                        except IndexError:
-                                            # any changes here when local IndexError is detected
-                                            pass
-                                    else:   pass
-                                # get the next value stored in the list
-                                elif next2 == 66:
-                                    if self.liste:
-                                        try:
-                                            # idd is increased of 1
-                                            self.idd += 1
-                                            # next input
-                                            if len(self.liste) > self.idd:
-                                                self.input          = self.liste[self.idd]
-                                                # next s
-                                                self.s              = self.sub_liste[self.idd]
-                                                # next string
-                                                self.string         = self.string_tabular[self.idd]
-                                                # restoring the prvious get of s
-                                                self.get            = self.memory[self.idd]
-                                                # restoring cursor position in the input
-                                                self.index          = self.tabular[self.idd]
-                                                # restoring cursor position in s
-                                                self.mainIndex      = self.sub_tabular[self.idd]
-                                                # restoring cursor position in string
-                                                self.I_S            = self.string_tab[self.idd]
-                                                # restoring the value of last
-                                                self.last           = self.last_tabular[self.idd]
-                                                # restoring remove_tab from index
-                                                self.remove_tab     = self.remove_tabular[self.idd]
-                                                if self.drop_list_str:
-                                                    self.str_drop_down = self.drop_list_str[ self.idd ]
-                                                    self.drop = self.drop_list_id[ self.idd ]
-                                                else: pass                  
+                                  
                     if self.char not in {10, 13}:
                         # clear entire line
                         if self.char == 12:
@@ -327,7 +180,6 @@ class windows:
                             self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char ) + self.mainString[ self.mainIndex : ]
                             self.index       += 1
                             self.mainIndex   += 1
-                    
                             
                     elif self.char in {10, 13}:  # enter
                         self.line += 1
