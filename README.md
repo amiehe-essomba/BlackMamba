@@ -21,40 +21,16 @@
 ```
 
 #### STRUCTURE, CONTROL FLOW AND HANDLING EXCEPTIONS
-```python
-1. IF, ELIF, ELSE
-2. UNLESS, ELSE
-3. SWITCH, CASE, DEFAULT
-4. TRY, EXCEPT, FINALLY
-5. BEGIN, SAVE
-```
 
-#### HANDLING FILES
-```python
-1. OPEN, CLOSE
-2. WITH
-```
+#### DATA STRUCTURES 
 
-#### LOADING MODULES
-```python
-1. FROM, MODULE, LOAD, AS
-```
+#### HANDLING FILES(INPUT/OUTPUT)
+
+#### MODULES AND PACKAGES
 
 #### FUNCTIONS
-```python
-1. DEF
-2. FUNC
-```
 
-#### ANONYMOUS LAMBDA FUNCTION
-```python
-1. LAMBDA
-```
-
-#### CLASSES
-```python
-1. CLASS
-```
+#### OBJECT-ORIENTED PROGRAMMING 
 
 > Learn more about  [Language Tools](https://github.com/Elena-Royer/BlackMamba/blob/BlackMamba/Tools.md).
 
@@ -69,9 +45,7 @@
 
 > Example of a code
 
-![logo](/images/Example_of_Code.png)
-
-## ROADMAP
+![logo](/images/code3.png)
 
 ## CONTRIBUTING
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
@@ -90,13 +64,13 @@ Please make sure to update tests as appropriate.
 ## CHECKING BLACK MAMBA VERSION
 ```python
 ./mamba --V
-./mamba --version
+./mamba --Version
 ```
 
 ## CHECKING BLACK MAMBA AUTHOR
 ```python
 ./mamba --A
-./mamba --author
+./mamba --Author
 ```
 
 ## 🤵 Author 
