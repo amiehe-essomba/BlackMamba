@@ -1,6 +1,7 @@
 from src.transform                  import error as er
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
 
+
 cdef class dic:
     cdef public:
         unsigned long long int line 
@@ -14,11 +15,12 @@ cdef class dic:
         self.data       = {}
         self.func       = bm.init.bold+bm.fg.rbg(0, 255, 0   )+' in dictionary( ).' + bm.init.reset 
 
-    cpdef dic(self, list val, list list_of_values):
+    cpdef dic(self, dict val, list list_of_values):
         cdef:
             signed long int i
-            list keys = val[0]
-            list values = val[1]
+            list keys = list(val['s'][0])
+            list values = list(val['s'][1])
+            list double_keys = []
 
         if len( keys ) == len( values ):
             if type( keys ) == type(list()):
@@ -33,7 +35,16 @@ cdef class dic:
                     else:
                         for i in range(len(keys)):
                             if type( keys[i] ) == type( str() ):
-                                self.data[ keys[i] ] = values[ i ]
+                                if not double_keys:
+                                    self.data[ keys[i] ] = values[ i ]
+                                    double_keys.append( keys[i] )
+                                else:
+                                    if keys[i] not in double_keys: 
+                                        self.data[ keys[i] ] = values[ i ]
+                                        double_keys.append( keys[i] )
+                                    else: 
+                                        self.error['s'] = er.ERRORS(self.line).ERROR36(keys[i], func = self.func)
+                                        break
                             else:
                                 self.error['s'] = er.ERRORS( self.line ).ERROR5( keys[i], func = self.func )
                                 break

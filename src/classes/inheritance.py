@@ -1,13 +1,17 @@
 from src.classes                                    import error as er 
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
-#from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from src.classes                                    import run_func
 from script.LEXER.FUNCTION                          import main
 from src.functions                                  import function
 
 
 class INHERITANCE:
-    def __init__(self, DataBase: dict, line: int, inheritanceClass: str):
+    def __init__(self, 
+            DataBase: dict, 
+            line: int, 
+            inheritanceClass: str
+            ):
+        
         self.DataBase               = DataBase 
         self.line                   = line 
         self.inheritanceClass       = inheritanceClass
@@ -29,7 +33,6 @@ class INHERITANCE:
             self.functions          = self.main_body[ 'functions' ] 
             self.main_initialize    = self.main_body[ 'init_function' ]
             
-            #print(self.my_class)
             if self.main_initialize  is None: pass
             else:
                 self.function_init          = self.main_initialize[ 'function' ][ 1 ][ 0 ]
@@ -51,9 +54,9 @@ class INHERITANCE:
                                                 self.line).INIT_FUNCTION( mainString, self._return_ )
                         if self.error is None:
                             self.newBase           = self.__newBase__[ 'data_base' ]
-                            if self.newBase[ 'empty_values' ] is None: pass 
+                            if self.newBase[ 'empty_values' ] is None : pass 
                             else: 
-                                self.empty_values   = self.self.newBase[ 'empty_values' ]
+                                self.empty_values   = self.newBase[ 'empty_values' ]
                                 self.error          = er.ERRORS( self.line ).ERROR15( 'initialize' , self.empty_values )
                             
                             if self.error is None:
@@ -64,10 +67,8 @@ class INHERITANCE:
                     else: pass 
                 else: pass
                  
-                self.function_names = self.function_names#[1 : ] 
-                              
-        else:                                                                                            
-            self.error = er.ERRORS( self.line ).ERROR13( self.inheritanceClass, 'class' )
+                self.function_names = self.function_names.copy()#[1 : ] 
+        else:  self.error = er.ERRORS( self.line ).ERROR13( self.inheritanceClass, 'class' )
         
         if self.error is None:pass 
         else: self.error += self.err 
