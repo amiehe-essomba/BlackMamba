@@ -1,6 +1,5 @@
 from script.STDIN.LinuxSTDIN      import bm_configure as bm
 from CythonModules.Windows        import fileError as fe 
-#from cython.parallel              import prange
 
 cdef class Tuple:
     cdef public :

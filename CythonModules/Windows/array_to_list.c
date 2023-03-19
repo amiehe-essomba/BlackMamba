@@ -1087,6 +1087,23 @@ static int __Pyx_SetItemInt_Generic(PyObject *o, PyObject *j, PyObject *v);
 static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObject *v,
                                                int is_list, int wraparound, int boundscheck);
 
+/* ListAppend.proto */
+#if CYTHON_USE_PYLIST_INTERNALS && CYTHON_ASSUME_SAFE_MACROS
+static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
+    PyListObject* L = (PyListObject*) list;
+    Py_ssize_t len = Py_SIZE(list);
+    if (likely(L->allocated > len) & likely(len > (L->allocated >> 1))) {
+        Py_INCREF(x);
+        PyList_SET_ITEM(list, len, x);
+        __Pyx_SET_SIZE(list, len + 1);
+        return 0;
+    }
+    return PyList_Append(list, x);
+}
+#else
+#define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
+#endif
+
 /* PyErrExceptionMatches.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
@@ -1531,6 +1548,8 @@ static int __pyx_pf_13array_to_list_7ndarray___init__(struct __pyx_obj_13array_t
 static PyObject *__pyx_pw_13array_to_list_7ndarray_3List(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
 static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_to_list_ndarray *__pyx_v_self, int __pyx_skip_dispatch) {
   int __pyx_v_x;
+  PyObject *__pyx_v_my_list = 0;
+  int __pyx_v_key;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1542,6 +1561,7 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
   int __pyx_t_7;
   int __pyx_t_8;
   int __pyx_t_9;
+  int __pyx_t_10;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1594,8 +1614,29 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
     #endif
   }
 
+  /* "array_to_list.pyx":20
+ *         cdef :
+ *             int x
+ *             list my_list = []             # <<<<<<<<<<<<<<
+ *             bint key = False
+ * 
+ */
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_my_list = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
   /* "array_to_list.pyx":21
  *             int x
+ *             list my_list = []
+ *             bint key = False             # <<<<<<<<<<<<<<
+ * 
+ *         for x in range(len(self.listOfValue)):
+ */
+  __pyx_v_key = 0;
+
+  /* "array_to_list.pyx":23
+ *             bint key = False
  * 
  *         for x in range(len(self.listOfValue)):             # <<<<<<<<<<<<<<
  *             if type(self.listOfValue[ x ]) == self.typ1:
@@ -1605,15 +1646,15 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 21, __pyx_L1_error)
+    __PYX_ERR(0, 23, __pyx_L1_error)
   }
-  __pyx_t_5 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_5 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_6 = __pyx_t_5;
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_x = __pyx_t_7;
 
-    /* "array_to_list.pyx":22
+    /* "array_to_list.pyx":24
  * 
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:             # <<<<<<<<<<<<<<
@@ -1622,17 +1663,17 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
  */
     if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 22, __pyx_L1_error)
+      __PYX_ERR(0, 24, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ1), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ1), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_8) {
 
-      /* "array_to_list.pyx":23
+      /* "array_to_list.pyx":25
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []             # <<<<<<<<<<<<<<
@@ -1641,11 +1682,11 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
  */
       if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 23, __pyx_L1_error)
+        __PYX_ERR(0, 25, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_any); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_any); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -1660,25 +1701,25 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
       }
       __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_8 = (__pyx_t_2 == Py_False);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_9 = (__pyx_t_8 != 0);
       if (__pyx_t_9) {
-        __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+        __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 23, __pyx_L1_error)
+          __PYX_ERR(0, 25, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 23, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         goto __pyx_L6;
       }
 
-      /* "array_to_list.pyx":24
+      /* "array_to_list.pyx":26
  *             if type(self.listOfValue[ x ]) == self.typ1:
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L1()             # <<<<<<<<<<<<<<
@@ -1688,16 +1729,16 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
       /*else*/ {
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 24, __pyx_L1_error)
+          __PYX_ERR(0, 26, __pyx_L1_error)
         }
-        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_3 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+        __pyx_t_3 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
@@ -1705,22 +1746,22 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
         PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
         __pyx_t_3 = 0;
         __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_2)->__pyx_vtab)->L1(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+        __pyx_t_1 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_2)->__pyx_vtab)->L1(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 24, __pyx_L1_error)
+          __PYX_ERR(0, 26, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 24, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 26, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __pyx_L6:;
 
-      /* "array_to_list.pyx":22
+      /* "array_to_list.pyx":24
  * 
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:             # <<<<<<<<<<<<<<
@@ -1730,7 +1771,7 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
       goto __pyx_L5;
     }
 
-    /* "array_to_list.pyx":25
+    /* "array_to_list.pyx":27
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L1()
  *             elif type(self.listOfValue[ x ]) == self.typ2:             # <<<<<<<<<<<<<<
@@ -1739,41 +1780,41 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
  */
     if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 25, __pyx_L1_error)
+      __PYX_ERR(0, 27, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ2), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ2), Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_9) {
 
-      /* "array_to_list.pyx":26
+      /* "array_to_list.pyx":28
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L1()
  *             elif type(self.listOfValue[ x ]) == self.typ2:
  *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L1()             # <<<<<<<<<<<<<<
  *                 else: self.listOfValue[ x ] = []
- *             else:  pass
+ *             else:
  */
       if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 26, __pyx_L1_error)
+        __PYX_ERR(0, 28, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 26, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 28, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (__pyx_t_9) {
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 26, __pyx_L1_error)
+          __PYX_ERR(0, 28, __pyx_L1_error)
         }
-        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
@@ -1781,41 +1822,41 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
         PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1);
         __pyx_t_2 = 0;
         __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)->__pyx_vtab)->L1(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+        __pyx_t_3 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)->__pyx_vtab)->L1(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 26, __pyx_L1_error)
+          __PYX_ERR(0, 28, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 26, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         goto __pyx_L7;
       }
 
-      /* "array_to_list.pyx":27
+      /* "array_to_list.pyx":29
  *             elif type(self.listOfValue[ x ]) == self.typ2:
  *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L1()
  *                 else: self.listOfValue[ x ] = []             # <<<<<<<<<<<<<<
- *             else:  pass
- * 
+ *             else:
+ *                 key = True
  */
       /*else*/ {
-        __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+        __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 27, __pyx_L1_error)
+          __PYX_ERR(0, 29, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 29, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __pyx_L7:;
 
-      /* "array_to_list.pyx":25
+      /* "array_to_list.pyx":27
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L1()
  *             elif type(self.listOfValue[ x ]) == self.typ2:             # <<<<<<<<<<<<<<
@@ -1825,29 +1866,63 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
       goto __pyx_L5;
     }
 
-    /* "array_to_list.pyx":28
- *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L1()
+    /* "array_to_list.pyx":31
  *                 else: self.listOfValue[ x ] = []
- *             else:  pass             # <<<<<<<<<<<<<<
- * 
- *         return self.listOfValue
+ *             else:
+ *                 key = True             # <<<<<<<<<<<<<<
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list
  */
     /*else*/ {
+      __pyx_v_key = 1;
+
+      /* "array_to_list.pyx":32
+ *             else:
+ *                 key = True
+ *                 my_list.append(self.listOfValue[ x ])             # <<<<<<<<<<<<<<
+ *         if key is True: return my_list
+ *         else: return self.listOfValue
+ */
+      if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
+        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+        __PYX_ERR(0, 32, __pyx_L1_error)
+      }
+      __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_my_list, __pyx_t_3); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 32, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __pyx_L5:;
   }
 
-  /* "array_to_list.pyx":30
- *             else:  pass
+  /* "array_to_list.pyx":33
+ *                 key = True
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list             # <<<<<<<<<<<<<<
+ *         else: return self.listOfValue
  * 
- *         return self.listOfValue             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_9 = ((__pyx_v_key == 1) != 0);
+  if (__pyx_t_9) {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_my_list);
+    __pyx_r = __pyx_v_my_list;
+    goto __pyx_L0;
+  }
+
+  /* "array_to_list.pyx":34
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list
+ *         else: return self.listOfValue             # <<<<<<<<<<<<<<
  * 
  *     cdef list L1(self):
  */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_self->listOfValue);
-  __pyx_r = __pyx_v_self->listOfValue;
-  goto __pyx_L0;
+  /*else*/ {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_self->listOfValue);
+    __pyx_r = __pyx_v_self->listOfValue;
+    goto __pyx_L0;
+  }
 
   /* "array_to_list.pyx":17
  *         self.typ2               = type(list())
@@ -1866,6 +1941,7 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_List(struct __pyx_obj_13array_
   __Pyx_AddTraceback("array_to_list.ndarray.List", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_my_list);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -1910,8 +1986,8 @@ static PyObject *__pyx_pf_13array_to_list_7ndarray_2List(struct __pyx_obj_13arra
   return __pyx_r;
 }
 
-/* "array_to_list.pyx":32
- *         return self.listOfValue
+/* "array_to_list.pyx":36
+ *         else: return self.listOfValue
  * 
  *     cdef list L1(self):             # <<<<<<<<<<<<<<
  *         cdef :
@@ -1920,6 +1996,8 @@ static PyObject *__pyx_pf_13array_to_list_7ndarray_2List(struct __pyx_obj_13arra
 
 static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to_list_ndarray *__pyx_v_self) {
   int __pyx_v_x;
+  PyObject *__pyx_v_my_list = 0;
+  int __pyx_v_key;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1930,13 +2008,35 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
   int __pyx_t_6;
   PyObject *__pyx_t_7 = NULL;
   int __pyx_t_8;
+  int __pyx_t_9;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("L1", 0);
 
-  /* "array_to_list.pyx":36
+  /* "array_to_list.pyx":39
+ *         cdef :
  *             int x
+ *             list my_list = []             # <<<<<<<<<<<<<<
+ *             bint key = False
+ * 
+ */
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_my_list = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "array_to_list.pyx":40
+ *             int x
+ *             list my_list = []
+ *             bint key = False             # <<<<<<<<<<<<<<
+ * 
+ *         for x in range(len(self.listOfValue)):
+ */
+  __pyx_v_key = 0;
+
+  /* "array_to_list.pyx":42
+ *             bint key = False
  * 
  *         for x in range(len(self.listOfValue)):             # <<<<<<<<<<<<<<
  *             if type(self.listOfValue[ x ]) == self.typ1:
@@ -1946,15 +2046,15 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 36, __pyx_L1_error)
+    __PYX_ERR(0, 42, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = __pyx_t_2;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_x = __pyx_t_4;
 
-    /* "array_to_list.pyx":37
+    /* "array_to_list.pyx":43
  * 
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:             # <<<<<<<<<<<<<<
@@ -1963,17 +2063,17 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
  */
     if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 37, __pyx_L1_error)
+      __PYX_ERR(0, 43, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ1), Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ1), Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_6) {
 
-      /* "array_to_list.pyx":38
+      /* "array_to_list.pyx":44
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []             # <<<<<<<<<<<<<<
@@ -1982,11 +2082,11 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
  */
       if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 38, __pyx_L1_error)
+        __PYX_ERR(0, 44, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_any); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 38, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_any); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -2001,25 +2101,25 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
       }
       __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_6 = (__pyx_t_5 == Py_False);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_8 = (__pyx_t_6 != 0);
       if (__pyx_t_8) {
-        __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
+        __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 38, __pyx_L1_error)
+          __PYX_ERR(0, 44, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 38, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 44, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         goto __pyx_L6;
       }
 
-      /* "array_to_list.pyx":39
+      /* "array_to_list.pyx":45
  *             if type(self.listOfValue[ x ]) == self.typ1:
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L2()             # <<<<<<<<<<<<<<
@@ -2029,16 +2129,16 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
       /*else*/ {
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 39, __pyx_L1_error)
+          __PYX_ERR(0, 45, __pyx_L1_error)
         }
-        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_7 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 39, __pyx_L1_error)
+        __pyx_t_7 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_7);
@@ -2046,22 +2146,22 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
         PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_5);
         __pyx_t_7 = 0;
         __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_5)->__pyx_vtab)->L2(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+        __pyx_t_1 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_5)->__pyx_vtab)->L2(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 39, __pyx_L1_error)
+          __PYX_ERR(0, 45, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 39, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __pyx_L6:;
 
-      /* "array_to_list.pyx":37
+      /* "array_to_list.pyx":43
  * 
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:             # <<<<<<<<<<<<<<
@@ -2071,7 +2171,7 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
       goto __pyx_L5;
     }
 
-    /* "array_to_list.pyx":40
+    /* "array_to_list.pyx":46
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L2()
  *             elif type(self.listOfValue[ x ]) == self.typ2:             # <<<<<<<<<<<<<<
@@ -2080,41 +2180,41 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
  */
     if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 40, __pyx_L1_error)
+      __PYX_ERR(0, 46, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ2), Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ2), Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_8) {
 
-      /* "array_to_list.pyx":41
+      /* "array_to_list.pyx":47
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L2()
  *             elif type(self.listOfValue[ x ]) == self.typ2:
  *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L2()             # <<<<<<<<<<<<<<
  *                 else: self.listOfValue[ x ] = []
- *             else:  pass
+ *             else:
  */
       if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 41, __pyx_L1_error)
+        __PYX_ERR(0, 47, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if (__pyx_t_8) {
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 41, __pyx_L1_error)
+          __PYX_ERR(0, 47, __pyx_L1_error)
         }
-        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 41, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 41, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5);
@@ -2122,41 +2222,41 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
         PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_1);
         __pyx_t_5 = 0;
         __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)->__pyx_vtab)->L2(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 41, __pyx_L1_error)
+        __pyx_t_7 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)->__pyx_vtab)->L2(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 41, __pyx_L1_error)
+          __PYX_ERR(0, 47, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 41, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         goto __pyx_L7;
       }
 
-      /* "array_to_list.pyx":42
+      /* "array_to_list.pyx":48
  *             elif type(self.listOfValue[ x ]) == self.typ2:
  *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L2()
  *                 else: self.listOfValue[ x ] = []             # <<<<<<<<<<<<<<
- *             else:  pass
- * 
+ *             else:
+ *                 key = True
  */
       /*else*/ {
-        __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 42, __pyx_L1_error)
+        __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 48, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 42, __pyx_L1_error)
+          __PYX_ERR(0, 48, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 48, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
       __pyx_L7:;
 
-      /* "array_to_list.pyx":40
+      /* "array_to_list.pyx":46
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L2()
  *             elif type(self.listOfValue[ x ]) == self.typ2:             # <<<<<<<<<<<<<<
@@ -2166,32 +2266,66 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
       goto __pyx_L5;
     }
 
-    /* "array_to_list.pyx":43
- *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L2()
+    /* "array_to_list.pyx":50
  *                 else: self.listOfValue[ x ] = []
- *             else:  pass             # <<<<<<<<<<<<<<
- * 
- *         return self.listOfValue
+ *             else:
+ *                 key = True             # <<<<<<<<<<<<<<
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list
  */
     /*else*/ {
+      __pyx_v_key = 1;
+
+      /* "array_to_list.pyx":51
+ *             else:
+ *                 key = True
+ *                 my_list.append(self.listOfValue[ x ])             # <<<<<<<<<<<<<<
+ *         if key is True: return my_list
+ *         else: return self.listOfValue
+ */
+      if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
+        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+        __PYX_ERR(0, 51, __pyx_L1_error)
+      }
+      __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_my_list, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 51, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __pyx_L5:;
   }
 
-  /* "array_to_list.pyx":45
- *             else:  pass
+  /* "array_to_list.pyx":52
+ *                 key = True
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list             # <<<<<<<<<<<<<<
+ *         else: return self.listOfValue
  * 
- *         return self.listOfValue             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_8 = ((__pyx_v_key == 1) != 0);
+  if (__pyx_t_8) {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_my_list);
+    __pyx_r = __pyx_v_my_list;
+    goto __pyx_L0;
+  }
+
+  /* "array_to_list.pyx":53
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list
+ *         else: return self.listOfValue             # <<<<<<<<<<<<<<
  * 
  *     cdef list L2(self):
  */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_self->listOfValue);
-  __pyx_r = __pyx_v_self->listOfValue;
-  goto __pyx_L0;
+  /*else*/ {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_self->listOfValue);
+    __pyx_r = __pyx_v_self->listOfValue;
+    goto __pyx_L0;
+  }
 
-  /* "array_to_list.pyx":32
- *         return self.listOfValue
+  /* "array_to_list.pyx":36
+ *         else: return self.listOfValue
  * 
  *     cdef list L1(self):             # <<<<<<<<<<<<<<
  *         cdef :
@@ -2206,13 +2340,14 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
   __Pyx_AddTraceback("array_to_list.ndarray.L1", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_my_list);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "array_to_list.pyx":47
- *         return self.listOfValue
+/* "array_to_list.pyx":55
+ *         else: return self.listOfValue
  * 
  *     cdef list L2(self):             # <<<<<<<<<<<<<<
  *         cdef :
@@ -2221,6 +2356,8 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L1(struct __pyx_obj_13array_to
 
 static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to_list_ndarray *__pyx_v_self) {
   int __pyx_v_x;
+  PyObject *__pyx_v_my_list = 0;
+  int __pyx_v_key;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2231,13 +2368,35 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
   int __pyx_t_6;
   PyObject *__pyx_t_7 = NULL;
   int __pyx_t_8;
+  int __pyx_t_9;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("L2", 0);
 
-  /* "array_to_list.pyx":51
+  /* "array_to_list.pyx":58
+ *         cdef :
  *             int x
+ *             list my_list = []             # <<<<<<<<<<<<<<
+ *             bint key = False
+ * 
+ */
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_my_list = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "array_to_list.pyx":59
+ *             int x
+ *             list my_list = []
+ *             bint key = False             # <<<<<<<<<<<<<<
+ * 
+ *         for x in range(len(self.listOfValue)):
+ */
+  __pyx_v_key = 0;
+
+  /* "array_to_list.pyx":61
+ *             bint key = False
  * 
  *         for x in range(len(self.listOfValue)):             # <<<<<<<<<<<<<<
  *             if type(self.listOfValue[ x ]) == self.typ1:
@@ -2247,15 +2406,15 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 51, __pyx_L1_error)
+    __PYX_ERR(0, 61, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = __pyx_t_2;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_x = __pyx_t_4;
 
-    /* "array_to_list.pyx":52
+    /* "array_to_list.pyx":62
  * 
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:             # <<<<<<<<<<<<<<
@@ -2264,17 +2423,17 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
  */
     if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 52, __pyx_L1_error)
+      __PYX_ERR(0, 62, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ1), Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ1), Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 62, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_6) {
 
-      /* "array_to_list.pyx":53
+      /* "array_to_list.pyx":63
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []             # <<<<<<<<<<<<<<
@@ -2283,11 +2442,11 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
  */
       if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 53, __pyx_L1_error)
+        __PYX_ERR(0, 63, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_any); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_any); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 63, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -2302,25 +2461,25 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
       }
       __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_6 = (__pyx_t_5 == Py_False);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_8 = (__pyx_t_6 != 0);
       if (__pyx_t_8) {
-        __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L1_error)
+        __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 53, __pyx_L1_error)
+          __PYX_ERR(0, 63, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 63, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         goto __pyx_L6;
       }
 
-      /* "array_to_list.pyx":54
+      /* "array_to_list.pyx":64
  *             if type(self.listOfValue[ x ]) == self.typ1:
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L1()             # <<<<<<<<<<<<<<
@@ -2330,16 +2489,16 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
       /*else*/ {
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 54, __pyx_L1_error)
+          __PYX_ERR(0, 64, __pyx_L1_error)
         }
-        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_7 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __pyx_t_7 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_7);
@@ -2347,22 +2506,22 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
         PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_5);
         __pyx_t_7 = 0;
         __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_5)->__pyx_vtab)->L1(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __pyx_t_1 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_5)->__pyx_vtab)->L1(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 54, __pyx_L1_error)
+          __PYX_ERR(0, 64, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 54, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 64, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __pyx_L6:;
 
-      /* "array_to_list.pyx":52
+      /* "array_to_list.pyx":62
  * 
  *         for x in range(len(self.listOfValue)):
  *             if type(self.listOfValue[ x ]) == self.typ1:             # <<<<<<<<<<<<<<
@@ -2372,7 +2531,7 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
       goto __pyx_L5;
     }
 
-    /* "array_to_list.pyx":55
+    /* "array_to_list.pyx":65
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L1()
  *             elif type(self.listOfValue[ x ]) == self.typ2:             # <<<<<<<<<<<<<<
@@ -2381,41 +2540,41 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
  */
     if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 55, __pyx_L1_error)
+      __PYX_ERR(0, 65, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ2), Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_t_1)), ((PyObject *)__pyx_v_self->typ2), Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_8) {
 
-      /* "array_to_list.pyx":56
+      /* "array_to_list.pyx":66
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L1()
  *             elif type(self.listOfValue[ x ]) == self.typ2:
  *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L1()             # <<<<<<<<<<<<<<
  *                 else: self.listOfValue[ x ] = []
- *             else:  pass
+ *             else:
  */
       if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 56, __pyx_L1_error)
+        __PYX_ERR(0, 66, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if (__pyx_t_8) {
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 56, __pyx_L1_error)
+          __PYX_ERR(0, 66, __pyx_L1_error)
         }
-        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5);
@@ -2423,41 +2582,41 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
         PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_1);
         __pyx_t_5 = 0;
         __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_13array_to_list_ndarray), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)->__pyx_vtab)->L1(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_7 = ((struct __pyx_vtabstruct_13array_to_list_ndarray *)((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)->__pyx_vtab)->L1(((struct __pyx_obj_13array_to_list_ndarray *)__pyx_t_1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 56, __pyx_L1_error)
+          __PYX_ERR(0, 66, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         goto __pyx_L7;
       }
 
-      /* "array_to_list.pyx":57
+      /* "array_to_list.pyx":67
  *             elif type(self.listOfValue[ x ]) == self.typ2:
  *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L1()
  *                 else: self.listOfValue[ x ] = []             # <<<<<<<<<<<<<<
- *             else:  pass
- * 
+ *             else:
+ *                 key = True
  */
       /*else*/ {
-        __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 57, __pyx_L1_error)
+        __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 57, __pyx_L1_error)
+          __PYX_ERR(0, 67, __pyx_L1_error)
         }
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_self->listOfValue, __pyx_v_x, __pyx_t_7, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 67, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
       __pyx_L7:;
 
-      /* "array_to_list.pyx":55
+      /* "array_to_list.pyx":65
  *                 if self.listOfValue[ x ].any() is False: self.listOfValue[ x ] = []
  *                 else: self.listOfValue[ x ] = ndarray(list(self.listOfValue[ x ]), self.line).L1()
  *             elif type(self.listOfValue[ x ]) == self.typ2:             # <<<<<<<<<<<<<<
@@ -2467,30 +2626,66 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
       goto __pyx_L5;
     }
 
-    /* "array_to_list.pyx":58
- *                 if self.listOfValue[ x ]: self.listOfValue[ x ] = ndarray(self.listOfValue[ x ], self.line).L1()
+    /* "array_to_list.pyx":69
  *                 else: self.listOfValue[ x ] = []
- *             else:  pass             # <<<<<<<<<<<<<<
- * 
- *         return self.listOfValue
+ *             else:
+ *                 key = True             # <<<<<<<<<<<<<<
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list
  */
     /*else*/ {
+      __pyx_v_key = 1;
+
+      /* "array_to_list.pyx":70
+ *             else:
+ *                 key = True
+ *                 my_list.append(self.listOfValue[ x ])             # <<<<<<<<<<<<<<
+ *         if key is True: return my_list
+ *         else: return self.listOfValue
+ */
+      if (unlikely(__pyx_v_self->listOfValue == Py_None)) {
+        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+        __PYX_ERR(0, 70, __pyx_L1_error)
+      }
+      __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_self->listOfValue, __pyx_v_x, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 70, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_my_list, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 70, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __pyx_L5:;
   }
 
-  /* "array_to_list.pyx":60
- *             else:  pass
+  /* "array_to_list.pyx":71
+ *                 key = True
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list             # <<<<<<<<<<<<<<
+ *         else: return self.listOfValue
  * 
- *         return self.listOfValue             # <<<<<<<<<<<<<<
  */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_self->listOfValue);
-  __pyx_r = __pyx_v_self->listOfValue;
-  goto __pyx_L0;
+  __pyx_t_8 = ((__pyx_v_key == 1) != 0);
+  if (__pyx_t_8) {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_my_list);
+    __pyx_r = __pyx_v_my_list;
+    goto __pyx_L0;
+  }
 
-  /* "array_to_list.pyx":47
+  /* "array_to_list.pyx":72
+ *                 my_list.append(self.listOfValue[ x ])
+ *         if key is True: return my_list
+ *         else: return self.listOfValue             # <<<<<<<<<<<<<<
+ * 
  *         return self.listOfValue
+ */
+  /*else*/ {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_v_self->listOfValue);
+    __pyx_r = __pyx_v_self->listOfValue;
+    goto __pyx_L0;
+  }
+
+  /* "array_to_list.pyx":55
+ *         else: return self.listOfValue
  * 
  *     cdef list L2(self):             # <<<<<<<<<<<<<<
  *         cdef :
@@ -2505,6 +2700,7 @@ static PyObject *__pyx_f_13array_to_list_7ndarray_L2(struct __pyx_obj_13array_to
   __Pyx_AddTraceback("array_to_list.ndarray.L2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_my_list);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -3709,7 +3905,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 23, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;

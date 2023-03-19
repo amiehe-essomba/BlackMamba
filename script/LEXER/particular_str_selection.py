@@ -1,17 +1,8 @@
-from colorama                       import  Fore
-from script.LEXER                   import segmentation
-from script                         import control_string
-from script.LEXER.error.CythonWIN   import affectationError as AE
+from script.LEXER                       import segmentation
+from script                             import control_string
+from script.LEXER.error.CythonWIN       import affectationError as AE
 from CythonModules.Windows.LEXER.seg    import segError
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
 
 class SELECTION:
     def __init__(self, master: str, long_chaine: str , data_base: dict, line: int):

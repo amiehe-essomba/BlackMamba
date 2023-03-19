@@ -6768,7 +6768,7 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "partial.pyx":1
- * from script.PARXER                                          import numerical_value as NV             # <<<<<<<<<<<<<<
+ * from script.PARXER                                import numerical_value as NV             # <<<<<<<<<<<<<<
  * from script.PARXER.VAR_NAME                                 import get_var_name
  * from script.PARXER.PRINT                                    import show_data
  */
@@ -6787,7 +6787,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "partial.pyx":2
- * from script.PARXER                                          import numerical_value as NV
+ * from script.PARXER                                import numerical_value as NV
  * from script.PARXER.VAR_NAME                                 import get_var_name             # <<<<<<<<<<<<<<
  * from script.PARXER.PRINT                                    import show_data
  * from CythonModules.Windows.PARTIAL_PARSER                   import parserError as pE
@@ -6807,7 +6807,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "partial.pyx":3
- * from script.PARXER                                          import numerical_value as NV
+ * from script.PARXER                                import numerical_value as NV
  * from script.PARXER.VAR_NAME                                 import get_var_name
  * from script.PARXER.PRINT                                    import show_data             # <<<<<<<<<<<<<<
  * from CythonModules.Windows.PARTIAL_PARSER                   import parserError as pE
@@ -6849,7 +6849,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "partial.pyx":1
- * from script.PARXER                                          import numerical_value as NV             # <<<<<<<<<<<<<<
+ * from script.PARXER                                import numerical_value as NV             # <<<<<<<<<<<<<<
  * from script.PARXER.VAR_NAME                                 import get_var_name
  * from script.PARXER.PRINT                                    import show_data
  */

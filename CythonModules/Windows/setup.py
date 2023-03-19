@@ -22,7 +22,13 @@ setup(
         'array_to_list.pyx',
         'dictionary.pyx',
         'Trigo.pyx',
-        'Open.pyx'
+        'Open.pyx',
+        "frame.pyx",
+        "show.pyx", 
+        "progress_bar.pyx",
+        "handling_list.pyx",
+        "Trees.pyx",
+        "Trigo.pyx"
         ], 
         annotate = True
         )

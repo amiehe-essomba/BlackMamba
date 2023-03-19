@@ -18,3 +18,13 @@ def get_linux_ter():
 	width = os.popen('tput cols', 'r').readline()
 	height= os.popen('tput lines', 'r').readline()	
 	return int(width), int(height)
+ 
+
+def get_win_ter_test():
+    width = os.popen('tput cols', 'r').readline()
+    height= os.popen('tput lines', 'r').readline()	
+    return width, height
+
+if __name__ == '__main__':
+    s = get_win_ter_test()
+    print(s)
