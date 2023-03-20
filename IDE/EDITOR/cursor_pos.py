@@ -150,7 +150,7 @@ class new_windows:
                         sys.stdout.write(bm.clear.screen(pos=0))
                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                         self.value = None
-                        return
+                        break
                     # index selection mode [0, ...., 9] pressed a number
                     elif self.char in [x for x in range(48, 58)]: 
                         if self.string: self.string += chr(self.char)
@@ -232,7 +232,7 @@ class new_windows:
                         else: 
                             self.string = ""
                             self.string += chr(self.char)  
-                    # get more details <d>
+                    # get more details <d>....
                     elif  self.char == 100:
                         sys.stdout.write(bm.save.restore)
                         sys.stdout.write(bm.move_cursor.UP(pos=1))

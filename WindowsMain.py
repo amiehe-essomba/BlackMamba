@@ -42,7 +42,6 @@ from IDE.EDITOR                 import drop_box as DR
 
 class windows:
     def __init__(self, data_base: dict):
-
         # main data base
         self.data_base  = data_base
         # contriling string
@@ -146,11 +145,15 @@ class windows:
         sys.stdout.flush()
         ###########################################################
         self.max_size_init          = 11 # no optional key (crtl+n , ......)
+        # currently cursor position (x, y)
         self.pos_x, self.pos_y      = cursor_pos.cursor()
+        # terminal dimension (max_x, max_y)
         self.max_x, self.max_y      = test.get_win_ter()
         self.save_cursor_position   = bm.save.save
         self.indicator_pos          = 0
+        # indicator_max 
         self.indicator_max          = 1
+        # checking if key_max_activation could be activated  for handling terminal tools
         self.key_max_activation     = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
         ###########################################################
         
@@ -611,7 +614,9 @@ class windows:
 
                         # put cursor on the right position
                         if self.index > 0:
+                            # computing the right position 
                             pos = len(self.s) + self.size + len(self.input) - self.index
+                            # putting cursor a the correct position 
                             sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                         else: pass
 
@@ -636,17 +641,23 @@ class windows:
                                         else:
                                             # any activation keyword
                                             sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                                        # moving cursor down to 1
                                         sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                                        # moving cursor to the left 
                                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                        # saving cursor position 
                                         sys.stdout.write(bm.save.save)
                                         
                                     if v is not  None:
+                                        # moving cursor up to 1 if indicator is egal to 7< ctrl+g>
                                         if self.indicator == 7: sys.stdout.write(bm.move_cursor.UP(pos=1))
+                                        # restoring the lastest saving cursor postion if indicator is egal to 65, 66 <ctrl+up>, <ctrl+down>
                                         if self.indicator in {65, 66} : sys.stdout.write(bm.save.restore)
                                         else: pass        
                                         try:
                                             if self.indicator not in {65, 66}:
                                                 self.string = self.string[ : len(self.string)-len(self.str_drop_down)] + v 
+                                                # customizing string 
                                                 self.error,  kappa, self.pos, self.get = SB.string( self.string ).build()
 
                                                 self.input  = kappa[0][0]
@@ -658,22 +669,38 @@ class windows:
 
                                                 if self.indicator == 14: self.str_drop_down = v; self.drop = len(v)
                                                 else: pass
-                                                # move cursor on left
+                                                # moving cursor on left
                                                 sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                                                # clear entire line
+                                                # clearing entire line
                                                 sys.stdout.write(bm.clear.line(pos=0))
+                                                # re-writing string
                                                 sys.stdout.write(self.main_input+bm.string().syntax_highlight(name=bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final()))
+                                                # saving cursor position
                                                 sys.stdout.write(bm.save.save)
                                             else: pass
                                         except  TypeError: pass 
                                     else:
+                                        # moving cursor up to 1
                                         sys.stdout.write(bm.move_cursor.UP(pos=1))
-
                                         if self.index > 0:
+                                            # computing the right postion 
                                             pos = len(self.s) + self.size + len(self.input) - self.index
+                                            # moving cursor at the correct position 
                                             sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                                         else: pass
+                                        # erasing entire string 
+                                        sys.stdout.write(bm.clear.line(pos=2))
+                                        # re-writing string
+                                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                        if terminal_name == 'orion':
+                                            sys.stdout.write(self.main_input + bm.string().syntax_highlight(
+                                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
+                                        else: 
+                                            # any activation keyword & re-writing string
+                                            sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                                        # saving cursor position 
                                         sys.stdout.write(bm.save.save)
+                                # restoring cursor position 
                                 sys.stdout.write(bm.save.restore)
                             else: pass
                         else: pass 

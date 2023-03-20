@@ -1,7 +1,8 @@
+import sys
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
 from IDE.EDITOR                     import test
-import sys
-from 		time  import sleep
+from script.STDIN.LinuxSTDIN        import ascii
+from time  							import sleep
 
 def header(string : str = 'Windows Version', terminal = 'orion terminal'):
     #Linux
@@ -50,20 +51,22 @@ def header(string : str = 'Windows Version', terminal = 'orion terminal'):
 	sec8 = bold+w+f"{chr(9989)} Github:"+re
 	sec9 = bold+y+f"{chr(9654)} {under}https://github.com/amiehe-essomba"+re + " "+chr(9997)+re
 	ww	 = ws-3
-	s1, s11 = chr(9562)+chr(9565)+"   "+chr(9562)+chr(9565), len("    ")+4
-	s2, s22 = chr(9553)+chr(9553)+"   "+chr(9553)*2, len("    ")+4
-	s3, s33, s333 = chr(9562)+chr(9552)*2+chr(9574)+chr(9574)+chr(9552)*3+chr(9574)+chr(9574)+chr(9552)*2+chr(9565), len("    ")+1," "*ww
-	s4, s44, s444 = chr(9553)+chr(9618)*11+chr(9553),len("    ")+1," "*ww
-	s5, s55, s555 = chr(9562)+chr(9565)+chr(9553)+chr(9618)*11+chr(9553)+chr(9562)+chr(9565),len("   ")," "*ww
-	s6, s66, s666 = chr(9553)*2+chr(9553)+chr(9618)*11+chr(9553)+chr(9553)*2,len("   ")," "*ww
-	s7, s77, s777 = chr(9553)*2+chr(9553)+chr(9618)*9+blink+r+chr(9829)+re+chr(9618)+chr(9553)+chr(9553)*2,len("   ")," "*ww
-	s8, s88, s888 = chr(9556)+chr(9552)+chr(9574)+chr(9552)*2+chr(9577)+chr(9577)+chr(9552)*3+chr(9577)+chr(9577)+\
-	chr(9552)*2+chr(9574)+chr(9552)+chr(9559), len("   ")," "*ww
-	s9, s99, s999 = " "*4+chr(9562)+chr(9574)*2+chr(9552)*3+chr(9574)*2+chr(9565),len("   ")," "*ww
-	s10, s100, s1000 = " "*4+chr(9553)+ " "*2+y+chr(9495)+chr(9473)+chr(9499)+re+" "*2+chr(9553),len("    ")," "*ww
-	s12, s111, s1111 = " "*4+chr(9553)+ " "+blink+y+chr(9679)+re+" "+y+chr(9475)+re+" "+ blink+y+chr(9679)+re+" "+chr(9553),len("    ")," "*ww
-	s13, s222, s2222 = " "*4+chr(9556)+chr(9552)*3+chr(9577)+chr(9552)*3+chr(9559),len("    ")," "*7
-	s14, s333a, s3333a = " "*4+chr(9556)+chr(9552)*3+blink+y+chr(9574)+re+chr(9552)*3+chr(9559),len("    ")," "*ww
+	_s_ = chr(9608)#9618 9577
+	x = ascii.frame(True)
+	s1, s11 = x['dl']+x['dr']+"   "+x['dl']+x['dr'], len("    ")+4
+	s2, s22 = x['v']+x['v']+"   "+x['v']*2, len("    ")+4
+	s3, s33, s333 = x['dl']+x['h']*2+x['m1']+x['m1']+x['h']*3+x['m1']+x['m1']+x['h']*2+x['dr'], len("    ")+1," "*ww
+	s4, s44, s444 = x['v']+_s_*11+x['v'],len("    ")+1," "*ww
+	s5, s55, s555 = x['dl']+x['dr']+x['v']+_s_*11+x['v']+x['dl']+x['dr'],len("   ")," "*ww
+	s6, s66, s666 = x['v']*2+x['v']+_s_*11+x['v']+x['v']*2,len("   ")," "*ww
+	s7, s77, s777 = x['v']*2+x['v']+_s_*9+blink+r+chr(9829)+re+_s_+x['v']+x['v']*2,len("   ")," "*ww
+	s8, s88, s888 = x['ul']+x['h']+x['m1']+x['h']*2+x['m2']+x['m2']+x['h']*3+x['m2']+x['m2']+\
+	x['h']*2+x['m1']+x['h']+x['ur'], len("   ")," "*ww
+	s9, s99, s999 = " "*4+x['dl']+x['m1']*2+x['h']*3+x['m1']*2+x['dr'],len("   ")," "*ww
+	s10, s100, s1000 = " "*4+x['v']+ " "*2+y+x['dl']+chr(9473)+x['dr']+re+" "*2+x['v'],len("    ")," "*ww
+	s12, s111, s1111 = " "*4+x['v']+ " "+blink+y+chr(9679)+re+" "+y+chr(9475)+re+" "+ blink+y+chr(9679)+re+" "+x['v'],len("    ")," "*ww
+	s13, s222, s2222 = " "*4+x['ul']+x['h']*3+x['m2']+x['h']*3+x['ur'],len("    ")," "*7
+	s14, s333a, s3333a = " "*4+x['ul']+x['h']*3+blink+y+x['m1']+re+x['h']*3+x['ur'],len("    ")," "*ww
 	s15, s555a, s5555a = " "*4+" "*4+" "+" "*4,len("    ")," "*ww
 	
 	print("  "+" "*14+push+top)
