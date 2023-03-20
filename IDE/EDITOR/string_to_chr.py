@@ -32,10 +32,23 @@ def decoding_string():
 def convert( ):
     s = decoding_string()
     number = None 
-    
+
     if len(s) == 1:
         s = s[0].decode("utf-8")
-        number =  [ord(s), None]
+       
+        try:
+            number =  [ord(s), None]
+        except TypeError: 
+            if   s == "\x0e":
+                number =  [14, None]
+            elif s == "\x04":
+                number =  [4,  None]
+            elif s == "\x01":
+                number =  [17, None]
+            elif s == "\x0c":
+                number =  [12, None]
+            else:  
+                number =  [None, None]
     else:
         s = s[1].decode("utf-8")
         if   s == "H" : number = [27, 65]
@@ -45,18 +58,3 @@ def convert( ):
     
     return number
      
-"""       
-if __name__ == "__main__":
-    s= decoding_string()
-    if len(s) == 1:
-        s = s[0].decode("utf-8")
-        number = ord(s)
-    else:
-        s = s[1].decode("utf-8")
-        if   s == "H" : number = {27, 65}
-        elif s == "P" : number = {27, 66}
-        elif s == "K" : number = {27, 68}
-        elif s == "M" : number = {27, 67}
-            
-    print(number)
-"""

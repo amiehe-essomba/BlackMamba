@@ -28,7 +28,8 @@ setup(
         "progress_bar.pyx",
         "handling_list.pyx",
         "Trees.pyx",
-        "Trigo.pyx"
+        "Trigo.pyx", 
+        "merge_list.pyx"
         ], 
         annotate = True
         )

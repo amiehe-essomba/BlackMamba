@@ -418,3 +418,8 @@ class ERRORS:
         self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format( self.cyan, string) + error
         return self.error+self.reset
     
+    def ERROR62(self, num : int = 1): #
+        error = '{}index out of range. {}line: {}{}.'.format( self.green, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'IndexError' ).Errors()+'{}{} '.format( self.cyan, num) + error
+        return self.error+self.reset
+    

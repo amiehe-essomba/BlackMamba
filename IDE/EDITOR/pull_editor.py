@@ -6,6 +6,7 @@ from IDE.EDITOR                             import examples     as exp
 from IDE.EDITOR                             import cursor_pos   as cp
 from IDE.EDITOR                             import func_class   as FC
 from IDE.EDITOR                             import string_to_chr 
+from CythonModules.Windows                  import merge_list as ML 
 
 
 class list_of_keys:
@@ -13,13 +14,11 @@ class list_of_keys:
         self.firstChar = firstChar 
         self.data_base = data_base 
         
-    def list(self):
-        #self.global_vars        = self.data_base['global_vars']['vars']
-        #self.list_of_vars       = self.data_base['variables']['vars'] + self.global_vars
-        
+    def list(self):    
+            
         self.a = ['as', 'add', 'any', 'anonymous']
         self.b = ['begin', 'bool', 'break']
-        self.c = ['class', 'cplx', 'close', 'case', 'continue', 'count', 'capitalize', 'clear', 'copy', 'conj', 'choice']
+        self.c = ['class', 'cplx', 'close', 'case', 'continue', 'count', 'capitalize', 'clear', 'copy', 'conj', 'choice', 'concatenate']
         self.d = ['def', 'default']
         self.e = ['end', 'else', 'elif', 'exit', 'enumerate', 'empty', 'endwith']
         self.f = ['func', 'for', 'from']
@@ -28,21 +27,21 @@ class list_of_keys:
         self.i = ['int', 'if', 'in', 'index', 'init', 'img', 'insert', 'initialize']
         self.j = ['join']
         self.k = ['kurtosis']
-        self.l = ['lower','local', 'lstrip','load', 'license']
+        self.l = ['lower','local', 'lstrip','load', 'license', 'lambda']
         self.m = ['matrix', 'module']
         self.n = ['none', 'None', 'not', 'norm', 'ndarray']
         self.o = ['open']
         self.p = ['pass', 'print']
         self.q = ['queue']
-        self.r = ['rstrip', 'replace', 'remove', 'random', 'round', 'readline', 'readlines', 'read', 'return']
+        self.r = ['rstrip', 'replace', 'remove', 'random', 'round', 'readline', 'readlines', 'read', 'return', 'range']
         self.s = ['set', 'switch', 'split', 'startwith', 'size', 'sorted']
-        self.t = ['tk']
+        self.t = ['table']
         self.u = ['unless', 'until', 'upper']
         self.v = ['var']
         self.w = ['while','with', 'write', 'writeline', 'writelines']
         self.x = ['']
         self.y = ['yield']
-        self.z = ['']
+        self.z = ['zip']
         
         if   self.firstChar == 'a': return self.a
         elif self.firstChar == 'b': return self.b
@@ -268,16 +267,17 @@ class IDE:
         
         return self.index
 	
-
 class  DropDown:
     def __init__(self, data_base: dict, line: int, key:bool=True):
         self.line               = line
         self.data_base          = data_base
         self.key 				= key
     def MENU(self, string : str = 'r', true_chaine : str = "", indicator = None, pos : int = 0) :
-        ouput       = ""
-        np          = 1
-        self.new    = []
+        ouput               = ""
+        np                  = 1
+        self.max_size       = 6
+        self.new            = []
+        err                 = None 
         
         if self.key is True:
             try:
@@ -298,16 +298,32 @@ class  DropDown:
                         
                         self.index = IDE(len(string), string, self.data_base).Linux( 
                                 inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine )
+                        self.max_size += self.index
                     else: pass 
                 elif indicator in {7}:
                     self.idd        = len(string)
-                    if all_values: ouput = cp.new_windows(true_chaine[:-self.idd ] ).cursor_pos( sorted(all_values) )
+                    self.new_data = []
+                    
+                    if string:
+                        for s in all_values:
+                            try:
+                                if string == s[:self.idd] : self.new_data.append(s)
+                                else: pass
+                            except IndexError: pass
                     else: pass
+                    
+                    if self.new_data:
+                        self.max_size += len(self.new_data)
+                        if all_values: ouput, err = cp.new_windows( string, self.line ).cursor_pos( sorted(self.new_data) )
+                        else: pass
+                    else: self.max_size = 1
                 elif indicator in {14}:
                     if all_values: 
                         val = all_values[pos]
-                        if string == val[:len(string)]: ouput = val
-                        else: pass
+                        if string == val[:len(string)]: 
+                            ouput = val
+                            self.max_size = 1
+                        else: self.max_size = 0
                     else: pass
                 elif indicator in {65, 66}:
                     for s in all_values:
@@ -323,11 +339,12 @@ class  DropDown:
                      
                         self.index = IDE(len(string), string, self.data_base).Linux( 
                                 inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, pos=pos )
+                        self.max_size += self.index
                     else: pass
                     ouput = all_values[pos]
             except TypeError: pass 
             except IndexError: pass
         else: pass
 
-        return ouput, np
+        return ouput, np, self.max_size, err
         

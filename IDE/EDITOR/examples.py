@@ -1,3 +1,4 @@
+
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
 
 class details:
@@ -200,3 +201,4 @@ class details:
                 ]
 
         return self.test, self.max_
+    
