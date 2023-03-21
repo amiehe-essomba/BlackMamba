@@ -25,10 +25,9 @@
 
 
 import sys, os
+import time
 from ctypes                     import windll
-from script.LEXER.FUNCTION      import main
 from script                     import control_string
-from script.PARXER.WINParxer    import parxer
 from script.STDIN.LinuxSTDIN    import bm_configure     as bm
 from script.DATA_BASE           import data_base        as db
 from IDE.EDITOR                 import header, string_to_chr 
@@ -120,6 +119,8 @@ class windows:
                                    control_string.STRING_ANALYSE(0, {}).LOWER_CASE()+['_']       
         # when Ctrl+ option are used 
         self.indicator           = None
+        # line max 
+        self.if_line_max         = 0
         ###########################################################
         # accounting line
         self.if_line        = 0
@@ -129,7 +130,9 @@ class windows:
         self.space          = 0
         # detecting if indentation was used
         self.active_tab     = None
-        # history of commands
+        # move curor up fist time 
+        self.key_up_first_time = False 
+        self.key_up_firts_time_checking = []
         ###########################################################
         k  = windll.kernel32
         k.SetConsoleMode( k.GetStdHandle(-11), 7)
@@ -155,6 +158,8 @@ class windows:
         self.indicator_max          = 1
         # checking if key_max_activation could be activated  for handling terminal tools
         self.key_max_activation     = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
+        # writing data 
+        self.storing_data_for_writing  = [] 
         ###########################################################
         
         while True:
@@ -167,7 +172,7 @@ class windows:
                     if self.char is not None:
                         #building of str_drop_down only when ord( self.char ) is in self.sss 
                         if 32 <= self.char <= 126:
-                            sys.stdout.write(bm.clear.screen(pos=0))
+                            sys.stdout.write(bm.clear.line(pos=0))
                             if chr(self.char) in self.sss:
                                 self.str_drop_down = self.str_drop_down[ : self.drop] + chr( self.char ) + self.str_drop_down[ self.drop : ]
                                 self.drop += 1
@@ -277,11 +282,38 @@ class windows:
                                         else:  pass
                                     # get the previous value stored in the list
                                     elif next2 == 65:  # up
+                                        if self.key_up_first_time is True : 
+                                            # storing input
+                                            self.liste.append(self.input)
+                                            # storing s
+                                            self.sub_liste.append(self.s)
+                                            # storing index
+                                            self.tabular.append(self.index)
+                                            # storing I
+                                            self.sub_tabular.append(self.I)
+                                            # storing last
+                                            self.last_tabular.append(self.last)
+                                            # storing remove_tab
+                                            self.remove_tabular.append(self.remove_tab)
+                                            # storing I_S
+                                            self.string_tab.append(self.I_S)
+                                            # storing string
+                                            self.string_tabular.append(self.string)
+                                            # storing get
+                                            self.memory.append(self.get)
+                                            # storing str_drop_down
+                                            self.drop_list_str.append( self.str_drop_down)
+                                            # storing str_drop_down index
+                                            self.drop_list_id.append(self.drop)
+                                            self.key_up_first_time = False
+                                        else: pass 
+                                        
                                         if self.liste:
                                             try:
                                                 # idd is decreased of -1
-                                                self.idd -= 1
-                                                if len(self.liste) >= abs(self.idd):
+                                                #self.idd -= 1
+                                                if 0 < self.if_line:
+                                                    self.idd = self.if_line - 1
                                                     # previous input
                                                     self.input  = self.liste[self.idd]
                                                     # previous s
@@ -303,8 +335,15 @@ class windows:
                                                     if self.drop_list_str:
                                                         self.str_drop_down = self.drop_list_str[ self.idd ]
                                                         self.drop = self.drop_list_id[ self.idd ]
-                                                    else: pass 
-                                                else:  self.idd += 1
+                                                    else: pass
+                                                    
+                                                    self.if_line -= 1
+                                                
+                                                    self.pos_x, self.pos_y = cursor_pos.cursor()
+                                                    sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)-1))
+                                                    #else: pass
+                                                
+                                                else: pass
                                             except IndexError:
                                                 # any changes here when local IndexError is detected
                                                 pass
@@ -313,10 +352,8 @@ class windows:
                                     elif next2 == 66:
                                         if self.liste:
                                             try:
-                                                # idd is increased of 1
-                                                self.idd += 1
-                                                # next input
-                                                if len(self.liste) > self.idd:
+                                                if self.if_line < self.if_line_max:
+                                                    self.idd    = self.if_line + 1
                                                     self.input  = self.liste[self.idd]
                                                     # next s
                                                     self.s      = self.sub_liste[self.idd]
@@ -338,10 +375,16 @@ class windows:
                                                         self.str_drop_down = self.drop_list_str[ self.idd ]
                                                         self.drop = self.drop_list_id[ self.idd ]
                                                     else: pass 
-                                                else: self.idd -= 1
+                                                    
+                                                    self.if_line += 1
+                                                    
+                                                    self.pos_x, self.pos_y = cursor_pos.cursor()
+                                                    sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)+1))
+                                            
+                                                else: pass
                                             except IndexError:
                                                 # any changes here when local IndexError is detected
-                                                pass
+                                                print(self.string, self.string_tabular, self.idd, self.if_line, self.if_line_max)
                                         else:   pass
                                     # ctrl-up is handled 
                                     elif next2 == 49:
@@ -521,12 +564,13 @@ class windows:
                             return
                         # printing and initializing of values "enter"
                         elif self.char in {10, 13}:
-                            sys.stdout.write(bm.clear.screen(pos=0))
+                            sys.stdout.write(bm.clear.line(pos=0))
                             if self.index > 0:
                                 pos = len(self.s) + self.size + len(self.input) - self.index
                                 sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                             else: pass
                             self.if_line += 1
+                            self.if_line_max += 1
                             # move cursor of left
                             sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                             # print the final input with its transformations
@@ -557,26 +601,7 @@ class windows:
                             self.drop_list_id.append(self.drop)
                             
                             if self.string:
-                                # running lexer
-                                self.lexer, self.normal_string, self.error = main.MAIN(self.string, self.data_base, self.if_line).MAIN()
-                                if self.error is None :
-                                    if self.lexer is not None:
-                                    
-                                        # running parser
-                                        self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
-                                                self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
-                                        if self.error is None: pass
-                                        else:
-                                            sys.stdout.write(bm.clear.line(2))
-                                            sys.stdout.write(bm.move_cursor.LEFT(1000))
-                                            print('{}\n'.format(bm.init.bold+self.error))
-                                            self.error = None
-                                    else:  pass
-                                else:
-                                    sys.stdout.write(bm.clear.line(2))
-                                    sys.stdout.write(bm.move_cursor.LEFT(1000))
-                                    print('{}\n'.format(bm.init.bold+self.error))
-                                    self.error = None
+                                pass
                             else: pass
 
                             # initialization block
@@ -594,6 +619,18 @@ class windows:
                             self.drop           = 0   
                             self.drop_drop      = {'id':[], 'str':[]}     
                             self.drop_idd       = 0 
+                            
+                            if self.if_line == self.if_line_max:
+                                if not self.key_up_firts_time_checking: 
+                                    self.key_up_firts_time_checking.append(self.if_line_max)
+                                    self.key_up_first_time = True
+                                else:
+                                    if self.if_line_max in self.key_up_firts_time_checking: elf.key_up_first_time= False
+                                    else:
+                                        self.key_up_firts_time_checking.append(self.if_line_max)
+                                        self.key_up_first_time = True
+                            else: self.key_up_first_time = False 
+                            
                             self.pos_x, self.pos_y = cursor_pos.cursor()
                             self.key_max_activation = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
                         #print(self.char)
@@ -715,7 +752,7 @@ class windows:
                 self._keyboard_ = bm.bg.red_L + bm.fg.rbg(255,255,255) +"KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-            except NameError:
+            except ValueError:
                 os.system('cls')
                 self._end_of_file_ = bm.bg.red_L + bm.fg.rbg(255,255,255) + "EOFError" + bm.init.reset
                 print(self._end_of_file_)
@@ -723,16 +760,19 @@ class windows:
                 sys.stdout.write(bm.string().syntax_highlight(name=self.input))
                 sys.stdout.flush()
 
+
 if __name__ == '__main__':
     
     term = 'orion'
     try:
         os.system('cls')
         sys.stdout.write(bm.save.save)
-        if term == 'orion': header.header(terminal='orion terminal')
-        else: header.header(terminal='pegasus terminal')
+        #if term == 'orion': header.header(terminal='orion terminal')
+        #else: header.header(terminal='pegasus terminal')
         
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
     except KeyboardInterrupt:  pass
     except IndexError: pass
+    
+    

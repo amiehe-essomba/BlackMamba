@@ -16,7 +16,7 @@ class new_windows:
         self.srt        = " " * len(srt) + "     "
         self.r          = bm.init.bold+bm.fg.rbg(255, 0, 0)
         self.line       = line 
-    def cursor_pos(self, list_of_values: list):
+    def cursor_pos(self, list_of_values: list, true_chaine: str = ""):
         def number(num : int):
             if num <= 9:  return self.ww+'[ '+self.r+f"{num}"+self.re+self.ww+']'+self.re
             else:         return self.ww+'[' +self.r+f"{num}"+self.re+self.ww+']'+self.re
@@ -37,6 +37,9 @@ class new_windows:
         c = bm.init.bold+bm.init.blink+bm.fg.rbg(255, 0, 255)
         m = bm.init.bold+bm.init.blink+bm.fg.rbg(0, 255, 255)
         w = bm.init.bold+bm.fg.rbg(255, 255, 255)
+       
+        self.disp       = " " * (len(true_chaine)+4)
+        self.srt        = self.disp
         self.asc        = ascii.frame(True)
         self.list       = list_of_values 
         self.index      = 0 
@@ -234,11 +237,16 @@ class new_windows:
                             self.string += chr(self.char)  
                     # get more details <d>....
                     elif  self.char == 100:
-                        sys.stdout.write(bm.save.restore)
-                        sys.stdout.write(bm.move_cursor.UP(pos=1))
-                        sys.stdout.write(bm.clear.screen(pos=0))
-                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                        details.Details(self.srt, self.line).Details(self.list)
+                        try:
+                            sys.stdout.write(bm.save.restore)
+                            sys.stdout.write(bm.move_cursor.UP(pos=2))
+                            sys.stdout.write(bm.clear.screen(pos=0))
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                            self.srt = " "*len(true_chaine)
+                            details.Details(self.srt, self.line).Details(self.list[self.index])
+                            self.value = None
+                            break 
+                        except IndexError: pass
                     else : pass
                     sys.stdout.flush() 
                 else: pass

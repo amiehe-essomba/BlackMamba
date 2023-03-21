@@ -24,13 +24,13 @@ def run_mamba():
         # get mamba version && author 
         elif len(arg) == 2:
             # get version of code
-            if arg[1] in ['--V', '--version']:
+            if arg[1] in ['--V', '--Version']:
                 s = bm.init.underline+bm.fg.yellow_L + 'Black Mamba' + \
                     bm.init.reset + bm.fg.white_L + ' version ' + \
                     bm.init.reset+bm.fg.cyan_L + '1.0.0'+bm.init.reset
                 print(f"\n{s}\n")
             # get author 
-            elif arg[1] in ['--author', '--A']:
+            elif arg[1] in ['--Author', '--A']:
                 bm.open_graven().author()
             elif arg[1][-3:] in ['.bm'] :pass 
             else: print(bm.mamba_error.error3())

@@ -2,7 +2,7 @@ import sys
 import os
 from script.STDIN.LinuxSTDIN                import bm_configure as bm
 from  time                                  import sleep
-from IDE.EDITOR                             import examples     as exp
+#from IDE.EDITOR                             import examples     as exp
 from IDE.EDITOR                             import cursor_pos   as cp
 from IDE.EDITOR                             import func_class   as FC
 from IDE.EDITOR                             import string_to_chr 
@@ -18,7 +18,7 @@ class list_of_keys:
             
         self.a = ['as', 'add', 'any', 'anonymous']
         self.b = ['begin', 'bool', 'break']
-        self.c = ['class', 'cplx', 'close', 'case', 'continue', 'count', 'capitalize', 'clear', 'copy', 'conj', 'choice', 'concatenate']
+        self.c = ['class', 'cplx', 'close', 'case', 'continue', 'count', 'capitalize', 'clear', 'copy', 'conj', 'choice']
         self.d = ['def', 'default']
         self.e = ['end', 'else', 'elif', 'exit', 'enumerate', 'empty', 'endwith']
         self.f = ['func', 'for', 'from']
@@ -28,7 +28,7 @@ class list_of_keys:
         self.j = ['join']
         self.k = ['kurtosis']
         self.l = ['lower','local', 'lstrip','load', 'license', 'lambda']
-        self.m = ['matrix', 'module']
+        self.m = ['matrix', 'module', "merge"]
         self.n = ['none', 'None', 'not', 'norm', 'ndarray']
         self.o = ['open']
         self.p = ['pass', 'print']
@@ -277,8 +277,8 @@ class  DropDown:
         np                  = 1
         self.max_size       = 6
         self.new            = []
-        err                 = None 
-        
+        err                 = None
+                
         if self.key is True:
             try:
                 firtsChar   = string[0]
@@ -314,7 +314,7 @@ class  DropDown:
                     
                     if self.new_data:
                         self.max_size += len(self.new_data)
-                        if all_values: ouput, err = cp.new_windows( string, self.line ).cursor_pos( sorted(self.new_data) )
+                        if all_values: ouput, err = cp.new_windows( string, self.line ).cursor_pos( sorted(self.new_data), true_chaine )
                         else: pass
                     else: self.max_size = 1
                 elif indicator in {14}:

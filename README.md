@@ -56,9 +56,9 @@ Please make sure to update tests as appropriate.
 
 ## RUNNING BLACK MAMBA
 ```python
-1. ./mamba --T orion my_code.md
-2. ./mamba --T pegasus my_code.md
-3. ./mamba my_code.md
+1. ./mamba --T orion 
+2. ./mamba --T pegasus 
+3. ./mamba my_code.bm
 ```
 
 ## CHECKING BLACK MAMBA VERSION

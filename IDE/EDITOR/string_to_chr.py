@@ -32,10 +32,10 @@ def decoding_string():
 def convert( ):
     s = decoding_string()
     number = None 
-
+    #print(s)
     if len(s) == 1:
         s = s[0].decode("utf-8")
-       
+        
         try:
             number =  [ord(s), None]
         except TypeError: 
