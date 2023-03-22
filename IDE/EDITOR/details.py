@@ -3,7 +3,6 @@ import time
 from IDE.EDITOR                             import string_to_chr 
 from script.STDIN.LinuxSTDIN                import bm_configure as bm
 from script.STDIN.LinuxSTDIN                import ascii
-from src.classes                            import error 
 from IDE.EDITOR                             import examples as e    
 
 class Details:
@@ -28,10 +27,10 @@ class Details:
             self.asc        = ascii.frame(True)
             self.index      = 0 
             self.value      = None
-            self.val1       = f'{w}[{m}q{r}{w}]     = {c}exit{r}    '
-            self.val1_l     = len('[q]  =  exit ')
+            self.val1       = f'{w}[{m}q{r}{w}] = {c}exit{r}'
+            self.val1_l     = len('[q] = exit')
             self.empty      = " "
-            self.val1       = f"{self.asc['v']} " + self.val1+self.re + self.w+self.empty * (self.len-self.val1_l-4-1)+f"{self.asc['v']}"
+            self.val1       = f"{self.asc['v']} " + self.val1+self.re + self.w+self.empty * (self.len-self.val1_l)+f"{self.asc['v']}"
             self.store_id   = []
             self.string     = ""
             self.err        = None
@@ -43,12 +42,14 @@ class Details:
             for j, name in enumerate(self.list):
                 name = f"{self.asc['v']} " + name +self.re + self.w+self.empty * (self.len - self.L[j])+f"{self.asc['v']}"+self.re
                 sys.stdout.write(self.srt + '  '+self.w+ name +self.re+'\n')
+                if j == 0: sys.stdout.write(self.srt + '  '+self.w+self.asc['vl']+self.asc['h']*(self.len+1)+self.asc['vr'] + self.re+'\n') 
+                else: pass
                 
             sys.stdout.write(self.srt + '  '+self.w+f"{self.asc['v']}"+' '*(self.len+1)+f"{self.asc['v']}" + self.re+'\n')
             sys.stdout.write(self.srt + '  '+self.w+self.asc['vl']+self.asc['h']*(self.len+1)+self.asc['vr'] + self.re+'\n')
             sys.stdout.write(self.srt + '  '+self.w+ self.val1+self.re+'\n')
             sys.stdout.write(self.srt + '  '+self.w+self.asc['dl']+self.asc['h']*(self.len+1)+self.asc['dr'] + self.re+'\n')
-            
+           
             self.m = len(self.list)+4
             for j in range(self.m):
                 sys.stdout.write(bm.move_cursor.UP(pos=1))
@@ -66,8 +67,7 @@ class Details:
                         self.char = self.char[0]
                         # breaking without selecting (q)
                         if self.char == 113 : 
-                            sys.stdout.write(bm.save.restore)
-                            sys.stdout.write(bm.move_cursor.UP(pos=1))
+                            sys.stdout.write(bm.move_cursor.UP(pos=2))
                             sys.stdout.write(bm.clear.screen(pos=0))
                             sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                             break
@@ -76,4 +76,4 @@ class Details:
                     else: pass
                 except KeyboardInterrupt:
                     pass
-        else: pass
+        else: pass 

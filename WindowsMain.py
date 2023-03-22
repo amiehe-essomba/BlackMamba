@@ -715,7 +715,7 @@ class windows:
                 self._keyboard_ = bm.bg.red_L + bm.fg.rbg(255,255,255) +"KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-            except NameError:
+            except KeyError:
                 os.system('cls')
                 self._end_of_file_ = bm.bg.red_L + bm.fg.rbg(255,255,255) + "EOFError" + bm.init.reset
                 print(self._end_of_file_)

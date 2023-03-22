@@ -564,7 +564,7 @@ class windows:
                             return
                         # printing and initializing of values "enter"
                         elif self.char in {10, 13}:
-                            sys.stdout.write(bm.clear.line(pos=0))
+                            sys.stdout.write(bm.clear.screen(pos=0))
                             if self.index > 0:
                                 pos = len(self.s) + self.size + len(self.input) - self.index
                                 sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
