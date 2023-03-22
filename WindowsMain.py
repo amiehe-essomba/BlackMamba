@@ -29,16 +29,16 @@ from ctypes                     import windll
 from script.LEXER.FUNCTION      import main
 from script                     import control_string
 from script.PARXER.WINParxer    import parxer
-from script.STDIN.LinuxSTDIN    import bm_configure     as bm
-from script.DATA_BASE           import data_base        as db
+from script.STDIN.LinuxSTDIN    import bm_configure                 as bm
+from script.DATA_BASE           import data_base                    as db
 from IDE.EDITOR                 import header, string_to_chr 
 from IDE.EDITOR                 import test
-from IDE.EDITOR                 import true_cursor_pos as cursor_pos
+from IDE.EDITOR                 import true_cursor_pos              as cursor_pos
 from IDE.EDITOR                 import cursor
-from IDE.EDITOR                 import left_right as LR
-from IDE.EDITOR                 import string_build as SB
-from IDE.EDITOR                 import pull_editor as PE
-from IDE.EDITOR                 import drop_box as DR
+from IDE.EDITOR                 import left_right                   as LR
+from IDE.EDITOR                 import string_build                 as SB
+from IDE.EDITOR                 import pull_editor                  as PE
+from IDE.EDITOR                 import drop_box                     as DR
 
 class windows:
     def __init__(self, data_base: dict):
