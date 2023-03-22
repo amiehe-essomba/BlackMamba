@@ -68,7 +68,11 @@ class init:
     rapid_blink = u"\u001b[6m"
     reverse     = u"\u001b[7m"
     hide        = u"\u001b[8m"
+    bare        = u"\u001b[9m"
     double_underline= u"\u001b[21m"
+    high_intensity  = u"\u001b[22m"
+    eyes            = u"\u001b[25m"
+    remove_reverse  = u"\u001b[27m"
     link        = u"\u001b[8;;https://github.com/amiehe-essomba ST"
 
 class scrolled:

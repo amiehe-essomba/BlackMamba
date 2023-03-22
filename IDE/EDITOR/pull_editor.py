@@ -7,6 +7,8 @@ from IDE.EDITOR                             import cursor_pos   as cp
 from IDE.EDITOR                             import func_class   as FC
 from IDE.EDITOR                             import string_to_chr 
 from CythonModules.Windows                  import merge_list as ML 
+from IDE.EDITOR                             import true_cursor_pos as cursor_pos
+from IDE.EDITOR                             import test
 
 
 class list_of_keys:
@@ -85,7 +87,7 @@ class IDE:
         self.cl         = bm.init.bold+bm.fg.rbg(0,255,255) +f'{chr(10148)*2} (C)' + bm.init.reset
         self.g          = bm.init.bold+bm.fg.rbg(0,255,0)+ f'{chr(10148)*2} (F)' + bm.init.reset
         self.var        = bm.init.bold+bm.fg.rbg(255,255,0)+ f'{chr(10148)*2} (V)' + bm.init.reset
-    def Linux(self, inp : list, true_chaine : str = "", pos:int=0):
+    def Linux(self, inp : list, true_chaine : str = "", pos:int=0, move_cursor_down : int = 0):
         
         self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(inp, self.firstChar, self.idd)
         self.input      =  inp[0]
@@ -123,8 +125,29 @@ class IDE:
         self.lev1   = bm.init.bold+self.ww+"   "+" "*2+ "+"*(self.max_+2)
         self.nex    = bm.init.bold+self.ww+"   "+" "*2+ "+" + " "*self.max_+"+"
         self.list_is_empty = False
-
+        self.pos_x, self.pos_y = cursor_pos.cursor()
+        self.max_x, self.max_y = test.get_win_ter()
+        self._s_ = self.srt+'  '+' '+' '*(self.len+1)+' '
+        self.border_x_limit = (self.max_x) - (len(self._s_)+int(self.pos_x))
+        
+        sys.stdout.write(bm.save.save)
         sys.stdout.write("\n")
+        
+        for i in range(move_cursor_down):
+            sys.stdout.write("\n") 
+        
+        for i in range(move_cursor_down):
+            sys.stdout.write(bm.move_cursor.UP(pos=1))
+        sys.stdout.write(bm.move_cursor.UP(pos=1))
+        sys.stdout.write(bm.move_cursor.RIGHT(pos=int(self.pos_x) -1))
+        if self.border_x_limit <= 2: self.srt = ''
+        else: pass 
+    
+        sys.stdout.write(bm.save.save)
+        sys.stdout.flush()
+            
+        sys.stdout.write("\n")
+        
         for i, value in enumerate(self.input):
             if self.idd == 1:
                 self.noChar = True
@@ -295,9 +318,9 @@ class  DropDown:
                         np = len(self.new)
                         if np < 5: np -= 1 
                         else:  self.new = self.new[:5]
-                        
+                        idd = self.max_size + len(self.new)
                         self.index = IDE(len(string), string, self.data_base).Linux( 
-                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine )
+                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, move_cursor_down=idd )
                         self.max_size += self.index
                     else: pass 
                 elif indicator in {7}:
