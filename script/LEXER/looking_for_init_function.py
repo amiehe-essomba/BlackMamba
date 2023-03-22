@@ -1,16 +1,8 @@
-from colorama import Fore, init, Back, Style
-from script import control_string
-from script.LEXER.FUNCTION import global_, return_
-from script.LEXER import segmentation
-
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
+from script                                     import control_string
+from script.LEXER.FUNCTION                      import global_, return_
+from script.LEXER                               import segmentation
+from script.STDIN.LinuxSTDIN                    import bm_configure as bm
+from CythonModules.Windows                      import fileError as fe
 
 class FUNCTION_INIT:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -31,9 +23,9 @@ class FUNCTION_INIT:
                                'until', 'unless','next', 'lambda', 'begin', 'delete', 'print', '_int_',
                                 '_float_', '_string_', '_complex_', '_list_', '_tuple_', '_dictionary_', '_boolean_',
                                 '_sqrt_', '_length_', '_sum_', '_rang_', '__ansii__', '__show__', '__rand__',
-                                '_get_line_', '_mean_', '__scan__', '_max_', '_min_', '_var_', '_std_', '__open__', '__maths__']
+                                '_get_line_', '_mean_', '__scan__', '_max_', '_min_', '_var_', '_std_', '__open__', '__maths__', '__prompt__']
         self.count          = [ 2, 3, 3, 3, 5, 5, 6, 6, 6, 4, 4, 5, 8, 4, 4, 4, 7, 7, 6, 3, 5, 6, 4, 6, 5, 6, 5, 5, 7, 8,
-                                9, 6, 7, 12, 9, 6, 8, 5, 5, 9, 8, 8, 10, 6, 8, 5, 5, 5, 5, 8]
+                                9, 6, 7, 12, 9, 6, 8, 5, 5, 9, 8, 8, 10, 6, 8, 5, 5, 5, 5, 8, len('__prompt__')]
         self.sub_function   = [ 'if', 'def', 'for', 'try', 'while', 'class', 'switch',
                                'global', 'return' 'unless', 'until', 'begin', 'delete', 'print', '_int_', '_float_',
                                 '_string_', '_complex_', 'lambda' ]
@@ -202,7 +194,7 @@ class FUNCTION_INIT:
                                                         '_list_', '_tuple_', '_dictionary_', '_boolean_', '_sqrt_',
                                                           '_sum_', '_rang_', '__ansii__', '__show__', '__rand__',
                                                           '_get_line_', '_mean_', '__scan__', '_max_', '_min_', '_var_', 
-                                                          '_std_', '__open__', '__maths__']:
+                                                          '_std_', '__open__', '__maths__', '__prompt__']:
                                         self.function_type.append( self.string )
                                         self.string = ''
 
@@ -314,7 +306,7 @@ class FUNCTION_INIT:
                                                                 '_list_', '_tuple_', '_dictionary_', '_boolean_',
                                                                 '_sum_', '_rang_', '__ansii__', '__show__', '__rand__',
                                                                 '_get_line_', '_mean_', '__scan__','_max_', '_min_', '_var_', 
-                                                                '_std_', '__open__', '__maths__', 'lambda']:
+                                                                '_std_', '__open__', '__maths__', 'lambda', '__prompt__']:
                                         self.data.append( self.string )
 
                                     elif self.function_type[ 0 ] in self.break_function+self.anotherfunc:
@@ -344,29 +336,33 @@ class FUNCTION_INIT:
 class ERRORS:
     def __init__(self, line):
         self.line       = line
+        self.cyan       = bm.fg.cyan_L
+        self.red        = bm.fg.red_L
+        self.green      = bm.fg.green_L
+        self.yellow     = bm.fg.yellow_L
+        self.magenta    = bm.fg.magenta_M
+        self.white      = bm.fg.white_L
+        self.blue       = bm.fg.blue_L
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)     
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white,self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR1(self, string: str):
-        error = '{}due to the fact that {}<< : >> {}was not defined at the {}end. {}line: {}{}'.format(ke, ve, ke, te,
-                                                                                                   we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}due to the fact that {}<< : >> {}was not defined at the {}end. {}line: {}{}'.format(self.white, 
+                                                         self.green, self.white, self.red, self.white, self.yellow, self.line)     
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR2(self, string: str, char: str):
-        error = '{}due to {}bad char {}<< {} >> {}line: {}{}'.format(ke, te, ve, char, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}due to bad char {}<< {} >>. {}line: {}{}'.format(self.white,  self.green, char, self.white, self.yellow, self.line)     
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR3(self, string: str, key: str):
-        error = '{}because of the function {}<< {} >> {}line: {}{}'.format(ke, te, key, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}because of the function {}<< {} >>. {}line: {}{}'.format(self.white,  self.green, key, self.white, self.yellow, self.line)     
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
+        return self.error+self.reset
 

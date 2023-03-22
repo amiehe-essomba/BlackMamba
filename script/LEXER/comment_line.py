@@ -12,10 +12,10 @@ from script import  control_string
 
 class COMMENT_LINE:
     def __init__(self,
-                    master      : str,      # concatenate main string
-                    data_base   : dict,     # the data base
-                    line        : int       # current line
-                 ):
+        master      : str,      # concatenate main string
+        data_base   : dict,     # the data base
+        line        : int       # current line
+        ):
 
         self.master             = master
         self.line               = line

@@ -2,10 +2,7 @@ from script                     import control_string
 from script.LEXER               import particular_str_selection
 from script.LEXER.segmentation  import ERROR
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
-try:
-    from CythonModules.Windows  import fileError as fe 
-except ImportError:
-    from CythonModules.Linux    import fileError as fe
+from CythonModules.Windows      import fileError as fe
 
 class FUNCTION:
     def __init__(self, master: list, data_base: dict, line: int):
@@ -18,7 +15,7 @@ class FUNCTION:
 
     def FUNCTION_INIT(self, main_string: str, method = '1st', _type_ = 'direct'):
         self.type           = ['none', 'integer', 'float', 'boolean', 'complex', 'list', 'tuple', 
-                               'dictionary', 'string', 'ndarray', 'range', "None", 'any']
+                               'dictionary', 'string', 'array', 'range', "None", 'any', 'ndarray', 'table']
         self.master         = self.master[ 0 ]
         self.master, _e_    = self.control.DELETE_SPACE( self.master )
         self.error          = None
@@ -36,6 +33,8 @@ class FUNCTION:
         self._type_         = []
         self.last_parent    = 0
         self.anonymous      = False
+        self._sep_          = " "
+        self._sep_1         = ":"
         self.function_info  = {
             'type'                      : 'any', # items type
             'value'                     : None,  # default values issigned 
@@ -50,8 +49,7 @@ class FUNCTION:
                 'description'           : None   # description of function using <begin> inside function
             },
             'type_return'               : None,  # type returning, default value None( for any type)
-            'anonymous'                 : False
-            
+            "anonymous"                 : False  # anonymous function
         }
 
         self.string_type  = self.__str.SELECTION(self.master, self.master, self.data_base, self.line)
@@ -99,10 +97,17 @@ class FUNCTION:
                     else:
                         self.name, self.error = self.control.CHECK_NAME( self.string )
                         if self.error is None:
-                            self.function_name                      = self.name
-                            self.function_info[ 'function_name' ]   = self.function_name
-                            self.data_base[ 'current_func' ]        = self.function_name
-
+                            if self.name == "initialize":
+                                if self.function_info['type_return']:
+                                    if self.function_info['type_return']  in ["None", "none"]: pass 
+                                    else: self.error = ERRORS( self.line ).ERROR7( )
+                                else: pass
+                            else: pass 
+                            if self.error is None:
+                                self.function_name                      = self.name
+                                self.function_info[ 'function_name' ]   = self.function_name
+                                self.data_base[ 'current_func' ]        = self.function_name
+                            else: pass
                         else: self.error = ERRORS( self.line ).ERROR1( self.string )
 
                     if self.error is None:
@@ -113,20 +118,20 @@ class FUNCTION:
                         if self.error is None:
                             self.string_select  = self.__str.SELECTION(self.main_, self.main_, self.data_base, self.line)
                             self.value, self.error  = self.string_select.CHAR_SELECTION( ',' )
-
                             if self.error is None:
-                                if len(self.value) == 1 and self.value[0] == 'anonymous': self.anonymous = True
+                                if len(self.value) == 1  and self.value[0] == "anonymous": self.anonymous = True
                                 else:
                                     for val in self.value:
                                         self.string_select = self.__str.SELECTION(val, val, self.data_base, self.line)
                                         self.sub_value, self.error = self.string_select.CHAR_SELECTION( '=' )
 
                                         if self.error is None:
-                                            if   len( self.sub_value ) == 2:
+                                            if len( self.sub_value ) == 2:
                                                 self.arg_ , self.error = self.control.DELETE_SPACE( self.sub_value [ 0 ] )
                                                 if self.error is None:
                                                     self.sub_value_, self.error = self.__str.SELECTION( self.arg_, self.arg_,
                                                                             self.data_base, self.line).CHAR_SELECTION( ':' )
+                                                    
                                                     if self.error is None:
                                                         if len( self.sub_value_ ) == 1:
                                                             self.name, self.error = self.control.DELETE_SPACE( self.sub_value_[ 0 ] )
@@ -135,12 +140,10 @@ class FUNCTION:
                                                                 if self.error is None:
                                                                     self.variable.append( self.name )
                                                                     self._type_.append( [ 'any' ] )
-
                                                                 else:
                                                                     self.name = self.sub_value_[ 0 ]
                                                                     self.error = self.error = ERRORS( self.line ).ERROR4( self.name )
                                                                     break
-
                                                             else:
                                                                 self.error = ERRORS(self.line ).ERROR0( val )
                                                                 break
@@ -155,23 +158,32 @@ class FUNCTION:
                                                                         self.type, self.error = self.control.DELETE_SPACE( self.sub_value_[ 1 ] )
                                                                         if self.error is None:
                                                                             self.type, self.error = self.__str.SELECTION( self.type, self.type,
-                                                                                            self.data_base, self.line).CHAR_SELECTION( '/' )
+                                                                                            self.data_base, self.line).CHAR_SELECTION( self._sep_ )
+                                                                           
                                                                             if self.error is None:
+                                                                                self.is_true, self.new_type = [], []
                                                                                 for s, typ in enumerate( self.type ):
-                                                                                    typ, self.error = self.control.DELETE_SPACE( typ )
-                                                                                    if self.error is None:
-                                                                                        self.type[ s ], self.error = FUNCTION( val, self.data_base,
-                                                                                                                self.line ).TYPE( typ )
-                                                                                        if self.error is None: pass 
-                                                                                        else: break 
-                                                                                    else:
-                                                                                        self.error = ERRORS( self.line ).ERROR0( val )
-                                                                                        break
-                                                                                    
+                                                                                    if typ:
+                                                                                        self.is_true.append(True)
+                                                                                        typ, self.error = self.control.DELETE_SPACE( typ )
+                                                                                        if self.error is None:
+                                                                                            w, self.error = FUNCTION( val, self.data_base,
+                                                                                                                    self.line ).TYPE( typ )
+                                                                                            self.new_type.append(w)
+                                                                                            if self.error is None: pass 
+                                                                                            else: break 
+                                                                                        else:
+                                                                                            self.error = ERRORS( self.line ).ERROR0( val )
+                                                                                            break
+                                                                                    else: pass
                                                                                 if self.error is None:
-                                                                                    self.variable.append( self.name )
-                                                                                    self._type_.append( self.type )
-
+                                                                                    if self.is_true:
+                                                                                        self.type = self.new_type.copy()
+                                                                                        self.variable.append( self.name )
+                                                                                        self._type_.append( self.type )
+                                                                                    else:
+                                                                                        self.error = ERRORS( self.line ).ERROR0( main_string )
+                                                                                        break
                                                                                 else: break
                                                                             else: break
                                                                         else:
@@ -181,30 +193,23 @@ class FUNCTION:
                                                                         self.name = self.sub_value_[ 0 ]
                                                                         self.error = self.error = ERRORS( self.line ).ERROR4( self.name )
                                                                         break
-
                                                                 else:
                                                                     self.error = ERRORS( self.line ).ERROR0( val )
                                                                     break
-
                                                             else:
                                                                 self.error = ERRORS( self.line ).ERROR5( val )
                                                                 break
-
                                                         else:
                                                             self.error = ERRORS( self.line ).ERROR0( val )
                                                             break
 
                                                         if self.error is None:
                                                             self.val_, self.error = self.control.DELETE_SPACE( self.sub_value[ 1 ] )
-                                                            if self.error is None:
-                                                                self.data_storage.append( self.val_ )
-
+                                                            if self.error is None: self.data_storage.append( self.val_ )
                                                             else:
                                                                 self.error = ERRORS( self.line ).ERROR0( val )
                                                                 break
-                                                        else:
-                                                            self.error = self.error
-                                                            break
+                                                        else: break
                                                     else:
                                                         self.error = ERRORS( self.line ).ERROR0( val )
                                                         break
@@ -248,35 +253,42 @@ class FUNCTION:
                                                                 
                                                                 if self.error is None:
                                                                     self._typ_  = self.__str.SELECTION(self.type, self.type, self.data_base, self.line)
-                                                                    self.type, self.error = self._typ_.CHAR_SELECTION( '/' )
+                                                                    self.type, self.error = self._typ_.CHAR_SELECTION( self._sep_ )
                                                                     
                                                                     if self.error is None:
+                                                                        self.is_true, self.new_type = [], []
                                                                         for s, typ in enumerate( self.type ):
-                                                                            typ, self.error = self.control.DELETE_SPACE( typ )
-                                                                            if self.error is None:
-                                                                                self.type[ s ], self.error = FUNCTION(val, self.data_base,
-                                                                                                        self.line ).TYPE( typ )
-                                                                                if self.error is None: pass 
-                                                                                else: break
-                                                                            else:
-                                                                                self.error  = ERRORS( self.line ).ERROR0( val )
-                                                                                break
-                                                                                
-                                                                        if self.error is None:
-                                                                            self.val_, self.error = self.control.DELETE_SPACE(
-                                                                                                                self.sub_value_[ 0 ])
-                                                                            if self.error is None:    
-                                                                                self.name, self.error = self.control.CHECK_NAME( self.val_ )
-                                                                                                                            
+                                                                            if typ:
+                                                                                self.is_true.append(True)
+                                                                                typ, self.error = self.control.DELETE_SPACE( typ )
                                                                                 if self.error is None:
-                                                                                    self.data_storage.append( None )
-                                                                                    self.variable.append( self.name )
-                                                                                    self._type_.append( self.type )
+                                                                                    w, self.error = FUNCTION(val, self.data_base, self.line ).TYPE( typ )
+                                                                                    self.new_type.append(w)
+                                                                                    if self.error is None: pass 
+                                                                                    else: break
                                                                                 else:
-                                                                                    self.error = self.error = ERRORS( self.line ).ERROR4( self.val_ )                                      
+                                                                                    self.error  = ERRORS( self.line ).ERROR0( val )
                                                                                     break
-                                                                            else:
-                                                                                self.error  = ERRORS( self.line ).ERROR0( val )
+                                                                            else: pass  
+                                                                        if self.error is None:
+                                                                            if self.is_true:
+                                                                                self.type = self.new_type.copy()
+                                                                                self.val_, self.error = self.control.DELETE_SPACE( self.sub_value_[ 0 ])
+                                                                                if self.error is None:    
+                                                                                    self.name, self.error = self.control.CHECK_NAME( self.val_ )
+                                                                                                                                
+                                                                                    if self.error is None:
+                                                                                        self.data_storage.append( None )
+                                                                                        self.variable.append( self.name )
+                                                                                        self._type_.append( self.type )
+                                                                                    else:
+                                                                                        self.error = self.error = ERRORS( self.line ).ERROR4( self.val_ )                                      
+                                                                                        break
+                                                                                else:
+                                                                                    self.error  = ERRORS( self.line ).ERROR0( val )
+                                                                                    break
+                                                                            else: 
+                                                                                self.error  = ERRORS( self.line ).ERROR0( main_string )
                                                                                 break
                                                                         else: break
                                                                     else: break
@@ -313,6 +325,7 @@ class FUNCTION:
                         self.function_info[ 'value' ]       = self.data_storage
                         self.function_info[ 'type' ]        = self._type_
                         self._variable_                     = []
+                        
                         self.function_info[ 'function_info' ]['VarsType']       = self._type_.copy()
                         self.function_info[ 'function_info' ]['defaultValues']  = self.data_storage.copy()
                         
@@ -330,10 +343,10 @@ class FUNCTION:
 
                         try:  self.function_info[ 'function_info' ]['args']  = self.function_info[ 'arguments' ].copy()
                         except AttributeError:  self.function_info[ 'function_info' ]['args']   = self.function_info[ 'arguments' ]
-                    else: 
-                        self.function_info['anonymous'] = self.anonymous
-                        self.function_info[ 'arguments' ] = [None]
-                        self.function_info[ 'value' ]  = [None]
+                    else:
+                        self.function_info['anonymous']     = self.anonymous 
+                        self.function_info[ 'arguments' ]   = [None]
+                        self.function_info['value']         = [None]
                 else: pass
             else: self.error = ERRORS( self.line).ERROR0( main_string )
 
@@ -343,16 +356,14 @@ class FUNCTION:
                         self.error = ERRORS( self.line ).ERROR1( self.function_info[ 'function_name' ])
                     else: pass
                 else: pass
-                    #self.function_info, self.error = FUNCTION( self.function_info, self.data_base, self.line ).LAST_CHECK( main_string )
             else:pass
         else: pass 
-        
             
         return self.function_info, self.error
 
     def TYPE(self, string: str):
         self.string, self.error = self.control.DELETE_SPACE( string )
-        self.type   = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray']
+        self.type   = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table']
         self.error  = None
 
         if self.error is None :
@@ -436,5 +447,11 @@ class ERRORS:
     def ERROR6(self):
         error = '{}line: {}{}'.format(self.white, self.yellow, self.line) 
         self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}returning {}type error. '.format(self.white, self.cyan) + error
+
+        return self.error+self.reset
+    
+    def ERROR7(self):
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line) 
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}Constructor {}type error. '.format(self.green, self.cyan) + error
 
         return self.error+self.reset

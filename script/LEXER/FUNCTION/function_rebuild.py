@@ -1,15 +1,7 @@
-from colorama import Fore
-from script import control_string
-from script.LEXER import looking_for_init_function
-
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
+from script                                     import control_string
+from script.LEXER                               import looking_for_init_function
+from script.STDIN.LinuxSTDIN                    import bm_configure as bm
+from CythonModules.Windows                      import fileError    as fe
 
 class FUNCTION:
     def __init__(self, master: dict, data_base: dict, line: int):
@@ -32,7 +24,7 @@ class FUNCTION:
         self.second         = [ 'return', 'global', 'delete', 'print', '_int_', '_float_', '_string_', '_complex_','lambda',
                                 '_list_', '_tuple_', '_dictionary_', '_boolean_', '_sqrt_', '_length_', '_sum_', '_rang_',
                                 '__ansii__', '__show__', '__rand__', '_get_line_', '_mean_', '__scan__','_max_', '_min_',
-                                '_var_', '_std_', '__open__', '__maths__']
+                                '_var_', '_std_', '__open__', '__maths__', '__prompt__']
         
         self.b_p_c_n_e      = [ 'break', 'pass', 'continue', 'next', 'exit' ]
         self.true_data      = []
@@ -49,51 +41,37 @@ class FUNCTION:
                             if self.new_function[ 0 ] in self.b_p_c_n_e: pass
                             else:
                                 if self.new_data:
-                                    for str_ in self.new_data:
-                                        self.data_storage.append( str_ )
+                                    for str_ in self.new_data: self.data_storage.append( str_ )
                                 else: pass
-
                         else:
                             self.error = ERRORS( self.line ).ERROR0( main_string )
                             break
-
                     else:
                         self.error = ERRORS( self.line ).ERROR0( main_string )
                         break
-
                 else:
                     if self.new_data:
-                        for str_ in self.new_data:
-                            self.data_storage.append( str_ )
+                        for str_ in self.new_data: self.data_storage.append( str_ )
                     else: pass
-
-            else:
-                self.error = self.error
-                break
+            else: break
 
         if self.error is None:
             if self.function_type:
 
                 if self.function_type[ 0 ] in self.first:
-                    if len( self.master ) > 1:
-                        self.error = ERRORS( self.line ).ERROR0( main_string )
-
+                    if len( self.master ) > 1:  self.error = ERRORS( self.line ).ERROR0( main_string )
                     else:
                         self.string     = FUNCTION( self.data_storage, self.data_base, self.line ).REBUILD( char = ' ')
                         self.true_data  = [ self.string ]
-
                 else:
                     if len( self.data_storage ) > 1:
                         self.string     = FUNCTION( self.data_storage, self.data_base, self.line ).REBUILD()
                         self.true_data  = [ self.string ]
-
                     else: self.true_data  = self.data_storage
-
             else:
                 self.string     = FUNCTION( self.data_storage, self.data_base, self.line).REBUILD()
                 self.true_data  = [ self.string ]
-
-        else: self.error = self.error
+        else: pass
 
         return self.true_data, self.function_type, self.error
 
@@ -101,21 +79,28 @@ class FUNCTION:
         self.string = ''
 
         for i, str_ in enumerate( self.master ):
-            if len(self.master) == 1:
-                self.string = str_
+            if len(self.master) == 1: self.string = str_
             else:
-                if i < len(self.master) - 1:
-                    self.string = self.string + str_ + char
+                if i < len(self.master) - 1: self.string = self.string + str_ + char
                 else: self.string += str_
 
         return self.string
 
 class ERRORS:
     def __init__(self, line):
-        self.line           = line
+        self.line       = line
+        self.cyan       = bm.fg.cyan_L
+        self.red        = bm.fg.red_L
+        self.green      = bm.fg.green_L
+        self.yellow     = bm.fg.yellow_L
+        self.magenta    = bm.fg.magenta_M
+        self.white      = bm.fg.white_L
+        self.blue       = bm.fg.blue_L
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)     
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white,self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
+    

@@ -1,3 +1,6 @@
+from script.STDIN.LinuxSTDIN                import bm_configure as bm
+from CythonModules.Windows                  import fileError as fe
+
 cdef class ERRORS:
     cdef public:
         unsigned long long int line 
@@ -15,13 +18,13 @@ cdef class ERRORS:
         self.reset      = bm.init.reset
         self.error      = ""
 
-    def str ERROR0(self, str string):
+    cpdef str ERROR0(self, str string):
         self.error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors() +'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + self.error
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() +'{} invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + self.error
 
         return self.error+self.reset
 
-    def str ERROR1(self, str string):
+    cpdef str ERROR1(self, str string):
         self._str_ = '{}type {}help( {}function_name{} ) {}or {}help( {}class_name{} ) ' \
                      '{} for more informations. '.format(self.white, self.magenta, self.yellow, self.magenta, self.green,
                                                          self.magenta, self.yellow, self.magenta, self.white)

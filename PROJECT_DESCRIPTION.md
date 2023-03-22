@@ -7,7 +7,7 @@ snake known for its speed, agility, and precision, which are all traits that Bla
 
 Black Mamba is built on top of a powerful and efficient virtual machine, which allows for fast execution and easy portability across 
 different platforms and operating systems. The language provides an extensive set of built-in classes, functions, class methods, 
-attributes, constructor, if, else, while, for, unless, try, and other programming constructs, which make it well-suited for 
+attributes, constructor method, control flow, loops, expptions  and other programming constructs, which make it well-suited for 
 a wide range of AI, ML, and DL tasks
 
 One of the key features of Black Mamba is its support for object-oriented programming, which allows for modularity, code reuse, 
@@ -29,7 +29,6 @@ AI, ML, and DL applications. With its support for object-oriented programming, A
 fast execution, Black Mamba is an excellent choice for developers who want to build complex and high-performance AI projects
 
 ## FEATURES:
-
 - [ ] Object-oriented programming: Black Mamba is based on the object-oriented programming paradigm, which allows for modularity, code reuse, and abstraction. It supports the creation of classes, objects, and class methods, as well as inheritance, polymorphism, and encapsulation.
 
 - [ ] AI, machine learning, and deep learning support: Black Mamba provides built-in classes and functions for common AI, ML, and DL tasks, such as neural networks, gradient descent, and clustering. It also supports matrix operations and numerical calculations, making it well-suited for scientific computing and data analysis.
@@ -62,7 +61,7 @@ Black Mamba supports a wide range of language constructs, including:
 
 ## CONCLUSION:
 
-Black Mamba is a powerful and flexible programming language for AI, ML, and DL applications. With its support for object-oriented 
+Black Mamba is a powerful, flexible and dynamic programming language for AI, ML, and DL applications. With its support for object-oriented 
 programming, AI-specific constructs, easy-to-learn syntax, and fast execution, Black Mamba can help you develop applications 
 faster and more efficiently than ever before. If you're looking for a new language for your next AI project, Black Mamba 
 is definitely worth exploring.

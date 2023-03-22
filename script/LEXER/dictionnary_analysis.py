@@ -1,17 +1,8 @@
-from colorama import  Fore
-from script import  control_string
-from script.LEXER import particular_str_selection
-from script.LEXER import float_or_function
-
-
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
+from script                                 import control_string
+from script.LEXER                           import particular_str_selection
+from script.LEXER                           import float_or_function
+from script.STDIN.LinuxSTDIN                import bm_configure as bm
+from CythonModules.Windows                  import fileError    as fe
 
 class DICTIONNARY:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -32,16 +23,13 @@ class DICTIONNARY:
                                                                self.line ).CHAR_SELECTION('$')
 
             if self.error is None:
-                if len( self.value ) == 1:
-                    self.final_value.append( self.master )
-
+                if len( self.value ) == 1: self.final_value.append( self.master )
                 else:
                     for val in self.value:
                         if val == '':
                             self.error = ERRORS(self.line).ERROR1( self.master )
                             break
-                        else:
-                            pass
+                        else: pass
 
                     if self.error is None:
                         self.init           = self.value[1 : ]
@@ -54,43 +42,39 @@ class DICTIONNARY:
                                     self.val, self.error = self.control.DELETE_SPACE( val )
                                     if self.error is None:
                                         self.name, self.error = self.control.CHECK_NAME( self.val )
-                                        if self.error is None:
-                                            self.final_value.append( self.val )
-
-                                        else:
-                                            self.error = self.error
-                                            break
-
+                                        if self.error is None: self.final_value.append( self.val )
+                                        else: break
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.master )
                                         break
-                            else:
-                                self.error = ERRORS( self.line ).ERROR0( self.master )
-                        else:
-                            self.error = ERRORS( self.line ).ERROR0( self.master )
-
-                    else:
-                        self.error = self.error
-
-            else:
-                self.error = self.error
-        else:
-            self.error = ERRORS( self.line ).ERROR0(self.master)
+                            else: self.error = ERRORS( self.line ).ERROR0( self.master )
+                        else: self.error = ERRORS( self.line ).ERROR0( self.master )
+                    else: pass
+            else: pass
+        else:  self.error = ERRORS( self.line ).ERROR0(self.master)
 
         return self.final_value, self.error
 
 class ERRORS:
-    def __init__(self, line: int):
+    def __init__(self, line):
         self.line       = line
+        self.cyan       = bm.fg.cyan_L
+        self.red        = bm.fg.red_L
+        self.green      = bm.fg.green_L
+        self.yellow     = bm.fg.yellow_L
+        self.magenta    = bm.fg.magenta_M
+        self.white      = bm.fg.white_L
+        self.blue       = bm.fg.blue_L
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)     
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white,self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR1(self, string: str):
-        error = '{}due to bad {}<< $ >> {}position. {}line: {}{}'.format(ke, ie, ke, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}due to bad {}<< $ >> {}position. {}line: {}{}'.format(self.white, self.green, self.red, 
+                                                            self.white, self.yellow, self.line)     
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
+        return self.error+self.reset
+    

@@ -114,9 +114,9 @@ class CHECK_TAB_FOR_INTERPRETER:
         self.comment        = comment_line                                                                              # comment line line initialization
 
     def CHECK_LINE(self,
-                        _id_        : int,       # tab number
-                        MainList    : list       # main list 
-                   ):
+            _id_        : int,       # tab number
+            MainList    : list       # main list 
+            ):
 
         self.error          = None
         self.string_check   = None

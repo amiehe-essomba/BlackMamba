@@ -121,4 +121,4 @@ Black Mamba releases new versions periodically, including bug fixes, improvement
 
 4. Test your code: After updating to a new release, it's important to test your code to ensure that it still works as expected. This will help you catch any issues or conflicts that may have arisen during the update process.
 
-By following these steps, you can ensure that your Black Mamba codebase is up-to-date and working smoothly with the latest improvements and features. Thank you for using Black Mamba!
+By following these steps, you can ensure that your Black Mamba codebase is up-to-date and working smoothly with the latest improvements and features. Thank you for using Black Mamba!.

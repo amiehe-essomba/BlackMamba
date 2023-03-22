@@ -1,9 +1,7 @@
 from script                     import control_string 
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
-try:
-    from CythonModules.Windows  import fileError as fe 
-except ImportError:
-    from CythonModules.Linux    import fileError as fe
+from CythonModules.Windows      import fileError    as fe 
+
 
 class MODULE_LOAD:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -22,6 +20,7 @@ class MODULE_LOAD:
         self.final          = None
         self.active_key     = None
         self.alias          = None
+        self._s_            = "|"
 
         for i, str_ in enumerate( self.master ):
             if i != len( self.master ) - 1:
@@ -33,37 +32,30 @@ class MODULE_LOAD:
                                     if not self.data:
                                         self.info.append( self.string )
                                         self.string = ''
-
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.master )
                                         break
-
                                 else:
                                     self.data.append( self.string )
                                     self.string = ''
-
                             else:
-                                if len( self.info ) == 1:
+                                if   len( self.info ) == 1:
                                     if self.info[ 0 ] in [ 'load', 'from' ]:
                                         if self.string in [ 'module' ]:
                                             self.info.append( self.string )
                                             self.string = ''
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                             break
-
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.master )
                                         break
-
                                 elif len( self.info ) == 2:
                                     if self.info[-1] in [ 'module' ] and self.info[ 0 ] in [ 'from' ]:
                                         if self.string in [ 'load' ]:
                                             self.info.append( self.string )
                                             self.string     = ''
                                             self.active_key = None
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                             break
@@ -73,15 +65,12 @@ class MODULE_LOAD:
                                             self.info.append( self.string )
                                             self.string         = ''
                                             self.active_key     = None
-
                                         else:
                                             self.error = ERRORS(self.line).ERROR0(self.master)
                                             break
-
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.master )
                                         break
-
                                 elif len( self.info ) == 3:
                                     if self.info[ 0 ] in [ 'from' ] and self.info[ 1 ]  in [ 'module' ]:
                                         if self.info[ 2 ] in [ 'load' ]:
@@ -89,37 +78,31 @@ class MODULE_LOAD:
                                                 self.info.append( self.string )
                                                 self.string     = ''
                                                 self.active_key = None
-
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR0( self.master )
                                                 break
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                             break
-
                                 else:
                                     self.error = ERRORS( self.line ).ERROR0( self.master )
                                     break
-
                         except IndexError:
                             self.error = ERRORS( self.line ).ERROR0( self.master )
                             break
-
                     else:
                         if self.string:
                             if self.info:
                                 self.string, self.err           = self.control.DELETE_SPACE( self.string )
                                 self.new                        = []
-                                if '/' in self.string:
+                                if self._s_ in self.string:
                                     if len( self.info ) == 2:
                                         if self.info[ -1 ] == 'module' and self.info[ 0 ] == 'from':
                                             if self.active_key != 'locked':
-                                                if '/' == self.string[ 0 ] and '/' == self.string[ -1 ]:
-                                                    if self.string.count('/') > 2:
-                                                        self.mul                    = self.string.split( '/' )
+                                                if self._s_ == self.string[ 0 ] and self._s_ == self.string[ -1 ]:
+                                                    if self.string.count( self._s_ ) > 2:
+                                                        self.mul                    = self.string.split( self._s_ )
                                                         self.t                      = ''
-
                                                         for w, val in enumerate( self.mul ):
                                                             if val == '':
                                                                 if w in [0, len(self.mul)-1]:
@@ -127,94 +110,64 @@ class MODULE_LOAD:
                                                                 else:
                                                                     self.error = ERRORS( self.line ).ERROR0( self.master )
                                                                     break
-
                                                             else:
                                                                 if w == len( self.mul ) - 2:
                                                                     self.string, self.err = self.control.DELETE_SPACE( val )
                                                                     self.string, self.error = self.control.CHECK_NAME( self.string )
-                                                                    if self.error is None:
-                                                                        self.new.append( self.string )
-
+                                                                    if self.error is None: self.new.append( self.string )
                                                                     else:
                                                                         self.error = self.error = ERRORS( self.line ).ERROR1( self.string )
                                                                         break
-                                                                else:
-                                                                    self.t += val + '/'
+                                                                else:  self.t += val + self._s_
 
                                                         if self.error is None:
-                                                            self.t = '/' + self.t
+                                                            self.t = self._s_ + self.t
                                                             self.new.append( self.t )
                                                             self.data.append( self.new[1] )
                                                             self.data.append( self.new[0] )
                                                             self.active_key = 'locked'
-
-                                                        else:
-                                                            self.error = self.error
-                                                            break
+                                                        else: break
                                                     else:
                                                         self.error = ERRORS( self.line ).ERROR0( self.string )
                                                         break
-
                                                 else:
                                                     self.error = ERRORS( self.line ).ERROR0( self.string )
                                                     break
-
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR0( self.master )
                                                 break
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                             break
-
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.master )
                                         break
-
                                 else:
                                     if self.active_key != 'locked':
-                                        if len( self.info ) == 2 and self.info[ -1 ] == 'module':
-                                            self.active_key = 'locked'
-                                        elif len( self.info ) == 3 and self.info[ -1 ] in [ 'load', 'as' ] :
-                                            self.active_key = 'locked'
-                                        elif len( self.info ) == 4 and self.info[ -1 ] == 'as':
-                                            self.active_key = 'locked'
+                                        if   len( self.info ) == 2 and self.info[ -1 ] == 'module'          : self.active_key = 'locked'
+                                        elif len( self.info ) == 3 and self.info[ -1 ] in [ 'load', 'as' ]  : self.active_key = 'locked'
+                                        elif len( self.info ) == 4 and self.info[ -1 ] == 'as'              : self.active_key = 'locked'
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                             break
 
                                         if self.error is None:
                                             self.string_, self.error     = self.control.CHECK_NAME( self.string )
-                                            if self.error is None:
-                                                self.data.append( self.string_ )
+                                            if self.error is None: self.data.append( self.string_ )
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR1( self.string )
                                                 break
-
-                                        else:
-                                            self.error = self.error
-                                            break
-
+                                        else: break
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.master )
                                         break
-
-                                if self.error is None:
-                                    self.string     = ''
-
-                                else:
-                                    self.error = self.error
-                                    break
-
+                                if self.error is None:  self.string     = ''
+                                else:  break
                             else:
                                 self.data.append( self.string )
                                 self.string     = ''
-
-                        else:
-                            pass
-
+                        else:  pass
                 else: self.string += str_
-
             else:
                 self.string     += str_
                 if self.string not in self.key:
@@ -224,54 +177,39 @@ class MODULE_LOAD:
                                 if str_ in self.control.LOWER_CASE()+self.control.UPPER_CASE()+[ '*' ]:
                                     if self.string in [ '*' ]:
                                         if len( self.info ) == 3:
-                                            if self.info[ -1 ] in [ 'load' ] and self.info[ 0 ] in [ 'from' ]:
-                                                self.data.append( self.string )
-
+                                            if self.info[ -1 ] in [ 'load' ] and self.info[ 0 ] in [ 'from' ]: self.data.append( self.string )
                                             else:
                                                 self.error  = ERRORS( self.line ).ERROR0( self.master )
                                                 break
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                             break
-
                                     else:
                                         if len( self.info ) >= 2:
-                                            if self.info[ -1 ] in [ 'load', 'module', 'as' ]:
-                                                self.data.append( self.string )
-
+                                            if self.info[ -1 ] in [ 'load', 'module', 'as' ]: self.data.append( self.string )
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR0( self.master )
                                                 break
-
                                         else:
                                             self.error  = ERRORS( self.line ).ERROR0( self.master )
                                             break
-
                                 else:
                                     self.error = ERRORS( self.line ).ERROR0( self. master )
                                     break
-
                             else:
                                 self.error = ERRORS( self.line ).ERROR0( self.master )
                                 break
-
                         else:
                             self.string, self.err   = self.control.DELETE_LEFT( self.string )
-                            if '/' in self.string:
+                            if self._s_ in self.string:
                                 self.error = ERRORS( self.line ).ERROR1( self.string )
                                 break
-
                             else:
                                 if self.active_key != 'locked':
-                                    if len( self.info ) == 2  and self.info[ -1 ] == 'module':
-                                        pass
-                                    elif len( self.info ) == 3 and self.info[ -1 ] == 'load':
-                                        pass
-                                    elif len( self.info ) == 3 and self.info[ -1 ] == 'as':
-                                        pass
-                                    elif len( self.info ) == 4 and self.info[ -1 ] == 'as':
-                                        pass
+                                    if   len( self.info ) == 2 and self.info[ -1 ] == 'module'  : pass
+                                    elif len( self.info ) == 3 and self.info[ -1 ]  == 'load'   : pass
+                                    elif len( self.info ) == 3 and self.info[ -1 ]  == 'as'     : pass
+                                    elif len( self.info ) == 4 and self.info[ -1 ]  == 'as'     : pass
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.master )
                                         break
@@ -279,86 +217,57 @@ class MODULE_LOAD:
                                     if self.error is None:
                                         if self.info[ -1 ] in ['module', 'load', 'as']:
                                             self.string_, self.error = self.control.CHECK_NAME( self.string )
-
                                             if self.error is None:
-                                                if len(self.info) >= 2:
-                                                    self.data.append( self.string_ )
+                                                if len(self.info) >= 2: self.data.append( self.string_ )
                                                 else:
                                                     self.error = ERRORS( self.line ).ERROR0( self.master )
                                                     break
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR1( self.string )
                                                 break
-
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                             break
-
-                                    else:
-                                        self.error = self.error
-                                        break
-
+                                    else: break
                                 else:
                                     self.error = ERRORS( self.line ).ERROR0( self.master )
                                     break
-
-                    else:
-                        self.data.append( self.string )
-
+                    else:  self.data.append( self.string )
                 else:
                     self.error = ERRORS( self.line ).ERROR0( self.master )
                     break
 
         if self.error is None:
-            if not self.info:
-                return self.master, self.error
-
+            if not self.info: return self.master, self.error
             else:
                 if len( self.info ) >= 2:
                     if len( self.info ) == 2:
-                        if self.info[ 0 ] in [ 'load' ] and self.info[ 1 ] in [ 'module' ]:
-                            pass
-                        else:
-                            self.error  = ERRORS( self.line ).ERROR0( self.master )
-
+                        if self.info[ 0 ] in [ 'load' ] and self.info[ 1 ] in [ 'module' ]: pass
+                        else: self.error  = ERRORS( self.line ).ERROR0( self.master )
                     elif len( self.info ) == 3:
                         if self.info[ 0 ] in [ 'from' ] and self.info[ 1 ] in [ 'module' ] :
-                            if self.info[ 2 ] in [ 'load' ] :
-                                pass
-
-                            else:
-                                self.error = ERRORS(self.line).ERROR0(self.master)
-
+                            if self.info[ 2 ] in [ 'load' ] : pass
+                            else: self.error = ERRORS(self.line).ERROR0(self.master)
                         elif self.info[ 0 ] in [ 'load' ]and self.info[ 1 ] in [ 'module' ]:
                             if self.info[ 2 ] in [ 'as' ]:
                                 if len(self.data) == 2:
                                     self.alias = self.data[-1]
                                     del self.data[-1]
-
-                                else:
-                                    self.error = ERRORS(self.line).ERROR0(self.master)
-                            else:
-                                self.error = ERRORS(self.line).ERROR0(self.master)
-                        else:
-                            self.error = ERRORS( self.line ).ERROR0( self.master )
+                                else:  self.error = ERRORS(self.line).ERROR0(self.master)
+                            else: self.error = ERRORS(self.line).ERROR0(self.master)
+                        else:  self.error = ERRORS( self.line ).ERROR0( self.master )
 
                     elif len( self.info ) == 4:
                         if self.info[ 0 ] in [ 'from' ] and self.info[ 1 ] in [ 'module' ] :
                             if self.info[ 3 ] in [ 'as' ] and self.info[ 2 ] in [ 'load' ] :
                                 self.alias  = self.data[ -1 ]
                                 del self.data[ -1 ]
-                            else:
-                                self.error  = ERRORS( self.line ).ERROR0( self.master )
-                        else:
-                            self.error = ERRORS( self.line ).ERROR0( self.master )
-
-                    else:
-                        self.error  = ERRORS( self.line ).ERROR0( self.master )
-
-                else:
-                    self.error  = ERRORS( self.line ).ERROR0( self.master )
+                            else: self.error  = ERRORS( self.line ).ERROR0( self.master )
+                        else: self.error = ERRORS( self.line ).ERROR0( self.master )
+                    else: self.error  = ERRORS( self.line ).ERROR0( self.master )
+                else: self.error  = ERRORS( self.line ).ERROR0( self.master ) 
+                
                 return {'path': self.data, 'module' : self.info, 'alias' : self.alias}, self.error
-
         else:
             if self.info: return {'path': self.data, 'module': self.info, 'alias' : None}, self.error
             else: return self.master, self.error
@@ -381,7 +290,6 @@ class FINAL_MODULE_LOAD:
         if self.error is None:
             self.data_storage   = []
             self.modules        = []
-            
             self.count          = 0
 
             for value in self.master:
@@ -414,25 +322,20 @@ class FINAL_MODULE_LOAD:
                 else: break
 
             if self.error is None:
-
-                if not self.data_storage:
-                    self.main_string                = self.main_string
-
+                if not self.data_storage: self.main_string  = self.main_string
                 else:
                     if self.modules:
                         self.main_string                            = self.data_storage[ 0 ]
                         self.init                                   = self.main_string[ 'path' ]
                         self.alias                                  = self.main_string[ 'alias' ]
 
-                        if len( self.main_string[ 'module' ]) == 2:
+                        if   len( self.main_string[ 'module' ]) == 2:
                             if len( self.init ) == 1:
                                 self.modules.append( self.init[ 0 ] )
                                 self.main_string[ 'path' ]            = None
                                 self.main_string[ 'module_load' ]     = None
                                 self.main_string[ 'module_main' ]     = self.modules
-
                             else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
                         elif len( self.main_string[ 'module' ]) == 3:
                             if self.main_string[ 'module' ][ -1 ] == 'load':
                                 if len( self.init ) == 2:
@@ -442,7 +345,6 @@ class FINAL_MODULE_LOAD:
                                         self.main_string[ 'path' ]            = None
                                         self.main_string[ 'module_load' ]     = self.modules
                                         self.main_string[ 'alias' ]           = None
-
                                     else: self.error = ERRORS( self.line ).ERROR0( main_string )
 
                                 elif len( self.init ) == 3:
@@ -452,7 +354,6 @@ class FINAL_MODULE_LOAD:
                                         self.main_string[ 'module_load' ]       = self.modules
                                         self.main_string[ 'module_main' ]       = [ self.init[ 1 ] ]
                                         self.main_string[ 'alias' ]             = None
-
                                     else: self.error = ERRORS( self.line ).ERROR0( main_string )
                                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
 
@@ -464,25 +365,21 @@ class FINAL_MODULE_LOAD:
                                         self.main_string[ 'path' ]            = None
                                         self.main_string[ 'module_load' ]     = self.modules
                                         self.main_string[ 'alias' ]           = self.alias
-
                                     else: self.error = ERRORS( self.line ).ERROR0( main_string )
                                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
                             else: self.error = ERRORS( self.line ).ERROR0( main_string )
                         else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
                     else:
                         self.main_string    = self.data_storage[ 0 ]
                         self.init           = self.main_string[ 'path' ]
                         self.alias          = self.main_string[ 'alias' ]
 
-                        if len( self.main_string[ 'module' ] ) == 2:
+                        if   len( self.main_string[ 'module' ] ) == 2:
                             if len( self.init ) == 1:
                                 self.main_string[ 'path' ]            = None
                                 self.main_string[ 'module_load' ]     = None
                                 self.main_string[ 'module_main' ]     = self.init
-
                             else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
                         elif len( self.main_string[ 'module' ] ) == 3:
                             if self.main_string[ 'module' ][ -1 ] == 'load':
                                 if len( self.init ) == 2:
@@ -490,13 +387,11 @@ class FINAL_MODULE_LOAD:
                                     self.main_string[ 'path' ]          = None
                                     self.main_string[ 'module_load' ]   = [ self.init[ 1 ] ]
                                     self.main_string['alias']           = self.alias
-
                                 elif len( self.init ) == 3:
                                     self.main_string[ 'path' ]          = [ self.init[ 0 ] ]
                                     self.main_string[ 'module_load' ]   = [ self.init[ 2 ] ]
                                     self.main_string[ 'module_main' ]   = [ self.init[ 1 ] ]
                                     self.main_string['alias']           = self.alias
-
                                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
 
                             elif self.main_string[ 'module' ][ -1 ] == 'as':
@@ -505,11 +400,9 @@ class FINAL_MODULE_LOAD:
                                     self.main_string['path']            = None
                                     self.main_string['module_load']     = None
                                     self.main_string['alias']           = self.alias
-
                                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
                             else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
-                        elif len(self.main_string[ 'module' ]) == 4:
+                        elif len( self.main_string[ 'module' ] ) == 4:
                             if  self.main_string[ 'module' ][ -1 ] == 'as':
                                 if len( self.init ) == 3:
                                     if self.init[ 2 ] != '*':
@@ -517,7 +410,6 @@ class FINAL_MODULE_LOAD:
                                         self.main_string['module_load']      = [ self.init[ 2 ] ]
                                         self.main_string['module_main']      = [ self.init[ 1 ] ]
                                         self.main_string['alias']            = self.alias
-
                                     else: self.error = ERRORS( self.line ).ERROR0( main_string )
 
                                 elif len( self.init ) == 2:
@@ -525,7 +417,6 @@ class FINAL_MODULE_LOAD:
                                     self.main_string['module_load']      = [ self.init[ 1 ] ]
                                     self.main_string['module_main']      = [ self.init[ 0 ] ]
                                     self.main_string['alias']            = self.alias
-
                                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
                             else: self.error = ERRORS( self.line ).ERROR0( main_string )
                         else: self.error = ERRORS( self.line ).ERROR0( main_string )

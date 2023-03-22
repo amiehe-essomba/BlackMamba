@@ -89,9 +89,23 @@ def header(string : str = 'Windows Version', terminal = 'orion terminal'):
 	print("  "+push+s1+" "*(s11-1)+bot+"       "+s1)
 	print("\n")
 
-	
-	
-	
+def bottom(max_x: int, x ):
+	c = bm.init.bold+bm.fg.rbg(255, 255, 255)
+	r = bm.init.reset
+	b = bm.bg.rgb(0, 0, 0)
+	string  = "Ctrl+c = code exit()    Ctrl+z = EOFError    Ctrl+n = auto selection    Ctrl+s = clear entire screnn    Ctrl+l = erase entire line".center(max_x-2 )
+	string_ = "Ctrl+d = move cursor at the beginning of string    Ctrl+a = move cursor at the end of string   Ctrl+g = more info about each keyword".center(max_x-2 )
+
+	a = ascii.frame(True)
+	s1 = a['ul'] + b+a['h'] *( max_x-2 )+r + a['ur']
+	s2 = a['v']  + b+c+string+r + a['v']
+	s4 = a['v']  + b+c+string_+r + a['v']
+	s3 = a['dl'] + b+a['h'] *( max_x-2 )+r + a['dr']
+	sys.stdout.write(s1+"\n")
+	sys.stdout.write(s2+"\n")
+	sys.stdout.write(s4+"\n")
+	sys.stdout.write(s3+"\n")
+	sys.stdout.flush()
 	
 	
 	

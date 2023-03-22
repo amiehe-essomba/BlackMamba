@@ -6,7 +6,7 @@
 #                                                           #
 # * pegasus is the default editor                           #
 # * orion is the optimized code editor with a syntaxis      #
-#   color                                                   #
+# * coloration                                             #
 # basically we can use both without any problems because    #
 # they work very well.                                      #
 #                                                           #
@@ -122,6 +122,8 @@ class windows:
         self.indicator           = None
         # fixing the x-axis border 
         self.border_x_limit      = True 
+        # keyboard shutcuts 
+        self.bottom_info         = True
         ###########################################################
         # accounting line
         self.if_line        = 0
@@ -151,6 +153,7 @@ class windows:
         self.pos_x, self.pos_y      = cursor_pos.cursor()
         # terminal dimension (max_x, max_y)
         self.max_x, self.max_y      = test.get_win_ter()
+        #self.a_max_y = self.max_y
         self.save_cursor_position   = bm.save.save
         self.indicator_pos          = 0
         # indicator_max 
@@ -161,6 +164,7 @@ class windows:
         
         while True:
             try:
+                #self.max_x_, self.max_y_      = test.get_win_ter()
                 # get input
                 self.char = string_to_chr.convert()
                 if self.char:
@@ -205,7 +209,7 @@ class windows:
                         # breaking loop while with the keyboardError ctrl+c
                         if self.char == 3:
                             os.system('cls')
-                            sys.stdout.write(bm.clear.screen(pos=1))
+                            sys.stdout.write(bm.clear.screen(pos=2))
                             sys.stdout.write(bm.cursorPos.to(0,0))
                             sys.stdout.write(bm.clear.screen(pos=0))
                             sys.stdout.write(bm.move_cursor.DOWN(pos=1))
@@ -737,9 +741,35 @@ class windows:
                         else: pass
                     else: pass
                 else: pass
+                
+                """
+                if self.bottom_info is True:
+                    if self.max_y-int(self.pos_y) > 0:
+                        for i in range(self.max_y-int(self.pos_y)):
+                            sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                        self.bottom_info = False
+                    else:  sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                    header.bottom(self.max_x, int(self.pos_x))
+                    sys.stdout.write(bm.move_cursor.UP(pos=7+int(self.pos_y)))
+                    sys.stdout.write(bm.move_cursor.RIGHT(pos=int(self.pos_x)))
+                    sys.stdout.flush()
+                else: pass
+                
+                #if self.max_y_ < self.a_max_y: 
+                    sys.stdout.write(bm.clear.screen(pos=1))
+                    sys.stdout.flush()
+                #else: pass  
+                """
             except KeyboardInterrupt:
                 os.system('cls')
-                self._keyboard_ = bm.bg.red_L + bm.fg.rbg(255,255,255) +"KeyboardInterrupt" + bm.init.reset
+                sys.stdout.write(bm.clear.screen(pos=2))
+                sys.stdout.write(bm.cursorPos.to(0,0))
+                sys.stdout.write(bm.clear.screen(pos=0))
+                sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                sys.stdout.write(bm.clear.line(pos=0))
+                self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
             except KeyError:
@@ -749,11 +779,13 @@ class windows:
                 self.input = '{}>>> {}'.format(self.c, bm.init.reset)
                 sys.stdout.write(bm.string().syntax_highlight(name=self.input))
                 sys.stdout.flush()
+             
 
 if __name__ == '__main__':
     
     term = 'orion'
     try:
+        sys.stdout.write(bm.clear.screen(pos=2))
         os.system('cls')
         sys.stdout.write(bm.save.save)
         if term == 'orion': header.header(terminal='orion terminal')

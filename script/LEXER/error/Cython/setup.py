@@ -8,7 +8,7 @@ setup(
     author='amiehe',
     author_email='amieheessomba@etu.unistra.fr',
     ext_modules=cythonize( 
-        ["backslashError.pyx" ], 
-        annotate = True
+        ["backslashError.pyx", "affectationError.pyx", "float_or_funError.pyx" ], 
+        annotate = False
         )
 )
