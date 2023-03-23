@@ -1,13 +1,10 @@
-from colorama       import Fore, init, Back, Style
-import numpy
-from script         import control_string
-from script.LEXER   import particular_str_selection
-from script.MATHS   import arithemtic_operations, mathematics
-
 import cython
-try:  from CythonModules.Linux                      import NumeriCal
-except ImportError:  from CythonModules.Windows     import NumeriCal
-
+import numpy
+import pandas as pd
+from script                                         import control_string
+from script.LEXER                                   import particular_str_selection
+from script.MATHS                                   import arithemtic_operations, mathematics
+from CythonModules.Windows                          import NumeriCal
 from script.PARXER.INTERNAL_FUNCTION                import get_dictionary
 from script.PARXER.INTERNAL_FUNCTION                import get_list
 from script.PARXER.INTERNAL_FUNCTION                import get_string
@@ -17,23 +14,7 @@ from script.PARXER.INTERNAL_FUNCTION                import get_tuple
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import functions as func
 from script.PARXER.PARXER_FUNCTIONS.CLASSES         import classInit 
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
-try:
-    from CythonModules.Windows                      import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                        import fileError as fe
-
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
-me = Fore.LIGHTCYAN_EX
-le = Fore.RED
-be = Fore.BLUE
-ge = Fore.GREEN
+from CythonModules.Windows                          import fileError as fe 
 
 @cython.cclass
 class NUMERICAL:
@@ -41,11 +22,9 @@ class NUMERICAL:
         self.line               = line
         self.master             = master
         self.data_base          = data_base
-
         self.control            = control_string.STRING_ANALYSE( self.data_base, self.line )
         self.selection          = particular_str_selection
         self.chars              = self.control.LOWER_CASE()+self.control.UPPER_CASE()+['_']
-
         self.main_value         = self.master[ 'all_data' ]
         self.variables          = self.data_base[ 'variables' ][ 'vars' ]
         self._values_           = self.data_base[ 'variables' ][ 'values' ]
@@ -60,10 +39,8 @@ class NUMERICAL:
         self.active_key             = None
         self.index                  = None
         self.sum                    = ''
-
-        #print( self.main_value )
+        
         if self.main_value is not None:
-
             self.values                 = self.main_value[ 'value' ]
             self.boolean_operator       = self.main_value[ 'bool_operator' ]
             self.logical_operator       = self.main_value[ 'logical_operator' ]
@@ -75,9 +52,6 @@ class NUMERICAL:
                 self.numeric, self.error = NUMERICAL(self.master, self.data_base,
                                     self.line).BOOLEAN_CHECK( self.values, self.arithmetic_operator, self.logical_operator,
                                                                                               self.boolean_operator)
-                
-                #self.numeric, self.error = NUMERICAL(self.master, self.data_base,
-                #                                    self.line).ARITHMETIC_CHECK(self.values, self.arithmetic_operator)
             else:
                 self.numeric, self.error = NUMERICAL(self.master, self.data_base,
                                                      self.line).ARITHMETIC_CHECK(self.values, self.arithmetic_operator)
@@ -102,12 +76,9 @@ class NUMERICAL:
             self._val_1_, self.error = self.selection.SELECTION(self.firt_part, self.firt_part,
                                                                self.data_base, self.line).CHAR_SELECTION('.')
             if self.error is None:
-                if len( self._val_1_ ) == 1:
-                    self.key        = False
-                elif len( self._val_1_ ) == 2:
-                    self.key        = True
-                else:
-                    self.error      = ERRORS( self.line ).ERROR1( self.firt_part )
+                if   len( self._val_1_ ) == 1: self.key        = False
+                elif len( self._val_1_ ) == 2: self.key        = True
+                else: self.error      = ERRORS( self.line ).ERROR1( self.firt_part )
 
                 if self.error is None :
                     self._val_1     = self.firt_part
@@ -131,86 +102,59 @@ class NUMERICAL:
 
                                         if self.__type__ in [ type( int())]:
                                             try:
-                                                if self.key == False:
-                                                    self.numeric = float( self.string )
-                                                elif self.key == True:
-                                                    self.numeric = float( self.string )
+                                                if   self.key == False:  self.numeric = float( self.string )
+                                                elif self.key == True :  self.numeric = float( self.string )
                                             except (SyntaxError, ValueError):
-                                                if self.key == False:
-                                                    self.error = ERRORS( self.line ).ERROR4( self.string, 'a float' )
-                                                elif self.key == True:
-                                                    self.error = ERRORS(self.line).ERROR4(self.string, 'a float' )
-                                            except OverflowError:
-                                                self.error = ERRORS(self.line).ERROR9( 'float' )
+                                                if   self.key == False: self.error = ERRORS( self.line ).ERROR4( self.string, 'a float' )
+                                                elif self.key == True : self.error = ERRORS(self.line).ERROR4(self.string, 'a float' )
+                                            except OverflowError:  self.error = ERRORS(self.line).ERROR9( 'float' )
                                         else:
                                             try:
                                                 self.numeric = complex( self.string )
-                                                self.numeric, self.error = COMPLEX_ANALYZE(self.numeric,
-                                                                                            self.line).COMPLEX()
-                                            except (SyntaxError, ValueError):
-                                                    self.error = ERRORS(self.line).ERROR4(self.string, 'a complex' )
-                                            except OverflowError:
-                                                self.error = ERRORS(self.line).ERROR9( 'complex' )
+                                                self.numeric, self.error = COMPLEX_ANALYZE(self.numeric, self.line).COMPLEX()
+                                            except (SyntaxError, ValueError):  self.error = ERRORS(self.line).ERROR4(self.string, 'a complex' )
+                                            except OverflowError: self.error = ERRORS(self.line).ERROR9( 'complex' )
 
-                                    else:
-                                        self.error = ERRORS( self.line ).ERROR3( self.var )
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR2( self.var )
-                            else:
-                                self.error = ERRORS( self.line ).ERROR2( self.var )
+                                    else: self.error = ERRORS( self.line ).ERROR3( self.var )
+                                else: self.error = ERRORS( self.line ).ERROR2( self.var )
+                            else:  self.error = ERRORS( self.line ).ERROR2( self.var )
 
                         elif self.type == 'numeric':
                             self._val_2_, self.error = self.selection.SELECTION(self.var, self.var,
                                                             self.data_base, self.line).CHAR_SELECTION( '.' )
                             if self.error is None:
                                 if len( self._val_2_ ) == 1:
-                                    try:
-                                        self.numeric2 = int( float( self.var ))
-                                    except SyntaxError:
-                                        self.error = ERRORS( self.line ).ERROR4( self.var )
+                                    try:  self.numeric2 = int( float( self.var ))
+                                    except SyntaxError:  self.error = ERRORS( self.line ).ERROR4( self.var )
 
                                     if self.error is None:
                                         self.numeric2   = str( self.numeric2 )
                                         self.numeric1   = self._val_1
                                         self.string     = self.numeric1 + self._ar_op_[0] + self.numeric2
-
                                         try:
-                                            if self.key == False:
-                                                self.numeric = float( self.string)
-                                            elif self.key == True:
-                                                self.numeric = float( self.string )
+                                            if   self.key == False:  self.numeric = float( self.string)
+                                            elif self.key == True :  self.numeric = float( self.string )
                                         except ( ValueError, SyntaxError):
-                                            if self.key == False:
-                                                self.error = ERRORS( self.line ).ERROR4( self.string, 'a float' )
-                                            elif self.key == True:
-                                                self.error = ERRORS(self.line).ERROR4(self.string, 'a float')
-                                    else:
-                                        self.error = self.error
-                                else:
-                                    self.error = ERRORS( self.line ).ERROR1( self.var )#self._val_2 )
-
-                            else:
-                                self.error = self.error
-
+                                            if   self.key == False: self.error = ERRORS( self.line ).ERROR4( self.string, 'a float' )
+                                            elif self.key == True : self.error = ERRORS(self.line).ERROR4(self.string, 'a float')
+                                    else: pass
+                                else: self.error = ERRORS( self.line ).ERROR1( self.var )#self._val_2 )
+                            else: pass
                         elif self.type == 'complex':
                             try:
                                 self.numeric2 = complex( self.var )
                                 self.numeric2, self.error = COMPLEX_ANALYZE(self.numeric2, self.line).COMPLEX()
                             except (ValueError, SyntaxError):
                                 self.error = ERRORS( self.line ).ERROR4(self.var, 'a complex')
-
                             if self.error is None:
                                 self.numeric2 = str(self.numeric2)
                                 self.numeric1 = self._val_1
                                 self.string = self.numeric1 + self._ar_op_[0] + self.numeric2
-
                                 try:
                                     self.numeric = complex( self.string )
                                     self.numeric, self.error = COMPLEX_ANALYZE(self.numeric, self.line).COMPLEX()
-                                except ( ValueError, SyntaxError ):
-                                    self.error = ERRORS( self.line ).ERROR4( self.string, 'a complex')
-                            else:
-                                self.error = self.error
+                                except ( ValueError, SyntaxError ): self.error = ERRORS( self.line ).ERROR4( self.string, 'a complex')
+                            else: pass
 
                     elif type( self._val_2 ) == type( list() ):
                         self.sign           = self._ar_op_[ 0 ]
@@ -218,26 +162,18 @@ class NUMERICAL:
                         self.num, self.error = NUMERICAL( self.master, self.data_base,
                                                 self.line).ARITHMETIC_DEEP_CHECKING_INIT( self._val_2, self.operators )
                         if self.error is None:
-                            if self.sign == '+':
-                                self.numeric = self.num[ 0 ]
-                            else:
-                                self.numeric = self.sign + self.num[ 0 ]
-                        else:
-                            self.error = self.error
-
-                else:
-                    self.error = self.error
-            else:
-                self.error = self.error
-
+                            if self.sign == '+': self.numeric = self.num[ 0 ]
+                            else: self.numeric = self.sign + self.num[ 0 ]
+                        else: pass
+                else: pass
+            else: pass
         else:
             self._val_                  = self.values[ 'numeric' ][ 0 ]
             self._type_                 = self.values[ 'type' ]
             if self._type_ in [ None, 'numeric']:
                 if self._val_[ 0 ] in self.chars:
                     self.__val__, self.error = self.control.CHECK_NAME( self._val_ )
-                    if self.error is None:
-                        self._val_ = self.__val__
+                    if self.error is None:  self._val_ = self.__val__
                     else:
                         if self._val_ in [ '_int_', '_float_', '_complex_', '_string_' ]: self.error = None
                         else: pass
@@ -249,61 +185,39 @@ class NUMERICAL:
                                 self.numeric    = self._values_[ self.index ]
                             else: self.error = ERRORS( self.line ).ERROR2( self._val_ )
                         else: self.error = ERRORS( self.line ).ERROR2( self._val_ )
-                    else: self.error = self.error
+                    else: pass
 
                 else:
                     self._val__, self.error = self.selection.SELECTION(self._val_, self._val_,
                                                                        self.data_base, self.line).CHAR_SELECTION('.')
                     if self.error is None:
-                        if len(self._val__) == 1:
-                            self.key = False
-                        elif len(self._val__) == 2:
-                            self.key = True
-                        else:
-                            self.error = ERRORS( self.line ).ERROR1( self._val_ )
+                        if   len(self._val__) == 1: self.key = False
+                        elif len(self._val__) == 2: self.key = True
+                        else:  self.error = ERRORS( self.line ).ERROR1( self._val_ )
 
                         if self.error is None:
-
                             try:
                                 if self.key == False:
-                                    if 'e' in self._val_:
-                                        self.numeric = float( self._val_ )
-                                    elif 'E' in self._val_:
-                                        self.numeric = float( self._val_ )
-                                    else:
-                                        self.numeric = int( float(self._val_) )
-
-                                elif self.key == True :
-                                    self.numeric = float( self._val_)
-
+                                    if   'e' in self._val_:  self.numeric = float( self._val_ )
+                                    elif 'E' in self._val_:  self.numeric = float( self._val_ )
+                                    else: self.numeric = int( float(self._val_) )
+                                elif self.key == True : self.numeric = float( self._val_)
                             except SyntaxError:
-                                if self.key == False:
-                                    self.error = ERRORS( self.line ).ERROR4( self._val_ )
-                                elif self.key == True:
-                                    self.error = ERRORS( self.line ).ERROR4( self._val_, 'a float' )
+                                if   self.key == False:  self.error = ERRORS( self.line ).ERROR4( self._val_ )
+                                elif self.key == True : self.error = ERRORS( self.line ).ERROR4( self._val_, 'a float' )
 
                             except ValueError:
-                                if self.key == False:
-                                    self.error = ERRORS( self.line ).ERROR4( self._val_ )
-                                elif self.key == True:
-                                    self.error = ERRORS( self.line ).ERROR4( self._val_, 'a float' )
-
-                            except OverflowError:
-                                self.error = ERRORS( self.line ).ERROR9( 'float')
-                        else:
-                            self.error = self.error
-                    else:
-                        self.error = self.error
-
+                                if   self.key == False: self.error = ERRORS( self.line ).ERROR4( self._val_ )
+                                elif self.key == True : self.error = ERRORS( self.line ).ERROR4( self._val_, 'a float' )
+                            except OverflowError: self.error = ERRORS( self.line ).ERROR9( 'float')
+                        else: pass
+                    else: pass
             else:
                 try:
                     self.numeric = complex( self._val_ )
                     self.numeric, self.error = COMPLEX_ANALYZE( self.numeric, self.line ).COMPLEX()
-
-                except (ValueError, SyntaxError):
-                    self.error = ERRORS( self.line ).ERROR4(self._val_, 'a complex')
-                except OverflowError:
-                    self.error = ERRORS(self.line).ERROR9( 'complex' )
+                except (ValueError, SyntaxError): self.error = ERRORS( self.line ).ERROR4(self._val_, 'a complex')
+                except OverflowError: self.error = ERRORS(self.line).ERROR9( 'complex' )
 
         return self.numeric, self.error
 
@@ -320,14 +234,9 @@ class NUMERICAL:
                 self.get_values             = self.values[ i ][ 0 ]
                 self.type                   = self.get_values[ 'type' ]
 
-                self._return_, self.error   = TYPE( self.master, self.get_values, self.data_base, self.line,
-                                                                                self.type ).TYPE( main__main )
-                if self.error is None:
-                    self.numeric.append( self._return_ )
-                else:
-                    self.error = self.error
-                    break
-
+                self._return_, self.error   = TYPE( self.master, self.get_values, self.data_base, self.line, self.type ).TYPE( main__main )
+                if self.error is None: self.numeric.append( self._return_ )
+                else: break
             else:
                 if len( self.values[ i ] ) > len( op ):
                     self.len_val                        = len( self.values[ i ] )
@@ -340,60 +249,41 @@ class NUMERICAL:
                             if j != self.len_val - 1:
                                 self.calculations.append( [ self._return_ ] )
                                 self.calculations.append( op[ j ] )
-                            else:
-                                self.calculations.append( [ self._return_ ] )
-                        else:
-                            self.error = self.error
-                            break
+                            else: self.calculations.append( [ self._return_ ] )
+                        else:  break
 
                     if self.error is None:
                         self.history_of_op              = ''
                         for string in self.calculations:
-                            if type( string ) == type( str() ):
-                                self.history_of_op += string
-                            else:
-                                pass
+                            if type( string ) == type( str() ): self.history_of_op += string
+                            else: pass
 
                         self.__values__, self.error       = mathematics.MAGIC_MATH_BASE( self.calculations, self.data_base,
                                                                     self.history_of_op, self.line ).MATHS_OPERATIONS()
                         if self.error is None:
                             self.numeric.append( self.__values__ )
                             self.calculations = []
-
-                        else:
-                            self.error = self.error
-                            break
-                    else:
-                        self.error = self.error
-                        break
-
+                        else: break
+                    else: break
                 elif len( self.values[ i ] ) == len( op ):
-
-                    if type( op[ 0 ] ) == type( list() ):
-                        self.sign       = '+'
+                    if type( op[ 0 ] ) == type( list() ): self.sign       = '+'
                     else:
-                        if len( op ) == 1:
-                            self.sign   = op[ 0 ]
+                        if len( op ) == 1: self.sign   = op[ 0 ]
                         else:
                             key = False
                             for _op_ in op:
                                 if type( _op_ ) == type( list( ) ):
                                     key = True
                                     break
-                            if key == False:
-                                self.sign = op[ 0 ]
-                            else:
-                                self.sign = ''
+                            if key == False: self.sign = op[ 0 ]
+                            else: self.sign = ''
 
                     if self.sign in [ '-' ]:  self.calculations.append( self.sign )
                     else: pass
-
                     self.len_val = len( self.values[ i ] )
 
                     if len( op ) == 1:
-                        
                         self._get_values_ = self.values[ i ][ 0 ]
-
                         try:
                             self.type                   = self._get_values_[ 'type' ]
                             self._return_, self.error   = TYPE( self.master, self._get_values_, self.data_base, self.line,
@@ -402,10 +292,8 @@ class NUMERICAL:
                                 self.calculations.append( [ self._return_ ] )
                                 self.history_of_op      = ''
                                 for string in self.calculations:
-                                    if type( string ) == type( str() ):
-                                        self.history_of_op += string
-                                    else:
-                                        pass
+                                    if type( string ) == type( str() ): self.history_of_op += string
+                                    else:  pass
 
                                 self.__values__, self.error = mathematics.MAGIC_MATH_BASE( self.calculations,
                                                     self.data_base, self.history_of_op, self.line ).MATHS_OPERATIONS()
@@ -413,14 +301,8 @@ class NUMERICAL:
                                 if self.error is None:
                                     self.numeric.append( self.__values__ )
                                     self.calculations = []
-                                else:
-                                    self.error = self.error
-                                    break
-
-                            else:
-                                self.error = self.error
-                                break
-
+                                else:  break
+                            else: break
                         except TypeError :
                             
                             self._return_, self.error   = ARRITHMETIC_DEEP_CHECKING( self.master, self._get_values_,
@@ -430,10 +312,8 @@ class NUMERICAL:
                                 self.history_of_op      = ''
 
                                 for string in self.calculations:
-                                    if type( string ) == type( str() ):
-                                        self.history_of_op += string
-                                    else:
-                                        pass
+                                    if type( string ) == type( str() ): self.history_of_op += string
+                                    else:  pass
 
                                 self.__values__, self.error = mathematics.MAGIC_MATH_BASE( self.calculations,
                                                     self.data_base, self.history_of_op, self.line ).MATHS_OPERATIONS()
@@ -441,20 +321,12 @@ class NUMERICAL:
                                 if self.error is None:
                                     self.numeric.append( self.__values__ )
                                     self.calculations = []
-                                else:
-                                    self.error = self.error
-                                    break
-                            else:
-                                self.error = self.error
-                                break
-
+                                else: break
+                            else:  break
                     else:
-                        
                         for j in range( self.len_val ):
                             self._get_values_ = self.values[ i ][ j ]
-
                             if type( self._get_values_ ) == type( dict() ) :
-                                
                                 self.type = self._get_values_[ 'type' ]
                                 self._return_, self.error = TYPE( self.master, self._get_values_, self.data_base, self.line,
                                                             self.type ).TYPE( main__main )
@@ -462,17 +334,13 @@ class NUMERICAL:
                                     if j != self.len_val - 1:
                                         try:
                                             self.calculations.append( [ self._return_ ] )
-                                            if self.calculations[ 0 ] == '-':
-                                                self.calculations.append( op[ j + 1 ] )
-                                            else:
-                                                self.calculations.append(op[ j ]) ### here
+                                            if self.calculations[ 0 ] == '-':  self.calculations.append( op[ j + 1 ] )
+                                            else: self.calculations.append(op[ j ]) ### here
                                         except TypeError:
                                             self.calculations.append( [ self._return_ ] )
                                             self.calculations.append( op[ j ] )
-                                    else:
-                                        self.calculations.append( [ self._return_ ] )
+                                    else: self.calculations.append( [ self._return_ ] )
                                 else: break
-                                
                             else:
                                 self._return_, self.error = ARRITHMETIC_DEEP_CHECKING(self.master, self._get_values_,
                                                              op[ j ], self.data_base, self.line).INIT( main__main )
@@ -485,7 +353,6 @@ class NUMERICAL:
                                         except TypeError:
                                             self.calculations.append( [ self._return_[ 0 ] ] )
                                             self.calculations.append( op[ j ] )
-
                                     else:  self.calculations.append( [ self._return_[ 0 ] ] )
                                 else:  break
 
@@ -502,13 +369,8 @@ class NUMERICAL:
                             if self.error is None:
                                 self.numeric.append( self.__values__ )
                                 self.calculations = []
-                            else:
-                                self.error = self.error
-                                break
-                        else:
-                            self.error = self.error
-                            break
-
+                            else:  break
+                        else: break
                 else:
                     self.sign               = ''
                     self.operators          = op[ : ]
@@ -521,24 +383,16 @@ class NUMERICAL:
                         self.history_of_op  =  ''
                         self.calculations.append( [ self._return_[ 0 ] ] )
                         for string in self.calculations:
-                            if type( string ) == type( str() ):
-                                self.history_of_op += string
-                            else:
-                                pass
-
+                            if type( string ) == type( str() ):  self.history_of_op += string
+                            else:  pass
                         self.__values__, self.error = mathematics.MAGIC_MATH_BASE(self.calculations,
                                             self.data_base, self.history_of_op, self.line).MATHS_OPERATIONS()
 
                         if self.error is None:
                             self.numeric.append( self.__values__[ 0 ] )
                             self.calculations = []
-                        else:
-                            self.error = self.error
-                            break
-                    else:
-                        self.error = self.error
-                        break
-       
+                        else: break
+                    else:  break
         return  self.numeric, self.error
     
     @cython.cfunc
@@ -558,14 +412,12 @@ class NUMERICAL:
                                             self.line ).ARITHMETIC_CHECK( self.get_values, self.ar_op )
                 if self.error is None:  self.numeric.append( self.num[ 0 ] )
                 else:  break
-
             else:
                 if self.data_base['irene'] is None: pass
                 else: self.data_base['irene'] = None
 
                 self._num_  = []
                 self.get_values = self.values[ i ]
-
                 for j in range( len( self.get_values ) ):
                     self._get_values_ = self.get_values[ j ]
                     
@@ -581,8 +433,7 @@ class NUMERICAL:
                 if self.error is None:  self.numeric.append( self._num_)
                 else: break
 
-        if self.error is None:
-            self._return_, self.error = FINAL_VALUE( self.numeric, self.data_base, self.line, self.logical_operator).FINAL_VALUE()
+        if self.error is None: self._return_, self.error = FINAL_VALUE( self.numeric, self.data_base, self.line, self.logical_operator).FINAL_VALUE()
         else: pass
 
         return self._return_, self.error
@@ -606,7 +457,6 @@ class NUMERICAL:
                                                   self.line ).LOGICAL_CHECK(self.get_values, self.ar_op, self.l_op )
                 if self.error is None:  self.numeric.append( self.num )
                 else:  break
-
             else:
                 if self.data_base['irene'] is None: pass
                 else: self.data_base['irene'] = None
@@ -651,7 +501,6 @@ class NUMERICAL:
         self.operators      = operators
         self._get_values_   = values
         self.index          = []
-
         self.sub_len_val    = len( self._get_values_ )
         self.sub_len_op     = len( self.operators )
 
@@ -665,43 +514,25 @@ class NUMERICAL:
                                                                                     self.type ).TYPE( main__main )
 
                     if self.error is None:
-                        if k != self.sub_len_val - 1:
-                            self.sum += str( self.num ) + self.operators[ k ]
-
-                        else:
-                            self.sum += str( self.num )
-                    else:
-                        self.error = self.error
-                        break
-
+                        if k != self.sub_len_val - 1:  self.sum += str( self.num ) + self.operators[ k ]
+                        else: self.sum += str( self.num )
+                    else:  break
                 else:
                     self.sub_values = sub_values
                     self.num, self.error = NUMERICAL(self.master, self.data_base,
                                         self.line).ARITHMETIC_DEEP_CHECKING( self.sub_values, self.operators[ 0 ][ k ])
                     if self.error is None:
-                        if k != self.sub_len_val - 1:
-                            self.sum += str( self.num[ 0 ] ) + self.operators[ k ]
-
-                        else:
-                            self.sum += str( self.num[ 0 ] )
-
-                    else:
-                        self.error = self.error
-                        break
-
+                        if k != self.sub_len_val - 1: self.sum += str( self.num[ 0 ] ) + self.operators[ k ]
+                        else: self.sum += str( self.num[ 0 ] )
+                    else:  break
             if self.error is None:
-
                 self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE( self.sum, self.data_base,
                                                             self.line ).MATHS_OPERATIONS()
                 if self.error is None:
                     self.numeric.append( str( self._sum_ ) )
                     self.sum = ''
-                else:
-                    self.error = self.error
-
-            else:
-                self.error = self.error
-
+                else:  pass
+            else: pass
         else:
             if type( self.operators[ 0 ] ) == type( list() ):
                 self.sign                   = '+'
@@ -719,16 +550,10 @@ class NUMERICAL:
 
                     if self.error is None:
                         if k != self.sub_len_val - 1:
-                            if not self.index:
-                                self.sum += str( self.num ) + self.operators[ k + 1 ]
-                            else:
-                                self.sum += str( self.num ) + self.operators[ k + self.index[ -1 ] + 1]
-                        else:
-                            self.sum += str( self.num )
-                    else:
-                        self.error = self.error
-                        break
-
+                            if not self.index: self.sum += str( self.num ) + self.operators[ k + 1 ]
+                            else: self.sum += str( self.num ) + self.operators[ k + self.index[ -1 ] + 1]
+                        else: self.sum += str( self.num )
+                    else:  break
                 else:
                     self.num        = ''
                     if type( self.operators[ k ] ) == type( list()):
@@ -740,8 +565,7 @@ class NUMERICAL:
                             if type( _op_ ) == type( list() ):
                                 self.idd = s
                                 break
-                            else:
-                                pass
+                            else: pass
                         self.index.append( self.idd )
                         self.num, self.error = NUMERICAL(self.master, self.data_base,
                                     self.line).ARITHMETIC_DEEP_CHECKING(self.sub_values, self.operators[k + self.idd ])
@@ -749,32 +573,22 @@ class NUMERICAL:
                     if self.error is None:
                         self.key    = True
                         if k != self.sub_len_val - 1:
-                            try:
-                                self.sum += str( self.num[ 0 ] ) + self.operators[ k + 1 ]
-                            except TypeError:
-                                self.sum += str( self.num[ 0 ] ) + self.operators[ k + 2 ]
-                        else:
-                            self.sum += str( self.num[ 0 ] )
-                    else:
-                        self.error = self.error
-                        break
+                            try: self.sum += str( self.num[ 0 ] ) + self.operators[ k + 1 ]
+                            except TypeError: self.sum += str( self.num[ 0 ] ) + self.operators[ k + 2 ]
+                        else:  self.sum += str( self.num[ 0 ] )
+                    else:  break
 
             if self.error is None:
-                if self.sign == '+':
-                    self.sum = self.sum
-                else:
-                    self.sum = self.sign + self.sum
-                print(self.sum)
+                if self.sign == '+':  self.sum = self.sum
+                else:  self.sum = self.sign + self.sum
+                
                 self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE( self.sum, self.data_base,
                                                                 self.line ).MATHS_OPERATIONS()
                 if self.error is None:
                     self.numeric.append( str( self._sum_ ) )
                     self.sum = ''
-                else:
-                    self.error = self.error
-
-            else:
-                self.error = self.error
+                else: pass
+            else: pass
 
         return self.numeric, self.error
 
@@ -798,27 +612,16 @@ class NUMERICAL:
                                                                                 self.type ).TYPE( main__main )
 
                     if self.error is None:
-
-                        if k != self.sub_len_val - 1:
-                            self.sum += str( self.num ) + self.operators[ k ]
-                        else:
-
-                            self.sum += str( self.num )
-                    else:
-                        self.error = self.error
-                        break
-
+                        if k != self.sub_len_val - 1:  self.sum += str( self.num ) + self.operators[ k ]
+                        else:  self.sum += str( self.num )
+                    else: break
                 else:
                     self.num, self.error = NUMERICAL( self.master, self.data_base,
                                             self.line ).ARITHMETIC_DEEP_CHECKING_INIT( sub_values, self.operators[ k ])
                     if self.error is None:
-                        if k != self.sub_len_val - 1:
-                            self.sum += str( self.num[ 0 ] ) + self.operators[ k ]
-                        else:
-                            self.sum += str( self.num[ 0 ] )
-                    else:
-                        self.error = self.error
-                        break
+                        if k != self.sub_len_val - 1: self.sum += str( self.num[ 0 ] ) + self.operators[ k ]
+                        else: self.sum += str( self.num[ 0 ] )
+                    else: break
 
             if self.error is None:
                 self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE (self.sum, self.data_base,
@@ -826,15 +629,11 @@ class NUMERICAL:
                 if self.error is None:
                     self.numeric.append( str( self._sum_ ) )
                     self.sum = ''
-                else:
-                    self.error = self.error
-
-            else:
-                self.error = self.error
+                else:  pass
+            else: pass
 
         elif self.sub_len_val == self.sub_len_op:
-            if type(  self.operators[ 0 ] ) == type( list()):
-                self.sign       = ''
+            if type(  self.operators[ 0 ] ) == type( list()):  self.sign       = ''
             else:
                 self.sign       = self.operators[ 0 ]
                 self.operators  = self.operators[ 1 : ]
@@ -843,45 +642,29 @@ class NUMERICAL:
             for k, sub_values in enumerate( self._get_values_ ):
                 if type( sub_values ) == type( dict() ):
                     self.type = sub_values[ 'type' ]
-                    self.sub_values = sub_values
-
-                    self.num, self.error = TYPE( self.master, self.sub_values, self.data_base, self.line,
+                    self.sub_values         = sub_values
+                    self.num, self.error    = TYPE( self.master, self.sub_values, self.data_base, self.line,
                                                                                     self.type ).TYPE( main__main )
 
                     if self.error is None:
-                        if k != self.sub_len_val - 1:
-                            self.sum += str( self.num ) + self.operators[ k ]
-                        else:
-                            self.sum += str( self.num )
-                    else:
-                        self.error = self.error
-                        break
-
+                        if k != self.sub_len_val - 1: self.sum += str( self.num ) + self.operators[ k ]
+                        else: self.sum += str( self.num )
+                    else:  break
                 else:
                     self.num, self.error = NUMERICAL(self.master, self.data_base,
                                         self.line).ARITHMETIC_DEEP_CHECKING_INIT(sub_values, self.operators[ k ])
                     if self.error is None:
-
-                        if k != self.sub_len_val - 1:
-                            self.sum += str( self.num[ 0 ] ) + self.operators[ k ]
-                        else:
-                            self.sum += str( self.num[ 0 ] )
-                    else:
-                        self.error = self.error
-                        break
+                        if k != self.sub_len_val - 1:  self.sum += str( self.num[ 0 ] ) + self.operators[ k ]
+                        else:  self.sum += str( self.num[ 0 ] )
+                    else:  break
 
             if self.error is None:
-                self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE ( self.sum, self.data_base,
-                                                                                        self.line ).MATHS_OPERATIONS()
+                self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE ( self.sum, self.data_base, self.line ).MATHS_OPERATIONS()
                 if self.error is None:
                     self.numeric.append( str( self._sum_ ) )
                     self.sum    = ''
-                else:
-                    self.error  = self.error
-
-            else:
-                self.error = self.error
-
+                else: pass
+            else: pass
         else:
             if type( self.operators[ 0 ] ) == type( list() ):
                 self.sign       = '+'
@@ -896,21 +679,13 @@ class NUMERICAL:
                     self.type               = self.sub_values[ 'type' ]
                     self.num, self.error    = TYPE( self.master, self.sub_values, self.data_base, self.line,
                                                                                 self.type ).TYPE( main__main )
-
                     if self.error is None:
                         if k != self.sub_len_val - 1:
-                            try:
-                                self.sum += str( self.num ) + self.operators[ k + 2 ]
-                            except TypeError:
-                                self.sum += str( self.num ) + self.operators[ k + 1 ]
-                            except IndexError:
-                                self.sum += str( self.num ) + self.operators[ k ]
-                        else:
-                            self.sum += str( self.num )
-                    else:
-                        self.error = self.error
-                        break
-
+                            try: self.sum += str( self.num ) + self.operators[ k + 2 ]
+                            except TypeError : self.sum += str( self.num ) + self.operators[ k + 1 ]
+                            except IndexError: self.sum += str( self.num ) + self.operators[ k ]
+                        else:  self.sum += str( self.num )
+                    else:  break
                 else:
                     self.sub_values = sub_values
                     self.num, self.error = NUMERICAL(self.master, self.data_base,
@@ -918,32 +693,21 @@ class NUMERICAL:
 
                     if self.error is None:
                         if k != self.sub_len_val - 1:
-                            try:
-                                self.sum += str( self.num[ 0 ] ) + self.operators[ k + 1 ]
-                            except TypeError:
-                                self.sum += str( self.num[ 0 ] ) + self.operators[ k + 2 ]
-                        else:
-                            self.sum += str( self.num[ 0 ] )
-                    else:
-                        self.error = self.error
-                        break
+                            try:  self.sum += str( self.num[ 0 ] ) + self.operators[ k + 1 ]
+                            except TypeError: self.sum += str( self.num[ 0 ] ) + self.operators[ k + 2 ]
+                        else: self.sum += str( self.num[ 0 ] )
+                    else:  break
 
             if self.error is None:
-                if self.sign == '+':
-                    self.sum = self.sum
-                else:
-                    self.sum = self.sign + self.sum
-
-                self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE(self.sum, self.data_base,
-                                                                              self.line).MATHS_OPERATIONS()
+                if self.sign == '+': self.sum = self.sum
+                else: self.sum = self.sign + self.sum
+                self._sum_, self.error = self.maths_operation.MAGIC_MATH_BASE(self.sum, self.data_base, self.line).MATHS_OPERATIONS()
+                
                 if self.error is None:
                     self.numeric.append( str( self._sum_ ) )
                     self.sum    = ''
-                else:
-                    self.error  = self.error
-
-            else:
-                self.error = self.error
+                else: pass
+            else: pass
 
         return self.numeric, self.error
 
@@ -994,11 +758,8 @@ class DICT:
                                     self._return_   = self.main_dict_value
                                     self.dict_type  = type( self._return_ )
                                 else: pass
-
                             else: self.error = ERRORS( self.line ).ERROR3( self.main_dict, 'a dictionary()')
-
                         else:  self.error = ERRORS( self.line ).ERROR2( self.main_dict )
-
                     else: pass
                 else:
                     self.main_dict, self.error = self.control.CHECK_NAME(self.main_dict)
@@ -1024,13 +785,10 @@ class DICT:
                         else:
                             self.error = ERRORS( self.line ).ERROR5( self._return_, keys)
                             break
-
                 else: pass
-
             elif self.type == 'list'        :
                 self.input = {'numeric': [ self.main_dict ], 'type': 'list'}
-                self._return_, self.error = get_list.LIST(self.input, self.data_base,
-                                                                    self.line).MAIN_LIST(main_string)
+                self._return_, self.error = get_list.LIST(self.input, self.data_base, self.line).MAIN_LIST(main_string)
                 if self.error is None:
                     if type( self._return_) == type( dict()) :
                         self.names = list( self._return_.keys() )
@@ -1044,18 +802,13 @@ class DICT:
                                     else:
                                         self.error = ERRORS(self.line).ERROR3(self._return_, 'a dictionary()')
                                         break
-
                             else:
                                 self.error = ERRORS(self.line).ERROR5(self._return_, keys)
                                 break
                     else: self.error = ERRORS( self.line ).ERROR3( self._return_, 'a dictionary()')
                 else: pass
-
-            elif self.type == 'numeric'     :
-                self.error = ERRORS( self.line ).ERROR0( main_string )
-
+            elif self.type == 'numeric'     : self.error = ERRORS( self.line ).ERROR0( main_string )
             elif self.type == 'class'       :
-                
                 self.num, _ , e, self.error = classInit.CLASS_TREATMENT( self._val_ , self.data_base,
                                                   self.line ).TREATMENT( )
                 if self.error is None:
@@ -1087,10 +840,9 @@ class DICT:
                         self.error                              = _[ 0 ]
                         self.data_base[ 'no_printed_values' ]   = []
                 else: self.error = self.error
-            
             else: pass
             
-            if type( self._return_ ) == type( str() ): return self._return_ , self.error#'"'+self._return_+'"', self.error
+            if type( self._return_ ) == type( str() ): return self._return_ , self.error 
             else: return self._return_ , self.error
 
         except TypeError:
@@ -1169,7 +921,7 @@ class DICT:
                     else: self.error = ERRORS( self.line ).ERROR3( self._return_, 'a dictionary()')
                 else: pass 
                 
-                if type( self._return_ ) == type( str() ): return self._return_ , self.error#'"'+self._return_+'"', self.error
+                if type( self._return_ ) == type( str() ): return self._return_ , self.error 
                 else: return self._return_ , self.error
                             
             else: return None, None
@@ -1253,13 +1005,11 @@ class DICT:
                                         else:
                                             self.error = ERRORS(self.line).ERROR3(self._return_, 'a dictionary()')
                                             break
-
                                 else:
                                     if i == len( self.key_names ) - 1: pass
                                     else:
                                         self.error = ERRORS( self.line ).ERROR5( self._return_, self.key_names[  i - 2 ])
                                         break
-
                         else: pass
                     else: pass
                 else: self.error = ERRORS( self.line ).ERROR0( self.main_dict )
@@ -1267,9 +1017,7 @@ class DICT:
                 self.string, self.error = self.control.DELETE_SPACE( self.string )
                 if self.error is None:
                     self._name_, self.error = self.control.CHECK_NAME( self.string )
-                else:
-                    self.error = ERRORS( self.line ).ERROR0( self.main_dict )
-
+                else: self.error = ERRORS( self.line ).ERROR0( self.main_dict )
         elif self.type == 'list'        :
             self.idd        = None
             self.string     = ''
@@ -1300,7 +1048,6 @@ class DICT:
                                             else:
                                                 self.error = ERRORS(self.line).ERROR3(self._return_, 'a dictionary()')
                                                 break
-
                                     else:
                                         if i == len( self.key_names ) - 1: pass
                                         else:
@@ -1314,12 +1061,9 @@ class DICT:
                 self.string, self.error = self.control.DELETE_SPACE( self.string )
                 if self.error is None:
                     self._name_, self.error = self.control.CHECK_NAME( self.string )
-                else:
-                    self.error = ERRORS( self.line ).ERROR0( self.main_dict )
+                else:  self.error = ERRORS( self.line ).ERROR0( self.main_dict )
 
-        elif self.type == 'numeric'     : 
-            self.error = ERRORS(self.line).ERROR0(main_string)
-        
+        elif self.type == 'numeric'     :  self.error = ERRORS(self.line).ERROR0(main_string)
         else: pass
 
         return self._name_, self.key_names, self.info,  self.error
@@ -1338,11 +1082,8 @@ class TYPE:
         self._return_           = None
 
         if   self.type in [ 'numeric', None, 'complex' ]:
-            #self.num, self.error = NUMERICAL( self.main_master, self.data_base,
-            #                                 self.line).NUEMERICAL_CHECK( self.master )
             self.num, self.error = NumeriCal.NUMERICAL( self.master, self.data_base, self.line ).CHECK()
-            if self.error is None:
-                self._return_ = self.num
+            if self.error is None: self._return_ = self.num
             else:
                 if self.error : pass
                 else:
@@ -1355,45 +1096,31 @@ class TYPE:
                 if 'values' not in self.lists:
                     self.num, self.error = get_dictionary.DICTIONARY(self.master, self.data_base,
                                                                      self.line).MAIN_DICT( main_string )
-                else:
-                    #print( self.type,'@@', self.master)
-                    self.num, self.error = DICT(self.master, self.data_base,
-                                                self.line).DICT_CHECK( main_string )
-                if self.error is None:
-                    self._return_ = self.num
-                else:
-                    self.error = self.error
-            else:
-                pass
+                else:  self.num, self.error = DICT(self.master, self.data_base, self.line).DICT_CHECK( main_string )
+                
+                if self.error is None: self._return_ = self.num
+                else:  pass
+            else:  pass
         elif self.type in [ 'list' ]                    :
             if type( self.master ) == type( dict() ):
                 self.lists = list( self.master.keys() )
                 if 'values' not in self.lists:
                     self.num, self.error = get_list.LIST(self.master, self.data_base,
                                                          self.line).MAIN_LIST( main_string )
-                    if self.error is None:
-                        self._return_ = self.num
+                    if self.error is None: self._return_ = self.num
                     else: pass
                 else: self.error = ERRORS( self.line ).ERROR0( main_string )
-
             else: pass
         elif self.type in [ 'tuple' ]                   :
-            
             if type( self.master ) == type( dict() ):
                 self.lists = list( self.master.keys() )
                 if 'values' not in self.lists:
                     self.num, self.error = get_tuple.TUPLE(self.master, self.data_base,
                                                            self.line).MAIN_TUPLE( main_string )
-                    if self.error is None:
-                        self._return_ = self.num
-                    else:
-                        self.error = self.error
-
-                else:
-                    self.error = ERRORS(self.line).ERROR0( main_string )
-
-            else:
-                pass
+                    if self.error is None:  self._return_ = self.num
+                    else:  self.error = self.error
+                else: self.error = ERRORS(self.line).ERROR0( main_string )
+            else:  pass
         elif self.type in [ 'string' ]                  :
             if type( self.master ) == type( dict() ):
                 self.lists = list( self.master.keys() )
@@ -1420,19 +1147,11 @@ class TYPE:
                 if 'values' not in self.lists:
                     self.num, self.error = get_boolean.BOOLEAN(self.master, self.data_base,
                                                                self.line).MAIN_BOOLEAN( main_string )
-                    if self.error is None:
-                        self._return_ = self.num
-                    else:
-                        self.error = self.error
-
-                else:
-                    self.error = ERRORS(self.line).ERROR0( main_string )
-
-            else:
-                pass
+                    if self.error is None: self._return_ = self.num
+                    else:  self.error = self.error
+                else:  self.error = ERRORS(self.line).ERROR0( main_string )
+            else:  pass
         elif self.type in [ 'function' ]                :
-
-            #print( self.master)
             self.num, _, e, self.error = func.FUNCTION_TREATMENT( self.master, self.data_base,
                                                   self.line ).TREATMENT( main_string, self.master )
             if self.error is None:
@@ -1448,13 +1167,9 @@ class TYPE:
                     self.error = _[ 0 ]
                     if self.error is None: pass 
                     else: self.data_base[ 'no_printed_values' ] = []
-                
-                
             else: pass
         elif self.type in [ 'class' ]                   :
-            
-            self.num, _ , e, self.error = classInit.CLASS_TREATMENT( self.master, self.data_base,
-                                                  self.line ).FINAL_TREATEMENT()#TREATMENT( )
+            self.num, _ , e, self.error = classInit.CLASS_TREATMENT( self.master, self.data_base, self.line ).FINAL_TREATEMENT()
             if self.error is None:
                 if not  _ :
                     self._return_ = self.num
@@ -1506,19 +1221,13 @@ class FINAL_VALUE:
             else:
                 if   len( self.logical[ i ] ) == 1:
                     if self.logical[ i ][ 0 ] is not None:
-                        if self.logical[ i ][ 0 ] not in [ '?', 'not' ]:
-                            value = value
-                        else:
-                            value = value[ 0 ]
+                        if self.logical[ i ][ 0 ] not in [ '?', 'not' ]:  value = value
+                        else:  value = value[ 0 ]
                         self._return_, self.error = FINAL_VALUE( value, self.data_base,  self.line, self.logical,
                                                                  ).LOGICAL_OPERATION( self.logical[ i ][ 0 ], _key_=_key_ )
-                        if self.error is None:
-                            self._return_ = self._return_
-                        else:
-                            self.error = self.error
-                            break
-                    else:
-                        self._return_ = value[ 0 ]
+                        if self.error is None: self._return_ = self._return_
+                        else:  break
+                    else:  self._return_ = value[ 0 ]
 
                 elif len( self.logical[ i ])  == 2:
                     self._op_   = None
@@ -1526,81 +1235,56 @@ class FINAL_VALUE:
                         if op == '?':
                             self._value_, self.error = FINAL_VALUE( value[ k ], self.data_base, self.line, self.logical
                                                             ).LOGICAL_OPERATION( self.logical[ i ][ k ],_key_=_key_  )
-                            if self.error is None:
-                                value[ k ] = self._value_
-
-                            else:
-                                self.error = self.error
-                                break
-                        else:
-                            self._op_ = op
+                            if self.error is None:  value[ k ] = self._value_
+                            else: break
+                        else: self._op_ = op
 
                     if self.error is None:
                         self._return_, self.error = FINAL_VALUE(value, self.data_base, self.line, self.logical
                                                                 ).LOGICAL_OPERATION( self._op_, _key_=_key_  )
-                    else:
-                        self.error = self.error
-                        break
-
+                    else:  break
                 elif len( self.logical [ i ]) == 3:
                     self._op_       = '?'
                     self._value_    = [ value[ 0 ], value[ -1 ]]
                     for k, val in enumerate( self._value_ ):
                         self._val_, self.error = FINAL_VALUE( val, self.data_base, self.line, self.logical
                                                                 ).LOGICAL_OPERATION( self._op_, _key_=_key_  )
-                        if self.error is None:
-                            self._value_[ k ] = self._val_
-                        else:
-                            self.error = self.error
-                            break
+                        if self.error is None: self._value_[ k ] = self._val_
+                        else: break
                     if self.error is None:
                         self._op_ = '=='
                         self._return_, self.error = FINAL_VALUE(self._value_, self.data_base, self.line, self.logical
                                                                         ).LOGICAL_OPERATION( self._op_, _key_=_key_  )
-                    else:
-                        self.error = self.error
-                        break
+                    else: break
 
         return self._return_, self.error
+    
     def LOGICAL_OPERATION(self, operator: str, _key_=False):
         self._return_       = None
         self.error          = None
         self.all_type       = [ type(int()), type(bool()), type(float()) ]
 
         try:
-            if operator == '==':
-                self._return_ = self.master[ 0 ] == self.master[ 1 ]
-            elif operator == '>=':
-                self._return_ = self.master[ 0 ] >= self.master[ 1 ]
-            elif operator == '<=':
-                self._return_ = self.master[ 0 ] <= self.master[ 1 ]
-            elif operator == '!=':
-                self._return_ = self.master[ 0 ] != self.master[ 1 ]
-            elif operator == '>':
-                self._return_ = self.master[ 0 ] > self.master[ 1 ]
-            elif operator == '<':
-                self._return_ = self.master[ 0 ] < self.master[ 1 ]
+            if   operator == '==':  self._return_ = self.master[ 0 ] == self.master[ 1 ]
+            elif operator == '>=':  self._return_ = self.master[ 0 ] >= self.master[ 1 ]
+            elif operator == '<=':  self._return_ = self.master[ 0 ] <= self.master[ 1 ]
+            elif operator == '!=':  self._return_ = self.master[ 0 ] != self.master[ 1 ]
+            elif operator == '>' :  self._return_ = self.master[ 0 ] > self.master[ 1 ]
+            elif operator == '<' :  self._return_ = self.master[ 0 ] < self.master[ 1 ]
             elif operator == 'in':
                 if type(self.master[ 1 ] ) in [ type( list() ), type( str( ) ), type( tuple() ) ]:
                     self._return_ = self.master[ 0 ] in self.master[ 1 ]
-                else:
-                    self.error = ERRORS( self.line ).ERROR6( self.master[ 1 ] )
+                else:  self.error = ERRORS( self.line ).ERROR6( self.master[ 1 ] )
             elif operator == 'not in':
                 if type(self.master[ 1 ] ) in [ type( list() ), type( str( ) ), type( tuple() ) ]:
                     self._return_ = self.master[ 0 ] not in self.master[ 1 ]
-                else:
-                    self.error = ERRORS( self.line ).ERROR6( self.master[ 1 ] )
-
-            elif operator == 'is':
-                self._return_ = self.master[ 0 ] is self.master[ 1 ]
-            elif operator == 'is not':
-                self._return_ = self.master[ 0 ] is not self.master[ 1 ]
-            elif operator == 'not':
-                self._return_ = not self.master
-            elif operator == '?':
+                else: self.error = ERRORS( self.line ).ERROR6( self.master[ 1 ] )
+            elif operator == 'is'       :  self._return_ = self.master[ 0 ] is self.master[ 1 ]
+            elif operator == 'is not'   : self._return_ = self.master[ 0 ] is not self.master[ 1 ]
+            elif operator == 'not'      : self._return_ = not self.master
+            elif operator == '?'        :
                 self._return_ = FINAL_VALUE( self.master, self.data_base, self.line, None ).CONVERSION()
                 self.data_base['irene'] = True
-
         except TypeError:
             ob1 = FINAL_VALUE(self.master[ 0 ], self.data_base, self.line, None).CONVERSION()
             ob2 = FINAL_VALUE(self.master[ 1 ], self.data_base, self.line, None).CONVERSION()
@@ -1611,48 +1295,37 @@ class FINAL_VALUE:
                             if type( self.master[ 1 ] ) in self.all_type:
                                 self._return_, self.number, self.error = FINAL_VALUE(self.master[ 0 ], self.data_base,
                                                                     self.line,  operator ).GET_DATA( self.master[ 1 ] )
-                            else:
-                                self.error = ERRORS(self.line).ERROR7(operator, ob1, ob2)
-                    else:
-                        self.error = ERRORS( self.line ).ERROR7( operator, ob1, ob2 )
-                else:
-                    self.error = ERRORS( self.line ).ERROR7( operator, ob1, ob2 )
+                            else:  self.error = ERRORS(self.line).ERROR7(operator, ob1, ob2)
+                    else:  self.error = ERRORS( self.line ).ERROR7( operator, ob1, ob2 )
+                else: self.error = ERRORS( self.line ).ERROR7( operator, ob1, ob2 )
             else:
                 if self.master[ 0 ] in self.all_type:
-                    if self.master[ 1 ] in self.all_type:
-                        pass
-                    else:
-                        self.error = ERRORS( self.line ).ERROR7( operator, ob1, ob2 )
-                else:
-                    self.error = ERRORS( self.line ).ERROR7( operator, ob1, ob2 )
+                    if self.master[ 1 ] in self.all_type:  pass
+                    else:  self.error = ERRORS( self.line ).ERROR7( operator, ob1, ob2 )
+                else: self.error = ERRORS( self.line ).ERROR7( operator, ob1, ob2 )
 
         return self._return_, self.error
+    
     def BOOLEAN_OPERATION(self, operator: str):
         self._return_           = None
 
         for i, value in enumerate( self.master ):
-            if value == True:
-                self.master[ i ] = 1
-            elif value == False:
-                self.master[ i ] = 0
-            else:
-                self.master[ i ] = 1
+            if value == True: self.master[ i ] = 1
+            elif value == False:  self.master[ i ] = 0
+            else:  self.master[ i ] = 1
 
         self._return_   = self.master[ 0 ]
         self.master     = self.master[ 1 : ]
 
         for i, op in enumerate( operator ):
-            if op == 'or':
-                self._return_ += self.master[ i ]
-            elif op == 'and':
-                self._return_ *= self.master[ i ]
+            if op == 'or'   :  self._return_ += self.master[ i ]
+            elif op == 'and':  self._return_ *= self.master[ i ]
 
-        if self._return_ != 0:
-            self._return_ = True
-        else:
-            self._return_ = False
+        if self._return_ != 0: self._return_ = True
+        else: self._return_ = False
 
         return self._return_
+    
     def CONVERSION(self):
         self._return_       = None
         self.all_Float      = [ numpy.float16, numpy.float32, numpy.float64 ]
@@ -1671,9 +1344,11 @@ class FINAL_VALUE:
         elif type( self.master ) in self.all_Float      :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
         elif type( self.master ) in self.all_Int        :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
         elif type( self.master ) == type( numpy.array([1])):self._return_ = '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0), bm.fg.blue)
+        elif type( self.master ) == type( pd.DataFrame({'r':[0, 0]})) : self._return_ = '{}{}table(){}'.format(bm.fg.blue, bm.fg.rbg(204,153,255), bm.fg.blue)
         else:  self._return_ = 'type not found'
 
         return self._return_+bm.init.reset
+    
     def GET_DATA(self, object: any, out_side:bool = True):
         self._return_       = []
         self.error          = None
@@ -1698,7 +1373,6 @@ class FINAL_VALUE:
                     else:
                         if out_side is False:  self._return_.append( False )
                         else:  pass
-
                 except TypeError:
                     ob1 = FINAL_VALUE(val, self.data_base, self.line, None).CONVERSION()
                     ob2 = FINAL_VALUE(object, self.data_base, self.line, None).CONVERSION()
@@ -1725,32 +1399,21 @@ class COMPLEX_ANALYZE:
         if self.real[ 0 ] in [ '-' ]:
             if self.real[ 1 ] not in [ 'i', 'n' ]:
                 if self.imag[ 0 ] in [ '-' ]:
-                    if self.imag[ 1 ] not in [ 'i', 'n' ]:
-                        pass
-                    else:
-                        self.error = ERRORS(self.line).ERROR9('complex')
+                    if self.imag[ 1 ] not in [ 'i', 'n' ]: pass
+                    else: self.error = ERRORS(self.line).ERROR9('complex')
                 else:
-                    if self.imag[ 0 ] in [ 'i', 'n' ]:
-                        self.error = ERRORS(self.line).ERROR9('complex')
-                    else:
-                        pass
-            else:
-                self.error = ERRORS(self.line).ERROR9('complex')
-
+                    if self.imag[ 0 ] in [ 'i', 'n' ]:  self.error = ERRORS(self.line).ERROR9('complex')
+                    else: pass
+            else:  self.error = ERRORS(self.line).ERROR9('complex')
         else:
-            if self.real[ 0 ] in [ 'i', 'n' ]:
-                self.error = ERRORS(self.line).ERROR9('complex')
+            if self.real[ 0 ] in [ 'i', 'n' ]:  self.error = ERRORS(self.line).ERROR9('complex')
             else:
                 if self.imag[ 0 ] in [ '-' ]:
-                    if self.imag[ 1 ] not in [ 'i', 'n' ]:
-                        pass
-                    else:
-                        self.error = ERRORS(self.line).ERROR9('complex')
+                    if self.imag[ 1 ] not in [ 'i', 'n' ]: pass
+                    else: self.error = ERRORS(self.line).ERROR9('complex')
                 else:
-                    if self.imag[ 0 ] in [ 'i', 'n' ]:
-                        self.error = ERRORS(self.line).ERROR9('complex')
-                    else:
-                        pass
+                    if self.imag[ 0 ] in [ 'i', 'n' ]:  self.error = ERRORS(self.line).ERROR9('complex')
+                    else:  pass
 
         return self.master, self.error
 
@@ -1768,7 +1431,6 @@ class ARRITHMETIC_DEEP_CHECKING:
         self.calculations       = []
         self.history_of_op      = ''
         self.numeric            = []
-
         self.length_of_values   = len( self.values )
         self.length_of_op       = len( self.operators )
 
@@ -1785,7 +1447,6 @@ class ARRITHMETIC_DEEP_CHECKING:
                         if k != self.length_of_values - 1:
                             self.calculations.append( [ self._return_ ] )
                             self.calculations.append( self.operators[ k ] )
-
                         else: self.calculations.append( [ self._return_ ] )
                     else: break
                 else:
@@ -1796,14 +1457,11 @@ class ARRITHMETIC_DEEP_CHECKING:
                         if k != self.length_of_values - 1:
                             self.calculations.append( [ self._return_[ 0 ] ] )
                             self.calculations.append(self.operators[ k ] )
-
                         else: self.calculations.append( [ self._return_[ 0 ] ] )
                     else: break
-
             if self.error is None:
                 for string in self.calculations:
-                    if type( string ) == type( str() ):
-                        self.history_of_op += string
+                    if type( string ) == type( str() ):  self.history_of_op += string
                     else: pass
 
                 self._values_, self.error = mathematics.MAGIC_MATH_BASE(self.calculations, self.data_base,
@@ -1816,7 +1474,6 @@ class ARRITHMETIC_DEEP_CHECKING:
             if type( self.operators[ 0 ]) == type( list() ):
                 self.sign       = '+'
                 self.operators  = self.operators
-
             else:
                 self.sign       = self.operators[ 0 ]
                 self.operators  = self.operators[ 1 : ]
@@ -1843,7 +1500,6 @@ class ARRITHMETIC_DEEP_CHECKING:
                                 self.calculations.append( [ self._return_ ] )
                                 self.calculations.append( self.operators[ k + self.index[ -1 ] + 1 ])
                         else:  self.calculations.append( [ self._return_ ] )
-
                     else: break
 
                 else:
@@ -1874,23 +1530,19 @@ class ARRITHMETIC_DEEP_CHECKING:
                             except TypeError:
                                 self.calculations.append( [ self._return_[ 0 ] ] )
                                 self.calculations.append( self.operators[ k + 2 ] )
-                        else:
-                            self.calculations.append( [ self._return_[ 0 ] ] )
+                        else: self.calculations.append( [ self._return_[ 0 ] ] )
                     else: break
 
             if self.error is None:
                 for string in self.calculations:
                     if type(string) == type(str()):
                         self.history_of_op += string
-                    else:
-                        pass
+                    else:  pass
                 self._values_, self.error = mathematics.MAGIC_MATH_BASE(self.calculations, self.data_base,
                                                             self.history_of_op, self.line).MATHS_OPERATIONS()
 
-                if self.error is None:
-                    self.numeric.append( self._values_ )
-                else:
-                    self.error = self.error
+                if self.error is None: self.numeric.append( self._values_ )
+                else:  self.error = self.error
             else: pass
 
         return self.numeric, self.error
@@ -1919,7 +1571,6 @@ class ARRITHMETIC_DEEP_CHECKING:
                             self.calculations.append( self.operators[ k ])
                         else: self.calculations.append( [ self._return_ ] )
                     else: break
-
                 else:
                     self._return_, self.error = ARRITHMETIC_DEEP_CHECKING(self.master, self.sub_values,
                                                     self.operators[ k ], self.data_base, self.line).INIT( main_string )
@@ -1950,8 +1601,7 @@ class ARRITHMETIC_DEEP_CHECKING:
             else:
                 self.sign       = self.operators[ 0 ]
                 self.operators  = self.operators[ 1 : ]
-                if self.sign in [ '-' ]:
-                    self.calculations.append( self.sign )
+                if self.sign in [ '-' ]:  self.calculations.append( self.sign )
                 else: pass
 
             for k, sub_values in enumerate( self.values ):
@@ -1959,16 +1609,13 @@ class ARRITHMETIC_DEEP_CHECKING:
 
                 if type( self.sub_values ) == type( dict() ):
                     self.type       = sub_values[ 'type' ]
-                    self._return_, self.error = TYPE( self.master, self.sub_values, self.data_base, self.line,
-                                                                                self.type ).TYPE( main_string )
-
+                    self._return_, self.error = TYPE( self.master, self.sub_values, self.data_base, self.line, self.type ).TYPE( main_string )
                     if self.error is None:
                         if k != self.length_of_values - 1:
                             self.calculations.append( [ self._return_ ] )
                             self.calculations.append( self.operators[ k ] )
                         else: self.calculations.append( [ self._return_ ] )
                     else: break
-
                 else:
                     self._return_, self.error = ARRITHMETIC_DEEP_CHECKING(self.master, self.sub_values,
                                     self.operators[ k ], self.data_base, self.line).INIT( main_string )
@@ -1979,7 +1626,6 @@ class ARRITHMETIC_DEEP_CHECKING:
                             self.calculations.append( self.operators[ k ] )
                         else: self.calculations.append( [ self._return_[ 0 ] ] )
                     else: break
-
             if self.error is None:
                 for string in self.calculations:
                     if type(string) == type(str()):
@@ -1993,7 +1639,6 @@ class ARRITHMETIC_DEEP_CHECKING:
                     self.numeric.append(self._values_)
                 else: pass
             else: pass
-
         else:
             if type( self.operators[ 0 ] ) == type( list() ):
                 self.sign       = '+'
@@ -2001,8 +1646,7 @@ class ARRITHMETIC_DEEP_CHECKING:
             else:
                 self.sign = self.operators[ 0 ]
                 self.operators = self.operators[ 1 : ]
-                if self.sign in [ '-' ]:
-                    self.calculations.append( self.sign )
+                if self.sign in [ '-' ]: self.calculations.append( self.sign )
                 else: pass
 
             for k, sub_values in enumerate( self.values ):
@@ -2010,9 +1654,7 @@ class ARRITHMETIC_DEEP_CHECKING:
 
                 if type( self.sub_values ) == type( dict() ):
                     self.type               = self.sub_values[ 'type' ]
-                    self._return_, self.error    = TYPE( self.master, self.sub_values, self.data_base, self.line,
-                                                                                self.type ).TYPE( main_string )
-
+                    self._return_, self.error    = TYPE( self.master, self.sub_values, self.data_base, self.line, self.type ).TYPE( main_string )
                     if self.error is None:
                         if k != self.length_of_values - 1:
                             try:
@@ -2024,13 +1666,11 @@ class ARRITHMETIC_DEEP_CHECKING:
                             except IndexError:
                                 self.calculations.append( [ self._return_ ] )
                                 self.calculations.append( self.operators[ k ] )
-                        else:
-                            self.calculations.append( [ self._return_ ] )
+                        else:  self.calculations.append( [ self._return_ ] )
                     else: break
                 else:
                     self._return_, self.error = ARRITHMETIC_DEEP_CHECKING(self.master, self.sub_values,
                                                 self.operators[ k ], self.data_base, self.line).INIT( main_string )
-
                     if self.error is None:
                         if k != self.length_of_values - 1:
                             try:
@@ -2041,13 +1681,11 @@ class ARRITHMETIC_DEEP_CHECKING:
                                 self.calculations.append( self.operators[ k + 2 ] )
                         else:  self.calculations.append( [ self._return_[ 0 ] ] )
                     else: break
-
             if self.error is None:
                 for string in self.calculations:
                     if type( string ) == type( str() ):
                         self.history_of_op += string
                     else: pass
-
                 self._values_ , self.error = mathematics.MAGIC_MATH_BASE( self.calculations, self.data_base,
                                                         self.history_of_op, self.line).MATHS_OPERATIONS()
                 if self.error is None:
@@ -2082,8 +1720,8 @@ class ERRORS:
         return self.error+self.reset
 
     def ERROR2(self, string: str):
-        error = '{}was not found. {}line: {}{}'.format(ne, we, ke, self.line)
-        self.error = '{}{} : {}<< {} >> '.format(ne, 'NameError', ae, string) + error
+        error = '{}was not found. {}line: {}{}'.format(self.red, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('NameError')+'{}<< {} >> '.format( self.cyan, string) + error
 
         return self.error+self.reset
 

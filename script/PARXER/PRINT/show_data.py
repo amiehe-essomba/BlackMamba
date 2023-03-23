@@ -5,18 +5,21 @@
 Returns:
     no returned values
 """
-from    urllib.parse import parse_qs
-from    script.STDIN.LinuxSTDIN    import bm_configure as bm
+
 import numpy
+import pandas as pd
+from  CythonModules.Windows           import frame
+from  script.STDIN.LinuxSTDIN    import bm_configure as bm
+
 
 class SHOW :
     def __init__(self,
-                    master      : any,              # master can take any value (list, tuple, .....)
-                    data_base   : dict,             # data base
-                    key         : bool              # key to print or not value, if key == False print is activated
-                                                    # else print is set on False. in the program to print value we need to use
-                                                    # | print * something |, else anything will no appear on the screen.
-                 ):
+            master      : any,              # master can take any value (list, tuple, .....)
+            data_base   : dict,             # data base
+            key         : bool              # key to print or not value, if key == False print is activated
+                                            # else print is set on False. in the program to print value we need to use
+                                            # | print * something |, else anything will no appear on the screen.
+            ):
         self.master         = master
         self.key            = key
         self.data_base      = data_base
@@ -33,19 +36,22 @@ class SHOW :
     def SHOW(self, 
              loop : bool = False        # for loop statement ( for, while ), default value is False
              ):
-
         # get master type
         self.type       = type( self.master )
         self.color      = ''
-
+        
         # calor set in function of the master type
         self.color      = SHOW( self.type, self.data_base, self.key ).TYPE()
 
+        if self.type == type(pd.DataFrame({'r':[0, 0]})):
+            s,  self.master, tt, err = frame.FRAME({"s": self.master, 'id':list(self.master.index)}, 1).FRAME(False, 'DataFrame', True)
+        else: pass 
+        
         # convert master to a string()
         self.master     = str( self.master )
 
-        self.string2    = '{}{}{}'.format(self.color, self.master, self.reset)
-        self.string1    = '{}[{} result{} ]{} : {}'.format( self.blue, self.orange, self.blue,  self.white, self.reset )
+        self.string2    = bm.init.bold+'{}{}{}'.format(self.color, self.master, self.reset)
+        self.string1    = bm.init.bold+'{}[{} result{} ]{} : {}'.format( self.blue, self.orange, self.blue,  self.white, self.reset )
 
         if self.type == type( str() ):
             try:
@@ -59,7 +65,7 @@ class SHOW :
         else: pass
 
         self.string2 = LineFeed(self.string2, self.type)
-        self.string = self.string1 + self.string2
+        self.string = bm.init.bold+self.string1 + self.string2
 
         # print master if key is set on False
         if loop is False:
@@ -81,7 +87,10 @@ class SHOW :
 
         # get color
         self.color  = SHOW( self.type, self.data_base, self.key ).TYPE()
-
+        
+        if self.type == type(pd.DataFrame({'r':[0, 0]})):
+            s, master, tt, err = frame.FRAME({"s": self.master,'id':list(self.master.index)},  1).FRAME(False, "DataFrame", True)
+        else: pass 
         # put master as a string()
         self.master = str( self.master )
 
@@ -111,7 +120,7 @@ class SHOW :
         self.all_Int        = [ numpy.int8, numpy.int16, numpy.int32, numpy.int64 ]
 
         if   self.master == type( list())       :   self._return_ = bm.fg.rbg(255, 255, 0)
-        elif self.master == type( dict() )      :   self._return_ = self.magenta
+        elif self.master == type( dict() )      :   self._return_ = bm.fg.rbg(186,85,211)
         elif self.master == type( int() )       :   self._return_ = self.red
         elif self.master == type( float() )     :   self._return_ = bm.fg.rbg(0, 255, 0)
         elif self.master == type( tuple() )     :   self._return_ = self.blue
@@ -123,18 +132,21 @@ class SHOW :
         elif self.master in self.all_Float      :   self._return_ = bm.fg.rbg(0, 255, 0)
         elif self.master in self.all_Int        :   self._return_ = self.red
         elif self.master == type(numpy.array([0])): self._return_ = bm.fg.rbg(255,165,0)
+        elif self.master == type(pd.DataFrame({'r':[0, 0]})) : self._return_ = bm.fg.rbg(255,165,40)
         else:                                       self._return_ = bm.fg.rbg(255, 0, 0)
 
         return self._return_
 
 def LineFeed( string : str, typ : any):
-    if typ in [type(str()), type(numpy.array([0]))]:
+    if typ in [type(str()), type(numpy.array([0])),type(pd.DataFrame({'r':[0, 0]}))]:
         if '\n' in string:
             if '\n' == string[0]: pass 
             else: string = '\n'+string 
-        else: pass 
+        else: pass       
     else: pass
     
     return string
+    
+    
     
     

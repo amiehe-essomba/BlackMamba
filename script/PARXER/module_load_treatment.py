@@ -1,8 +1,8 @@
-from script.LEXER.FUNCTION      import main
-from script.PARXER              import parxer_assembly
-from script.DATA_BASE           import data_base as db
-from src.modulesLoading         import error as er
-
+from script.LEXER.FUNCTION                      import main
+from script.PARXER                              import parxer_assembly
+from script.DATA_BASE                           import data_base    as db
+from src.modulesLoading                         import error        as er
+from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import loading
 
 class CLASSIFICATION:
     def __init__(self, DataBase: dict, line: int):
@@ -67,7 +67,7 @@ class CLASSIFICATION:
         else: pass
         
         self.vars, self._values_ = [], []
-         
+        
         if self.error is None:
             if self.db['global_vars']['values']:
                 for i, value in enumerate( self.db['global_vars']['values'] ):
@@ -417,6 +417,14 @@ class CLASSIFICATION:
                         else: pass
                 else: pass
         
+        self.DataBase = loading.Loading( info.copy(), self.DataBase.copy(), self.db.copy()) 
+        #if info['module_main'][0] in self.DataBase['modulesImport']['moduleLoading']['names']:
+		#self.idd = self.DataBase['modulesImport']['moduleLoading']['names'].index(info['module_main'][0])
+        #self.DataBase['modulesImport']['moduleLoading']['loading'][self.idd] = self.db['modulesImport' ].copy()
+        #else: 
+        #    self.DataBase['modulesImport']['moduleLoading']['names'].append(info['module_main'][0])
+        #    self.DataBase['modulesImport']['moduleLoading']['loading'].append(self.db['modulesImport' ].copy())
+            
         INIT(self.db).INIT()
          
         return self.error 
@@ -480,6 +488,8 @@ class INIT:
         self.db['modulesImport']['mainClassNames']              = []
         self.db['modulesImport']['modules']                     = []
         self.db['modulesImport']['modulesLoad']                 = []
+        self.db['modulesImport']['moduleLoading']['names']      = []
+        self.db['modulesImport']['moduleLoading']['loading']    = []
         self.db['modulesImport']['init']                        = []
         self.db[ 'modulesImport' ][ 'alias' ]                   = []
         self.db['globalIndex']                                  = None

@@ -1,11 +1,9 @@
-from script.STDIN.LinuxSTDIN                            import bm_configure as bm
-try:
-    from CythonModules.Windows                          import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                            import fileError as fe 
+from script.STDIN.LinuxSTDIN                import bm_configure as bm
+from CythonModules.Windows                  import fileError    as fe 
+
 
 class ERRORS:
-    def __init__(self, line):
+    def __init__(self, line : int) -> str:
         self.line       = line
         self.cyan       = bm.fg.cyan_L
         self.red        = bm.fg.red_L
@@ -33,4 +31,10 @@ class ERRORS:
         error = '{}returns no values. {}line: {}{}'.format(self.yellow, self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'AttributeError' ).Errors() +'{}{} '.format(self.cyan, func) + error
 
+        return self.error+self.reset
+    
+    def ERROR3(self, l1 : list, l2 : list):
+        error = '{}{} {}into {}{}. {}line: {}{}'.format(self.red, l2, self.white, self.green, l1, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}could not broadcast input ndarray from ndim '.format( self.white ) + error
+        
         return self.error+self.reset

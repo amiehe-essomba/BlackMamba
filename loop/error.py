@@ -1,6 +1,6 @@
-from script.STDIN.LinuxSTDIN                                import bm_configure as bm
-try                 : from CythonModules.Windows            import fileError as fe
-except ImportError  : from CythonModules.Linux              import fileError as fe
+from script.STDIN.LinuxSTDIN          import bm_configure as bm
+from CythonModules.Windows            import fileError    as fe
+
 
 class ERRORS:
     def __init__(self, line: int):

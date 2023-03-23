@@ -16,9 +16,9 @@ from functions                                          import internalDef      
 from statement.comment                                  import externalCmt
 from script.PARXER.PARXER_FUNCTIONS.WHILE               import while_statement
 from src.functions                                      import type_of_data             as tod
+from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS           import externalLoading          as extL 
 from updatingDataBase                                   import updating
-try:  from CythonModules.Linux                          import loop_for
-except ImportError: from CythonModules.Windows          import loop_for
+from CythonModules.Windows                              import loop_for
 
 
 class FUNCTION_TREATMENT:
@@ -58,7 +58,7 @@ class FUNCTION_TREATMENT:
             self.function_info          = self.data_base[ 'functions' ][ self.function_location ]
             self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
                                                                         self.line ).MAIN( def_key = 'indirect' )
-            
+
             if self.error is None:
                 self._return_,  self.error = function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name )
@@ -175,7 +175,7 @@ class FUNCTION_TREATMENT:
             if self.error is None:
                 self._return_,  self.error =function.FUNCTION( self.dictionary[ 'functions' ]  ,
                              self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name )
-            
+
                 if self.error is None:
                     self._new_data_base_, self.error  = function.FUNCTION( [ self.function_info ], self.data_base,
                                                     self.line).INIT_FUNCTION( self.normal_expression, self._return_ )
@@ -296,7 +296,8 @@ class FUNCTION_TREATMENT:
                 else: pass
             else: pass
         else:
-            #
+            #print( self.data_base['func_names'], self.function_name)#[0][0]
+            self.original_module = self.data_base['modulesImport']['modules'][ 0 ]
             self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
             if self.mod['key'] is True: 
                 self.data_base[ 'assigment' ]   = self.function_name+'( )'
@@ -309,7 +310,7 @@ class FUNCTION_TREATMENT:
                     if self.error is None:
                         self._new_data_base_, self.error  = function.FUNCTION( [ self.function_info ], self.data_base,
                                                     self.line).INIT_FUNCTION( self.normal_expression, self._return_ )
-
+                        
                         if self.error is None:
                             self.new_data_base              = self._new_data_base_[ 'data_base' ]
                             self._type_                     = self._new_data_base_['type']
@@ -319,12 +320,11 @@ class FUNCTION_TREATMENT:
                             
                             loading.LOAD(self.data_base['modulesImport']['func_names'][self.mod['id1']], self.function_name).INITIALIZE(self.new_data_base, 
                                               self.data_base['modulesImport']['functions'][self.mod['id1']])
-                             
+                            
                             #self.n = self.data_base['modulesImport']['fileNames'].index(self.function_name) #    index(_main_)
                             #self.n = 0
-                            #try:
-                            
-                            self.n = self.data_base[ 'modulesImport' ][ 'mainFuncNames' ][self.mod['id1']].index( self.function_name)
+                            #print(self.mod, self.data_base[ 'modulesImport' ][ 'mainFuncNames' ], self.data_base[ 'modulesImport' ][ 'func_names' ])#try:
+                            self.n = self.mod['id2']#self.mod['id1']#self.data_base[ 'modulesImport' ][ 'func_names' ][self.mod['id1']].index( self.function_name)
                             loading.LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
                             self.new_data_base[ 'print' ]   = []
                             
@@ -334,12 +334,17 @@ class FUNCTION_TREATMENT:
                                 try:
                                     self.all_data_analyses  = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']][ self.function_name ]
                                     self.all_data_analyses  = self.all_data_analyses[ 'history_of_data' ]
+                                    
                                     self.keyActivation      = False
                                     #print(self.data_base['modulesImport'])
                                     #print('-------------------------------------------')
                                     #print(self.new_data_base['LIB'])
                                     #updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION( self.data_base, self.new_data_base)
+                                    #***************************************
                                     
+                                    extL.UPDATING(self.new_data_base, self.data_base).UPDATING(self.original_module)
+                                
+                                    #***************************************
                                     if self.new_data_base[ 'empty_values' ] is None:
                                         self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
                                                                         self.line).DEF_STATEMENT( 1, self.all_data_analyses )
@@ -378,8 +383,9 @@ class FUNCTION_TREATMENT:
                                                         self.print_values = True
                                                         self.list_of_values = self.new_data_base[ 'print' ]
                                                         for i, value in enumerate( self.list_of_values ):
-                                                            print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
-
+                                                            if self.function_name != "prompt":
+                                                                print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
+                                                            else:print_value.PRINT_PRINT( value, self.data_base ).PROMPT( key = False )
                                                         self.new_data_base['print'] = []
                                                     else: pass
                                                 else: pass
@@ -403,8 +409,10 @@ class FUNCTION_TREATMENT:
                                                             self.list_of_values = self.new_data_base[ 'print' ]
 
                                                             for i, value in enumerate( self.list_of_values ):
-                                                                print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
-
+                                                                if self.function_name != "prompt":
+                                                                    print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
+                                                                else:print_value.PRINT_PRINT( value, self.data_base ).PROMPT( key = False )
+                                                                
                                                             self.new_data_base[ 'print' ] = []
                                                         else:
                                                             if self.keyActivation is True: 
@@ -412,7 +420,6 @@ class FUNCTION_TREATMENT:
                                                                     self.data_base[ 'no_printed_values' ].append( None )
                                                                     self.error = set_openfile.SET_OPEN_FILE( self.new_data_base[ 'open' ], 
                                                                                             self.data_base, self.line).SET_OPEN()
-                                                            
                                                                 else: pass
                                                             else: 
                                                                 if self.function_name == 'initialize': pass 
@@ -1007,6 +1014,11 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                 self.next_line      = None
 
         return self.error
+
+
+
+         
+
 
 
 

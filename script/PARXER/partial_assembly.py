@@ -2,6 +2,7 @@ from script.PARXER                                          import numerical_val
 from script.PARXER.VAR_NAME                                 import get_var_name
 from script.PARXER.PRINT                                    import show_data
 from script.PARXER                                          import parxerError as pE
+import numpy as np
 
 class ASSEMBLY( ):
     def __init__(self, master: dict, data_base: dict, line: int ):
@@ -143,6 +144,13 @@ class ASSEMBLY( ):
                                     except TypeError:
                                         self.error = pE.ERRORS( self.line ).ERROR1( self.__value__, 'a list()')
                                         break
+                                    except ValueError:
+                                        if type( self._return_['p'][ self.info['s'][ j ] ]) == type(np.array([1])):
+                                            l1 = list(self.__value__[ _in_ ].shape)
+                                            l2 = list(np.array(self._return_[ i ]).shape)
+                                            self.error = pE.ERRORS( self.line ).ERROR3(l1, l2)
+                                            break
+                                        else: pass
 
                                 if self.global_vars:
                                     if self._name_ in self.global_vars:

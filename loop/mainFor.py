@@ -1,11 +1,10 @@
-from os import strerror
+from loop                                   import error as er
 from script.PARXER                          import numerical_value
 from script.PARXER.LEXER_CONFIGURE          import numeric_lexer, partial_lexer
 from script                                 import control_string
-from loop import error as er
 
 
-class MAIN_FOR          :
+class MAIN_FOR:
     def __init__(self,
         master         : dict,             #
         data_base      : dict,             #
@@ -23,7 +22,7 @@ class MAIN_FOR          :
         self.arithmetic_op  = self.all_data['arithmetic_operator']
         self.if_egal        = self.master['if_egal']
 
-    def BOCKS(self, main_string: strerror):
+    def BOCKS(self, main_string: str):
         self.error          = None
         self._return_name_  = None
         self._return_value_ = None

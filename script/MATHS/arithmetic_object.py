@@ -1,22 +1,19 @@
-from script.PARXER import numerical_value
+from script.PARXER                      import numerical_value
 from script.PARXER.LEXER_CONFIGURE      import  numeric_lexer
 from script.STDIN.LinuxSTDIN            import bm_configure as bm
-try:
-    from CythonModules.Linux            import fileError as fe 
-    from CythonModules.Linux            import making_arr as ma
-except ImportError:
-    from CythonModules.Windows          import fileError as fe
-    from CythonModules.Windows          import making_arr as ma
-
+from CythonModules.Windows              import fileError    as fe
+from CythonModules.Windows              import making_arr   as ma
+import numpy                                                as np
 
 class ARITHMETICS:
 
-    def __init__(self, data_base:dict, line:int)            :
+    def __init__(self, data_base : dict, line : int)            :
         self.line           = line
         self.daba_base      = data_base
         self.type1          = [type( int() ), type( float() ), type( complex() ), type( bool() )]
         self.type2          = [type( list() ), type( tuple() )]
         self.type3          = [type( str() )]
+        self.type4          = [type(np.array([1]))]
 
     def OBJECT_ADD(self, object1: any, object2: any)        :
         
@@ -55,6 +52,18 @@ class ARITHMETICS:
             self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).AddListString( object1, inv = True )
         elif self.get_type1 in [type( list() )] and self.get_type2 in self.type3            :                                             
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).AddListString( object2, inv=False )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 + object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 + object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
+            try:
+                self.result = object1 + object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
         else:self.error = self.error = ERROR( self.line ).ERROR2( object1, object2 )
 
         return self.result, self.error
@@ -84,7 +93,7 @@ class ARITHMETICS:
 
             for val in self.result:
                 self.sum += val
-            self.result = self.su
+            self.result = self.sum
         elif self.get_type1 in self.type1 and self.get_type2 in [type( list() )]            :
             if self.get_type1 == type( int() ):
                 self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).SousListInt( object1, inv = True )
@@ -113,6 +122,18 @@ class ARITHMETICS:
             self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).SousListList( object1, inv = True )
         elif self.get_type1 in [type(tuple())] and self.get_type2 in [type(tuple())]        :                                   
             self.result, self.error = ma.Arithmetic( list( object1[ : ] ), self.line ).SousListList( list( object2[ : ] ), ob_type = 'tuple', inv = False )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 - object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 - object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
+            try:
+                self.result = object1 - object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
         else: self.error = ERROR( self.line ).ERROR2( object1, object2 )
 
         return self.result, self.error
@@ -155,6 +176,18 @@ class ARITHMETICS:
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).MulListString( object2 )
         elif self.get_type2 in [ type( list() ) ] and self.get_type1 in [ type( list() ) ]           :
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).MulListList( object2[ : ] )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 * object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 * object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
+            try:
+                self.result = object1 * object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
         else: self.error =  ERROR( self.line ).ERROR2( object1, object2 )
 
         return self.result, self.error
@@ -192,6 +225,21 @@ class ARITHMETICS:
             else: self.error = ERROR( self.line ).ERROR2( object1, object2)      
         elif self.get_type1 in [ type( list() )] and self.get_type2 in [ type( list() )]    :
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).DivListList( object2[ : ] )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 / object2
+            except ZeroDivisionError: self.error = ERROR( self.line ).ERROR4( )
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 / object2
+            except ZeroDivisionError: self.error = ERROR( self.line ).ERROR4( )
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
+            try:
+                self.result = object1 / object2
+            except ZeroDivisionError: self.error = ERROR( self.line ).ERROR4( )
+            except : self.error = ERROR( self.line ).ERROR6(  )
         else: self.error = ERROR( self.line ).ERROR2( object1, object2 )
 
         return self.result, self.error
@@ -227,9 +275,20 @@ class ARITHMETICS:
             else:
                 self.error = ERROR( self.line ).ERROR2( object1, object2)
         elif self.get_type1 in [ type( list() )] and self.get_type2 in [ type( list() )]    :
-            self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).SquareListList( object2[ : ], inv = False)
+            self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).SquareListList( object2[ : ], inv = False)    
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 ** object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 ** object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
+            try:
+                self.result = object1 ** object2
+            except : self.error = ERROR( self.line ).ERROR6(  )
         else: self.error = ERROR( self.line ).ERROR2( object1, object2 )
-
         return self.result, self.error
 
     def OBJECT_MOD(self, object1: any, object2: any)        :
@@ -279,6 +338,21 @@ class ARITHMETICS:
                 self.error = ERROR( self.line ).ERROR2( object1, object2)           
         elif self.get_type1 in [type( list() )] and self.get_type2 in [type( list() )]          :
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).ModListList( object2[ : ], inv = False)
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 % object2
+            except ZeroDivisionError: self.error = ERROR( self.line ).ERROR3( )
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+            try:
+                self.result = object1 % object2
+            except ZeroDivisionError: self.error = ERROR( self.line ).ERROR3( )
+            except : self.error = ERROR( self.line ).ERROR6(  )
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
+            try:
+                self.result = object1 % object2
+            except ZeroDivisionError: self.error = ERROR( self.line ).ERROR3( )
+            except : self.error = ERROR( self.line ).ERROR6(  )
         else: self.error = ERROR( self.line ).ERROR2( object1, object2 )
 
         return self.result, self.error
@@ -314,7 +388,7 @@ class ARITHMETICS:
         return self.result
 
 class ERROR:
-    def __init__(self, line):
+    def __init__(self, line : int ):
         self.line       = line
         self.cyan       = bm.fg.cyan_L
         self.red        = bm.fg.red_L
@@ -401,3 +475,9 @@ class ERROR:
         else: result2 = object2
                 
         return result1, result2
+    
+    def ERROR6(self ):
+        
+        error = '{}unsupported operand . {}line: {}{}'.format(self.yellow, self.white, self.yellow, self.line )
+        self.error = fe.FileErrors( 'ArithmeticError' ).Errors()  + error
+        return self.error+self.reset

@@ -1,13 +1,13 @@
-from colorama import Fore, Style
+from script.STDIN.LinuxSTDIN          import bm_configure as bm
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
+ne = bm.fg.red_L
+ie = bm.fg.blue_L
+ae = bm.fg.cyan_L
+te = bm.fg.magenta_M
+ke = bm.fg.yellow_L
+ve = bm.fg.green_L
+se = bm.fg.yellow
+we = bm.fg.rbg(255, 255, 255)
 
 class STRING_ANALYSE(object):
 
@@ -20,7 +20,7 @@ class STRING_ANALYSE(object):
                                         'function', 'finally', 'load', 'module', 'from', 'exit', 'continue',   'default',
                                         'lambda', 'raise', 'assert', 'begin', 'delete', 'exit', 'stop', 'print', '_int_',
                                         '_float_', '_string_', '_complex_', '_list_', '_dictionary_', '_tuple_',
-                                        '_boolean_', '_sqrt_', '_length_', '_sum_']
+                                        '_boolean_', '_sqrt_', '_length_', 'self', '__open__', 'lambda','_sum_', '_lambda_']
 
     def CHECK_NAME(self, name_string: str, _key_type_: bool=False):  # checking variable names used in list
 
