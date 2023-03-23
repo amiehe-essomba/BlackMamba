@@ -1,5 +1,8 @@
+
 import                                              random
-from src.classes                                    import error as er 
+import numpy                                                        as np
+from src.classes                                    import error    as er 
+from src.classes.Lists                              import to_array as ta
 from script.LEXER                                   import main_lexer       
 from script.LEXER                                   import particular_str_selection
 from script.PARXER                                  import numerical_value
@@ -7,14 +10,16 @@ from script.LEXER                                   import check_if_affectation
 from src.classes.Lists                              import inserting, random_init, sorting
 
 
+
+
 class LIST:
     def __init__(self, 
-                DataBase    : dict, 
-                line        : int, 
-                master      : str, 
-                function    : any, 
-                FunctionInfo: list 
-                ):
+            DataBase    : dict, 
+            line        : int, 
+            master      : str, 
+            function    : any, 
+            FunctionInfo: list 
+            ):
         self.master         = master
         self.function       = function
         self.FunctionInfo   = FunctionInfo[ 0 ]
@@ -30,7 +35,7 @@ class LIST:
         self._return_       = ''
         self.arguments      = self.FunctionInfo[ self.function ][ 'arguments' ] 
         self.value          = self.FunctionInfo[ self.function ][ 'value' ] 
-        
+            
         if   self.function in [ 'empty' ]            :
             if None in self.arguments: 
                 if    self.master: self._return_ = False
@@ -62,8 +67,17 @@ class LIST:
             if None in self.arguments:
                 if self.master:
                     self._return_ = random.choice( self.master )
-                else: self.error =  er.ERRORS( self.line ).ERROR24( 'list / tuple' )    
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'list / tuple / range' )    
             else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'to_array']          :
+            self._return_, self.error = ta.TO( self.DataBase, self.line, self.master,
+                                                 self.function, [self.FunctionInfo] ).ARRAY( mainName, mainString )
+            if self.error is None:
+                self.index = self.DataBase['variables']['vars'].index( mainName )
+                if type(self._return_) in [type(list()), type(dict()), type(np.array([1]))]:
+                    self.DataBase['variables'][ 'values'][self.index] = self._return_.copy()
+                else: self.DataBase['variables'][ 'values'][self.index] = self._return_
+            else: pass
         elif self.function in [ 'enumerate' ]        :
             if None in self.arguments:
                 if self.master:
@@ -180,17 +194,6 @@ class LIST:
                                                         self._return_ = self.master[ : ]
                                                     except IndexError : self.error =  er.ERRORS( self.line ).ERROR28( )
                                                 else: self.error =  er.ERRORS( self.line ).ERROR3( "master" )
-                                            elif self.function in [ 'insert' ]          :
-                                                if type( self.final_val[ 0 ] ) == type( tuple() ):
-                                                    try: 
-                                                        if len( self.final_val[ 0 ] ) == 2:
-                                                            if type( self.final_val[ 0 ][ 0 ] ) == type( int() ) :
-                                                                self.master.insert( self.final_val[ 0 ][ 0 ], self.final_val[ 0 ][ 1 ] )
-                                                                self._return_ = self.master[ : ]
-                                                            else: self.error =  er.ERRORS( self.line ).ERROR3( "master[ 0 ]" )
-                                                        else: self.error =  er.ERRORS( self.line ).ERROR29()
-                                                    except IndexError : self.error =  er.ERRORS( self.line ).ERROR28( )
-                                                else: self.error =  er.ERRORS( self.line ).ERROR3( "master", 'a tuple()' )
                                             elif self.function in [ 'add' ]             :
                                                 self.master.append( self.final_val[ 0 ] )
                                                 self._return_ = self.master[ : ]
@@ -220,7 +223,6 @@ class LIST:
                     else:  er.ERRORS( self.line ).ERROR11( self.function, self.arguments[ 0 ] )
             else: self.error =  er.ERRORS( self.line ).ERROR12( self.function, 1)                   
         
-       
         return self._return_, self.error  
             
     

@@ -40,11 +40,9 @@ class STRING:
                                     if self.error is None:
                                         self.newValues = self.final_val[ 0 ]
                                         if type( self.newValues ) == type( tuple() ):
-                                            #if self.master:
                                             try:
                                                 self._return_   = self.master.join( self.newValues ) 
                                             except TypeError: self.error = er.ERRORS( self.line ).ERROR32( self.newValues )
-                                            #else: self.error = ERRORS( self.line ).ERROR24( 'list' )
                                         else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a tuple()')   
                                     else: pass 
                                 else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
@@ -71,11 +69,9 @@ class STRING:
                                         if self.error is None:
                                             self.newValues = self.final_val[ 0 ]
                                             if type( self.newValues ) == type( tuple() ):
-                                                #if self.master:
                                                 try:
                                                     self._return_   =  self.master.join( self.newValues )
                                                 except TypeError : self.error = er.ERRORS( self.line ).ERROR32( self.newValues )
-                                                #else: self.error = ERRORS( self.line ).ERROR24( 'list' )
                                             else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a tuple()')   
                                         else: pass 
                                     else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
