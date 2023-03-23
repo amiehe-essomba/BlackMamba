@@ -1,8 +1,10 @@
-from src.functions                  import error as er
-from script.DATA_BASE               import data_base as db
-from script.STDIN.LinuxSTDIN        import bm_configure as bm
+from src.functions                  import error            as er
+from script.DATA_BASE               import data_base        as db
+from script.STDIN.LinuxSTDIN        import bm_configure     as bm
 from src.functions                  import updating_data, type_of_data
 from script.PARXER.LEXER_CONFIGURE  import numeric_lexer
+from numba                          import jit
+from numba.experimental             import jitclass
 
 class FUNCTION:
     def __init__(self, 
@@ -29,10 +31,13 @@ class FUNCTION:
         self.values             = self.get_informations[ 'value' ][ : ]
         self.int_values         = self.values[ : ]
         self.emty_values        = []
+        self.anonymous          = False 
+        self.anonymous_data     = []
+        
+        try:  self.anonymous          = self.get_informations[ 'anonymous' ]
+        except KeyError: pass 
         try:
-            self.function_type      = self.get_informations[ 'type_return' ]
-            self.anonymous          = self.get_informations[ 'anonymous' ]
-            self.anonymous_data     = []
+            self.function_type  = self.get_informations[ 'type_return' ]
         except KeyError: pass 
         
         ###########################################################################
@@ -66,7 +71,7 @@ class FUNCTION:
                             else:
                                 self.error = er.ERRORS( self.line ).ERROR16( self.function_name, args )
                                 break
-
+                             
                     if self.error is None:
                         if self.lenght_exernal <= self.lenght_internal:
                             for w, vars in enumerate( self.external_vars ):
@@ -98,7 +103,7 @@ class FUNCTION:
                             else: pass
                         else:  self.error = er.ERRORS(self.line).ERROR12(self.function_name, self.lenght_internal)
                     else: pass
-                else: self.error = er.ERRORS( self.line ).ERROR26()
+                else: self.error = er.ERRORS(self.line).ERROR26()
             else:
                 if self.computed_values:
                     if self.anonymous is False:
@@ -130,6 +135,7 @@ class FUNCTION:
                             if self.arguments[ 0 ] is None:
                                 del self.values[ 0 ]
                                 del self.arguments[ 0 ]
+
                             else:
                                 if self.values[ 0 ] is None:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, [(self.arguments[0],0) ])
                                 else: pass
@@ -140,7 +146,7 @@ class FUNCTION:
 
                             if self.emty_values:  self.error = er.ERRORS(self.line).ERROR15(self.function_name, self.emty_values )
                             else: pass
-                    else: 
+                    else:
                         del self.values[ 0 ]
                         del self.arguments[ 0 ]
         else:
@@ -149,64 +155,66 @@ class FUNCTION:
             else: pass
 
         if self.error is None:
-            self.list_types = ''
-            self.func = bm.fg.rbg(0,255,0)+' in {}( ).'.format(self.function_name)+bm.init.reset
-            
-            if self.values:
-                for i, value in enumerate( self.values ):
-                    self.error = type_of_data.CHECK_TYPE_OF_DATA( self.type_of_data[ i ] ).CHECK_TYPE( self.line, self.arguments[ i ], self.function_name )
-                    if self.error is None:
-                        if type( value ) == type( str() ):
-                            if value not in [ None, '@670532821@656188185@670532821@']:
-                                self._values_, self.error = numeric_lexer.NUMERCAL_LEXER( value, self.data_base,
-                                                                                        self.line).LEXER( value )
-                                if self.error is None:
-                                    self._type_         = type_of_data.CHECK_TYPE_OF_DATA( self._values_ ).DATA()
-                                    
-                                    if 'any' in self.type_of_data[ i ] :
-                                        if len( self.type_of_data[ i ] ) == 1: self.values[ i ]    = self._values_ 
-                                        else: 
-                                            for x, _typ_ in enumerate( self.type_of_data[ i ] ):
-                                                if _typ_ == 'any': pass 
-                                                else:
+            if self.anonymous is False:
+                self.list_types = ''
+                self.func = bm.fg.rbg(0,255,0)+' in {}( ).'.format(self.function_name)+bm.init.reset
+                if self.values:
+                    for i, value in enumerate( self.values ):
+                        self.error = type_of_data.CHECK_TYPE_OF_DATA( self.type_of_data[ i ] ).CHECK_TYPE( self.line, self.arguments[ i ], self.function_name )
+                        if self.error is None:
+                            if type( value ) == type( str() ):
+                                if value not in [ None, '@670532821@656188185@670532821@']:
+                                    self._values_, self.error = numeric_lexer.NUMERCAL_LEXER( value, self.data_base,
+                                                                                            self.line).LEXER( value )
+                                    if self.error is None:
+                                        self._type_         = type_of_data.CHECK_TYPE_OF_DATA( self._values_ ).DATA()
+                                        
+                                        if 'any' in self.type_of_data[ i ] :
+                                            if len( self.type_of_data[ i ] ) == 1: self.values[ i ]    = self._values_ 
+                                            else: 
+                                                for x, _typ_ in enumerate( self.type_of_data[ i ] ):
+                                                    if _typ_ == 'any': pass 
+                                                    else:
+                                                        self.str_type   = type_of_data.CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
+                                                        if x < len( self.type_of_data[ i ] ) - 1: self.list_types += self.str_type + ', '
+                                                        else                                    : self.list_types += 'or ' + self.str_type
+                                                self.error = er.ERRORS( self.line ).ERROR18( self.list_types, self.func )
+                                                break
+                                        else:
+                                            if self._type_ not in self.type_of_data[ i ]:
+                                                for x, _typ_ in enumerate( self.type_of_data[ i ] ):
                                                     self.str_type   = type_of_data.CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
-                                                    if x < len( self.type_of_data[ i ] ) - 1: self.list_types += self.str_type + ', '
-                                                    else                                    : self.list_types += 'or ' + self.str_type
-                                            self.error = er.ERRORS( self.line ).ERROR18( self.list_types, self.func )
-                                            break
-                                    else:
-                                        if self._type_ not in self.type_of_data[ i ]:
-                                            for x, _typ_ in enumerate( self.type_of_data[ i ] ):
-                                                self.str_type   = type_of_data.CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
-                                                if x < len( self.type_of_data[ i ] ) - 1: self.list_types += self.str_type + ', or '
-                                                else                                    : self.list_types += self.str_type
-                                                    
-                                            self.error = er.ERRORS( self.line ).ERROR3( self.arguments[i], self.list_types, self.func)
-                                            break
-                                        else: self.values[ i ] = self._values_ 
-                                else: break
-                            else: self.values[ i ] = '@670532821@656188185@670532821@'
-                        else: pass
-                    else: break
-            else: pass
-
-            if self.anonymous_data:
-                for i, value in enumerate(self.anonymous_data):
-                    self._values_, self.error = numeric_lexer.NUMERCAL_LEXER( value, self.data_base,  self.line).LEXER( value )
-                    if self.error is None:  self.anonymous_data[ i ] = self._values_
-                    else: break
-                if self.error is None:
-                    if "anonymous" in self.global_vars['vars']:
-                        self.idd = self.global_vars['vars'].index("anonymous")
-                        self.global_vars['values'][self.idd] = self.anonymous_data
-                    else:
-                        self.global_vars['vars'].append("anonymous")
-                        self.global_vars['values'].append(self.anonymous_data)
+                                                    if x < len( self.type_of_data[ i ] ) - 1: self.list_types += self.str_type + ', or '
+                                                    else                                    : self.list_types += self.str_type
+                                                        
+                                                self.error = er.ERRORS( self.line ).ERROR3( self.arguments[i], self.list_types, self.func)
+                                                break
+                                            else: self.values[ i ] = self._values_ 
+                                    else: break
+                                else: self.values[ i ] = '@670532821@656188185@670532821@'
+                            else: pass
+                        else: break
                 else: pass
-            else: self.error = er.ERRORS(self.line).ERROR27(self.function_name )
+            else: pass
             
+            if self.anonymous_data: 
+                for i , value in enumerate( self.anonymous_data):
+                    self._values_, self.error =numeric_lexer.NUMERCAL_LEXER( value, self.data_base, self.line).LEXER( value )
+                    if self.error is None: self.anonymous_data[i] = self._values_ 
+                    else:break
+                if self.error is None:
+                    if 'anonymous' in self.global_vars['vars']:
+                        self.idd = self.global_vars['vars'].index("anonymous")
+                        self.global_vars['values'][self.idd] = self.anonymous_data.copy()
+                    else:
+                        self.global_vars['vars'].append('anonymous')
+                        self.global_vars['values'].append(self.anonymous_data.copy())
+                else: pass
+            else: 
+                if  self.anonymous is False: pass 
+                else: self.error = er.ERRORS(self.line).ERROR27( self.function_name )
             if self.error is None:
-                updating_data.UPDATE_DATA_BASE( self.values, self.arguments, self.global_vars ).UPDATE( self.def_data_base )
+                updating_data.UPDATE_DATA_BASE( self.values, self.arguments, self.global_vars ).UPDATE( self.def_data_base.copy() )
             else: pass
         else: pass
 
@@ -246,7 +254,6 @@ class FUNCTION:
                         self.new_list_of_data.append( value )
                         self.location.append( i )
                     else: break
-
                 else:
                     self.new_list_of_data.append( self.arguments[ i - self.decrement ] )
                     self.values[ i ]    = self.arguments[ i - self.decrement ]

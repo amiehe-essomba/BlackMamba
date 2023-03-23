@@ -1,8 +1,8 @@
 class LOAD:
     def __init__(self, 
-                moduleLoadNames : list, 
-                funcName        : str
-                ):
+            moduleLoadNames : list, 
+            funcName        : str
+            ):
         self.moduleLoadNames        = moduleLoadNames 
         self.funcName               = funcName
         
@@ -28,9 +28,9 @@ class LOAD:
         return {'key' : self.key, 'id1' : self.id1, 'id2' : self.id2}
 
     def INITIALIZE(self, 
-                new_data_base   : dict, 
-                functions       : list
-                ):
+            new_data_base   : dict, 
+            functions       : list
+            ):
         
         for i, name in enumerate(self.moduleLoadNames):
             if name != self.funcName:
@@ -43,27 +43,28 @@ class LOAD:
             else: pass
        
     def GLOBAL_VARS(self, 
-                    db  : dict, 
-                    var : dict, 
-                    n   : int, 
-                    typ : str = 'def'
-                    ):
-        
-        self.vars, self.val = var['vars'][ n ], var['values'][n]
-
-        if typ == 'def':
-            if self.vars:
-                for i, name in enumerate(self.vars) :
-                    if name in db['variables']['vars']: pass 
-                    else:
-                        db['variables']['vars'].append( name )
-                        db['variables']['values'].append(self.val[i])
-            else: pass
-        else:
-            if self.vars:
-                for i, name in enumerate(self.vars) :
-                    if name in db['global_vars']['vars']: pass 
-                    else:
-                        db['global_vars']['vars'].append( name )
-                        db['global_vars']['values'].append(self.val[i])
-            else: pass
+            db  : dict, 
+            var : dict, 
+            n   : int, 
+            typ : str = 'def'
+            ):
+        try:
+            self.vars, self.val = var['vars'][ n ], var['values'][n]
+      
+            if typ == 'def':
+                if self.vars:
+                    for i, name in enumerate(self.vars) :
+                        if name in db['variables']['vars']: pass 
+                        else:
+                            db['variables']['vars'].append( name )
+                            db['variables']['values'].append(self.val[i])
+                else: pass
+            else:
+                if self.vars:
+                    for i, name in enumerate(self.vars) :
+                        if name in db['global_vars']['vars']: pass 
+                        else:
+                            db['global_vars']['vars'].append( name )
+                            db['global_vars']['values'].append(self.val[i])
+                else: pass
+        except IndexError: pass

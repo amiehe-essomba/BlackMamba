@@ -1,8 +1,9 @@
-import numpy as np
-from script.LEXER.FUNCTION import return_
-from src.functions                      import error as er
+import numpy                                                as np
+import pandas                                               as pd
+from script.LEXER.FUNCTION              import return_
+from src.functions                      import error        as er
 from script.STDIN.LinuxSTDIN            import bm_configure as bm
-import numpy as np
+
 
 class CHECK_TYPE_OF_DATA:
     def __init__(self, value : any ):
@@ -23,6 +24,7 @@ class CHECK_TYPE_OF_DATA:
         elif self.type == type( range( 1 ) )    :       self._return_ = 'range'
         elif self.type == type( None )          :       self._return_ = 'none' 
         elif self.type == type(np.array([]))    :       self._return_ = 'ndarray'
+        elif self.type == type(pd.DataFrame({'r':[1]}))    :       self._return_ = 'table'
 
         return self._return_
 
@@ -40,6 +42,7 @@ class CHECK_TYPE_OF_DATA:
         elif self.value == 'range'  :           self._return_ = '{}a range(){}'.format(bm.fg.green_L, bm.init.reset)
         elif self.value == 'none'   :           self._return_ = '{}a none(){}'.format(bm.fg.rbg(252, 127, 0 ), bm.init.reset)
         elif self.value == 'ndarray':           self._return_ = '{}ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
+        elif self.value == 'table'  :           self._return_ = '{}ndarray(){}'.format(bm.fg.rbg(255, 165, 25),bm.init.reset)
 
         return self._return_ 
     
@@ -72,6 +75,7 @@ class CHECK_TYPE_OF_DATA:
         elif self.value == 'dictionary'     : self._return_, self.s = type(dict())          , '{}a dictionary(){}'.format(bm.fg.magenta_M, bm.init.reset)
         elif self.value == 'boolean'        : self._return_, self.s = type(bool())          , '{}a boolean(){}'.format(bm.fg.cyan_L, bm.init.reset)
         elif self.value == 'string'         : self._return_, self.s = type(str())           , '{}a string(){}'.format(bm.fg.cyan, bm.init.reset)
-        elif self.value == 'ndarray'        : self._return_, self.s = type(np.array([1]))   , '{}ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
+        elif self.value == 'ndarray'        : self._return_, self.s = type(np.array([1]))   , '{}a ndarray(){}'.format(bm.fg.rbg(255, 165, 0),bm.init.reset)
+        elif self.value == 'table'          : self._return_, self.s = type(np.array([1]))   , '{}a table(){}'.format(bm.fg.rbg(255, 165, 25),bm.init.reset)
         
         return self._return_, self.s
