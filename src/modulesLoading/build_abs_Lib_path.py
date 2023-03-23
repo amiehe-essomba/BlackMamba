@@ -9,9 +9,9 @@ class Lib_Path:
         # system name
         self.sys        = sys
 
-    def getPath(self) -> str :
+    def getPath(self):
         self.second_part = ''
-
+       
         # get Windows path
         if   self.sys in [ 'windows' ]  : self.second_part = "\\Library"
         # get Linux path
@@ -29,7 +29,7 @@ class Lib_Path:
         # get Windows file
         if self.sys in ['windows']:  self.path = self.path + f"\\{file_name}"
         # get Linux file
-        elif self.sys in ['linux']: self.path = self.path + f"/{file_name}"
+        elif self.sys in ['linux']:  self.path = self.path + f"/{file_name}"
         # get Mac Os file
         elif self.sys in ['macOs']:  self.path = self.path + f"/{file_name}"
 

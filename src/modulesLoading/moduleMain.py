@@ -13,8 +13,8 @@ from os.path                    import isfile
 from pathlib                    import Path
 from script                     import control_string
 from script.LEXER               import main_lexer
-from src.modulesLoading         import error as er
-from src.modulesLoading         import build_abs_Lib_path as bpath
+from src.modulesLoading         import error                as er
+from src.modulesLoading         import build_abs_Lib_path   as bpath
 
 class TREATMENT:
     def __init__(self, 
@@ -22,7 +22,7 @@ class TREATMENT:
             data_base   : dict, 
             line        : int,
             system      : str = 'windows'
-            ) -> None:
+            ):
         
         # current line in the main IDE
         self.line               = line
