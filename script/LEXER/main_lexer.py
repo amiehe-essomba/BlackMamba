@@ -459,7 +459,7 @@ class FINAL_LEXER:
                                                     if len( self.sub_value ) == 2:
                                                         self.name, self.error = self.control.CHECK_NAME(self.sub_value[0])
                                                         if self.error is None:
-                                                            self.list_vars_lambda, self.error = lambda_.LAMBDA( self.data_base, self.line).LAMBDA( self.nex_root )         
+                                                            self.list_vars_lambda, self.type_return, self.error = lambda_.LAMBDA( self.data_base, self.line).LAMBDA( self.nex_root )         
                                                             if self.error is None:    
                                                                 self.new_string =  self.name + " += " + self.list_vars_lambda[1]
                                                                 self.lex, self.error = LP.MAIN(self.new_string, self.data_base, self.line).MAIN_LEXER()
@@ -483,7 +483,7 @@ class FINAL_LEXER:
                                                                                     'defaultValues'         : None,   
                                                                                     'description'           : None   
                                                                                     },
-                                                                                'type_return'               : None,  
+                                                                                'type_return'               : self.type_return,  
                                                                                 "anonymous"                 : False   
                                                                                 }
                                                                             }

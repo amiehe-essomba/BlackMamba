@@ -4,7 +4,7 @@ import             re, os, sys
 from   sys         				import stdout, stdin
 from   time        				import sleep
 from   datetime    				import datetime
-from   script        		    import control_string
+from script.STDIN.LinuxSTDIN    import control_string
 from   script.STDIN.LinuxSTDIN 	import ascii
 try:  from   tkinter     import *
 except ModuleNotFoundError: pass

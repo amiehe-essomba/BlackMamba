@@ -591,6 +591,7 @@ class windows:
                                         # running parser
                                         self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
                                                 self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
+                                       
                                         if self.error is None: pass
                                         else:
                                             sys.stdout.write(bm.clear.line(2))
@@ -751,7 +752,7 @@ class windows:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-            except KeyError:
+            except SyntaxError:
                 os.system('cls')
                 self._end_of_file_ = bm.bg.red_L + bm.fg.rbg(255,255,255) + "EOFError" + bm.init.reset
                 print(self._end_of_file_)

@@ -1,5 +1,5 @@
 import  sys, os, re
-from script                                 import control_string
+from script.STDIN.LinuxSTDIN                import control_string
 from script.STDIN.WinSTDIN                  import stdin
 from script.LEXER                           import checking_if_backslash
 from script.STDIN.LinuxSTDIN                import bm_configure as bm

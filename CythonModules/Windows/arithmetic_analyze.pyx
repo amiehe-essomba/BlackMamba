@@ -1,7 +1,10 @@
-from script.PARXER          import numerical_value as nv
-from colorama               import Fore, Style
-from script.MATHS           import mathematics
-from CythonModules.Windows  import NumeriCal  as nc
+try:
+    from script.PARXER                  import numerical_value as nv
+except ImportError:      
+    from script.PARXER.WINParxer        import num_val as nv
+from colorama                           import Fore, Style
+from script.MATHS                       import mathematics
+from CythonModules.Windows              import NumeriCal  as nc
 from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
 
 

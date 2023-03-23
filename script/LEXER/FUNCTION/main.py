@@ -1,12 +1,10 @@
-from script                     import control_string
+from script.STDIN.LinuxSTDIN    import control_string
 from script.LEXER               import checking_tabulation
 from script.LEXER               import check_if_affectation
 from script.LEXER               import main_lexer
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
-try:
-    from CythonModules.Windows  import fileError as fe 
-except ImportError:
-    from CythonModules.Linux    import fileError as fe
+from CythonModules.Windows      import fileError    as fe 
+
 
 
 class MAIN:
