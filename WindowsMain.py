@@ -122,8 +122,6 @@ class windows:
         self.indicator           = None
         # fixing the x-axis border 
         self.border_x_limit      = True 
-        # keyboard shutcuts 
-        self.bottom_info         = True
         ###########################################################
         # accounting line
         self.if_line        = 0
@@ -135,6 +133,10 @@ class windows:
         self.active_tab     = None
         # history of commands
         ###########################################################
+        # currently cursor position (x, y)
+        self.pos_x, self.pos_y      = cursor_pos.cursor()
+        # terminal dimension (max_x, max_y)
+        self.max_x, self.max_y      = test.get_win_ter()
         k  = windll.kernel32
         k.SetConsoleMode( k.GetStdHandle(-11), 7)
         # clear entire line
@@ -149,17 +151,13 @@ class windows:
         sys.stdout.flush()
         ###########################################################
         self.max_size_init          = 11 # no optional key (crtl+n , ......)
-        # currently cursor position (x, y)
-        self.pos_x, self.pos_y      = cursor_pos.cursor()
-        # terminal dimension (max_x, max_y)
-        self.max_x, self.max_y      = test.get_win_ter()
         #self.a_max_y = self.max_y
         self.save_cursor_position   = bm.save.save
         self.indicator_pos          = 0
         # indicator_max 
         self.indicator_max          = 1
         # checking if key_max_activation could be activated  for handling terminal tools
-        self.key_max_activation     =True #  DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
+        self.key_max_activation     = True #  DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
         ###########################################################
         
         while True:
@@ -742,25 +740,6 @@ class windows:
                     else: pass
                 else: pass
                 
-                """
-                if self.bottom_info is True:
-                    if self.max_y-int(self.pos_y) > 0:
-                        for i in range(self.max_y-int(self.pos_y)):
-                            sys.stdout.write(bm.move_cursor.DOWN(pos=1))
-                        self.bottom_info = False
-                    else:  sys.stdout.write(bm.move_cursor.DOWN(pos=1))
-                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                    header.bottom(self.max_x, int(self.pos_x))
-                    sys.stdout.write(bm.move_cursor.UP(pos=7+int(self.pos_y)))
-                    sys.stdout.write(bm.move_cursor.RIGHT(pos=int(self.pos_x)))
-                    sys.stdout.flush()
-                else: pass
-                
-                #if self.max_y_ < self.a_max_y: 
-                    sys.stdout.write(bm.clear.screen(pos=1))
-                    sys.stdout.flush()
-                #else: pass  
-                """
             except KeyboardInterrupt:
                 os.system('cls')
                 sys.stdout.write(bm.clear.screen(pos=2))

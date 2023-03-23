@@ -425,7 +425,7 @@ scan(input, termios, fg, blink, hide )
 scan(">>>", "orion", "red", False, True)
 ```
 
-- [ ] **database color** = ["red", "blue", "green", "magenta", "white", "black", "yellow", "orange", "cyan"]
+- [x] **database color** = ["red", "blue", "green", "magenta", "white", "black", "yellow", "orange", "cyan"]
 
 # Print Values
 
@@ -464,7 +464,7 @@ end:
 
 > Example1 (if and else) 
 
-```ruby:
+```ruby
 if ? 1 == ? integer():
     print * ? integer()
 else:

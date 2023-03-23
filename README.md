@@ -32,7 +32,7 @@
 
 #### OBJECT-ORIENTED PROGRAMMING 
 
-> Learn more about  [Language Tools](https://github.com/Elena-Royer/BlackMamba/blob/BlackMamba/Tools.md).
+> Learn more about  [Language Tools](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/Tools.md).
 
 ## SELECT YOUR IDE 
 ```python
@@ -41,7 +41,7 @@
 ```
 
 ## PROJECT dESCRIPTION
-> Learn more about [Black Mamba Project Description](https://github.com/Elena-Royer/BlackMamba/blob/BlackMamba/PROJECT_DESCRIPTION.md). 
+> Learn more about [Black Mamba Project Description](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/PROJECT_DESCRIPTION.md). 
 
 > Example of a code
 
@@ -52,7 +52,7 @@ pull requests are welcome. Fore major changes, please open an issue first to dis
 That's very impotant.
 
 Please make sure to update tests as appropriate.
->For more details read the [contribution guidelines](https://github.com/Elena-Royer/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
+>For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
 ## RUNNING BLACK MAMBA
 ```python

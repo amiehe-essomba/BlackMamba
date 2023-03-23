@@ -1,6 +1,6 @@
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
 from script.PARXER                  import numerical_value
-from CythonModules.Windows          import fileError as fe 
+from CythonModules.Windows          import fileError    as fe 
 
 class ERRORS:
     def __init__(self, line: int):

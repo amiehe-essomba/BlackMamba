@@ -8,7 +8,6 @@ class FUNCTION:
         self.line           = line
         self.master         = master
         self.data_base      = data_base
-
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
         self.function       = looking_for_init_function
 

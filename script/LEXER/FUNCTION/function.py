@@ -2,7 +2,7 @@ from script                     import control_string
 from script.LEXER               import particular_str_selection
 from script.LEXER.segmentation  import ERROR
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
-from CythonModules.Windows      import fileError as fe
+from CythonModules.Windows      import fileError    as fe
 
 class FUNCTION:
     def __init__(self, master: list, data_base: dict, line: int):

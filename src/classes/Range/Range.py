@@ -1,12 +1,13 @@
 import random
-import numpy as np 
-from src.classes                                    import error as er 
+import numpy                                                        as np 
+from src.classes                                    import error    as er 
+from src.classes.Lists                              import to_array as ta
 from script.LEXER                                   import main_lexer       
 from script.LEXER                                   import particular_str_selection
 from script.PARXER                                  import numerical_value
 from script.LEXER                                   import check_if_affectation
 from src.classes.Lists                              import inserting, random_init, sorting
-from src.classes.Lists                              import to_array as ta
+
 
 
 class RANGE:

@@ -2,7 +2,7 @@ from script                                     import control_string
 from script.LEXER.FUNCTION                      import global_, return_
 from script.LEXER                               import segmentation
 from script.STDIN.LinuxSTDIN                    import bm_configure as bm
-from CythonModules.Windows                      import fileError as fe
+from CythonModules.Windows                      import fileError    as fe
 
 class FUNCTION_INIT:
     def __init__(self, master: str, data_base: dict, line: int):

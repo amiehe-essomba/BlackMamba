@@ -16,7 +16,7 @@ from script.LEXER.FUNCTION      import lambda_
 from script.LEXER.FUNCTION      import print_value
 from script.LEXER.FUNCTION      import transformation
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
-from CythonModules.Windows      import fileError as fe 
+from CythonModules.Windows      import fileError    as fe 
 
 
 class LEXER_ASSEMBLY:

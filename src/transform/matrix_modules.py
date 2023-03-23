@@ -14,7 +14,7 @@ class MATRIX:
         self.prev       = []
         self.error      = None
         self.type       = [type(int()), type(float()), type(bool())]
-
+        
         if self.master:
             if self.nrow > 0:
                 if self.ncol > 0:
@@ -38,25 +38,23 @@ class MATRIX:
                                         break
                         else:
                             if axis is None:
-                                for i in range(self.nrow):
+                                for i in range(self.ncol):
                                     self.ss     = []
                                     self.w      = 0
-                                    for j in range( self.ncol ):
-                                        self.w = self.nrow * j + i
+                                    for j in range( self.nrow ):
+                                        self.w = self.ncol * j + i
                                         self.ss.append(self.master[ self.w ])
                                     self.newList.append( self.ss )
                             else:
-                                for i in range(self.nrow):
+                                for i in range(self.ncol):
                                     self.ss     = []
                                     self.w      = 0
-                                    for j in range( self.ncol ):
+                                    for j in range( self.nrow ):
                                         self.w = self.nrow * j + i
                                         self.ss.append(self.master[ self.w ])
-
-                                    try: self.newList.append( self.ss[axis] )
-                                    except IndexError :
-                                        self.error = er.ERRORS(self.line).ERROR33(ss='ncol')
-                                        break
+                                    self.newList.append( self.ss  )
+                                try: self.newList = self.newList[axis]  
+                                except IndexError : self.error = er.ERRORS(self.line).ERROR33(ss='nrow')
                     else:
                         if self.nrow * self.ncol > len( self.master) : self.error = er.ERRORS( self.line ).ERROR31('>')
                         else : self.error = er.ERRORS( self.line ).ERROR31('<')
@@ -66,8 +64,13 @@ class MATRIX:
                             if axis is None: self.newList.append( self.master )
                             else:
                                 try:  self.newList.append( self.master[axis] )
-                                except IndexError: self.error = er.ERRORS( self.line ).ERROR33(ss='length( master )')
-                        else: self.error = er.ERRORS( self.line ).ERROR32( 'ncol')
+                                except IndexError: self.error = er.ERRORS( self.line ).ERROR32( 'ncol')
+                        else: 
+                            self.newList = [[s] for s in self.master]
+                            if axis is None: pass
+                            else:
+                                try: self.newList = self.newList[axis]
+                                except IndexError: self.error = er.ERRORS( self.line ).ERROR32( 'ncol')
                     else:
                         if self.nrow > len( self.master) : self.error = er.ERRORS( self.line ).ERROR31('>')
                         else : self.error = er.ERRORS( self.line ).ERROR31('<')
@@ -75,14 +78,22 @@ class MATRIX:
             elif self.nrow == -1:
                 if self.ncol > 0:
                     if self.ncol == len( self.master):
+                        self.newList = [[s] for s in self.master]
+                        if axis is None: pass
+                        else:
+                            try: self.newList = self.newList[axis]
+                            except IndexError: self.error = er.ERRORS(self.line).ERROR33(ss='nrow')
+                            
                         if self.reverse is False:
-                            if axis is None:
-                                for s in self.master:
-                                    self.newList.append([s])
+                            if axis is None: self.newList = [[s] for s in self.master]
                             else:
                                 try:  self.newList.append([self.master[axis]])
-                                except IndexError: self.error = er.ERRORS( self.line ).ERROR33(ss='length( master )')
-                        else: self.error = er.ERRORS( self.line ).ERROR32( 'nrow')
+                                except IndexError: self.error = er.ERRORS( self.line ).ERROR32( 'nrow')
+                        else:
+                            if axis is None: self.newList.append( self.master )
+                            else:
+                                try:  self.newList.append( self.master[axis] )
+                                except IndexError: self.error = er.ERRORS( self.line ).ERROR32( 'nrow')
                     else:
                         if self.ncol > len( self.master) : self.error = er.ERRORS( self.line ).ERROR31('>')
                         else : self.error = er.ERRORS( self.line ).ERROR31('<')
