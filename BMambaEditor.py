@@ -38,33 +38,60 @@ from IDE.EDITOR                 import left_right as LR
 from IDE.EDITOR                 import string_build as SB
 from IDE.EDITOR                 import pull_editor as PE
 from IDE.EDITOR                 import drop_box as DR
+from script.STDIN.LinuxSTDIN    import ascii
 
+def counter(n):
+    asc     = ascii.frame(True)
+    r       = bm.init.reset
+    bold    = bm.init.bold
+    y       = bold+bm.fg.rbg(0, 0, 0)
+    c       = bold+bm.fg.rbg(0, 0, 0)
+    len_    = len(str(n))
+    max_    = 5
+    space   = " " * (max_-len_)
+    if (max_-len_) >= 0:  s       = f"{y}{asc['v']}[{space}{c}{n}{y}]{asc['v']}{r} "
+    else:  s = ""
+
+    return s, len(f"[{space}{n}]   ")
+
+def title(max_):
+    asc     = ascii.frame(True)
+    bold    = bm.init.bold
+    w       = bold+bm.fg.rbg(255, 255, 255)
+    c       = bold+bm.fg.rbg(0, 0, 0)
+    r       = bm.init.reset
+    s       = "BLACK MAMBA EDITOR V 1.0.0".center(max_-2)
+    sys.stdout.write(c+f"{asc['ul']}"+f"{asc['h']}"* (max_-2)+f"{asc['ur']}"+r+"\n")
+    sys.stdout.write(c+f"{asc['v']}"+bold+w+s+c+f"{asc['v']}"+r+"\n")
+    
 class windows:
     def __init__(self, data_base: dict):
         # main data base
         self.data_base  = data_base
         # contriling string
         self.analyse    = control_string.STRING_ANALYSE(self.data_base, 1)
+        self.acs        = ascii.frame(True)
 
     def terminal(self, c: str = '', terminal_name : str = 'pegasus'):
-
+        s1, s2  = counter(0)
         # set color on yellow
         self.bold           = bm.init.bold
+        self.black          = bm.fg.rbg(0, 0, 0)
         self.c              = self.bold+bm.fg.rbg(255, 255, 0)
         if terminal_name == 'orion': pass
         else: self.c        = self.bold+c
         # reset color
         self.reset          = bm.init.reset
         # input initialized
-        self.input          = '{}{} {}'.format(self.c,  chr(9654)*3, self.reset)
+        self.input          = s1 
         # input main used to build the final string s
-        self.main_input     = '{}{} {}'.format(self.c, chr(9654)*3, self.reset)
+        self.main_input     = s1 
         # initial length of the input
         self.length         = len(self.input)
         # initialisation of index associated to the input
         self.index          = self.length
         # length of the foutth first char of input
-        self.size           = len('>>> ')
+        self.size           = s2 #len('>>> ')
         # string used to handling the output that is the must inmportant string
         self.s              = ""
         # string used for the code,
@@ -131,9 +158,21 @@ class windows:
         # detecting if indentation was used
         self.active_tab     = None
         # move curor up fist time 
-        self.key_up_first_time = False 
-        self.key_up_firts_time_checking = []
+        self.key_up_first_time      = False 
+        # storing key_up_first_time
+        self.key_up_id              = None 
+        # history of commands (UP, DOWN and ENTER)
+        self.history_of_commands    = []
+        # action to do after one of these commands is pressed 
+        # it means UP, DOWN or ENTER is pressed
+        self.action_to_do           = None
+        # fixing the x-axis border 
+        self.border_x_limit         = True 
         ###########################################################
+        # currently cursor position (x, y)
+        self.pos_x, self.pos_y      = cursor_pos.cursor()
+        # terminal dimension (max_x, max_y)
+        self.max_x, self.max_y      = test.get_win_ter()
         k  = windll.kernel32
         k.SetConsoleMode( k.GetStdHandle(-11), 7)
         # clear entire line
@@ -141,17 +180,18 @@ class windows:
         # move cursor left
         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
         # print the input value
+        title(self.max_x)
+        sys.stdout.write(self.black+f"{self.acs['vl']}" + f"{self.acs['h']}"* 7 + f"{self.acs['m1']}"+ 
+                         f"{self.acs['h']}"*(self.max_x-2-8)+ f"{self.acs['vr']}"+self.reset+"\n")
         sys.stdout.write(self.input)
+        sys.stdout.write(bm.save.save) #####
+        sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+self.black+f"{self.acs['v']}"+self.reset+bm.save.restore)  #####
         # save cursor position
         #sys.stdout.write(bm.save.save)
         # flush
         sys.stdout.flush()
         ###########################################################
         self.max_size_init          = 11 # no optional key (crtl+n , ......)
-        # currently cursor position (x, y)
-        self.pos_x, self.pos_y      = cursor_pos.cursor()
-        # terminal dimension (max_x, max_y)
-        self.max_x, self.max_y      = test.get_win_ter()
         self.save_cursor_position   = bm.save.save
         self.indicator_pos          = 0
         # indicator_max 
@@ -172,24 +212,33 @@ class windows:
                     if self.char is not None:
                         #building of str_drop_down only when ord( self.char ) is in self.sss 
                         if 32 <= self.char <= 126:
-                            sys.stdout.write(bm.clear.line(pos=0))
-                            if chr(self.char) in self.sss:
-                                self.str_drop_down = self.str_drop_down[ : self.drop] + chr( self.char ) + self.str_drop_down[ self.drop : ]
-                                self.drop += 1
-                            else:
-                                # initialization
-                                self.drop_drop['id'].append( self.drop )
-                                self.drop_drop['str'].append( self.str_drop_down) 
-                                self.drop = 0
-                                self.str_drop_down = ""
+                            if self.border_x_limit is True:
+                                self.pos_x, self.pos_y = cursor_pos.cursor()
+                                if (self.max_x - int(self.pos_x)) > 1:
+                                    sys.stdout.write(bm.clear.line(pos=0))
+                                    if chr(self.char) in self.sss:
+                                        self.str_drop_down = self.str_drop_down[ : self.drop] + chr( self.char ) + self.str_drop_down[ self.drop : ]
+                                        self.drop += 1
+                                    else:
+                                        # initialization
+                                        self.drop_drop['id'].append( self.drop )
+                                        self.drop_drop['str'].append( self.str_drop_down) 
+                                        self.drop = 0
+                                        self.str_drop_down = ""
+                                    if len(self.s) <= self.max_x : self.border_x_limit = True 
+                                    else: self.border_x_limit = False
+                                else: self.border_x_limit = False
+                            else: pass
                         #delecting char in the str_drop_down string 
                         elif self.char in {8, 127}:
-                            sys.stdout.write(bm.clear.screen(pos=0))
-                            if self.str_drop_down:
-                                # dropsown string :
-                                self.str_drop_down = self.str_drop_down[ : self.drop - 1] + self.str_drop_down[ self.drop : ]
-                                # dropdown index 
-                                self.drop    -= 1
+                            if self.border_x_limit is True:
+                                #sys.stdout.write(bm.clear.screen(pos=0))
+                                if self.str_drop_down:
+                                    # dropsown string :
+                                    self.str_drop_down = self.str_drop_down[ : self.drop - 1] + self.str_drop_down[ self.drop : ]
+                                    # dropdown index 
+                                    self.drop    -= 1
+                                else: pass
                             else: pass
                         else:
                             if self.char in [10, 13, 27, 7, 14]: pass 
@@ -219,21 +268,28 @@ class windows:
                             # each character has 1 as length     #
                             # have a look on ansi char           #
                             ######################################
-                            # building input
-                            self.input  = self.input[: self.index + self.last] + chr(self.char) + self.input[
-                                                                                                self.index + self.last:]
-                            # building s
-                            self.s      = self.s[: self.I] + chr(self.char) + self.s[self.I:]
-                            # building string
-                            self.string = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
-                            # increasing index of a step = 1
-                            self.index += 1
-                            # increasing I of a step = 1
-                            self.I     += 1
-                            # increasing I_S of step = 1
-                            self.I_S   += 1
-                            # storing char in get
-                            self.get.append(self.char)
+                            if self.border_x_limit is True:
+                                # building input
+                                self.input  = self.input[: self.index + self.last] + chr(self.char) + self.input[
+                                                                                                    self.index + self.last:]
+                                # building s
+                                self.s      = self.s[: self.I] + chr(self.char) + self.s[self.I:]
+                                # building string
+                                self.string = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
+                                # increasing index of a step = 1
+                                self.index += 1
+                                # increasing I of a step = 1
+                                self.I     += 1
+                                # increasing I_S of step = 1
+                                self.I_S   += 1
+                                # storing char in get
+                                self.get.append(self.char)
+                                
+                                # fixing the cursor position conditions
+                                if len(self.s) < self.max_x : self.border_x_limit = True 
+                                else: self.border_x_limit = False
+                                
+                            else: pass
                         # moving cursor up, down, left, reight
                         elif self.char == 27:
                             next1, next2 = 91,  _
@@ -283,31 +339,27 @@ class windows:
                                     # get the previous value stored in the list
                                     elif next2 == 65:  # up
                                         if self.key_up_first_time is True : 
-                                            # storing input
-                                            self.liste.append(self.input)
-                                            # storing s
-                                            self.sub_liste.append(self.s)
-                                            # storing index
-                                            self.tabular.append(self.index)
-                                            # storing I
-                                            self.sub_tabular.append(self.I)
-                                            # storing last
-                                            self.last_tabular.append(self.last)
-                                            # storing remove_tab
-                                            self.remove_tabular.append(self.remove_tab)
-                                            # storing I_S
-                                            self.string_tab.append(self.I_S)
-                                            # storing string
-                                            self.string_tabular.append(self.string)
-                                            # storing get
-                                            self.memory.append(self.get)
-                                            # storing str_drop_down
-                                            self.drop_list_str.append( self.str_drop_down)
-                                            # storing str_drop_down index
-                                            self.drop_list_id.append(self.drop)
-                                            self.key_up_first_time = False
+                                            if self.action == 'ADDS':
+                                                self.liste.append(self.input), self.sub_liste.append(self.s), self.tabular.append(self.index)
+                                                self.sub_tabular.append(self.I), self.last_tabular.append(self.last)
+                                                self.remove_tabular.append(self.remove_tab), self.string_tab.append(self.I_S)
+                                                self.string_tabular.append(self.string), self.memory.append(self.get)
+                                                self.drop_list_str.append( self.str_drop_down), self.drop_list_id.append(self.drop)
+                                                self.key_up_first_time, self.key_up_id = False, True 
+                                            elif  self.action == 'INSERTS':
+                                                if self.key_up_id is True: pass 
+                                                else:
+                                                    v = self.if_line
+                                                    self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
+                                                    self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
+                                                    self.last_tabular.insert(v, self.last),  self.remove_tabular.insert(v, self.remove_tab)   
+                                                    self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
+                                                    self.memory.insert(v, self.get)                                            
+                                                    self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
+                                                    self.key_up_first_time, self.key_up_id = False, True 
+                                            else: pass
                                         else: pass 
-                                        
+                    
                                         if self.liste:
                                             try:
                                                 # idd is decreased of -1
@@ -338,7 +390,12 @@ class windows:
                                                     else: pass
                                                     
                                                     self.if_line -= 1
-                                                
+                                                    self.history_of_commands.append("UP")
+                                                    #################################################################
+                                                    self.main_input, self.size = counter(self.if_line)
+                                                    self.length = len(self.main_input)
+                                                    #################################################################
+                                                    
                                                     self.pos_x, self.pos_y = cursor_pos.cursor()
                                                     sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)-1))
                                                     #else: pass
@@ -350,6 +407,19 @@ class windows:
                                         else:   pass
                                     # get the next value stored in the list
                                     elif next2 == 66:
+                                        if self.key_up_first_time is True:
+                                            if self.key_up_id is True: pass 
+                                            else:
+                                                v = self.if_line
+                                                self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
+                                                self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
+                                                self.last_tabular.insert(v, self.last),  self.remove_tabular.insert(v, self.remove_tab)   
+                                                self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
+                                                self.memory.insert(v, self.get)                                            
+                                                self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
+                                                self.key_up_first_time, self.key_up_id = False, True 
+                                        else: pass
+                                        
                                         if self.liste:
                                             try:
                                                 if self.if_line < self.if_line_max:
@@ -371,16 +441,21 @@ class windows:
                                                     self.last   = self.last_tabular[self.idd]
                                                     # restoring remove_tab from index
                                                     self.remove_tab = self.remove_tabular[self.idd]
+                                                    
                                                     if self.drop_list_str:
                                                         self.str_drop_down = self.drop_list_str[ self.idd ]
                                                         self.drop = self.drop_list_id[ self.idd ]
                                                     else: pass 
                                                     
                                                     self.if_line += 1
-                                                    
+                                                    self.history_of_commands.append("DOWN")
+                                                    #################################################################
+                                                    self.main_input, self.size = counter(self.if_line)
+                                                    self.length = len(self.main_input)
+                                                    #################################################################
                                                     self.pos_x, self.pos_y = cursor_pos.cursor()
                                                     sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)+1))
-                                            
+                                                    
                                                 else: pass
                                             except IndexError:
                                                 # any changes here when local IndexError is detected
@@ -464,24 +539,35 @@ class windows:
                                             self.I     -= 1
                                             self.I_S   -= 1
                                         else:   pass
+                                        
+                                        # fixing the cursor position conditions
+                                        if self.max_x >= int(self.pos_x) and  len(self.s) <= self.max_x : self.border_x_limit = True 
+                                        else: self.border_x_limit = False 
                                     else:  pass
                                 except IndexError:  pass
                             else: pass
                         # indentation Tab
                         elif self.char == 9:
+                            if self.border_x_limit is True:
+                                self.pos_x, self.pos_y = cursor_pos.cursor()
+                                if (self.max_x - int(self.pos_x)) >= 5:
+                                    self.tt         = '    '
+                                    self.input      = self.input[: self.index + self.last] + str(self.tt) + self.input[
+                                                                                                    self.index + self.last:]
+                                    self.s          = self.s[: self.I] + str(self.tt) + self.s[self.I:]
+                                    # string takes the true value of char
+                                    self.string     = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
+                                    self.index     += 4
+                                    self.I         += 4
+                                    self.I_S       += 1
 
-                            self.tt         = '    '
-                            self.input      = self.input[: self.index + self.last] + str(self.tt) + self.input[
-                                                                                            self.index + self.last:]
-                            self.s          = self.s[: self.I] + str(self.tt) + self.s[self.I:]
-                            # string takes the true value of char
-                            self.string     = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
-                            self.index     += 4
-                            self.I         += 4
-                            self.I_S       += 1
-
-                            for i in range(4):
-                                self.get.append(self.char)
+                                    for i in range(4):
+                                        self.get.append(self.char)
+                                else: pass 
+                                
+                                if len(self.s) <= self.max_x : self.border_x_limit = True 
+                                else: self.border_x_limit = False
+                            else: pass
                         # clear entire string ctrl+l
                         elif self.char == 12:
                             # move cursor left
@@ -564,49 +650,84 @@ class windows:
                             return
                         # printing and initializing of values "enter"
                         elif self.char in {10, 13}:
-                            sys.stdout.write(bm.clear.screen(pos=0))
+                            # storing input
+                            self.pos_x, self.pos_y = cursor_pos.cursor()
+                            
+                            if self.if_line == self.if_line_max:
+                                if self.key_up_id is True:  self.key_up_id = None
+                                else:
+                                    self.liste.append(self.input)
+                                    # storing s
+                                    self.sub_liste.append(self.s)
+                                    # storing index
+                                    self.tabular.append(self.index)
+                                    # storing I
+                                    self.sub_tabular.append(self.I)
+                                    # storing last
+                                    self.last_tabular.append(self.last)
+                                    # storing remove_tab
+                                    self.remove_tabular.append(self.remove_tab)
+                                    # storing I_S
+                                    self.string_tab.append(self.I_S)
+                                    # storing string
+                                    self.string_tabular.append(self.string)
+                                    # storing get
+                                    self.memory.append(self.get)
+                                    # storing str_drop_down
+                                    self.drop_list_str.append( self.str_drop_down)
+                                    # storing str_drop_down index
+                                    self.drop_list_id.append(self.drop)
+                            else:
+                                v = self.if_line
+                                self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
+                                self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
+                                self.last_tabular.insert(v, self.last),  self.remove_tabular.insert(v, self.remove_tab)   
+                                self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
+                                self.memory.insert(v, self.get)                                            
+                                self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
+                                
                             if self.index > 0:
                                 pos = len(self.s) + self.size + len(self.input) - self.index
                                 sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                             else: pass
-                            self.if_line += 1
+                            
                             self.if_line_max += 1
+                            self.if_line += 1
+                            
                             # move cursor of left
                             sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                            # print the final input with its transformations
-                            if terminal_name == 'orion': print(self.main_input + self.bold+bm.words(string=self.s, color=bm.fg.rbg(255,  255, 255)).final())
-                            else:   print(self.main_input + self.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
 
-                            # storing input
-                            self.liste.append(self.input)
-                            # storing s
-                            self.sub_liste.append(self.s)
-                            # storing index
-                            self.tabular.append(self.index)
-                            # storing I
-                            self.sub_tabular.append(self.I)
-                            # storing last
-                            self.last_tabular.append(self.last)
-                            # storing remove_tab
-                            self.remove_tabular.append(self.remove_tab)
-                            # storing I_S
-                            self.string_tab.append(self.I_S)
-                            # storing string
-                            self.string_tabular.append(self.string)
-                            # storing get
-                            self.memory.append(self.get)
-                            # storing str_drop_down
-                            self.drop_list_str.append( self.str_drop_down)
-                            # storing str_drop_down index
-                            self.drop_list_id.append(self.drop)
+                                #print the final input with its transformations
                             
+                            if terminal_name == 'orion': 
+                                sys.stdout.write(self.main_input + self.bold+bm.words(string=self.s, color=bm.fg.rbg(255,  255, 255)).final()+
+                                            bm.move_cursor.RIGHT(pos=self.max_x-1)+bm.clear.line(pos=0)+self.black+f"{self.acs['v']}"+
+                                            self.reset+bm.move_cursor.LEFT(pos=int(self.pos_x))+ "\n")
+                                
+                                if self.if_line !=  self.if_line_max:
+                                    if self.sub_liste[self.if_line : ]:
+                                        sys.stdout.write(bm.save.save)
+                                        sys.stdout.write(bm.clear.screen(pos=0))
+                                        _id_ = 0
+                                        for _ss_ in  self.sub_liste[self.if_line : ]:
+                                            __s__, __l__ = counter(self.if_line+_id_)
+                                            sys.stdout.write( __s__+ self.bold+bm.words(string=_ss_, color=bm.fg.rbg(255,  255, 255)).final()+
+                                                    bm.move_cursor.RIGHT(pos=self.max_x-1)+bm.clear.line(pos=0)+self.black+f"{self.acs['v']}"+
+                                                    self.reset+bm.move_cursor.LEFT(pos=int(self.pos_x)) + "\n")
+                                            _id_ += 1
+                                        sys.stdout.write(bm.save.restore)
+                                    else: pass
+                                else: pass
+                            else:   print(self.main_input + self.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                                
                             if self.string:
                                 pass
                             else: pass
 
                             # initialization block
+                            self.main_input, self.size = counter(self.if_line)
                             self.input          = self.main_input
-                            self.index          = self.length
+                            self.index          = len(self.main_input)
                             self.s              = ''
                             self.string         = ''
                             self.I              = 0
@@ -619,30 +740,32 @@ class windows:
                             self.drop           = 0   
                             self.drop_drop      = {'id':[], 'str':[]}     
                             self.drop_idd       = 0 
+                            self.history_of_commands.append("ENTER")
+                            self.border_x_limit = True 
+                            self.key_max_activation = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
                             
                             if self.if_line == self.if_line_max:
-                                if not self.key_up_firts_time_checking: 
-                                    self.key_up_firts_time_checking.append(self.if_line_max)
-                                    self.key_up_first_time = True
-                                else:
-                                    if self.if_line_max in self.key_up_firts_time_checking: elf.key_up_first_time= False
-                                    else:
-                                        self.key_up_firts_time_checking.append(self.if_line_max)
-                                        self.key_up_first_time = True
-                            else: self.key_up_first_time = False 
-                            
-                            self.pos_x, self.pos_y = cursor_pos.cursor()
-                            self.key_max_activation = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
-                        #print(self.char)
+                                if self.history_of_commands[-1] == "ENTER": 
+                                    self.key_up_first_time, self.action = True, 'ADDS'
+                                else: self.key_up_first_time = False
+                            else: 
+                                if self.history_of_commands[-1] == "ENTER": 
+                                    self.key_up_first_time, self.action = True, "INSERTS"
+                                else: self.key_up_first_time = False 
+                        
                         # move cursor on left
                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                         # clear entire line
                         sys.stdout.write(bm.clear.line(pos=0))
 
                         if terminal_name == 'orion':
+                            # currently cursor position (x, y)
+                            self.pos_x, self.pos_y      = cursor_pos.cursor()
                             # key word activation
                             sys.stdout.write(self.main_input + bm.string().syntax_highlight(
-                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
+                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()) +
+                                bm.move_cursor.RIGHT(pos=self.max_x-1)+bm.clear.line(pos=0)+self.black+f"{self.acs['v']}"+self.reset+
+                                bm.move_cursor.LEFT(pos=int(self.pos_x)))
                         else:
                             # any activation keyword
                             sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
@@ -657,6 +780,7 @@ class windows:
                             sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                         else: pass
 
+                        """
                         if self.str_drop_down:
                             if self.key_max_activation is True:
                                 sys.stdout.write(bm.save.save)
@@ -744,6 +868,7 @@ class windows:
                         if self.indicator in {65, 66}: pass 
                         else:   self.indicator_pos, self.indicator_max = 0, 1
                         self.indicator = None
+                        """
                         sys.stdout.flush()
                     else: pass
                 else: pass

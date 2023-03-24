@@ -4,8 +4,6 @@ from script.STDIN.LinuxSTDIN                            import bm_configure as b
 from CythonModules.Windows                              import fileError    as fe 
 
 
-
-
 class LAMBDA:
     def __init__(self, data_base, line):
         self.data_base      = data_base

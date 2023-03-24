@@ -172,16 +172,21 @@ class windows:
                         #building of str_drop_down only when ord( self.char ) is in self.sss 
                         if 32 <= self.char <= 126:
                             if self.border_x_limit is True:
-                                sys.stdout.write(bm.clear.screen(pos=0))
-                                if chr(self.char) in self.sss:
-                                    self.str_drop_down = self.str_drop_down[ : self.drop] + chr( self.char ) + self.str_drop_down[ self.drop : ]
-                                    self.drop += 1
-                                else:
-                                    # initialization
-                                    self.drop_drop['id'].append( self.drop )
-                                    self.drop_drop['str'].append( self.str_drop_down) 
-                                    self.drop = 0
-                                    self.str_drop_down = ""
+                                self.pos_x, self.pos_y = cursor_pos.cursor()
+                                if (self.max_x - int(self.pos_x)) > 0:
+                                    sys.stdout.write(bm.clear.screen(pos=0))
+                                    if chr(self.char) in self.sss:
+                                        self.str_drop_down = self.str_drop_down[ : self.drop] + chr( self.char ) + self.str_drop_down[ self.drop : ]
+                                        self.drop += 1
+                                    else:
+                                        # initialization
+                                        self.drop_drop['id'].append( self.drop )
+                                        self.drop_drop['str'].append( self.str_drop_down) 
+                                        self.drop = 0
+                                        self.str_drop_down = ""
+                                    if len(self.s) < self.max_x : self.border_x_limit = True 
+                                    else: self.border_x_limit = False 
+                                else: self.border_x_limit = False
                             else: pass
                         #delecting char in the str_drop_down string 
                         elif self.char in {8, 127}:
@@ -448,19 +453,21 @@ class windows:
                         # indentation Tab
                         elif self.char == 9:
                             if self.border_x_limit is True:
-                                self.tt         = '    '
-                                self.input      = self.input[: self.index + self.last] + str(self.tt) + self.input[
-                                                                                                self.index + self.last:]
-                                self.s          = self.s[: self.I] + str(self.tt) + self.s[self.I:]
-                                # string takes the true value of char
-                                self.string     = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
-                                self.index     += 4
-                                self.I         += 4
-                                self.I_S       += 1
-
-                                for i in range(4):
-                                    self.get.append(self.char)
-                                
+                                self.pos_x, self.pos_y = cursor_pos.cursor()
+                                if (self.max_x - int(self.pos_x)) >= 4:
+                                    self.tt         = '    '
+                                    self.input      = self.input[: self.index + self.last] + str(self.tt) + self.input[
+                                                                                                    self.index + self.last:]
+                                    self.s          = self.s[: self.I] + str(self.tt) + self.s[self.I:]
+                                    # string takes the true value of char
+                                    self.string     = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
+                                    self.index     += 4
+                                    self.I         += 4
+                                    self.I_S       += 1
+                                    
+                                    for i in range(4):
+                                        self.get.append(self.char)
+                                else: pass
                                 # fixing the cursor position conditions
                                 if len(self.s) <= self.max_x : self.border_x_limit = True 
                                 else: self.border_x_limit = False 
@@ -768,8 +775,11 @@ if __name__ == '__main__':
         sys.stdout.write(bm.clear.screen(pos=2))
         os.system('cls')
         sys.stdout.write(bm.save.save)
-        if term == 'orion': header.header(terminal='orion terminal')
-        else: header.header(terminal='pegasus terminal')
+        max_x, max_y  = test.get_win_ter()
+        if max_x >= 100:
+            if term == 'orion': header.header(terminal='orion terminal')
+            else: header.header(terminal='pegasus terminal')
+        else: pass 
         
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)

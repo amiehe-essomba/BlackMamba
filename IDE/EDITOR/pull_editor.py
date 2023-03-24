@@ -128,7 +128,7 @@ class IDE:
         self.pos_x, self.pos_y = cursor_pos.cursor()
         self.max_x, self.max_y = test.get_win_ter()
         self._s_ = self.srt+'  '+' '+' '*(self.len+1)+' '
-        self.border_x_limit = (self.max_x) - (len(self._s_)+int(self.pos_x))
+        self.border_x_limit = self.max_x - int(self.pos_x) #(self.max_x) - (len(self._s_)+int(self.pos_x))
         
         sys.stdout.write(bm.save.save)
         sys.stdout.write("\n")
@@ -140,7 +140,7 @@ class IDE:
             sys.stdout.write(bm.move_cursor.UP(pos=1))
         sys.stdout.write(bm.move_cursor.UP(pos=1))
         sys.stdout.write(bm.move_cursor.RIGHT(pos=int(self.pos_x) -1))
-        if self.border_x_limit <= 2: self.srt = ''
+        if self.border_x_limit < self.len+10 : self.srt = ''
         else: pass 
     
         sys.stdout.write(bm.save.save)
@@ -295,6 +295,7 @@ class  DropDown:
         self.line               = line
         self.data_base          = data_base
         self.key 				= key
+    
     def MENU(self, string : str = 'r', true_chaine : str = "", indicator = None, pos : int = 0) :
         ouput               = ""
         np                  = 1
@@ -326,18 +327,22 @@ class  DropDown:
                 elif indicator in {7}:
                     self.idd        = len(string)
                     self.new_data = []
+                    self.len_ = 0
                     
                     if string:
                         for s in all_values:
                             try:
-                                if string == s[:self.idd] : self.new_data.append(s)
+                                if string == s[:self.idd] : 
+                                    self.new_data.append(s)
+                                    if self.len_ >= len(s): pass 
+                                    else: self.len_ = len(s)
                                 else: pass
                             except IndexError: pass
                     else: pass
                     
                     if self.new_data:
                         self.max_size += len(self.new_data)
-                        if all_values: ouput, err = cp.new_windows( string, self.line ).cursor_pos( sorted(self.new_data), true_chaine )
+                        if all_values: ouput, err = cp.new_windows( string, self.line ).cursor_pos( sorted(self.new_data), true_chaine, self.len_ )
                         else: pass
                     else: self.max_size = 1
                 elif indicator in {14}:

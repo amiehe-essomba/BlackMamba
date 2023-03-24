@@ -4,6 +4,8 @@ from IDE.EDITOR                             import string_to_chr, details
 from script.STDIN.LinuxSTDIN                import bm_configure as bm
 from script.STDIN.LinuxSTDIN                import ascii
 from src.classes                            import error 
+from IDE.EDITOR                             import true_cursor_pos as cursor_pos
+from IDE.EDITOR                             import test
 
 
 class new_windows:
@@ -16,7 +18,7 @@ class new_windows:
         self.srt        = " " * len(srt) + "     "
         self.r          = bm.init.bold+bm.fg.rbg(255, 0, 0)
         self.line       = line 
-    def cursor_pos(self, list_of_values: list, true_chaine: str = ""):
+    def cursor_pos(self, list_of_values: list, true_chaine: str = "", length : int = 1):
         def number(num : int):
             if num <= 9:  return self.ww+'[ '+self.r+f"{num}"+self.re+self.ww+']'+self.re
             else:         return self.ww+'[' +self.r+f"{num}"+self.re+self.ww+']'+self.re
@@ -37,6 +39,8 @@ class new_windows:
         c = bm.init.bold+bm.init.blink+bm.fg.rbg(255, 0, 255)
         m = bm.init.bold+bm.init.blink+bm.fg.rbg(0, 255, 255)
         w = bm.init.bold+bm.fg.rbg(255, 255, 255)
+        self.pos_x, self.pos_y = cursor_pos.cursor()
+        self.max_x, self.max_y = test.get_win_ter()
        
         self.disp       = " " * (len(true_chaine)+4)
         self.srt        = self.disp
@@ -44,7 +48,9 @@ class new_windows:
         self.list       = list_of_values 
         self.index      = 0 
         self.value      = None
-        self.len        = 18
+        self.details    = len('[d]     = details ')
+        if self.details > length: self.len = self.details
+        else: self.len = length+1
         self.val1       = f'{w}[{m}Enter{r}{w}] = {c}select{r}  '
         self.val2       = f'{w}[{m}q{r}{w}]     = {c}exit{r}    '
         self.val3       = f'{w}[{m}d{r}{w}]     = {c}details{r} '
@@ -55,6 +61,9 @@ class new_windows:
         self.store_id   = []
         self.string     = ""
         self.err        = None
+        self.border_x_limit = self.max_x - int(self.pos_x)
+        if self.border_x_limit < length +10 : self.srt = ''
+        else: pass
         
         sys.stdout.write(bm.save.save)
         sys.stdout.write("\n")

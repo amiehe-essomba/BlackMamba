@@ -1,4 +1,4 @@
-from script.STDIN.LinuxSTDIN    import control_string
+from script                     import control_string
 from script.LEXER               import checking_tabulation
 from script.LEXER               import check_if_affectation
 from script.LEXER               import main_lexer
