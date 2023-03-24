@@ -5,7 +5,7 @@ from IDE.EDITOR                     import pull_editor as pe
 def a(string: str):
     List, max_, L = None, 0, []
     if   string == 'add':
-        List = ["# Only used for lists", "[].add( True )", "name = [].add( 'Hello Wold')"]
+        List = ["# Only used for lists", "[].add( True )", "name = [].add( 'Hello World')"]
         for i in range(len(List)):
             L.append(len(List[i]))
             List[i] = bm.words(string=List[i], color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()
@@ -516,6 +516,65 @@ def i(string: str):
     
     return List, max_+4, L
 
+def j(string: str):
+    List, max_, L = None, 0, []
+    if   string == 'join':
+        List = ["# Only used for strings", "''.join('H')", 
+                " ",
+                "'--'.join( ['Python', 'BMamba', 'R', 'C', 'Ruby'] )",
+                "'**'.join( master = ('Python', 'BMamba', 'Ruby') )",
+                "'_'.join( {Python : True, BMamba : True, Ruby : None] )"
+                ]
+        for i in range(len(List)):
+            L.append(len(List[i]))
+            List[i] = bm.words(string=List[i], color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()
+        max_ = max(L)
+        List = [ bm.words(string="join".center(max_), color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final(n=1)]+List
+        L.insert(0, max_)
+    else: 
+        L = [len(string), 10]
+        max_ = max(L)
+        L[0] = max_
+        s =  bm.words(string=f"{string}".center(max_), color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final(n=0)
+        List = [s, '          ']
+    
+    return List, max_+4, L 
+
+def l(string: str):
+    List, max_, L = None, 0, []
+    if   string == 'lambda':
+        List = ["# Only used for creating anonymous functions",
+                " ", 
+                "sum = lambda a b : a+b",
+                "sum = lambda array max : array[array .gt. max] -> list"
+                ]
+        for i in range(len(List)):
+            L.append(len(List[i]))
+            List[i] = bm.words(string=List[i], color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()
+        max_ = max(L)
+        List = [ bm.words(string="lambda".center(max_), color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final(n=1)]+List
+        L.insert(0, max_)
+    elif   string == 'lower':
+        List = ["# Only used for strings",
+                " ", 
+                "'HELLO WORLD !'.lower()"
+                ]
+        for i in range(len(List)):
+            L.append(len(List[i]))
+            List[i] = bm.words(string=List[i], color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()
+        max_ = max(L)
+        List = [ bm.words(string="lower".center(max_), color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final(n=1)]+List
+        L.insert(0, max_)
+    else: 
+        L = [len(string), 10]
+        max_ = max(L)
+        L[0] = max_
+        s =  bm.words(string=f"{string}".center(max_), color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final(n=0)
+        List = [s, '          ']
+    
+    return List, max_+4, L 
+
+
 class code_example:
     def __init__(self, char : str, string : str ):
         self.char       = char
@@ -538,6 +597,8 @@ class code_example:
             self.List, self.max, self.l = g( self.string )
         elif self.char == 'i':
             self.List, self.max, self.l = i( self.string )
+        elif self.char == 'j':
+            self.List, self.max, self.l = j( self.string )
         else: self.List, self.max, self.l = ['          '], 10, [10]
         return self.List, self.max, self.l
             

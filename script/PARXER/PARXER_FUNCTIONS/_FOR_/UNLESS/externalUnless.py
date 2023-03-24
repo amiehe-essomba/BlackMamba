@@ -75,8 +75,7 @@ class EXTERNAL_UNLESS:
 
         for i in range(1): 
             # concatening string and extraction of string concatenated , tabulation for and indensation and error        
-            self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.master,
-                                                                        tabulation=self.tabulation)
+            self.string, self.active_tab, self.error = self.analyse.BUILD_CON(string=self.master, tabulation=self.tabulation)
             if self.error is None:
                 # build normal string 
                 self.normal_string = self.analyse.BUILD_NON_CON(string=self.master, tabulation=self.tabulation)

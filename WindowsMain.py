@@ -157,12 +157,11 @@ class windows:
         # indicator_max 
         self.indicator_max          = 1
         # checking if key_max_activation could be activated  for handling terminal tools
-        self.key_max_activation     = True #  DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
+        self.key_max_activation     = True 
         ###########################################################
         
         while True:
             try:
-                #self.max_x_, self.max_y_      = test.get_win_ter()
                 # get input
                 self.char = string_to_chr.convert()
                 if self.char:
@@ -208,7 +207,7 @@ class windows:
                                 self.drop = 0
                                 self.str_drop_down = ""
                                 sys.stdout.write(bm.clear.screen(pos=0))
-                       
+                                
                         # breaking loop while with the keyboardError ctrl+c
                         if self.char == 3:
                             os.system('cls')
@@ -630,8 +629,7 @@ class windows:
                             self.drop_idd       = 0 
                             self.border_x_limit = True 
                             self.pos_x, self.pos_y = cursor_pos.cursor()
-                            #self.key_max_activation = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
-                       
+                            
                         if self.border_x_limit is True:
                             # move cursor on left
                             sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
@@ -661,11 +659,11 @@ class windows:
                                     sys.stdout.write(bm.save.save)
                                     if self.indicator is None:
                                         v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
-                                                                                                        self.s, self.indicator, self.indicator_pos)
+                                                                                                        self.s, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
                                     else:
                                         sys.stdout.write(bm.clear.screen(pos=0))
                                         v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
-                                                                                        self.string, self.indicator, self.indicator_pos)
+                                                                                        self.string, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
                                         if self.error is None: pass 
                                         else:
                                             sys.stdout.write(self.error+"\n\n")

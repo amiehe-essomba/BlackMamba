@@ -88,7 +88,9 @@ class STRING:
         self._return_           = ''
         self.historyOfFunctions = []
         self.strFunctions       = [ 'upper', 'lower', 'capitalize', 'empty', 'enumerate', 'split', 'join', 'format', 'index', 'rstrip', 'lstrip',
-                                    'count', 'endwith', 'startwith', 'replace', 'size']
+                                    'count', 'endwith', 'startwith', 'replace', 'size', 'rjust', 'ljust', 'centering', 'encoding', 'find', 'partition', 'fill',
+                                    'title', 'istile', 'isascii', 'casefold', 'isspace', 'swapcase', 'isdecimal', 'isidentifier',
+                                    'isprintable', 'isupper', 'islower', 'isnumeric', 'isdigit', 'decoding']
         self.subStrFunctions    = ['upper', 'lower', 'capitalize']
         self.asSubStrFunctions  = ['split', 'isEMPTY', 'enumerate']
                 

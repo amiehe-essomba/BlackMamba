@@ -232,14 +232,14 @@ class ERRORS:
         self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> {}is not {}a list(), '.format(self.cyan, value, self.white, self.yellow) + error
         return self.error+self.reset
     
-    def ERROR32(self, value: list): #
+    def ERROR32(self, value: list, func : str = ''): #
         falseValue = None
-        for v in value :
+        for j, v in enumerate(value) :
             if type( v ) != type( str() ):
                 falseValue = v 
                 break 
         
-        self.error = ERRORS( self.line ).ERROR3( falseValue, 'a string()')
+        self.error = ERRORS( self.line ).ERROR3( falseValue, 'a string()', func)
       
         return self.error+self.reset
 
@@ -422,4 +422,14 @@ class ERRORS:
         error = '{}index out of range. {}line: {}{}.'.format( self.green, self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'IndexError' ).Errors()+'{}{} '.format( self.cyan, num) + error
         return self.error+self.reset
+    
+    def ERROR63(self, string :str ): #
+        error = '{}is not take into account. {}line: {}{}.'.format( self.green, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'EncodingError' ).Errors()+'{}{} '.format( self.cyan, string) + error
+        return self.error+self.reset
+    def ERROR64(self, string :str ): #
+        error = '{}is not take into account. {}line: {}{}.'.format( self.green, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'DecodingError' ).Errors()+'{}{} '.format( self.cyan, string) + error
+        return self.error+self.reset
+    
     

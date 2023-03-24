@@ -39,11 +39,13 @@ class STRING:
                                                     self.DataBase,self.line).ANALYSE( mainString )
                                     if self.error is None:
                                         self.newValues = self.final_val[ 0 ]
-                                        if type( self.newValues ) == type( tuple() ):
+                                        if type(self.newValues) == type(str()):
+                                            self._return_   = self.master.join( self.newValues ) 
+                                        elif type( self.newValues ) in [type( tuple() ), type(list()), type(dict())]:
                                             try:
                                                 self._return_   = self.master.join( self.newValues ) 
                                             except TypeError: self.error = er.ERRORS( self.line ).ERROR32( self.newValues )
-                                        else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a tuple()')   
+                                        else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a tuple(), a list() or a string()')   
                                     else: pass 
                                 else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
                             else: pass
@@ -68,11 +70,13 @@ class STRING:
                                                         self.DataBase,self.line).ANALYSE( mainString )
                                         if self.error is None:
                                             self.newValues = self.final_val[ 0 ]
-                                            if type( self.newValues ) == type( tuple() ):
+                                            if type(self.newValues) == type(str()):
+                                                self._return_   = self.master.join( self.newValues ) 
+                                            elif type( self.newValues ) in [type( tuple() ), type(list()), type(dict())]:
                                                 try:
-                                                    self._return_   =  self.master.join( self.newValues )
-                                                except TypeError : self.error = er.ERRORS( self.line ).ERROR32( self.newValues )
-                                            else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a tuple()')   
+                                                    self._return_   = self.master.join( self.newValues ) 
+                                                except TypeError: self.error = er.ERRORS( self.line ).ERROR32( self.newValues )
+                                            else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a tuple(), a list() or a string()')    
                                         else: pass 
                                     else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
                                 else: pass

@@ -414,11 +414,13 @@ class CLASS_TREATMENT:
                     
             else: 
                 self.strFunctions       = [ 'upper', 'lower', 'capitalize', 'empty', 'enumerate', 'split', 'join', 'format', 'index', 'rstrip', 'lstrip',
-                                            'count', 'endwith', 'startwith', 'replace', 'size']
+                                            'count', 'endwith', 'startwith', 'replace', 'size', 'rjust', 'ljust', 'centering', 'encoding', 'find', 'partition', 'fill',
+                                            'title', 'istile', 'isascii', 'casefold', 'isspace', 'swapcase', 'isdecimal', 'isidentifier',
+                                            'isprintable', 'isupper', 'islower', 'isnumeric', 'isdigit', 'decoding' ]
                 self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted', 'frame'] 
                 self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
-                self.floatFunctions      = [ 'round' ] 
-                self.rangeFunctions      = [ 'size', 'enumerate', 'choice', 'to_array', 'sum', 'std', 'mean', 'var' ] 
+                self.floatFunctions     = [ 'round' ] 
+                self.rangeFunctions     = [ 'size', 'enumerate', 'choice', 'to_array', 'sum', 'std', 'mean', 'var' ] 
                 self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size', 'choice', 'index', 'count'] 
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
                                             'size', 'round', 'rand', 'choice', 'to_array' ]
@@ -426,7 +428,7 @@ class CLASS_TREATMENT:
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
                                            'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis', 'dtype', 
                                            'size', 'copy', 'owner', 'choice']
-                self.table              = ['set_id', 'select', 'keys']  #['show', 'set_id', 'select', 'keys']
+                self.table              = ['set_id', 'select', 'keys'] 
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
                     

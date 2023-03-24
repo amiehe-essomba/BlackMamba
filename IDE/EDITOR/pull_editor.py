@@ -23,7 +23,7 @@ class list_of_keys:
         self.c = ['class', 'cplx', 'close', 'case', 'continue', 'count', 'capitalize', 'clear', 'copy', 'conj', 'choice']
         self.d = ['def', 'default']
         self.e = ['end', 'else', 'elif', 'exit', 'enumerate', 'empty', 'endwith']
-        self.f = ['func', 'for', 'from']
+        self.f = ['func', 'for', 'from', 'False']
         self.g = ['get', 'global']
         self.h = ['head']
         self.i = ['int', 'if', 'in', 'index', 'init', 'img', 'insert', 'initialize']
@@ -31,13 +31,13 @@ class list_of_keys:
         self.k = ['kurtosis']
         self.l = ['lower','local', 'lstrip','load', 'license', 'lambda']
         self.m = ['matrix', 'module', "merge"]
-        self.n = ['none', 'None', 'not', 'norm', 'ndarray']
+        self.n = ['none', 'None', 'not', 'norm', 'ndarray', 'None']
         self.o = ['open']
         self.p = ['pass', 'print']
         self.q = ['queue']
         self.r = ['rstrip', 'replace', 'remove', 'random', 'round', 'readline', 'readlines', 'read', 'return', 'range']
         self.s = ['set', 'switch', 'split', 'startwith', 'size', 'sorted']
-        self.t = ['table']
+        self.t = ['table', 'True']
         self.u = ['unless', 'until', 'upper']
         self.v = ['var']
         self.w = ['while','with', 'write', 'writeline', 'writelines']
@@ -296,7 +296,7 @@ class  DropDown:
         self.data_base          = data_base
         self.key 				= key
     
-    def MENU(self, string : str = 'r', true_chaine : str = "", indicator = None, pos : int = 0) :
+    def MENU(self, string : str = 'r', true_chaine : str = "", indicator = None, pos : int = 0, d_max_x : int = 1) :
         ouput               = ""
         np                  = 1
         self.max_size       = 6
@@ -342,7 +342,11 @@ class  DropDown:
                     
                     if self.new_data:
                         self.max_size += len(self.new_data)
-                        if all_values: ouput, err = cp.new_windows( string, self.line ).cursor_pos( sorted(self.new_data), true_chaine, self.len_ )
+                        if all_values: 
+                            ouput, err = cp.new_windows( string, self.line ).cursor_pos( sorted(self.new_data), true_chaine, self.len_ )
+                            if err is None:
+                                if len(ouput) > d_max_x: ouput =""
+                                else: pass
                         else: pass
                     else: self.max_size = 1
                 elif indicator in {14}:
