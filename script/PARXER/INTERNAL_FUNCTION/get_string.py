@@ -8,11 +8,9 @@ from script.STDIN.LinuxSTDIN                        import bm_configure as bm
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.INTERNAL_FUNCTION                import get_list
 from src.classes.Chars                              import Char
-from src.classes                                    import error as er  
-try:
-    from CythonModules.Windows                      import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                        import fileError as fe 
+from src.classes                                    import error        as er  
+from CythonModules.Windows                          import fileError    as fe 
+
 
 
 class STRING:

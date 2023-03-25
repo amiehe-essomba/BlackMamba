@@ -192,7 +192,7 @@ class DICTIONARY:
                 self.idd =  self.DataBase[ 'variables' ][ 'vars' ].index( mainName )
                 self.DataBase[ 'variables' ][ 'values' ][ self.idd ] = {}
             else: self.error = er.ERRORS( self.line ).ERROR14( self.function )
-        elif self.function in [ 'sorted'  ]          :
+        elif self.function in [ 'sorted' ]           :
             if len( self.arguments ) == 1:
                 if   self.arguments[ 0 ] in [ 'reverse' ]:
                     if self.value[ 0 ] is not None:

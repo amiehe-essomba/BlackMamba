@@ -11,7 +11,7 @@ def string( main : str ):
         try: return ord( main ) 
         except TypeError : return None 
         
-def decoding_string():
+def decoding_string() -> list:
     import msvcrt 
     number = None
     s = []
@@ -29,32 +29,35 @@ def decoding_string():
    
     return s
 
-def convert( ):
+def convert( ) -> list :
     s = decoding_string()
     number = None 
     #print(s)
     if len(s) == 1:
-        s = s[0].decode("utf-8")
-        
         try:
-            number =  [ord(s), None]
-        except TypeError: 
-            if   s == "\x0e":
-                number =  [14, None]
-            elif s == "\x04":
-                number =  [4,  None]
-            elif s == "\x01":
-                number =  [17, None]
-            elif s == "\x0c":
-                number =  [12, None]
-            else:  
-                number =  [None, None]
+            s = s[0].decode("utf-8")
+            try: number =  [ord(s), None]
+            except TypeError: 
+                if   s == "\x0e":
+                    number =  [14, None]
+                elif s == "\x04":
+                    number =  [4,  None]
+                elif s == "\x01":
+                    number =  [17, None]
+                elif s == "\x0c":
+                    number =  [12, None]
+                else:  
+                    number =  [None, None]
+        except UnicodeDecodeError: number =  [None, None]
     else:
-        s = s[1].decode("utf-8")
-        if   s == "H" : number = [27, 65]
-        elif s == "P" : number = [27, 66]
-        elif s == "K" : number = [27, 68]
-        elif s == "M" : number = [27, 67]
-    
+        if s[0] in [b'\x00']:
+            s = s[1].decode("utf-8")
+            if   s == "H" : number = [27, [65, 0]]
+            elif s == "P" : number = [27, [66, 0]]
+            elif s == "K" : number = [27, [68, 0]]
+            elif s == "M" : number = [27, [67, 0]]
+            elif s == "t" : number = [27, [49, 65]]
+            elif s == "s" : number = [27, [49, 66]]
+        else: number =  [None, None]
     return number
      

@@ -158,14 +158,14 @@ class windows:
         # detecting if indentation was used
         self.active_tab     = None
         # move curor up fist time 
-        self.key_up_first_time      = False 
+        self.key_up_first_time      = True
         # storing key_up_first_time
-        self.key_up_id              = None 
+        self.key_up_id              = False 
         # history of commands (UP, DOWN and ENTER)
         self.history_of_commands    = []
         # action to do after one of these commands is pressed 
         # it means UP, DOWN or ENTER is pressed
-        self.action_to_do           = None
+        self.action                 = None
         # fixing the x-axis border 
         self.border_x_limit         = True 
         ###########################################################
@@ -227,6 +227,8 @@ class windows:
                                         self.str_drop_down = ""
                                     if len(self.s) <= self.max_x : self.border_x_limit = True 
                                     else: self.border_x_limit = False
+                                    
+                                    self.key_up_id = False
                                 else: self.border_x_limit = False
                             else: pass
                         #delecting char in the str_drop_down string 
@@ -238,6 +240,7 @@ class windows:
                                     self.str_drop_down = self.str_drop_down[ : self.drop - 1] + self.str_drop_down[ self.drop : ]
                                     # dropdown index 
                                     self.drop    -= 1
+                                    self.key_up_id = False
                                 else: pass
                             else: pass
                         else:
@@ -292,7 +295,7 @@ class windows:
                             else: pass
                         # moving cursor up, down, left, reight
                         elif self.char == 27:
-                            next1, next2 = 91,  _
+                            next1, next2 = 91,  _[0]
                             #rint(next1, next2)
                             if next1 == 91:
                                 try:
@@ -338,17 +341,17 @@ class windows:
                                         else:  pass
                                     # get the previous value stored in the list
                                     elif next2 == 65:  # up
-                                        if self.key_up_first_time is True : 
-                                            if self.action == 'ADDS':
-                                                self.liste.append(self.input), self.sub_liste.append(self.s), self.tabular.append(self.index)
-                                                self.sub_tabular.append(self.I), self.last_tabular.append(self.last)
-                                                self.remove_tabular.append(self.remove_tab), self.string_tab.append(self.I_S)
-                                                self.string_tabular.append(self.string), self.memory.append(self.get)
-                                                self.drop_list_str.append( self.str_drop_down), self.drop_list_id.append(self.drop)
-                                                self.key_up_first_time, self.key_up_id = False, True 
-                                            elif  self.action == 'INSERTS':
-                                                if self.key_up_id is True: pass 
-                                                else:
+                                        if self.history_of_commands[-1] == 'ENTER':
+                                            self.history_of_commands.append('UP')
+                                            if self.key_up_id is False:
+                                                self.key_up_id = True
+                                                if self.action == 'ADDS':
+                                                    self.liste.append(self.input), self.sub_liste.append(self.s), self.tabular.append(self.index)
+                                                    self.sub_tabular.append(self.I), self.last_tabular.append(self.last)
+                                                    self.remove_tabular.append(self.remove_tab), self.string_tab.append(self.I_S)
+                                                    self.string_tabular.append(self.string), self.memory.append(self.get)
+                                                    self.drop_list_str.append( self.str_drop_down), self.drop_list_id.append(self.drop)
+                                                elif  self.action == 'INSERTS':
                                                     v = self.if_line
                                                     self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
                                                     self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
@@ -356,7 +359,7 @@ class windows:
                                                     self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
                                                     self.memory.insert(v, self.get)                                            
                                                     self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
-                                                    self.key_up_first_time, self.key_up_id = False, True 
+                                                else: pass
                                             else: pass
                                         else: pass 
                     
@@ -390,7 +393,6 @@ class windows:
                                                     else: pass
                                                     
                                                     self.if_line -= 1
-                                                    self.history_of_commands.append("UP")
                                                     #################################################################
                                                     self.main_input, self.size = counter(self.if_line)
                                                     self.length = len(self.main_input)
@@ -402,23 +404,33 @@ class windows:
                                                 
                                                 else: pass
                                             except IndexError:
+                                                print(False, self.if_line, self.sub_liste, '####')
                                                 # any changes here when local IndexError is detected
                                                 pass
                                         else:   pass
                                     # get the next value stored in the list
                                     elif next2 == 66:
-                                        if self.key_up_first_time is True:
-                                            if self.key_up_id is True: pass 
-                                            else:
-                                                v = self.if_line
-                                                self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
-                                                self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
-                                                self.last_tabular.insert(v, self.last),  self.remove_tabular.insert(v, self.remove_tab)   
-                                                self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
-                                                self.memory.insert(v, self.get)                                            
-                                                self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
-                                                self.key_up_first_time, self.key_up_id = False, True 
-                                        else: pass
+                                        if self.history_of_commands[-1] == 'ENTER':
+                                            self.history_of_commands.append('DOWN')
+                                            if self.key_up_id  is False:
+                                                self.key_up_id = True
+                                                if self.action == 'ADDS':
+                                                    self.liste.append(self.input), self.sub_liste.append(self.s), self.tabular.append(self.index)
+                                                    self.sub_tabular.append(self.I), self.last_tabular.append(self.last)
+                                                    self.remove_tabular.append(self.remove_tab), self.string_tab.append(self.I_S)
+                                                    self.string_tabular.append(self.string), self.memory.append(self.get)
+                                                    self.drop_list_str.append( self.str_drop_down), self.drop_list_id.append(self.drop)
+                                                elif  self.action == 'INSERTS':
+                                                    v = self.if_line
+                                                    self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
+                                                    self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
+                                                    self.last_tabular.insert(v, self.last),  self.remove_tabular.insert(v, self.remove_tab)   
+                                                    self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
+                                                    self.memory.insert(v, self.get)                                            
+                                                    self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
+                                                else: pass
+                                            else: pass
+                                        else: pass 
                                         
                                         if self.liste:
                                             try:
@@ -448,7 +460,6 @@ class windows:
                                                     else: pass 
                                                     
                                                     self.if_line += 1
-                                                    self.history_of_commands.append("DOWN")
                                                     #################################################################
                                                     self.main_input, self.size = counter(self.if_line)
                                                     self.length = len(self.main_input)
@@ -459,12 +470,12 @@ class windows:
                                                 else: pass
                                             except IndexError:
                                                 # any changes here when local IndexError is detected
-                                                print(self.string, self.string_tabular, self.idd, self.if_line, self.if_line_max)
+                                                print(self.string, self.string_tabular, self.idd, self.if_line, self.if_line_max, '@@@')
                                         else:   pass
                                     # ctrl-up is handled 
                                     elif next2 == 49:
                                         if self.str_drop_down:
-                                            next3, next4, next5 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))
+                                            next3, next4, next5 = 0, 0, _[1] #ord(sys.stdin.read(1)), ord(sys.stdin.read(1)), ord(sys.stdin.read(1))
                                             if next5 in {67, 68}: pass # ctrl-left, ctrl-right is handled 
                                             # ctrl-up is handled 
                                             elif next5 == 65: 
@@ -652,10 +663,11 @@ class windows:
                         elif self.char in {10, 13}:
                             # storing input
                             self.pos_x, self.pos_y = cursor_pos.cursor()
-                            
+                            self.if_line_max    += 1
+                            self.if_line        += 1
+                            self.key_up_first_time = True
                             if self.if_line == self.if_line_max:
-                                if self.key_up_id is True:  self.key_up_id = None
-                                else:
+                                if self.key_up_id is False:
                                     self.liste.append(self.input)
                                     # storing s
                                     self.sub_liste.append(self.s)
@@ -677,23 +689,26 @@ class windows:
                                     self.drop_list_str.append( self.str_drop_down)
                                     # storing str_drop_down index
                                     self.drop_list_id.append(self.drop)
+                                    self.key_up_id = True
+                                else: pass
                             else:
-                                v = self.if_line
-                                self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
-                                self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
-                                self.last_tabular.insert(v, self.last),  self.remove_tabular.insert(v, self.remove_tab)   
-                                self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
-                                self.memory.insert(v, self.get)                                            
-                                self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
-                                
+                                if self.key_up_id is False:
+                                    v = self.if_line-1
+                                    self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
+                                    self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
+                                    self.last_tabular.insert(v, self.last),  self.remove_tabular.insert(v, self.remove_tab)   
+                                    self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
+                                    self.memory.insert(v, self.get)                                            
+                                    self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
+                                    self.key_up_id = True
+                                else: pass
+                                 
                             if self.index > 0:
                                 pos = len(self.s) + self.size + len(self.input) - self.index
                                 sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                             else: pass
                             
-                            self.if_line_max += 1
-                            self.if_line += 1
-                            
+                        
                             # move cursor of left
                             sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
 
@@ -702,13 +717,16 @@ class windows:
                             if terminal_name == 'orion': 
                                 sys.stdout.write(self.main_input + self.bold+bm.words(string=self.s, color=bm.fg.rbg(255,  255, 255)).final()+
                                             bm.move_cursor.RIGHT(pos=self.max_x-1)+bm.clear.line(pos=0)+self.black+f"{self.acs['v']}"+
-                                            self.reset+bm.move_cursor.LEFT(pos=int(self.pos_x))+ "\n")
+                                            self.reset+bm.move_cursor.LEFT(pos=int(self.pos_x))+'\n')
                                 
                                 if self.if_line !=  self.if_line_max:
                                     if self.sub_liste[self.if_line : ]:
                                         sys.stdout.write(bm.save.save)
                                         sys.stdout.write(bm.clear.screen(pos=0))
                                         _id_ = 0
+                                        #sys.stdout.write(f"{self.sub_liste}  {self.if_line}  {self.sub_liste[self.if_line : ]}")
+                                        #sys.stdout.flush()
+                                        #time.sleep(5)
                                         for _ss_ in  self.sub_liste[self.if_line : ]:
                                             __s__, __l__ = counter(self.if_line+_id_)
                                             sys.stdout.write( __s__+ self.bold+bm.words(string=_ss_, color=bm.fg.rbg(255,  255, 255)).final()+
@@ -740,19 +758,28 @@ class windows:
                             self.drop           = 0   
                             self.drop_drop      = {'id':[], 'str':[]}     
                             self.drop_idd       = 0 
-                            self.history_of_commands.append("ENTER")
                             self.border_x_limit = True 
                             self.key_max_activation = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
+                            self.history_of_commands.append("ENTER")
+                            if self.if_line == self.if_line_max :  self.action = 'ADDS'
+                            else:  self.action = "INSERTS"
                             
-                            if self.if_line == self.if_line_max:
-                                if self.history_of_commands[-1] == "ENTER": 
-                                    self.key_up_first_time, self.action = True, 'ADDS'
-                                else: self.key_up_first_time = False
-                            else: 
-                                if self.history_of_commands[-1] == "ENTER": 
-                                    self.key_up_first_time, self.action = True, "INSERTS"
-                                else: self.key_up_first_time = False 
-                        
+                            """
+                            try:
+                                if self.if_line == self.if_line_max:
+                                    if self.history_of_commands[-1] == "ENTER": 
+                                        self.key_up_first_time, self.action = True, 'ADDS'
+                                    else: self.key_up_first_time = False
+                                else: 
+                                    if self.history_of_commands[-1] == "ENTER": 
+                                        self.key_up_first_time, self.action = True, "INSERTS"
+                                    else: self.key_up_first_time = False 
+
+                                self.history_of_commands.append("ENTER")
+                            except IndexError: 
+                                self.history_of_commands.append("ENTER")
+                                self.key_up_first_time, self.action = True, "INSERTS"
+                            """  
                         # move cursor on left
                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
                         # clear entire line

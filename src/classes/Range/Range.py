@@ -7,7 +7,9 @@ from script.LEXER                                   import particular_str_select
 from script.PARXER                                  import numerical_value
 from script.LEXER                                   import check_if_affectation
 from src.classes.Lists                              import inserting, random_init, sorting
-
+import statistics as st 
+#from statistics                 import variance, stdev, pstdev, pvariance
+#from statistics                 import harmonic_mean, median, median_low, median_high, median_grouped, mode, quantiles, multimode
 
 
 class RANGE:
@@ -55,21 +57,18 @@ class RANGE:
                         self._return_.append( (i, value) )
                 else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
             else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )      
-                           
         elif self.function in [ 'sum' ]        :
             if None in self.arguments:
                 if self.master:
                     self._return_ = float( np.array(self.master, dtype='f8').sum() )
                 else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
             else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )  
-        
         elif self.function in [ 'std' ]        :
             if None in self.arguments:
                 if self.master:
                     self._return_ = float( np.array(self.master, dtype='f8').std() )
                 else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
             else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
-        
         elif self.function in [ 'mean' ]        :
             if None in self.arguments:
                 if self.master:
@@ -82,4 +81,59 @@ class RANGE:
                     self._return_ = float( np.array(self.master, dtype='f8').var() )
                 else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
             else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'pstdev' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.pstdev( self.master )
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'stdev' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.stdev( self.master ) 
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'median' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.median( self.master ) 
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'median_low' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.median_low( self.master ) 
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'median_high' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.median_high( self.master ) 
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'median_grouped' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.median_grouped( self.master ) 
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'Hmean' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.harmonic_mean( self.master ) 
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'Gmean' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.geometric_mean( self.master ) 
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+        elif self.function in [ 'pvar' ]        :
+            if None in self.arguments:
+                if self.master:
+                    self._return_ = st.pvariance( self.master ) 
+                else: self.error =  er.ERRORS( self.line ).ERROR24( 'range' )    
+            else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
+            
         return self._return_, self.error  

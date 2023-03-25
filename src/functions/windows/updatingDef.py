@@ -40,5 +40,6 @@ class UPDATING:
         
         # reset the current function in the main data base
         self.data_base[ 'current_func' ]            = None
+        # reset the history of data
         history_of_data                             = []
     

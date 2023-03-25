@@ -310,7 +310,7 @@ class  DropDown:
                 self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(all_values, string, len(string))  
                 all_values  = sorted(all_values)
                 
-                if   indicator is None: 
+                if   indicator is None  : 
                     for s in all_values:
                         if string in s[:len(string)]:  self.new.append(s)
                         else: pass 
@@ -324,7 +324,7 @@ class  DropDown:
                                 inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, move_cursor_down=idd )
                         self.max_size += self.index
                     else: pass 
-                elif indicator in {7}:
+                elif indicator in {7}   :
                     self.idd        = len(string)
                     self.new_data = []
                     self.len_ = 0
@@ -349,13 +349,12 @@ class  DropDown:
                                 else: pass
                         else: pass
                     else: self.max_size = 1
-                elif indicator in {14}:
+                elif indicator in {14}  :
                     if all_values: 
-                        val = all_values[pos]
-                        if string == val[:len(string)]: 
-                            ouput = val
-                            self.max_size = 1
-                        else: self.max_size = 0
+                        try: val = all_values[pos]
+                        except IndexError: val = all_values[pos-1]
+                        ouput = val
+                        self.max_size = 1
                     else: pass
                 elif indicator in {65, 66}:
                     for s in all_values:

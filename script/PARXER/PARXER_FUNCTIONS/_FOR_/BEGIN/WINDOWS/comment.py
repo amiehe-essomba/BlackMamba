@@ -4,15 +4,15 @@ from statement.comment                                  import externalCmt, inte
 
 class COMMENT:
     def __init__(self,
-                 master         : str,
-                 data_base      : dict,
-                 line           : int,
-                 history        : list,
-                 store_value    : list,
-                 space          : int,
-                 save_block     : bool,
-                 comment_storage: list
-                 ) -> None:
+            master         : str,
+            data_base      : dict,
+            line           : int,
+            history        : list,
+            store_value    : list,
+            space          : int,
+            save_block     : bool,
+            comment_storage: list
+            ) -> None:
         # main string
         self.master             = master
         # current line in the IDE

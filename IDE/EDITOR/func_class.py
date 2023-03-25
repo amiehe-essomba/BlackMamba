@@ -5,9 +5,12 @@ class F_C:
         self.func_names     = self.data_base['func_names' ]  
         self.vars           = self.data_base['variables']['vars']
         self.class_names    = self.data_base['class_names']
-        self.lib            = self.data_base['LIB']
-    
+        
     def F_C(self, my_list : list, char: str, idd: int):
+        try:
+            self.lib  = self.data_base['LIB']
+        except KeyError: self.lib = {'func_names' : []}
+        
         self.c,self.f, self.v = [], [], []
     
         if self.global_vars: 

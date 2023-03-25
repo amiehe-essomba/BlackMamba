@@ -25,21 +25,20 @@
 
 
 import sys, os
-from ctypes                     import windll
-from script                     import control_string
-from script.STDIN.LinuxSTDIN    import bm_configure     as bm
-from script.DATA_BASE           import data_base        as db
-from IDE.EDITOR                 import header, string_to_chr 
-from IDE.EDITOR                 import test
-from IDE.EDITOR                 import true_cursor_pos  as cursor_pos
-from IDE.EDITOR                 import cursor
-from IDE.EDITOR                 import left_right       as LR
-from IDE.EDITOR                 import string_build     as SB
-from IDE.EDITOR                 import pull_editor      as PE
-from IDE.EDITOR                 import drop_box         as DR
-
+from ctypes                                             import windll
+from script                                             import control_string
+from script.STDIN.LinuxSTDIN                            import bm_configure     as bm
+from script.DATA_BASE                                   import data_base        as db
+from IDE.EDITOR                                         import header, string_to_chr 
+from IDE.EDITOR                                         import test
+from IDE.EDITOR                                         import true_cursor_pos  as cursor_pos
+from IDE.EDITOR                                         import cursor
+from IDE.EDITOR                                         import left_right       as LR
+from IDE.EDITOR                                         import string_build     as SB
+from IDE.EDITOR                                         import pull_editor      as PE
+from IDE.EDITOR                                         import drop_box         as DR
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import externalIF as eIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import externalIF       as eIF
 
 class INTERNAL_IF_WINDOWS:
     def __init__(self, 
@@ -633,7 +632,7 @@ class INTERNAL_IF_WINDOWS:
                             self.drop_idd       = 0 
                             self.border_x_limit = True 
                             self.pos_x, self.pos_y = cursor_pos.cursor()
-                            
+                        
                         if self.border_x_limit is True:
                             # move cursor on left
                             sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
@@ -658,79 +657,81 @@ class INTERNAL_IF_WINDOWS:
                                 sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                             else: pass
 
-                            if self.str_drop_down:
-                                if self.key_max_activation is True:
-                                    sys.stdout.write(bm.save.save)
-                                    if self.indicator is None:
-                                        v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
-                                                                    self.s, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
-                                    else:
-                                        sys.stdout.write(bm.clear.screen(pos=0))
-                                        v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
-                                                                    self.string, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
-                                        #if self.error is None: pass 
-                                        #else: pass
-                                        if self.error is None :
-                                            if v is not  None:
-                                                # moving cursor up to 1 if indicator is egal to 7< ctrl+g>
-                                                if self.indicator == 7: sys.stdout.write(bm.move_cursor.UP(pos=1))
-                                                # restoring the lastest saving cursor postion if indicator is egal to 65, 66 <ctrl+up>, <ctrl+down>
-                                                if self.indicator in {65, 66} : sys.stdout.write(bm.save.restore)
-                                                else: pass        
-                                                try:
-                                                    if self.indicator not in {65, 66}:
-                                                        self.string = self.string[ : len(self.string)-len(self.str_drop_down)] + v 
-                                                        # customizing string 
-                                                        self.error,  kappa, self.pos, self.get = SB.string( self.string ).build()
+                            if self.max_y > 20:
+                                if self.str_drop_down:
+                                    if self.key_max_activation is True:
+                                        sys.stdout.write(bm.save.save)
+                                        if self.indicator is None:
+                                            v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
+                                                                        self.s, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
+                                        else:
+                                            sys.stdout.write(bm.clear.screen(pos=0))
+                                            v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
+                                                                        self.string, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
+                                            #if self.error is None: pass 
+                                            #else: pass
+                                            if self.error is None :
+                                                if v is not  None:
+                                                    # moving cursor up to 1 if indicator is egal to 7< ctrl+g>
+                                                    if self.indicator == 7: sys.stdout.write(bm.move_cursor.UP(pos=1))
+                                                    # restoring the lastest saving cursor postion if indicator is egal to 65, 66 <ctrl+up>, <ctrl+down>
+                                                    if self.indicator in {65, 66} : sys.stdout.write(bm.save.restore)
+                                                    else: pass        
+                                                    try:
+                                                        if self.indicator not in {65, 66}:
+                                                            self.string = self.string[ : len(self.string)-len(self.str_drop_down)] + v 
+                                                            # customizing string 
+                                                            self.error,  kappa, self.pos, self.get = SB.string( self.string ).build()
 
-                                                        self.input  = kappa[0][0]
-                                                        self.index  = kappa[0][1]
-                                                        self.s      = kappa[1][0]
-                                                        self.I      = kappa[1][1]
-                                                        self.string = kappa[2][0]
-                                                        self.I_S    = kappa[2][1]
+                                                            self.input  = kappa[0][0]
+                                                            self.index  = kappa[0][1]
+                                                            self.s      = kappa[1][0]
+                                                            self.I      = kappa[1][1]
+                                                            self.string = kappa[2][0]
+                                                            self.I_S    = kappa[2][1]
 
-                                                        if self.indicator == 14: self.str_drop_down = v; self.drop = len(v)
+                                                            if self.indicator == 14: self.str_drop_down = v; self.drop = len(v)
+                                                            else: pass
+                                                            # moving cursor on left
+                                                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                                            # clearing entire line
+                                                            sys.stdout.write(bm.clear.line(pos=0))
+                                                            # re-writing string
+                                                            sys.stdout.write(self.main_input+bm.string().syntax_highlight(name=bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final()))
+                                                            # saving cursor position
+                                                            sys.stdout.write(bm.save.save)
                                                         else: pass
-                                                        # moving cursor on left
-                                                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                                                        # clearing entire line
-                                                        sys.stdout.write(bm.clear.line(pos=0))
-                                                        # re-writing string
-                                                        sys.stdout.write(self.main_input+bm.string().syntax_highlight(name=bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final()))
-                                                        # saving cursor position
-                                                        sys.stdout.write(bm.save.save)
+                                                    except  TypeError: pass 
+                                                else:
+                                                    # moving cursor up to 1
+                                                    sys.stdout.write(bm.move_cursor.UP(pos=1))
+                                                    if self.index > 0:
+                                                        # computing the right postion 
+                                                        pos = len(self.s) + self.size + len(self.input) - self.index
+                                                        # moving cursor at the correct position 
+                                                        sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                                                     else: pass
-                                                except  TypeError: pass 
-                                            else:
-                                                # moving cursor up to 1
-                                                sys.stdout.write(bm.move_cursor.UP(pos=1))
-                                                if self.index > 0:
-                                                    # computing the right postion 
-                                                    pos = len(self.s) + self.size + len(self.input) - self.index
-                                                    # moving cursor at the correct position 
-                                                    sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
-                                                else: pass
-                                                # erasing entire string 
-                                                sys.stdout.write(bm.clear.line(pos=2))
-                                                # re-writing string
-                                                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                                                if self.term == 'orion':
-                                                    sys.stdout.write(self.main_input + bm.string().syntax_highlight(
-                                                        name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
-                                                else: 
-                                                    # any activation keyword & re-writing string
-                                                    sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
-                                                # saving cursor position 
-                                                sys.stdout.write(bm.save.save)
-                                        else: break
-                                    # restoring cursor position 
-                                    sys.stdout.write(bm.save.restore)
-                                else: pass
-                            else: pass 
-                            if self.indicator in {65, 66}: pass 
-                            else:   self.indicator_pos, self.indicator_max = 0, 1
-                            self.indicator = None
+                                                    # erasing entire string 
+                                                    sys.stdout.write(bm.clear.line(pos=2))
+                                                    # re-writing string
+                                                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                                    if self.term == 'orion':
+                                                        sys.stdout.write(self.main_input + bm.string().syntax_highlight(
+                                                            name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
+                                                    else: 
+                                                        # any activation keyword & re-writing string
+                                                        sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                                                    # saving cursor position 
+                                                    sys.stdout.write(bm.save.save)
+                                            else: break
+                                        # restoring cursor position 
+                                        sys.stdout.write(bm.save.restore)
+                                    else: pass
+                                else: pass 
+                                if self.indicator in {65, 66}: pass 
+                                else:   self.indicator_pos, self.indicator_max = 0, 1
+                                self.indicator = None
+                            else: pass
                             sys.stdout.flush()
                         else: pass
                     else: pass
