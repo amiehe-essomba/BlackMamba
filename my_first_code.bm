@@ -1,0 +1,14 @@
+class iris:
+	def initialize( color : string = 'green' ) -> none:
+		self.color = color 
+		self.nrow  = 10
+	end:
+
+	def get() -> None:
+		prompt( color )
+	end:
+
+	def set() -> integer:
+		return nrow 
+	end:
+end:
