@@ -181,15 +181,42 @@ class FUNCTION:
                                                 self.error = er.ERRORS( self.line ).ERROR18( self.list_types, self.func )
                                                 break
                                         else:
-                                            if self._type_ not in self.type_of_data[ i ]:
-                                                for x, _typ_ in enumerate( self.type_of_data[ i ] ):
-                                                    self.str_type   = type_of_data.CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
-                                                    if x < len( self.type_of_data[ i ] ) - 1: self.list_types += self.str_type + ', or '
-                                                    else                                    : self.list_types += self.str_type
-                                                        
-                                                self.error = er.ERRORS( self.line ).ERROR3( self.arguments[i], self.list_types, self.func)
-                                                break
-                                            else: self.values[ i ] = self._values_ 
+                                            if type(self._type_) == type(str()):
+                                                if self._type_ not in self.type_of_data[ i ]:
+                                                    for x, _typ_ in enumerate( self.type_of_data[ i ] ):
+                                                        self.str_type   = type_of_data.CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
+                                                        if x < len( self.type_of_data[ i ] ) - 1: self.list_types += self.str_type + ', or '
+                                                        else                                    : self.list_types += self.str_type
+                                                            
+                                                    self.error = er.ERRORS( self.line ).ERROR3( self.arguments[i], self.list_types, self.func)
+                                                    break
+                                                else: self.values[ i ] = self._values_ 
+                                            else:
+                                                self.isfound  =  ""
+                                                for xx in self._type_:
+                                                    if xx in self.type_of_data[ i ]:
+                                                        n = self.type_of_data[ i ].index(xx)
+                                                        self.isfound = self.type_of_data[ i ][n]
+                                                        if xx in ['n_int', 'p_int','n_float', 'n_double', 'p_float', 'p_double']:
+                                                            self.error = type_of_data.data_checking(self.isfound, self._values_,
+                                                                                                    self.line, self.arguments[ i ] )
+                                                            if self.error is None: break
+                                                            else: break
+                                                        else:
+                                                            n = self.type_of_data[ i ].index(xx)
+                                                            self.isfound = self.type_of_data[ i ][n] 
+                                                            break
+                                                    else:  pass
+                                                if self.error is None:
+                                                    if self.isfound: self.values[ i ] = self._values_ 
+                                                    else:
+                                                        for x, _typ_ in enumerate( self.type_of_data[ i ] ):
+                                                            self.str_type   = type_of_data.CHECK_TYPE_OF_DATA( _typ_ ).TYPE()
+                                                            if x < len( self.type_of_data[ i ] ) - 1: self.list_types += self.str_type + ', or '
+                                                            else                                    : self.list_types += self.str_type        
+                                                        self.error = er.ERRORS( self.line ).ERROR3( self.arguments[i], self.list_types, self.func)
+                                                        break
+                                                else: break
                                     else: break
                                 else: self.values[ i ] = '@670532821@656188185@670532821@'
                             else: pass

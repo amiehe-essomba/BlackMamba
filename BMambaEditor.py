@@ -688,7 +688,7 @@ class windows:
                             self.pos_x, self.pos_y = cursor_pos.cursor()
                             self.if_line_max    += 1
                             self.if_line        += 1
-                            
+                        
                             if self.indexation[self.if_line-1]['cursor'] == 'NO':
                                 v = self.if_line-1
                                 if self.indexation[self.if_line-1]['do'] == 'ADDS':
@@ -781,9 +781,7 @@ class windows:
                             else: pass
 
                             # initialization block
-                            if self.if_line-1 in list(self.indexation.keys()): pass 
-                            else: self.indexation[self.if_line-1]['last'] = self.string
-                            
+                            self.indexation[self.if_line-1]['last'] = self.string
                             self.main_input, self.size = counter(self.if_line)
                             self.input          = self.main_input
                             self.index          = len(self.main_input)
@@ -800,25 +798,19 @@ class windows:
                             self.drop_drop      = {'id':[], 'str':[]}     
                             self.drop_idd       = 0 
                             self.border_x_limit = True 
-                            
-                            if self.if_line-1 in list(self.indexation.keys()): pass 
-                            else:
-                                self.indexation[self.if_line-1]['status'] = 'I' 
-                                self.indexation[self.if_line-1]['action'] = 'LOCKED'
-                                self.indexation[self.if_line-1]['do']     = 'NOTHING'
-                                self.indexation[self.if_line-1]['cursor'] = 'ENTER'
-                            
-                            if self.if_line in list(self.indexation.keys()): pass
-                            else:
-                                self.indexation[self.if_line] = {'action' : 'FREE', 
-                                                                'status' : 'I', 
-                                                                'do' : 'ADDS', 
-                                                                'cursor' : 'NO', 
-                                                                'last'   : '' }
-                                self.indexation[self.if_line]['status']   = 'I' 
-                                self.indexation[self.if_line]['action']   = 'FREE'  
-                                self.indexation[self.if_line]['cursor']   = 'NO' 
-                                self.indexation[self.if_line]['last']     = ''
+                            self.indexation[self.if_line-1]['status'] = 'I' 
+                            self.indexation[self.if_line-1]['action'] = 'LOCKED'
+                            self.indexation[self.if_line-1]['do']     = 'NOTHING'
+                            self.indexation[self.if_line-1]['cursor'] = 'ENTER'
+                            self.indexation[self.if_line] = {'action' : 'FREE', 
+                                                            'status' : 'I', 
+                                                            'do' : 'ADDS', 
+                                                            'cursor' : 'NO', 
+                                                            'last'   : '' }
+                            self.indexation[self.if_line]['status']   = 'I' 
+                            self.indexation[self.if_line]['action']   = 'FREE'  
+                            self.indexation[self.if_line]['cursor']   = 'NO' 
+                            self.indexation[self.if_line]['last']     = ''
                             
                             if self.if_line == self.if_line_max: self.indexation[self.if_line]['do']     = 'ADDS' 
                             else: self.indexation[self.if_line]['do']   = 'INSERTS' 
@@ -981,6 +973,7 @@ class windows:
                 self.input = '{}>>> {}'.format(self.c, bm.init.reset)
                 sys.stdout.write(bm.string().syntax_highlight(name=self.input))
                 sys.stdout.flush()
+            except IndexError: pass
 
 
 if __name__ == '__main__':

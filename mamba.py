@@ -1,8 +1,11 @@
-import sys, os   
-from   script.STDIN.LinuxSTDIN    import bm_configure as bm
-from   pathlib import Path
-import LinuxMain as LM  
-import WindowsMain as WM
+import sys, os 
+import WindowsMain as WM  
+from   pathlib                      import Path
+from   IDE.EDITOR                   import test
+from   IDE.EDITOR                   import header 
+from   script.DATA_BASE             import data_base    as db
+from   script.STDIN.LinuxSTDIN      import bm_configure as bm
+import platform
 
 
 def run_mamba():
@@ -10,17 +13,29 @@ def run_mamba():
     root    = os.path.abspath(os.curdir)
     s = Path(__file__).resolve().parents[2]
     # get system name
-    system  = os.uname()[0]
-    print(system)
+    system  = platform.system()
     # get arguments 
     arg     = sys.argv
     
     # running code if system is Linux or macOs
-    if system in ['Linux', 'macOs']:
+    if system not in ['Linux', 'macOs']:
         # run code with pegasus code iditor
         if len(arg) == 1:
-            bm.head().head(sys=system)
-            LM.run(syst=system).run()
+            term = 'pegasus'
+            try:
+                sys.stdout.write(bm.clear.screen(pos=2))
+                os.system('cls')
+                sys.stdout.write(bm.save.save)
+                max_x, max_y  = test.get_win_ter()
+                if max_x >= 100:
+                    if term == 'orion': header.header(terminal='orion terminal')
+                    else: header.header(terminal='pegasus terminal')
+                else: pass 
+                
+                data_base = db.DATA_BASE().STORAGE().copy()
+                WM.windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
+            except KeyboardInterrupt:  pass
+            except IndexError: pass
         # get mamba version && author 
         elif len(arg) == 2:
             # get version of code
@@ -38,13 +53,24 @@ def run_mamba():
             # runnning code with pegasus of orion editor it depends of the arg[2] value
             if arg[1] == '--T':
                 if arg[2] in [ 'pegasus', 'orion']:
-                    bm.head().head(sys=system, term = arg[2])
-                    LM.run(term=arg[2], syst=system).run()
+                    term = arg[2]
+                    try:
+                        sys.stdout.write(bm.clear.screen(pos=2))
+                        os.system('cls')
+                        sys.stdout.write(bm.save.save)
+                        max_x, max_y  = test.get_win_ter()
+                        if max_x >= 100:
+                            if term == 'orion': header.header(terminal='orion terminal')
+                            else: header.header(terminal='pegasus terminal')
+                        else: pass 
+                        
+                        data_base = db.DATA_BASE().STORAGE().copy()
+                        WM.windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
+                    except KeyboardInterrupt:  pass
+                    except IndexError: pass
                 else: print(bm.mamba_error.error2())
             else: print(bm.mamba_error.error2())
     else: print(bm.mamba_error.error1())
     
 if __name__ == '__main__':
-    os.system('clear')
-    sys.stdout.write(bm.save.save)
     run_mamba()
