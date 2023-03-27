@@ -72,6 +72,13 @@ def bottom(max_):
     r       = bm.init.reset
     sys.stdout.write(c+f"{asc['dl']}"+f"{asc['h']}"*7+f"{asc['m2']}"+f"{asc['h']}"* (max_-2-8)+f"{asc['dr']}"+r+"\n")
     
+def write_in_file(name : str, data : list):
+    with open(name, 'w') as f:
+        for i,s in enumerate(data):
+            if i != len(data)-1: f.wriet(s+'\n')
+            else: f.write(s)
+    f.close()
+    
 class windows:
     def __init__(self, data_base: dict):
         # main data base
@@ -169,8 +176,6 @@ class windows:
         self.key_up_first_time      = True
         # storing key_up_first_time
         self.key_up_id              = False 
-        # history of commands (UP, DOWN and ENTER)
-        self.history_of_commands    = []
         self.indexation             = {0 : {'action' : 'FREE', # [FREE, LOCKED]
                                             'status' : 'I',    # [I, D] 
                                             'do'     : 'ADDS',  # [ADD, INSERT, INDEX]
@@ -214,7 +219,7 @@ class windows:
         # indicator_max 
         self.indicator_max          = 1
         # checking if key_max_activation could be activated  for handling terminal tools
-        self.key_max_activation     = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
+        #self.key_max_activation     = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
         # writing data 
         self.storing_data_for_writing  = [] 
         self.data_storing_file      = {'name' : None}
@@ -427,7 +432,7 @@ class windows:
                                                 
                                                 else: pass
                                             except IndexError:
-                                                print(False, self.if_line, self.sub_liste, '####')
+                                                pass
                                                 # any changes here when local IndexError is detected
                                         else:   pass
                                     # get the next value stored in the list
@@ -492,7 +497,7 @@ class windows:
                                                 else: pass
                                             except IndexError:
                                                 # any changes here when local IndexError is detected
-                                                print(self.string, self.string_tabular, self.idd, self.if_line, self.if_line_max, '@@@')
+                                                pass #print(self.string, self.string_tabular, self.idd, self.if_line, self.if_line_max, '@@@')
                                         else:   pass
                                     # ctrl-up is handled 
                                     elif next2 == 49:
@@ -700,6 +705,14 @@ class windows:
                                     self.string_tab.insert(v, self.I_S) ,    self.string_tabular.insert(v, self.string )    
                                     self.memory.insert(v, self.get)                                            
                                     self.drop_list_str.insert(v, self.str_drop_down) , self.drop_list_id.insert(self.if_line,  self.drop)
+                                    
+                                    for k in range(self.if_line_max - self.if_line):
+                                        self.indexation[self.if_line+k] = {'action' : 'FREE', 'status' : 'I', 'do' : 'ADDS', 'cursor' : 'NO', 'last'   : '' }
+                                        self.indexation[self.if_line+k]['status']   = 'I' 
+                                        self.indexation[self.if_line+k]['action']   = 'LOCKED'  
+                                        self.indexation[self.if_line+k]['cursor']   = 'ENTER' 
+                                        self.indexation[self.if_line+k]['do']       = 'NOTHING'
+                                        self.indexation[self.if_line+k]['last']     = self.string_tabular[self.if_line+k]
                             else:
                                 if self.indexation[self.if_line-1]['action'] == 'FREE':
                                     if self.indexation[self.if_line-1]['cursor'] in ['UP', 'DOWN']:
@@ -722,9 +735,9 @@ class windows:
                                         self.indexation[self.if_line_max]['status']   = 'I' 
                                         self.indexation[self.if_line_max]['action']   = 'LOCKED'  
                                         self.indexation[self.if_line_max]['cursor']   = 'ENTER' 
-                                        self.indexation[self.if_line_max]['do']     = 'NOTHING'
+                                        self.indexation[self.if_line_max]['do']       = 'NOTHING'
                                         self.indexation[self.if_line_max]['last']     = self.string_tabular[-1]
-                                        #print(self.indexation.keys(), self.if_line, self.if_line_max)
+                                        
                                     else:
                                         self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
                                         self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
@@ -768,7 +781,9 @@ class windows:
                             else: pass
 
                             # initialization block
-                            self.indexation[self.if_line-1]['last'] = self.string
+                            if self.if_line-1 in list(self.indexation.keys()): pass 
+                            else: self.indexation[self.if_line-1]['last'] = self.string
+                            
                             self.main_input, self.size = counter(self.if_line)
                             self.input          = self.main_input
                             self.index          = len(self.main_input)
@@ -785,21 +800,25 @@ class windows:
                             self.drop_drop      = {'id':[], 'str':[]}     
                             self.drop_idd       = 0 
                             self.border_x_limit = True 
-                            self.key_max_activation = DR.size(self.max_x, self.max_y, self.pos_x, self.pos_y)
-                            self.history_of_commands.append("ENTER")
-                            self.indexation[self.if_line-1]['status'] = 'I' 
-                            self.indexation[self.if_line-1]['action'] = 'LOCKED'
-                            self.indexation[self.if_line-1]['do']     = 'NOTHING'
-                            self.indexation[self.if_line-1]['cursor'] = 'ENTER'
-                            self.indexation[self.if_line] = {'action' : 'FREE', 
-                                                            'status' : 'I', 
-                                                            'do' : 'ADDS', 
-                                                            'cursor' : 'NO', 
-                                                            'last'   : '' }
-                            self.indexation[self.if_line]['status']   = 'I' 
-                            self.indexation[self.if_line]['action']   = 'FREE'  
-                            self.indexation[self.if_line]['cursor']   = 'NO' 
-                            self.indexation[self.if_line]['last']     = ''
+                            
+                            if self.if_line-1 in list(self.indexation.keys()): pass 
+                            else:
+                                self.indexation[self.if_line-1]['status'] = 'I' 
+                                self.indexation[self.if_line-1]['action'] = 'LOCKED'
+                                self.indexation[self.if_line-1]['do']     = 'NOTHING'
+                                self.indexation[self.if_line-1]['cursor'] = 'ENTER'
+                            
+                            if self.if_line in list(self.indexation.keys()): pass
+                            else:
+                                self.indexation[self.if_line] = {'action' : 'FREE', 
+                                                                'status' : 'I', 
+                                                                'do' : 'ADDS', 
+                                                                'cursor' : 'NO', 
+                                                                'last'   : '' }
+                                self.indexation[self.if_line]['status']   = 'I' 
+                                self.indexation[self.if_line]['action']   = 'FREE'  
+                                self.indexation[self.if_line]['cursor']   = 'NO' 
+                                self.indexation[self.if_line]['last']     = ''
                             
                             if self.if_line == self.if_line_max: self.indexation[self.if_line]['do']     = 'ADDS' 
                             else: self.indexation[self.if_line]['do']   = 'INSERTS' 
@@ -852,7 +871,10 @@ class windows:
                                     sys.stdout.write(bm.clear.screen(pos=0))
                                     sys.stdout.write(bm.save.restore)
                                 else: pass
-                            else: pass
+                            else: 
+                                if self.string_tabular:  write_in_file(self.data_storing_file['name'], self.string_tabular)
+                                else: pass
+                            self.indicator = None
                         else: pass
                         
                         """
@@ -974,5 +996,7 @@ if __name__ == '__main__':
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
     except KeyboardInterrupt:  pass
     except IndexError: pass
+    
+    
     
     

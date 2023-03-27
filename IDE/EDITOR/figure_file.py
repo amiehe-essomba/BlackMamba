@@ -75,7 +75,7 @@ class files:
                         #moving up and down 
                         elif self.char in {8, 127}: 
                             self.pos_x, self.pos_y      = cursor_pos.cursor()
-                            if int(self.pos_x) > self.n:
+                            if int(self.pos_x) > self.n+1:
                                 self.string  = self.string[ : self.I-1] + self.string[ self.I : ]
                                 self.I -= 1
                             else: pass
@@ -94,14 +94,12 @@ class files:
                         else : pass
                     
                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                        # clear entire line
                         sys.stdout.write(bm.clear.line(pos=2))
                         sys.stdout.write(self.main_input + self.string + 
                                 bm.move_cursor.RIGHT(pos=self.max_x//2-len(self.string)-self.n-1) + self.b+ 
-                                f"{self.acs['v']}"+ bm.move_cursor.LEFT(pos=1000)  
+                                f"{self.acs['v']}" + bm.move_cursor.LEFT(pos=1000)
                                 +self.r)
                          
-                       
                         pos = len(self.string) + self.n 
                         sys.stdout.write(bm.move_cursor.RIGHT(pos=pos) )
                         
