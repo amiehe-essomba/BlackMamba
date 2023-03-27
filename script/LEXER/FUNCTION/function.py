@@ -12,7 +12,7 @@ class FUNCTION:
         self.data_base      = data_base
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
         self.accepted_chars = self.control.LOWER_CASE()+self.control.LOWER_CASE()+['_']
-
+    
     def FUNCTION_INIT(self, main_string: str, method = '1st', _type_ = 'direct'):
         self.type           = ['none', 'integer', 'float', 'boolean', 'complex', 'list', 'tuple', 
                                'dictionary', 'string', 'array', 'range', "None", 'any', 'ndarray', 'table']
@@ -133,7 +133,7 @@ class FUNCTION:
                                                                             self.data_base, self.line).CHAR_SELECTION( ':' )
                                                     
                                                     if self.error is None:
-                                                        if len( self.sub_value_ ) == 1:
+                                                        if   len( self.sub_value_ ) == 1:
                                                             self.name, self.error = self.control.DELETE_SPACE( self.sub_value_[ 0 ] )
                                                             if self.error is None:
                                                                 self.name, self.error = self.control.CHECK_NAME( self.name )
@@ -147,7 +147,6 @@ class FUNCTION:
                                                             else:
                                                                 self.error = ERRORS(self.line ).ERROR0( val )
                                                                 break
-
                                                         elif len( self.sub_value_ ) == 2:
                                                             if _type_ in [ 'direct' ]:
                                                                 self.name, self.error = self.control.DELETE_SPACE(
@@ -363,7 +362,8 @@ class FUNCTION:
 
     def TYPE(self, string: str):
         self.string, self.error = self.control.DELETE_SPACE( string )
-        self.type   = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table']
+        self.type   = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table',
+                       'p_int', 'n_int', 'p_float', 'n_float', 'double', 'p_double', 'n_double']
         self.error  = None
 
         if self.error is None :

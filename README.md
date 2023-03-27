@@ -13,12 +13,8 @@
 - __**C++**__
 
 ## LANGUAGE TOOLS
+
 #### LOOP
-```python
-1. FOR 
-2. WHILE
-3. UNTIL
-```
 
 #### STRUCTURE, CONTROL FLOW AND HANDLING EXCEPTIONS
 

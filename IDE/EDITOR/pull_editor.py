@@ -350,6 +350,7 @@ class  DropDown:
                         else: pass
                     else: self.max_size = 1
                 elif indicator in {14}  :
+                    print(pos,  all_values)
                     if all_values: 
                         try: val = all_values[pos]
                         except IndexError: val = all_values[pos-1]

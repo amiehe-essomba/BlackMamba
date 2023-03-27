@@ -278,7 +278,7 @@ class words:
                     else: self.newString +=  self.b+fg.rbg(255,165,0) + self.string + init.reset
                 else:  self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'string',
-                                    'bool', 'dict', 'self', 'ndarray', 'table']:
+                                    'bool', 'dict', 'self', 'ndarray', 'table', 'p_int', 'n_int', 'p_float', 'n_float', 'double', 'p_double', 'n_double']:
                 if self.count % 2 == 0: self.newString += self.b+fg.rbg(240,128,128) + self.string + init.reset
                 else:  self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['from', 'load', 'module', 'as']:

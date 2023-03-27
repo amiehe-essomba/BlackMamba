@@ -68,18 +68,15 @@ class files:
                                 if int(self.pos_x) < self.max_x:
                                     self.string  = self.string[ : self.I] + chr(self.char) + self.string[ self.I : ]
                                     self.I += 1
-                                    #sys.stdout.write(bm.save.save )
                                 else: pass
                             else: pass
                         elif   self.char == 3:  break
-                        #moving up and down 
                         elif self.char in {8, 127}: 
                             self.pos_x, self.pos_y      = cursor_pos.cursor()
                             if int(self.pos_x) > self.n+1:
                                 self.string  = self.string[ : self.I-1] + self.string[ self.I : ]
                                 self.I -= 1
                             else: pass
-                        # selction 
                         elif self.char in {10, 13}: 
                             self.string, err = control_string.STRING_ANALYSE({}, 1).DELETE_SPACE( self.string )
                             if err is None:

@@ -13,8 +13,10 @@ class CHECK_TYPE_OF_DATA:
         self._return_                           = ''
         self.type                               = type( self.value )
 
-        if  self.type  == type( int() )         :       self._return_ = 'int'
-        elif self.type == type( float() )       :       self._return_ = 'float'
+        if  self.type  == type( int() )   and   self.value >= 0   :   self._return_ = ['int', 'p_int']
+        elif self.type == type( int() )   and   self.value < 0    :   self._return_ = [ 'n_int']
+        elif self.type == type( float() ) and   self.value >= 0   :   self._return_ = ['float', 'double', 'p_float', 'p_double'] 
+        elif self.type == type( float() ) and   self.value < 0    :   self._return_ = ['n_float', 'n_double'] 
         elif self.type == type( bool() )        :       self._return_ = 'bool'
         elif self.type == type( complex() )     :       self._return_ = 'cplx'
         elif self.type == type( dict() )        :       self._return_ = 'dict'
@@ -32,7 +34,14 @@ class CHECK_TYPE_OF_DATA:
         self._return_               = ''
         
         if   self.value == 'int'    :           self._return_ = '{}an integer(){}'.format(bm.fg.red_L, bm.init.reset)
+        elif self.value == 'p_int'  :           self._return_ = '{}a positive integer(){}'.format(bm.fg.red_L, bm.init.reset)
+        elif self.value == 'n_int'  :           self._return_ = '{}a negative integer(){}'.format(bm.fg.red_L, bm.init.reset)
         elif self.value == 'float'  :           self._return_ = '{}a float(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
+        elif self.value == 'double' :           self._return_ = '{}a double(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
+        elif self.value == 'p_float'  :         self._return_ = '{}a positive float(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
+        elif self.value == 'n_float'  :         self._return_ = '{}a negative float(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
+        elif self.value == 'p_double' :         self._return_ = '{}a positive double(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
+        elif self.value == 'n_double' :         self._return_ = '{}a negative double(){}'.format(bm.fg.rbg(0,255,0), bm.init.reset)
         elif self.value == 'bool'   :           self._return_ = '{}a boolean(){}'.format(bm.fg.cyan_L, bm.init.reset)
         elif self.value == 'cplx'   :           self._return_ = '{}a complex(){}'.format(bm.fg.blue, bm.init.reset)
         elif self.value == 'list'   :           self._return_ = '{}a list(){}'.format(bm.fg.rbg(255,255,0), bm.init.reset)
@@ -46,7 +55,7 @@ class CHECK_TYPE_OF_DATA:
 
         return self._return_ 
     
-    def CHECK_TYPE( self , line: int, name: str, func_name: str):
+    def CHECK_TYPE( self, line: int, name: str, func_name: str):
         self.lists      = []
         self.error      = None
         
@@ -79,3 +88,34 @@ class CHECK_TYPE_OF_DATA:
         elif self.value == 'table'          : self._return_, self.s = type(np.array([1]))   , '{}a table(){}'.format(bm.fg.rbg(255, 165, 25),bm.init.reset)
         
         return self._return_, self.s
+
+
+def data_checking(s, value, line, args):
+    typ   = type(value)
+    bool_ = False
+    error = None 
+    
+    if typ == type(int()):
+        if   s == 'p_int':
+            if value >= 0: bool_ = True
+            else: pass 
+        elif s == 'n_int':
+            if value < 0: bool_ = True
+            else: pass 
+        else: bool_ = True
+    elif typ == type(float()): 
+        if   s in ['p_float', 'p_double']:
+            if value >= 0: bool_ = True
+            else: pass 
+        elif s == ['n_float', 'n_double']:
+            if value < 0: bool_ = True
+            else: pass 
+        else: bool_ = True
+    else: bool_ = True
+        
+    if bool_ is True: pass 
+    else:
+        str_type   = CHECK_TYPE_OF_DATA( s ).TYPE()
+        error = er.ERRORS(line).ERROR3(args, str_type)
+            
+    return error
