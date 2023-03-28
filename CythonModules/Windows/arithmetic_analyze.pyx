@@ -2,7 +2,6 @@ try:
     from script.PARXER                  import numerical_value as nv
 except ImportError:      
     from script.PARXER.WINParxer        import num_val as nv
-from colorama                           import Fore, Style
 from script.MATHS                       import mathematics
 from CythonModules.Windows              import NumeriCal  as nc
 from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
@@ -640,15 +639,15 @@ cdef class color:
 
     
     def __init__( self ) :
-        self.ve      = Fore.LIGHTGREEN_EX
-        self.ne      = Fore.LIGHTRED_EX
-        self.te      = Fore.MAGENTA
-        self.we      = Fore.LIGHTWHITE_EX
-        self.ke      = Fore.LIGHTYELLOW_EX
-        self.ie      = Fore.LIGHTBLUE_EX
-        self.ae      = Fore.CYAN
-        self.le      = Fore.RED
-        self.be      = Fore.BLUE
-        self.ge      = Fore.GREEN
-        self.me      = Fore.LIGHTCYAN_EX
-        self.reset   = Style.RESET_ALL
+        self.ve      = bm.fg.green_L
+        self.ne      = bm.fg.red_L
+        self.te      = bm.fg.magenta
+        self.we      = bm.fg.rbg(255, 255, 255)
+        self.ke      = bm.fg.yellow_L
+        self.ie      = bm.fg.blue_L
+        self.ae      = bm.fg.cyan_L
+        self.le      = bm.fg.red
+        self.be      = bm.fg.blue
+        self.ge      = bm.fg.green
+        self.me      = bm.fg.cyan
+        self.reset   = bm.init.reset

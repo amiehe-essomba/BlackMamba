@@ -1,8 +1,12 @@
 #from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer import NEXT_ANALYZE
-from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
-from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
+#from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
+#from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
+import sys
+from loop.loop_constructor                              import loop_if_statement
+from loop.loop_constructor                              import loop_unless_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import for_analyze 
 from loop                                               import mainFor
+
 
 
 cdef dict UPDATING(dict base, str name, value):
@@ -23,7 +27,7 @@ cdef class LOOP:
         list    variables
         list    _values_
 
-    def __init__( self, DataBase, line ):
+    def __cinit__( self, DataBase, line ):
             self.DataBase       = DataBase
             self.line           = line
             self.variables      = self.DataBase[ 'variables' ][ 'vars' ]
@@ -211,7 +215,7 @@ cdef class LOOP:
                         else: pass
                     if not error: 
                         if doubleKey is False: 
-                            if broke is True: exit()
+                            if broke is True: sys.exit()
                             else: pass 
                         else: break
 
@@ -386,7 +390,7 @@ cdef class LOOP:
                         else: pass
                     if not error: 
                         if doubleKey is False: 
-                            if broke is True:  exit()
+                            if broke is True: sys.exit()
                             else: pass 
                         else: break
 
