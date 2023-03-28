@@ -10,17 +10,9 @@ from script.PARXER.LEXER_CONFIGURE                  import lexer_and_parxer
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm    
 from script.PARXER.PARXER_FUNCTIONS._TRY_           import tryError     as tryE
 from statement                                      import externalTry
-from updatingDataBase                               import updating
-
-
-
-try:  from CythonModules.Linux                      import loop_for
-except ImportError:from CythonModules.Windows       import loop_for  
-
-try:
-    from CythonModules.Windows                      import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                        import fileError as fe
+from updatingDataBase                               import updating  
+from CythonModules.Windows                          import fileError as fe 
+from CythonModules.Windows                          import loop_for
 
 @cython.cclass
 class EXTERNAL_TRY_FOR_STATEMENT:

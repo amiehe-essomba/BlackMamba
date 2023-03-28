@@ -1,7 +1,8 @@
-import sys, msvcrt, re
-
+import msvcrt, re
+import imp, sys
 
 def cursor():
+    imp.reload(sys)
     try:
         sys.stdout.write("\x1b[6n")
         sys.stdout.flush()

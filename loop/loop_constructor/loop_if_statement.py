@@ -768,4 +768,3 @@ class INTERNAL_IF_LOOP_STATEMENT:
         ############################################################################
 
         return self.error
-

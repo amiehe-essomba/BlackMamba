@@ -1,28 +1,59 @@
 import sys, os 
-import WindowsMain as WM  
-from   pathlib                      import Path
-from   IDE.EDITOR                   import test
-from   IDE.EDITOR                   import header 
-from   script.DATA_BASE             import data_base    as db
-from   script.STDIN.LinuxSTDIN      import bm_configure as bm
 import platform
+import WindowsMain as WM  
+import imp 
+import configparser
+import logging
+from loggerWriter                                       import loggerWriter
+from pathlib                                            import Path
+from IDE.EDITOR                                         import test
+from IDE.EDITOR                                         import header 
+from script.DATA_BASE                                   import data_base    as db
+from script.STDIN.LinuxSTDIN                            import bm_configure as bm
+from loop.loop_constructor                              import loop_if_statement
+from loop.loop_constructor                              import loop_unless_statement
+from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import for_analyze 
+from loop                                               import mainFor
+from script.PARXER                                      import numerical_value    
+from script.PARXER.WINParxer                            import num_val 
+from script.MATHS                                       import mathematics
+from CythonModules.Windows                              import NumeriCal 
+from CythonModules.Windows.PARTIAL_PARSER               import parserError 
+from logging.handlers                                   import TimedRotatingFileHandler
+from threading                                          import Timer
 
 
 def run_mamba():
     # get root path 
-    root    = os.path.abspath(os.curdir)
-    s = Path(__file__).resolve().parents[2]
+    #root    = os.path.abspath(os.curdir)
+    #st = Path(__file__).resolve().parents[2]
+    
+    
+    # Create Logger if doesn't exist
+    Path("log").mkdir(parents=True, exist_ok=True)
+    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    handler = TimedRotatingFileHandler('log/error.log', when="midnight", 
+    interval=1, encoding='utf8')
+    handler.suffix = "%Y-%m-%d"
+    handler.setFormatter(formatter)
+    logger = logging.getLogger()
+    logger.setLevel(logging.ERROR)
+    logger.addHandler(handler)
+    sys.stdout = loggerWriter(logging.debug)
+    sys.stderr = loggerWriter(logging.warning)
+    
     # get system name
     system  = platform.system()
     # get arguments 
     arg     = sys.argv
-    
+   
     # running code if system is Linux or macOs
     if system not in ['Linux', 'macOs']:
         # run code with pegasus code iditor
-        if len(arg) == 1:
+        if   len(arg) == 1:
             term = 'pegasus'
             try:
+                #imp.reload(sys)
                 sys.stdout.write(bm.clear.screen(pos=2))
                 os.system('cls')
                 sys.stdout.write(bm.save.save)
@@ -49,6 +80,7 @@ def run_mamba():
                 bm.open_graven().author()
             elif arg[1][-3:] in ['.bm'] :pass 
             else: print(bm.mamba_error.error3())
+        
         elif len(arg) == 3:
             # runnning code with pegasus of orion editor it depends of the arg[2] value
             if arg[1] == '--T':
