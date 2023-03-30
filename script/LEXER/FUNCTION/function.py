@@ -15,7 +15,7 @@ class FUNCTION:
 
     def FUNCTION_INIT(self, main_string: str, method = '1st', _type_ = 'direct'):
         self.type           = ['none', 'integer', 'float', 'boolean', 'complex', 'list', 'tuple', 
-                               'dictionary', 'string', 'array', 'range', "None", 'any', 'ndarray', 'table']
+                               'dictionary', 'string', 'range', "None", 'any', 'ndarray', 'table']
         self.master         = self.master[ 0 ]
         self.master, _e_    = self.control.DELETE_SPACE( self.master )
         self.error          = None

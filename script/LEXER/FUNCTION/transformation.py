@@ -27,6 +27,7 @@ from CythonModules.Linux            import array_to_list as atl
 from CythonModules.Linux            import frame
 from CythonModules.Linux            import progress_bar
 from CythonModules.Linux            import Trees
+from CythonModules.Linux            import merge_list
 from IDE.EDITOR                     import scan
 from IDE.EDITOR                     import test 
 from IDE.EDITOR                     import true_cursor_pos as cursor_pos
@@ -330,6 +331,8 @@ class C_F_I_S:
                                                 else: pass
 
                                                 self.data_base['matrix'] = True
+                                            elif self._value_[ -1 ] in ['merge_in']:
+                                                self.final_value = merge_list.Merge( self._value_[0], self._value_[1] ).merge()
                                             else:
                                                 self.type_accepted  = [type(list()), type(tuple()), type(range(1))]
                                                 func = bm.fg.rbg(0, 255, 0   )+' in std( ).' + bm.init.reset 

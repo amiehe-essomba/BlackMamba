@@ -45,15 +45,53 @@ class STRING:
                                                     try:
                                                         self._return_   = self.master.index( self.newValues ) 
                                                     except ValueError: self.error = er.ERRORS( self.line ).ERROR33( self.newValues )
-                                                elif typ == 'count:'        :
+                                                elif typ == 'count'         :
                                                         self._return_   =  self.master.count( self.newValues )
-                                                elif typ == 'starwith:'     :
+                                                elif typ == 'starwith'      :
                                                         self._return_   =  self.master.startswith( self.newValues )
-                                                elif typ == 'endwith:'      :
+                                                elif typ == 'endwith'       :
                                                         self._return_   =  self.master.endswith( self.newValues )
-                                                else: pass
+                                                elif typ == 'rstrip'        :
+                                                    self._return_       =  self.master.rstrip( self.newValues )
+                                                elif typ == 'lstrip'        :
+                                                    self._return_       =  self.master.lstrip( self.newValues )
+                                                elif typ == 'find'          :
+                                                    self._return_       =  self.master.find( self.newValues )
+                                                elif typ == 'partition'     :
+                                                    self._return_       =  self.master.partition( self.newValues )
+                                                elif typ == 'encoding'     :
+                                                    if self.newValues in ['ascii']+[f'utf-{x}' for x in [8, 16, 32, 64]]:
+                                                        try:
+                                                            self._return_   =  self.master.encode(encoding= self.newValues, error = "ignore" )
+                                                        except : TypeError: self.error = er.ERRORS( self.line ).ERROR63( self.newValues )
+                                                    else: self.error = er.ERRORS( self.line ).ERROR63( self.newValues )
+                                                
+                                                elif typ == 'decoding'     :
+                                                    if self.newValues in ['ascii']+[f'utf-{x}' for x in [8, 16, 32, 64]]:
+                                                        try:
+                                                            self._return_   =  self.master.decode(encoding= self.newValues, error = "ignore" )
+                                                        except TypeError:  self.error = er.ERRORS( self.line ).ERROR64( self.newValues )
+                                                    else: self.error = er.ERRORS( self.line ).ERROR64( self.newValues )
+                                                else: 
+                                                    if typ in ['index', 'count', 'starwith', 'endwith' , 'rstrip','lstrip', 'encoding', 'find', 'partition' ] :
+                                                        self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a string()')  
+                                                    else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'an integer()') 
                                             else: self.error = er.ERRORS( self.line ).ERROR24( 'string' )
-                                        else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a string()')   
+                                        elif type( self.newValues ) == type( int() ):
+                                            if self.master:
+                                                if typ == 'rjust'               :
+                                                    self._return_   =  self.master.rjust( self.newValues )
+                                                elif typ == 'ljust'             :
+                                                    self._return_   =  self.master.ljust( self.newValues )  
+                                                elif typ == 'centering'         :
+                                                    self._return_   =  self.master.center(self.newValues )  
+                                                elif typ == 'fill'              :
+                                                        self._return_   =  self.master.zfill(self.newValues ) 
+                                            else: self.error = er.ERRORS( self.line ).ERROR24( 'string' )
+                                        else:
+                                            if typ in ['index', 'count', 'starwith', 'endwith' , 'rstrip','lstrip', 'encoding', 'find', 'partition' ] :
+                                                self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a string()')  
+                                            else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'an integer()')   
                                     else: pass 
                                 else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
                             else: pass
@@ -80,19 +118,56 @@ class STRING:
                                             self.newValues = self.final_val[ 0 ]
                                             if type( self.newValues ) == type( str() ):
                                                 if self.master:
-                                                    if   typ == 'index'         :
+                                                    if   typ == 'index'        :
                                                         try:
                                                             self._return_   =  self.master.index( self.newValues )
                                                         except ValueError : self.error = er.ERRORS( self.line ).ERROR33( self.newValues )
-                                                    elif typ == 'count:'        :
-                                                        self._return_   =  self.master.count( self.newValues )
-                                                    elif typ == 'starwith:'     :
+                                                    elif typ == 'count'        :
+                                                        self._return_       =  self.master.count( self.newValues )
+                                                    elif typ == 'starwith'     :
                                                             self._return_   =  self.master.startswith( self.newValues )
-                                                    elif typ == 'endwith:'      :
-                                                        self._return_   =  self.master.endswith( self.newValues )
-                                                    else: pass
+                                                    elif typ == 'endwith'      :
+                                                        self._return_       =  self.master.endswith( self.newValues )
+                                                    elif typ == 'rstrip'       :
+                                                        self._return_       =  self.master.rstrip( self.newValues  )
+                                                    elif typ == 'lstrip'       :
+                                                        self._return_       =  self.master.lstrip( self.newValues )
+                                                    elif typ == 'find'         :
+                                                        self._return_       =  self.master.find( self.newValues )
+                                                    elif typ == 'partition'    :
+                                                        self._return_       =  self.master.partition( self.newValues )
+                                                    elif typ == 'encoding'     :
+                                                        if self.newValues in ['ascii']+[f'utf-{x}' for x in [8, 16, 32, 64]]:
+                                                            try:
+                                                                self._return_   =  self.master.encode(encoding= self.newValues, error = "ignore" )
+                                                            except : TypeError: self.error = er.ERRORS( self.line ).ERROR63( self.newValues )
+                                                        else: self.error = er.ERRORS( self.line ).ERROR63( self.newValues )
+                                                    elif typ == 'decoding'     :
+                                                        if self.newValues in ['ascii']+[f'utf-{x}' for x in [8, 16, 32, 64]]:
+                                                            try:
+                                                                self._return_   =  self.master.decode(encoding= self.newValues, error = "ignore" )
+                                                            except TypeError:  self.error = er.ERRORS( self.line ).ERROR64( self.newValues )
+                                                        else: self.error = er.ERRORS( self.line ).ERROR64( self.newValues )
+                                                    else: 
+                                                        if typ in ['index', 'count', 'starwith', 'endwith' , 'rstrip','lstrip', 'encoding', 'find', 'partition' ] :
+                                                            self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a string()')  
+                                                        else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'an integer()') 
                                                 else: self.error = er.ERRORS( self.line ).ERROR24( 'string' )
-                                            else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a string()')   
+                                            elif type( self.newValues ) == type( int() ):
+                                                if self.master:
+                                                    if typ == 'rjust'               :
+                                                        self._return_   =  self.master.rjust( self.newValues )
+                                                    elif typ == 'ljust'             :
+                                                        self._return_   =  self.master.ljust( self.newValues )  
+                                                    elif typ == 'centering'         :
+                                                        self._return_   =  self.master.center(self.newValues )   
+                                                    elif typ == 'fill'              :
+                                                        self._return_   =  self.master.zfill(self.newValues )   
+                                                else: self.error = er.ERRORS( self.line ).ERROR24( 'string' )
+                                            else:
+                                                if typ in ['index', 'count', 'starwith', 'endwith' , 'rstrip','lstrip', 'encoding', 'find', 'partition' ] :
+                                                    self.error = er.ERRORS( self.line ).ERROR3( 'master', 'a string()')  
+                                                else: self.error = er.ERRORS( self.line ).ERROR3( 'master', 'an integer()')  
                                         else: pass 
                                     else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
                                 else: pass

@@ -1,7 +1,7 @@
 import             datetime
 import             webbrowser
 import             re, os, sys
-from   sys         				import stdout, stdin
+from   sys         				import stdout 
 from   time        				import sleep
 from   datetime    				import datetime
 from   script        		    import control_string
@@ -229,9 +229,9 @@ class read:
 class string:
     def __init__(self):
         pass
-    def syntax_highlight( self, name : str ):
+    def syntax_highlight( self, name : str, color : str = bg.blue_L  ):
         self.stripped = name.rstrip()
-        return self.stripped + bg.blue_L + " " * ( len( name ) - len( self.stripped ) ) + init.reset
+        return self.stripped + color + " " * ( len( name ) - len( self.stripped ) ) + init.reset
 
 class words:
     def __init__(self, string : str, color : str):
@@ -249,7 +249,7 @@ class words:
         self.ss         = ''
         self.count      = count['int']
         self.k          = count['sys']
-        self.b          = b_+init.bold
+        self.b          = b_+init.bold+self.color
 
         if locked is False:
             if      self.string in ['in', 'not']:
@@ -274,7 +274,7 @@ class words:
                     else: self.newString +=  self.b+fg.rbg(255,165,0) + self.string + init.reset
                 else:  self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['int', 'float', 'cplx', 'list', 'tuple', 'none', 'range', 'string',
-                                    'bool', 'dict', 'self', 'ndarray', 'table']:
+                                    'bool', 'dict', 'self', 'ndarray', 'table', 'any']:
                 if self.count % 2 == 0: self.newString += self.b+fg.rbg(240,128,128) + self.string + init.reset
                 else:  self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['from', 'load', 'module', 'as']:
@@ -283,9 +283,9 @@ class words:
             elif    self.string in ['def', 'class', 'func']:
                 if self.count % 2 == 0 :self.newString += self.b+fg.rbg(255,165,0) + self.string + init.reset
                 else: self.newString += self.b+self.color + self.string + init.reset
-            elif    self.string in ['initialize', 'integer', 'dictionary', 'set', 'get','min', 'max', 'scan', 'floor', 'License', 'help', 'fopen'
-                                    'object', 'settings', 'print', 'boolean', 'complex', 'any', 'GetLine', 'ansi', 'rand', 'length', 'type', 
-                                    'anonymous', 'prompt', 'sget', 'lambda']:
+            elif    self.string in ['initialize', 'integer', 'dictionary', 'merge','min', 'max', 'scan', 'floor', 'License', 'help', 'fopen'
+                                    'object', 'print', 'boolean', 'complex', 'GetLine', 'ansi', 'rand', 'length', 'type', 
+                                    'anonymous', 'prompt', 'sget', 'lambda', 'GetFuncNames', 'GetClassNames']:
                 if self.count % 2 == 0: self.newString += self.b+fg.rbg(25,165,200) + self.string + init.reset
                 else: self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['->', '==', '!=', '>=', '<=']:
@@ -347,7 +347,7 @@ class words:
 
         return self.newString
 
-    def final(self, n:int=0, locked : bool = False, blink:bool=False):
+    def final(self, n:int=0, locked : bool = False, blink:bool=False, code_w : bool = False):
         self.newS       = ''
         self.ss         = ''
         self.active     = False
@@ -436,10 +436,12 @@ class words:
                             else: self.color = self.c
 
                             self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                            self.newS   += ' '
+                            if code_w is False: self.newS   += ' '
+                            else: self.newS   += self.cc + ' '
                             self.ss     = ''
                     else:
-                        self.newS   += ' '
+                        if code_w is False: self.newS   += ' '
+                        else: self.newS   += self.cc + ' '
                         self.ss      = ''
         else:  self.newS = words(self.string, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
 

@@ -1,9 +1,10 @@
 #from script.PARXER.LEXER_CONFIGURE.lexer_and_parxer    import NEXT_ANALYZE
+import sys
 from script.PARXER.PARXER_FUNCTIONS._IF_                import loop_if_statement
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import loop_unless_statement
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN       import for_analyze 
 from loop                                               import mainFor
-from CythonModules.Linux.TRANSPILER                     import all_data as AD
+#from CythonModules.Linux.TRANSPILER                     import all_data as AD
 from script.PARXER.WINParxer                            import transpiler as trans
 from numba import njit, jit, cfunc
 
@@ -216,7 +217,7 @@ cdef class LOOP:
                         #else: pass
 
                         if doubleKey is False: 
-                            if broke is True:  exit()
+                            if broke is True:  sys.exit()
                             else: pass 
                         else: break
 
@@ -392,7 +393,7 @@ cdef class LOOP:
                         else: pass
                     if not error: 
                         if doubleKey is False: 
-                            if broke is True:  exit()
+                            if broke is True:  sys.exit()
                             else: pass 
                         else: break
 

@@ -414,11 +414,14 @@ class CLASS_TREATMENT:
                     
             else: 
                 self.strFunctions       = [ 'upper', 'lower', 'capitalize', 'empty', 'enumerate', 'split', 'join', 'format', 'index', 'rstrip', 'lstrip',
-                                            'count', 'endwith', 'startwith', 'replace', 'size']
+                                            'count', 'endwith', 'startwith', 'replace', 'size', 'rjust', 'ljust', 'centering', 'encoding', 'find', 'partition', 'fill',
+                                            'title', 'istile', 'isascii', 'casefold', 'isspace', 'swapcase', 'isdecimal', 'isidentifier',
+                                            'isprintable', 'isupper', 'islower', 'isnumeric', 'isdigit', 'decoding' ]
                 self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted', 'frame'] 
                 self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
-                self.floatFunctions      = [ 'round' ] 
-                self.rangeFunctions      = [ 'size', 'enumerate', 'choice', 'to_array', 'sum', 'std', 'mean', 'var' ] 
+                self.floatFunctions     = [ 'round' ] 
+                self.rangeFunctions     = [ 'size', 'enumerate', 'choice', 'to_array', 'sum', 'std', 'mean', 'var', 'pstdev', 'stdev', 'Hmean', "Gmean", 
+                                           'median', 'median_low', 'median_high', 'median_grouped', 'pvar' ]
                 self.tupleFunctions     = [ 'empty', 'init', 'enumerate', 'size', 'choice', 'index', 'count'] 
                 self.listFunctions      = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
                                             'size', 'round', 'rand', 'choice', 'to_array' ]

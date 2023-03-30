@@ -27,7 +27,8 @@ setup(
             'frame.pyx',
             'progress_bar.pyx',
             'Trees.pyx',
-            'handling_list.pyx'
+            'handling_list.pyx',
+            'merge_list.pyx'
             ], 
         annotate = True
         )
