@@ -1,0 +1,13 @@
+from module input load scan 
+from module prompt load *
+
+# creating a simple function using def
+def iris():
+	inp = scan(termios='orion', blink=True, input='@@')
+	inp = float( inp )		
+	
+	return inp ^ inp
+end:
+
+n = iris()
+prompt( n )

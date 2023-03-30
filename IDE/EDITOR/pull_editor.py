@@ -3,21 +3,12 @@ import os
 import termios, sys,tty
 from script.STDIN.LinuxSTDIN                import bm_configure as bm
 from  time                                  import sleep
+from IDE.EDITOR                             import test 
 from IDE.EDITOR                             import examples     as exp
 from IDE.EDITOR                             import cursor_pos   as cp
 from IDE.EDITOR                             import func_class   as FC
+from IDE.EDITOR                             import true_cursor_pos as cursor_pos
 
-    
-def readchar():
-    fd              = sys.stdin.fileno()
-    old_settings    = termios.tcgetattr(fd)
-
-    try:
-        tty.setraw(sys.stdin)
-        ch = ord( sys.stdin.read(1) )
-    finally: termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-
-    return ch 
 
 class list_of_keys:
     def __init__(self, firstChar : str, data_base : dict):
@@ -97,7 +88,7 @@ class IDE:
         self.cl         = bm.init.bold+bm.fg.rbg(0,255,255) +f'{chr(10148)*2} (C)' + bm.init.reset
         self.g          = bm.init.bold+bm.fg.rbg(0,255,0)+ f'{chr(10148)*2} (F)' + bm.init.reset
         self.var        = bm.init.bold+bm.fg.rbg(255,255,0)+ f'{chr(10148)*2} (V)' + bm.init.reset
-    def Linux(self, inp : list, true_chaine : str = "", pos:int=0):
+    def Linux(self, inp : list, true_chaine : str = "", pos:int=0, move_cursor_down : int = 0):
         
         self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(inp, self.firstChar, self.idd)
         self.input      =  inp[0]
@@ -106,11 +97,11 @@ class IDE:
         self.locked     = False
         self.index      = 0
         self.disp       = len(true_chaine)+4
+        #self.len        = self.disp
         self.srt        = " " * self.disp
         self.classes    = sorted(inp[3])
         self.func       = sorted(inp[2])
         self.vars       = sorted(inp[1])
-        
         self.os         = chr(9553)
         self.mn         = chr(9552)
         self.plu        = chr(9556)
@@ -135,8 +126,30 @@ class IDE:
         self.lev1   = bm.init.bold+self.ww+"   "+" "*2+ "+"*(self.max_+2)
         self.nex    = bm.init.bold+self.ww+"   "+" "*2+ "+" + " "*self.max_+"+"
         self.list_is_empty = False
-
+        self.pos_x, self.pos_y      = cursor_pos.cursor()
+        self.pos_x, self.pos_y      = int(self.pos_x), int( self.pos_y)
+        self.max_x, self.max_y      = test.get_linux_ter()
+        self._s_                    = self.srt + '  '+' '+' '*(self.len+1)+' '
+        self.border_x_limit         = self.max_x - self.pos_x
+        
+        sys.stdout.write(bm.save.save)
         sys.stdout.write("\n")
+        
+        for i in range(move_cursor_down):
+            sys.stdout.write("\n")
+        for i in range(move_cursor_down):
+            sys.stdout.write(bm.move_cursor.UP(pos = 1)) 
+        sys.stdout.write(bm.move_cursor.UP(pos=1))
+        sys.stdout.write(bm.move_cursor.RIGHT(pos=self.pos_x-1))
+        
+        if self.border_x_limit < self.len+10:  self.srt = ''
+        else: pass 
+        
+        sys.stdout.write(bm.save.save)
+        sys.stdout.flush()
+        
+        sys.stdout.write("\n")
+            
         for i, value in enumerate(self.input):
             if self.idd == 1:
                 self.noChar = True
@@ -279,16 +292,17 @@ class IDE:
         
         return self.index
 	
-
 class  DropDown:
     def __init__(self, data_base: dict, line: int, key:bool=True):
         self.line               = line
         self.data_base          = data_base
         self.key 				= key
-    def MENU(self, string : str = 'r', true_chaine : str = "", indicator = None, pos : int = 0) :
-        ouput       = ""
-        np          = 1
-        self.new    = []
+    def MENU(self, string : str = 'r', true_chaine : str = "", indicator = None, pos : int = 0, d_max_x : int = 1) :
+        ouput               = ""
+        np                  = 1
+        self.max_size       = 6
+        self.new            = []
+        err                 = None
         
         if self.key is True:
             try:
@@ -297,7 +311,7 @@ class  DropDown:
                 self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(all_values, string, len(string))  
                 all_values  = sorted(all_values)
                 
-                if   indicator is None: 
+                if   indicator is None      :
                     for s in all_values:
                         if string in s[:len(string)]:  self.new.append(s)
                         else: pass 
@@ -306,21 +320,43 @@ class  DropDown:
                         np = len(self.new)
                         if np < 5: np -= 1 
                         else:  self.new = self.new[:5]
-                        
+                        idd = self.max_size + len(self.new)
                         self.index = IDE(len(string), string, self.data_base).Linux( 
-                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine )
+                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, move_cursor_down=idd )
+                        self.max_size += self.index 
                     else: pass 
-                elif indicator in {7}:
+                elif indicator in {7}       :
                     self.idd        = len(string)
-                    if all_values: ouput = cp.new_windows(true_chaine[:-self.idd ] ).cursor_pos( sorted(all_values) )
+                    self.new_data   = []
+                    self.len_       = 0 
+                    
+                    if string:
+                        for s in all_values:
+                            try:
+                                if string == s[: self.idd]:
+                                    self.new_data.append(s)
+                                    if self.len_ >= len(s) : pass 
+                                    else: self.len_ = len(s)
+                                else: pass 
+                            except IndexError: pass 
                     else: pass
-                elif indicator in {14}:
-                    if all_values: 
-                        val = all_values[pos]
-                        if string == val[:len(string)]: ouput = val
+                    if self.new_data:
+                        if all_values:
+                            self.max_size += len(self.new_data)
+                            ouput, err = cp.new_windows(true_chaine[:-self.idd ], self.line ).cursor_pos( sorted(all_values), true_chaine, self.len_ )
+                            if err is None:
+                                if len(ouput) > d_max_x : ouput = ""
+                                else: pass
+                            else:pass
                         else: pass
+                    else:  self.max_size = 1
+                elif indicator in {14}      :
+                    if all_values: 
+                        try: val = all_values[pos]
+                        except IndexError: all_values[pos-1]
+                        output, self.max_size = val, 1
                     else: pass
-                elif indicator in {65, 66}:
+                elif indicator in {65, 66}  :
                     for s in all_values:
                         if string in s[:len(string)]:  self.new.append(s)
                         else: pass 
@@ -331,14 +367,16 @@ class  DropDown:
                         else:
                             if  pos < 5 :  self.new = self.new[:5]
                             else: self.new , pos = self.new[pos-5: pos], 4
-                     
+
+                        idd = self.max_size + len(self.new)
                         self.index = IDE(len(string), string, self.data_base).Linux( 
-                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, pos=pos )
+                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, pos=pos, move_cursor_down=idd  )
+                        self.max_size += self.index
                     else: pass
                     ouput = all_values[pos]
             except TypeError: pass 
             except IndexError: pass
         else: pass
 
-        return ouput, np
+        return ouput, np, self.max_size, err
         

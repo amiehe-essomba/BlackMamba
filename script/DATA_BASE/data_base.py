@@ -130,7 +130,8 @@ class DATA_BASE:
     def FUNCTIONS(self):
         self.function_name  = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
                                'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 
-                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames']
+                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames',
+                               'merge']
         
         self.function_expressions   = [
             {
@@ -503,6 +504,17 @@ class DATA_BASE:
                                         ('end:                                 ', False),
                                       ]
                                     }
+            },
+            {
+                'merge'              : {
+                'type'              : [['list'], ['list']],
+                'value'             : [ 'master1', 'master2'],
+                'arguments'         : [ None, None ],
+                'history_of_data'   : [
+                                        ('t__std__ * [master1, master2, "merge_in"]     ', True),
+                                        ('end:                                          ', False),
+                                      ]
+                }
             },
         ]
 

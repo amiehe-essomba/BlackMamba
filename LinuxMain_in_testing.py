@@ -37,6 +37,7 @@ from IDE.EDITOR                             import left_right as LR
 from IDE.EDITOR                             import cursor
 from IDE.EDITOR                             import test 
 from IDE.EDITOR                             import header
+from IDE.EDITOR                             import drop_box as DR
 from IDE.EDITOR                             import true_cursor_pos as cursor_pos
 
 class linux:
@@ -120,6 +121,8 @@ class linux:
                                    control_string.STRING_ANALYSE(0, {}).LOWER_CASE()+['_']       
         # when Ctrl+ option are used 
         self.indicator           = None
+        # fixing the x-axis border 
+        self.border_x_limit      = True 
         ###########################################################
         # accounting line
         self.if_line        = 0
@@ -143,40 +146,51 @@ class linux:
         sys.stdout.flush()
         ###########################################################
         self.pos_x, self.pos_y      = cursor_pos.cursor()
-        self.pos_x, self.posy       = int(self.pos_x), int( self.pos_y)
+        self.pos_x, self.pos_y       = int(self.pos_x), int( self.pos_y)
         self.max_x, self.max_y      = test.get_linux_ter()
-        self.key_max_activation     = True
+        self.key_max_activation     = True  
         self.save_cursor_position   = bm.save.save
         self.indicator_pos          = 0
         self.indicator_max          = 1
         ###########################################################
         
         while True:
+            # get window (max_x, max_y)
+            self.max_x, self.max_y      = test.get_linux_ter()
             try:
                 # get input
                 self.char = readchar.readchar()#; print(self.char)
                 
                 #building of str_drop_down only when ord( self.char ) is in self.sss 
                 if 32 <= self.char <= 126:
-                    sys.stdout.write(bm.clear.screen(pos=0))
-                    if chr(self.char) in self.sss:
-                        self.str_drop_down = self.str_drop_down[ : self.drop] + chr( self.char ) + self.str_drop_down[ self.drop : ]
-                        self.drop += 1
-                    else:
-                        # initialization
-                        self.drop_drop['id'].append( self.drop )
-                        self.drop_drop['str'].append( self.str_drop_down) 
-                        self.drop = 0
-                        self.str_drop_down = ""
+                    if self.border_x_limit is True:
+                        self.pos_x, self.pos_y = cursor_pos.cursor()
+                        if (self.max_x - int(self.pos_x)) > 0:
+                            sys.stdout.write(bm.clear.screen(pos=0))
+                            if chr(self.char) in self.sss:
+                                self.str_drop_down = self.str_drop_down[ : self.drop] + chr( self.char ) + self.str_drop_down[ self.drop : ]
+                                self.drop += 1
+                            else:
+                                # initialization
+                                self.drop_drop['id'].append( self.drop )
+                                self.drop_drop['str'].append( self.str_drop_down) 
+                                self.drop = 0
+                                self.str_drop_down = ""
+                            if len(self.s) < self.max_x : self.border_x_limit = True 
+                            else: self.border_x_limit = False
+                        else: self.border_x_limit = False
+                    else: pass
                 #delecting char in the str_drop_down string 
                 elif self.char in {8, 127}:
-                    sys.stdout.write(bm.clear.screen(pos=0))
-                    if self.str_drop_down:
-                        # dropsown string :
-                        self.str_drop_down = self.str_drop_down[ : self.drop - 1] + self.str_drop_down[ self.drop : ]
-                        # dropdown index 
-                        self.drop    -= 1
-                    else: pass
+                    if self.border_x_limit is True:
+                        sys.stdout.write(bm.clear.screen(pos=0))
+                        if self.str_drop_down:
+                            # dropsown string :
+                            self.str_drop_down = self.str_drop_down[ : self.drop - 1] + self.str_drop_down[ self.drop : ]
+                            # dropdown index 
+                            self.drop    -= 1
+                        else: pass
+                    else : pass
                 else:
                     if self.char in [10, 13, 27, 7, 14]: pass 
                     else:
@@ -204,21 +218,27 @@ class linux:
                     # each character has 1 as length     #
                     # have a look on ansi char           #
                     ######################################
-                    # building input
-                    self.input  = self.input[: self.index + self.last] + chr(self.char) + self.input[
-                                                                                         self.index + self.last:]
-                    # building s
-                    self.s      = self.s[: self.I] + chr(self.char) + self.s[self.I:]
-                    # building string
-                    self.string = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
-                    # increasing index of a step = 1
-                    self.index += 1
-                    # increasing I of a step = 1
-                    self.I     += 1
-                    # increasing I_S of step = 1
-                    self.I_S   += 1
-                    # storing char in get
-                    self.get.append(self.char)
+                    if self.border_x_limit is True:
+                        # building input
+                        self.input  = self.input[: self.index + self.last] + chr(self.char) + self.input[
+                                                                                            self.index + self.last:]
+                        # building s
+                        self.s      = self.s[: self.I] + chr(self.char) + self.s[self.I:]
+                        # building string
+                        self.string = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
+                        # increasing index of a step = 1
+                        self.index += 1
+                        # increasing I of a step = 1
+                        self.I     += 1
+                        # increasing I_S of step = 1
+                        self.I_S   += 1
+                        # storing char in get
+                        self.get.append(self.char)
+                        
+                        # fixing the cursor position conditions
+                        if len(self.s) < self.max_x : self.border_x_limit = True 
+                        else: self.border_x_limit = False
+                    else: pass
                 # moving cursor up, down, left, reight
                 elif self.char == 27:
                     next1, next2 = ord(sys.stdin.read(1)), ord(sys.stdin.read(1))
@@ -411,24 +431,34 @@ class linux:
                                     self.I     -= 1
                                     self.I_S   -= 1
                                 else:   pass
+                                
+                                # fixing the cursor position conditions
+                                if self.max_x >= int(self.pos_x) and  len(self.s) <= self.max_x : self.border_x_limit = True 
+                                else: self.border_x_limit = False 
                             else:  pass
                         except IndexError:  pass
                     else: pass
                 # indentation Tab
                 elif self.char == 9:
+                    if self.border_x_limit is True:
+                        self.pos_x, self.pos_y = cursor_pos.cursor()
+                        if (self.max_x - int(self.pos_x)) >= 4:
+                            self.tt         = '    '
+                            self.input      = self.input[: self.index + self.last] + str(self.tt) + self.input[
+                                                                                            self.index + self.last:]
+                            self.s          = self.s[: self.I] + str(self.tt) + self.s[self.I:]
+                            # string takes the true value of char
+                            self.string     = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
+                            self.index     += 4
+                            self.I         += 4
+                            self.I_S       += 1
 
-                    self.tt         = '    '
-                    self.input      = self.input[: self.index + self.last] + str(self.tt) + self.input[
-                                                                                       self.index + self.last:]
-                    self.s          = self.s[: self.I] + str(self.tt) + self.s[self.I:]
-                    # string takes the true value of char
-                    self.string     = self.string[: self.I_S] + chr(self.char) + self.string[self.I_S:]
-                    self.index     += 4
-                    self.I         += 4
-                    self.I_S       += 1
-
-                    for i in range(4):
-                        self.get.append(self.char)
+                            for i in range(4):
+                                self.get.append(self.char)
+                        else: pass
+                        # fixing the cursor position conditions
+                        if len(self.s) <= self.max_x : self.border_x_limit = True 
+                        else: self.border_x_limit = Fals
                 # clear entire string ctrl+l
                 elif self.char == 12:
                     # move cursor left
@@ -493,6 +523,7 @@ class linux:
                     #header.header()
                     self.pos_x, self.pos_y = cursor_pos.cursor()
                     self.pos_x, self.posy = int(self.pos_x), int( self.pos_y)
+                    self.key_max_activation = DR.size( self.max_x, self.max_y, self.pos_x, self.pos_y)
                 elif self.char == 7: # crtl+g
                     self.indicator = self.char               
                 # auto slection mode ctrl+n
@@ -584,88 +615,118 @@ class linux:
                     self.drop           = 0   
                     self.drop_drop      = {'id':[], 'str':[]}     
                     self.drop_idd       = 0 
+                    self.border_x_limit = True 
                     self.pos_x, self.pos_y = cursor_pos.cursor()
-                    
-                    if   (int(self.max_y)-int(self.pos_y)) > 14 : self.key_max_activation = True
-                    else: self.key_max_activation = False
-                    
-                    if self.key_max_activation  is False: pass
+
+                if self.border_x_limit is True:
+                    # move cursor on left
+                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                    # clear entire line
+                    sys.stdout.write(bm.clear.line(pos=0))
+
+                    if terminal_name == 'orion':
+                        # key word activation
+                        sys.stdout.write(self.main_input + bm.string().syntax_highlight(
+                            name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
                     else:
-                        if (int(self.max_x)-int(self.pos_x)) > 20 : self.key_max_activation = True
-                        else: self.key_max_activation = False
+                        # any activation keyword
+                        sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                    # move cusror on left egain
+                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
 
-                # move cursor on left
-                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                # clear entire line
-                sys.stdout.write(bm.clear.line(pos=0))
-
-                if terminal_name == 'orion':
-                    # key word activation
-                    sys.stdout.write(self.main_input + bm.string().syntax_highlight(
-                        name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
-                else:
-                    # any activation keyword
-                    sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
-                # move cusror on left egain
-                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-
-                # put cursor on the right position
-                if self.index > 0:
-                    pos = len(self.s) + self.size + len(self.input) - self.index
-                    sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
-                else: pass
-
-                if self.str_drop_down:
-                    if self.key_max_activation is True:
-                        sys.stdout.write(bm.save.save)
-                        if self.indicator is None:
-                            v, self.indicator_max = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
-                                                                                            self.string, self.indicator, self.indicator_pos)
-                        else:
-                            sys.stdout.write(bm.clear.screen(pos=0))
-                            v, self.indicator_max = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
-                                                                            self.string, self.indicator, self.indicator_pos)
-                            if v is not  None:
-                                if self.indicator == 7: sys.stdout.write(bm.move_cursor.UP(pos=1))
-                                if self.indicator in {65, 66} : sys.stdout.write(bm.save.restore)
-                                else: pass        
-                                try:
-                                    if self.indicator not in {65, 66}:
-                                        self.string = self.string[ : len(self.string)-len(self.str_drop_down)] + v 
-                                        self.error,  kappa, self.pos, self.get = SB.string( self.string ).build()
-
-                                        self.input  = kappa[0][0]
-                                        self.index  = kappa[0][1]
-                                        self.s      = kappa[1][0]
-                                        self.I      = kappa[1][1]
-                                        self.string = kappa[2][0]
-                                        self.I_S    = kappa[2][1]
-
-                                        if self.indicator == 14: self.str_drop_down = v; self.drop = len(v)
-                                        else: pass
-                                        # move cursor on left
-                                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                                        # clear entire line
-                                        sys.stdout.write(bm.clear.line(pos=0))
-                                        sys.stdout.write(self.main_input+bm.string().syntax_highlight(name=bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final()))
-                                        sys.stdout.write(bm.save.save)
-                                    else: pass
-                                except  TypeError: pass 
-                            else:
-                                sys.stdout.write(bm.move_cursor.UP(pos=1))
-
-                                if self.index > 0:
-                                    pos = len(self.s) + self.size + len(self.input) - self.index
-                                    sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
-                                else: pass
-                                sys.stdout.write(bm.save.save)
-                        sys.stdout.write(bm.save.restore)
+                    # put cursor on the right position
+                    if self.index > 0:
+                        pos = len(self.s) + self.size + len(self.input) - self.index
+                        sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                     else: pass
-                else: pass 
-                if self.indicator in {65, 66}: pass 
-                else:   self.indicator_pos, self.indicator_max = 0, 1
-                self.indicator = None
-                sys.stdout.flush()
+
+                    if self.max_y > 20 and self.max_x > 50:
+                        if self.str_drop_down:
+                            if self.key_max_activation is True:
+                                sys.stdout.write(bm.save.save)
+                                if self.indicator is None:
+                                    v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
+                                                self.string, self.indicator, self.indicator_pos, self.max_x-len(self.s)-self.size)
+                                else:
+                                    sys.stdout.write(bm.clear.screen(pos=0))
+                                    v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
+                                                self.string, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size) )
+                                    
+                                    if self.error is None: pass 
+                                    else:
+                                        sys.stdout.write(self.error+"\n\n")
+                                        self.error=None
+                                        if terminal_name == 'orion':
+                                            # key word activation
+                                            sys.stdout.write(self.main_input + bm.string().syntax_highlight(
+                                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
+                                        else:
+                                            # any activation keyword
+                                            sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                                        # moving cursor down to 1
+                                        sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                                        # moving cursor to the left 
+                                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                        # saving cursor position 
+                                        sys.stdout.write(bm.save.save)
+                                                    
+                                    if v is not  None:
+                                        if self.indicator == 7: sys.stdout.write(bm.move_cursor.UP(pos=1))
+                                        if self.indicator in {65, 66} : sys.stdout.write(bm.save.restore)
+                                        else: pass        
+                                        try:
+                                            if self.indicator not in {65, 66}:
+                                                self.string = self.string[ : len(self.string)-len(self.str_drop_down)] + v 
+                                                self.error,  kappa, self.pos, self.get = SB.string( self.string ).build()
+
+                                                self.input  = kappa[0][0]
+                                                self.index  = kappa[0][1]
+                                                self.s      = kappa[1][0]
+                                                self.I      = kappa[1][1]
+                                                self.string = kappa[2][0]
+                                                self.I_S    = kappa[2][1]
+
+                                                if self.indicator == 14: self.str_drop_down = v; self.drop = len(v)
+                                                else: pass
+                                                # move cursor on left
+                                                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                                # clear entire line
+                                                sys.stdout.write(bm.clear.line(pos=0))
+                                                sys.stdout.write(self.main_input+bm.string().syntax_highlight(name=bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final()))
+                                                sys.stdout.write(bm.save.save)
+                                            else: pass
+                                        except  TypeError: pass 
+                                    else:
+                                        # moving cursor up to 1
+                                        sys.stdout.write(bm.move_cursor.UP(pos=1))
+                                        if self.index > 0:
+                                            # computing the right postion
+                                            pos = len(self.s) + self.size + len(self.input) - self.index
+                                            # moving cursor at the correct position
+                                            sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
+                                        else: pass
+                                        # erasing entire string 
+                                        sys.stdout.write(bm.clear.line(pos=2))
+                                        # re-writing string
+                                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                        if terminal_name == 'orion':
+                                            sys.stdout.write(self.main_input + bm.string().syntax_highlight(
+                                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
+                                        else: 
+                                            # any activation keyword & re-writing string
+                                            sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                                        # saving cursor position 
+                                        sys.stdout.write(bm.save.save)
+                                # restoring cursor position
+                                sys.stdout.write(bm.save.restore)
+                            else: pass
+                        else: pass 
+                        if self.indicator in {65, 66}: pass 
+                        else:   self.indicator_pos, self.indicator_max = 0, 1
+                        self.indicator = None
+                        sys.stdout.flush()
+                    else: pass
+                else: pass
             except KeyboardInterrupt:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
@@ -683,8 +744,11 @@ if __name__ == '__main__':
     try:
         os.system('clear')
         sys.stdout.write(bm.save.save)
-        #bm.head().head(sys='Linux', term = terminal)
-        header.header()
+        max_x, max_y = test.get_linux_ter()
+        if max_x >= 100: 
+            if     terminal == 'orion': header.header(terminal = 'orion terminal')
+            else:  header.header(terminal = 'pegasus terminal')
+        else: pass
         data_base = db.DATA_BASE().STORAGE().copy()
         linux( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=terminal)
     except KeyboardInterrupt:  pass

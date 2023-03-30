@@ -8,11 +8,8 @@ from script.STDIN.LinuxSTDIN                        import bm_configure as bm
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.INTERNAL_FUNCTION                import get_list
 from src.classes.Chars                              import Char
-from src.classes                                    import error as er  
-try:
-    from CythonModules.Windows                      import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                        import fileError as fe 
+from src.classes                                    import error        as er  
+from CythonModules.Linux                            import fileError    as fe 
 
 
 class STRING:
@@ -88,7 +85,9 @@ class STRING:
         self._return_           = ''
         self.historyOfFunctions = []
         self.strFunctions       = [ 'upper', 'lower', 'capitalize', 'empty', 'enumerate', 'split', 'join', 'format', 'index', 'rstrip', 'lstrip',
-                                    'count', 'endwith', 'startwith', 'replace', 'size']
+                                    'count', 'endwith', 'startwith', 'replace', 'size', 'rjust', 'ljust', 'centering', 'encoding', 'find', 'partition', 'fill',
+                                    'title', 'istile', 'isascii', 'casefold', 'isspace', 'swapcase', 'isdecimal', 'isidentifier',
+                                    'isprintable', 'isupper', 'islower', 'isnumeric', 'isdigit', 'decoding']
         self.subStrFunctions    = ['upper', 'lower', 'capitalize']
         self.asSubStrFunctions  = ['split', 'isEMPTY', 'enumerate']
                 
