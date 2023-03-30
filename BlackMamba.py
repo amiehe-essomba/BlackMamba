@@ -29,32 +29,22 @@ from script.PARXER.WINParxer    import parxer_for_interpreter   as PFI
 import os
 
 
-ke = bm.fg.rbg(255,255, 0)
-we = bm.fg.white_L
-be = bm.fg.blue_L
-data_from_file  = []
-currunt_file    = os.path.basename(__file__) 
-control         = control_string.STRING_ANALYSE( {}, 1 )
-
-
-try:
-    path_library    = 'E:\\bb\\elena\\BlackMamba\\Library\\iris.bm'
+def mamba_interpretor( string ):
+    ke = bm.fg.rbg(255,255, 0)
+    we = bm.fg.white_L
+    be = bm.fg.blue_L
+    data_from_file  = []
+    currunt_file    = os.path.basename(__file__) 
+    control         = control_string.STRING_ANALYSE( {}, 1 )
+    
+    path_library    = f"{os.path.abspath(os.curdir)}/{string}"
     
     with open(file=path_library, mode='r') as file:
         for line in file.readlines():  
             if line[-1] == '\n': line = line[:-1]
             else: pass
-            data_from_file.append( line )
+            data_from_file.append( line  )
             
-except FileNotFoundError:
-    path_library    = '/home/amiehe/Desktop/python_bmamba_test/elena-royer/BlackMamba/Library/iris.bm'
-    #'/media/amiehe/KEY/black_mamba/Library/iris.bm'
-    
-    with open(file=path_library, mode='r') as file:
-        for line in file.readlines():
-            data_from_file.append( line.rstrip() )
-
-if __name__ == '__main__':
     data_base   = db.DATA_BASE().STORAGE().copy()
     line        = 0
     error       = None
@@ -67,8 +57,10 @@ if __name__ == '__main__':
     data_base['modulesImport']['TrueFileNames']['line'].append(line)
     data_base['modulesImport']['TrueFileNames']['path'].append(None)
     data_base['modulesImport']['TrueFileNames']['names'].append('iris')
-  
-    if not data_from_file: pass 
+    
+    
+    if not data_from_file: 
+        print( bm.mamba_error().ERROR2(string) )
     else:
         for x, string in enumerate( data_from_file ):
             line += 1
@@ -113,3 +105,4 @@ if __name__ == '__main__':
                                 break
                         except EOFError: break
             else: pass
+    
