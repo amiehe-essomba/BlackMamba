@@ -35,12 +35,11 @@ class Details:
             self.string     = ""
             self.err        = None
             
-            #sys.stdout.write(bm.save.save)
             sys.stdout.write("\n")
             sys.stdout.write(self.srt + '  '+self.w+self.asc['ul']+self.asc['h']*(self.len+1)+self.asc['ur'] + self.re+'\n')
 
             for j, name in enumerate(self.list):
-                name = f"{self.asc['v']} " + name +self.re + self.w+self.empty * (self.len - self.L[j])+f"{self.asc['v']}"+self.re
+                name = self.w+f"{self.asc['v']} " + name +self.re + self.w+self.empty * (self.len - self.L[j])+f"{self.asc['v']}"+self.re
                 sys.stdout.write(self.srt + '  '+self.w+ name +self.re+'\n')
                 if j == 0: sys.stdout.write(self.srt + '  '+self.w+self.asc['vl']+self.asc['h']*(self.len+1)+self.asc['vr'] + self.re+'\n') 
                 else: pass
@@ -55,8 +54,6 @@ class Details:
                 sys.stdout.write(bm.move_cursor.UP(pos=1))
             
             sys.stdout.write(bm.move_cursor.RIGHT(pos=len(self.srt)))
-        
-            #sys.stdout.write(bm.save.save)
             sys.stdout.flush() 
             
             while True:

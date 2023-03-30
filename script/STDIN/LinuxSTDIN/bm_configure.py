@@ -233,9 +233,9 @@ class read:
 class string:
     def __init__(self):
         pass
-    def syntax_highlight( self, name : str ):
+    def syntax_highlight( self, name : str, color : str = bg.blue_L ):
         self.stripped = name.rstrip()
-        return self.stripped + bg.blue_L + " " * ( len( name ) - len( self.stripped ) ) + init.reset
+        return self.stripped + color + " " * ( len( name ) - len( self.stripped ) ) + init.reset
 
 class words:
     def __init__(self, string : str, color : str):
@@ -253,7 +253,7 @@ class words:
         self.ss         = ''
         self.count      = count['int']
         self.k          = count['sys']
-        self.b          = b_+init.bold
+        self.b          = b_+init.bold+self.color
 
         if locked is False:
             if      self.string in ['in', 'not']:
@@ -351,7 +351,7 @@ class words:
 
         return self.newString
 
-    def final(self, n:int=0, locked : bool = False, blink:bool=False):
+    def final(self, n:int=0, locked : bool = False, blink:bool=False, code_w : str = False):
         self.newS       = ''
         self.ss         = ''
         self.active     = False
@@ -440,10 +440,12 @@ class words:
                             else: self.color = self.c
 
                             self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                            self.newS   += ' '
+                            if code_w is False: self.newS   += ' '
+                            else:  self.newS   += self.cc+' '
                             self.ss     = ''
                     else:
-                        self.newS   += ' '
+                        if code_w is False: self.newS   += ' '
+                        else:  self.newS   += self.cc+' '
                         self.ss      = ''
         else:  self.newS = words(self.string, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
 

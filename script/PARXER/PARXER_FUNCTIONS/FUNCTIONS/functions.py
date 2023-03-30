@@ -296,7 +296,6 @@ class FUNCTION_TREATMENT:
                 else: pass
             else: pass
         else:
-            #print( self.data_base['func_names'], self.function_name)#[0][0]
             try:
                 self.original_module = self.data_base['modulesImport']['modules'][ 0 ]
                 self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
