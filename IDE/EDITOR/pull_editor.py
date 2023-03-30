@@ -92,15 +92,15 @@ class IDE:
         self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(inp, self.firstChar, self.idd)
         self.input      =  inp[0]
         self.empty      = " "
-        self.len        = 16
+        #self.len        = 16
         self.locked     = False
         self.index      = 0
         self.disp       = len(true_chaine)+4
+        self.len        = self.disp
         self.srt        = " " * self.disp
         self.classes    = sorted(inp[3])
         self.func       = sorted(inp[2])
         self.vars       = sorted(inp[1])
-        
         self.os         = chr(9553)
         self.mn         = chr(9552)
         self.plu        = chr(9556)
@@ -350,12 +350,10 @@ class  DropDown:
                         else: pass
                     else: self.max_size = 1
                 elif indicator in {14}  :
-                    print(pos,  all_values)
                     if all_values: 
                         try: val = all_values[pos]
                         except IndexError: val = all_values[pos-1]
-                        ouput = val
-                        self.max_size = 1
+                        ouput, self.max_size = val, 1
                     else: pass
                 elif indicator in {65, 66}:
                     for s in all_values:
@@ -368,9 +366,10 @@ class  DropDown:
                         else:
                             if  pos < 5 :  self.new = self.new[:5]
                             else: self.new , pos = self.new[pos-5: pos], 4
-                     
+
+                        idd = self.max_size + len(self.new)
                         self.index = IDE(len(string), string, self.data_base).Linux( 
-                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, pos=pos )
+                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, pos=pos, move_cursor_down=idd  )
                         self.max_size += self.index
                     else: pass
                     ouput = all_values[pos]

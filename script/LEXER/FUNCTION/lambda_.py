@@ -16,7 +16,8 @@ class LAMBDA:
         self.main_string    = value
         self.long_string    = 'lambda ' + self.main_string
         self.lambda_value   = None
-        self.type           = ['int', 'float', 'list', 'tuple', 'bool', 'cplx', 'dict', 'string', 'any', 'none', 'range', 'ndarray', 'table']
+        self.type           = ['none', 'integer', 'float', 'boolean', 'complex', 'list', 'tuple', 
+                               'dictionary', 'string', 'range', "None", 'any', 'ndarray', 'table']
         self.type_return    = None
         
         

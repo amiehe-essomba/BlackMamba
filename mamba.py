@@ -25,23 +25,8 @@ from threading                                          import Timer
 
 def run_mamba():
     # get root path 
-    #root    = os.path.abspath(os.curdir)
-    #st = Path(__file__).resolve().parents[2]
-    
-    
-    # Create Logger if doesn't exist
-    Path("log").mkdir(parents=True, exist_ok=True)
-    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    handler = TimedRotatingFileHandler('log/error.log', when="midnight", 
-    interval=1, encoding='utf8')
-    handler.suffix = "%Y-%m-%d"
-    handler.setFormatter(formatter)
-    logger = logging.getLogger()
-    logger.setLevel(logging.ERROR)
-    logger.addHandler(handler)
-    sys.stdout = loggerWriter(logging.debug)
-    sys.stderr = loggerWriter(logging.warning)
-    
+    root    = os.path.abspath(os.curdir)
+    s = Path(__file__).resolve().parents[2]
     # get system name
     system  = platform.system()
     # get arguments 
