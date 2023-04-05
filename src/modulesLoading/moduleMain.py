@@ -48,10 +48,12 @@ class TREATMENT:
         self.module_main        = self.master['module_main']
         # getting path from this directory
         self.currently_path     = os.getcwd()
+        os.path.join(os.environ.get("_MEIPASS", self.currently_path), "")
         # BM extension 
         self.termios            = '.bm'
         # get relative path
         self.relative_path      = Path(__file__).resolve().parents[2]
+        os.path.join(os.environ.get("_MEIPASS", self.relative_path), "")
         # path Library in orthers words where the Lib is located
         self.path_library  = bpath.Lib_Path( root = self.relative_path, sys = self.system).getPath()
         # get elements from current directory
