@@ -160,7 +160,7 @@ class linux:
             try:
                 # get input
                 self.char = readchar.readchar()#; print(self.char)
-                
+                #print(self.char)
                 #building of str_drop_down only when ord( self.char ) is in self.sss 
                 if 32 <= self.char <= 126:
                     if self.border_x_limit is True:

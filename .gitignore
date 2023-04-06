@@ -11,7 +11,9 @@ CythonModules/**/*.html
 
 # HTML
 *.html
-
+*.tar.gz 
+*.tar 
+*.gz
 # C extensions
 *.so
 

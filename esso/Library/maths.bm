@@ -1,0 +1,423 @@
+class getPI:
+	def atan( master : int/float/bool):
+		__maths__ * "atan", master 
+	end:
+	def exp( master : int/float/bool = 1.0):
+		__maths__ * "exp", master
+	end:
+end:
+
+class trigo:
+	def initialize():
+		self.pi = 4.0 * getPI.atan( 1.0 )
+		self.tau= pi * 2.0
+		self.e  = getPI.exp( 1.0 )
+	end:
+	
+	def sin( master : int/float/bool):
+		__maths__ * "sin", master
+	end:
+	
+	def cos( master : int/float/bool):
+		__maths__ * "cos", master 
+	end:
+	
+	def tan( master : int/float/bool):
+		__maths__ * "tan", master 
+	end:
+	
+	def asin( master : int/float/bool):
+		__maths__ * "asin", master 
+	end:
+	
+	def acos( master : int/float/bool):
+		__maths__ * "acos", master 
+	end:
+	
+	def atan( master : int/float/bool):
+		__maths__ * "atan", master
+	end:
+	
+	def sinh( master : int/float/bool):
+		__maths__ * "sinh", master
+	end:
+	
+	def cosh( master : int/float/bool):
+		__maths * "cosh", master 
+	end:
+	
+	def tanh( master : int/float/bool):
+		__maths__ * "tanh", master 
+	end:
+	
+	def deg( master : int/float/bool):
+		__maths__ * "deg", master 
+	end:
+	
+	def rad( master : int/float/bool):
+		__maths__ * "rad", master 
+	end:
+	
+	def asinh( master : int/float/bool):
+		__maths__ * "asinh", master 
+	end:
+	
+	def acosh( master : int/float/bool):
+		__maths__ * "acosh", master 
+	end:
+	
+	def atanh( master : int/float/bool):
+		__maths__ * "atanh", master 
+	end:
+	
+	def gamma( master : int/float/bool):
+		__maths__ * "gamma", master 
+	end:
+	
+	def exp( master : int/float/bool):
+		__maths__ * "exp", master 
+	end:
+	
+	def log( master : int/float/bool):
+		__maths__ * "log", master 
+	end:
+	
+	def log2( master : int/float/bool):
+		__maths__ * "log2", master 
+	end:
+	
+	def log10( master : int/float/bool):
+		__maths__ * "log10", master 
+	end:
+	
+	def sqrt( master : int/float/bool):
+		__maths__ * "sqrt", master 
+	end:
+	
+	def erf( master : int/float/bool):
+		__maths__ * "erf", master 
+	end:
+	
+	def erfc( master : int/float/bool):
+		__maths__ * "erfc", master 
+	end:
+	
+	def facto( master : int/float/bool):
+		__maths__ * "facto", master
+	end:
+	
+	def floor( master : int/float/bool):
+		__maths__ * "floor", master
+	end:
+	
+	def ceil( master : int/float/bool):
+		__maths__ * "ceil", master
+	end:
+end:
+
+class statistics:
+	def round( master : float/int/bool, max_float : int ):
+		__maths__ * "round", [master, max_float]
+	end:
+	
+	def mean( master : list/tuple/range):
+		_mean_ * master
+	end:
+	
+	def std( master : list/tuple/range ):
+		_std_ * [master , "sam"]
+	end:
+	
+	def pstd( master : list/tuple/range):
+		_std_ * [ master,"pop" ]
+	end:
+	
+	def var( master : list/tuple/range):
+		_var_ * [ master, "sam"]
+	end:
+	
+	def pvar( master : list/tuple/range):
+		_var_ * [master , "pop"]
+	end:
+	
+	def square( master : float/int/bool/cplx):
+		return master ** 2
+	end:
+	
+	def sqrt( master : float/int/bool):
+		_sqrt_ * master
+	end:
+	
+	def sum( master : list/tuple/range):
+		_sum_ * master
+	end:
+	
+	def size( master : list/tuple/range/string):
+		return length( master )
+	end:
+	
+	def cov(master1 : list/tuple/range, master2 : list/tuple/range):
+		_std_ * [master1, master2, "cov", "sam", "cov"]
+	end:
+	
+	def pcov(master1 : list/tuple/range, master2 : list/tuple/range):
+		_std_ * [master1, master2, "cov", "pop", "cov"]
+	end:
+	
+	def corr(master1 : list/tuple/range, master2 : list/tuple/range):
+		_std_ * [master1, master2, "cor", "pop", "cor"]
+	end:
+	
+	def linearR(master1 : list/tuple/range, master2 : list/tuple/range):
+		_std_ * [master1, master2, "linearR", "pop", "linearR"]
+	end:
+	
+	def iquantile( master : list/tuple/range):
+		_std_ * [master, "pop", "iquantile"]
+	end:
+	
+	def Q1( master : list/tuple/range):
+		_std_ * [master, "Q1", "Q1"]
+	end:
+		
+	def Q3( master : list/tuple/range):
+		_std_ * [master, "Q3", "Q3"]
+	end:
+		
+	def kurtosis( master : list/tuple/range ):
+		_std_ * [master, "pop", "kurtosis"]
+	end:
+		
+	def skewness( master : list/tuple/range ):
+		_std_ * [master, "pop", "skewness"]
+	end:
+	
+	def mad( master : list/tuple/range ):
+		_std_ * [master, "mad" ]
+	end:
+	
+	def rms( master : list/tuple/range ):
+		_std_ * [master, "rms"]
+	end:
+	
+	def rsd( master : list/tuple/range ):
+		_std_ * [master, "pop", "rsd"]
+	end:
+	
+	def upper_fence( master : list/tuple/range ):
+		_std_ * [master, "pop", "upper_fence"]
+	end:
+	
+	def lower_fence( master : list/tuple/range ):
+		_std_ * [master, "pop", "lower_fence"]
+	end:
+	
+	def std_error( master : list/tuple/range ):
+		_std_ * [master, "pop", "std_error"]
+	end:
+	
+	def midrange( master : list/tuple/range ):
+		_std_ * [master,"midrange"]
+	end:
+	
+	def sum_square( master : list/tuple/range ):
+		_std_ * [master, "sum_square"]
+	end:  
+	
+	def quantiles( master : list/tuple/range, numeric : int):
+		_std_ * [master, numeric, "quantiles"]
+	end:
+	
+	def quantile(master : list/tuple/range, numeric: float):
+		_std_ * [master, numeric, "quantile"]
+	end:
+	
+	def mode(master: list/tuple/range):
+		_std_ * [master, "mode"]
+	end:
+	
+	def multi_mode( master : list/tuple/range):
+		_std_ * [master, "mul_mode"]
+	end:
+	
+	def median( master : list/tuple/range):
+		_std_ * [master, "med"]
+	end:
+	
+	def median_low(master : list/tuple/range):
+		_std_ * [master, "medl"]
+	end:
+	
+	def median_high(master : list/tuple/range):
+		_std_ * [master, "medh"]
+	end:
+	
+	def median_grouped( master : list/tuple/range ):
+		_std_ * [master, "medg"]
+	end:
+	
+	def quantile_dev( master : list/tuple/range):
+		value = statistics.iquantile(master)
+		value /= 2.0
+		return value 
+	end:
+	
+	def grouped( master : list/tuple/range):
+		_std_ * [master, "grouped"]
+	end:
+	
+	def cms( master : list/tuple/range):
+		# coefficient of momental skewness
+		value =  statistics.skewness( master ) / 2.0
+		
+		return value
+	end:
+	
+	def pears1( master : list/tuple/range):
+		# Pearson first coefficient of skewness
+		avg 	= statistics.mean( master )
+		mod 	= statistics.mode( master )
+		stdX	= statistics.pstd( master )
+		value  	= avg - mod 
+		value 	*= 3.0 
+		
+		return value / stdX
+	end:
+	
+	def pears2( master : list/tuple/range):
+		# Pearson second coefficient of skewness 
+		avg 	= statistics.mean( master ) 
+		me	= statistics.median( master )
+		stdX    = statistics.pstd( master )
+		value	= avg - me 
+		value 	*= 3.0
+		
+		return value / stdX
+	end: 
+	
+	def qcs( master : list/tuple/range):
+		# quantile coefficient of skewness
+		me = 2.0 * statistics.median( master )
+		q1 = statistics.Q1( master )
+		q3 = statistics.Q3( master )
+		iq = statistics.iquantile( master )
+		
+		value	= q3 - me + q1
+		value  /= iq 
+		return value
+	end:
+	
+	def CV (master : list/tuple/range):
+		# coefficient of variation 
+		stdX = statistics.pstd( master )
+		avgX = statistics.mean( master )
+		cv   = stdX / avgX 
+		cv  *= 100
+		
+		return cv
+	end:
+	
+	def CQV( master : list/tuple/range):
+		# coefficient of quartile variation
+		q1 = statistics.Q1( master )
+		q3 = statistics.Q3( master )
+		cqv = (q3-q1) / (q3+q1)
+		cqv *= 100
+		
+		return cqv
+	end:
+	
+	def factorial( master : int/bool ):
+		_std_ * [master, "facto"]
+	end:
+	
+	def permutation(n : int/bool , k : int/bool):
+		n1 = statistics.factorial(n)
+		n2 = statistics.factorial(n-k)
+		
+		return floor(n1 / n2)
+	end:
+	
+	def combinaison(n : int/bool, k : int/bool):
+		n1 = statistics.permutation(n, k)
+		n2 = statistics.factorial(k)
+		
+		K = floor( n1 / n2)
+		
+		return K
+	end:
+	
+	def Hmean( master : list/tuple/range):
+		# harmonic mean
+		_std_ * [master, "harmonic_mean"]
+	end:
+	
+	def Gmean( master : list/tuple/range ):
+		# geometric mean
+		_std_ * [master, "geometric_mean"]
+	end: 
+end:
+
+class math:
+	def initialize():
+		self.pi = 4.0 * getPI.atan( 1.0 )
+		self.tau =  2.0* pi
+		self.e = getPI.exp( 1.0 )
+	end:
+	
+	def sorted( master : list/tuple/dict, reverse : bool = False, key : string = 'keys') -> any: 
+		if ? master == ? []:
+			return master.sorted(reverse = reverse)
+		elif ? master == ? ():
+			master = list( master )
+			return tuple( master.sorted(reverse=reverse))
+		else:
+			return master.sorted((reverse, key))
+		end:
+	end:
+	def round( master : float, n : int) -> float:
+		sp = string( master )
+		s1, s2 = sp.split( "." )[0], sp.split( "." )[1]
+		if n > 0:
+			if length(s2) <= n:
+				return master 
+			else:	
+				sub = sp[1]
+				ss = "{s1}.{s2[_:n]}"
+				return float( ss )
+			end:
+		else:
+			line = GetLine()
+			re, b, w, y, g = ansi("r", "reset"), ansi("bd", "bold"), ansi("fgl", "W"), ansi("fg", "Y"), ansi("fg", "G")
+			r, be=ansi("fg", "R"), ansi("fgl", "B")
+			error = "{b}{g}ValueError : {y}n {w}cannot be negative. line : {y}{line}{re}."
+			details = "\n{w}in {b}{be}module({y}'maths'{be}){w}/{r}class({y}'math'{r}){w}/{g}function({y}'round'{g}){re}."
+			__show__ * error+details
+		end:
+	end:
+	def floor( master: float) -> integer:
+		str = string( master )
+		str = str.split(".")[0]
+		return integer( str )	
+	end:	
+	def modulo( x:int/cplx/float/bool, y:float/int/bool) -> any:
+		if y != 0:
+			return x % y
+		else:
+			line = GetLine()
+			re, b, w, y, g = ansi("r", "reset"), ansi("bd", "bold"), ansi("fgl", "W"), ansi("fg", "Y"), ansi("fg", "G")
+			r, be, c=ansi("fg", "R"), ansi("fgl", "B"), ansi("fgl", "C")
+			error = "{b}{c}ZeroDivisionError : {y}modulo by zero. {w}line : {y}{line}{re}."
+			details = "\n{w}in {b}{be}module({y}'maths'{be}){w}/{r}class({y}'math'{r}){w}/{g}function({y}'modulo'{g}){re}."
+			__show__ * error+details
+		end:
+	end:
+	
+	def sign( master:float/int/bool ) -> string:
+		if master >= 0:
+			return "+"
+		else:
+			return "-"
+		end:
+	end:
+end:
