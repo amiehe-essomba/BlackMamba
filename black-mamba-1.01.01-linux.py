@@ -7,6 +7,7 @@ from tkinter import messagebox
 from tkinter.ttk import  Combobox, Progressbar
 #from BM_INSTALL import left_frame
 from BM_INSTALL import right_frame
+import BM_TAR
 
 def ico_path():
     system  = os.uname()[0]
@@ -52,8 +53,6 @@ def extraction_tar_gz():
     right_frame.right(ico_path=ico_path(), main_root=root).cancel(root=sub_frame_right2)
     
     root.mainloop() 
-    
-    root.mainloop()
 
 if __name__ == '__main__':
     extraction_tar_gz()

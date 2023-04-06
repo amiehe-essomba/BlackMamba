@@ -98,7 +98,7 @@ class right:
         self.sub_root.maxsize(self.width, self.height)
         self.sub_root.config()
         root_menu = Menu(self.sub_root)
-        self.sub_root.iconbitmap(self.ico_path)
+        self.sub_root.iconbitmap('@logo.xbm')#self.ico_path)
         self.sub_root.resizable(width=True, height=True)
         
         F1 = Frame(self.sub_root, relief=FLAT,  width=self.width, height=self.height-self.max)
@@ -110,8 +110,8 @@ class right:
         label = Label(F1, text="are you sure you want to cancel ?", font=('Arial', 12, "italic"), foreground='black')
         label.pack()
         
-        self.no = Button(F2, text='yes', width=10, command = lambda : yes(self.sub_root, root, main_root), state=NORMAL,  relief=GROOVE)
+        self.no = Button(F2, text='yes', width=9, command = lambda : yes(self.sub_root, root, main_root), state=NORMAL,  relief=GROOVE)
         self.no.place(x=50, y=0)
         
-        self.yes = Button(F2, text='no', width=10, command = lambda : no(self.sub_root), state=NORMAL, relief=GROOVE)
-        self.yes.place(x=150, y=0)
+        self.yes = Button(F2, text='no', width=9, command = lambda : no(self.sub_root), state=NORMAL, relief=GROOVE)
+        self.yes.place(x=160, y=0)
