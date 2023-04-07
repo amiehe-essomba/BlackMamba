@@ -692,16 +692,17 @@ class CLASS_TREATMENT:
                             self.DataBase[ 'modulesImport' ]['functions']       = self.DataBase[ 'modulesImport' ]['functions'][ : -1 ]
                             
                         else: self.error = er.ERRORS(self.line).ERROR42(self.main_name, self.sub_name)
-                    else: 
-                        self.n1 = self.DataBase['modulesImport']['fileNames'].index( self.main_name )
-                        self.new_main_name = self.DataBase['modulesImport']['alias'][ self.n1 ][self.main_name]
-                        self.mod = load.LOAD(self.DataBase['modulesImport']['class_names'], self.new_main_name).LOAD()
-                        if self.mod['key'] is True: 
-                            self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
-                                                                        self.DataBase, self.line ).TREATMENT( loading = True, idd1 = self.mod['id1'],
-                                                                                                idd2 = self.mod['id2'], length = 2)
-                        else:  self.error = er.ERRORS(self.line).ERROR46( self.main_name, self.sub_name )
-                    
+                    else:
+                        try: 
+                            self.n1 = self.DataBase['modulesImport']['fileNames'].index( self.main_name )
+                            self.new_main_name = self.DataBase['modulesImport']['alias'][ self.n1 ][self.main_name]
+                            self.mod = load.LOAD(self.DataBase['modulesImport']['class_names'], self.new_main_name).LOAD()
+                            if self.mod['key'] is True: 
+                                self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
+                                                                            self.DataBase, self.line ).TREATMENT( loading = True, idd1 = self.mod['id1'],
+                                                                                                    idd2 = self.mod['id2'], length = 2)
+                            else:  self.error = er.ERRORS(self.line).ERROR46( self.main_name, self.sub_name )
+                        except KeyError: self.error = er.ERRORS(self.line).ERROR43(self.sub_name) ####here
             elif len( self.master[ 'names' ]) == 3:
                 self._master_ = self.master.copy()
                 if self.main_name in self.DataBase['modulesImport']['fileNames']: 

@@ -8,17 +8,27 @@ from tkinter.ttk import  Combobox, Progressbar
 from PIL import Image, ImageTk
 from BM_INSTALL import left_frame
 from BM_INSTALL import right_frame
+from pathlib  import Path 
 
 def ico_path():
+    # ico image path
     system  = "Linux"
     if system == 'Linux':
-        return os.path.abspath(os.curdir)+'/images/logo.ico'
+        #relative_path      = Path(__file__).resolve().parents[2]
+        relative_path      = os.getcwd()
+        #path = os.path.abspath(os.curdir)+"\\images\\"
+        path = f"{relative_path}\\images\\"
+        os.path.join( os.environ.get( "_MEI9442",  path), "" )
+        return f'{relative_path}\\images\\logo.ico'    #os.path.abspath(os.curdir)+'\\images\\logo.ico'
     else:  return None 
 
 def png_path(str_ : str = 'logo.png'):
+    # image on the left
     system  = "Linux"
     if system == 'Linux':
-        return os.path.abspath(os.curdir)+f'\images\{str_}'
+        path = os.path.abspath(os.curdir)+"\\images\\"
+        os.path.join( os.environ.get( "_MEI9442",  path), "" )
+        return os.path.abspath(os.curdir)+f'\\\images\\{str_}'
     else:  return None 
 
 def destroy_root( root ):    
@@ -26,12 +36,18 @@ def destroy_root( root ):
     root.destroy()
 
 def read_license():
-    with open('LICENSE', 'r') as f:
+    # reading license 
+    path = os.path.abspath(os.curdir)
+    os.path.join( os.environ.get( "_MEI9442",  path), "" )
+    path = path+"\\LICENSE"
+    with open(path, 'r') as f:
         lines = f.readlines()
     f.close()
     return lines
     
 def extraction_tar_gz():
+    # main BM programm installation 
+    
     root = Tk()
     root.title("Black Mamba 1.01.01 64-bit")
     root.geometry("600x400")
@@ -47,7 +63,7 @@ def extraction_tar_gz():
     
     left_frame.configure(root=frame_left, figure=png_path('galaxy.png' ))
     
-    frame_right = Frame(root, relief=RAISED, bd = 4, width=400, height=398)
+    frame_right = Frame(root, relief=RAISED, bd = 4, width=400, height=398, bg='white')
     frame_right.place(x=200, y=0)
      
     sub_frame_right2 =  right_frame.scrollbar_right(frame_right=frame_right, main_root=root, ico_path=ico_path(), license=read_license())

@@ -44,8 +44,8 @@ def counter(n):
     asc     = ascii.frame(True)
     r       = bm.init.reset
     bold    = bm.init.bold
-    y       = bold+bm.fg.rbg(0, 0, 0)
-    c       = bold+bm.fg.rbg(0, 0, 0)
+    y       = bold+bm.fg.rbg(255, 255, 255)
+    c       = bold+bm.fg.rbg(255, 255, 255)
     len_    = len(str(n))
     max_    = 5
     space   = " " * (max_-len_)
@@ -58,7 +58,7 @@ def title(max_):
     asc     = ascii.frame(True)
     bold    = bm.init.bold
     w       = bold+bm.fg.rbg(255, 255, 255)
-    c       = bold+bm.fg.rbg(0, 0, 0)
+    c       = bold+bm.fg.rbg(255, 255, 255)
     r       = bm.init.reset
     s       = "BLACK MAMBA EDITOR V 1.0.0".center(max_-2)
     sys.stdout.write(c+f"{asc['ul']}"+f"{asc['h']}"* (max_-2)+f"{asc['ur']}"+r+"\n")
@@ -68,7 +68,7 @@ def bottom(max_):
     asc     = ascii.frame(True)
     bold    = bm.init.bold
     w       = bold+bm.fg.rbg(255, 255, 255)
-    c       = bold+bm.fg.rbg(0, 0, 0)
+    c       = bold+bm.fg.rbg(255, 255, 255)
     r       = bm.init.reset
     sys.stdout.write(c+f"{asc['dl']}"+f"{asc['h']}"*7+f"{asc['m2']}"+f"{asc['h']}"* (max_-2-8)+f"{asc['dr']}"+r+"\n")
     
@@ -91,7 +91,7 @@ class windows:
         s1, s2  = counter(0)
         # set color on yellow
         self.bold           = bm.init.bold
-        self.black          = bm.fg.rbg(0, 0, 0)
+        self.black          = bm.fg.rbg(255, 255, 255)
         self.c              = self.bold+bm.fg.rbg(255, 255, 0)
         if terminal_name == 'orion': pass
         else: self.c        = self.bold+c
@@ -188,6 +188,8 @@ class windows:
         self.action                 = None
         # fixing the x-axis border 
         self.border_x_limit         = True 
+        # last line 
+        self.last_line              = {"last":0, "now" : 0}
         ###########################################################
         # currently cursor position (x, y)
         self.pos_x, self.pos_y      = cursor_pos.cursor()
@@ -204,13 +206,9 @@ class windows:
         sys.stdout.write(self.black+f"{self.acs['vl']}" + f"{self.acs['h']}"* 7 + f"{self.acs['m1']}"+ 
                          f"{self.acs['h']}"*(self.max_x-2-8)+ f"{self.acs['vr']}"+self.reset+"\n")
         sys.stdout.write(self.input)
-        sys.stdout.write(bm.save.save) #####
-        sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+self.black+f"{self.acs['v']}"+self.reset)  #####
-        #bottom(self.max_x)
+        sys.stdout.write(bm.save.save)
+        sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+self.black+f"{self.acs['v']}")
         sys.stdout.write(bm.save.restore)
-        # save cursor position
-        #sys.stdout.write(bm.save.save)
-        # flush
         sys.stdout.flush()
         ###########################################################
         self.max_size_init          = 11 # no optional key (crtl+n , ......)
@@ -424,6 +422,7 @@ class windows:
                                                     #################################################################
                                                     self.main_input, self.size = counter(self.if_line)
                                                     self.length = len(self.main_input)
+                                                    self.last_line['now']  = self.if_line
                                                     #################################################################
                                                     
                                                     self.pos_x, self.pos_y = cursor_pos.cursor()
@@ -490,6 +489,7 @@ class windows:
                                                     #################################################################
                                                     self.main_input, self.size = counter(self.if_line)
                                                     self.length = len(self.main_input)
+                                                    self.last_line['now']  = self.if_line
                                                     #################################################################
                                                     self.pos_x, self.pos_y = cursor_pos.cursor()
                                                     sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)+1))
@@ -798,6 +798,8 @@ class windows:
                             self.drop_drop      = {'id':[], 'str':[]}     
                             self.drop_idd       = 0 
                             self.border_x_limit = True 
+                            self.last_line['last'] = self.if_line_max
+                            self.last_line['now']  = self.if_line
                             self.indexation[self.if_line-1]['status'] = 'I' 
                             self.indexation[self.if_line-1]['action'] = 'LOCKED'
                             self.indexation[self.if_line-1]['do']     = 'NOTHING'
@@ -815,6 +817,10 @@ class windows:
                             if self.if_line == self.if_line_max: self.indexation[self.if_line]['do']     = 'ADDS' 
                             else: self.indexation[self.if_line]['do']   = 'INSERTS' 
                             
+                            sys.stdout.write(self.input)
+                            sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+self.black+f"{self.acs['v']}")
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=self.max_x-self.size-1))
+                            
                         try:
                             if self.indexation[self.if_line]['last'] != self.string:
                                 self.indexation[self.if_line]['status']  = 'D' 
@@ -825,35 +831,30 @@ class windows:
                                 else: self.indexation[self.if_line]['action'] = 'LOCKED'
                         except KeyError: pass
                         
+                        self.pos_x, self.pos_y      = cursor_pos.cursor()
                         # move cursor on left
-                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                        sys.stdout.write(bm.cursorPos.to(self.size+1, self.pos_y))
                         # clear entire line
-                        sys.stdout.write(bm.clear.line(pos=2))
-                        
+                        sys.stdout.write(bm.clear.line(pos=0))
                         if terminal_name == 'orion':
-                            # currently cursor position (x, y)
-                            self.pos_x, self.pos_y      = cursor_pos.cursor()
-                            # key word activation
-                            sys.stdout.write(self.main_input + bm.string().syntax_highlight(
-                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()) +
-                                bm.move_cursor.RIGHT(pos=self.max_x-len(self.s)-self.size-1)+bm.clear.line(pos=0)+self.black+f"{self.acs['v']}"+self.reset+
-                                bm.move_cursor.LEFT(pos=int(self.pos_x)))
-                                
-                            #sys.stdout.write(bm.save.restore)
-                        else:
-                            # any activation keyword
-                            sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
-                        # move cusror on left egain
+                            sys.stdout.write(
+                                bm.string().syntax_highlight(
+                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final())+
+                                bm.move_cursor.RIGHT(pos=self.max_x-1)+
+                                self.black+f"{self.acs['v']}"+ bm.cursorPos.to(self.pos_x, self.pos_y)
+                                )
+                        else: sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
+                        
                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-
-                        # put cursor on the right position
                         if self.index > 0:
                             # computing the right position 
                             pos = len(self.s) + self.size + len(self.input) - self.index
                             # putting cursor a the correct position 
                             sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
                         else: pass
-
+                        
+                        self.pos_x, self.pos_y      = cursor_pos.cursor()
+                        
                         if self.indicator == 19: 
                             if self.data_storing_file['name'] is None:
                                 if self.string_tabular:
@@ -868,6 +869,22 @@ class windows:
                                 else: pass
                             self.indicator = None
                         else: pass
+                        
+                        if self.last_line['now']== self.last_line['last']: 
+                            sys.stdout.write(bm.clear.screen(0))
+                            sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+
+                                self.black+f"{self.acs['v']}")
+                            sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                            bottom(self.max_x)
+                            sys.stdout.write(bm.cursorPos.to(self.pos_x, self.pos_y))
+                        else: 
+                            sys.stdout.write(bm.cursorPos.to(1000, self.last_line['last']+4))
+                            sys.stdout.write(bm.clear.screen(0))
+                            sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                            bottom(self.max_x)
+                            sys.stdout.write(bm.cursorPos.to(self.pos_x, self.pos_y))
                         
                         """
                         if self.str_drop_down:
@@ -982,9 +999,6 @@ if __name__ == '__main__':
     try:
         os.system('cls')
         sys.stdout.write(bm.save.save)
-        #if term == 'orion': header.header(terminal='orion terminal')
-        #else: header.header(terminal='pegasus terminal')
-        
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
     except KeyboardInterrupt:  pass

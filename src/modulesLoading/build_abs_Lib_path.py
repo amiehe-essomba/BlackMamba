@@ -1,3 +1,5 @@
+import sys , os
+
 class Lib_Path:
     def __init__(self,
             root : str,
@@ -34,3 +36,13 @@ class Lib_Path:
         elif self.sys in ['macOs']:  self.path = self.path + f"/{file_name}"
 
         return str(self.path)
+
+    def resource_path(relative_path):
+        # get absolute path to resource, works for dev and for Pyinstaller
+        try:
+            # Pyinstaller creates a tem folder and stores path in _MEIPASS
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        
+        return os.path.join(base_path, relative_path)

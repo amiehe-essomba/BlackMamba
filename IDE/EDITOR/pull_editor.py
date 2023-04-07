@@ -92,11 +92,11 @@ class IDE:
         self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(inp, self.firstChar, self.idd)
         self.input      =  inp[0]
         self.empty      = " "
-        #self.len        = 16
+        self.len        = 16
         self.locked     = False
         self.index      = 0
         self.disp       = len(true_chaine)+4
-        self.len        = self.disp
+        #self.len        = self.disp
         self.srt        = " " * self.disp
         self.classes    = sorted(inp[3])
         self.func       = sorted(inp[2])
@@ -126,9 +126,10 @@ class IDE:
         self.nex    = bm.init.bold+self.ww+"   "+" "*2+ "+" + " "*self.max_+"+"
         self.list_is_empty = False
         self.pos_x, self.pos_y = cursor_pos.cursor()
+        self.pos_x, self.pos_y = int(self.pos_x ), int(self.pos_y)
         self.max_x, self.max_y = test.get_win_ter()
         self._s_ = self.srt+'  '+' '+' '*(self.len+1)+' '
-        self.border_x_limit = self.max_x - int(self.pos_x) #(self.max_x) - (len(self._s_)+int(self.pos_x))
+        self.border_x_limit = self.max_x - int(self.pos_x)
         
         sys.stdout.write(bm.save.save)
         sys.stdout.write("\n")

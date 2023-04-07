@@ -88,7 +88,7 @@ class clear:
     def line( pos : int ):
         # 2 = entire line
         # 1 = from the cursor to start of line
-        # 0 = from the cursor to begenning of line
+        # 0 = from the cursor to end of line
         clearline   = u"\u001b[" + f"{pos}" + "K"
         return clearline
     def screen(pos : int ):
