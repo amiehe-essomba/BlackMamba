@@ -1,0 +1,15 @@
+{
+    "name": "black-mamba",
+    "version": "1.0.0",
+    "description": "this package is for formatting name",
+    "main": "mamba.py",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+      "name",
+      "format"
+    ],
+    "author": "amiehe-essomba",
+    "license": "MIT"
+  }

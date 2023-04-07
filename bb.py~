@@ -1,4 +1,0 @@
-
-from BM_INSTALL import action
-
-action.dialog()
