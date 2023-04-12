@@ -1,5 +1,0 @@
-#from module maths load math
-def prompt( anonymous ):
-	value = anonymous.copy()
-	print ; value
-end:

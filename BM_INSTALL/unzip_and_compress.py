@@ -6,12 +6,13 @@ import time
 #from BM_INSTALL     import commands as cmd
 from tqdm import tqdm
 from BM_INSTALL import scroll_bar
+import shutil
 
 
-def unzip_file(path, path_destination_folder,  main_root ):#(path, path_destination_folder, frame, main_root, destroy_install, root, frame_ ):
-    new_path = path+"/BM_INSTALL/black-mamba-1.01.01-linux.tar.gz"
-    #new_path = path+"/BM_INSTALL/file.tar.gz"
-    _path_   = path+"/BM_INSTALL/"
+def unzip_file(path, path_destination_folder,  main_root ): 
+    new_path = path+"/BM_TAR/black-mamba-1.01.01-linux.tar.gz"
+    _path_   = path+"/BM_TAR/"
+    
     try:
         base_path = os.environ("_MEI9442", _path_)
     except Exception:
@@ -54,7 +55,6 @@ def unzip_file(path, path_destination_folder,  main_root ):#(path, path_destinat
     tar.close()
     Label(frame, text="                     ", width=15, font = ('Arial', 10, 'bold'), background="white", 
     foreground='white').place(x=190, y=0)
-    #L.destroy()
     entree = Entry(frame,  font=('arial', 10, 'bold'), width=50) 
     entree.place(x=190, y=0, width = 70)
     entree.insert(0, '')
@@ -64,11 +64,18 @@ def unzip_file(path, path_destination_folder,  main_root ):#(path, path_destinat
     
     progress_bar(main_root)
     
-    new_path = path+"/BM_INSTALL/black_mamba_location/install.bm"
-    
+    name = 'black_mamba_location'
+    __new_path__    = path_destination_folder+f"/BM_INSTALL/{name}/"
+    new_path        = __new_path__+"install.bm"
+    os.mkdir(__new_path__)
     with open(new_path, "w") as f:
         f.write('Done')
     f.close()
+    
+    __new_path__src    = path_destination_folder+f"/BM_INST/{name}/path.bm"
+    shutil.move(__new_path__src, __new_path__)
+    
+    shutil.rmtree(path_destination_folder+f"/BM_INST/")
         
 def progress_bar( main_root ):
     FRAME0 = Frame(main_root, relief=RAISED, bd=4, width=400, height=50, bg='white')
@@ -109,7 +116,7 @@ def locked( main_root, path_destination_folder):
     entree.place(x=50, y=0, width=300, height=30)
     entree.insert(0, '')
     entree.delete(0, END)
-    entree.insert(0, path_destination_folder)
+    entree.insert(0, f"{path_destination_folder}")
     entree.config(state=DISABLED,bg='ivory')
     
     check_bnt_int = IntVar()

@@ -25,7 +25,7 @@ def action( frame1, frame2, root,  main_root, ico_path, license ):
     label1 = Button(frame1, text=List[0], font=("calibri", 10, 'bold', 'underline'), foreground='blue',  
         width=50, height=50,  relief=GROOVE, anchor='w', command = lambda : installation(frame1, frame2, root, main_root, ico_path, frame0, license) )
     label2 = Button(frame2, text=List[1], font=("calibri", 10, 'bold', 'underline'), foreground='blue', 
-                    width=50, height=50,  relief=GROOVE, anchor='w', command = lambda : uninstall_bm(frame1, frame2, root, main_root, ico_path))
+                    width=50, height=50,  relief=GROOVE, anchor='w', command = lambda : uninstall_bm(frame1, frame2, root, main_root, ico_path, license))
     label3 = Button(frame3, text=List[2], font=("calibri", 10, 'bold', 'underline'), foreground='blue', width=50, height=50,  relief=GROOVE, anchor='w')
     
     label1.pack() 
@@ -75,23 +75,35 @@ def installation(frame1, frame2, root, main_root, ico_path, frame0, license):
     root_path    = os.path.abspath(os.curdir)
     back(frame1, frame2, root, main_root, ico_path, root_path, frame0, license)
     
-def uninstall_bm(frame1, frame2, root, main_root, ico_path):
-    btn, label, frame = unstall.unstall_new_window(frame1, frame2, root, main_root, ico_path)
-    btn.config(state=DISABLED)
-    
+def uninstall_bm(frame1, frame2, root, main_root, ico_path, license):
+    btn, label, frame = unstall.unstall_new_window(frame1, frame2, root, main_root, ico_path, license)
+    #btn.config(state=DISABLED)
+    """
     try:
         root_path  = cbm.mamba()
-        if type(root_path) == type(str()):
-            shutil.rmtree(root_path+"/esso") 
-        else: pass
-        
-        entree = Entry(frame,  font=('arial', 10, 'bold'), foreground='blue', width=50 ) 
-        entree.pack()
-        entree.insert(0, '')
-        entree.delete(0, END)
-        entree.insert(0,'Complete unstallation !')
-        entree.config(state=DISABLED, bg='ivory')
-    
+        if root_path is not None:
+            if type(root_path) == type(str()):
+                shutil.rmtree(root_path) 
+                entree = Entry(frame,  font=('arial', 10, 'bold'), foreground='blue', width=50 ) 
+                entree.pack()
+                entree.insert(0, '')
+                entree.delete(0, END)
+                entree.insert(0,'Complete unstallation !')
+                entree.config(state=DISABLED, bg='ivory')
+            else: 
+                entree = Entry(frame,  font=('arial', 10, 'bold'), foreground='blue', width=50 ) 
+                entree.pack()
+                entree.insert(0, '')
+                entree.delete(0, END)
+                entree.insert(0,'Black Mamba is not already installed !')
+                entree.config(state=DISABLED, bg='ivory')
+        else: 
+            entree = Entry(frame,  font=('arial', 10, 'bold'), foreground='blue', width=50 ) 
+            entree.pack()
+            entree.insert(0, '')
+            entree.delete(0, END)
+            entree.insert(0,'Black Mamba is not already installed !')
+            entree.config(state=DISABLED, bg='ivory')
     except FileNotFoundError: 
         entree = Entry(frame,  font=('arial', 10, 'bold'), foreground='blue', width=50 ) 
         entree.pack()
@@ -99,27 +111,65 @@ def uninstall_bm(frame1, frame2, root, main_root, ico_path):
         entree.delete(0, END)
         entree.insert(0,'Black Mamba is not already installed !')
         entree.config(state=DISABLED, bg='ivory')
+    """
     
 def dialog(frame, frame_, data, main_root):   
     __path__root = filedialog.askdirectory()
     root_path    = os.path.abspath(os.curdir)
     name = 'black_mamba_location'
-    list_dir = os.listdir(root_path+"/BM_INSTALL/")
     if __path__root :
+        ___path___ = __path__root
+        __path__root += "/BlackMamba"
+        #list_dir = os.listdir(__path__root+"/BM_INST/")
+        
+        if os.path.isdir(__path__root ) is False:
+            os.mkdir(__path__root)
+            if 'BM_NSTALL' not in  os.listdir(__path__root):
+                path1 = __path__root+"/BM_INST/"
+                os.mkdir(path1)
+                path2 = __path__root+f"/BM_INST/{name}/"
+                os.mkdir(path2)
+                
+                direct_access = path2+"path.bm"
+                with open(direct_access, 'w') as f:
+                    f.write(f'{__path__root}')
+                f.close()
+                
+                label = Label(frame, text='PATH', anchor='w')
+                label.place(x=0, y=0, width=300, height=30)   
+                
+                entree = Entry(frame, relief=GROOVE, bg='white', font=('arial', 10, 'bold', 'underline')) 
+                entree.place(x=50, y=0, width=300, height=30 )
+                entree.insert(0, '')
+                entree.delete(0, END)
+                entree.insert(0, f"{__path__root}")
+                entree.config(state=DISABLED)
+                
+                check_bnt_int = IntVar()
+                check_bnt_int.set(0)
+                
+                check_bnt = Checkbutton(frame_, text='activation', variable=check_bnt_int,  onvalue=1,offvalue=0, selectcolor='ivory', 
+                                command=lambda : key_activation(check_bnt_int,  data[0], data[1], main_root, __path__root)) 
+                check_bnt.place(x=0, y=0)
+            else: print('BM is already installed')
+        else: pass 
+        
+        """
         if name in list_dir: 
-            direct_access = root_path+f"/BM_INSTALL/{name}/path.bm"
+            #direct_access = root_path+f"/BM_INSTALL/{name}/path.bm"
+            direct_access = __path__root+f"/BM_INST/{name}/path.bm"
             with open(direct_access, 'w') as f:
                 f.write(f'{__path__root}')
             f.close()
         else:
-            path_new = root_path+f"/BM_INSTALL/{name}/"
+            path_new = __path__root+f"/BM_INST/{name}/"
             os.mkdir(path_new)
-            direct_access = root_path+f"/BM_INSTALL/{name}/path.bm"
+            direct_access =  __path__root+f"/BM_INST/{name}/path.bm"
             with open(direct_access, 'w') as f:
                 f.write(f'{__path__root}')
             f.close()
 
-        if os.path.isdir(__path__root) is True:
+        if os.path.isdir(__path__root ) is True: 
             label = Label(frame, text='PATH', anchor='w')
             label.place(x=0, y=0, width=300, height=30)   
             
@@ -137,25 +187,30 @@ def dialog(frame, frame_, data, main_root):
                             command=lambda : key_activation(check_bnt_int,  data[0], data[1], main_root )) 
             check_bnt.place(x=0, y=0)
         else : pass
+        """
     else: pass 
-def key_activation(value, frame, root_path, main_root ):
+def key_activation(value, frame, root_path, main_root, path_destination_folder):
     frame.destroy()
     frame  =  Frame(main_root,  bd = 5, width=400, height=50, relief=RAISED, bg="white")
     frame.place(x=200, y=360)
     if value.get() == 1: 
         install_btn = Button(frame, text='install', state=NORMAL, width=9, relief=GROOVE, 
-                             command=lambda : unzip.unzip_file(root_path, read_location(), main_root))
+                             command=lambda : unzip.unzip_file(root_path, read_location(path_destination_folder), main_root))
         install_btn.place(x=0, y=4)
     else: 
         install_btn = Button(frame, text='install', state=DISABLED, width=9, relief=GROOVE,
-                             command=lambda : unzip.unzip_file(root_path, read_location(), main_root ))
+                             command=lambda : unzip.unzip_file(root_path, read_location(path_destination_folder), main_root ))
         install_btn.place(x=0, y=4)
 
-def read_location():
-    path = os.path.abspath(os.curdir)+"/BM_INSTALL/black_mamba_location/path.bm"
-    line=""
+def read_location_un(path_destination_folder):
+    name = name = 'black_mamba_location'
+    path = path_destination_folder + f"/BlackMamba/BM_INSTALL/{name}/path.bm"
+    
     with open(path, 'r') as f:
         line = f.readline().rstrip()
     f.close()
     
     return line
+
+def read_location(path_destination_folder):
+    return path_destination_folder

@@ -1,3 +1,0 @@
-def scan( input: string = "BM:", termios: string = "pegasus", fg: string = "white", blink : bool = False, hide:bool=False):
-	__scan__ * input, termios, fg, blink, hide
-end:

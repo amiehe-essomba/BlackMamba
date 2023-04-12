@@ -7,6 +7,7 @@ from tkinter import messagebox
 from tkinter.ttk import  Combobox, Progressbar
 #from BM_INSTALL import left_frame
 from BM_INSTALL import right_frame
+import BM_TAR
 
 def ico_path():
     system  = os.uname()[0]
@@ -17,11 +18,12 @@ def ico_path():
 def png_path(str_ : str = 'logo.png'):
     system  = "Linux"
     if system == 'Linux':
-        return os.path.abspath(os.curdir)+f'\images\{str_}'
+        return os.path.abspath(os.curdir)+f'/images/{str_}'
     else:  return None 
     
 def read_license():
-    with open('LICENSE', 'r') as f:
+    path = os.path.abspath(os.curdir)+"/BM_TAR/LICENSE"
+    with open(path, 'r') as f:
         lines = f.readlines()
     f.close()
     return lines
@@ -37,7 +39,7 @@ def extraction_tar_gz():
     root.maxsize(a, b)
     root.config(bg='white')
     root_menu = Menu(root)
-    root.iconbitmap("@logo.xbm")
+    #root.iconbitmap("@logo.xbm")
     root.resizable(width=True, height=True)
     
     frame_left = Frame(root, relief=RIDGE, bd = 4, width=c, height=b)
@@ -52,8 +54,6 @@ def extraction_tar_gz():
     right_frame.right(ico_path=ico_path(), main_root=root).cancel(root=sub_frame_right2)
     
     root.mainloop() 
-    
-    root.mainloop()
 
 if __name__ == '__main__':
     extraction_tar_gz()

@@ -8,9 +8,9 @@ def get_win_ter():
 	if not res: return 80, 25
 	
 	import struct
-	(bufx, bufy, curx, cury, wattr, left, to, right, bottom, maxx, maxy)=struct.unpack("hhhhhhh", csbi.raw)
+	(bufx, bufy, curx, cury, wattr, left, top, right, bottom, maxx, maxy)=struct.unpack("hhhhhhh", csbi.raw)
 	width = right-left+1
-	heught=bottom-top+1
+	height=bottom-top+1
 	
 	return width, height
 	

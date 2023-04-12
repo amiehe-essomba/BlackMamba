@@ -1,5 +1,5 @@
 from tkinter import *
-from PIL import Image
+from PIL import Image, ImageTk
 
 def configure(root, figure):
     frame = Frame(root, relief=FLAT, width=190, height=390, bg ='ivory')
