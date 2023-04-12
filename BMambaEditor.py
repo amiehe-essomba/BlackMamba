@@ -72,6 +72,18 @@ def bottom(max_):
     r       = bm.init.reset
     sys.stdout.write(c+f"{asc['dl']}"+f"{asc['h']}"*7+f"{asc['m2']}"+f"{asc['h']}"* (max_-2-8)+f"{asc['dr']}"+r+"\n")
     
+def middle(max_, n, x, y):
+    asc     = ascii.frame(True)
+    bold    = bm.init.bold
+    c       = bold+bm.fg.rbg(255, 255, 255)
+    r       = bm.init.reset
+    for i in range(n-1):
+        i += 1
+        inp, len_ = counter(i)
+        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+        sys.stdout.write(inp+bm.cursorPos.to(max_, y)+c+f"{asc['v']}"+bm.cursorPos.to(x, y)+r+"\n")
+        y += 1
+        
 def write_in_file(name : str, data : list):
     with open(name, 'w') as f:
         for i,s in enumerate(data):
@@ -163,6 +175,7 @@ class windows:
         self.indicator           = None
         # line max 
         self.if_line_max         = 0
+        self.up_locked           = False
         ###########################################################
         # accounting line
         self.if_line        = 0
@@ -190,11 +203,14 @@ class windows:
         self.border_x_limit         = True 
         # last line 
         self.last_line              = {"last":0, "now" : 0}
+        self.np                     = 0
+        self.k                      = 0
         ###########################################################
         # currently cursor position (x, y)
         self.pos_x, self.pos_y      = cursor_pos.cursor()
         # terminal dimension (max_x, max_y)
         self.max_x, self.max_y      = test.get_win_ter()
+        self.last_line['last']      = self.max_y-2
         k  = windll.kernel32
         k.SetConsoleMode( k.GetStdHandle(-11), 7)
         # clear entire line
@@ -205,10 +221,19 @@ class windows:
         title(self.max_x)
         sys.stdout.write(self.black+f"{self.acs['vl']}" + f"{self.acs['h']}"* 7 + f"{self.acs['m1']}"+ 
                          f"{self.acs['h']}"*(self.max_x-2-8)+ f"{self.acs['vr']}"+self.reset+"\n")
+        
         sys.stdout.write(self.input)
         sys.stdout.write(bm.save.save)
-        sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+self.black+f"{self.acs['v']}")
-        sys.stdout.write(bm.save.restore)
+        sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+self.black+f"{self.acs['v']}"+'\n')
+        # currently cursor position (x, y)
+        self.pos_x, self.pos_y      = cursor_pos.cursor()
+        middle(self.max_x, int(self.max_y)-5 ,int(self.pos_x), int(self.pos_y))
+        #sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+        bottom(self.max_x)
+        #sys.stdout.write(bm.save.restore)
+        sys.stdout.write(bm.cursorPos.to(self.size+1, 4))
+        sys.stdout.write(bm.save.save)
         sys.stdout.flush()
         ###########################################################
         self.max_size_init          = 11 # no optional key (crtl+n , ......)
@@ -388,8 +413,6 @@ class windows:
                                                             self.indexation[self.if_line]['cursor'] = 'UP'
                                                         else: pass
                                                     
-                                                # idd is decreased of -1
-                                                #self.idd -= 1
                                                 if 0 < self.if_line:
                                                     self.idd = self.if_line - 1
                                                     # previous input
@@ -426,14 +449,15 @@ class windows:
                                                     #################################################################
                                                     
                                                     self.pos_x, self.pos_y = cursor_pos.cursor()
-                                                    sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)-1))
-                                                    #else: pass
-                                                
+                                                    if self.max_y - int(self.pos_y) != self.max_y-1:
+                                                        sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)-1)) 
+                                                        self.up_locked = False
+                                                    else: self.up_locked = True
                                                 else: pass
                                             except IndexError:
                                                 pass
                                                 # any changes here when local IndexError is detected
-                                        else:   pass
+                                        else:  pass
                                     # get the next value stored in the list
                                     elif next2 == 66:
                                         if self.liste:
@@ -481,7 +505,6 @@ class windows:
                                                         self.drop = self.drop_list_id[ self.idd ]
                                                     else: pass 
                                                     
-                                                    
                                                     self.indexation[self.if_line]['last']       = self.string
                                                     self.indexation[self.if_line]['cursor']     = 'DOWN'
                                                     self.indexation[self.if_line]['do']         = 'INDEX'
@@ -492,12 +515,11 @@ class windows:
                                                     self.last_line['now']  = self.if_line
                                                     #################################################################
                                                     self.pos_x, self.pos_y = cursor_pos.cursor()
-                                                    sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)+1))
-                                                    
+                                                    sys.stdout.write(bm.cursorPos.to(int(self.pos_x), int(self.pos_y)+1))                                                    
                                                 else: pass
                                             except IndexError:
                                                 # any changes here when local IndexError is detected
-                                                pass #print(self.string, self.string_tabular, self.idd, self.if_line, self.if_line_max, '@@@')
+                                                pass
                                         else:   pass
                                     # ctrl-up is handled 
                                     elif next2 == 49:
@@ -737,7 +759,6 @@ class windows:
                                         self.indexation[self.if_line_max]['cursor']   = 'ENTER' 
                                         self.indexation[self.if_line_max]['do']       = 'NOTHING'
                                         self.indexation[self.if_line_max]['last']     = self.string_tabular[-1]
-                                        
                                     else:
                                         self.liste.insert(v, self.input),        self.sub_liste.insert(v, self.s)
                                         self.tabular.insert(v, self.index),      self.sub_tabular.insert(v, self.I) 
@@ -798,7 +819,6 @@ class windows:
                             self.drop_drop      = {'id':[], 'str':[]}     
                             self.drop_idd       = 0 
                             self.border_x_limit = True 
-                            self.last_line['last'] = self.if_line_max
                             self.last_line['now']  = self.if_line
                             self.indexation[self.if_line-1]['status'] = 'I' 
                             self.indexation[self.if_line-1]['action'] = 'LOCKED'
@@ -817,9 +837,13 @@ class windows:
                             if self.if_line == self.if_line_max: self.indexation[self.if_line]['do']     = 'ADDS' 
                             else: self.indexation[self.if_line]['do']   = 'INSERTS' 
                             
-                            sys.stdout.write(self.input)
-                            sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+self.black+f"{self.acs['v']}")
-                            sys.stdout.write(bm.move_cursor.LEFT(pos=self.max_x-self.size-1))
+                            if self.last_line['last'] >= int(self.pos_y):
+                                sys.stdout.write(self.input)
+                                sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+self.black+f"{self.acs['v']}")
+                                sys.stdout.write(bm.move_cursor.LEFT(pos=self.max_x-self.size-1))
+                            else:
+                                self.last_line['last'] = self.if_line_max
+                                sys.stdout.write(bm.cursorPos.to(self.size, self.if_line+4))
                             
                         try:
                             if self.indexation[self.if_line]['last'] != self.string:
@@ -836,6 +860,7 @@ class windows:
                         sys.stdout.write(bm.cursorPos.to(self.size+1, self.pos_y))
                         # clear entire line
                         sys.stdout.write(bm.clear.line(pos=0))
+                        
                         if terminal_name == 'orion':
                             sys.stdout.write(
                                 bm.string().syntax_highlight(
@@ -846,6 +871,7 @@ class windows:
                         else: sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
                         
                         sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                        
                         if self.index > 0:
                             # computing the right position 
                             pos = len(self.s) + self.size + len(self.input) - self.index
@@ -870,118 +896,110 @@ class windows:
                             self.indicator = None
                         else: pass
                         
-                        if self.last_line['now']== self.last_line['last']: 
-                            sys.stdout.write(bm.clear.screen(0))
-                            sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+
-                                self.black+f"{self.acs['v']}")
-                            sys.stdout.write(bm.move_cursor.DOWN(pos=1))
-                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                            bottom(self.max_x)
-                            sys.stdout.write(bm.cursorPos.to(self.pos_x, self.pos_y))
+                        if self.last_line['now'] == self.last_line['last']: 
+                            if self.last_line['last'] >= int(self.pos_y): 
+                                sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+
+                                    self.black+f"{self.acs['v']}")
+                                sys.stdout.write(bm.cursorPos.to(self.pos_x, int(self.pos_y)))
+                            else:
+                                sys.stdout.write(bm.clear.screen(0))
+                                sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+
+                                    self.black+f"{self.acs['v']}")
+                                sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                bottom(self.max_x)
+                                sys.stdout.write(bm.cursorPos.to(self.pos_x, int(self.pos_y)-1))
                         else: 
-                            sys.stdout.write(bm.cursorPos.to(1000, self.last_line['last']+4))
-                            sys.stdout.write(bm.clear.screen(0))
-                            sys.stdout.write(bm.move_cursor.DOWN(pos=1))
-                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                            bottom(self.max_x)
-                            sys.stdout.write(bm.cursorPos.to(self.pos_x, self.pos_y))
-                        
-                        """
-                        if self.str_drop_down:
-                            if self.key_max_activation is True:
-                                sys.stdout.write(bm.save.save)
-                                if self.indicator is None:
-                                    v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
-                                                                                                    self.string, self.indicator, self.indicator_pos)
-                                else:
-                                    sys.stdout.write(bm.clear.screen(pos=0))
-                                    v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
-                                                                                    self.string, self.indicator, self.indicator_pos)
-                                    if self.error is None: pass 
-                                    else:
-                                        sys.stdout.write(self.error+"\n\n")
-                                        self.error=None
-                                        if terminal_name == 'orion':
-                                            # key word activation
-                                            sys.stdout.write(self.main_input + bm.string().syntax_highlight(
-                                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
-                                        else:
-                                            # any activation keyword
-                                            sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
-                                        # moving cursor down to 1
-                                        sys.stdout.write(bm.move_cursor.DOWN(pos=1))
-                                        # moving cursor to the left 
-                                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                                        # saving cursor position 
-                                        sys.stdout.write(bm.save.save)
-                                        
-                                    if v is not  None:
-                                        # moving cursor up to 1 if indicator is egal to 7< ctrl+g>
-                                        if self.indicator == 7: sys.stdout.write(bm.move_cursor.UP(pos=1))
-                                        # restoring the lastest saving cursor postion if indicator is egal to 65, 66 <ctrl+up>, <ctrl+down>
-                                        if self.indicator in {65, 66} : sys.stdout.write(bm.save.restore)
-                                        else: pass        
-                                        try:
-                                            if self.indicator not in {65, 66}:
-                                                self.string = self.string[ : len(self.string)-len(self.str_drop_down)] + v 
-                                                # customizing string 
-                                                self.error,  kappa, self.pos, self.get = SB.string( self.string ).build()
-
-                                                self.input  = kappa[0][0]
-                                                self.index  = kappa[0][1]
-                                                self.s      = kappa[1][0]
-                                                self.I      = kappa[1][1]
-                                                self.string = kappa[2][0]
-                                                self.I_S    = kappa[2][1]
-
-                                                if self.indicator == 14: self.str_drop_down = v; self.drop = len(v)
-                                                else: pass
-                                                # moving cursor on left
-                                                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                                                # clearing entire line
-                                                sys.stdout.write(bm.clear.line(pos=0))
-                                                # re-writing string
-                                                sys.stdout.write(self.main_input+bm.string().syntax_highlight(name=bm.words(string=self.s, color=bm.fg.rbg(255, 255, 255)).final()))
-                                                # saving cursor position
-                                                sys.stdout.write(bm.save.save)
-                                            else: pass
-                                        except  TypeError: pass 
-                                    else:
-                                        # moving cursor up to 1
-                                        sys.stdout.write(bm.move_cursor.UP(pos=1))
-                                        if self.index > 0:
-                                            # computing the right postion 
-                                            pos = len(self.s) + self.size + len(self.input) - self.index
-                                            # moving cursor at the correct position 
-                                            sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
-                                        else: pass
-                                        # erasing entire string 
-                                        sys.stdout.write(bm.clear.line(pos=2))
-                                        # re-writing string
-                                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                                        if terminal_name == 'orion':
-                                            sys.stdout.write(self.main_input + bm.string().syntax_highlight(
-                                                name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final()))
-                                        else: 
-                                            # any activation keyword & re-writing string
-                                            sys.stdout.write(self.main_input + bm.init.bold+bm.fg.rbg(255, 255, 255) + self.s + bm.init.reset)
-                                        # saving cursor position 
-                                        sys.stdout.write(bm.save.save)
-                                # restoring cursor position 
-                                sys.stdout.write(bm.save.restore)
-                            else: pass
+                            if self.last_line['last'] >= int(self.pos_y): 
+                                sys.stdout.write(bm.move_cursor.RIGHT(pos=self.max_x-1)+
+                                    self.black+f"{self.acs['v']}")
+                                sys.stdout.write(bm.cursorPos.to(self.pos_x, self.pos_y))
+                            else:
+                                sys.stdout.write(bm.cursorPos.to(1000, self.last_line['last']+4))
+                                sys.stdout.write(bm.clear.screen(0))
+                                sys.stdout.write(bm.move_cursor.DOWN(pos=1))
+                                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                bottom(self.max_x)
+                                sys.stdout.write(bm.cursorPos.to(self.pos_x, int(self.pos_y)-1))
+                             
+                        if self.indexation[self.if_line]['cursor'] == "UP":
+                            if self.up_locked is False : pass 
+                            else:
+                                self.np += 1
+                                sys.stdout.write(bm.clear.screen(2))
+                                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                
+                                for i in range(self.if_line, self.if_line_max-self.np+1):
+                                    try: self.s = self.sub_liste[i]
+                                    except IndexError: self.s = ""
+                                    self.main_input, self.size = counter(i)
+                                    sys.stdout.write(bm.clear.line(pos=0))
+                                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                    sys.stdout.write(
+                                        self.main_input+
+                                        bm.string().syntax_highlight(
+                                        name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final())+
+                                        bm.move_cursor.RIGHT(pos=self.max_x-1)+
+                                        self.black+f"{self.acs['v']}"+ '\n'
+                                        )
+                                    self.pos_x, self.pos_y      = cursor_pos.cursor()
+                                bottom(self.max_x)
+                                
+                                self.index  = self.tabular[self.if_line]
+                                self.input  = self.liste[self.if_line]
+                                self.s      =  self.sub_liste[self.if_line]
+                                
+                                sys.stdout.write(bm.cursorPos.to(x=self.size, y=1))
+                                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                
+                                if self.index > 0:
+                                    # computing the right position 
+                                    pos = len(self.s) + self.size + len(self.input) - self.index
+                                    # putting cursor a the correct position 
+                                    sys.stdout.write(bm.move_cursor.RIGHT(pos=pos))
+                                else: pass
+                                
+                                if self.if_line == 0:  self.up_locked=False
+                                else: pass
                         else: pass 
-                        if self.indicator in {65, 66}: pass 
-                        else:   self.indicator_pos, self.indicator_max = 0, 1
-                        self.indicator = None
-                        """
+                        
+                        try:     
+                            if self.indexation[self.if_line-1]['cursor'] == "DOWN":
+                                if int(self.pos_y) > self.max_y - 2:
+                                    if self.np > 0:
+                                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                                        sys.stdout.write(bm.clear.screen(pos=0))
+                                        sys.stdout.write(
+                                            self.main_input+
+                                            bm.string().syntax_highlight(
+                                            name=bm.words(string=self.s, color=bm.init.bold+bm.fg.rbg(255, 255, 255)).final())+
+                                            bm.move_cursor.RIGHT(pos=self.max_x-1)+
+                                            self.black+f"{self.acs['v']}"+"\n"
+                                            )
+                                        sys.stdout.write(bm.clear.screen(pos=0))
+                                        sys.stdout.write(bm.move_cursor.UP(pos=1))
+                                        sys.stdout.write(bm.move_cursor.RIGHT(pos=self.size))
+                                        self.pos_x, self.pos_y      = cursor_pos.cursor()
+                                        sys.stdout.write(bm.move_cursor.DOWN(pos=1)+bm.move_cursor.LEFT(pos=1000))
+                                        bottom(self.max_x)
+                                        sys.stdout.write(bm.cursorPos.to(self.pos_x, self.pos_y))
+                                        self.np -= 1
+                                        if self.np == 0: self.indexation[self.if_line-1]['cursor'] = 'NO' 
+                                        else: pass 
+                                        
+                                    else: pass
+                            else: pass
+                        except KeyError : pass 
+                        
+                        #sys.stdout.write(f"{self.if_line_max} - {self.if_line} - {self.pos_y} - {self.max_y} - {self.indexation[self.if_line-1]['cursor']}")
                         sys.stdout.flush()
                     else: pass
                 else: pass
             except KeyboardInterrupt:
-                os.system('cls')
+                #os.system('cls')
+                sys.stdout.write(bm.clear.screen(2)+bm.cursorPos.to(0, 0))
                 self._keyboard_ = bm.bg.red_L + bm.fg.rbg(255,255,255) +"KeyboardInterrupt" + bm.init.reset
-                print(self._keyboard_)
+                sys.stdout.write(bm.move_cursor.LEFT(pos=1000)+f"{self._keyboard_}\n")
                 return
             except ValueError:
                 os.system('cls')
@@ -997,7 +1015,9 @@ if __name__ == '__main__':
     
     term = 'orion'
     try:
-        os.system('cls')
+        #os.system('cls')
+        sys.stdout.write(bm.clear.screen(2))
+        #sys.stdout.write(bm.clear.move_and_clear(2))
         sys.stdout.write(bm.save.save)
         data_base = db.DATA_BASE().STORAGE().copy()
         windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)

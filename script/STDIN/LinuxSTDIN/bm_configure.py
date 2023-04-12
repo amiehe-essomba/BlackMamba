@@ -97,6 +97,13 @@ class clear:
         # 2 = clears entire screen
         clearScreen = u"\u001b[" + f"{pos}" + "J"
         return clearScreen 
+    
+    def move_and_clear(pos : int=3 ):
+        # 0 = clears from cursor until end of screen,
+        # 1 = clears from cursor to beginning of screen
+        # 2 = clears entire screen
+        clearScreen = u"\u001b[H" + clear.screen(pos)
+        return clearScreen 
 
 class get_cursor_pos:
     pos     = u"\u001b[6n"
