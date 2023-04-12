@@ -98,7 +98,7 @@ class right:
         self.sub_root.maxsize(self.width, self.height)
         self.sub_root.config()
         root_menu = Menu(self.sub_root)
-        self.sub_root.iconbitmap('@logo.xbm')#self.ico_path)
+        self.sub_root.iconbitmap('@logo.xbm')
         self.sub_root.resizable(width=True, height=True)
         
         F1 = Frame(self.sub_root, relief=FLAT,  width=self.width, height=self.height-self.max)

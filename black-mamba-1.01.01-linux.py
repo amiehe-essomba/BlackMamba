@@ -18,11 +18,12 @@ def ico_path():
 def png_path(str_ : str = 'logo.png'):
     system  = "Linux"
     if system == 'Linux':
-        return os.path.abspath(os.curdir)+f'\images\{str_}'
+        return os.path.abspath(os.curdir)+f'/images/{str_}'
     else:  return None 
     
 def read_license():
-    with open('LICENSE', 'r') as f:
+    path = os.path.abspath(os.curdir)+"/BM_TAR/LICENSE"
+    with open(path, 'r') as f:
         lines = f.readlines()
     f.close()
     return lines
@@ -38,7 +39,7 @@ def extraction_tar_gz():
     root.maxsize(a, b)
     root.config(bg='white')
     root_menu = Menu(root)
-    root.iconbitmap("@logo.xbm")
+    #root.iconbitmap("@logo.xbm")
     root.resizable(width=True, height=True)
     
     frame_left = Frame(root, relief=RIDGE, bd = 4, width=c, height=b)
