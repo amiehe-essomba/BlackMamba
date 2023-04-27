@@ -33,8 +33,8 @@
 
 ## SELECT YOUR IDE 
 ```python
-1. ./mamba --T orion
-2. ./mamba --T pegasus
+1. mamba --T orion
+2. mamba --T pegasus
 ```
 
 ## PROJECT dESCRIPTION
@@ -53,21 +53,21 @@ Please make sure to update tests as appropriate.
 
 ## RUNNING BLACK MAMBA
 ```python
-1. ./mamba --T orion 
-2. ./mamba --T pegasus 
-3. ./mamba my_code.bm
+1. mamba --T orion 
+2. mamba --T pegasus 
+3. mamba my_code.bm
 ```
 
 ## CHECKING BLACK MAMBA VERSION
 ```python
-./mamba --V
-./mamba --Version
+1. mamba --V
+2. mamba --Version
 ```
 
 ## CHECKING BLACK MAMBA AUTHOR
 ```python
-./mamba --A
-./mamba --Author
+1. mamba --A
+2. mamba --Author
 ```
 
 ## 🤵 Author 
