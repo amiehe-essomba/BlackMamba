@@ -11,7 +11,7 @@ from script                                             import control_string
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmtError as ce
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS import comment as cmt
-
+from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
 
 class COMMENT_WINDOWS:
     def __init__(self,
