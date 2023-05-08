@@ -53,7 +53,7 @@ Please make sure to update tests as appropriate.
 >For more details read the [contribution guidelines](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/CONTRIBUTING.md).
 
 ## RUNNING BLACK MAMBA
-```python
+```ruby
 1. mamba --T orion 
 2. mamba --T pegasus 
 3. mamba my_code.bm
