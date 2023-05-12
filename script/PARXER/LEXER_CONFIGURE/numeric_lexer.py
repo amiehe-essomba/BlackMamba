@@ -15,6 +15,8 @@ we = Fore.LIGHTWHITE_EX
 me = Fore.LIGHTCYAN_EX
 le = Fore.RED
 
+
+
 class NUMERCAL_LEXER:
     def __init__(self, master: str, data_base: dict, line: int):
         self.line           = line

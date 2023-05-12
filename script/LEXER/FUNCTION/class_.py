@@ -1,15 +1,16 @@
-from colorama import Fore
+
 from script import control_string
 from script.LEXER import particular_str_selection
+from script.STDIN.LinuxSTDIN                import bm_configure     as bm
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
+ne = bm.fg.red_L 
+ie = bm.fg.blue_L
+ae = bm.fg.cyan_L
+te = bm.fg.magenta
+ke = bm.fg.yellow_L
+ve = bm.fg.green_L
+se = bm.fg.yellow
+we = bm.fg.white_L
 
 class CLASS:
     def __init__(self, master: list, data_base: dict, line: int):

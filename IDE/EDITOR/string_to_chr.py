@@ -36,7 +36,15 @@ def convert( ) -> list :
     if len(s) == 1:
         try:
             s = s[0].decode("utf-8")
-            try: number =  [ord(s), None]
+            try:
+                if ord(s) not in {72, 75, 77, 80}:
+                    number =  [ord(s), None]
+                else:
+                    if   ord(s) == 72 : number = [27, [65, 0]]
+                    elif ord(s) == 80 : number = [27, [66, 0]]
+                    elif ord(s) == 75 : number = [27, [68, 0]]
+                    elif ord(s) == 77 : number = [27, [67, 0]]
+                    
             except TypeError: 
                 if   s == "\x0e":
                     number =  [14, None]
@@ -59,5 +67,6 @@ def convert( ) -> list :
             elif s == "t" : number = [27, [49, 65]]
             elif s == "s" : number = [27, [49, 66]]
         else: number =  [None, None]
+
     return number
      

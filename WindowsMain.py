@@ -39,6 +39,9 @@ from IDE.EDITOR                 import left_right                   as LR
 from IDE.EDITOR                 import string_build                 as SB
 from IDE.EDITOR                 import pull_editor                  as PE
 from IDE.EDITOR                 import drop_box                     as DR
+import platform
+
+
 
 class windows:
     def __init__(self, data_base: dict):
@@ -210,7 +213,7 @@ class windows:
                                 self.drop = 0
                                 self.str_drop_down = ""
                                 sys.stdout.write(bm.clear.screen(pos=0))
-                                
+                        
                         # breaking loop while with the keyboardError ctrl+c
                         if self.char == 3:
                             os.system('cls')
@@ -253,6 +256,7 @@ class windows:
                                 
                             else: pass
                         # moving cursor up, down, left, reight
+                        
                         elif self.char == 27:
                             next1, next2 = 91,  _[0]
                             #rint(next1, next2)
