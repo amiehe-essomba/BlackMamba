@@ -19,4 +19,3 @@ class LIST:
         self.control        = control_string.STRING_ANALYSE( self.data_base, self.line )
 
 
-    def

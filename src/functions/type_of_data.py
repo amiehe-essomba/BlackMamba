@@ -13,10 +13,8 @@ class CHECK_TYPE_OF_DATA:
         self._return_                           = ''
         self.type                               = type( self.value )
 
-        if  self.type  == type( int() )   and   self.value >= 0   :   self._return_ = ['int', 'p_int']
-        elif self.type == type( int() )   and   self.value < 0    :   self._return_ = [ 'n_int']
-        elif self.type == type( float() ) and   self.value >= 0   :   self._return_ = ['float', 'double', 'p_float', 'p_double'] 
-        elif self.type == type( float() ) and   self.value < 0    :   self._return_ = ['n_float', 'n_double'] 
+        if  self.type  == type( int() )         :       self._return_ = 'int'
+        elif self.type == type( float() )       :       self._return_ = 'float'
         elif self.type == type( bool() )        :       self._return_ = 'bool'
         elif self.type == type( complex() )     :       self._return_ = 'cplx'
         elif self.type == type( dict() )        :       self._return_ = 'dict'

@@ -18,7 +18,7 @@ class list_of_keys:
         
     def list(self):    
             
-        self.a = ['as', 'add', 'any', 'anonymous']
+        self.a = ['as', 'add', 'any', 'anonymous', 'ArithmeticError']
         self.b = ['begin', 'bool', 'break']
         self.c = ['class', 'cplx', 'close', 'case', 'continue', 'count', 'capitalize', 'clear', 'copy', 'conj', 'choice']
         self.d = ['def', 'default']
@@ -45,7 +45,7 @@ class list_of_keys:
         self.y = ['yield']
         self.z = ['zip']
         
-        if   self.firstChar == 'a': return self.a
+        if   self.firstChar in ['a', 'A'] : return self.a
         elif self.firstChar == 'b': return self.b
         elif self.firstChar == 'c': return self.c
         elif self.firstChar == 'd': return self.d
@@ -92,7 +92,7 @@ class IDE:
         self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(inp, self.firstChar, self.idd)
         self.input      =  inp[0]
         self.empty      = " "
-        self.len        = 16
+        self.len        = 20#16
         self.locked     = False
         self.index      = 0
         self.disp       = len(true_chaine)+4
@@ -311,7 +311,7 @@ class  DropDown:
                 self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(all_values, string, len(string))  
                 all_values  = sorted(all_values)
                 
-                if   indicator is None  : 
+                if   indicator is None          :
                     for s in all_values:
                         if string in s[:len(string)]:  self.new.append(s)
                         else: pass 
@@ -325,7 +325,7 @@ class  DropDown:
                                 inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, move_cursor_down=idd )
                         self.max_size += self.index
                     else: pass 
-                elif indicator in {7}   :
+                elif indicator in {7, 20}       :
                     self.idd        = len(string)
                     self.new_data = []
                     self.len_ = 0
@@ -350,13 +350,21 @@ class  DropDown:
                                 else: pass
                         else: pass
                     else: self.max_size = 1
-                elif indicator in {14}  :
-                    if all_values: 
-                        try: val = all_values[pos]
-                        except IndexError: val = all_values[pos-1]
-                        ouput, self.max_size = val, 1
+                elif indicator in {14}          :
+                    all_values += self.vr + self.fc + self.cc 
+                    all_values, new_all_values  = sorted(all_values), []
+
+                    for s in all_values:
+                        try:
+                            if string in s[ : len(string)]: new_all_values.append(s)
+                            else: pass 
+                        except IndexError: pass 
+                    if new_all_values: 
+                        try: ouput = new_all_values[pos]
+                        except IndexError: out,  = new_all_values[-1], pos = len(new_all_values)-1
+                        
                     else: pass
-                elif indicator in {65, 66}:
+                elif indicator in {65, 66}      :
                     for s in all_values:
                         if string in s[:len(string)]:  self.new.append(s)
                         else: pass 
@@ -378,5 +386,5 @@ class  DropDown:
             except IndexError: pass
         else: pass
 
-        return ouput, np, self.max_size, err
+        return ouput, np, self.max_size, pos, err
         

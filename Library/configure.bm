@@ -1,0 +1,165 @@
+from module encoding load fg, bg
+
+class config:
+	def initialize():
+		self.red 	= ansi("fg", "R")
+		self.green 	= ansi("fg", "G")
+		self.magenta= ansi("fg", "M")
+		self.yellow	= ansi("fg", "Y")
+		self.blue	= ansi("fg", "B")
+		self.cyan	= ansi("fg", "C")
+		self.white	= ansi("fg", "W")
+	end:
+	def reset():
+		__scan__ * "reset", "reset"
+	end:
+	def bold():
+		__scan__ * "bold", "bold"
+	end:
+	def blink():
+		__scan__ * "blink", "blink"
+	end:
+	def rapid_blink():
+		__scan__ * "rapid_blink", "rapid_blink"
+	end:
+	def underline():
+		__scan__ * "underline", "underline"
+	end:
+	def italic():
+		__scan__ * "italic", "italic"
+	end:
+	def reverse():
+		__scan__ * "reverse", "reverse"
+	end:
+	def double_underline():
+		__scan__ * "double_underline", "double_underline"
+	end:
+	def hide():
+		__scan__* "hide", "hide"
+	end
+end:
+
+class cursor:
+	def position():
+		__scan__ * "position", "position"
+	end:
+	
+	def up( y : int=1):
+		if y >= 0:
+			__scan__ * "up", y
+		else:
+			y = config.bold()+fg(255, 255, 0)
+			w = config.bold()+fg(255,255,255)
+			g = config.bold()+fg(0,255,0)
+			r = config.bold()+fg(255,0,0)
+			re = config.reset()
+			line = GetLine()
+			b = config.bold()+fg(0,0,255)
+			__show__ * "{g}ValueError : {r}y {w} cannot be {y}negative. {w}line : {y}{line} {w}in {g}up( ) {w}/ {r}class {b} cursor( ){re}" 
+		end:
+	end:
+	
+	def down( y : int=1):
+		if y >= 0:
+			__scan__ * "down", y
+		else:
+			y = config.bold()+fg(255, 255, 0)
+			w = config.bold()+fg(255,255,255)
+			g = config.bold()+fg(0,255,0)
+			r = config.bold()+fg(255,0,0)
+			re = config.reset()
+			line = GetLine()
+			b = config.bold()+fg(0,0,255)
+			__show__ * "{g}ValueError : {r}y {w} cannot be {y}negative. {w}line : {y}{line} {w}in {g}down( ){w} / {r} class {b}cursor( ) {re}"
+		end:
+	end:
+	
+	def move_to( x:int, y:int):
+		if x >= 0 and y >= 0:
+			__scan__ * "move_to", [x, y]
+		else:
+			y = config.bold()+fg(255, 255, 0)
+			w = config.bold()+fg(255,255,255)
+			g = config.bold()+fg(0,255,0)
+			r = config.bold()+fg(255,0,0)
+			re = config.reset()
+			line = GetLine()
+			b = config.bold()+fg(0,0,255)
+			__show__ * "{g}ValueError : {r}x {w}or {r}y {w}cannot be {x}negative. {w}line : {y}{line} {w}in {g}move_to( ){w} / {r} class {b}cursor( ) {re}"
+		end:
+	end:
+	
+	def save():
+		__scan__ * "save", "save" 
+	end:
+	
+	def restore():
+		__scan__ * "restore", "restore"
+	end:
+	
+	def left( x:int =1):
+		if x >= 0:
+			__scan__ * "left", x 
+		else:
+			y = config.bold()+fg(255, 255, 0)
+			w = config.bold()+fg(255,255,255)
+			g = config.bold()+fg(0,255,0)
+			r = config.bold()+fg(255,0,0)
+			re = config.reset()
+			line = GetLine()
+			b = config.bold()+fg(0,0,255)
+			__show__ * "{g}ValueError : {r}x {w} cannot be {y}negative. {w}line : {y}{line} {w}in {g}left( ){w} / {r} class {b}cursor( ) {re}"
+		end:
+	end:
+	
+	def right( x :int =1):
+		if x >= 0:
+			__scan__ * "right", x
+		else:
+			y = config.bold()+fg(255, 255, 0)
+			w = config.bold()+fg(255,255,255)
+			g = config.bold()+fg(0,255,0)
+			r = config.bold()+fg(255,0,0)
+			re = config.reset()
+			line = GetLine()
+			b = config.bold()+fg(0,0,255)
+			__show__ * "{g}ValueError : {r}x {w} cannot be {y}negative. {w}line : {y}{line} {w}in {g}right( ){w} / {r} class {b}cursor( ) {re}"
+		end: 
+	end:
+	
+	def windows():
+		__scan__ * "dim", None
+	end:
+end:
+
+class progress:
+	def bar(Start : int = 0, Stop:int=100, style: int = 0):
+		if Start >= 0:
+			if Stop > Start:
+				__scan__ * "progress_bar", [Start, Stop, style]
+			else:
+				y = config.bold()+fg(255, 255, 0)
+				w = config.bold()+fg(255,255,255)
+				g = config.bold()+fg(0,255,0)
+				r = config.bold()+fg(255,0,0)
+				re = config.reset()
+				line = GetLine()
+				__show__ * "{g}ValueError : {r}Start {w} is bigger than {r}Stop. {w}line : {y}{line} {w}in {g}progress_bar( ){re}"
+			end:
+		else:
+			y = config.bold()+fg(255, 255, 0)
+			w = config.bold()+fg(255,255,255)
+			g = config.bold()+fg(0,255,0)
+			r = config.bold()+fg(255,0,0)
+			re = config.reset()
+			line = GetLine()
+			__show__ * "{g}ValueError : {r}Start {w} is negative. {w}line : {y}{line} {w}in {g}progress_bar( ){re}"
+		end:
+	end:
+end:
+
+class Tree:
+	def Tree(master : dict, main : string = "Tree"):
+		__scan__ * "Trees", [master, main]
+	end:
+end:

@@ -41,16 +41,12 @@ class DELETE:
                 self.name, self.error = self.control.DELETE_SPACE( name )
                 if self.error is None:
                     self.name, self.error = self.get_val.GET_VAR(self.name, self.data_base, self.line).GET_VAR()
-                    if self.error is None:
-                        self.list_of_values[ i ] = self.name
-                    else:
-                        self.error = self.error
-                        break
+                    if self.error is None:  self.list_of_values[ i ] = self.name
+                    else: break
                 else:
                     self.error = ERRORS( self.line ).ERROR0( self.normal_string )
                     break
-        else:
-            self.error = self.error
+        else: pass
 
         if self.error is None:
             for i, name in enumerate( self.list_of_values ):
@@ -68,11 +64,8 @@ class DELETE:
                                 self.idd = self.global_vars.index( name )
                                 del self.global_vars[ self.idd ]
                                 del self.global_values[ self.idd ]
-                            else:
-                                pass
-                        else:
-                            pass
-
+                            else: pass
+                        else:  pass
                     else:
                         self.error = ERRORS( self.line ).ERROR3( name )
                         break
@@ -88,29 +81,21 @@ class DELETE:
                     if self.len <= 2:
                         if self.len == 1:
                             self.error = FIRST_CASE( self.info[ 0 ], self.data_base, self.line).FIRST( self.__values__ )
-                            if self.error is None:
-                                pass
-                            else:
-                                break
+                            if self.error is None:  pass
+                            else: break
                         else:
                             self.error = SECOND_CASE(self.info , self.data_base, self.line).SECOND_CASE( self.__values__ )
-                            if self.error is None:
-                                pass
-                            else:
-                                break
+                            if self.error is None: pass
+                            else:  break
 
                         if self.global_vars:
                             if self._name_ in self.global_vars:
                                 self._idd_ = self.global_vars.index( self._name_ )
                                 self.global_values[ self._idd_ ] = self._values_[ self.idd ]
-                            else:
-                                pass
-                        else:
-                            pass
-                    else:
-                        self.error = ERRORS( self.line ).ERROR0( main_string )
-        else:
-            pass
+                            else: pass
+                        else: pass
+                    else: self.error = ERRORS( self.line ).ERROR0( main_string )
+        else: pass
 
         return self.error
 
@@ -127,30 +112,24 @@ class FIRST_CASE:
 
         if type( self.master ) == type( int() ):
             if self.type == type(list()):
-                try:
-                    del self.value[ self.master ]
+                try: del self.value[ self.master ]
                 except IndexError:
                     self.error = ERRORS(self.line).ERROR2()
-            else:
-                self.error = ERRORS(self.line).ERROR1(self.value, 'a list()')
+            else: self.error = ERRORS(self.line).ERROR1(self.value, 'a list()')
 
         elif type( self.master ) == type( str() ):
             if self.type == type( dict() ):
-                try:
-                    del self.value[ self.master ]
+                try: del self.value[ self.master ]
                 except KeyError:
                     self.error = ERRORS(self.line).ERROR4(self.__values__, self.info[0])
-            else:
-                self.error = ERRORS(self.line).ERROR1( self.value, 'a dictionary()' )
+            else: self.error = ERRORS(self.line).ERROR1( self.value, 'a dictionary()' )
 
         elif type( self.master ) == type( list() ):
             self.master = sorted(self.master, reverse = True )
             print( self.master)
 
             for _value_ in self.master :
-                try:
-                    del self.value[ _value_ ]
-
+                try: del self.value[ _value_ ]
                 except IndexError:
                     self.type = type( self.value )
                     if self.type == type( tuple() ):
@@ -162,13 +141,10 @@ class FIRST_CASE:
                     else:
                         self.error = ERRORS(self.line).ERROR2()
                         break
-
                 except TypeError:
                     self.error = ERRORS(self.line).ERROR1(self.value, 'a list()')
                     break
-
-        else:
-            self.error = ERRORS( self.line ).ERROR0( self.value )
+        else: self.error = ERRORS( self.line ).ERROR0( self.value )
 
         return self.error
 
@@ -189,13 +165,10 @@ class SECOND_CASE:
 
         if type( self.master1 ) == type( int() ):
             if self.type == type( list() ):
-                try:
-                    self.list_selection.append(self.value[ self.master1 ])
+                try: self.list_selection.append(self.value[ self.master1 ])
                 except IndexError:
                     self.error = ERRORS(self.line).ERROR2()
-
-            else:
-                self.error = ERRORS(self.line).ERROR1(self.value, 'a list()')
+            else: self.error = ERRORS(self.line).ERROR1(self.value, 'a list()')
 
         elif type(self.master1 ) == type( str() ):
             try:
@@ -231,7 +204,6 @@ class SECOND_CASE:
                     self.master2 = sorted(self.master2, reverse = True )
                 else:
                     self.master2 = self.master2
-
                     if type( self.master2 ) == type( int() ):
                         if type( _value_ ) == type( list() ):
                             try:
@@ -269,9 +241,7 @@ class SECOND_CASE:
                                 else:
                                     self.error = ERRORS(self.line).ERROR2()
                                     break
-
-        else:
-            pass
+        else: pass
 
         return  self.error
 

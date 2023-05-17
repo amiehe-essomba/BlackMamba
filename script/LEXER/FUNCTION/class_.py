@@ -22,7 +22,6 @@ class CLASS:
         self.selection      = particular_str_selection
 
     def CLASS_INIT(self, main_string: str):
-
         self.master         = self.master[ 0 ]
         self.master, _e_    = self.control.DELETE_SPACE( self.master )
         self.error          = None
@@ -51,31 +50,22 @@ class CLASS:
             if self.left != self.right:
                 if self.left < 2:
                     if self.class_name != None:
-                        if self.count == 0:
-                            self.key == True
-
+                        if self.count == 0: self.key == True
                         else:
                             self.error  = ERRORS( self.line ).ERROR0( main_string )
                             break
-
                     else:
                         self.error = ERRORS( self.line ).ERROR0( main_string )
                         break
-
                 else:
                     self.error = ERRORS( self.line ).ERROR0( main_string )
                     break
-
             elif self.left == self.right and str_ == ')':
                 self.key   = False
                 self.count += 1
+            elif self.left == self.right and str_ != ')': self.key = None
 
-            elif self.left == self.right and str_ != ')':
-                self.key = None
-
-            if self.key == True:
-                self.string += str_
-
+            if self.key == True: self.string += str_
             elif self.key == False:
                 self.string  += str_
                 self.inside                 = self.string[ 1 : -1 ]
@@ -95,8 +85,7 @@ class CLASS:
                                     if self.store :
                                         self.error = ERRORS( self.line ).ERROR0( self.string )
                                         break
-                                    else:
-                                        self.store.append( self.name )
+                                    else: self.store.append( self.name )
                                 else:
                                     if self.store:
                                         if self.store[ -1 ] != 'object':
@@ -104,28 +93,20 @@ class CLASS:
                                         else:
                                             self.error = ERRORS(self.line).ERROR0(self.string)
                                             break
-                                    else:
-                                        self.store.append(self.name)
-
+                                    else: self.store.append(self.name)
                             else:
                                 self.error = ERRORS(self.line).ERROR1( _class_ )
                                 break
 
                         if self.error is None:
-
                             self.args                               = self.string
                             self.class_inherite                     = self.store
                             self.class_info['arguments']            = self.args
                             self.class_info['class_inheritance']    = self.class_inherite
-
-                        else:
-                            self.error = self.error
-                            break
-
+                        else: break
                     else:
                         self.error = ERRORS( self.line ).ERROR0( main_string )
                         break
-
                 else:
                     self.class_inherite                     = 'object'
                     self.args                               = self.string
@@ -136,7 +117,6 @@ class CLASS:
                 self.string             = ''
                 self.left               = 0
                 self.right              = 0
-
             else:
                 if self.args == None:
                     self.string += str_
@@ -147,11 +127,9 @@ class CLASS:
                         if self.error is None:
                             self.class_name                 = self.name
                             self.class_info['class_name']   = self.class_name
-
                         else:
                             self.error = ERRORS( self.line ).ERROR1( self.string )
                             break
-
                     else:
                         try:
                             if self.master[ i + 1] == '(':
@@ -162,17 +140,11 @@ class CLASS:
                                     self.class_name                 = self.name
                                     self.class_info['class_name']   = self.class_name
                                     self.string                     = ''
-
                                 else:
                                     self.error = ERRORS( self.line ).ERROR1( self.string )
                                     break
-
-                            else:
-                                pass
-
-                        except IndexError:
-                            pass
-
+                            else: pass
+                        except IndexError: pass
                 else:
                     self.error = ERRORS( self.line ).ERROR0( main_string )
                     break
@@ -180,12 +152,9 @@ class CLASS:
         if self.error is None:
             if self.class_info['class_name'] in ['function', 'func']:
                 self.error = ERRORS( self.line ).ERROR1( self.class_info['class_name'] )
-            else:
-                pass
-
-        else:
-            self.error = self.error
-
+            else: pass
+        else: pass
+             
         return self.class_info, self.error
 
 class ERRORS:

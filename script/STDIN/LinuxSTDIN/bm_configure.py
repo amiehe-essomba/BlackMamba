@@ -131,6 +131,11 @@ class move_cursor:
     def LEFT(pos: int):
         left        = u"\u001b[" + str( pos ) + "D"
         return left
+    
+    # moving cursor on the x and y axis of th scren
+    def TO(x:int, y:int):
+        to          = u"\u001b[" +  str( y ) +";" + str(x) + "H"
+        return to
 
 class cursorPos:
     def to(x:int, y:int):
@@ -293,6 +298,14 @@ class words:
                 else: self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['def', 'class', 'func']:
                 if self.count % 2 == 0 :self.newString += self.b+fg.rbg(255,165,0) + self.string + init.reset
+                else: self.newString += self.b+self.color + self.string + init.reset
+            elif    self.string in ['NameError', "TypeError", "ArithmeticError", "AttributeError", "EOFError", "FileNotFoundError", 
+                    "ImportError", "IndentationError","IndexError", "IOError", 'KeyError', "KeyboardInterrupt",
+                    "MemoryError", "ModuleNotFoundError", "NameError", "OSError","OverflowError",
+                    "SyntaxError", "SystemError",   "ValueError",   "ZeroDivisionError", 'DirectoryNotFoundError', 
+                    'DomainError', 'FileError', 'ModuleLoadError', 'FileModeError', 'EncodingError', 'DecodingError', 
+                    'UnicodeError', 'CircularLoadingError', 'FileNameError' ]:
+                if self.count % 2 == 0 :self.newString += self.b+fg.rbg(25,165,60) + self.string + init.reset
                 else: self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['initialize', 'integer', 'dictionary', 'set', 'get','min', 'max', 'scan', 'floor', 'License', 'help', 'fopen'
                                     'object', 'settings', 'print', 'boolean', 'complex', 'any', 'GetLine', 'ansi', 'rand', 'length', 'type', 

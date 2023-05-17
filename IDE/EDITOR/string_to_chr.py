@@ -20,7 +20,6 @@ def decoding_string() -> list:
         if msvcrt.kbhit():
             key = msvcrt.getch()
             s.append(key)
-
             if s[0] == b'\x00':
                 try: 
                     if s[1] : break
@@ -58,15 +57,17 @@ def convert( ) -> list :
                     number =  [None, None]
         except UnicodeDecodeError: number =  [None, None]
     else:
-        if s[0] in [b'\x00']:
-            s = s[1].decode("utf-8")
-            if   s == "H" : number = [27, [65, 0]]
-            elif s == "P" : number = [27, [66, 0]]
-            elif s == "K" : number = [27, [68, 0]]
-            elif s == "M" : number = [27, [67, 0]]
-            elif s == "t" : number = [27, [49, 65]]
-            elif s == "s" : number = [27, [49, 66]]
-        else: number =  [None, None]
+        try:
+            if s[0] in [b'\x00']:
+                s = s[1].decode("utf-8")
+                if   s == "H" : number = [27, [65, 0]]
+                elif s == "P" : number = [27, [66, 0]]
+                elif s == "K" : number = [27, [68, 0]]
+                elif s == "M" : number = [27, [67, 0]]
+                elif s == "t" : number = [27, [49, 65]]
+                elif s == "s" : number = [27, [49, 66]]
+            else: number =  [None, None]
+        except UnicodeDecodeError : number =  [None, None]
 
     return number
      

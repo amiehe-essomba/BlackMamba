@@ -138,9 +138,6 @@ class MAIN:
                 del self.final_value[ 'class' ][ 'class_name' ]
                 del self.final_value[ 'class' ][ 'arguments' ]
                 self._value_ = self.final_value[ 'class' ]
-                #self._data_ = {
-                #    '{}'.format( self.name ): self._value_
-                #}
                 self.data_base[ 'classes' ].append( self._value_ )
                 self.data_base[ 'class_names' ].append( self.name )
 
@@ -149,9 +146,6 @@ class MAIN:
             del self.final_value[ 'class' ][ 'class_name' ]
             del self.final_value[ 'class' ][ 'arguments' ]
             self._value_ = final_value[ 'class' ]
-            #self._data_ = {
-            #    '{}'.format( self.name ): self._value_
-            #}
             self.data_base[ 'classes' ].append( self._value_ )
             self.data_base[ 'class_names' ].append( self.name )
 
@@ -160,8 +154,7 @@ class MAIN:
     def DEF(self, final_value: dict):
         self.error          = None
         self.final_value    = final_value
-
-        self.name = self.final_value[ 'def' ][ 'function_name' ]
+        self.name           = self.final_value[ 'def' ][ 'function_name' ]
 
         if self.data_base[ 'func_names' ]:
             if self.name in self.data_base[ 'func_names' ]:

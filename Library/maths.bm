@@ -1,8 +1,8 @@
 class getPI:
-	def atan( master : int/float/bool):
+	def atan( master : int float bool):
 		__maths__ * "atan", master 
 	end:
-	def exp( master : int/float/bool = 1.0):
+	def exp( master : int float bool = 1.0):
 		__maths__ * "exp", master
 	end:
 end:
@@ -14,300 +14,300 @@ class trigo:
 		self.e  = getPI.exp( 1.0 )
 	end:
 	
-	def sin( master : int/float/bool):
+	def sin( master : int float bool):
 		__maths__ * "sin", master
 	end:
 	
-	def cos( master : int/float/bool):
+	def cos( master : int float bool):
 		__maths__ * "cos", master 
 	end:
 	
-	def tan( master : int/float/bool):
+	def tan( master : int float bool):
 		__maths__ * "tan", master 
 	end:
 	
-	def asin( master : int/float/bool):
+	def asin( master : int float bool):
 		__maths__ * "asin", master 
 	end:
 	
-	def acos( master : int/float/bool):
+	def acos( master : int float bool):
 		__maths__ * "acos", master 
 	end:
 	
-	def atan( master : int/float/bool):
+	def atan( master : int float bool):
 		__maths__ * "atan", master
 	end:
 	
-	def sinh( master : int/float/bool):
+	def sinh( master : int float bool):
 		__maths__ * "sinh", master
 	end:
 	
-	def cosh( master : int/float/bool):
+	def cosh( master : int float bool):
 		__maths * "cosh", master 
 	end:
 	
-	def tanh( master : int/float/bool):
+	def tanh( master : int float bool):
 		__maths__ * "tanh", master 
 	end:
 	
-	def deg( master : int/float/bool):
+	def deg( master : int float bool):
 		__maths__ * "deg", master 
 	end:
 	
-	def rad( master : int/float/bool):
+	def rad( master : int float bool):
 		__maths__ * "rad", master 
 	end:
 	
-	def asinh( master : int/float/bool):
+	def asinh( master : int float bool):
 		__maths__ * "asinh", master 
 	end:
 	
-	def acosh( master : int/float/bool):
+	def acosh( master : int float bool):
 		__maths__ * "acosh", master 
 	end:
 	
-	def atanh( master : int/float/bool):
+	def atanh( master : int float bool):
 		__maths__ * "atanh", master 
 	end:
 	
-	def gamma( master : int/float/bool):
+	def gamma( master : int float bool):
 		__maths__ * "gamma", master 
 	end:
 	
-	def exp( master : int/float/bool):
+	def exp( master : int float bool):
 		__maths__ * "exp", master 
 	end:
 	
-	def log( master : int/float/bool):
+	def log( master : int float bool):
 		__maths__ * "log", master 
 	end:
 	
-	def log1( master: float/int/bool):
+	def log1( master: int float bool):
 		__math__ * "log1", master
 	
-	def log2( master : int/float/bool):
+	def log2( master : int float bool):
 		__maths__ * "log2", master 
 	end:
 	
-	def log10( master : int/float/bool):
+	def log10( master : int float bool):
 		__maths__ * "log10", master 
 	end:
 	
-	def sqrt( master : int/float/bool):
+	def sqrt( master : int float bool):
 		__maths__ * "sqrt", master 
 	end:
 	
-	def erf( master : int/float/bool):
+	def erf( master : int float bool):
 		__maths__ * "erf", master 
 	end:
 	
-	def erfc( master : int/float/bool):
+	def erfc( master : int float bool):
 		__maths__ * "erfc", master 
 	end:
 	
-	def facto( master : int/float/bool):
+	def facto( master : int float bool):
 		__maths__ * "facto", master
 	end:
 	
-	def floor( master : int/float/bool):
+	def floor( master : int float bool):
 		__maths__ * "floor", master
 	end:
 	
-	def ceil( master : int/float/bool):
+	def ceil( master : int float bool):
 		__maths__ * "ceil", master
 	end:
 	
-	def csign( master1 : float/int, master2 : float/int):
+	def csign( master1 : float int, master2 : float int):
 		__math__ * "csign", [master1, master2]
 	end:
 	
-	def mod( master1 : float/int, master2 : float/int):
+	def mod( master1 : float int, master2 : float int):
 		__math__ * "mod', [master1, master2]
 	
 	def rexp( master : float):
 		__math__ * "rexp", master
 	end:
 	
-	def abs( master : float/int/bool):
+	def abs( master : int float bool):
 		__math__ * "abs", master
 	end:
 	
-	def pgcd( master1 : float/int, master2 : float/int):
+	def pgcd( master1 : float int, master2 : float int):
 		__math__ * "pgcd", [master1, master2]
 	end:
 	
-	def isclose( master1 : float/int/bool, master2: float/int/bool, tol:float=1e-9, abs_tol:float=0.0):
+	def isclose( master1 : int float bool, master2: int float bool, tol:float=1e-9, abs_tol:float=0.0):
 		__math__ * "isclose", [master1, master2, tol, abs_tol]
 	end:
 	
-	def inv_rexp(master:float/int, power:int):
+	def inv_rexp(master:float int, power : int):
 		__math__ * "inv_rexp", [master, power]
 	end:
 	
-	def modf( master:float):
+	def modf( master : float):
 		__math__ * "modf", master
 	end:
 end:
 
 class statistics:
-	def round( master : float/int/bool, max_float : int ):
+	def round( master : int float bool, max_float : int ):
 		__maths__ * "round", [master, max_float]
 	end:
 	
-	def mean( master : list/tuple/range):
+	def mean( master : list tuple range):
 		_mean_ * master
 	end:
 	
-	def std( master : list/tuple/range ):
+	def std( master : list tuple range ):
 		_std_ * [master , "sam"]
 	end:
 	
-	def pstd( master : list/tuple/range):
+	def pstd( master : list tuple range):
 		_std_ * [ master,"pop" ]
 	end:
 	
-	def var( master : list/tuple/range):
+	def var( master : list tuple range):
 		_var_ * [ master, "sam"]
 	end:
 	
-	def pvar( master : list/tuple/range):
+	def pvar( master : list tuple range):
 		_var_ * [master , "pop"]
 	end:
 	
-	def square( master : float/int/bool/cplx):
+	def square( master : float int bool cplx):
 		return master ** 2
 	end:
 	
-	def sqrt( master : float/int/bool):
+	def sqrt( master : float int bool):
 		_sqrt_ * master
 	end:
 	
-	def sum( master : list/tuple/range):
+	def sum( master : list tuple range):
 		_sum_ * master
 	end:
 	
-	def size( master : list/tuple/range/string):
+	def size( master : list tuple range string):
 		return length( master )
 	end:
 	
-	def cov(master1 : list/tuple/range, master2 : list/tuple/range):
+	def cov(master1 : list tuple range, master2 : list tuple range):
 		_std_ * [master1, master2, "cov", "sam", "cov"]
 	end:
 	
-	def pcov(master1 : list/tuple/range, master2 : list/tuple/range):
+	def pcov(master1 : list tuple range, master2 : list tuple range):
 		_std_ * [master1, master2, "cov", "pop", "cov"]
 	end:
 	
-	def corr(master1 : list/tuple/range, master2 : list/tuple/range):
+	def corr(master1 : list tuple range, master2 : list tuple range):
 		_std_ * [master1, master2, "cor", "pop", "cor"]
 	end:
 	
-	def linearR(master1 : list/tuple/range, master2 : list/tuple/range):
+	def linearR(master1 : list tuple range, master2 : list tuple range):
 		_std_ * [master1, master2, "linearR", "pop", "linearR"]
 	end:
 	
-	def iquantile( master : list/tuple/range):
+	def iquantile( master : list tuple range):
 		_std_ * [master, "pop", "iquantile"]
 	end:
 	
-	def Q1( master : list/tuple/range):
+	def Q1( master : list tuple range):
 		_std_ * [master, "Q1", "Q1"]
 	end:
 		
-	def Q3( master : list/tuple/range):
+	def Q3( master : list tuple range):
 		_std_ * [master, "Q3", "Q3"]
 	end:
 		
-	def kurtosis( master : list/tuple/range ):
+	def kurtosis( master : list tuple range ):
 		_std_ * [master, "pop", "kurtosis"]
 	end:
 		
-	def skewness( master : list/tuple/range ):
+	def skewness( master : list tuple range ):
 		_std_ * [master, "pop", "skewness"]
 	end:
 	
-	def mad( master : list/tuple/range ):
+	def mad( master : list tuple range ):
 		_std_ * [master, "mad" ]
 	end:
 	
-	def rms( master : list/tuple/range ):
+	def rms( master : list tuple range ):
 		_std_ * [master, "rms"]
 	end:
 	
-	def rsd( master : list/tuple/range ):
+	def rsd( master : list tuple range ):
 		_std_ * [master, "pop", "rsd"]
 	end:
 	
-	def upper_fence( master : list/tuple/range ):
+	def upper_fence( master : list tuple range ):
 		_std_ * [master, "pop", "upper_fence"]
 	end:
 	
-	def lower_fence( master : list/tuple/range ):
+	def lower_fence( master : list tuple range ):
 		_std_ * [master, "pop", "lower_fence"]
 	end:
 	
-	def std_error( master : list/tuple/range ):
+	def std_error( master : list tuple range ):
 		_std_ * [master, "pop", "std_error"]
 	end:
 	
-	def midrange( master : list/tuple/range ):
+	def midrange( master : list tuple range ):
 		_std_ * [master,"midrange"]
 	end:
 	
-	def sum_square( master : list/tuple/range ):
+	def sum_square( master : list tuple range ):
 		_std_ * [master, "sum_square"]
 	end:  
 	
-	def quantiles( master : list/tuple/range, numeric : int):
+	def quantiles( master : list tuple range, numeric : int):
 		_std_ * [master, numeric, "quantiles"]
 	end:
 	
-	def quantile(master : list/tuple/range, numeric: float):
+	def quantile(master : list tuple range, numeric: float):
 		_std_ * [master, numeric, "quantile"]
 	end:
 	
-	def mode(master: list/tuple/range):
+	def mode(master: list tuple range):
 		_std_ * [master, "mode"]
 	end:
 	
-	def multi_mode( master : list/tuple/range):
+	def multi_mode( master : list tuple range):
 		_std_ * [master, "mul_mode"]
 	end:
 	
-	def median( master : list/tuple/range):
+	def median( master : list tuple range):
 		_std_ * [master, "med"]
 	end:
 	
-	def median_low(master : list/tuple/range):
+	def median_low(master : list tuple range):
 		_std_ * [master, "medl"]
 	end:
 	
-	def median_high(master : list/tuple/range):
+	def median_high(master : list tuple range):
 		_std_ * [master, "medh"]
 	end:
 	
-	def median_grouped( master : list/tuple/range ):
+	def median_grouped( master : list tuple range ):
 		_std_ * [master, "medg"]
 	end:
 	
-	def quantile_dev( master : list/tuple/range):
+	def quantile_dev( master : list tuple range ):
 		value = statistics.iquantile(master)
 		value /= 2.0
 		return value 
 	end:
 	
-	def grouped( master : list/tuple/range):
+	def grouped( master : list tuple range ):
 		_std_ * [master, "grouped"]
 	end:
 	
-	def cms( master : list/tuple/range):
+	def cms( master : list tuple range ):
 		# coefficient of momental skewness
 		value =  statistics.skewness( master ) / 2.0
 		
 		return value
 	end:
 	
-	def pears1( master : list/tuple/range):
+	def pears1( master : list tuple range):
 		# Pearson first coefficient of skewness
 		avg 	= statistics.mean( master )
 		mod 	= statistics.mode( master )
@@ -318,7 +318,7 @@ class statistics:
 		return value / stdX
 	end:
 	
-	def pears2( master : list/tuple/range):
+	def pears2( master : list tuple range):
 		# Pearson second coefficient of skewness 
 		avg 	= statistics.mean( master ) 
 		me	= statistics.median( master )
@@ -329,7 +329,7 @@ class statistics:
 		return value / stdX
 	end: 
 	
-	def qcs( master : list/tuple/range):
+	def qcs( master : list tuple range):
 		# quantile coefficient of skewness
 		me = 2.0 * statistics.median( master )
 		q1 = statistics.Q1( master )
@@ -341,7 +341,7 @@ class statistics:
 		return value
 	end:
 	
-	def CV (master : list/tuple/range):
+	def CV (master : list tuple range):
 		# coefficient of variation 
 		stdX = statistics.pstd( master )
 		avgX = statistics.mean( master )
@@ -351,7 +351,7 @@ class statistics:
 		return cv
 	end:
 	
-	def CQV( master : list/tuple/range):
+	def CQV( master : list tuple range):
 		# coefficient of quartile variation
 		q1 = statistics.Q1( master )
 		q3 = statistics.Q3( master )
@@ -361,18 +361,18 @@ class statistics:
 		return cqv
 	end:
 	
-	def factorial( master : int/bool ):
+	def factorial( master : int bool ):
 		_std_ * [master, "facto"]
 	end:
 	
-	def permutation(n : int/bool , k : int/bool):
+	def permutation(n : int bool , k : int bool):
 		n1 = statistics.factorial(n)
 		n2 = statistics.factorial(n-k)
 		
 		return floor(n1 / n2)
 	end:
 	
-	def combinaison(n : int/bool, k : int/bool):
+	def combinaison(n : int bool, k : int bool):
 		n1 = statistics.permutation(n, k)
 		n2 = statistics.factorial(k)
 		
@@ -381,19 +381,19 @@ class statistics:
 		return K
 	end:
 	
-	def Hmean( master : list/tuple/range):
+	def Hmean( master : list tuple range):
 		# harmonic mean
 		_std_ * [master, "harmonic_mean"]
 	end:
 	
-	def Gmean( master : list/tuple/range ):
+	def Gmean( master : list tuple range ):
 		# geometric mean
 		_std_ * [master, "geometric_mean"]
 	end: 
 end:
 
 class math:
-	def sorted(master: list/tuple/dict, reverse:bool=False ):
+	def sorted(master: list tuple dict, reverse:bool=False ):
 		if master:
 			if ? master == ? []:
 				return master.sorted(reverse=reverse)
@@ -415,7 +415,7 @@ class math:
 		return a + b
 	end:
 	
-	def sign( master : float/int/bool) -> string:
+	def sign( master : float int bool) -> string:
 		if master >= 0:
 			return "+"
 		else:

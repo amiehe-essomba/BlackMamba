@@ -36,11 +36,9 @@ class GLOBAL:
                             if self.error is None:
                                 self.global_var.append( self.name )
                                 self.string = ''
-
                             else:
                                 self.error  = ERRORS( self.line ).ERROR1( self.string )
                                 break
-
                         else:
                             self.error = ERRORS( self.line ).ERROR0( self.master )
                             break
@@ -50,7 +48,6 @@ class GLOBAL:
                 else:
                     self.error = ERRORS( self.line ).ERROR0( self.master )
                     break
-
             else:
                 self.string += str_
                 if i != len( self.main_string ) - 1:
@@ -59,13 +56,10 @@ class GLOBAL:
                     self.string, self.error = self.control.DELETE_SPACE( self.string )
                     if self.error is None:
                         self.name, self.error = self.control.CHECK_NAME( self.string )
-                        if self.error is None:
-                            self.global_var.append( self.name )
-
+                        if self.error is None: self.global_var.append( self.name )
                         else:
                             self.error = ERRORS( self.line ).ERROR1( self.string )
                             break
-
                     else:
                         self.error = ERRORS( self.line ).ERROR0( self.master )
                         break
