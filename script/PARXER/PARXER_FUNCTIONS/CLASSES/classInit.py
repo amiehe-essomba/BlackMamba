@@ -66,7 +66,7 @@ class CLASS_TREATMENT:
             else: pass
         
         if len( self.master[ 'names' ]) <= 3:
-            if self.key is True: #self.main_name in self.class_names or loading is True
+            if self.key is True: 
                 try:
                     self.main_body = None
                     
@@ -432,11 +432,10 @@ class CLASS_TREATMENT:
                 self.table              = ['set_id', 'select', 'keys'] 
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
-                    
                     self.idd    = self.DataBase[ 'variables' ][ 'vars' ].index( self.main_name )
                     self.value  = self.DataBase[ 'variables' ][ 'values' ][ self.idd ]
                 
-                    if   type( self.value ) == type( str() )        :
+                    if   type( self.value ) == type( str() )                        :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.strFunctions:
@@ -455,7 +454,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                       
-                    elif type( self.value ) == type( dict() )       :
+                    elif type( self.value ) == type( dict() )                       :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.dictFunctions:
@@ -474,7 +473,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'dictionary( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                   
-                    elif type( self.value ) == type( list() )       :
+                    elif type( self.value ) == type( list() )                       :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.listFunctions:
@@ -493,7 +492,7 @@ class CLASS_TREATMENT:
                                 else: self.error =er. ERRORS( self.line ).ERROR22( self.name, 'list( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                    
-                    elif type( self.value ) == type( range(2) )     :
+                    elif type( self.value ) == type( range(2) )                     :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.rangeFunctions:
@@ -512,7 +511,7 @@ class CLASS_TREATMENT:
                                 else: self.error =er. ERRORS( self.line ).ERROR22( self.name, 'range( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' ) 
-                    elif type( self.value ) == type( tuple() )      :
+                    elif type( self.value ) == type( tuple() )                      :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.tupleFunctions:
@@ -531,7 +530,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'tuple( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                    
-                    elif type( self.value ) == type( complex() )    :
+                    elif type( self.value ) == type( complex() )                    :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.cplxFunctions:
@@ -550,7 +549,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'complex( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )    
-                    elif type( self.value ) in [type( float() ) ]   :
+                    elif type( self.value ) in [type( float() ) ]                   :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.floatFunctions:
@@ -569,7 +568,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'float( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )                
-                    elif type( self.value ) == type(pd.DataFrame({"s":[1]})):
+                    elif type( self.value ) == type(pd.DataFrame({"s":[1]}))        :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.table:
@@ -588,7 +587,7 @@ class CLASS_TREATMENT:
                                 else: self.error = er.ERRORS( self.line ).ERROR22( self.name, 'table( )' )
                             else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )
                         else: self.error = er.ERRORS( self.line ).ERROR13( self.main_name, 'class' )       
-                    elif type( self.value ) == type(np.array([1])):
+                    elif type( self.value ) == type(np.array([1]))                  :
                         if self.main_name == self.main_expr: 
                             if self.name != self.expr:
                                 if self.name in self.ndarrays:
@@ -650,8 +649,7 @@ class CLASS_TREATMENT:
         self.main_name      = self.master[ 'names' ][ 0 ]
         
         for i, _str_ in enumerate( self.master['expressions'] ):
-            if i < len(self.master[ 'expressions'])-1:
-                self.normal_expr += _str_+'.'
+            if i < len(self.master[ 'expressions'])-1:  self.normal_expr += _str_+'.'
             else: self.normal_expr += _str_
         
         if len( self.master[ 'names' ]) <= 100:
@@ -703,6 +701,7 @@ class CLASS_TREATMENT:
                                                                                                     idd2 = self.mod['id2'], length = 2)
                             else:  self.error = er.ERRORS(self.line).ERROR46( self.main_name, self.sub_name )
                         except KeyError: self.error = er.ERRORS(self.line).ERROR43(self.sub_name) ####here
+            
             elif len( self.master[ 'names' ]) == 3:
                 self._master_ = self.master.copy()
                 if self.main_name in self.DataBase['modulesImport']['fileNames']: 

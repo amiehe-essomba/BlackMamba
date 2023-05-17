@@ -667,11 +667,11 @@ class windows:
                                     if self.key_max_activation is True:
                                         sys.stdout.write(bm.save.save)
                                         if self.indicator is None:
-                                            v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
+                                            v, self.indicator_max, self.max_size, _, self.error = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
                                                                                                             self.s, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
                                         else:
                                             sys.stdout.write(bm.clear.screen(pos=0))
-                                            v, self.indicator_max, self.max_size, self.error = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
+                                            v, self.indicator_max, self.max_size, self.indicator_pos, self.error = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
                                                                                             self.string, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
                                             if self.error is None: pass 
                                             else:
