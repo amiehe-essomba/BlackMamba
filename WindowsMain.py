@@ -668,11 +668,11 @@ class windows:
                                         sys.stdout.write(bm.save.save)
                                         if self.indicator is None:
                                             v, self.indicator_max, self.max_size, _, self.error = PE.DropDown(data_base = self.data_base,line=self.if_line).MENU( self.str_drop_down, 
-                                                                                                            self.s, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
+                                                    self.s, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size), iter=True)
                                         else:
                                             sys.stdout.write(bm.clear.screen(pos=0))
                                             v, self.indicator_max, self.max_size, self.indicator_pos, self.error = PE.DropDown(data_base = self.data_base, line=self.if_line).MENU( self.str_drop_down, 
-                                                                                            self.string, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size))
+                                                                self.string, self.indicator, self.indicator_pos, (self.max_x-len(self.s)-self.size), iter=True)
                                             if self.error is None: pass 
                                             else:
                                                 sys.stdout.write(self.error+"\n\n")

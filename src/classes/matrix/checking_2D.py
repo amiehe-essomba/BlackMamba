@@ -4,7 +4,7 @@ from src.transform                      import matrix_modules as mm
 def Array(master, line=1):
     try:
         if master.any(): final_value = atl.ndarray(list(master), line).List() 
-        else: self.final_value =  []
+        else: final_value =  []
     except DeprecationWarning: 
         final_value = atl.ndarray(list(master), line).List()
     except ValueError : raise ValueError

@@ -603,7 +603,7 @@ class INTERNAL_TRY_WINDOWS:
                             
                             if self.string:
                                 #calling the main module TRY 
-                                self.loop, self.try_cancel, self.error = iTry.INTERNAL_TRY(master=self.mainString, data_base = self.data_base, line=self.if_line,
+                                self.loop, self.try_cancel, self.error = iTry.INTERNAL_TRY(master=self.string, data_base = self.data_base, line=self.if_line,
                                     history=self.history, store_value=self.store_value, space=self.space, 
                                     try_block=self.try_block).TRY(tabulation=self.tabulation,  loop=self.loop, _type_=_type_ , c=c, term=self.term)
                                 

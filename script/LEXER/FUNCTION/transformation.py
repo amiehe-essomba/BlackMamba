@@ -560,6 +560,15 @@ class C_F_I_S:
                                                 self.final_value = self.sub_s
                                             else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                                         else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
+                                    elif self._values_[ 0 ] == "table"           :
+                                        master1, master2, typ = self._values_[1] 
+                                        if   typ == 'T': self.final_value = master1.T 
+                                        elif typ == '*': self.final_value = master1.dot(master2)
+                                        elif typ == '-': self.final_value = master1 - master2
+                                        elif typ == '+': self.final_value = master1 + master2
+                                        elif typ == '/': self.final_value = master1 / master2
+                                        else: self.final_value = master1 % master2
+                                        
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                             else: pass                   
                         elif len(self.list_of_values )  == 5:

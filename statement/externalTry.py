@@ -54,7 +54,7 @@ class EXTERNAL_BLOCKS:
                         if self.normal_string[ -1 ] == ':':
                             if self.normal_string[ 6 ] in [ ' ' ]:
                                 self._return_   = 'except:'
-                                self.value, self.error = structure.STRUCT().EXCEPTIONS(normal_string=self.normal_string)
+                                self.value, self.error = structure.STRUCT(self.data_base, self.line).EXCEPTIONS(normal_string=self.normal_string)
                             else:  er.ERRORS(self.line).ERROR5(self.normal_string)
                         else:
                             try:

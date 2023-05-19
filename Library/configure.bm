@@ -4,7 +4,7 @@ class config:
 	def initialize():
 		self.red 	= ansi("fg", "R")
 		self.green 	= ansi("fg", "G")
-		self.magenta= ansi("fg", "M")
+		self.magenta	= ansi("fg", "M")
 		self.yellow	= ansi("fg", "Y")
 		self.blue	= ansi("fg", "B")
 		self.cyan	= ansi("fg", "C")
@@ -36,7 +36,7 @@ class config:
 	end:
 	def hide():
 		__scan__* "hide", "hide"
-	end
+	end:
 end:
 
 class cursor:
@@ -59,7 +59,7 @@ class cursor:
 		end:
 	end:
 	
-	def down( y : int=1):
+	def down( y : int = 1):
 		if y >= 0:
 			__scan__ * "down", y
 		else:
@@ -74,7 +74,7 @@ class cursor:
 		end:
 	end:
 	
-	def move_to( x:int, y:int):
+	def move_to( x : int, y : int):
 		if x >= 0 and y >= 0:
 			__scan__ * "move_to", [x, y]
 		else:
@@ -97,7 +97,7 @@ class cursor:
 		__scan__ * "restore", "restore"
 	end:
 	
-	def left( x:int =1):
+	def left( x : int = 1):
 		if x >= 0:
 			__scan__ * "left", x 
 		else:

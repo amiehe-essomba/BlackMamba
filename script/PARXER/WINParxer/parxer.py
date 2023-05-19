@@ -243,7 +243,6 @@ class ASSEMBLY( ):
                 self.newLine                    = self.line 
                 self.listTransform, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.newLine, term=term ).TERMINAL(
                                tabulation=1, _type_ = 'try', c=bm.fg.rbg(255,255,255) )
-            
                 if self.error is None:
                     self._finally_key_, self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT(None,
                                                         self.data_base, self.newLine ).TRY_STATEMENT(1, self.listTransform)

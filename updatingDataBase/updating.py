@@ -1,3 +1,5 @@
+import numpy as np 
+
 class UPDATE:
     def __init__(self, data_base : dict):
         self.data_base       = data_base
@@ -27,8 +29,12 @@ class UPDATE:
                 for i, vars in enumerate( self.variables_after ):
                     if vars in self.variables_before:
                         self.idd = self.variables_after.index( vars )
-                        if self.values_after[ self.idd ] == self.values_before[self.idd]: pass
-                        else: self.values_after[ self.idd ] = self.values_before[self.idd]
+                        try:
+                            if self.values_after[ self.idd ] == self.values_before[self.idd]: pass
+                            else: self.values_after[ self.idd ] = self.values_before[self.idd]
+                        except ValueError:
+                            if list(self.values_after[ self.idd ]) == list(np.array([1])): pass 
+                            else: self.values_after[ self.idd ] = self.values_before[self.idd]
                     else:
                         self.idd = self.variables_after.index( vars )
                         del self.values_after[ self.idd ]

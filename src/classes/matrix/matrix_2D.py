@@ -8,6 +8,7 @@ from src.classes.matrix                             import checking_2D as c2D
 from src.transform                                  import matrix_statistics as mstat
 from script.STDIN.LinuxSTDIN 	                    import bm_configure as bm
 from src.transform                                  import datatype as dt
+from src.classes.matrix                             import dot
 
 class MATRIX_2D:
     def __init__(self, DataBase: dict, line:int, master: str, function: str, FunctionInfo : list ):
@@ -31,12 +32,15 @@ class MATRIX_2D:
         self.master, self.nrow, self.ncol, self.master_one = c2D.Array( self.master )
         self._values_       = [self.master_one, self.nrow, self.ncol] 
         
-        if self.function in ['dtype', 'size', 'ndim', 'copy', 'owner', 'choice', 'sorted']:
+        if self.function in ['dtype', 'size', 'ndim', 'copy', 'owner', 'choice', 'sorted', 'trans', 'dot', 'itemsize', 'all', 'any']:
             if type(self.master_copy) == type(np.array([1])):
                 if   self.function == 'dtype'   : self._return_ = dt.data( str( self.master_copy.dtype ) ).type()
                 elif self.function == 'ndim'    : self._return_ = list(self.master_copy.shape)
+                elif self.function == 'trans'   : self._return_ = self.master_copy.T
                 elif self.function == 'copy'    : self._return_ = self.master_copy.copy()
-                elif self.function == 'sorted'  : self.master_copy.sort(); self._return_ = self.master_copy.copy()
+                elif self.function == 'sorted'  : 
+                    self.master_copy.sort()
+                    self._return_ = self.master_copy.copy()
                 elif self.function == 'choice'  : 
                     if len( list( self.master_copy.shape ) ) == 1:
                         self._return_ = np.random.choice(self.master_copy)
@@ -51,6 +55,12 @@ class MATRIX_2D:
                     self._return_ = self.master_copy.base
                     if self._return_ is None: self._return_ = False 
                     else : self._return_ = True
+                elif self.function == 'dot'     : 
+                    self._return_, self.error = dot.DOT(self.DataBase, self.line,
+                                     self.master.copy(), self.function, self.FunctionInfo).DOT(self.main_dict)
+                elif self.function == 'all' : self._return_ = self.master.all()
+                elif self.function == 'any' : self._return_ = self.master.any()
+                elif self.function == 'itemsize' : self._return_ = self.master.itemsize
                 else: self._return_ = np.array(self.master).size
             else: self.error = er.ERRORS( self.line ).ERROR3( mainName, "ndarray()" )
         else:
@@ -93,7 +103,6 @@ class MATRIX_2D:
                                         if type( self.newValues[ 0 ] ) == type( bool() ) :
                                             if type( self.newValues[ 1 ] ) in [type(int()), type(None)] :
                                                 self._values_ += [self.newValues[ 0 ], self.function, self.newValues[ 1 ], "matrix"] 
-                                                print()
                                                 self.master, self.error = c2D.reverse( self._values_)
                                                 if self.newValues[ 1 ] is None: 
                                                     if self.newValues[ 0 ] is True:

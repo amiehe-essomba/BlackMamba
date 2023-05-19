@@ -94,7 +94,7 @@ class EXTERNAL_TRY:
                             if self.error is None:
                                 self.history.append( 'begin' )
                                 self.space = 0
-                                self.loop.append( self._values_ )
+                                self.loop.append( self._values )
                             else: break 
                         # if statement block
                         elif self.get_block == 'if:'     :
@@ -107,7 +107,7 @@ class EXTERNAL_TRY:
                             if self.error is None:
                                 self.history.append( 'if' )
                                 self.space = 0
-                                self.loop.append( self._values_ )
+                                self.loop.append( self._values )
                             else: break
                         # try block
                         elif self.get_block == 'try:'    :
@@ -119,7 +119,7 @@ class EXTERNAL_TRY:
                             if self.error is None:
                                 self.history.append( 'unless' )
                                 self.space = 0
-                                self.loop.append( self._values_ )
+                                self.loop.append( self._values )
                             else:  break
                         # unless statement block
                         elif self.get_block == 'unless:' :
@@ -132,7 +132,7 @@ class EXTERNAL_TRY:
                             if self.error is None:
                                 self.history.append( 'unless' )
                                 self.space = 0
-                                self.loop.append( self._values_ )
+                                self.loop.append( self._values )
                             else:  break
                         # for loop
                         elif self.get_block == 'for:'    :
@@ -155,7 +155,7 @@ class EXTERNAL_TRY:
                             if self.error is None:
                                 self.history.append( 'switch' )
                                 self.space = 0
-                                self.loop.append( self._values_ )
+                                self.loop.append( self._values )
                             else:  break
                         # while loop
                         elif self.get_block == 'while:' :
@@ -166,7 +166,7 @@ class EXTERNAL_TRY:
                             if self.error is None:
                                 self.history.append( 'while' )
                                 self.space = 0
-                                self.loop.append( self._values_ )
+                                self.loop.append( self._values )
                             else:  break
                         # empty line 
                         elif self.get_block == 'empty'   :
@@ -184,8 +184,7 @@ class EXTERNAL_TRY:
                     else:  break
                 else:
                     self.get_block, self.value, self.error = externalTry.EXTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string, 
-                                                data_base=self.data_base, line=self.line).BLOCK( tabulation=self.tabulation)
-                    
+                                                data_base=self.data_base, line=self.line).BLOCKS( tabulation=self.tabulation)
                     if self.error is None:
                         # end block
                         if   self.get_block == 'end:'    :
@@ -251,8 +250,7 @@ class EXTERNAL_TRY:
                     self.error = None
                     self.normal_string = self.analyse.BUILD_NON_CON(string=self.master,tabulation=self.tabulation)
                     self.get_block, self.value, self.error = externalTry.EXTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string, 
-                                            data_base=self.data_base, line=self.line).BLOCK( tabulation=self.tabulation)
-
+                                            data_base=self.data_base, line=self.line).BLOCKS( tabulation=self.tabulation)
                     if self.error is None:
                         # end block
                         if   self.get_block == 'end:'    :
@@ -325,5 +323,5 @@ class EXTERNAL_TRY:
         self.try_block['except_key']            = self.except_key
         self.try_block['active_calculations']   = self.active_calculations
         #############################################################################            
-
+    
         return self.loop,  self.try_cancel, self.error

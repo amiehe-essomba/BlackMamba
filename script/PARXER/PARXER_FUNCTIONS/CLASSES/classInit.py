@@ -19,6 +19,8 @@ from src.functions                                  import function
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import externalLoading  as extL      
 from script.PARXER.PARXER_FUNCTIONS.CLASSES.NESTED  import nested_vars      as n_v
 from script.PARXER.PARXER_FUNCTIONS.CLASSES.NESTED  import nested_func_load as n_f_l
+from script.PARXER.PARXER_FUNCTIONS.CLASSES         import convert
+from script.DATA_BASE                               import data_base as db 
     
 class CLASS_TREATMENT:
     def __init__(self,
@@ -428,7 +430,7 @@ class CLASS_TREATMENT:
                 self.fileios            = ['readline', 'readlines', 'read', 'writeline', 'writelines', 'close', 'write' ]
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
                                            'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis', 'dtype', 
-                                           'size', 'copy', 'owner', 'choice']
+                                           'size', 'copy', 'owner', 'choice', 'all', 'any', 'itemsize', 'plot']
                 self.table              = ['set_id', 'select', 'keys'] 
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
@@ -794,7 +796,6 @@ class CLASS_TREATMENT:
                             self.check_type = False
                         else: pass   
                     else: self.error = er.ERRORS(self.line).ERROR13(self.main_name)
-                
             elif len( self.master[ 'names' ]) == 4:
                 if self.main_name in self.DataBase['modulesImport']['fileNames']: 
                     self.location       = self.DataBase['modulesImport']['fileNames'].index(self.main_name)

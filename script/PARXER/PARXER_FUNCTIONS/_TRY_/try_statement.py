@@ -65,7 +65,7 @@ class EXTERNAL_TRY_FOR_STATEMENT:
         self.keyPass                = keyPass
         self.max_emtyLine           = 5
         ############################################################################
-
+     
         if self.keyPass is False:
             for j, _string_ in enumerate( self.loop_list ):
                 
@@ -80,7 +80,7 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                         self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string,
                                                     normal_string=self.normal_string, data_base=self.data_base, line=self.line).BLOCKS(
                                                     tabulation=self.tabulation + 1, function=_type_, interpreter=True)
-                                                          
+                     
                         if self.error  is None:
                             if self.get_block   == 'begin:'  :
                                 self.next_line      = j + 1
@@ -163,7 +163,7 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                 self.before_init    = updating.UPDATE( data_base=self.data_base ).BEFORE()
                                 self.lastest        = self.history[-1]
                                 self.store_value.append( self.normal_string )
-
+                            
                                 if self.keyPass is False:
                                     self._finally_key_, self.error = INTERNAL_TRY_FOR_STATEMENT( self.master,
                                                 self.data_base, self.line ).TRY_STATEMENT( self.tabulation + 1,
@@ -186,8 +186,8 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                                 self.error              = updating.UPDATE( data_base=self.data_base ).UPDATE( before=self.before, 
                                                                                                         after=self.after, error=self.error )
                                                 self.error = None
-
                                     else:
+                                        self.locked = True
                                         if self._finally_key_ is not True:
                                             self.locked_error.append( self.error )
                                             self.after              = updating.UPDATE( data_base=self.data_base ).AFTER()
@@ -340,7 +340,6 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                                                         self.line ).ANALYZE( _id_ = 1, _type_ = _type_)
                                         if self.error is None:
                                             self.space = 0
-
                                             if self.active_calculations is True: pass
                                             elif self.active_calculations is False:
                                                 if not self.get_errors: pass
@@ -357,6 +356,7 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                                                                                         after=self.after, error=self.error )
                                             self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
                                             self.get_errors.append( self._error_ )
+                                            self.locked = True
                                     else: pass        
                                 else: self.keyPass = True
                         else: break
@@ -393,7 +393,7 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                                         self.idd = self.get_errors.index( self.value )
                                                         del self.get_errors[ self.idd ]
                                                         del self.locked_error[ self.idd ]
-
+                                                        self.error, self.locked = None, False
                                                         self.active_calculations = True
                                                     else: self.active_calculations = False
                                                 else: self.active_calculations = True
@@ -406,14 +406,13 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                                             del self.get_errors[ self.idd ]
                                                             del self.locked_error[ self.idd ]
                                                             self.active_calculations = True
+                                                            self.error, self.locked = None, False
                                                         else: self.active_calculations = False
                                                     else: self.active_calculations = True
-                                        
                                         else: self.active_calculations = False
                                         
                                         self.data_base[ 'pass' ]    = None
                                         self.keyPass                = False
-
                                     else:
                                         self.error = tryE.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                         break
@@ -430,15 +429,7 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                         self.active_calculations    = True
                                         self.finally_key            = True
                                         self.locked                 = False 
-
-                                        if self.get_errors:
-                                            self.error = True
-                                            self.after              = updating.UPDATE( data_base=self.data_base ).AFTER()
-                                            self.error              = updating.UPDATE( data_base=self.data_base ).UPDATE( before=self.before, 
-                                                                                                        after=self.after, error=self.error )
-                                            self.error = None
-                                        else:  pass
-                                        
+                                                                   
                                         self.data_base[ 'pass' ]    = None
                                         self.keyPass                = False
                                     else:
@@ -456,7 +447,6 @@ class EXTERNAL_TRY_FOR_STATEMENT:
                                 self.error = tryE.ERRORS( self.line ).ERROR4()
                                 break
                         else: break
-                    #pass
                 else:
                     self.if_line        += 1
                     self.line           += 1
@@ -465,10 +455,10 @@ class EXTERNAL_TRY_FOR_STATEMENT:
             if self.error is None:
                 if self.get_errors:
                     self.error = self.locked_error[ 0 ]
-                    if self.finally_key is False :# and self._finally_key_ is None:
+                    if self.finally_key is False :
                         self.after              = updating.UPDATE( data_base=self.data_base ).AFTER()
                         self.error              = updating.UPDATE( data_base=self.data_base ).UPDATE( before=self.before, 
-                                                                                                        after=self.after, error=self.error )
+                                                    after=self.after, error=self.error )
                     else: self._finally_key_ = self.finally_key
                 else: pass
             else:pass
@@ -540,12 +530,11 @@ class INTERNAL_TRY_FOR_STATEMENT:
                     self.normal_string, self.active_tab = _string_
                     self.string                         = self.normal_string
 
-                    #if self.string:
                     if self.active_tab is True:
                         self.get_block, self.value, self.error = IS.INTERNAL_BLOCKS(string=self.string,
                                                     normal_string=self.normal_string, data_base=self.data_base, line=self.line).BLOCKS(
                                                     tabulation=self.tabulation + 1, function=_type_, interpreter=True)
-
+                        
                         if self.error  is None:
                             if self.get_block   == 'begin:' :
                                 self.next_line      = j + 1
@@ -585,7 +574,7 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                 else:
                                     self.history.append( 'begin' )
                                     self.space = 0
-                            elif self.get_block ==   'if:'  :
+                            elif self.get_block == 'if:'    :
                                 self.next_line      = j + 1
                                 self.lastest        = self.history[-1]
                                 self.before_init    = updating.UPDATE( data_base=self.data_base ).BEFORE()
@@ -653,6 +642,7 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                                 self.error = None
 
                                     else:
+                                        self.locked = True
                                         if self._finally_key_ is not True:
                                             self.locked_error.append( self.error )
                                             self.after              = updating.UPDATE( data_base=self.data_base ).AFTER()
@@ -824,6 +814,7 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                                                                                         after=self.after, error=self.error )
                                             self._error_, _ = self.analyze.DELETE_SPACE( fe.FileErrors( self.error ).initError() )
                                             self.get_errors.append( self._error_ )
+                                            self.locked = True
                                     else: pass
                                 else: self.keyPass = True
                         else: break
@@ -859,7 +850,7 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                                         self.idd = self.get_errors.index( self.value )
                                                         del self.get_errors[ self.idd ]
                                                         del self.locked_error[ self.idd ]
-
+                                                        self.locked, self.error = False, None
                                                         self.active_calculations = True
                                                     else: self.active_calculations = False
                                                 else: self.active_calculations = True
@@ -872,6 +863,7 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                                             del self.get_errors[ self.idd ]
                                                             del self.locked_error[ self.idd ]
                                                             self.active_calculations = True
+                                                            self.locked, self.error = False, None
                                                         else: self.active_calculations = False
                                                     else: self.active_calculations = True
                                         else: self.active_calculations = False 
@@ -895,14 +887,6 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                         self.finally_key            = True
                                         self.locked                 = False
 
-                                        if self.get_errors:
-                                            self.error = True
-                                            self.after              = updating.UPDATE( data_base=self.data_base ).AFTER()
-                                            self.error              = updating.UPDATE( data_base=self.data_base ).UPDATE( before=self.before, 
-                                                                                                        after=self.after, error=self.error )
-                                            self.error = None
-                                        else: pass
-                                        
                                         self.data_base[ 'pass' ]    = None
                                         self.keyPass                = False
                                     else:
@@ -920,7 +904,6 @@ class INTERNAL_TRY_FOR_STATEMENT:
                                 self.error = tryE.ERRORS(self.line).ERROR4()
                                 break
                         else:  break
-                    #else: pass
                 else:
                     self.if_line        += 1
                     self.line           += 1

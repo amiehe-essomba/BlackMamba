@@ -100,7 +100,7 @@ class ndarray:
 		_std_ * [master, nrow, ncol, reverse, 'cms', axis, 'matrix']
 	end:
 	
-	def round( max_float:int/bool, reverse : bool = False, axis : none int=None):
+	def round( max_float:int bool, reverse : bool = False, axis : none int=None):
 		_std_ * [master, nrow, ncol, reverse, 'round', axis, max_float, 'matrix']
 	end:
 	

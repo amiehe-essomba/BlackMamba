@@ -417,7 +417,13 @@ class CLASSIFICATION:
                         else: pass
                 else: pass
         
-        self.DataBase = loading.Loading( info.copy(), self.DataBase.copy(), self.db.copy()) 
+        self.DataBase = loading.Loading( info.copy(), self.DataBase.copy(), self.db.copy(), self.line, locked) 
+
+        #print(self.DataBase["class_names"])
+        #print(self.DataBase["func_names"], "@")
+        #print(self.DataBase['modulesImport']['moduleLoading']['names'])
+        #print(self.DataBase['modulesImport']['fileNames'], "@")
+
         #if info['module_main'][0] in self.DataBase['modulesImport']['moduleLoading']['names']:
 		#self.idd = self.DataBase['modulesImport']['moduleLoading']['names'].index(info['module_main'][0])
         #self.DataBase['modulesImport']['moduleLoading']['loading'][self.idd] = self.db['modulesImport' ].copy()

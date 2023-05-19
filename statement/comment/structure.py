@@ -139,7 +139,7 @@ class STRUCT:
                 self.new_normal_string, self.error = self.control.DELETE_SPACE(string=self.new_normal_string)
                 if self.error is None:
                     self.all_exceptions, self.error = self.selection.SELECTION( master=self.new_normal_string,
-                                 long_chaine=self.new_normal_string, data_base=self.data_base, line=self.line).CHAR_SELECTION(char = ',')
+                                 long_chaine=self.new_normal_string, data_base=self.data_base, line=self.line).CHAR_SELECTION(",")
                     if self.error is None:
                         for i, _exceptions_ in enumerate( self.all_exceptions ):
                             self.name, self.error = self.control.DELETE_SPACE( string=_exceptions_ )

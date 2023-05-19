@@ -431,5 +431,10 @@ class ERRORS:
         error = '{}is not take into account. {}line: {}{}.'.format( self.green, self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'DecodingError' ).Errors()+'{}{} '.format( self.cyan, string) + error
         return self.error+self.reset
+    def ERROR65(self, shape1 : list, shape2 : list): 
+        error = '{}{shape1}{}<--->{}{shape2}. {}line: {}{}.'.format( self.green, shape1, self.white, self.red, shape2,
+                                                                    self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{} dimension Error '.format( self.cyan, self.red) + error
+        return self.error+self.reset
     
     

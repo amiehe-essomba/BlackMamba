@@ -14,7 +14,7 @@ def bg(r:int=255, g:int=255, b:int=255):
 	__scan__ * "bg", [r, g, b]
 end:
 
-unicode = func(master: string):
+def unicode(master: string):
 	__scan__ * "unicode", master
 end:
 

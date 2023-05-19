@@ -184,7 +184,7 @@ class INTERNAL_TRY:
                     else:  break
                 else:
                     self.get_block, self.value, self.error = externalTry.EXTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string, 
-                                                data_base=self.data_base, line=self.line).BLOCK( tabulation=self.tabulation)
+                                                data_base=self.data_base, line=self.line).BLOCKS( tabulation=self.tabulation)
                     
                     if self.error is None:
                         # end block
@@ -251,7 +251,7 @@ class INTERNAL_TRY:
                     self.error = None
                     self.normal_string = self.analyse.BUILD_NON_CON(string=self.master,tabulation=self.tabulation)
                     self.get_block, self.value, self.error = externalTry.EXTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string, 
-                                            data_base=self.data_base, line=self.line).BLOCK( tabulation=self.tabulation)
+                                            data_base=self.data_base, line=self.line).BLOCKS( tabulation=self.tabulation)
 
                     if self.error is None:
                         # end block

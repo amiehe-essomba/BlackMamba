@@ -297,7 +297,7 @@ class  DropDown:
         self.data_base          = data_base
         self.key 				= key
     
-    def MENU(self, string : str = 'r', true_chaine : str = "", indicator = None, pos : int = 0, d_max_x : int = 1) :
+    def MENU(self, string : str = 'r', true_chaine : str = "", indicator = None, pos : int = 0, d_max_x : int = 1, iter = False) :
         ouput               = ""
         np                  = 1
         self.max_size       = 6
@@ -386,5 +386,6 @@ class  DropDown:
             except IndexError: pass
         else: pass
 
-        return ouput, np, self.max_size, pos, err
+        if iter  is True :  return ouput, np, self.max_size, pos, err
+        else: return ouput, np, self.max_size,  err
         
