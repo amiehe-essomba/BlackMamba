@@ -679,18 +679,17 @@ class CLASS_TREATMENT:
                             
                             self.allNames               = self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.mod['id1']]['func_names']
                             self._functions_            = self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.mod['id1']]['functions']
-                
                             self.DataBase[ 'modulesImport' ]['mainFuncNames'].append(self.allNames )
                             self.DataBase[ 'modulesImport' ]['func_names'].append(self.allNames )
                             self.DataBase[ 'modulesImport' ]['functions'].append(self._functions_)
-                         
+                            
                             self.final_values, self.value_from_db, self.initialize_values, self.error = func.FUNCTION_TREATMENT( self.master,
                                                                     self.DataBase, self.line ).TREATMENT( self.normal_expr, self.master, 
                                                                                                          _main_ = self.main_name )
                             self.DataBase[ 'modulesImport' ]['mainFuncNames']   = self.DataBase[ 'modulesImport' ]['mainFuncNames'][ : -1]
                             self.DataBase[ 'modulesImport' ]['func_names']      = self.DataBase[ 'modulesImport' ]['func_names'][ : -1]
-                            self.DataBase[ 'modulesImport' ]['functions']       = self.DataBase[ 'modulesImport' ]['functions'][ : -1 ]
-                            
+                            self.DataBase[ 'modulesImport' ]['functions']       = self.DataBase[ 'modulesImport' ]['functions'][ : -1 ]   
+
                         else: self.error = er.ERRORS(self.line).ERROR42(self.main_name, self.sub_name)
                     else:
                         try: 

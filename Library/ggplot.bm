@@ -1,0 +1,5 @@
+
+def plot( X : list tuple range ndarray=[1:10], Y : list tuple range ndarray=[1:10], color : string = "red", ls  : string = "--" , lw : int = 1, title : string = "", ps = "ggplot", xlab : string = "X", ylab : string = "Y", figsize : tuple = (6,6), legend : bool = True):
+	
+	__scan__ * X, Y, color, ls, lw, title, ps, xlab, ylab, figsize, legend, "plot"
+end:

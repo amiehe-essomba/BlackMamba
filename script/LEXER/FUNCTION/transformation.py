@@ -2,6 +2,7 @@ import                              random
 import                              math
 import                              sys
 import                              numpy as np
+import                              matplotlib.pyplot as plt 
 from statistics                     import variance, pvariance
 from script                         import control_string
 from script.LEXER                   import particular_str_selection
@@ -31,6 +32,7 @@ from IDE.EDITOR                     import scan
 from IDE.EDITOR                     import test 
 from IDE.EDITOR                     import true_cursor_pos      as cursor_pos
 from src.transform                  import datatype             as dt
+from src.ggplot                     import plot
 
 def color_ansi( master, func, line):
     err = None
@@ -65,7 +67,7 @@ class C_F_I_S:
                     self.list_of_values, self.error = self.selection.SELECTION( self.master, self.master,
                                                                         self.data_base, self.line).CHAR_SELECTION( ',' )
                     if self.error is None:
-                        if   len( self.list_of_values ) == 1:
+                        if   len( self.list_of_values ) == 1    :
                             self.value, self.error = self.control.DELETE_SPACE( self.list_of_values[ 0 ] )
                             if self.error is None:
                                 self._value_, self.error = self.lex_par.NUMERCAL_LEXER( self.value, self.data_base,
@@ -479,7 +481,7 @@ class C_F_I_S:
                                     else: self.error = er.ERRORS( self.line ).ERROR3( self.value )
                                 else: self.error = self.error
                             else: self.error = er.ERRORS( self.line ).ERROR0( self.normal_string )
-                        elif len( self.list_of_values ) == 2:
+                        elif len( self.list_of_values ) == 2    :
                             self._values_ = []
                             for value in self.list_of_values:
                                 self.value = value
@@ -560,18 +562,10 @@ class C_F_I_S:
                                                 self.final_value = self.sub_s
                                             else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                                         else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
-                                    elif self._values_[ 0 ] == "table"           :
-                                        master1, master2, typ = self._values_[1] 
-                                        if   typ == 'T': self.final_value = master1.T 
-                                        elif typ == '*': self.final_value = master1.dot(master2)
-                                        elif typ == '-': self.final_value = master1 - master2
-                                        elif typ == '+': self.final_value = master1 + master2
-                                        elif typ == '/': self.final_value = master1 / master2
-                                        else: self.final_value = master1 % master2
                                         
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                             else: pass                   
-                        elif len(self.list_of_values )  == 5:
+                        elif len( self.list_of_values ) == 5    :
                             self._values_ = []
                             for value in self.list_of_values:
                                 self.value = value
@@ -594,6 +588,24 @@ class C_F_I_S:
                                         else: self.error = er.ERRORS( self.line ).ERROR38( func, _colors_ )
                                     else: self.error = er.ERRORS( self.line ).ERROR37(func )
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
+                            else: pass
+                        elif len( self.list_of_values ) == 12   :
+                            self._values_ = []
+                            for value in self.list_of_values:
+                                self.value = value
+                                self._value_, self.error = self.lex_par.NUMERCAL_LEXER(self.value,
+                                                                    self.data_base, self.line).LEXER(  self.value )
+                                if self.error is None: self._values_.append( self._value_ )
+                                else: break
+                            
+                            if self.error is None: 
+                                if function == '__scan__':
+                                    typ = self._values_[-1]
+                                    if typ == 'plot':
+                                        X, Y, c, ls, lw, t, ps, xlab, ylab, figsize, legend, typ = self._values_
+                                        self.error = plot.ggplot(line=self.line, xlab=xlab, ylab=ylab, figsize=figsize,
+                                                legend=legend, title=t, plot_style=ps).plot(X=X, Y=Y, color=c, ls=ls, lw=lw)
+                                    else: pass
                             else: pass
                         else:self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                     else: pass

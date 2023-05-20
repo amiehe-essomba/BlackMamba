@@ -184,10 +184,6 @@ class FUNCTION_TREATMENT:
                         self._type_                     = self._new_data_base_[ 'type' ]
                         self.new_data_base              = FUNCTION_TREATMENT( self.master, self.data_base, self.line ).INIT_FUNCTION(initialize_data,
                                                                                                     self.new_data_base, self.function_name, lib = True)
-                        # updating modules loaded
-                        # i have to find a solution to make it faster
-                        #updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION(  self.data_base, self.new_data_base)
-                       
                         self.new_data_base[ 'print' ]   = []
                         try:
                             self.all_data_analyses  = self.library[ 'functions' ][ self.function_location ][ self.function_name ]
@@ -195,7 +191,6 @@ class FUNCTION_TREATMENT:
                             self.keyActivation      = False
                             
                             if self.new_data_base[ 'empty_values' ] is None:
-                                #print(self.all_data_analyses)
                                 self.error = EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
                                                                 self.line).DEF_STATEMENT( 1, self.all_data_analyses )
                                 if self.error is None:
@@ -299,7 +294,7 @@ class FUNCTION_TREATMENT:
             try:
                 self.original_module = self.data_base['modulesImport']['modules'][ 0 ]
                 self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
-                
+             
                 if self.mod['key'] is True: 
                     self.data_base[ 'assigment' ]   = self.function_name+'( )'
                     self.function_info              = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']]
@@ -315,33 +310,25 @@ class FUNCTION_TREATMENT:
                             if self.error is None:
                                 self.new_data_base              = self._new_data_base_[ 'data_base' ]
                                 self._type_                     = self._new_data_base_['type']
-                                #print(self.data_base['modulesImport']['fileNames'], self.function_name, self.data_base[ 'modulesImport' ][ 'mainFuncNames' ], '@')
                                 self.new_data_base              = FUNCTION_TREATMENT( self.master, self.data_base, self.line ).INIT_FUNCTION(initialize_data,
                                                                                                         self.new_data_base, self.function_name, lib = True)
                                 
                                 loading.LOAD(self.data_base['modulesImport']['func_names'][self.mod['id1']], self.function_name).INITIALIZE(self.new_data_base, 
                                                 self.data_base['modulesImport']['functions'][self.mod['id1']])
-                                
-                                #self.n = self.data_base['modulesImport']['fileNames'].index(self.function_name) #    index(_main_)
-                                #self.n = 0
-                                #print(self.mod, self.data_base[ 'modulesImport' ][ 'mainFuncNames' ], self.data_base[ 'modulesImport' ][ 'func_names' ])#try:
-                                self.n = self.mod['id2']#self.mod['id1']#self.data_base[ 'modulesImport' ][ 'func_names' ][self.mod['id1']].index( self.function_name)
+                        
+                                self.n = self.mod['id2'] 
                                 loading.LOAD(None, None).GLOBAL_VARS(self.new_data_base, self.data_base['modulesImport']['variables'], self.n)
                                 self.new_data_base[ 'print' ]   = []
                                 
-                                #except ValueError: self.error = er.ERRORS( self.line ).ERROR13( self.function_name )
-                                
                                 if self.error is None:
                                     try:
+                                        if self.data_base[ 'modulesImport' ][ 'alias' ][self.mod['id2']] : 
+                                            self.function_name      = self.data_base[ 'modulesImport' ][ 'alias' ][self.mod['id1']][self.function_name]
+                                        else: pass
                                         self.all_data_analyses  = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']][ self.function_name ]
                                         self.all_data_analyses  = self.all_data_analyses[ 'history_of_data' ]
                                         
                                         self.keyActivation      = False
-                                        #print(self.data_base['modulesImport'])
-                                        #print('-------------------------------------------')
-                                        #print(self.new_data_base['LIB'])
-                                        #updating_data.UPDATE_DATA_BASE(None, None, None).UPDATING_IMPORTATION( self.data_base, self.new_data_base)
-                                        #***************************************
                                         
                                         extL.UPDATING(self.new_data_base, self.data_base).UPDATING(self.original_module)
                                     

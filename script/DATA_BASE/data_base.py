@@ -103,6 +103,7 @@ class DATA_BASE:
         'total_vars'        : None,         # total variables = (local + global) variables
         'loading'           : False,        # for delecting values which sould be printed
         'matrix'            : None,         # for ndarray
+        'plot_style'        :'classic',     # use for plot styl e
         'historyOfErrors'   :{
             'fileName'      : [],           # name of file.bm
             'classes'       : [],           # classes

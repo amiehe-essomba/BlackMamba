@@ -18,11 +18,7 @@ def Loading(info: dict, DataBase: dict, db: dict, line : int = 1, locked : bool 
         if fileNames:
             for j in range(len(fileNames)):
                 data = DataBase[ 'modulesImport' ][ 'moduleLoading' ]['loading'][i]['expressions'][j]
-                #print(data)
                 my_data_base = convert.convert(my_data_base.copy(), line).convert(data, True)
-
-                #print(my_data_base['class_names'], 'class')
-                #print(my_data_base['func_names'], "func")
                 
                 if my_data_base['class_names']:
                     for w, name in enumerate(my_data_base['class_names']):
