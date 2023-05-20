@@ -33,21 +33,18 @@ class MAIN:
         else:
             self.new_string, self.error = self.tab.CHECK_TAB_FOR_INTERPRETER( self.master, self.master,
                                                              self.data_base, self.line).CHECK_LINE(_id_, MainList)
-
         if self.error is None:
             self.new_string = self.new_string
 
             if self.new_string is not None:
                 self.value, self.error = self.affectation.AFFECTATION(self.new_string, self.new_string,
                                                                       self.data_base, self.line).DEEP_CHECKING()
-
                 if self.error is None:
                     self.data_base[ 'final_value' ] = self.value
 
                     self.final_value, self.error = self.lex.FINAL_LEXER( self.new_string, self.data_base,
                                         self.line ).FINAL_LEXER( self.value, _type_=_type_, _key_ = _key_,
                                                             def_key = def_key, class_key = class_key )
-
                     if self.error is None:
                         self.lexer = self.final_value
 
@@ -114,7 +111,7 @@ class MAIN:
                 else: pass
             else: self.lexer = None
         else: pass
-        
+         
         return  self.lexer, self.new_string, self.error
 
     def CLASS(self, final_value: dict):

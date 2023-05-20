@@ -9,7 +9,7 @@ def Loading(info: dict, DataBase: dict, db: dict, line : int = 1, locked : bool 
         DataBase['modulesImport']['moduleLoading']['names'].append(info['module_main'][0])
         DataBase['modulesImport']['moduleLoading']['loading'].append(db['modulesImport'].copy())
 
-    _names_ = DataBase[ 'modulesImport' ][ 'moduleLoading' ]['names']
+    _names_ = DataBase[ 'modulesImport' ][ 'moduleLoading' ]['names'].copy()
     
     for i, nm in enumerate( _names_ ):
         my_data_base = data_base.DATA_BASE().STORAGE().copy()
@@ -27,20 +27,20 @@ def Loading(info: dict, DataBase: dict, db: dict, line : int = 1, locked : bool 
                             DataBase['classes'][idd] = my_data_base['classes'][w].copy()
                         else:
                             DataBase['class_names'].append( name )
-                            DataBase['classes'].append( my_data_base['classes'][w] )
+                            DataBase['classes'].append( my_data_base['classes'][w].copy() )
                 else: pass 
 
                 if my_data_base['func_names']:
                     for w, name in enumerate(my_data_base['func_names']):
                         if name in DataBase['func_names']:
                             idd = DataBase['func_names'].index(name) 
-                            DataBase['functions'][idd] = my_data_base['functions'][w]
+                            DataBase['functions'][idd] = my_data_base['functions'][w].copy()
                         else:
                             DataBase['func_names'].append(name)
-                            DataBase['functions'].append( my_data_base['functions'][w] )
+                            DataBase['functions'].append( my_data_base['functions'][w].copy() )
                 else: pass 
                 
     del my_data_base
   
-    return DataBase.copy()
+    return DataBase
 

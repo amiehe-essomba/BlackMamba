@@ -1,4 +1,4 @@
-# prompt data 
+# ploting data with customized function 
 def prompt ( anonymous ):
 	values = anonymous.copy()
 	print ; values 

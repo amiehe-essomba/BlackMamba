@@ -3,9 +3,21 @@ class UPDATING:
         self.new_data_base  = db1 
         self.data_base      = db2
     def UPDATING(self, name: str ):
-     
+        
         if self.data_base['modulesImport'][ 'moduleLoading' ]['names']:
             self.id             = self.data_base['modulesImport'][ 'moduleLoading' ]['names'].index(name)
+            self._vars_         = self.data_base[ 'modulesImport' ]['variables']['vars'][self.id] 
+            self._values_       = self.data_base[ 'modulesImport' ]['variables']['values'][self.id]
+
+            if self._values_:
+                for x, w in enumerate(self._values_):
+                    if self._vars_[x] in self.new_data_base['variables']['vars']:
+                        __idd__ = self.new_data_base['variables']['vars'].index(self._vars_[x])
+                        self.new_data_base['variables']['values'][__idd__] = w
+                    else:
+                        self.new_data_base['variables']['vars'].append(self._vars_[x])
+                        self.new_data_base['variables']['values'].append(w)
+            else: pass
             try:
                 if self.data_base['modulesImport'][ 'moduleLoading' ]['loading'][self.id]['class_names']:
                     self.class_name1    = self.new_data_base['class_names']

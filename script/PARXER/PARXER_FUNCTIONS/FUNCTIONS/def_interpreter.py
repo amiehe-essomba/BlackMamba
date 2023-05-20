@@ -4,7 +4,8 @@ from statement                                  import externalRest
 from script.PARXER.PARXER_FUNCTIONS._IF_        import if_inter
 from script.PARXER.PARXER_FUNCTIONS._IF_        import IfError    as Ie
 from script.LEXER.FUNCTION                      import main
-from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import functions
+#from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import functions
+from src.functions                              import error as functions
 from script.PARXER                              import module_load_treatment    as mlt
 from functions                                  import internalDef              as ID
 from script.DATA_BASE                           import data_base                as db
@@ -47,6 +48,7 @@ class EXTERNAL_DEF_STATEMENT:
             'functions'         : []
         }
 
+    
         for j, _string_ in enumerate( self.loop_list ):
             self.if_line        += 1
             self.line           += 1

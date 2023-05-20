@@ -322,14 +322,13 @@ class FUNCTION_TREATMENT:
                                 
                                 if self.error is None:
                                     try:
-                                        if self.data_base[ 'modulesImport' ][ 'alias' ][self.mod['id2']] : 
+                                        if self.data_base[ 'modulesImport' ][ 'alias' ][0] : 
                                             self.function_name      = self.data_base[ 'modulesImport' ][ 'alias' ][self.mod['id1']][self.function_name]
                                         else: pass
                                         self.all_data_analyses  = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']][ self.function_name ]
                                         self.all_data_analyses  = self.all_data_analyses[ 'history_of_data' ]
                                         
                                         self.keyActivation      = False
-                                        
                                         extL.UPDATING(self.new_data_base, self.data_base).UPDATING(self.original_module)
                                     
                                         #***************************************

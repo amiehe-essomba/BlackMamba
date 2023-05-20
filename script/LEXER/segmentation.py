@@ -1128,14 +1128,14 @@ class SUB_STRING_FOR_INTERPRETER:
         
         if MainList:
             self.NewLIST                = stdin.STDIN(self.data_base, self.line ).FOR_STRING(_id_, MainList)
-            
             for x, _string_ in enumerate( self.NewLIST ):
                 try:
                     self.string_line    += 1
                     self.loopActivation = True
                                                                                          
                     self.string, self.normal_string, self.active_tab, self.error =  stdin.STDIN(self.data_base,
-                                                            (self.line + self.string_line)).STDIN_FOR_INTERPRETER( _id_, _string_ )   
+                                                            (self.line + self.string_line)).STDIN_FOR_INTERPRETER( _id_, _string_ )  
+                     
                     if self.error is None:
                         if self.active_tab == True :
                             self.string             = self.string[_id_: ]                                                   # removing '\t' due to tab
@@ -1156,13 +1156,12 @@ class SUB_STRING_FOR_INTERPRETER:
                                     # the separtors used here to pass of a line to an another one is the comma < , >               #
                                     ################################################################################################
                                     for i, str_ in enumerate( self.normal_string ):
-
                                         ############################################################################################
                                         # in first of all i check here if the all the chars are accpeted by the code it means that #
                                         # i set a data_base where all accpeted chars are stored then if you a set non accept char  #
                                         # you will get an error.                                                                   #
                                         ############################################################################################
-
+                            
                                         if str_ in self.chars:
                                             self.string_rebuild += str_
                                             if len( self.normal_string ) == 1 :
@@ -1200,7 +1199,6 @@ class SUB_STRING_FOR_INTERPRETER:
                                                                 self.open   = NUMBER().OPENING( self.close )
                                                                 self.error = ERROR((self.line + self.string_line)).ERROR4( self.open, self.close )
                                                                 break
-
                                             else:
                                                 if self.normal_string[ 0 ]  not in  [',']   :
                                                     if i < len( self.normal_string ) - 1:
@@ -1234,7 +1232,6 @@ class SUB_STRING_FOR_INTERPRETER:
                                                         if str_ in [',']:
                                                             self.stest_string, self.error = self.analyze.DELETE_RIGTH(  self.string_rebuild[: -1])
                                                             if self.error is None:
-
                                                                 if self.storage[-1][-1] in [',']:
                                                                     self.storage.append( self.string_rebuild )
                                                                     self.string_rebuild     = ''
@@ -1276,8 +1273,6 @@ class SUB_STRING_FOR_INTERPRETER:
                                                                             self.storage.append(self.string_rebuild)
                                                                             self.key_break = True
                                                                             break
-                                                                            #self.error = ERROR((self.line + self.string_line)).ERROR3()
-                                                                            #break
                                                                         else:
                                                                             if len( self.storage[0] ) == 1 :
                                                                                 self.storage.append(self.string_rebuild)
@@ -1400,7 +1395,7 @@ class SUB_STRING_FOR_INTERPRETER:
                                         # self.key_break helps us to get out of < for > loop when self.error is None and then      #
                                         # we break < while> without any problem to get the final string set in this part           #
                                         ############################################################################################
-                                        if self.key_break == True: 
+                                        if self.key_break is True: 
                                             self.isBreak                    = True
                                             self.data_base['globalIndex']   = x+self.data_base['starter']
                                             break
@@ -1445,7 +1440,7 @@ class SUB_STRING_FOR_INTERPRETER:
             for str_ in self.storage[ self.len_storage : ]:
                 self.string += str_
         else: pass
-
+  
         return self.string, self.error
 
 class SEGMENTATION_FOR_INTERPRETER:

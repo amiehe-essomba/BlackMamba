@@ -21,7 +21,7 @@ class CLASSIFICATION:
         self.lineI          = 0
         self.error          = None
         self.key            = True
-   
+        self.new_array      = []
         self.baseFileName   = info['module_main'][0]
           
         if modules[ 'expressions' ]:
@@ -39,12 +39,21 @@ class CLASSIFICATION:
                                     self.db['starter'] = x+1
                                     self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
                                                                 (self.lineI + self.line) ).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
+                                    
                                     if self.error is None:
+                                        if self.db['globalIndex'] is None: 
+                                            idd = 0 
+                                            self.new_array = data_from_file[x+1 : ]
+                                        else:
+                                            idd = self.db['globalIndex']
+                                            self.db['starter'] = idd
+                                            self.db['globalIndex'] = None
+                                            self.new_array =  data_from_file[idd + 1: ]
+                                          
                                         if self.lexer is not None:
-                                            
                                             num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.db, 
                                                                 (self.lineI + self.line) ).GLOBAL_ASSEMBLY_FILE_INTERPRETER(self.normal_string, True,
-                                                                MainList = data_from_file[x+1: ], baseFileName = self.baseFileName,
+                                                                MainList = self.new_array, baseFileName = self.baseFileName,
                                                                 locked = locked)
                                             if self.error is None: pass
                                             else:  break
@@ -55,6 +64,7 @@ class CLASSIFICATION:
                                 if x < self.db['globalIndex']+1: pass 
                                 else:
                                     try:
+                                        
                                         self.db['starter'] = x+1
                                         self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
                                                                     (self.lineI + self.line)).MAIN( interpreter = True,
@@ -74,8 +84,8 @@ class CLASSIFICATION:
         else: pass
         
         self.vars, self._values_ = [], []
-        
-        if self.error is None:
+ 
+        if self.error is None: 
             if self.db['global_vars']['values']:
                 for i, value in enumerate( self.db['global_vars']['values'] ):
                     if value not in [ '@670532821@656188@656188185@' ]:
@@ -265,7 +275,7 @@ class CLASSIFICATION:
                         'func_names'    : self.db[ 'func_names' ].copy(),
                         'functions'     : self.db[ 'functions' ].copy()
                         }
-                        
+                    
                     if info['module_main'][ 0 ] not in self.DataBase[ 'modulesImport' ]['init']:
                         self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ].append( self.data )
                         self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append([]) 

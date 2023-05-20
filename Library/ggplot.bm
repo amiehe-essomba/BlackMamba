@@ -1,5 +1,42 @@
+from module configure load config 
+from module encoding load fg 
 
-def plot( X : list tuple range ndarray=[1:10], Y : list tuple range ndarray=[1:10], color : string = "red", ls  : string = "--" , lw : int = 1, title : string = "", ps = "ggplot", xlab : string = "X", ylab : string = "Y", figsize : tuple = (6,6), legend : bool = True):
+y = config.bold()+fg(255, 255, 0)
+w = config.bold()+fg(255,255,255)
+g = config.bold()+fg(0,255,0)
+r = config.bold()+fg(255,0,0)
+re = config.reset()
+line = GetLine()
+b = config.bold()+fg(0,0,255)
+
+global y, w, g, r, re, line, b
+
+def plot( 
+	X : list tuple range ndarray=[1:10],
+	Y : list tuple range ndarray=[1:10], 
+	color : string = "red", 
+	ls  : string = "--" , 
+	lw : int = 1, 
+	title : string = "", 
+	ps = "ggplot", 
+	xlab : string = "X", 
+	ylab : string = "Y",
+	figsize : tuple = (6,6),  
+	legend : bool = True
+	):
 	
-	__scan__ * X, Y, color, ls, lw, title, ps, xlab, ylab, figsize, legend, "plot"
+	# checking figsize dimension
+	if length( figsize ) == 2:
+		if ? figsize[0] == ? 1:
+			if ? figsize[1] == ? 1:
+				__scan__ * X, Y, color, ls, lw, title, ps, xlab, ylab, figsize, legend, "plot"
+			else:
+				__show__ * "{g}ValueError : {r}x {w}or {r}y {w}cannot be {x}negative. {w}line : {y}{line} {w}in {g}plot ){w} / {r}module {b}ggplo( ) {re}"
+			end:
+		else:
+			__show__ * "{g}ValueError : {w}in {figsize} {y}{figsize[0]} {w}is not an {r}integer() {y}type. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
+		end:
+	else: 
+		__show__ * "{g}ValueError : {r}figsize {w}should be 1D array. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
+	end:
 end:

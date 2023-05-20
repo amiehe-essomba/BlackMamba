@@ -100,6 +100,7 @@ class STDIN:
         else: pass 
         
         return self.newList
+    
     def IF(self, 
             tabulation  : int    = 1,            # tabulation 
             LIST        : list   = [],           # list of values 
