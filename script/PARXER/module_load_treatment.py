@@ -108,7 +108,7 @@ class CLASSIFICATION:
                 self.DataBase[ 'modulesImport' ]['modules'][self.index]               = info['module_main'][ 0 ]
 
             # only classes
-            if    self.db[ 'class_names']  and not self.db[ 'func_names' ]  :
+            if    self.db[ 'class_names']  and not self.db[ 'func_names'  ]  :
                 self.star       = False
                 if  info['module_load'] is not None:
                     for x, name in enumerate(info['module_main']):
@@ -299,7 +299,7 @@ class CLASSIFICATION:
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data
             # classes and functions
-            elif  self.db[ 'func_names' ]  and  self.db[ 'class_names' ]    :
+            elif  self.db[ 'func_names' ]  and     self.db[ 'class_names' ]    :
                 self.star = False
                 if  info['module_load'] is not None:
                     for x, name in enumerate(info['module_main']):

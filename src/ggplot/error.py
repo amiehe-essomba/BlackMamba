@@ -47,6 +47,22 @@ class ERRORS:
                                                             self.red, self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}in {}{} '.format( self.white, self.cyan, data ) + error
         return self.error+self.reset
+    
+    def ERROR5(self, string : str ): 
+        error = '{}are not {}integer(). {}line: {}{}.'.format( self.white, self.red, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}all the elements of {}{} '.format( self.white, self.cyan, string ) + error
+        return self.error+self.reset
+    
+    def ERROR6(self, shape1 : list, shape2 : list): 
+        error = '{}X = {}{} <---> {}color = {} . {}line: {}{}.'.format( self.green, shape1, self.white, self.red, shape2,
+                                                                    self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors(  'ValueError' ).Errors()+'{}dimension Error '.format( self.cyan ) + error
+        return self.error+self.reset
+    
+    def ERROR7(self, string :str): 
+        error = '{}cannot be empty. {}line: {}{}.'.format(self.green, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors(  'ValueError' ).Errors()+'{}{}'.format( self.cyan, string ) + error
+        return self.error+self.reset
 
 
 

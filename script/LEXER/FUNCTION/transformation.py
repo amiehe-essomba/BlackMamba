@@ -589,7 +589,7 @@ class C_F_I_S:
                                     else: self.error = er.ERRORS( self.line ).ERROR37(func )
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                             else: pass
-                        elif len( self.list_of_values ) == 12   :
+                        elif len( self.list_of_values ) in [12, 13, 14, 15]   :
                             self._values_ = []
                             for value in self.list_of_values:
                                 self.value = value
@@ -605,6 +605,11 @@ class C_F_I_S:
                                         X, Y, c, ls, lw, t, ps, xlab, ylab, figsize, legend, typ = self._values_
                                         self.error = plot.ggplot(line=self.line, xlab=xlab, ylab=ylab, figsize=figsize,
                                                 legend=legend, title=t, plot_style=ps).plot(X=X, Y=Y, color=c, ls=ls, lw=lw)
+                                    elif typ == "scatter":
+                                        X, Y, c, s, t, ps, xlab, ylab, figsize, legend, label, marker, typ = self._values_
+                                        self.error = plot.ggplot(line=self.line, xlab=xlab, ylab=ylab, figsize=figsize,
+                                                legend=legend, title=t, plot_style=ps).scatter(X=X, Y=Y, color=c, size=s, label=label,
+                                                marker = marker)
                                     else: pass
                             else: pass
                         else:self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )

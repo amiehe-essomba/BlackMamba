@@ -12,17 +12,19 @@ b = config.bold()+fg(0,0,255)
 global y, w, g, r, re, line, b
 
 def plot( 
-	X : list tuple range ndarray=[1:10],
-	Y : list tuple range ndarray=[1:10], 
-	color : string = "red", 
-	ls  : string = "--" , 
-	lw : int = 1, 
-	title : string = "", 
-	ps = "ggplot", 
-	xlab : string = "X", 
-	ylab : string = "Y",
-	figsize : tuple = (6,6),  
-	legend : bool = True
+	X 	: list tuple range ndarray=[1:10],
+	Y 	: list tuple range ndarray=[1:10], 
+	color 	: string = "red", 
+	ls  	: string = "--" , 
+	lw 	: int    = 1, 
+	title 	: string = "", 
+	ps 	: string = "ggplot", 
+	xlab 	: string = "X", 
+	ylab 	: string = "Y",
+	figsize : tuple  = (6,6),  
+	legend 	: bool   = True,
+	xmin 	: list   = [],
+	xmax 	: list   = []
 	):
 	
 	# checking figsize dimension
@@ -31,7 +33,7 @@ def plot(
 			if ? figsize[1] == ? 1:
 				__scan__ * X, Y, color, ls, lw, title, ps, xlab, ylab, figsize, legend, "plot"
 			else:
-				__show__ * "{g}ValueError : {r}x {w}or {r}y {w}cannot be {x}negative. {w}line : {y}{line} {w}in {g}plot ){w} / {r}module {b}ggplo( ) {re}"
+				__show__ * "{g}ValueError : {w}in {figsize} {y}{figsize[1]} {w}is not an {r}integer() {y}type. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
 			end:
 		else:
 			__show__ * "{g}ValueError : {w}in {figsize} {y}{figsize[0]} {w}is not an {r}integer() {y}type. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
@@ -39,4 +41,54 @@ def plot(
 	else: 
 		__show__ * "{g}ValueError : {r}figsize {w}should be 1D array. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
 	end:
+end:
+
+def scatter(
+	X 	: list tuple range ndarray=[1:10],
+	Y 	: list tuple range ndarray=[1:10],
+	color 	: string list tuple = "red",
+	s 	: int    = 10,
+	title 	: string = "",
+	ps 	: string = "ggplot",
+	xlab 	: string = "X",
+	ylab 	: string = "Y",
+	figsize : tuple  = (6,6),
+	legend 	: bool   = True,
+	label 	: list tuple, none = None,
+	marker 	: int    = 0,
+	cmap	: string = "plt.cm.Greens",
+	xmin	: list   = [],
+	xmax	: list   = [],
+	edgecolor : list string = "red"
+	):
+	
+	
+	# checking figsize dimension
+	if length( figsize ) == 2:
+		if ? figsize[0] == ? 1:
+			if ? figsize[1] == ? 1:
+				if marker >= 0:
+					if marker in [0:5]:
+						new_marker = ["o", "^", "+", "*", "."]
+						__scan__ * X, Y, color, s, title, ps, xlab, ylab, figsize, legend, label, new_marker[marker], "scatter"
+					else:
+						__show__ * "{g}ValueError : {y}marker {w}index out of range {r}maker {w}> {g}5. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"		
+					end:
+				else:
+					__show__ * "{g}ValueError : {y}marker {w}cannot be {r}negative. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"		
+				end:
+			else:
+				__show__ * "{g}ValueError : {w}in {figsize} {y}{figsize[1]} {w}is not an {r}integer() {y}type. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
+			end:
+		else:
+			__show__ * "{g}ValueError : {w}in {figsize} {y}{figsize[0]} {w}is not an {r}integer() {y}type. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
+		end:
+	else:
+		__show__ * "{g}ValueError : {r}figsize {w}should be 1D array. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
+	end:
+end:
+
+
+def save( name : string ):
+	__scan__ * sname, "save_figure"
 end:
