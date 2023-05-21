@@ -43,7 +43,7 @@
 
 > Example of a code
 
-![Sample Video](/images/illustration.mp4)
+![Sample Video](/images/illustration.gif)
 
 ## CONTRIBUTING
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
