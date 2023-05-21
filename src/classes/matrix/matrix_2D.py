@@ -31,13 +31,18 @@ class MATRIX_2D:
         self.master_copy    = self.master.copy()
         self.master, self.nrow, self.ncol, self.master_one = c2D.Array( self.master )
         self._values_       = [self.master_one, self.nrow, self.ncol] 
+        self.Type           = [ 'dtype', 'size', 'ndim', 'copy', 'owner', 'choice', "inv",
+                                'sorted', 'trans', 'dot', 'itemsize', 'all', 'any', "redim", "merge", "solve", "norm"]
         
-        if self.function in ['dtype', 'size', 'ndim', 'copy', 'owner', 'choice', 'sorted', 'trans', 'dot', 'itemsize', 'all', 'any']:
+        if self.function in self.Type:
             if type(self.master_copy) == type(np.array([1])):
                 if   self.function == 'dtype'   : self._return_ = dt.data( str( self.master_copy.dtype ) ).type()
                 elif self.function == 'ndim'    : self._return_ = list(self.master_copy.shape)
                 elif self.function == 'trans'   : self._return_ = self.master_copy.T
                 elif self.function == 'copy'    : self._return_ = self.master_copy.copy()
+                elif self.function == 'inv'     : 
+                    try :  self._return_ = np.linalg.inv(self.master_copy.copy())
+                    except np.linalg.LinAlgError: self.error =  er.ERRORS( self.line ).ERROR69()
                 elif self.function == 'sorted'  : 
                     self.master_copy.sort()
                     self._return_ = self.master_copy.copy()
@@ -55,12 +60,12 @@ class MATRIX_2D:
                     self._return_ = self.master_copy.base
                     if self._return_ is None: self._return_ = False 
                     else : self._return_ = True
-                elif self.function == 'dot'     : 
+                elif self.function in ['dot', 'redim', 'merge', 'solve', 'norm'] : 
                     self._return_, self.error = dot.DOT(self.DataBase, self.line,
-                                     self.master.copy(), self.function, self.FunctionInfo).DOT(self.main_dict)
-                elif self.function == 'all' : self._return_ = self.master.all()
-                elif self.function == 'any' : self._return_ = self.master.any()
-                elif self.function == 'itemsize' : self._return_ = self.master.itemsize
+                                     self.master_copy.copy(), self.function, [self.FunctionInfo]).DOT(self.main_dict, typ=self.function)
+                elif self.function == 'all' : self._return_ = self.master_copy.all()
+                elif self.function == 'any' : self._return_ = self.master_copy.any()
+                elif self.function == 'itemsize' : self._return_ = self.master_copy.itemsize
                 else: self._return_ = np.array(self.master).size
             else: self.error = er.ERRORS( self.line ).ERROR3( mainName, "ndarray()" )
         else:

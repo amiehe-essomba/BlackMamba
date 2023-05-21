@@ -33,6 +33,8 @@ from IDE.EDITOR                     import test
 from IDE.EDITOR                     import true_cursor_pos      as cursor_pos
 from src.transform                  import datatype             as dt
 from src.ggplot                     import plot
+from src.ML.data                    import make_R
+from src.ML.LR                      import linearModel as LM
 
 def color_ansi( master, func, line):
     err = None
@@ -311,27 +313,35 @@ class C_F_I_S:
                                                     else: pass
                                                     
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
-                                                self.typ = [type(list()), type(tuple()), type(range(1))]
-                                                if type(self._value_[0]) == type(list()): pass
-                                                else: self._value_[0] = list(self._value_[0])
+                                                if len(self._value_) > 4:
+                                                    self.typ = [type(list()), type(tuple()), type(range(1))]
+                                                    if type(self._value_[0]) == type(list()): pass
+                                                    else: self._value_[0] = list(self._value_[0])
 
-                                                self.final_value, self.error = mm.MATRIX(self._value_[0], self._value_[1],self._value_[2],
-                                                                          self._value_[3], self.line).MATRIX(self._value_[5], ctype=self._value_[4])
-                                                
-                                                if self.error is None:
-                                                    self.func = bm.fg.rbg(0, 255, 0) + ' in {}( ).'.format( self._value_[4] ) + bm.init.reset
-                                                    if self._value_[4] is None:  self.final_value = np.array( self.final_value )
-                                                    else:
-                                                        if   self._value_[4] == 'sorted':
-                                                            if type(self.final_value) == type(np.array([1])): 
-                                                                self.final_value.sort()
-                                                            else: self.final_value = np.sort( self.final_value )
-                                                        elif self._value_[4] == 'dtype' : self.final_value = dt.data( str(np.array( self.final_value.dtype  ) ) ).type()
-                                                        elif self._value_[4] == 'size'  : self.final_value = np.array( self.final_value ).size
-                                                        else: self.final_value, self.error = mstat.R(self.final_value, self._value_, self.line).R()
-                                                else: pass
+                                                    self.final_value, self.error = mm.MATRIX(self._value_[0], self._value_[1],self._value_[2],
+                                                                            self._value_[3], self.line).MATRIX(self._value_[5], ctype=self._value_[4])
+                                                    
+                                                    if self.error is None:
+                                                        self.func = bm.fg.rbg(0, 255, 0) + ' in {}( ).'.format( self._value_[4] ) + bm.init.reset
+                                                        if self._value_[4] is None:  self.final_value = np.array( self.final_value )
+                                                        else:
+                                                            if   self._value_[4] == 'sorted':
+                                                                if type(self.final_value) == type(np.array([1])): 
+                                                                    self.final_value.sort()
+                                                                else: self.final_value = np.sort( self.final_value )
+                                                            elif self._value_[4] == 'dtype' : self.final_value = dt.data( str(np.array( self.final_value.dtype  ) ) ).type()
+                                                            elif self._value_[4] == 'size'  : self.final_value = np.array( self.final_value ).size
+                                                            else: self.final_value, self.error = mstat.R(self.final_value, self._value_, self.line).R()
+                                                    else: pass
 
-                                                self.data_base['matrix'] = True
+                                                    self.data_base['matrix'] = True
+                                                else:
+                                                    nrow, ncol = self._value_[:2]
+                                                    if   self._value_[2] == 'null': self.final_value = np.zeros((nrow, ncol))
+                                                    elif self._value_[2] == "ones": self.final_value = np.ones((nrow, ncol))
+                                                    else : self.final_value = np.array(nrow)
+
+                                                    self.data_base['matrix'] = True
                                             else:
                                                 self.type_accepted  = [type(list()), type(tuple()), type(range(1))]
                                                 func = bm.fg.rbg(0, 255, 0   )+' in std( ).' + bm.init.reset 
@@ -565,6 +575,43 @@ class C_F_I_S:
                                         
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                             else: pass                   
+                        elif len( self.list_of_values ) == 3    :
+                            self._values_ = []
+                            for value in self.list_of_values:
+                                self.value = value
+                                self._value_, self.error = self.lex_par.NUMERCAL_LEXER(self.value,
+                                                                    self.data_base, self.line).LEXER(  self.value )
+                                if self.error is None: self._values_.append( self._value_ )
+                                else: break
+
+                            if self.error is None:
+                                if   self._values_[-1] == "regression":
+                                    samples, features, noise, seed, shuffle, target, polynomial = self._values_[0] 
+                                    self.final_value, self.error = make_R.R(samples=samples, features=features, seed=seed, noise=noise,
+                                                    shuffle=shuffle, target=target, polynomial=polynomial)
+                                elif self._values_[-1] == "model": 
+                                    X, y, theta, lr, tol = self._values_[0]
+                                    self.final_value, self.error = LM.SGD(X=X, y=y, theta=theta, learning_rate=lr, tol=tol, line=self.line)
+                                elif self._values_[-1] == "predict": 
+                                    X, theta, show = self._values_[0]
+                                    self.final_value, self.error = LM.predict(X=X, theta=theta, line=self.line)
+                                    if self.error is None:
+                                        if show is True: 
+                                            y_pred = self.final_value['y_pred']
+                                            fig, ax = plt.subplots(1,1, figsize=(7,7))
+                                            ax.scatter(X[:, 0], X[:, 1], c='red', s=100, marker="o", label="y_true")
+                                            ax.scatter(X[:, 0], self.final_value, c='blue', s=100, marker="o", label="y_pred")
+                                            ax.set_xlabel("X", fontsize="medium")
+                                            ax.set_ylabel("Y", fontsize="medium")
+                                            ax.legend()
+                                            plt.show()
+                                        else: pass
+                                    else: pass
+                                elif self._values_[-1] == "thata": 
+                                    nrow = self._values_[0]
+                                    self.final_value = LM.theta(params = nrow)
+                                else: pass
+                            else: pass
                         elif len( self.list_of_values ) == 5    :
                             self._values_ = []
                             for value in self.list_of_values:

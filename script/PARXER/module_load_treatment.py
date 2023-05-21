@@ -1,8 +1,10 @@
+import numpy as np
 from script.LEXER.FUNCTION                      import main
 from script.PARXER                              import parxer_assembly
 from script.DATA_BASE                           import data_base    as db
 from src.modulesLoading                         import error        as er
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import loading
+from numba                                  import jit, prange
 
 def replace(data, key, key_r):
     for s in data:
@@ -13,67 +15,85 @@ def replace(data, key, key_r):
 
 class CLASSIFICATION:
     def __init__(self, DataBase: dict, line: int):
+        # main data base 
         self.DataBase   = DataBase
+        # indexing line 
         self.line       = line
     
     def CLASSIFICATION( self, modules : dict = {}, baseFileName : str = '', locked : bool = True, info : dict = {} ):
+        # creating a new data base for the current function that is running 
         self.db             = db.DATA_BASE().STORAGE().copy()
+        # initializing the increment 
         self.lineI          = 0
+        # intializing error  
         self.error          = None
+        # keyword activation initialized 
         self.key            = True
+        # new array for storing the selected string 
         self.new_array      = []
+        # base file nale for the traceback
         self.baseFileName   = info['module_main'][0]
+        # index init 
+        self.ind            = 0
           
+        # checking first if the module function exists  
         if modules[ 'expressions' ]:
-            for i in range(0, 1):
+            # creating a simple loop (0,1) just one increment 
+            for i in range(1):
                 data_from_file = modules[ 'expressions'][ -1 ]
          
                 if not data_from_file: pass 
                 else:
                     for x, string in enumerate( data_from_file ):
                         self.lineI  += 1
-                        
                         if string:
                             if self.db['globalIndex'] is None:
                                 try:
                                     self.db['starter'] = x+1
-                                    self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
-                                                                (self.lineI + self.line) ).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
-                                    
-                                    if self.error is None:
-                                        if self.db['globalIndex'] is None: 
-                                            idd = 0 
-                                            self.new_array = data_from_file[x+1 : ]
-                                        else:
-                                            idd = self.db['globalIndex']
-                                            self.db['starter'] = idd
-                                            self.db['globalIndex'] = None
-                                            self.new_array =  data_from_file[idd + 1: ]
-                                          
-                                        if self.lexer is not None:
-                                            num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.db, 
-                                                                (self.lineI + self.line) ).GLOBAL_ASSEMBLY_FILE_INTERPRETER(self.normal_string, True,
-                                                                MainList = self.new_array, baseFileName = self.baseFileName,
-                                                                locked = locked)
-                                            if self.error is None: pass
-                                            else:  break
-                                        else: pass
-                                    else:  break
+                                    if x >= self.ind :
+                                        self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
+                                                                    (self.lineI + self.line) ).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
+                                        
+                                        if self.error is None:
+                                            if self.db['globalIndex'] is None: 
+                                                self.new_array, self.ind = data_from_file[x + 1 : ], 0
+                                            else:
+                                                self.ind = self.db['globalIndex']
+                                                self.db['starter'] = self.ind
+                                                self.new_array =  data_from_file[self.ind + 1 : ]
+                                            
+                                            if self.lexer is not None:
+                                                num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.db, 
+                                                                    (self.lineI + self.line) ).GLOBAL_ASSEMBLY_FILE_INTERPRETER(self.normal_string, True,
+                                                                    MainList = self.new_array, baseFileName = self.baseFileName,
+                                                                    locked = locked)
+                                                if self.error is None:  pass
+                                                else:  break
+                                            else: pass
+                                        else:  break
+                                    else: pass
                                 except EOFError: break
                             else:
                                 if x < self.db['globalIndex']+1: pass 
                                 else:
                                     try:
-                                        
+                                        self.before = self.db['globalIndex']
                                         self.db['starter'] = x+1
                                         self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
                                                                     (self.lineI + self.line)).MAIN( interpreter = True,
                                                                     MainList = data_from_file[x+1: ] )
                                         if self.error is None:
                                             if self.lexer is not None:
+                                                self.ind = np.abs(self.before -  self.db['globalIndex'])
+                                                if self.ind == 0:
+                                                    self.new_array, self.ind = data_from_file[x + 1 : ], 0
+                                                else:
+                                                    self.ind = self.db['globalIndex']
+                                                    self.db['starter'] = self.ind
+                                                    self.new_array =  data_from_file[self.ind + 1 : ]
                                                 num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.db,
                                                                 (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(self.normal_string, 
-                                                                True, MainList = data_from_file[x+1: ],  baseFileName = self.baseFileName,
+                                                                True, MainList = self.new_array,  baseFileName = self.baseFileName,
                                                                 locked = locked)
                                                 if self.error is None: pass
                                                 else:  break

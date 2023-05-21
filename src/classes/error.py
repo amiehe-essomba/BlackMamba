@@ -427,14 +427,36 @@ class ERRORS:
         error = '{}is not take into account. {}line: {}{}.'.format( self.green, self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'EncodingError' ).Errors()+'{}{} '.format( self.cyan, string) + error
         return self.error+self.reset
+    
     def ERROR64(self, string :str ): #
         error = '{}is not take into account. {}line: {}{}.'.format( self.green, self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'DecodingError' ).Errors()+'{}{} '.format( self.cyan, string) + error
         return self.error+self.reset
+    
     def ERROR65(self, shape1 : list, shape2 : list): 
-        error = '{}{shape1}{}<--->{}{shape2}. {}line: {}{}.'.format( self.green, shape1, self.white, self.red, shape2,
+        error = '{}{}{}<--->{}{}. {}line: {}{}.'.format( self.green, shape1, self.white, self.red, shape2,
                                                                     self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{} dimension Error '.format( self.cyan, self.red) + error
+        return self.error+self.reset
+    
+    def ERROR66(self, shape1 : list, shape2 : list): 
+        error = '{}into {}{}. {}line: {}{}.'.format( self.white, self.red, shape2, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{} cannot redim {}{} '.format( self.cyan, self.red, shape1) + error
+        return self.error+self.reset
+    
+    def ERROR67(self, string : str): 
+        error = '{}line: {}{}.'.format(self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}bad values in {}{} .'.format( self.cyan, self.red, string) + error
+        return self.error+self.reset
+    
+    def ERROR68(self, string : str, data: list): 
+        error = '{}is not in {}{}. {}line: {}{}.'.format(self.white, self.red, data, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format( self.cyan, string) + error
+        return self.error+self.reset
+    
+    def ERROR69(self): 
+        error = '{}delta is {}null. {}line: {}{}.'.format(self.white, self.red, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}Singular matrix '.format( self.cyan ) + error
         return self.error+self.reset
     
     

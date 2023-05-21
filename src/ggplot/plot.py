@@ -138,10 +138,18 @@ class ggplot:
                         fig, ax = plt.subplots(1,1, figsize=self.size_)
                         scatter = ax.scatter(X, Y, c=self.color, s=size, marker=marker)
                         ax.set_title(self.title)
-                        ax.set_xlabel(xlabel=self.xlab, fontsize="medium", color=self.color)
-                        ax.set_ylabel(ylabel=self.ylab, fontsize="medium", color=self.color)
-                        if self.legend is True:  ax.legend(handles = scatter.legend_elements()[0], label=label)
-                        else: pass 
+                        ax.set_xlabel(xlabel=self.xlab, fontsize="medium", color="black")
+                        ax.set_ylabel(ylabel=self.ylab, fontsize="medium", color="black")
+                        try:
+                            if self.legend is True:
+                                if type(self.color) == type(str()): 
+                                    if label is None: ax.legend("")
+                                    else: ax.legend(label=label)
+                                else : 
+                                    if label is not None : ax.legend(handles = scatter.legend_elements()[0], label=label)
+                                    else: ax.legend(handles = scatter.legend_elements()[0])
+                            else: pass 
+                        except Exception: pass
                         plt.show()
                     else: pass 
                 else: pass

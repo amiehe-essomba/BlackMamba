@@ -1,3 +1,39 @@
+from module configure load config 
+from module encoding load fg 
+
+y = config.bold()+fg(255, 255, 0)
+w = config.bold()+fg(255,255,255)
+g = config.bold()+fg(0,255,0)
+r = config.bold()+fg(255,0,0)
+re = config.reset()
+line = GetLine()
+b = config.bold()+fg(0,0,255)
+
+global y, w, g, r, re, line, b
+
+def ones(nrow : int, ncol : int ):
+	if (nrow > 0) && (ncol > 0):
+		_std_ * [nrow, ncol, "ones", "matrix"]
+	else:
+		__show__ * "{g}ValueError : {y}nrow && ncol {w}should be {g}> {r}0 . {w}line : {y}{line} {w}in {g}ones( ){w} / {r}module {b}matrix( ) {re}"
+	end:
+end:
+
+def null( nrow : int, ncol : int ):
+	if (nrow > 0 ) and (ncol > 0 ):
+		_std_ * [nrow, ncol, "null", "matrix"]
+	else:
+		__show__ * "{g}ValueError : {y}nrow && ncol {w}should be {g}> {r}0 . {w}line : {y}{line} {w}in {g}null( ){w} / {r}module {b}matrix( ) {re}"
+	end:
+end:
+
+def conv( master : list tuple range ):
+	if length( master ) >= 1:
+		_std_ * [master, None, "array", "matrix"]
+	else:
+		__show__ * "{g}ValueError : {y}master {w}cannot be {g}EMPTY . {w}line : {y}{line} {w}in {g}convertion( ){w} / {r}module {b}matrix( ) {re}"
+	end:
+end:
 
 class ndarray:
 	def initialize(master : list tuple range, nrow : int, ncol : int):

@@ -1757,7 +1757,7 @@ class ERRORS:
     def ERROR7(self, op, ob1, ob2):
         error = '{}<< {}{} >>, {} and {}<< {}{} >>. {}type. {}line: {}{}'.format(self.white, ob1, self.white, self.magenta, 
                                                     self.white, ob2, self.white, self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}<< {}{}{} >> {}not supported between '.format(self.cyan, self.yllow, op, 
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}<< {}{}{} >> {}not supported between '.format(self.cyan, self.yellow, op, 
                                                                                             self.cyan, self.green) + error
         return self.error+self.reset
 

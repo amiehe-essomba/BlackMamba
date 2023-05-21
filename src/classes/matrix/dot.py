@@ -40,16 +40,69 @@ class DOT:
                                                     self.DataBase,self.line).ANALYSE( mainString )
                                     if self.error is None:
                                         self.newValues = self.final_val[ 0 ]
-                                        if type( self.newValues ) == type(np.array([1])):
-                                            if self.master.any(): 
-                                                if typ == 'dot': 
+                                        if   typ == 'dot'   : 
+                                            if type( self.newValues ) == type(np.array([1])):
+                                                if list(self.master): 
                                                     try: self._return_ =  self.master.dot(self.newValues)
                                                     except ValueError:
                                                         shape1, shape2 = list(self.master.shape), list(self.newValues)
                                                         self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2 ) 
-                                                else: pass
+                                                else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                            else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
+                                        elif typ == "redim" :
+                                            if list(self.master):
+                                                if type( self.newValues ) == type(tuple()):
+                                                    try: self._return_ =  self.master.reshape(self.newValues)
+                                                    except ValueError: 
+                                                        self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues) 
+                                                else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "tuple()" ) 
                                             else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
-                                        else: self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" )  
+                                        elif typ == "solve" :
+                                            if list(self.master):
+                                                if type( self.newValues ) == type(np.array([1])):
+                                                    try: 
+                                                        if self.newValues.shape[0] in self.master.shape:
+                                                            if self.master.shape[0] == self.master.shape[1]:
+                                                                self._return_ =  np.linalg.solve(self.master, self.newValues)
+                                                            else:
+                                                                self._return_, _,_,_ = np.linalg.lstsq(self.master, self.newValues, rcond=None)
+                                                        else:
+                                                            shape1, shape2 =  self.master.shape, self.newValues.shape
+                                                            self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2)
+                                                    except (TypeError, ValueError):
+                                                        self.error = er.ERRORS( self.line ).ERROR67("master")
+                                                    except IndexError:
+                                                        shape1, shape2 =  self.master.shape, self.newValues.shape
+                                                        self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2)
+                                                    except np.linalg.LinAlgError:
+                                                        self.error = er.ERRORS( self.line ).ERROR69()
+                                                else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarry()" ) 
+                                            else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                        elif typ == "merge" :
+                                            if list(self.master):
+                                                if type( self.newValues ) == type(np.array([1])):
+                                                    try: 
+                                                        if self.master.shape[0] == self.newValues.shape[0]:
+                                                            self._return_ = np.column_stack((self.master, self.newValues))
+                                                        else: self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues.shape)
+                                                    except ValueError: 
+                                                        self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues.shape)
+                                                else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
+                                            else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                        elif typ == "norm"  :
+                                            if type( self.newValues ) in [type(int()), type(None)]:
+                                                if list(self.master): 
+                                                    try:
+                                                        if self.newValues is None:  self._return_ =  np.linalg.norm(self.master)
+                                                        else:
+                                                            if self.newValues in [0, 1]:
+                                                                self._return_ =  np.linalg.norm(self.master, axis=self.newValues)
+                                                            else: self.error = er.ERRORS( self.line ).ERROR68("master", [0, 1])
+                                                    except (TypeError, ValueError): 
+                                                        self.error = er.ERRORS( self.line ).ERROR67("main matrix")
+                                                else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                            else: self.error = er.ERRORS( self.line ).ERROR3( "master", "integer()" ) 
+                                        else: pass
                                     else: pass 
                                 else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
                             else: pass
@@ -58,10 +111,16 @@ class DOT:
                             self.error = er.ERRORS( self.line ).ERROR26(self.main_dict, self.operator )
                     else: pass
             else:
-                if self.arguments[ 0 ] is None: self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
+                if self.arguments[ 0 ] is None:
+                    if typ == 'norm' : 
+                        if list( self.master): 
+                            try: self._return_ =  np.linalg.norm(self.master)
+                            except (TypeError, ValueError):  self.error = er.ERRORS( self.line ).ERROR67( "main matrix" )
+                        else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                    else: self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
                 else:
                     if self.values[ 0 ] is None:
-                        if self.master:
+                        if list(self.master):
                             self.dict_value, self.error = self.affectation.AFFECTATION( self.arguments[ 0 ],
                                                                     self.arguments[ 0 ], self.DataBase, self.line ).DEEP_CHECKING()
                             if self.error is None:
@@ -75,16 +134,69 @@ class DOT:
                                                             self.DataBase,self.line).ANALYSE( mainString )
                                             if self.error is None:
                                                 self.newValues = self.final_val[ 0 ]
-                                                if type( self.newValues ) == type(np.array([1])):
-                                                    if self.master.any(): 
-                                                        if typ == 'dot': 
+                                                if   typ == 'dot'   : 
+                                                    if type( self.newValues ) == type(np.array([1])):
+                                                        if list(self.master): 
                                                             try: self._return_ =  self.master.dot(self.newValues)
                                                             except ValueError:
                                                                 shape1, shape2 = list(self.master.shape), list(self.newValues)
                                                                 self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2 ) 
-                                                        else: pass
+                                                        else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                                    else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
+                                                elif typ == "redim" :
+                                                    if list(self.master):
+                                                        if type( self.newValues ) == type(tuple()):
+                                                            try: self._return_ =  self.master.reshape(self.newValues)
+                                                            except ValueError: 
+                                                                self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues) 
+                                                        else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "tuple()" ) 
                                                     else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
-                                                else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
+                                                elif typ == "solve" :
+                                                    if list(self.master):
+                                                        if type( self.newValues ) == type(np.array([1])):
+                                                            try: 
+                                                                if self.newValues.shape[0] in self.master.shape:
+                                                                    if self.master.shape[0] == self.master.shape[1]:
+                                                                        self._return_ =  np.linalg.solve(self.master, self.newValues)
+                                                                    else:
+                                                                        self._return_, _,_,_ = np.linalg.lstsq(self.master, self.newValues, rcond=None)
+                                                                else:
+                                                                    shape1, shape2 =  self.master.shape, self.newValues.shape
+                                                                    self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2)
+                                                            except (TypeError, ValueError): 
+                                                                self.error = er.ERRORS( self.line ).ERROR67("master")
+                                                            except IndexError:
+                                                                shape1, shape2 =  self.master.shape, self.newValues.shape
+                                                                self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2)
+                                                            except np.linalg.LinAlgError:
+                                                                self.error = er.ERRORS( self.line ).ERROR69()
+                                                        else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarry()" ) 
+                                                    else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                                elif typ == "merge" :
+                                                    if list(self.master):
+                                                        if type( self.newValues ) == type(np.array([1])):
+                                                            try: 
+                                                                if self.master.shape[0] == self.newValues.shape[0]:
+                                                                    self._return_ = np.column_stack((self.master, self.newValues))
+                                                                else: self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues.shape)
+                                                            except ValueError: 
+                                                                self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues.shape)
+                                                        else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
+                                                    else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                                elif typ == "norm"  :
+                                                    if type( self.newValues ) in [type(int()), type(None)]:
+                                                        if list( self.master): 
+                                                            try:
+                                                                if self.newValues is None:  self._return_ =  np.linalg.norm(self.master)
+                                                                else:
+                                                                    if self.newValues in [0, 1]:
+                                                                        self._return_ =  np.linalg.norm(self.master, axis=self.newValues)
+                                                                    else: self.error = er.ERRORS( self.line ).ERROR68("master", [0, 1])
+                                                            except (TypeError, ValueError): 
+                                                                self.error = er.ERRORS( self.line ).ERROR67("main matrix")
+                                                        else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                                    else: self.error = er.ERRORS( self.line ).ERROR3( "master", "integer()" )
+                                                else: pass
                                             else: pass 
                                         else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
                                     else: pass

@@ -1,0 +1,79 @@
+from module configure load config 
+from module encoding load fg 
+from module ggplot load scatter 
+
+y = config.bold()+fg(255, 255, 0)
+w = config.bold()+fg(255,255,255)
+g = config.bold()+fg(0,255,0)
+r = config.bold()+fg(255,0,0)
+re = config.reset()
+line = GetLine()
+b = config.bold()+fg(0,0,255)
+global y, w, g, r, re, line, b
+
+class LinearModel:
+	def regression(
+		X 	: ndarray, 
+		Y 	: ndarray,
+		theta 	: ndarray,
+		learning_rate : float = 1e-4,
+		tol	: 1e-3
+		):
+	
+		__scan__ * [X, Y, thata, learning_rate, tol], "model", "model"
+	end:
+	
+	def predict(
+		X 	: ndarray,
+		thata 	: ndarray,
+		show	: bool = False
+		):
+		__scan__ * [X, theta, show], "predict", "predict"
+	end:
+	
+	def theta( nrow : int = 3 ):
+		if nrow > 0 :
+			__scan__ * [nrow], "theta", "theta"
+		else:
+			__show__ * "{g}ValueError : {y}nrow {w}cannot be {r}lower than 1. {w}line : {y}{line} {w}in {g}thata( ){w} / {r}class {b}LinearModel( ) {re}"
+		end:
+	end:
+end:
+
+
+class create :
+	def initialize(samples : int, features : int, noise : int):
+		self.samples    = samples
+		self.features   = features 
+		self.noise      = noise
+	
+	end:
+	
+	def data(seed : int = 1, shuffle : bool = True, target : int = 1, polynomial : int = 1):
+		if samples >= 1:
+			if features >= 1:
+				if noise >= 0:
+					if target >= 1:
+						if ? polynomial == ? None:
+							__scan__ * [samples, features, noise, seed, shuffle, target, polynomial], "LR_data", "regression"
+						else:
+							if polynomial >= 1:
+								__scan__ * [samples, features, noise, seed, shuffle, target, polynomial], "LR_data", "regression"
+							else:
+								__show__ * "{g}ValueError : {y}polynomial {w}cannot be  {r}lower than 1. {w}line : {y}{line} {w}in {g}data( ){w} / {r}class {b}create( ) {re}"
+							end:
+						end:
+					else:
+						__show__ * "{g}ValueError : {y}target {w}cannot be  {r}lower than 1. {w}line : {y}{line} {w}in {g}data( ){w} / {r}class {b}create( ) {re}"
+					end:
+				else:
+					__show__ * "{g}ValueError : {y}noise {w}cannot be  {r}lower than 0. {w}line : {y}{line} {w}in {g}data( ){w} / {r}class {b}create( ) {re}"
+				end:
+			else:
+				__show__ * "{g}ValueError : {y}features {w}cannot be  {r}lower than 1. {w}line : {y}{line} {w}in {g}data( ){w} / {r}class {b}create( ) {re}"
+			end:
+		else:
+			__show__ * "{g}ValueError : {y}samples {w}cannot be  {r}lower than 1. {w}line : {y}{line} {w}in {g}data( ){w} / {r}class {b}create( ) {re}"
+		end:
+	end:
+end:
