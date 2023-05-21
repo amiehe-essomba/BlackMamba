@@ -32,7 +32,7 @@ class MATRIX_2D:
         self.master, self.nrow, self.ncol, self.master_one = c2D.Array( self.master )
         self._values_       = [self.master_one, self.nrow, self.ncol] 
         self.Type           = [ 'dtype', 'size', 'ndim', 'copy', 'owner', 'choice', "inv",
-                                'sorted', 'trans', 'dot', 'itemsize', 'all', 'any', "redim", "merge", "solve", "norm"]
+                                'sorted', 'trans', 'dot', 'itemsize', 'all', 'any', "redim", "merge", "solve", "norm", "axis"]
         
         if self.function in self.Type:
             if type(self.master_copy) == type(np.array([1])):
@@ -60,7 +60,7 @@ class MATRIX_2D:
                     self._return_ = self.master_copy.base
                     if self._return_ is None: self._return_ = False 
                     else : self._return_ = True
-                elif self.function in ['dot', 'redim', 'merge', 'solve', 'norm'] : 
+                elif self.function in ['dot', 'redim', 'merge', 'solve', 'norm', "axis"] : 
                     self._return_, self.error = dot.DOT(self.DataBase, self.line,
                                      self.master_copy.copy(), self.function, [self.FunctionInfo]).DOT(self.main_dict, typ=self.function)
                 elif self.function == 'all' : self._return_ = self.master_copy.all()

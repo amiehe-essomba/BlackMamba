@@ -102,6 +102,33 @@ class DOT:
                                                         self.error = er.ERRORS( self.line ).ERROR67("main matrix")
                                                 else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                             else: self.error = er.ERRORS( self.line ).ERROR3( "master", "integer()" ) 
+                                        elif typ == "axis"  :
+                                            if type( self.newValues ) in [type(list())]:
+                                                if list( self.master): 
+                                                    try: 
+                                                        shape = self.master.shape 
+                                                        idd = []
+                                                        if self.newValues:
+                                                            for s in self.newValues :
+                                                                if type(s) == type(int()):
+                                                                    if s not in idd : idd.append(s)
+                                                                    else: pass
+                                                                else:
+                                                                    self.error = er.ERRORS( self.line ).ERROR70(self.newValues)
+                                                                    break
+                                                            if self.error is None:
+                                                                if idd :
+                                                                    idd = np.array(idd)
+                                                                    max_ = idd.max() 
+                                                                    if max_ < shape[1] : self._return_ = self.master[ :, idd ]
+                                                                    else: self.error = er.ERRORS( self.line ).ERROR71(max_)
+                                                                else: self._return_ = self.master.copy()
+                                                            else: pass
+                                                        else:  self.error = er.ERRORS( self.line ).ERROR24( 'list' )
+                                                    except (TypeError, ValueError): 
+                                                        self.error = er.ERRORS( self.line ).ERROR67("main matrix")
+                                                else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                            else: self.error = er.ERRORS( self.line ).ERROR3( "master", "list()" )
                                         else: pass
                                     else: pass 
                                 else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
@@ -196,6 +223,33 @@ class DOT:
                                                                 self.error = er.ERRORS( self.line ).ERROR67("main matrix")
                                                         else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                                     else: self.error = er.ERRORS( self.line ).ERROR3( "master", "integer()" )
+                                                elif typ == "axis"  :
+                                                    if type( self.newValues ) in [type(list())]:
+                                                        if list( self.master): 
+                                                            try: 
+                                                                shape = self.master.shape 
+                                                                idd = []
+                                                                if self.newValues:
+                                                                    for s in self.newValues :
+                                                                        if type(s) == type(int()):
+                                                                            if s not in idd : idd.append(s)
+                                                                            else: pass
+                                                                        else:
+                                                                            self.error = er.ERRORS( self.line ).ERROR70(self.newValues)
+                                                                            break
+                                                                    if self.error is None:
+                                                                        if idd :
+                                                                            idd = np.array(idd)
+                                                                            max_ = idd.max() 
+                                                                            if max_ < shape[1] : self._return_ = self.master[ :, idd ]
+                                                                            else: self.error = er.ERRORS( self.line ).ERROR71(max_)
+                                                                        else: self._return_ = self.master.copy()
+                                                                    else: pass
+                                                                else:  self.error = er.ERRORS( self.line ).ERROR24( 'list' )
+                                                            except (TypeError, ValueError): 
+                                                                self.error = er.ERRORS( self.line ).ERROR67("main matrix")
+                                                        else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
+                                                    else: self.error = er.ERRORS( self.line ).ERROR3( "master", "list()" )
                                                 else: pass
                                             else: pass 
                                         else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 

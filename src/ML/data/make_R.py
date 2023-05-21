@@ -19,7 +19,7 @@ def R(samples : int, features : int, noise : int, target : int = 1, seed : int =
         X = np.column_stack((XX)).reshape((-1, len(my_list)))
 
     bias = np.ones((X.shape[0], 1))
-    MATRIX = np.column_stack((X, bias)).reshape((-1, features+1))
+    MATRIX = np.column_stack((X, bias)).reshape((-1, X.shape[1]+1))
 
     data = {"matrix" : MATRIX, "target" : Y.reshape((-1, 1)), "bias" : bias}
 

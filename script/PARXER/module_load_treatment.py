@@ -53,7 +53,6 @@ class CLASSIFICATION:
                                     if x >= self.ind :
                                         self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
                                                                     (self.lineI + self.line) ).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
-                                        
                                         if self.error is None:
                                             if self.db['globalIndex'] is None: 
                                                 self.new_array, self.ind = data_from_file[x + 1 : ], 0

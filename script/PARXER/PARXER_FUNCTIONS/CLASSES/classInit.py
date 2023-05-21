@@ -431,7 +431,7 @@ class CLASS_TREATMENT:
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
                                            'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis', 'dtype', 
                                            'size', 'copy', 'owner', 'choice', 'all', 'any', "redim", "merge", 'sorted', 'trans', 'dot', 'itemsize','solve',
-                                           'norm', 'inv']
+                                           'norm', 'inv', "axis"]
                 self.table              = ['set_id', 'select', 'keys'] 
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 

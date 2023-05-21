@@ -607,8 +607,8 @@ class C_F_I_S:
                                             plt.show()
                                         else: pass
                                     else: pass
-                                elif self._values_[-1] == "thata": 
-                                    nrow = self._values_[0]
+                                elif self._values_[-1] == "theta": 
+                                    nrow = self._values_[0][0]
                                     self.final_value = LM.theta(params = nrow)
                                 else: pass
                             else: pass

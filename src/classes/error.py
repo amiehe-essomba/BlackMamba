@@ -459,4 +459,14 @@ class ERRORS:
         self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}Singular matrix '.format( self.cyan ) + error
         return self.error+self.reset
     
+    def ERROR70(self, data): 
+        error = '{}all values are not {}integer() {}type. {}line: {}{}.'.format(self.white, self.red, self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}in {}{} '.format(self.white, self.cyan, data ) + error
+        return self.error+self.reset
+    
+    def ERROR71(self, idd : int): #
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'IndexError' ).Errors()+'{}{} {}index {}out of range. '.format(self.cyan, idd, self.red, self.white) + error
+
+        return self.error+self.reset
     
