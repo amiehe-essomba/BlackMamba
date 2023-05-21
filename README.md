@@ -38,12 +38,12 @@
 2. mamba --T pegasus
 ```
 
-## PROJECT dESCRIPTION
+## PROJECT DESCRIPTION
 > Learn more about [Black Mamba Project Description](https://github.com/amiehe-essomba/BlackMamba/blob/BlackMamba/PROJECT_DESCRIPTION.md). 
 
 > Example of a code
 
-![logo](/images/code3.png)
+![Sample Video](/images/illustration.mp4)
 
 ## CONTRIBUTING
 pull requests are welcome. Fore major changes, please open an issue first to discuss what you would like to change.
