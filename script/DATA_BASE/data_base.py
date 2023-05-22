@@ -104,7 +104,7 @@ class DATA_BASE:
         'loading'           : False,        # for delecting values which sould be printed
         'matrix'            : None,         # for ndarray
         'plot_style'        :'classic',     # use for plot style
-        "all_modules_load"  : [],
+        "all_modules_load"  : [],           # all modules load
         'historyOfErrors'   :{
             'fileName'      : [],           # name of file.bm
             'classes'       : [],           # classes

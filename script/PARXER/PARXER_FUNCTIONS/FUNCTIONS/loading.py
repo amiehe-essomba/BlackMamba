@@ -1,14 +1,16 @@
 from script.PARXER.PARXER_FUNCTIONS.CLASSES         import convert
 from script.DATA_BASE                               import data_base 
+from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS       import traceback as t
 
-def Loading(info: dict, DataBase: dict, db: dict, line : int = 1, locked : bool = False, error : str=None):
+def Loading(info: dict, DataBase: dict, db: dict, line : int = 1, locked : bool = False ):
+    error = None  
     if info['module_main'][0] in DataBase['modulesImport']['moduleLoading']['names']:
         idd = DataBase['modulesImport']['moduleLoading']['names'].index(info['module_main'][0])
         DataBase['modulesImport']['moduleLoading']['loading'][idd] = db['modulesImport' ].copy()
     else: 
         DataBase['modulesImport']['moduleLoading']['names'].append(info['module_main'][0])
         DataBase['modulesImport']['moduleLoading']['loading'].append(db['modulesImport'].copy())
-    traceback(db, DataBase)
+    t.traceback(db, DataBase)
 
     _names_ = DataBase[ 'modulesImport' ][ 'moduleLoading' ]['names'].copy()
     
@@ -43,7 +45,7 @@ def Loading(info: dict, DataBase: dict, db: dict, line : int = 1, locked : bool 
                                     DataBase['functions'].append( my_data_base['functions'][w].copy() )
                         else: pass 
                     
-                        traceback(my_data_base, DataBase)
+                        t.traceback(my_data_base, DataBase)
                     else: break 
 
         del my_data_base
@@ -51,30 +53,3 @@ def Loading(info: dict, DataBase: dict, db: dict, line : int = 1, locked : bool 
     
     return DataBase, error
 
-
-def traceback(data : dict, main : dict):
-    if data['modulesImport']['TrueFileNames']['path']:
-        l = len(data['modulesImport']['TrueFileNames']['path'])
-
-        try:
-            for i in range(l):
-                s = data['modulesImport']['TrueFileNames'].copy() 
-                p = main['modulesImport']['TrueFileNames'].copy()
-                if s['path'][i] in p['path']: 
-                    if s['names'][i] in p['names']: pass
-                    else : 
-                        main['modulesImport']['TrueFileNames']['path'].append(s['path'][i])
-                        main['modulesImport']['TrueFileNames']['line'].append(s['line'][i])
-                        main['modulesImport']['TrueFileNames']['names'].append(s['names'][i])
-                else: 
-                    main['modulesImport']['TrueFileNames']['path'].append(s['path'][i])
-                    main['modulesImport']['TrueFileNames']['names'].append(s['names'][i])
-                    main['modulesImport']['TrueFileNames']['line'].append(s['line'][i])
-
-            if data['all_modules_load']:
-                for s in data['all_modules_load']:
-                    if s not in main['all_modules_load'] : main['all_modules_load'].append(s)
-                    else: pass
-            else : pass 
-        except NameError: pass
-    else: pass

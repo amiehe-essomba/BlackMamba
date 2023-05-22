@@ -41,7 +41,8 @@ class ASSEMBLY( ):
     def GLOBAL_ASSEMBLY(self, 
             main_string     : str,              # main string 
             interpreter     : bool  = False,    # interpreter is activated
-            term            : str   = ''        # terminal type
+            term            : str   = '',       # terminal type
+            traceback       : dict  = {}
             ):
         
         # value to return 
@@ -280,8 +281,9 @@ class ASSEMBLY( ):
                         self.error = modules.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
                         if self.error is None:
                             # storing the modules loaded
-                            self.error = module_load_treatment.CLASSIFICATION( self.data_base, self.line ).CLASSIFICATION( self.data_base[ 'modulesImport' ], 
-                                                                                    info = self.data_base[ 'importation' ])
+                            self.error = module_load_treatment.CLASSIFICATION( self.data_base, 
+                                    self.line ).CLASSIFICATION( self.data_base[ 'modulesImport' ], 
+                                    info = self.data_base[ 'importation' ], trace=traceback )
                         else: pass
                     else: pass
                     

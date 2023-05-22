@@ -134,6 +134,6 @@ class MODULES:
                         self.expressions.append( self.values[ self.moduleMain[ 0 ]  ] )
 
         # initialize line for GetLine() function 
-        self.DataBase['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line
-        
+        #self.DataBase['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line
+    
         return self.error 

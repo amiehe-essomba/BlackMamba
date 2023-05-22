@@ -5,6 +5,7 @@ from script.DATA_BASE                           import data_base    as db
 from src.modulesLoading                         import error        as er
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import loading
 from numba                                      import jit, prange
+from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import traceback
 from script.PARXER.WINParxer                    import parxer_file_interpreter as PFI
 
 def replace(data, key, key_r):
@@ -21,7 +22,13 @@ class CLASSIFICATION:
         # indexing line 
         self.line       = line
     
-    def CLASSIFICATION( self, modules : dict = {}, baseFileName : str = '', locked : bool = True, info : dict = {} ):
+    def CLASSIFICATION( 
+            self, modules   : dict = {}, 
+            baseFileName    : str = '', 
+            locked          : bool = True, 
+            info            : dict = {}, 
+            trace           : dict = {}
+            ):
         # creating a new data base for the current function that is running 
         self.db             = db.DATA_BASE().STORAGE().copy()
         # initializing the increment 
@@ -438,27 +445,19 @@ class CLASSIFICATION:
                     del self.data2
             # if not classes and functions
             else: self.error =  er.ERRORS( self.line ).ERROR11( info['module_main'][0] )
-
         else: 
-            for i, name in enumerate(self.DataBase['modulesImport']['TrueFileNames']['names']):
-                if name == info['module_main'][ 0 ]:
-                    self.idd = self.DataBase['modulesImport']['TrueFileNames']['names'].index( name )
-                    if info['path'] is None:
-                        if self.DataBase['modulesImport']['TrueFileNames']['path'][ i ] is None:
-                            self.DataBase['modulesImport']['TrueFileNames']['line'][self.idd]   = self.line
-                            break
-                        else: pass 
-                    else:
-                        if self.DataBase['modulesImport']['TrueFileNames']['path'][ i ] is not None:
-                            self.DataBase['modulesImport']['TrueFileNames']['line'][self.idd]   = self.line
-                            break 
-                        else: pass
-                else: pass
-        
-        self.DataBase, self.error = loading.Loading( info.copy(), self.DataBase.copy(), self.db.copy(), self.line, locked, self.error) 
-        
-        #if self.error is None: pass 
-        #else: print(info, self.line)
+            trace['TrueFileNames'] = self.db['modulesImport']['TrueFileNames'].copy()
+            trace['all_modules_load'] = self.db['all_modules_load'].copy()
+
+        if self.error is None : 
+            self.DataBase, self.error = loading.Loading( 
+                info=info.copy(), 
+                DataBase=self.DataBase, 
+                db=self.db.copy(), 
+                line=self.line, 
+                locked=locked
+                )     
+        else: pass 
 
         INIT(self.db).INIT()
          

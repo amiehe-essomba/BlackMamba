@@ -160,7 +160,13 @@ class windows:
         # indicator_max 
         self.indicator_max          = 1
         # checking if key_max_activation could be activated  for handling terminal tools
-        self.key_max_activation     = True 
+        self.key_max_activation     = True  
+        # story
+        self.histoty_tracback       = {
+            'TrueFileNames'         : None,
+            "all_modules_load"      : None,
+            "modules"               : None
+        }
         ###########################################################
         
         while True:
@@ -604,16 +610,41 @@ class windows:
                                     
                                         # running parser
                                         self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
-                                                self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
+                                                self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, 
+                                                interpreter = False, term=terminal_name, traceback=self.histoty_tracback)
                                        
-                                        if self.error is None: pass
-                                            #print( self.data_base['modulesImport']['TrueFileNames'])
-                                            #print( self.data_base['all_modules_load'])
+                                        if self.error is None: pass 
                                         else:
+                                            self.__string__ = ""
+                                            self.color = bm.init.bold + bm.init.blink+ bm.fg.rbg(255, 0, 255)
+                                            if self.data_base['all_modules_load']:
+                                                if self.histoty_tracback['all_modules_load']:
+                                                    self.data_base['all_modules_load'] += self.histoty_tracback['all_modules_load']
+                                                else: pass 
+
+                                                for ii, s in enumerate(self.data_base['all_modules_load']):
+                                                    self.__string__ += s + '\n'
+                                             
+                                                self.__string__ = self.color + self.__string__ + bm.init.reset
+
+                                                self.data_base['all_modules_load'] = []
+                                                self.histoty_tracback       = {
+                                                'TrueFileNames'         : None,
+                                                "all_modules_load"      : None,
+                                                "modules"               : None
+                                                }
+                                                self.data_base['modulesImport']['TrueFileNames']['names']      = []
+                                                self.data_base['modulesImport']['TrueFileNames']['path']       = []
+                                                self.data_base['modulesImport']['TrueFileNames']['line']       = []
+
+                                            else: pass 
+
                                             sys.stdout.write(bm.clear.line(2))
                                             sys.stdout.write(bm.move_cursor.LEFT(1000))
-                                            print('{}\n'.format(bm.init.bold+self.error))
+                                            print('{}\n'.format(bm.init.bold+ self.__string__ + self.error))
                                             self.error = None
+
+                                            #print(self.histoty_tracback)
                                             #print( self.data_base['modulesImport']['TrueFileNames'])
                                             #print( self.data_base['all_modules_load'])
                                     else:  pass

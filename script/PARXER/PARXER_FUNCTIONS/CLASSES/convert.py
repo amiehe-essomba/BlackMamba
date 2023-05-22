@@ -7,9 +7,10 @@ class convert:
         self.db     = db
         self.line   = line 
     def convert(self, data_from_file : list, locked : bool = False, baseFileName : str = ""):
-        self.lineI = 0
-        self.baseFileName = baseFileName
-        
+        self.lineI          = 0
+        self.baseFileName   = baseFileName
+        self.error          = None 
+
         for x, string in enumerate( data_from_file ):
             self.lineI  += 1
             

@@ -80,7 +80,7 @@ class TREATMENT:
                 # adding module main
                 self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
                 self.data_base['modulesImport']['TrueFileNames']['path'].append(None)
-                self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
+                self.data_base['modulesImport']['TrueFileNames']['line'].append(self.line)
             else:
                 # updating module main
                 if self.module_main[0] in self.data_base['modulesImport']['TrueFileNames']['names']:
@@ -89,11 +89,11 @@ class TREATMENT:
                     else:
                         self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
                         self.data_base['modulesImport']['TrueFileNames']['path'].append(None)
-                        self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
+                        self.data_base['modulesImport']['TrueFileNames']['line'].append(self.line)
                 else: 
                     self.data_base['modulesImport']['TrueFileNames']['names'].append(self.module_main[0])
                     self.data_base['modulesImport']['TrueFileNames']['path'].append(None)
-                    self.data_base['modulesImport']['TrueFileNames']['line'].append(0)
+                    self.data_base['modulesImport']['TrueFileNames']['line'].append(self.line)
             
             if self.alias is None:
                 if self.module_load is None:
@@ -422,6 +422,6 @@ class TREATMENT:
         }
         
         # updating GteLine() 
-        self.data_base['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line-1
+        #self.data_base['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line
         
         return self.storage_module, self.info, self.error 
