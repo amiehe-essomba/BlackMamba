@@ -294,12 +294,12 @@ class FUNCTION_TREATMENT:
             try:
                 self.original_module = self.data_base['modulesImport']['modules'][ 0 ]
                 self.mod = loading.LOAD(self.data_base['modulesImport']['func_names'], self.function_name).LOAD()
-             
                 if self.mod['key'] is True: 
                     self.data_base[ 'assigment' ]   = self.function_name+'( )'
                     self.function_info              = self.data_base['modulesImport']['functions'][self.mod['id1']][self.mod['id2']]
                     self.lexer, self.normal_expression, self.error = main.MAIN( self.expression, self.dictionary,
                                                                         self.line ).MAIN( def_key = 'indirect' )
+
                     if self.error is None: 
                         self._return_,  self.error = function.FUNCTION( self.dictionary[ 'functions' ]  ,
                                 self.data_base, self.line ).DOUBLE_INIT_FUNCTION( self.normal_expression, self.function_name ) 

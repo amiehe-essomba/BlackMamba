@@ -1,5 +1,6 @@
 from script.LEXER.FUNCTION                      import main
 from script.PARXER                              import parxer_assembly
+from script.PARXER.WINParxer                    import parxer_file_interpreter as PFI
 
 class convert:
     def __init__(self, db : dict, line : int): 
@@ -17,14 +18,14 @@ class convert:
                     try:
                         self.db['starter'] = x+1
                         self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
-                                                    (self.lineI + self.line) ).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
+                                (self.lineI + self.line) ).MAIN( interpreter = True, MainList = data_from_file[x+1: ] )
+                        
                         if self.error is None:
+                            self.new_array = data_from_file[x+1: ]
                             if self.lexer is not None:
-                                
-                                num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.db, 
-                                                    (self.lineI + self.line) ).GLOBAL_ASSEMBLY_FILE_INTERPRETER(self.normal_string, True,
-                                                    MainList = data_from_file[x+1: ], baseFileName = self.baseFileName,
-                                                    locked = locked)
+                                nnum, self.key, self.error = PFI.ASSEMBLY(master = self.lexer, data_base = self.db, 
+                                    line = (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(main_string = self.normal_string,
+                                    interpreter=True, MainList=self.new_array, baseFileName=self.baseFileName, locked=locked)
                                 if self.error is None: pass
                                 else:  break
                             else: pass
@@ -36,14 +37,14 @@ class convert:
                         try:
                             self.db['starter'] = x+1
                             self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
-                                                        (self.lineI + self.line)).MAIN( interpreter = True,
-                                                        MainList = data_from_file[x+1: ] )
+                                    (self.lineI + self.line)).MAIN( interpreter = True,  MainList = data_from_file[x+1: ] )
+                            
                             if self.error is None:
                                 if self.lexer is not None:
-                                    num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.db,
-                                                    (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(self.normal_string, 
-                                                    True, MainList = data_from_file[x+1: ],  baseFileName = self.baseFileName,
-                                                    locked = locked)
+                                    self.new_array = data_from_file[x+1: ]
+                                    num, self.key, self.error = PFI.ASSEMBLY(master = self.lexer, data_base = self.db, 
+                                        line = (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(main_string = self.normal_string,
+                                        interpreter=True, MainList=self.new_array, baseFileName=self.baseFileName, locked=locked)
                                     if self.error is None: pass
                                     else:  break
                                 else: pass
@@ -51,4 +52,4 @@ class convert:
                         except EOFError: break
             else: pass
 
-        return self.db 
+        return self.db , self.error

@@ -4,7 +4,8 @@ from script.PARXER                              import parxer_assembly
 from script.DATA_BASE                           import data_base    as db
 from src.modulesLoading                         import error        as er
 from script.PARXER.PARXER_FUNCTIONS.FUNCTIONS   import loading
-from numba                                  import jit, prange
+from numba                                      import jit, prange
+from script.PARXER.WINParxer                    import parxer_file_interpreter as PFI
 
 def replace(data, key, key_r):
     for s in data:
@@ -62,10 +63,9 @@ class CLASSIFICATION:
                                                 self.new_array =  data_from_file[self.ind + 1 : ]
                                             
                                             if self.lexer is not None:
-                                                num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.db, 
-                                                                    (self.lineI + self.line) ).GLOBAL_ASSEMBLY_FILE_INTERPRETER(self.normal_string, True,
-                                                                    MainList = self.new_array, baseFileName = self.baseFileName,
-                                                                    locked = locked)
+                                                num, self.key, self.error = PFI.ASSEMBLY(master = self.lexer, data_base = self.db, 
+                                                            line = (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(main_string = self.normal_string,
+                                                            interpreter=True, MainList=self.new_array, baseFileName=self.baseFileName, locked=locked)
                                                 if self.error is None:  pass
                                                 else:  break
                                             else: pass
@@ -90,10 +90,10 @@ class CLASSIFICATION:
                                                     self.ind = self.db['globalIndex']
                                                     self.db['starter'] = self.ind
                                                     self.new_array =  data_from_file[self.ind + 1 : ]
-                                                num, self.key, self.error = parxer_assembly.ASSEMBLY(self.lexer, self.db,
-                                                                (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(self.normal_string, 
-                                                                True, MainList = self.new_array,  baseFileName = self.baseFileName,
-                                                                locked = locked)
+                                                
+                                                num, self.key, self.error = PFI.ASSEMBLY(master = self.lexer, data_base = self.db, 
+                                                            line = (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(main_string = self.normal_string,
+                                                            interpreter=True, MainList=self.new_array, baseFileName=self.baseFileName, locked=locked)
                                                 if self.error is None: pass
                                                 else:  break
                                             else: pass
@@ -127,7 +127,7 @@ class CLASSIFICATION:
                 self.DataBase[ 'modulesImport' ]['modules'][self.index]               = info['module_main'][ 0 ]
 
             # only classes
-            if    self.db[ 'class_names']  and not self.db[ 'func_names'  ]  :
+            if    self.db[ 'class_names']  and not self.db[ 'func_names'  ]     :
                 self.star       = False
                 if  info['module_load'] is not None:
                     for x, name in enumerate(info['module_main']):
@@ -220,7 +220,7 @@ class CLASSIFICATION:
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data
             # only functions
-            elif  self.db[ 'func_names' ]  and not self.db[ 'class_names' ] :
+            elif  self.db[ 'func_names' ]  and not self.db[ 'class_names' ]     :
                 self.star       = False
                 if  info['module_load'] is not None:
                     
@@ -318,7 +318,8 @@ class CLASSIFICATION:
                     self.DataBase[ 'modulesImport' ]['init'].append(info['module_main'][ 0 ])
                     del self.data
             # classes and functions
-            elif  self.db[ 'func_names' ]  and     self.db[ 'class_names' ]    :
+            elif  self.db[ 'func_names' ]  and     self.db[ 'class_names' ]     :
+                
                 self.star = False
                 if  info['module_load'] is not None:
                     for x, name in enumerate(info['module_main']):
@@ -454,8 +455,11 @@ class CLASSIFICATION:
                         else: pass
                 else: pass
         
-        self.DataBase = loading.Loading( info.copy(), self.DataBase.copy(), self.db.copy(), self.line, locked) 
-            
+        self.DataBase, self.error = loading.Loading( info.copy(), self.DataBase.copy(), self.db.copy(), self.line, locked, self.error) 
+        
+        #if self.error is None: pass 
+        #else: print(info, self.line)
+
         INIT(self.db).INIT()
          
         return self.error 
@@ -540,3 +544,4 @@ class INIT:
         self.db['historyOfErrors']['line']                      = []
         self.db['def_return']                                   = None
         self.db['plot_style']                                   = 'classic'
+        self.db['all_modules_load']                             = []

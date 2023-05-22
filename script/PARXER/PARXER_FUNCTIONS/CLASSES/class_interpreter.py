@@ -7,7 +7,33 @@ from script                                     import control_string
 from script.PARXER.PARXER_FUNCTIONS._IF_        import IfError    as if_inter
 from src.classes                                import db
 from classes                                    import internalClass as IC
+from script.DATA_BASE                           import data_base 
+from script.LEXER.FUNCTION                      import main
+from script.LEXER                               import segmentation
 
+def rebuild_string(MainList : list, line, tabular : int, iner = 1):
+    normal_string = None 
+    string = MainList[0]
+
+    if MainList:
+        _DATA_, idd = data_base.DATA_BASE().STORAGE().copy(), 0
+        normal_string, error   = segmentation.SEGMENTATION_FOR_INTERPRETER(string, string,
+                                _DATA_, line).TREATEMENT(tabular, MainList[iner : ])
+        if error is   None: 
+            MainList[0]     = '\t'+ MainList[0].lstrip()
+            normal_string   = "\t"+normal_string.lstrip() 
+            if MainList[0] == normal_string: pass 
+            else: 
+                if _DATA_['globalIndex'] is not None:
+                    idd         = _DATA_['globalIndex']
+                    MainList    = MainList[idd  + 1 : ]
+                    MainList[0] = normal_string
+                else: pass
+        else: pass
+    else:  pass 
+
+    del _DATA_
+    return MainList, idd
 
 class EXTERNAL_CLASS_STATEMENT:
     def __init__(self,
@@ -53,6 +79,10 @@ class EXTERNAL_CLASS_STATEMENT:
         self.loop_list          = loop_list
         self.next_line          = 0
         self.comments           = []
+        
+        ##########################################################
+        self.new_list, self._index_ = rebuild_string(self.loop_list, self.line, self.tabulation)
+        self.loop_list = self.new_list.copy()
         ##########################################################
         
         for j, _string_ in enumerate( self.loop_list):

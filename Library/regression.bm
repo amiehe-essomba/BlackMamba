@@ -10,18 +10,22 @@ line = GetLine()
 b = config.bold()+fg(0,0,255)
 global y, w, g, r, re, line, b
 
-class thata:
-	def theta( nrow : int = 3 ):
-		if nrow > 0 :
-			__scan__ * [nrow], "theta", "theta"
-		else:
-			__show__ * "{g}ValueError : {y}nrow {w}cannot be {r}lower than 1. {w}line : {y}{line} {w}in {g}thata( ){w} / {r}class {b}LinearRegression( ) {re}"
-		end:
+def theta( nrow : int = 3 ):
+	if nrow > 0 :
+		__scan__ * [nrow], "theta", "theta"
+	else:
+		__show__ * "{g}ValueError : {y}nrow {w}cannot be {r}lower than 1. {w}line : {y}{line} {w}in {g}thata( ){w} / {r}module {b}regression {re}"
 	end:
 end:
 
 class LinearRegression:
-	def regression(X: ndarray, Y: ndarray,theta : ndarray,learning_rate : float = 1e-4,tol: float= 1e-3):
+	def regression( 
+	X : ndarray, 
+	Y		: ndarray,
+	theta 		: ndarray,
+	learning_rate 	: float = 1e-4,
+	tol		: float = 1e-3
+	):
 		__scan__ * [X, Y, thata, learning_rate, tol], "model", "model"
 	end:
 	

@@ -98,8 +98,12 @@ class ASSEMBLY( ):
                 self.MainStringTransform        = main_string
                 self.listTransform              = self.NewLIST 
                 
-                self.error = class_interpreter.EXTERNAL_CLASS_STATEMENT( None, self.data_base, self.line, self.master['class']).CLASSES(  tabulation = 1, 
-                                                                    loop_list = self.listTransform )
+                self.error = class_interpreter.EXTERNAL_CLASS_STATEMENT( 
+                            main_string, self.data_base, self.line, 
+                            self.master['class']).CLASSES(  
+                            tabulation = 1, 
+                            loop_list = self.listTransform 
+                            )
                 if self.error is None: pass
                 else: pass           
             elif self.data_base[ 'importation' ]   is not None:
@@ -110,8 +114,10 @@ class ASSEMBLY( ):
                 if self.error is None:
                     self.error = modules.MODULES( self.data_base, self.line, self.dataS, self.info ).LOAD()
                     if self.error is None:
-                        self.error = module_load_treatment.CLASSIFICATION( self.data_base, self.line ).CLASSIFICATION( self.data_base[ 'modulesImport' ], 
-                                                                                info = self.data_base[ 'importation' ])
+                        self.error = module_load_treatment.CLASSIFICATION( self.data_base, self.line ).CLASSIFICATION( 
+                            self.data_base[ 'modulesImport' ], 
+                            info = self.data_base[ 'importation' ]
+                            )
                     else: pass
                 else: pass
                 self.data_base[ 'importation' ] = None

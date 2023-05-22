@@ -54,10 +54,10 @@ class TREATMENT:
         # get relative path
         self.relative_path      = Path(__file__).resolve().parents[2]
         # path Library in orthers words where the Lib is located
-        self.path_library  = bpath.Lib_Path( root = self.relative_path, sys = self.system).getPath()
+        self.path_library       = bpath.Lib_Path( root = self.relative_path, sys = self.system).getPath()
         # get elements from current directory
         os.path.join( os.environ.get( "_MEI9442",  self.path_library), "" )
-        self.currently_listdir = listdir(self.currently_path)
+        self.currently_listdir  = listdir(self.currently_path)
         # get modules from the library path
         self.library = listdir(self.path_library)
 
@@ -104,6 +104,7 @@ class TREATMENT:
                         # checking if module_name is in current directory
                         if self.module_name in self.currently_listdir:
                             if isfile( self.module_name ) is True: 
+                                
                                 # current or Lib directory is checking here 
                                 if self.module_name != baseFileName:  self.key_directory.append( 'current' )
                                 else:
@@ -115,7 +116,6 @@ class TREATMENT:
                             if self.module_name in self.library:
                                 self.lib_path = bpath.Lib_Path( root = self.relative_path,
                                               sys = self.system).getFile_in_Path( self.module_name)
-
                                 if isfile( path=self.lib_path ) is True:
                                     # current or Lib directory is checking here 
                                     if self.module_name != baseFileName:  self.key_directory.append( 'library' )
@@ -152,6 +152,12 @@ class TREATMENT:
                             
                             if self.error is None:
                                 if self.key_directory[ i ] == 'current':
+                                    #################################################################
+                                    _PATH_ = self.currently_path + self.module_name
+                                    if _PATH_ in self.data_base['all_modules_load']: pass 
+                                    else: self.data_base['all_modules_load'].append(_PATH_)
+                                    #################################################################
+
                                     # case of current directory 
                                     self.data_from_file = []
 
@@ -167,6 +173,11 @@ class TREATMENT:
                                     self.data_from_file = []
                                     self.lib_path = bpath.Lib_Path(root=self.relative_path,
                                                                    sys=self.system).getFile_in_Path(self.module_name)
+                                    #################################################################
+                                    if self.lib_path in self.data_base['all_modules_load']: pass 
+                                    else: self.data_base['all_modules_load'].append(self.lib_path)
+                                    #################################################################
+
                                     # reading the opening file
                                     with open(file=self.lib_path, mode='r') as file:
                                         for line in file.readlines():
@@ -229,7 +240,11 @@ class TREATMENT:
                             if self.error is None:
                                 if self.key_directory[ i ] == 'current':
                                     self.data_from_file = []
-                            
+                                    #################################################################
+                                    _PATH_ = self.currently_path + self.module_name
+                                    if _PATH_ in self.data_base['all_modules_load']: pass 
+                                    else: self.data_base['all_modules_load'].append(_PATH_)
+                                    #################################################################
                                     with open(file=self.module_name, mode='r') as file:
                                         for line in file.readlines():
                                             if line[-1] == '\n': line = line[ : -1 ]
@@ -240,6 +255,10 @@ class TREATMENT:
                                     self.data_from_file = []
                                     self.lib_path = bpath.Lib_Path(root=self.relative_path,
                                                                    sys=self.system).getFile_in_Path(self.module_name)
+                                    #################################################################
+                                    if self.lib_path in self.data_base['all_modules_load']: pass 
+                                    else: self.data_base['all_modules_load'].append(self.lib_path)
+                                    #################################################################
                                     with open(file=self.lib_path, mode='r') as file:
                                         for line in file.readlines():
                                             if line[-1] == '\n': line = line[ : -1]
@@ -277,6 +296,11 @@ class TREATMENT:
                         self.module_name    = self.module_main[ i ] + self.termios
                         if self.key_directory[ i ] == 'current':
                             self.data_from_file = []
+                            #################################################################
+                            _PATH_ = self.currently_path + self.module_name
+                            if _PATH_ in self.data_base['all_modules_load']: pass 
+                            else: self.data_base['all_modules_load'].append(_PATH_)
+                            #################################################################
                             with open(file=self.module_name, mode='r') as file:
                                 for line in file.readlines():
                                     if line[-1] == '\n': line = line[ : -1]
@@ -287,6 +311,10 @@ class TREATMENT:
                             self.data_from_file = []
                             self.lib_path = bpath.Lib_Path(root=self.relative_path,
                                                            sys=self.system).getFile_in_Path(self.module_name)
+                            #################################################################
+                            if self.lib_path in self.data_base['all_modules_load']: pass 
+                            else: self.data_base['all_modules_load'].append(self.lib_path)
+                            #################################################################
                             with open(file=self.lib_path, mode='r') as file:
                                 for line in file.readlines():
                                     if line[-1] == '\n': line = line[ : -1 ]
@@ -360,6 +388,13 @@ class TREATMENT:
                             # current directory
                             self.data_from_file = []
                             self.newPath = self.path+self.module_name
+
+                            #################################################################
+                            _PATH_ = self.newPath
+                            if _PATH_ in self.data_base['all_modules_load']: pass 
+                            else: self.data_base['all_modules_load'].append(_PATH_)
+                            #################################################################
+
                             # opening , reading and storing values in data_from_file
                             with open(file=self.newPath, mode='r') as file:
                                 for line in file.readlines():
@@ -387,6 +422,6 @@ class TREATMENT:
         }
         
         # updating GteLine() 
-        self.data_base['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line
+        self.data_base['modulesImport']['TrueFileNames']['line'][ 0 ] = self.line-1
         
         return self.storage_module, self.info, self.error 

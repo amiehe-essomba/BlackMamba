@@ -607,11 +607,15 @@ class windows:
                                                 self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, interpreter = False, term=terminal_name)
                                        
                                         if self.error is None: pass
+                                            #print( self.data_base['modulesImport']['TrueFileNames'])
+                                            #print( self.data_base['all_modules_load'])
                                         else:
                                             sys.stdout.write(bm.clear.line(2))
                                             sys.stdout.write(bm.move_cursor.LEFT(1000))
                                             print('{}\n'.format(bm.init.bold+self.error))
                                             self.error = None
+                                            #print( self.data_base['modulesImport']['TrueFileNames'])
+                                            #print( self.data_base['all_modules_load'])
                                     else:  pass
                                 else:
                                     sys.stdout.write(bm.clear.line(2))

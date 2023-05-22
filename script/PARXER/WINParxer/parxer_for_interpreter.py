@@ -223,8 +223,7 @@ class ASSEMBLY( ):
                     self.listTransform              = self.NewLIST 
                     
                     self.error = def_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.newLine  ).DEF( tabulation = 1, 
-                                                                        loop_list = self.listTransform )
-                                     
+                                                                        loop_list = self.listTransform )   
                 elif self.data_base[ 'current_class' ] is not None:
                     self.newLine                    = self.line
                     self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine  ).GROUPBY(1, MainList)
