@@ -1,18 +1,10 @@
-from colorama import Fore, Style, init
-from script import control_string
-from script.LEXER import particular_str_selection
-from script.PARXER.VAR_NAME import get_var_name
 
-ne = Fore.LIGHTRED_EX
-ie = Fore.LIGHTBLUE_EX
-ae = Fore.CYAN
-te = Fore.MAGENTA
-ke = Fore.LIGHTYELLOW_EX
-ve = Fore.LIGHTGREEN_EX
-se = Fore.YELLOW
-we = Fore.LIGHTWHITE_EX
-me = Fore.LIGHTCYAN_EX
-le = Fore.RED
+from script                                     import control_string
+from script.LEXER                               import particular_str_selection
+from script.PARXER.VAR_NAME                     import get_var_name
+from script.STDIN.LinuxSTDIN                    import bm_configure as bm
+from CythonModules.Windows                      import fileError    as fe
+
 
 class DELETE:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -104,6 +96,7 @@ class FIRST_CASE:
         self.line               = line
         self.master             = master
         self.data_base          = data_base
+        self.te                 = bm.init.bold + bm.fg.rbg(255,0,255)
 
     def FIRST(self, value: any):
         self.error              = None
@@ -133,7 +126,7 @@ class FIRST_CASE:
                 except IndexError:
                     self.type = type( self.value )
                     if self.type == type( tuple() ):
-                        self.error = ERRORS( self.line ).ERROR2( 'tuple', te )
+                        self.error = ERRORS( self.line ).ERROR2( 'tuple', self.te )
                         break
                     elif self.type == type( list() ):
                         self.error = ERRORS(self.line).ERROR2()
@@ -153,6 +146,7 @@ class SECOND_CASE:
         self.line               = line
         self.master             = master
         self.data_base          = data_base
+        self.te                 = bm.init.bold + bm.fg.rbg(255,0,255)
 
     def SECOND_CASE(self, value: any):
         self.error              = None
@@ -191,7 +185,7 @@ class SECOND_CASE:
                         self.error = ERRORS(self.line).ERROR2()
                         break
                     elif self.type == type( tuple() ):
-                        self.error = ERRORS(self.line).ERROR2('tuple', te)
+                        self.error = ERRORS(self.line).ERROR2('tuple', self.te)
                         break
                     else:
                         self.error = ERRORS(self.line).ERROR2()
@@ -236,7 +230,7 @@ class SECOND_CASE:
                                     self.error = ERRORS(self.line).ERROR2()
                                     break
                                 elif self.type == type(tuple()):
-                                    self.error = ERRORS(self.line).ERROR2('tuple', te)
+                                    self.error = ERRORS(self.line).ERROR2('tuple', self.te)
                                     break
                                 else:
                                     self.error = ERRORS(self.line).ERROR2()
@@ -248,33 +242,37 @@ class SECOND_CASE:
 class ERRORS:
     def __init__(self, line):
         self.line       = line
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError').Errors()+'{} invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR1(self, string: str, _char_ = 'an integer()' ):
-        error = '{}is not {}{} {}type. {}line: {}{}'.format(te, ie, _char_, te, we, ke, self.line)
-        self.error = '{}{} : {}<< {} >> '.format(te, 'TypeError', ae, string) + error
+        error = '{}is not {}{} {}type. {}line: {}{}'.format(self.white, self.blue, _char_, self.green, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError').Errors()+'{}<< {} >> '.format(self.cyan, string) + error
+        return self.error+self.reset
 
-        return self.error
-
-    def ERROR2(self, func = 'list', c:str = ke):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : {}{} {}index {}out of range. '.format(ie, 'IndexError', c, func, ne, ie) + error
-
-        return self.error
+    def ERROR2(self, func = 'list', c:str = ""):
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'IndexError').Errors()+'{}{} {}index {}out of range. '.format(self.yellow,
+                                                func, self.cyan, self.white) + error
+        return self.error+self.reset
 
     def ERROR3(self, string: str):
-        error = '{}was not found. {}line: {}{}'.format(ne, we, ke, self.line)
-        self.error = '{}{} : {}<< {} >> '.format(ne, 'NameError', ae, string) + error
-
-        return self.error
-
+        error = '{}was not found. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'NameError').Errors()+'{}{} '.format(self.cyan,  string) + error
+        return self.error+self.reset
+    
     def ERROR4(self, string: str, key: str):
-        error = '{}was not found in {}<< {} >>. {}line: {}{}'.format(ke, ne, string, we, ke, self.line)
-        self.error = '{}{} : {}<< {} >> '.format(ke, 'KeyError', ae, key) + error
-
-        return self.error
+        error = '{}was not found in {}<< {} >>. {}line: {}{}'.format(self.white, self.red, string, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'KeyError').Errors()+'{}{} '.format(self.cyan,  key) + error
+        return self.error+self.reset

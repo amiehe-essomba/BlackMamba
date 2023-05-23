@@ -36,9 +36,10 @@ class new_windows:
             return v 
         
         r = bm.init.reset
-        c = bm.init.bold+bm.init.blink+bm.fg.rbg(255, 0, 255)
-        m = bm.init.bold+bm.init.blink+bm.fg.rbg(0, 255, 255)
-        w = bm.init.bold+bm.fg.rbg(255, 255, 255)
+        c = bm.init.bold+ bm.bg.rgb(10, 10, 10) + bm.fg.rbg(255, 0, 255)
+        m = bm.init.bold+ bm.bg.rgb(10, 10, 10) + bm.fg.rbg(0, 255, 255)
+        w = bm.init.bold+ bm.bg.rgb(10, 10, 10) + bm.fg.rbg(255, 255, 255)
+        
         self.pos_x, self.pos_y = cursor_pos.cursor()
         self.max_x, self.max_y = test.get_win_ter()
        
@@ -51,13 +52,18 @@ class new_windows:
         self.details    = len('[d]     = details ')
         if self.details > length: self.len = self.details
         else: self.len = length+1
-        self.val1       = f'{w}[{m}Enter{r}{w}] = {c}select{r}  '
-        self.val2       = f'{w}[{m}q{r}{w}]     = {c}exit{r}    '
-        self.val3       = f'{w}[{m}d{r}{w}]     = {c}details{r} '
+        self.val1       = f'{w}[{m}Enter{w}] = {c}select  {r}'
+        self.val2       = f'{w}[{m}q{w}]     = {c}exit    {r}'
+        self.val3       = f'{w}[{m}d{w}]     = {c}details {r}'
+
+        self.val1_l     = len('[enter] = select  ')
+        self.val2_l     = len('[q]     = select  ')
+        self.val3_l     = len('[d]     = select  ')
+
         self.empty      = " "
-        self.val1       = f"{self.asc['v']} " + self.val1+self.re + self.w+self.empty * (self.len - len(self.val1))+f"{self.asc['v']}"
-        self.val2       = f"{self.asc['v']} " + self.val2+self.re + self.w+self.empty * (self.len - len(self.val2))+f"{self.asc['v']}"
-        self.val3       = f"{self.asc['v']} " + self.val3+self.re + self.w+self.empty * (self.len - len(self.val3))+f"{self.asc['v']}"
+        self.val1       = f"{self.asc['v']} " + self.val1+self.re + self.w+self.empty * (self.len - self.val1_l)+f"{self.asc['v']}"
+        self.val2       = f"{self.asc['v']} " + self.val2+self.re + self.w+self.empty * (self.len - self.val2_l)+f"{self.asc['v']}"
+        self.val3       = f"{self.asc['v']} " + self.val3+self.re + self.w+self.empty * (self.len - self.val3_l)+f"{self.asc['v']}"
         self.store_id   = []
         self.string     = ""
         self.err        = None

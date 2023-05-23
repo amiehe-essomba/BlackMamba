@@ -31,7 +31,7 @@ def decoding_string() -> list:
 def convert( ) -> list :
     s = decoding_string()
     number = None 
-    #print(s)
+    
     if len(s) == 1:
         try:
             s = s[0].decode("utf-8")
@@ -43,7 +43,6 @@ def convert( ) -> list :
                     elif ord(s) == 80 : number = [27, [66, 0]]
                     elif ord(s) == 75 : number = [27, [68, 0]]
                     elif ord(s) == 77 : number = [27, [67, 0]]
-                    
             except TypeError: 
                 if   s == "\x0e":
                     number =  [14, None]
@@ -67,7 +66,13 @@ def convert( ) -> list :
                 elif s == "t" : number = [27, [49, 65]]
                 elif s == "s" : number = [27, [49, 66]]
             else: number =  [None, None]
-        except UnicodeDecodeError : number =  [None, None]
-
+        except UnicodeDecodeError : 
+            # <ctrl+alt+up>
+            if   s[1] in [b'\x98'] : number = [1000, None]
+            # <ctrl+alt+down>
+            elif s[1] in [b'\xa0'] : number = [1001, None]
+            #else
+            else: number =  [None, None]
+        #print(number)
     return number
      

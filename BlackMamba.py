@@ -20,7 +20,6 @@
 # **updating by: amiehe-essomba                             #
 #############################################################
 
-
 from script                     import control_string
 from script.LEXER.FUNCTION      import main
 from script.DATA_BASE           import data_base                as db
@@ -29,6 +28,7 @@ from script.STDIN.LinuxSTDIN    import bm_configure             as bm
 from script.PARXER.WINParxer    import parxer_for_interpreter   as PFI
 import os
 import numpy as np
+from script                     import control_string as CS 
 
 def B_PATH(system, file_name):
     current_file = os.path.abspath(os.curdir)
@@ -52,28 +52,34 @@ def read_file(path):
 def break_file(file, typ="\\"):
     file_name = file.split('\\')
     true_name, idd, dir_ = "", -1, ""
-    
-    if len(file_name) == 1:  return file, dir_ 
+    error = None
+
+    if len(file_name) == 1:  
+        _name_ = file.split('.')
+        if _name_[-1] == 'bm': pass 
+        else: error = ERRORS(1).ERROR4(file) 
+
+        return file, dir_, error
     else:
-        for i in range(len(file_name)):
-            try:
-                if file_name[idd] :
-                    true_name = file_name[idd]
-                    break 
-                else: id -= 1
-            except IndexError: break 
+        if file_name[-1]:
+            true_name = file_name[-1]
+            rest = file_name[-1]
+            _name_ = true_name.split('.')
 
-        if true_name:
-            rest = file_name[:-idd]
-            if rest:
-                for r in rest:
-                    if s == '' : s =typ 
-                    else: pass 
-                    dir_ += s 
-            else: pass 
-        else: dir_ = file
+            if len(_name_) == 2:
+                if _name_[-1] == 'bm':
+                    if rest:
+                        for q, r in enumerate(rest):
+                            if s == '' : s = typ 
+                            else: pass 
+                            if q < len(rest)-1: dir_ += s + typ
+                            else: dir_ += s 
+                    else: error = ERRORS(1).ERROR7( file_name ) 
+                else: error = ERRORS(1).ERROR4( true_name) 
+            else: error = ERRORS(1).ERROR5( true_name) 
+        else: error = ERRORS(1).ERROR6( file_name )  
 
-        return true_name, dir_
+        return true_name, dir_, error
 
 def SubMain( system = 'Windows', file_name : str = '' ):
     data_from_file, error = None, None
@@ -84,15 +90,21 @@ def SubMain( system = 'Windows', file_name : str = '' ):
         abs_path_plus_file_name = B_PATH(system, file_name)
         try:
             # checking if the file is not empty
-            if os.stat(abs_path_plus_file_name).st_size != 0:
-                data_from_file = read_file(abs_path_plus_file_name)
-            else: 
-                F, D = break_file(abs_path_plus_file_name)
-                error  =ERRORS(1).ERROR2(F) 
+            _, _, error = break_file( file_name )
+            if error is None:
+                if os.stat(abs_path_plus_file_name).st_size != 0:
+                    data_from_file = read_file(abs_path_plus_file_name)
+                else: 
+                    F, D, error = break_file(abs_path_plus_file_name)
+                    if error is None: error  =ERRORS(1).ERROR2(F) 
+                    else: pass
+            else: pass 
         except FileNotFoundError:
-            F, D = break_file(abs_path_plus_file_name)
-            if F: error  =ERRORS(1).ERROR0(F) 
-            else: error  =ERRORS(1).ERROR1(D) 
+            F, D, error = break_file(abs_path_plus_file_name)
+            if error is None:
+                if F: error  =ERRORS(1).ERROR0(F) 
+                else: error  =ERRORS(1).ERROR1(D) 
+            else: pass
     else: error  =ERRORS(1).ERROR3()
 
     return data_from_file, error 
@@ -133,98 +145,99 @@ def MAIN(system = 'Windows', file_name : str = ''):
 
         if not data_from_file: pass 
         else:
-            for x, string in enumerate( data_from_file ):
-                line += 1
-                data_base['modulesImport']['TrueFileNames']['line'][0]=line
-                if string:
-                    if data_base['globalIndex'] is None:
-                        try:
-                            data_base['starter'] = x+1
-                            if x >= ind :
-                                lexer, normal_string, error = main.MAIN(
-                                            master = string, 
-                                            data_base = data_base, 
-                                            line = line
-                                            ).MAIN( 
-                                                interpreter = True, 
-                                                MainList = data_from_file[x+1: ] 
-                                                )
-                                if error is None:
-                                    if lexer is not None:
-                                        if data_base['globalIndex'] is None: 
-                                            new_array, ind = data_from_file[x + 1 : ], 0
-                                        else:
-                                            ind                     = data_base['globalIndex']
-                                            data_base['starter']    = ind
-                                            new_array               = data_from_file[ind + 1 : ]
+            try:
+                for x, string in enumerate( data_from_file ):
+                    line += 1
+                    data_base['modulesImport']['TrueFileNames']['line'][0]=line
+                    if string:
+                        if data_base['globalIndex'] is None:
+                            try:
+                                data_base['starter'] = x+1
+                                if x >= ind :
+                                    lexer, normal_string, error = main.MAIN(
+                                                master = string, 
+                                                data_base = data_base, 
+                                                line = line
+                                                ).MAIN( 
+                                                    interpreter = True, 
+                                                    MainList = data_from_file[x+1: ] 
+                                                    )
+                                    if error is None:
+                                        if lexer is not None:
+                                            if data_base['globalIndex'] is None: 
+                                                new_array, ind = data_from_file[x + 1 : ], 0
+                                            else:
+                                                ind                     = data_base['globalIndex']
+                                                data_base['starter']    = ind
+                                                new_array               = data_from_file[ind + 1 : ]
 
-                                        num, key, error = PFI.ASSEMBLY(
-                                                master=lexer, 
-                                                data_base=data_base, 
-                                                line=line
-                                                ).GLOBAL_ASSEMBLY_FOR_INTERPRETER(
+                                            num, key, error = PFI.ASSEMBLY(
+                                                    master=lexer, 
+                                                    data_base=data_base, 
+                                                    line=line
+                                                    ).GLOBAL_ASSEMBLY_FOR_INTERPRETER(
+                                                            main_string = normal_string, 
+                                                            interpreter = True,
+                                                            MainList = new_array, 
+                                                            baseFileName = current_file
+                                                            )
+                                            
+                                            if error is None: pass
+                                            else: 
+                                                print('{}\n'.format( error ) )
+                                                break
+                                        else: pass
+                                    else: 
+                                        print('{}\n'.format( error ) )
+                                        break
+                                else: pass
+                            except EOFError: break
+                        else:
+                            if x < data_base['globalIndex']+1: pass 
+                            else:
+                                try:
+                                    before = data_base['globalIndex']
+                                    data_base['starter'] = x+1
+                                    lexer, normal_string, error = main.MAIN(
+                                                master=string, 
+                                                data_base = data_base, 
+                                                line = line).MAIN( 
+                                                        interpreter = True, 
+                                                        MainList = data_from_file[x+1: ] 
+                                                        )
+                                    if error is None:
+                                        if lexer is not None:
+                                            ind = np.abs(before -  data_base['globalIndex'])
+                                            if ind == 0: new_array, ind = data_from_file[x + 1 : ], 0
+                                            else:
+                                                ind                     = data_base['globalIndex']
+                                                data_base['starter']    = ind
+                                                new_array               = data_from_file[ind + 1 : ]
+
+                                            num, key, error = PFI.ASSEMBLY(
+                                                    master = lexer, 
+                                                    data_base = data_base, 
+                                                    line= line
+                                                    ).GLOBAL_ASSEMBLY_FOR_INTERPRETER(
                                                         main_string = normal_string, 
                                                         interpreter = True,
                                                         MainList = new_array, 
                                                         baseFileName = current_file
                                                         )
-                                        
-                                        if error is None: pass
-                                        else: 
-                                            print('{}\n'.format( error ) )
-                                            break
-                                    else: pass
-                                else: 
-                                    print('{}\n'.format( error ) )
-                                    break
-                            else: pass
-                        except EOFError: break
-                    else:
-                        if x < data_base['globalIndex']+1: pass 
-                        else:
-                            try:
-                                before = data_base['globalIndex']
-                                data_base['starter'] = x+1
-                                lexer, normal_string, error = main.MAIN(
-                                            master=string, 
-                                            data_base = data_base, 
-                                            line = line).MAIN( 
-                                                    interpreter = True, 
-                                                    MainList = data_from_file[x+1: ] 
-                                                    )
-                                if error is None:
-                                    if lexer is not None:
-                                        ind = np.abs(before -  data_base['globalIndex'])
-                                        if ind == 0: new_array, ind = data_from_file[x + 1 : ], 0
-                                        else:
-                                            ind                     = data_base['globalIndex']
-                                            data_base['starter']    = ind
-                                            new_array               = data_from_file[ind + 1 : ]
-
-                                        num, key, error = PFI.ASSEMBLY(
-                                                master = lexer, 
-                                                data_base = data_base, 
-                                                line= line
-                                                ).GLOBAL_ASSEMBLY_FOR_INTERPRETER(
-                                                    main_string = normal_string, 
-                                                    interpreter = True,
-                                                    MainList = new_array, 
-                                                    baseFileName = current_file
-                                                    )
-                                        
-                                        if error is None: pass
-                                        else:
-                                            print('{}\n'.format( error ) )
-                                            break
-                                    else: pass
-                                else: 
-                                    print('{}\n'.format( error ) )
-                                    break
-                            except EOFError: break
-                else: pass
-    else: print('{}\n'.format( error ) )
+                                            
+                                            if error is None: pass
+                                            else:
+                                                print('{}\n'.format( error ) )
+                                                break
+                                        else: pass
+                                    else: 
+                                        print('{}\n'.format( error ) )
+                                        break
+                                except EOFError: break
+                    else: pass
+            except Exception: pass
+    else:  print('{}\n'.format( error ) )
     
-
 class ERRORS:
     def __init__(self, line):
         self.line       = line
@@ -258,5 +271,30 @@ class ERRORS:
     def ERROR3(self):
         error = '{}Not input. {}line: {}{}'.format(self.green, self.white, self.yellow, self.line)     
         self.error = fe.FileErrors( 'SyntaxError' ).Errors()+ error
+
+        return self.error+self.reset
+    
+    def ERROR4(self, string: str):
+        error = '{}is not {} a BLACK MAMBA {}file. {}line: {}{}'.format(self.white, self.red,
+                                                                        self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'ModuleError' ).Errors() +'{}{} '.format(self.cyan, string) + error
+
+        return self.error+self.reset
+    
+    def ERROR5(self, string: str):
+        error = '.{}line: {}{}'.format(  self.white, self.yellow, self.line )
+        self.error = fe.FileErrors( 'FileNameError' ).Errors() +'{}{} '.format(self.cyan, string) + error
+
+        return self.error+self.reset
+    
+    def ERROR6(self, string: str):
+        error = '{}is not a file. {}line: {}{}'.format(self.magenta,  self.white, self.yellow, self.line )
+        self.error = fe.FileErrors( 'FileNotFoundError' ).Errors() +'{}{} '.format(self.cyan, string) + error
+
+        return self.error+self.reset
+    
+    def ERROR7(self, string: str):
+        error = '{}was not found. {}line: {}{}'.format(self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'DirectoryNotFoundError' ).Errors() + '{}directory {}{} '.format( self.white, self.cyan, string) + error
 
         return self.error+self.reset

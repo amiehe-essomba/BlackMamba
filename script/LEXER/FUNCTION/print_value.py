@@ -124,14 +124,14 @@ class PRINT_PRINT:
 class ERRORS:
     def __init__(self, line):
         self.line           = line
-        self.cyan           = bm.fg.cyan_L
-        self.red            = bm.fg.red_L
-        self.green          = bm.fg.green_L
-        self.yellow         = bm.fg.yellow_L
-        self.magenta        = bm.fg.magenta_M
-        self.white          = bm.fg.white_L
-        self.blue           = bm.fg.blue_L
-        self.reset          = bm.init.reset
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
         error = '{}line: {}{}'.format(self.white, self.yellow, self.line)

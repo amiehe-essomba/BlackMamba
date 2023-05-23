@@ -18,16 +18,16 @@ class Details:
     def Details(self, string_name: str):
         
         r = bm.init.reset
-        c = bm.init.bold+bm.init.blink+bm.fg.rbg(255, 0, 255)
-        m = bm.init.bold+bm.init.blink+bm.fg.rbg(0, 255, 255)
-        w = bm.init.bold+bm.fg.rbg(255, 255, 255)
+        c = bm.init.bold+ bm.bg.rgb(10, 10, 10) + bm.fg.rbg(255, 0, 255)
+        m = bm.init.bold+ bm.bg.rgb(10, 10, 10) + bm.fg.rbg(0, 255, 255)
+        w = bm.init.bold+ bm.bg.rgb(10, 10, 10) + bm.fg.rbg(255, 255, 255)
         self.list, self.len, self.L   = e.code_example(string_name[0], string_name).code()
         
         if self.list is not None:
             self.asc        = ascii.frame(True)
             self.index      = 0 
             self.value      = None
-            self.val1       = f'{w}[{m}q{r}{w}] = {c}exit{r}'
+            self.val1       = f'{w}[{m}q{w}] = {c}exit{r}'
             self.val1_l     = len('[q] = exit')
             self.empty      = " "
             self.val1       = f"{self.asc['v']} " + self.val1+self.re + self.w+self.empty * (self.len-self.val1_l)+f"{self.asc['v']}"

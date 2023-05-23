@@ -1,5 +1,4 @@
 from script.LEXER.FUNCTION                      import main
-from script.PARXER                              import parxer_assembly
 from script.PARXER.WINParxer                    import parxer_file_interpreter as PFI
 
 class convert:

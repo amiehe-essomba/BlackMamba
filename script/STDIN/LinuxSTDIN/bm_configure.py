@@ -460,12 +460,12 @@ class words:
                             else: self.color = self.c
 
                             self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                            if code_w is False: self.newS   += ' '
-                            else:  self.newS   += self.cc+' '
+                            if code_w is False: self.newS   += self.cc + ' '
+                            else:  self.newS   += self.cc +' '
                             self.ss     = ''
                     else:
-                        if code_w is False: self.newS   += ' '
-                        else:  self.newS   += self.cc+' '
+                        if code_w is False: self.newS   += self.cc + ' '
+                        else:  self.newS   += self.cc + ' '
                         self.ss      = ''
         else:  self.newS = words(self.string, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
 

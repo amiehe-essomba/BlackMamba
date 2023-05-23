@@ -104,7 +104,6 @@ class TREATMENT:
                         # checking if module_name is in current directory
                         if self.module_name in self.currently_listdir:
                             if isfile( self.module_name ) is True: 
-                                
                                 # current or Lib directory is checking here 
                                 if self.module_name != baseFileName:  self.key_directory.append( 'current' )
                                 else:

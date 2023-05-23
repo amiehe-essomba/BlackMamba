@@ -1,14 +1,6 @@
 from script                                 import control_string
 from script.STDIN.LinuxSTDIN                import bm_configure     as bm
-
-ne = bm.fg.red_L 
-ie = bm.fg.blue_L
-ae = bm.fg.cyan_L
-te = bm.fg.magenta
-ke = bm.fg.yellow_L
-ve = bm.fg.green_L
-se = bm.fg.yellow
-we = bm.fg.white_L
+from CythonModules.Windows                  import fileError    as fe
 
 
 class GLOBAL:
@@ -69,17 +61,26 @@ class GLOBAL:
 class ERRORS:
     def __init__(self, line):
         self.line       = line
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
+        self.reset      = bm.init.reset
+
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+ ': invalid syntax in {}<< {} >>. '.format(self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR1(self, string: str):
-        self._str_ = '{}type {}help( {}var_name{} ) {} for more informations. '.format(we, te, ke, te, we)
-        error = '{}in {}<< {} >> .{}line: {}{}.\n{}'.format(ne, ve, string, we, ke, self.line, self._str_)
-        self.error = '{}{} : {}global variable name {}ERROR '.format(ne, 'NameError', ke, ae) + error
-
-        return self.error
+        self._str_ = '{}type {}help( {}var_name{} ) {} for more informations. '.format(self.white, self.magenta, self.yellow, self.magenta
+                                                                                       , self.white)
+        error = '{}in {}<< {} >> .{}line: {}{}.\n{}'.format(self.red, self.green, string, self.white, self.yellow, self.line, self._str_)
+        self.error = fe.FileErrors( 'NameError').Errors()+'{}global variable name {}ERROR '.format(self.blue, self.white) + error
+        return self.error+self.reset
+      
 

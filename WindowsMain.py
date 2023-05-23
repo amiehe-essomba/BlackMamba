@@ -39,8 +39,9 @@ from IDE.EDITOR                 import left_right                   as LR
 from IDE.EDITOR                 import string_build                 as SB
 from IDE.EDITOR                 import pull_editor                  as PE
 from IDE.EDITOR                 import drop_box                     as DR
+from script.STDIN.LinuxSTDIN    import ascii
 import platform
-
+from windows                    import traceback
 
 
 class windows:
@@ -607,7 +608,6 @@ class windows:
                                 self.lexer, self.normal_string, self.error = main.MAIN(self.string, self.data_base, self.if_line).MAIN()
                                 if self.error is None :
                                     if self.lexer is not None:
-                                    
                                         # running parser
                                         self.num, self.key, self.error = parxer.ASSEMBLY(self.lexer, self.data_base,
                                                 self.if_line).GLOBAL_ASSEMBLY(main_string=self.normal_string, 
@@ -621,32 +621,20 @@ class windows:
                                                 if self.histoty_tracback['all_modules_load']:
                                                     self.data_base['all_modules_load'] += self.histoty_tracback['all_modules_load']
                                                 else: pass 
-
-                                                for ii, s in enumerate(self.data_base['all_modules_load']):
-                                                    self.__string__ += s + '\n'
-                                             
-                                                self.__string__ = self.color + self.__string__ + bm.init.reset
-
-                                                self.data_base['all_modules_load'] = []
-                                                self.histoty_tracback       = {
-                                                'TrueFileNames'         : None,
-                                                "all_modules_load"      : None,
-                                                "modules"               : None
-                                                }
-                                                self.data_base['modulesImport']['TrueFileNames']['names']      = []
-                                                self.data_base['modulesImport']['TrueFileNames']['path']       = []
-                                                self.data_base['modulesImport']['TrueFileNames']['line']       = []
-
                                             else: pass 
 
-                                            sys.stdout.write(bm.clear.line(2))
-                                            sys.stdout.write(bm.move_cursor.LEFT(1000))
-                                            print('{}\n'.format(bm.init.bold+ self.__string__ + self.error))
-                                            self.error = None
-
-                                            #print(self.histoty_tracback)
-                                            #print( self.data_base['modulesImport']['TrueFileNames'])
-                                            #print( self.data_base['all_modules_load'])
+                                            traceback.traceback.trace(self.data_base['all_modules_load'], self.error)
+                                      
+                                            self.error                          = None
+                                            self.data_base['all_modules_load']  = []
+                                            self.histoty_tracback               = {
+                                            'TrueFileNames'         : None,
+                                            "all_modules_load"      : None,
+                                            "modules"               : None
+                                            }
+                                            self.data_base['modulesImport']['TrueFileNames']['names']      = []
+                                            self.data_base['modulesImport']['TrueFileNames']['path']       = []
+                                            self.data_base['modulesImport']['TrueFileNames']['line']       = []
                                     else:  pass
                                 else:
                                     sys.stdout.write(bm.clear.line(2))
@@ -802,7 +790,7 @@ class windows:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
-            except ArithmeticError:
+            except EOFError:
                 os.system('cls')
                 self._end_of_file_ = bm.bg.red_L + bm.fg.rbg(255,255,255) + "EOFError" + bm.init.reset
                 print(self._end_of_file_)
@@ -810,7 +798,6 @@ class windows:
                 sys.stdout.write(bm.string().syntax_highlight(name=self.input))
                 sys.stdout.flush()
              
-
 if __name__ == '__main__':
     
     term = 'orion'

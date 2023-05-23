@@ -1410,7 +1410,7 @@ int __pyx_module_is_main_fileError = 0;
 static const char __pyx_k__2[] = " : ";
 static const char __pyx_k_bm[] = "bm";
 static const char __pyx_k_fg[] = "fg";
-static const char __pyx_k__20[] = ":";
+static const char __pyx_k__21[] = ":";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_rbg[] = "rbg";
 static const char __pyx_k_dict[] = "__dict__";
@@ -1462,6 +1462,7 @@ static const char __pyx_k_stringsource[] = "stringsource";
 static const char __pyx_k_DecodingError[] = "DecodingError";
 static const char __pyx_k_EncodingError[] = "EncodingError";
 static const char __pyx_k_FileModeError[] = "FileModeError";
+static const char __pyx_k_FileNameError[] = "FileNameError";
 static const char __pyx_k_OverFlowError[] = "OverFlowError";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_AttributeError[] = "AttributeError";
@@ -1493,6 +1494,7 @@ static PyObject *__pyx_n_s_ExceptionNameError;
 static PyObject *__pyx_n_s_FileError;
 static PyObject *__pyx_n_s_FileErrors;
 static PyObject *__pyx_n_s_FileModeError;
+static PyObject *__pyx_n_s_FileNameError;
 static PyObject *__pyx_n_s_FileNotFoundError;
 static PyObject *__pyx_kp_s_Incompatible_checksums_0x_x_vs_0;
 static PyObject *__pyx_n_s_IndentationError;
@@ -1510,7 +1512,7 @@ static PyObject *__pyx_n_s_UnicodeError;
 static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_n_s_ZeroDivisionError;
 static PyObject *__pyx_kp_u__2;
-static PyObject *__pyx_kp_s__20;
+static PyObject *__pyx_kp_s__21;
 static PyObject *__pyx_n_s_blue_L;
 static PyObject *__pyx_n_s_bm;
 static PyObject *__pyx_n_s_bm_configure;
@@ -1564,6 +1566,7 @@ static PyObject *__pyx_pf_9fileError_10FileErrors_8__setstate_cython__(struct __
 static PyObject *__pyx_pf_9fileError___pyx_unpickle_FileErrors(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_9fileError_FileErrors(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
+static PyObject *__pyx_int_15;
 static PyObject *__pyx_int_20;
 static PyObject *__pyx_int_21;
 static PyObject *__pyx_int_23;
@@ -1582,6 +1585,7 @@ static PyObject *__pyx_int_174;
 static PyObject *__pyx_int_199;
 static PyObject *__pyx_int_200;
 static PyObject *__pyx_int_225;
+static PyObject *__pyx_int_230;
 static PyObject *__pyx_int_235;
 static PyObject *__pyx_int_252;
 static PyObject *__pyx_int_255;
@@ -1606,9 +1610,10 @@ static PyObject *__pyx_tuple__16;
 static PyObject *__pyx_tuple__17;
 static PyObject *__pyx_tuple__18;
 static PyObject *__pyx_tuple__19;
-static PyObject *__pyx_tuple__21;
+static PyObject *__pyx_tuple__20;
 static PyObject *__pyx_tuple__22;
-static PyObject *__pyx_codeobj__23;
+static PyObject *__pyx_tuple__23;
+static PyObject *__pyx_codeobj__24;
 /* Late includes */
 
 /* "fileError.pyx":7
@@ -2877,7 +2882,7 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
  *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
  *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
  *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- * 
+ *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_UnicodeError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 34, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
@@ -2924,7 +2929,7 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
  *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
  *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
  *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- * 
+ *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  *     cpdef initError( self )             :
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_CircularLoadingError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 35, __pyx_L1_error)
@@ -2965,6 +2970,54 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
+    goto __pyx_L0;
+  }
+
+  /* "fileError.pyx":36
+ *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *     cpdef initError( self )             :
+ *         cdef list stringSplit
+ */
+  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_FileNameError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_5 = (__pyx_t_6 != 0);
+  if (__pyx_t_5) {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
@@ -3033,7 +3086,7 @@ static PyObject *__pyx_pf_9fileError_10FileErrors_2Errors(struct __pyx_obj_9file
 
 /* "fileError.pyx":37
  *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- * 
+ *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  *     cpdef initError( self )             :             # <<<<<<<<<<<<<<
  *         cdef list stringSplit
  * 
@@ -3170,7 +3223,7 @@ static PyObject *__pyx_f_9fileError_10FileErrors_initError(struct __pyx_obj_9fil
       __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_kp_s__20) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s__20);
+  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_kp_s__21) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s__21);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -3198,7 +3251,7 @@ static PyObject *__pyx_f_9fileError_10FileErrors_initError(struct __pyx_obj_9fil
 
   /* "fileError.pyx":37
  *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- * 
+ *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  *     cpdef initError( self )             :             # <<<<<<<<<<<<<<
  *         cdef list stringSplit
  * 
@@ -3766,7 +3819,7 @@ static PyObject *__pyx_pf_9fileError___pyx_unpickle_FileErrors(CYTHON_UNUSED PyO
  */
   __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_tuple__21, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_tuple__22, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
@@ -4245,6 +4298,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_FileError, __pyx_k_FileError, sizeof(__pyx_k_FileError), 0, 0, 1, 1},
   {&__pyx_n_s_FileErrors, __pyx_k_FileErrors, sizeof(__pyx_k_FileErrors), 0, 0, 1, 1},
   {&__pyx_n_s_FileModeError, __pyx_k_FileModeError, sizeof(__pyx_k_FileModeError), 0, 0, 1, 1},
+  {&__pyx_n_s_FileNameError, __pyx_k_FileNameError, sizeof(__pyx_k_FileNameError), 0, 0, 1, 1},
   {&__pyx_n_s_FileNotFoundError, __pyx_k_FileNotFoundError, sizeof(__pyx_k_FileNotFoundError), 0, 0, 1, 1},
   {&__pyx_kp_s_Incompatible_checksums_0x_x_vs_0, __pyx_k_Incompatible_checksums_0x_x_vs_0, sizeof(__pyx_k_Incompatible_checksums_0x_x_vs_0), 0, 0, 1, 0},
   {&__pyx_n_s_IndentationError, __pyx_k_IndentationError, sizeof(__pyx_k_IndentationError), 0, 0, 1, 1},
@@ -4262,7 +4316,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
   {&__pyx_n_s_ZeroDivisionError, __pyx_k_ZeroDivisionError, sizeof(__pyx_k_ZeroDivisionError), 0, 0, 1, 1},
   {&__pyx_kp_u__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 1, 0, 0},
-  {&__pyx_kp_s__20, __pyx_k__20, sizeof(__pyx_k__20), 0, 0, 1, 0},
+  {&__pyx_kp_s__21, __pyx_k__21, sizeof(__pyx_k__21), 0, 0, 1, 0},
   {&__pyx_n_s_blue_L, __pyx_k_blue_L, sizeof(__pyx_k_blue_L), 0, 0, 1, 1},
   {&__pyx_n_s_bm, __pyx_k_bm, sizeof(__pyx_k_bm), 0, 0, 1, 1},
   {&__pyx_n_s_bm_configure, __pyx_k_bm_configure, sizeof(__pyx_k_bm_configure), 0, 0, 1, 1},
@@ -4496,7 +4550,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
  *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
  *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- * 
+ *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__18 = PyTuple_Pack(3, __pyx_int_235, __pyx_int_100, __pyx_int_100); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
@@ -4506,12 +4560,23 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
  *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
  *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- * 
+ *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  *     cpdef initError( self )             :
  */
   __pyx_tuple__19 = PyTuple_Pack(3, __pyx_int_23, __pyx_int_100, __pyx_int_55); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
+
+  /* "fileError.pyx":36
+ *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *     cpdef initError( self )             :
+ *         cdef list stringSplit
+ */
+  __pyx_tuple__20 = PyTuple_Pack(3, __pyx_int_230, __pyx_int_15, __pyx_int_55); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
 
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
@@ -4520,19 +4585,19 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         from pickle import PickleError as __pyx_PickleError
  *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x887886a, 0x0fa7183, 0x6049503) = (stringType))" % __pyx_checksum)
  */
-  __pyx_tuple__21 = PyTuple_Pack(3, __pyx_int_143100010, __pyx_int_16413059, __pyx_int_100963587); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__21);
-  __Pyx_GIVEREF(__pyx_tuple__21);
+  __pyx_tuple__22 = PyTuple_Pack(3, __pyx_int_143100010, __pyx_int_16413059, __pyx_int_100963587); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_FileErrors(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__22 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_FileErrors, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_FileErrors, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4543,6 +4608,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_15 = PyInt_FromLong(15); if (unlikely(!__pyx_int_15)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_20 = PyInt_FromLong(20); if (unlikely(!__pyx_int_20)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_21 = PyInt_FromLong(21); if (unlikely(!__pyx_int_21)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_23 = PyInt_FromLong(23); if (unlikely(!__pyx_int_23)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -4561,6 +4627,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   __pyx_int_199 = PyInt_FromLong(199); if (unlikely(!__pyx_int_199)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_200 = PyInt_FromLong(200); if (unlikely(!__pyx_int_200)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_225 = PyInt_FromLong(225); if (unlikely(!__pyx_int_225)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_230 = PyInt_FromLong(230); if (unlikely(!__pyx_int_230)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_235 = PyInt_FromLong(235); if (unlikely(!__pyx_int_235)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_252 = PyInt_FromLong(252); if (unlikely(!__pyx_int_252)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_255 = PyInt_FromLong(255); if (unlikely(!__pyx_int_255)) __PYX_ERR(0, 1, __pyx_L1_error)

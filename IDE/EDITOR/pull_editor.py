@@ -88,8 +88,6 @@ class IDE:
         self.g          = bm.init.bold+bm.fg.rbg(0,255,0)+ f'{chr(10148)*2} (F)' + bm.init.reset
         self.var        = bm.init.bold+bm.fg.rbg(255,255,0)+ f'{chr(10148)*2} (V)' + bm.init.reset
     def Linux(self, inp : list, true_chaine : str = "", pos:int=0, move_cursor_down : int = 0):
-        
-        self.vr, self.fc, self.cc = FC.F_C(self.data_base).F_C(inp, self.firstChar, self.idd)
         self.input      =  inp[0]
         self.empty      = " "
         self.len        = 20#16
@@ -368,19 +366,19 @@ class  DropDown:
                     for s in all_values:
                         if string in s[:len(string)]:  self.new.append(s)
                         else: pass 
-                        
+                     
                     if self.new:
                         np = len(self.new)
                         if np < 5: np -= 1 
-                        else:
-                            if  pos < 5 :  self.new = self.new[:5]
-                            else: self.new , pos = self.new[pos-5: pos], 4
-
+                        else:  self.new = self.new[:5]
                         idd = self.max_size + len(self.new)
-                        self.index = IDE(len(string), string, self.data_base).Linux( 
-                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, pos=pos, move_cursor_down=idd  )
+
+                        if pos >= len(self.new): pos = len(self.new)-1
+                        else: pass 
+
+                        self.index = IDE(len(string), string, self.data_base).Linux( pos=pos,
+                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, move_cursor_down=idd )
                         self.max_size += self.index
-                    else: pass
                     ouput = all_values[pos]
             except TypeError: pass 
             except IndexError: pass

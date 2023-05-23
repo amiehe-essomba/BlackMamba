@@ -33,7 +33,7 @@ cdef class FileErrors:
         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset 
         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset 
         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset 
-    
+        elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset 
     cpdef initError( self )             :
         cdef list stringSplit
 

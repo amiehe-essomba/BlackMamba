@@ -32,7 +32,10 @@ from ctypes                     import windll
 from IDE.EDITOR                 import string_to_chr 
 from script.STDIN.LinuxSTDIN    import bm_configure                 as bm
 from IDE.EDITOR                 import pull_editor                  as PE
-from IDE.EDITOR                 import string_build                 as SB
+from windows                    import traceback                    as TB
+from script.PARXER.WINParxer    import parxer
+from script.LEXER.FUNCTION      import main
+
 
 def write(terminal_name='pegasus', string = "", decorator = "", color = "", reset = '', show = False):
     if terminal_name == 'orion':
@@ -91,6 +94,13 @@ class IDE:
         self.border_x_limit                 = True 
         # scroll list size 
         self.scroll_size                    = 11
+        # story
+        self.histoty_tracback               = {
+            'TrueFileNames'                 : None,
+            "all_modules_load"              : None,
+            "modules"                       : None
+        }
+        self.error                          = None
         ##########################################################################
         k  = windll.kernel32
         k.SetConsoleMode( k.GetStdHandle( -11 ), 7)
@@ -100,8 +110,6 @@ class IDE:
         sys.stdout.write( bm.move_cursor.LEFT(pos = 1000) )
         # print the input value
         sys.stdout.write( self.Data['main_input'] )
-        # save cursor position
-        #sys.stdout.write(bm.save.save)
         # getting the cursor coordiantes (x, y)
         self.X, self.y                      = screenConfig.cursor()
         sys.stdout.flush()
@@ -139,7 +147,6 @@ class IDE:
                     _ = self.char[1]
                     self.char = self.char[0]
                     if self.char is not None:
-                        #print(self.char)
                         # breaking loop while with the keyboardError ctrl+c
                         if self.char == 3               :
                             os.system('cls')
@@ -345,6 +352,17 @@ class IDE:
                             print(self._end_of_file_)
                             return
                         
+                        # <ctrl+alt+down> => <down >
+                        elif self.char in {1001}        : 
+                            self.indicator = 66
+                            self.indicator_pos += 1
+                        
+                        # <ctrl+alt+up> => <up>
+                        elif self.char in {1000}        : 
+                            self.indicator = 65 
+                            if self.indicator_pos >= 1: self.indicator_pos -= 1
+                            else: pass
+
                         # enter is pressed 
                         elif self.char in {10, 13}      :
                             # moving cursor left 
@@ -353,7 +371,30 @@ class IDE:
                             sys.stdout.write( self.clear.line( pos = 2 ) )
                             # writing string 
                             write(terminal_name, self.Data['input'], self.Data['main_input'], self.color, self.reset, show=True)
-                            
+                            #####################################################################################
+                            if self.Data['string']:
+                                # running lexer
+                                self.lexer, self.normal_string, self.error = main.MAIN(
+                                                master = self.Data['string'],
+                                                data_base=self.data_base, 
+                                                line=self.if_line).MAIN()
+                                if self.error is None :
+                                    if self.lexer is not None:
+                                        # running parser
+                                        self.num, self.key, self.error = parxer.ASSEMBLY(
+                                            master=self.lexer, 
+                                            data_base=self.data_base,
+                                            line=self.if_line).GLOBAL_ASSEMBLY(
+                                                        main_string=self.normal_string, 
+                                                        interpreter = False, term=terminal_name, 
+                                                        traceback=self.histoty_tracback
+                                            )
+                                       
+                                        if self.error is None: pass 
+                                        else: self.error = TB.traceback.init(self.data_base,  self.histoty_tracback, self.error)
+                                    else:  pass
+                                else : self.error = TB.traceback.init(self.data_base,  self.histoty_tracback, self.error)
+                            else: pass
                             #####################################################################################
                             # initializing all variables
                             self.if_line            += 1 
@@ -376,20 +417,8 @@ class IDE:
                             self.indicator_pos      = 0
                             self.indicator          = None
                             self.indicator_max      = 1
+                            self.scroll_size        = 11
                             #####################################################################################
-                        
-                        # <ctrl+u> => <ctrl = up >
-                        elif self.char in {21}: pass
-                            #self.indicator = 66
-                            #self.indicator_pos += 1
-                            #if self.indicator_pos < self.indicator_max : self.indicator_pos += 1
-                            #else: pass 
-                        
-                        # <ctrl+o> => <ctrl+down>
-                        elif self.char in {15}: pass
-                            #self.indicator = 65 
-                            #if self.indicator_pos >= 1: self.indicator_pos -= 1
-                            #else: pass
                         
                         else: pass 
 
@@ -421,7 +450,7 @@ class IDE:
                                     sys.stdout.write(self.clear.screen(pos=0))
                                     
                                     if self.indicator is None:
-                                        verbose, self.indicator_max, self.max_size, _,self.error = PE.DropDown(
+                                        verbose, _, _, self.error = PE.DropDown(
                                             data_base = self.data_base, line=self.if_line).MENU( self.Data['str_drop_down'], 
                                         self.Data['input'], self.indicator, self.indicator_pos, (self.max_x-self.x))
 
@@ -434,9 +463,9 @@ class IDE:
                                         sys.stdout.flush()
                                     else: 
                                         sys.stdout.write(bm.clear.screen(pos=0))
-                                        verbose, self.indicator_max, self.max_size, self.indicator_pos, self.error = PE.DropDown(data_base = self.data_base, 
+                                        verbose, _, self.scroll_size, self.indicator_pos, self.error = PE.DropDown(data_base = self.data_base, 
                                                     line=self.if_line).MENU( self.Data['str_drop_down'], self.Data['string'], self.indicator, 
-                                                    self.indicator_pos, (self.max_x-self.x))
+                                                    self.indicator_pos, (self.max_x-self.x), iter=True)
                                      
                                         if self.error is None: 
                                             if verbose is not None: 
@@ -468,7 +497,7 @@ class IDE:
                                             # moving cursor on the right position 
                                             sys.stdout.write(self.move.TO(self.x, self.y) )
                                             sys.stdout.flush()
-
+                                            self.indicator = None
                                         else:
                                             sys.stdout.write(self.error+"\n\n")
                                             self.error = None
@@ -493,7 +522,6 @@ class IDE:
                         self.Data['tabular'][self.if_line]          = self.Data['index'] 
                         self.Data['memory'][self.if_line]           = self.Data['get'].copy() 
                         #############################################################################
-                        
                     else: pass
                 else: pass
             except KeyboardInterrupt:
@@ -507,6 +535,7 @@ class IDE:
                 self._keyboard_ = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 print(self._keyboard_)
                 return
+            
             except EOFError:
                 os.system('cls')
                 self._end_of_file_ = bm.bg.red_L + bm.fg.rbg(255,255,255) + "EOFError" + bm.init.reset

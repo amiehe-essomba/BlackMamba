@@ -447,17 +447,14 @@ class ERRORS:
         self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
         self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
-        self._str_      = '{}type {}help( {}var_name{} ) {}for more informations. '.format(self.white, self.magenta, self.yellow, 
-                                                                                           self.magenta, self.white)
+        self._str_      = '{}type {}help( {}var_name{} ) {}for more informations. '.format(self.white, self.magenta, self.yellow, self.magenta, self.white)
 
     def ERROR0(self, string: str):
         error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'SyntaxError' ).Errors() +'{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
-
         return self.error+self.reset
 
     def ERROR1(self, string: str):
         error = '{}ERROR. {}line: {}{}. \n{}'.format(self.yellow, self.white, self.yellow, self.line, self._str_)
         self.error = fe.FileErrors( 'NameError' ).Errors() +'{}<< {} >> {}module name '.format(self.cyan, string, self.white) + error
-
         return self.error+self.reset
