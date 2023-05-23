@@ -1,18 +1,10 @@
 from script.LEXER                           import segmentation
 from script                                 import control_string
 from script.STDIN.LinuxSTDIN                import bm_configure     as bm
+from CythonModules.Windows                  import fileError    as fe
 
-ne = bm.fg.red_L 
-ie = bm.fg.blue_L
-ae = bm.fg.cyan_L
-te = bm.fg.magenta
-ke = bm.fg.yellow_L
-ve = bm.fg.green_L
-se = bm.fg.yellow
-we = bm.fg.white_L
 
 class BOOLEAN_OPERATORS:
-
     def __init__(self, master, data_base, line):
         self.master                 = master
         self.long_chaine            = master
@@ -62,25 +54,17 @@ class BOOLEAN_OPERATORS:
 
                 if str_ in ['[', '(', '{', '"', "'"]:
 
-                    if str_ == '(':
-                        char1 = str_.index('(')
-                    else:
-                        char1 = int(self.number.number)
+                    if str_ == '(': char1 = str_.index('(')
+                    else: char1 = int(self.number.number)
 
-                    if str_ == '[':
-                        char2 = str_.index('[')
-                    else:
-                        char2 = int(self.number.number)
+                    if str_ == '[': char2 = str_.index('[')
+                    else: char2 = int(self.number.number)
 
-                    if str_ == '{':
-                        char3 = str_.index('{')
-                    else:
-                        char3 = int(self.number.number)
+                    if str_ == '{': char3 = str_.index('{')
+                    else: char3 = int(self.number.number)
 
-                    if str_ == '"':
-                        char4 = str_.index('"')
-                    else:
-                        char4 = int(self.number.number)
+                    if str_ == '"': char4 = str_.index('"')
+                    else: char4 = int(self.number.number)
 
                     if self.initialize[0] is None:
 
@@ -97,18 +81,13 @@ class BOOLEAN_OPERATORS:
                             self.initialize[0] = '"'
 
                         self.key_bracket = True
-
-                    else:
-                        self.initialize = self.initialize
-
+                    else: self.initialize = self.initialize
                 else:
                     if str_ in [']', ')', '}'] and self.key_bracket is None:
                         self.open = self.number.OPENING(str_)
                         self.error = self.string_error.ERROR_TREATMENT2( self.long_chaine, str_ )
                         break
-
-                    else:
-                        pass
+                    else: pass
 
                 if self.initialize[0] is not None:
                     if self.initialize[0] == '(':
@@ -121,21 +100,14 @@ class BOOLEAN_OPERATORS:
                         self.left, self.rigth = self.left + str_.count('{'), self.rigth + str_.count('}')
 
                     if self.initialize[0] == '"':
-                        if self.str_id == False:
-                            self.left, self.rigth = 1, 0
-                            self.str_id = True
-
+                        if self.str_id == False:  self.left, self.rigth, self.str_id = 1, 0, True
                         else:
                             if self.rigth <= 1:
-                                self.rigth = self.rigth + str_.count('"')
-                                self.left = self.left
-
+                                self.rigth, self.left  = self.rigth + str_.count('"'), self.left
                             else:
                                 self.error = self.string_error.ERROR_TREATMENT3( self.long_chaine )
                                 break
-
-                else:
-                    pass
+                else: pass
 
                 if self.left != self.rigth:
                     self.active_key = True
@@ -148,40 +120,33 @@ class BOOLEAN_OPERATORS:
 
                 self._string_   += str_
 
-                if self.active_key == True:
-
+                if self.active_key is  True:
                     self.string += str_
 
                     if self.invisible_string:
                         self.check_chars = []
 
                         for _str_ in self.invisible_string:
-                            if _str_ in self.accpeted_chars_:
-                                self.check_chars.append(True)
+                            if _str_ in self.accpeted_chars_: self.check_chars.append(True)
                             else:
                                 self.check_chars.append(False)
                                 break
 
-                        if False not in self.check_chars:
-                            self.invisible_string   = ''
+                        if False not in self.check_chars: self.invisible_string   = ''
                         else:
                             self.id = self.check_chars.index(False)
                             self.error = ERRORS( self.line ).ERROR5(self.invisible_string, self.invisible_string[self.id])
                             break
 
-                    else:
-                        pass
-
-                elif self.active_key == False:
+                    else: pass
+                elif self.active_key is False:
                     self.string += str_
 
-                    if i != len( self.master ) - 1:
-                        pass
-
+                    if i != len( self.master ) - 1: pass
                     else:
                         self.string, self.error = self.control.DELETE_SPACE(self.string)
                         if self.error is None:
-                            if self.activation_operators == True:
+                            if self.activation_operators is True:
                                 self.string_, self.error    = BOOLEAN_OPERATORS(self.master, self.data_base,
                                                                     self.line).VALUE_INSIDE_PARENTHESES(self.string)
 
@@ -189,29 +154,19 @@ class BOOLEAN_OPERATORS:
                                     self.error = BOOLEAN_OPERATORS(self.master, self.data_base,
                                             self.line).SYNTAX_PARENTHESIS( self.string, self.storage_operators[ -1 ] )
 
-                                    if self.error is None:
-                                        self.storage_data.append( self.string )
-
-                                    else:
-                                        self.error = self.error
-                                        break
-
-                                else:
-                                    self.error = self.error
-                                    break
-
-                            else:
-                                self.storage_data.append( self.string )
-
+                                    if self.error is None: self.storage_data.append( self.string )
+                                    else: break
+                                else: break
+                            else: self.storage_data.append( self.string )
                         else:
                             self.error  = ERRORS(self.line).ERROR0(self.master)
                             break
 
-                    self.initialize[0] = None
-                    self.left = 0
-                    self.rigth = 0
-                    self.str_id = False
-                    self.key_bracket = None
+                    self.initialize[0]  = None
+                    self.left           = 0
+                    self.rigth          = 0
+                    self.str_id         = False
+                    self.key_bracket    = None
 
                 else:
                     self.string  += str_
@@ -223,7 +178,6 @@ class BOOLEAN_OPERATORS:
 
                             if self.string_boolean in self.bool_operators + self.bool_operators_:
                                 self.len_str_bool                        = len( self.string_boolean )
-
 
                                 try:
                                     self.new_string_left                 = self.master[: i+1]
@@ -240,16 +194,13 @@ class BOOLEAN_OPERATORS:
                                     break
 
                                 if self.error is None:
-
                                     l, r   = len(self.master) - self.len_str_bool, i + 1
 
                                     if self.master[ r ] in [' ']:
-
                                         if self.new_string_left_[ -1 ] in [' ']:
                                             if self.new_string_left[ -1 ] in [ ')' ]:
                                                 if self.new_string_right[ 0 ] in [ '(' ]:
                                                     if self.string_clear[ 0 ] in [ '(' ]:
-
                                                         self.string_boolean = INV().INV_TRANSFORM(self.string_boolean)
                                                         self.storage_operators.append( self.string_boolean )
                                                         self.string = self.string[ : -self.len_str_bool]
@@ -260,7 +211,6 @@ class BOOLEAN_OPERATORS:
                                                                 self.data_base, self.line).VALUE_INSIDE_PARENTHESES( self.string )
 
                                                             if self.error is None:
-
                                                                 self.error = BOOLEAN_OPERATORS(self.master, self.data_base,
                                                                         self.line).SYNTAX_PARENTHESIS(self.string,
                                                                                                     self.string_boolean)
@@ -272,33 +222,23 @@ class BOOLEAN_OPERATORS:
                                                                     self.string                 = ''
                                                                     self.invisible_string       = ''
 
-                                                                else:
-                                                                    self.error = self.error
-                                                                    break
-
-                                                            else:
-                                                                self.error = self.error
-                                                                break
-
+                                                                else: break
+                                                            else:  break
                                                         else:
                                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                                             break
-
                                                     else:
                                                         self.error  = ERRORS( self.line ).ERROR2(self.string,
                                                                             self.string_boolean, self.string_clear[ 0 ])
                                                         break
-
                                                 else:
                                                     self.error = ERRORS( self.line ).ERROR2(self.master, self.string_boolean,
                                                                                     self.new_string_right[ 0 ], 'after')
                                                     break
-
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR2(self.master, self.string_boolean,
                                                                                             self.new_string_left[ -1 ])
                                                 break
-
                                         else:
                                             if self.string_boolean in ['or', 'and', 'only']:
                                                 self.error = ERRORS(self.line).ERROR1(self.master, self.new_string_left_[ -1 ],
@@ -320,7 +260,6 @@ class BOOLEAN_OPERATORS:
                                                                     self.string)
 
                                                                 if self.error is None:
-
                                                                     self.error = BOOLEAN_OPERATORS(self.master,
                                                                         self.data_base, self.line).SYNTAX_PARENTHESIS(
                                                                                     self.string, self.string_boolean)
@@ -331,28 +270,19 @@ class BOOLEAN_OPERATORS:
                                                                         self.string                 = ''
                                                                         self.invisible_string       = ''
 
-                                                                    else:
-                                                                        self.error = self.error
-                                                                        break
-
-                                                                else:
-                                                                    self.error = self.error
-                                                                    break
-
+                                                                    else: break
+                                                                else:  break
                                                             else:
                                                                 self.error = ERRORS(self.line).ERROR0(self.master)
                                                                 break
-
                                                         else:
                                                             self.error = ERRORS(self.line).ERROR2(self.string,
                                                                             self.string_boolean,self.string_clear[0])
                                                             break
-
                                                     else:
                                                         self.error = ERRORS(self.line).ERROR2(self.master,
                                                                     self.string_boolean,self.new_string_right[0],'after')
                                                         break
-
                                                 else:
                                                     self.error = ERRORS(self.line).ERROR2(self.master,
                                                                         self.string_boolean,self.new_string_left[-1])
@@ -374,7 +304,6 @@ class BOOLEAN_OPERATORS:
                                                                     self.string )
 
                                                             if self.error is None:
-
                                                                 self.error = BOOLEAN_OPERATORS(self.master, self.data_base,
                                                                             self.line).SYNTAX_PARENTHESIS(self.string,
                                                                                                 self.string_boolean)
@@ -386,55 +315,37 @@ class BOOLEAN_OPERATORS:
                                                                     self.string                 = ''
                                                                     self.invisible_string       = ''
 
-                                                                else:
-                                                                    self.error = self.error
-                                                                    break
-
-                                                            else:
-                                                                self.error = self.error
-                                                                break
-
+                                                                else: break
+                                                            else:  break
                                                         else:
                                                             self.error = ERRORS(self.line).ERROR0(self.master)
                                                             break
-
                                                     else:
                                                         self.error  = ERRORS( self.line ).ERROR2(self.string,
                                                                             self.string_boolean, self.string_clear[ 0 ])
                                                         break
-
                                                 else:
                                                     self.error = ERRORS(self.line).ERROR2(self.master, self.string_boolean,
                                                                                           self.new_string_right[0], 'after')
                                                     break
-
                                             else:
                                                 self.error = ERRORS(self.line).ERROR2(self.master, self.string_boolean,
                                                                                                 self.new_string_left[ -1 ])
                                                 break
-
                                         else:
-                                            if self.master[ r ] in self.accpeted_chars:
-                                                self.string_boolean = ''
-
+                                            if self.master[ r ] in self.accpeted_chars: self.string_boolean = ''
                                             else:
                                                 self.error  = ERRORS( self.line ).ERROR1(self.master,
                                                                                 self.string_boolean,self.master[ r ] )
                                                 break
-
                                 else:
                                     self.error = ERRORS( self.line ).ERROR0( self.master )
                                     break
 
-                            else:
-                                pass
-
-                        else:
-                            self.string_boolean     = ''
-
+                            else: pass
+                        else:  self.string_boolean     = ''
                     else:
                         self.string_boolean += str_
-
                         if self.string_boolean in self.bool_operators + self.bool_operators_:
                             self.error = ERRORS(self.line).ERROR0(self.master)
                             break
@@ -448,27 +359,21 @@ class BOOLEAN_OPERATORS:
                                             self.error = BOOLEAN_OPERATORS(self.master, self.data_base,
                                                                     self.line).SYNTAX_PARENTHESIS(self.string,
                                                                                         self.storage_operators[ -1 ])
-                                            if self.error is None:
-                                                self.storage_data.append(self.string)
-                                            else:
-                                                self.error = self.error
-                                                break
+                                            if self.error is None: self.storage_data.append(self.string)
+                                            else:  break
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.master )
                                             break
                                     else:
                                         self.storage_data.append(self.string)
-
                                 else:
                                     self.error = ERRORS(self.line).ERROR0(self.master)
                                     break
-
                             else:
                                 self.error  = ERRORS( self.line ).ERROR4( self.master, str_ )
                                 break
 
-        else:
-            pass
+        else:  pass
 
         if self.error is None:
             if self.storage_operators:
@@ -486,15 +391,11 @@ class BOOLEAN_OPERATORS:
                             else:
                                 self.id = self.storage_operators.index('or')
                                 self.error = ERRORS(self.line).ERROR8(self.master, self.storage_operators[self.id])
-                    else:
-                        pass
-                else:
-                    pass
-            else:
-                pass
-
-        else:
-            self.error = self.error
+                    else: pass
+                else:  pass
+            else: pass
+        else: pass
+            
 
         return  self.storage_data, self.storage_operators, self.error
 
@@ -502,111 +403,108 @@ class BOOLEAN_OPERATORS:
         self.string_ = string[1 : -1]
         self.string_, self.error = self.control.DELETE_SPACE( self.string_ )
 
-        if self.error is None:
-            pass
-        else:
-            error       = '{}due to {}no values {}inside {}<< {} >>. {}line: {}{}'.format(ke, ve, ke, ne, string, we, ke,
-                                                                                                            self.line )
-            self.error  = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, self.master)+error
+        if self.error is None:  pass
+        else: self.error = ERRORS(self.line).ERROR9(string, self.master)
 
         return string, self.error
 
     def SYNTAX_PARENTHESIS(self, string: str, operator: str):
-        self.r              = 0
-        self.l              = 0
-        self.count          = 0
-        self.error          = None
-
+        self.r, self.l, self.count, self.error   = 0, 0, 0, None
+      
         for str_ in string :
-            if str_ in [ '(' ]:
-                self.l += 1
-            elif str_ in [ ')' ]:
-                self.r += 1
-            else:
-                pass
+            if   str_ in [ '(' ]: self.l += 1
+            elif str_ in [ ')' ]:  self.r += 1
+            else: pass
 
             if self.r == self.l :
                 if self.count <= 1:
                     self.count += 1
                     self.r, self.l  = 0, 0
-
                 else:
                     self.error = ERRORS( self.line ).ERROR6( self.master, string, operator)
                     break
-
-            else:
-                pass
+            else: pass
 
         return self.error
 
 class ERRORS:
     def __init__(self, line):
         self.line       = line
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
+        self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
-        error = '{}line: {}{}'.format(we,ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR1(self, string1: str, string2: str, char: str):
-        error = '{}due to {}undefined {}space between {}<< {} >> {}and {}<< {} >>. {}line: {}{}'.format(ke, ve, ke,
-                                                                            ne, string2, ke, ie, char, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>, '.format(ke, 'SyntaxError', ae, string1) + error
-
-        return self.error
+        error = '{}due to {}undefined {}space between {}<< {} >> {}and {}<< {} >>. {}line: {}{}'.format(self.white, self.green, self.white,
+                                self.red, string2, self.white, self.blue, char, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string1) + error
+        return self.error+self.reset
 
     def ERROR2(self, string1: str, string2: str, char: str, s = 'before'):
-        error = '{}due to {}<< {} >> {}{} {}<< {} >>. {}line: {}{}'.format(ke, ne, char, ke, s, ve, string2, we,
-                                                                                                        ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>, '.format(ke, 'SyntaxError', ae, string1) + error
-
-        return self.error
+        error = '{}due to {}<< {} >> {}{} {}<< {} >>. {}line: {}{}'.format(self.white, self.red, char, self.white, 
+                                s, self.green, string2, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string1) + error
+        return self.error+self.reset
 
     def ERROR3(self, string1: str, char1: str, char2: str):
-        error = '{}due to {}<< {} >> {}and {}<< {} >>. {}line: {}{}'.format(ke, ne, char1, ke, ve, char2, we, ke,
-                                                                                                            self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>, '.format(ke, 'SyntaxError', ae, string1) + error
-
-        return self.error
+        error = '{}due to {}<< {} >> {}and {}<< {} >>. {}line: {}{}'.format(self.white, self.red, char1, self.white, 
+                                                                self.green, char2, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string1) + error
+        return self.error+self.reset
 
     def ERROR4(self, string: str, char: str):
-        error = '{}due to {}<< {} >> {}at the end. {}line: {}{}'.format(ke, ve, char, ke, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>, '.format(ke, 'SyntaxError', ae, string) + error
-
-        return self.error
+        error = '{}due to {}<< {} >> {}at the end. {}line: {}{}'.format(
+            self.white, self.green, char, self.blue, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
+        return self.error+self.reset
 
     def ERROR5(self, string: str, char: str):
-        error = '{}due to bad {}char, {}<< {} >>. {}line: {}{}'.format(ke, ne, ve, char, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}due to bad {}char, {}<< {} >>. {}line: {}{}'.format(
+            self.white, self.red, self.green, char, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR6(self, string1: str, string2: str, char: str):
-        error = '{}because of {}<< {} >> {}put {}<< {} >> {}inside {}<< ( ) >>. {}line: {}{}'.format(ke, ne, char, ke,
-                                                                    ve, string2, ke, ae, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >>. '.format(ke, 'SyntaxError', ae, string1) + error
-
-        return self.error
+        error = '{}because of {}<< {} >> {}put {}<< {} >> {}inside {}<< ( ) >>. {}line: {}{}'.format(self.white, self.red, char, self.white,
+                                    self.green, string2, self.white, self.cyan, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string1) + error
+        return self.error+self.reset
 
     def ERROR7(self, string: str):
-        error = '{}due to {}too much {}<< only >> {}operators. {}line: {}{}'.format(ke, ne, ve, ke, we, ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}due to {}too much {}<< only >> {}operators. {}line: {}{}'.format(
+            self.white, self.red, self.green, self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
 
-        return self.error
+        return self.error+self.reset
 
     def ERROR8(self, string: str, op: str):
-        error = '{}you cannot associate {}<< only >> {}with {}<< {} >>. {}line: {}{}'.format(ke, ne, ke, ve, op, we,
-                                                                                                        ke, self.line)
-        self.error = '{}{} : invalid syntax in {}<< {} >> '.format(ke, 'SyntaxError', ae, string) + error
+        error = '{}you cannot associate {}<< only >> {}with {}<< {} >>. {}line: {}{}'.format(
+            self.white, self.red, self.white, self.green, op, self.white,  self.yellow, self.line)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, string) + error
+        return self.error+self.reset
+    
+    def ERROR9(self, string, master):
+        error  = '{}due to {}no values {}inside {}<< {} >>. {}line: {}{}'.format(self.white, self.green, 
+                    self.white, self.red, string, self.white, self.yellow, self.line )
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors() + '{}invalid syntax in {}<< {} >>. '.format(self.white, self.cyan, master) + error
+        return self.error+self.reset
 
-        return self.error
 
 class INV:
     def INV_TRANSFORM(self, string):
-        if string == '||': string = 'or'
-        elif string == '&&': string = 'and'
+        if   string == '||' : string = 'or'
+        elif string == '&&' : string = 'and'
         elif string == '|&|': string = 'only'
         else: pass
-
         return string

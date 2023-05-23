@@ -48,30 +48,20 @@ class FUNCTION_INIT:
         for i, str_ in enumerate( self.master ):
             if str_ in ['[', '(', '{', '"', "'"]:
 
-                if str_ == '(':
-                    char1 = str_.index('(')
-                else:
-                    char1 = int(self.number.number)
+                if str_ == '(': char1 = str_.index('(')
+                else:  char1 = int(self.number.number)
 
-                if str_ == '[':
-                    char2 = str_.index('[')
-                else:
-                    char2 = int(self.number.number)
+                if str_ == '[': char2 = str_.index('[')
+                else: char2 = int(self.number.number)
 
-                if str_ == '{':
-                    char3 = str_.index('{')
-                else:
-                    char3 = int(self.number.number)
+                if str_ == '{': char3 = str_.index('{')
+                else: char3 = int(self.number.number)
 
-                if str_ == '"':
-                    char4 = str_.index('"')
-                else:
-                    char4 = int(self.number.number)
+                if str_ == '"':  char4 = str_.index('"')
+                else:  char4 = int(self.number.number)
 
-                if str_ == "'":
-                    char5 = str_.index("'")
-                else:
-                    char5 = int(self.number.number)
+                if str_ == "'": char5 = str_.index("'")
+                else: char5 = int(self.number.number)
 
                 if self.initialize[0] is None:
 
@@ -111,9 +101,7 @@ class FUNCTION_INIT:
                     self.left, self.rigth = self.left + str_.count('{'), self.rigth + str_.count('}')
 
                 if self.initialize[0] == '"':
-                    if self.str_id == False:
-                        self.left, self.rigth = 1, 0
-                        self.str_id = True
+                    if self.str_id == False: self.left, self.rigth, self.str_id = 1, 0, True
                     else:
                         if self.rigth <= 1:
                             self.rigth = self.rigth + str_.count('"')
@@ -336,13 +324,13 @@ class FUNCTION_INIT:
 class ERRORS:
     def __init__(self, line):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):

@@ -5,10 +5,6 @@ from script.LEXER.error.Cython              import backslashError   as BE
 from script.STDIN.LinuxSTDIN                import bm_configure     as bm
 
 
-ie = bm.fg.blue_L
-ve = bm.fg.rbg(0, 255, 0)
-te = bm.fg.magenta_M
-
 class BACKSSLASH:
 
     def __init__(self, master, data_base, line):
@@ -16,6 +12,10 @@ class BACKSSLASH:
         self.data_base          = data_base
         self.line               = line
         self.analyze            = control_string.STRING_ANALYSE(self.data_base, self.line)
+        self.b                  = bm.init.bold
+        self.te                 = self.b + bm.fg.rbg(255,0,255)
+        self.ve                 = self.b + bm.fg.rbg(0,255,0)
+        self.ie                 = self.b + bm.fg.rbg(0,0,255)
 
     def BACKSLASH(self, _id_: int = 1):
         self.error              = None
@@ -57,7 +57,7 @@ class BACKSSLASH:
                                         self.string_line += 1
                                         try:
                                             self.string, self.normal_string, self.active_tab, self.error =  stdin.STDIN(self.data_base,
-                                                            (self.line + self.string_line)).STDIN({'0': ie, '1': ve }, _id_)
+                                                            (self.line + self.string_line)).STDIN({'0': self.ie, '1': self.ve }, _id_)
 
                                             if self.error is None:
                                                 if self.active_tab == True:
@@ -83,7 +83,7 @@ class BACKSSLASH:
                                                                 if self.backend not in self.normal_string :
                                                                     self.string_check, self.error = segmentation.SEGMENTATION(
                                                                         self.string, self.normal_string, self.data_base,
-                                                                        (self.line+self.string_line) ).TREATEMENT( _id_+1, te )
+                                                                        (self.line+self.string_line) ).TREATEMENT( _id_+1, self.te )
 
                                                                     if self.error is None:
                                                                         self.data_storage.append( self.string_check )
@@ -101,7 +101,7 @@ class BACKSSLASH:
                                                                                     self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                         __string__, __string__,self.data_base,
                                                                                                     (self.line+self.string_line)
-                                                                                                    ).TREATEMENT(_id_ + 1, te)
+                                                                                                    ).TREATEMENT(_id_ + 1, self.te)
 
                                                                                     if self.error is None:
                                                                                         if i == 0: self.string_add += self.string_check
@@ -117,7 +117,7 @@ class BACKSSLASH:
                                                                                 self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                     self.normal_string[: -1], self.normal_string[: -1],
                                                                                     self.data_base, (self.line+self.string_line)
-                                                                                    ).TREATEMENT(_id_ + 1, te)
+                                                                                    ).TREATEMENT(_id_ + 1, self.te)
 
                                                                                 if self.error is None:
                                                                                     self.data_storage.append(self.string_check+self.backend)
@@ -164,7 +164,7 @@ class BACKSSLASH:
                                             self.string_line += 1
                                             try:
                                                 self.string, self.normal_string, self.active_tab, self.error = stdin.STDIN(
-                                                    self.data_base, (self.line + self.string_line)).STDIN({'0': ie, '1': ve}, _id_)
+                                                    self.data_base, (self.line + self.string_line)).STDIN({'0': self.ie, '1': self.ve}, _id_)
 
                                                 if self.error is None:
                                                     if self.active_tab == True:
@@ -190,7 +190,7 @@ class BACKSSLASH:
                                                                     if self.backend not in self.normal_string:
                                                                         self.string_check, self.error = segmentation.SEGMENTATION(
                                                                             self.string, self.normal_string,
-                                                                            self.data_base, (self.line + self.string_line)).TREATEMENT(  _id_ + 1, te)
+                                                                            self.data_base, (self.line + self.string_line)).TREATEMENT(  _id_ + 1, self.te)
 
                                                                         if self.error is None: self.data_storage.append(self.string_check)
                                                                         else:break
@@ -206,7 +206,7 @@ class BACKSSLASH:
                                                                                     for i, __string__ in enumerate(self.data_split):
                                                                                         self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                             __string__, __string__,  self.data_base,
-                                                                                            (self.line + self.string_line)  ).TREATEMENT(_id_ + 1, te)
+                                                                                            (self.line + self.string_line)  ).TREATEMENT(_id_ + 1, self.te)
 
                                                                                         if self.error is None:
                                                                                             if i == 0: self.string_add += self.string_check
@@ -221,7 +221,7 @@ class BACKSSLASH:
                                                                                 else:
                                                                                     self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                         self.normal_string[: -1], self.normal_string[: -1],
-                                                                                        self.data_base, (self.line + self.string_line) ).TREATEMENT(_id_ + 1, te)
+                                                                                        self.data_base, (self.line + self.string_line) ).TREATEMENT(_id_ + 1, self.te)
 
                                                                                     if self.error is None:
                                                                                         self.data_storage.append( self.string_check + self.backend)
@@ -341,12 +341,9 @@ class DEEP_CHECKING:
                                 self.string = ''
                             else: self.master_rebuild += '{}\n'.format(self.string)
                         else: pass
-                            #self.error = ERRORS( self.line ).ERROR4( main_string )
-                            #break
                     except IndexError:
                         self.error = BE.ERRORS( self.line ).ERROR0( main_string )
                         break
-
                 else:
                     self.string += str_
                     if i == len( self.master ) - 1:  self.master_rebuild += '{}'.format(self.string)
@@ -362,6 +359,10 @@ class BACKSSLASH_FOR_INTERPRETER:
         self.data_base          = data_base
         self.line               = line
         self.analyze            = control_string.STRING_ANALYSE(self.data_base, self.line)
+        self.b                  = bm.init.bold
+        self.te                 = self.b + bm.fg.rbg(255,0,255)
+        self.ve                 = self.b + bm.fg.rbg(0,255,0)
+        self.ie                 = self.b + bm.fg.rbg(0,0,255)
 
     def BACKSLASH(self, _id_: int , MainList : list = []):
         self.error              = None
@@ -434,7 +435,7 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                     if self.backend not in self.normal_string :
                                                                         self.string_check, self.error = segmentation.SEGMENTATION(
                                                                             self.string, self.normal_string, self.data_base,
-                                                                            (self.line+self.string_line) ).TREATEMENT( _id_+1, te )
+                                                                            (self.line+self.string_line) ).TREATEMENT( _id_+1, self.te )
 
                                                                         if self.error is None:
                                                                             self.data_storage.append( self.string_check )
@@ -453,7 +454,7 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                                         self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                             __string__, __string__,self.data_base,
                                                                                                         (self.line+self.string_line)
-                                                                                                        ).TREATEMENT(_id_ + 1, te)
+                                                                                                        ).TREATEMENT(_id_ + 1, self.te)
 
                                                                                         if self.error is None:
                                                                                             if i == 0: self.string_add += self.string_check
@@ -471,7 +472,7 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                                     self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                         self.normal_string[: -1], self.normal_string[: -1],
                                                                                         self.data_base, (self.line+self.string_line)
-                                                                                        ).TREATEMENT(_id_ + 1, te)
+                                                                                        ).TREATEMENT(_id_ + 1, self.te)
 
                                                                                     if self.error is None:
                                                                                         self.data_storage.append(self.string_check+self.backend)
@@ -554,7 +555,7 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                         if self.backend not in self.normal_string:
                                                                             self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                 self.string, self.normal_string, self.data_base,
-                                                                                (self.line + self.string_line)).TREATEMENT( _id_ + 1, te)
+                                                                                (self.line + self.string_line)).TREATEMENT( _id_ + 1, self.te)
 
                                                                             if self.error is None: self.data_storage.append(self.string_check)
                                                                             else:break
@@ -570,7 +571,7 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                                         for i, __string__ in enumerate(self.data_split):
                                                                                             self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                                 __string__, __string__,
-                                                                                                self.data_base, (self.line + self.string_line) ).TREATEMENT(_id_ + 1, te)
+                                                                                                self.data_base, (self.line + self.string_line) ).TREATEMENT(_id_ + 1, self.te)
 
                                                                                             if self.error is None:
                                                                                                 if i == 0: self.string_add += self.string_check
@@ -587,7 +588,7 @@ class BACKSSLASH_FOR_INTERPRETER:
                                                                                     else:
                                                                                         self.string_check, self.error = segmentation.SEGMENTATION(
                                                                                             self.normal_string[: -1], self.normal_string[: -1], self.data_base,
-                                                                                            (self.line + self.string_line) ).TREATEMENT(_id_ + 1, te)
+                                                                                            (self.line + self.string_line) ).TREATEMENT(_id_ + 1, self.te)
 
                                                                                         if self.error is None:
                                                                                             self.data_storage.append( self.string_check + self.backend)

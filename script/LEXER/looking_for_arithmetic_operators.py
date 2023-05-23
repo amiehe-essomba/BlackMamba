@@ -6,10 +6,7 @@ from script.LEXER               import looking_for_logical_operators
 from script.LEXER               import float_or_function
 from script.LEXER               import particular_str_selection
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
-try:
-    from CythonModules.Windows  import fileError as fe 
-except ImportError:
-    from CythonModules.Linux    import fileError as fe 
+from CythonModules.Windows      import fileError as fe 
 
 
 class ARITHMETIC_OPERATORS:
@@ -69,30 +66,20 @@ class ARITHMETIC_OPERATORS:
 
                 if str_ in ['[', '(', '{', '"', "'"]:
 
-                    if str_ == '(':
-                        char1 = str_.index('(')
-                    else:
-                        char1 = int(self.number.number)
+                    if str_ == '(': char1 = str_.index('(')
+                    else: char1 = int(self.number.number)
 
-                    if str_ == '[':
-                        char2 = str_.index('[')
-                    else:
-                        char2 = int(self.number.number)
+                    if str_ == '[': char2 = str_.index('[')
+                    else:  char2 = int(self.number.number)
 
-                    if str_ == '{':
-                        char3 = str_.index('{')
-                    else:
-                        char3 = int(self.number.number)
+                    if str_ == '{': char3 = str_.index('{')
+                    else: char3 = int(self.number.number)
 
-                    if str_ == '"':
-                        char4 = str_.index('"')
-                    else:
-                        char4 = int(self.number.number)
+                    if str_ == '"':  char4 = str_.index('"')
+                    else: char4 = int(self.number.number)
 
-                    if str_ == "'":
-                        char5 = str_.index("'")
-                    else:
-                        char5 = int(self.number.number)
+                    if str_ == "'": char5 = str_.index("'")
+                    else:  char5 = int(self.number.number)
 
                     if self.initialize[0] is None:
 
@@ -134,15 +121,11 @@ class ARITHMETIC_OPERATORS:
                         self.left, self.rigth = self.left + str_.count('{'), self.rigth + str_.count('}')
 
                     if self.initialize[0] == '"':
-                        if self.str_id == False:
-                            self.left, self.rigth = 1, 0
-                            self.str_id = True
-
+                        if self.str_id == False: self.left, self.rigth, self.str_id  = 1, 0, True
                         else:
                             if self.rigth <= 1:
                                 self.rigth = self.rigth + str_.count('"')
                                 self.left = self.left
-
                             else:
                                 self.error = self.string_error.ERROR_TREATMENT3(self.long_chaine)
                                 break
@@ -151,7 +134,6 @@ class ARITHMETIC_OPERATORS:
                         if self.str_id_ == False:
                             self.left, self.rigth = 1, 0
                             self.str_id_ = True
-
                         else:
                             if self.rigth <= 1:
                                 self.rigth = self.rigth + str_.count( "'" )
@@ -286,7 +268,6 @@ class ARITHMETIC_OPERATORS:
                                     self.storage_operators.append( str_ )
                                     self.string                 = ''
                                     self.activation_operators   = True
-
                                 else: break
                             else:
                                 self.error = ERRORS(self.line).ERROR2(self.master, self.new_string[0], str_)
@@ -324,7 +305,6 @@ class ARITHMETIC_OPERATORS:
                                                                         self.line).ANALYSES( self.master )
 
                                             if self.error is None:
-
                                                 if len( self._value_ ) == 1:
                                                     self.__string__, self._key_, self.error = ARITHMETIC_OPERATORS(self.master,
                                                                  self.data_base, self.line).BRACKET_ANALYSES( self.string )
@@ -558,7 +538,6 @@ class ARITHMETIC_OPERATORS:
                                 self.error = ERRORS( self.line ).ERROR0( self.master )
                                 break
                         else: self.string  += str_
-
                     else:
                         if str_ in self.accpeted_chars_:
                             self.string += str_
@@ -1507,7 +1486,6 @@ class ARITHMETIC_OPERATORS:
                                                                       self.line).ARITHMETIC_OPAERATORS()
         if self.error is None:
             if self.opeators:
-                #self.store_op.append( self.opeators )
                 self.store_value.append( self.data )
                 self._return_[  'operators' ]   = self.opeators
                 self._return_[ 'values' ] = self.store_value

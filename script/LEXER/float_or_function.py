@@ -3,10 +3,8 @@ from script                         import control_string
 from script.LEXER.FUNCTION          import function, class_
 from script.STDIN.WinSTDIN          import stdin
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
-try:
-    from CythonModules.Windows      import fileError as fe 
-except ImportError:
-    from CythonModules.Linux        import fileError as fe 
+from CythonModules.Windows          import fileError as fe 
+
 
 
 class DOT:
@@ -45,30 +43,20 @@ class DOT:
 
             if str_ in ['[', '(', '{', '"', "'"]:
 
-                if str_ == '(':
-                    char1 = str_.index('(')
-                else:
-                    char1 = int(self.number.number)
+                if str_ == '(': char1 = str_.index('(')
+                else: char1 = int(self.number.number)
 
-                if str_ == '[':
-                    char2 = str_.index('[')
-                else:
-                    char2 = int(self.number.number)
+                if str_ == '[': char2 = str_.index('[')
+                else: char2 = int(self.number.number)
 
-                if str_ == '{':
-                    char3 = str_.index('{')
-                else:
-                    char3 = int(self.number.number)
+                if str_ == '{': char3 = str_.index('{')
+                else: char3 = int(self.number.number)
 
-                if str_ == '"':
-                    char4 = str_.index('"')
-                else:
-                    char4 = int(self.number.number)
+                if str_ == '"': char4 = str_.index('"')
+                else: char4 = int(self.number.number)
 
-                if str_ == "'":
-                    char5 = str_.index("'")
-                else:
-                    char5 = int(self.number.number)
+                if str_ == "'": char5 = str_.index("'")
+                else: char5 = int(self.number.number)
 
                 if self.initialize[0] is None:
 
@@ -97,7 +85,6 @@ class DOT:
                     self.open = self.number.OPENING(str_)
                     self.error = self.string_error.ERROR_TREATMENT2(self.long_chaine, str_)
                     break
-
                 else: pass
 
             if self.initialize[0] is not None:
@@ -114,12 +101,10 @@ class DOT:
                     if self.str_id == False:
                         self.left, self.rigth = 1, 0
                         self.str_id = True
-
                     else:
                         if self.rigth <= 1:
                             self.rigth = self.rigth + str_.count('"')
                             self.left = self.left
-
                         else:
                             self.error = self.string_error.ERROR_TREATMENT3(self.long_chaine)
                             break
@@ -128,16 +113,13 @@ class DOT:
                     if self.str_id_ == False:
                         self.left, self.rigth = 1, 0
                         self.str_id_ = True
-
                     else:
                         if self.rigth <= 1:
                             self.rigth = self.rigth + str_.count("'")
                             self.left = self.left
-
                         else:
                             self.error = self.string_error.ERROR_TREATMENT3(self.long_chaine)
                             break
-
             else: pass
 
             if self.left != self.rigth:
@@ -150,7 +132,6 @@ class DOT:
                 self.active_key = None
 
             if   self.active_key == True:
-
                 self.string += str_
                 self.string_inter += str_
 
@@ -444,8 +425,7 @@ class DOT:
         if self.error is None:
             self.final_value, self.error = FINAL_TREATMENT(self.var_attribute, self.data_base,
                                                                            self.line ).FINAL( self.master )
-        else:
-            pass
+        else: pass
 
         return self.final_value, self.error
 
@@ -527,7 +507,6 @@ class DOT:
         elif end in [']']:          start = '['
         elif end in ['}']:          start = '{'
         elif end in [')']:          start = '('
-        #else:                       start = ')'
 
         return start, end
 
@@ -689,13 +668,13 @@ class FINAL_TREATMENT:
 class ERRORS:
     def __init__(self, line):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
