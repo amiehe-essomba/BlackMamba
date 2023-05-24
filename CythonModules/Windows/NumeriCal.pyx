@@ -270,25 +270,25 @@ cdef class ERRORS:
         str le      
         str be      
         str ge      
-        str me      
+        str me 
+        str we     
         str reset   
 
     
     def __init__( self, line ) :
-        self.line    = line 
-        self.ve      = Fore.LIGHTGREEN_EX
-        self.ne      = Fore.LIGHTRED_EX
-        self.te      = Fore.MAGENTA
-        self.we      = Fore.LIGHTWHITE_EX
-        self.ke      = Fore.LIGHTYELLOW_EX
-        self.ie      = Fore.LIGHTBLUE_EX
-        self.ae      = Fore.CYAN
-        self.le      = Fore.RED
-        self.be      = Fore.BLUE
-        self.ge      = Fore.GREEN
-        self.me      = Fore.LIGHTCYAN_EX
-        self.reset   = Style.RESET_ALL
-
+        self.line       = line 
+        self.ae         = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.ne         = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.ve         = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.ke         = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.te         = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.we         = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.ie         = bm.init.bold + bm.fg.rbg(0,0,255)
+        self.le         = bm.init.bold + bm.fg.rbg(255,50,0)
+        self.be         = bm.init.bold + bm.fg.rbg(0,25,255)
+        self.ge         = bm.init.bold + bm.fg.rbg(10,255,10)
+        self.me         = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.reset      = bm.init.reset
 
     cdef str ERROR0(self, str string ):
         cdef :

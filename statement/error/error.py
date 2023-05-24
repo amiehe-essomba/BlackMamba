@@ -5,13 +5,13 @@ except ImportError  : from CythonModules.Linux      import fileError as fe
 class ERRORS:
     def __init__(self, line: int):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
@@ -35,8 +35,13 @@ class ERRORS:
     def ERROR5(self, string: str ):
         error = '{}due to {}<< : >> {}at the {}end. {}line: {}{}'.format(self.white, self.red, self.white, self.yellow,
                                                                          self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string)
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string)  + error
 
     def ERROR6(self ):
         error = '{}line: {}{}'.format( self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}type unknown. '.format(self.cyan)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}type unknown. '.format(self.cyan) + error
+
+    def ERROR7(self, func : str = 'if'):
+        error = '{}{} {}structure .{}line: {}{}'.format(self.red, func, self.green, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}Bad type error used in the '.format(self.white)  + error
+        return self.error+self.reset

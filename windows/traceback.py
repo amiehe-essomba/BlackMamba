@@ -53,7 +53,7 @@ class traceback:
         down            = acs['dl'] + acs['h'] * (max_x-2) + acs['dr']
 
         sys.stdout.write(bm.move_cursor.LEFT(1000))
-        sys.stdout.write(bm.clear.line(2))
+        sys.stdout.write(bm.clear.screen(0))
         sys.stdout.write('\n' + 
             up1 + '\n' + up2 + '\n' + up3
             )

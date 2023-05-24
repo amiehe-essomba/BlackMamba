@@ -329,13 +329,13 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                             self.bool_key           = None
 
                                             for _bool_ in self.boolean_store:
-                                                if _bool_ == True:
+                                                if _bool_ is True:
                                                     self.bool_key = True
                                                     break
                                                 else: self.bool_key = False
                                                     
                                             if self.bool_key is True: self.bool_value = False
-                                            else: self.bool_value = self.bool_value
+                                            else: self.bool_value = True
                                                 
                                             self.boolean_store.append( self.bool_value )
                                             self.data_base[ 'pass' ]    = None
@@ -714,7 +714,7 @@ class INTERNAL_IF_LOOP_STATEMENT:
                                                 else:   self.bool_key = False
 
                                             if self.bool_key is True:   self.bool_value = False
-                                            else:   self.bool_value = self.bool_value
+                                            else:   self.bool_value = True
 
                                             self.boolean_store.append(self.bool_value)
                                             self.data_base[ 'pass' ]    = None

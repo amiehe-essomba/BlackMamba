@@ -10,10 +10,15 @@ class ARITHMETICS:
     def __init__(self, data_base : dict, line : int)            :
         self.line           = line
         self.daba_base      = data_base
-        self.type1          = [type( int() ), type( float() ), type( complex() ), type( bool() )]
+        self.type1          = [type( int() ), type( float() ), type( complex() ), type( bool() ), 
+                               np.float16, np.float32, np.float64 ,
+                               np.int8, np.int16, np.int32, np.int64, 
+                               np.complex64, np.complex128, np.complex64,
+                               ]
         self.type2          = [type( list() ), type( tuple() )]
         self.type3          = [type( str() )]
         self.type4          = [type(np.array([1]))]
+
 
     def OBJECT_ADD(self, object1: any, object2: any)        :
         
@@ -143,7 +148,7 @@ class ARITHMETICS:
         self.get_type1      = type( object1 )
         self.get_type2      = type( object2 )
         self.result         = None
-
+      
         if self.get_type1 in self.type1 and self.get_type2 in self.type1                            :    
             self.result = object1 * object2
         elif self.get_type1 in self.type1 and self.get_type2 in [type( list() )]                    :                                             
@@ -390,14 +395,14 @@ class ARITHMETICS:
 class ERROR:
     def __init__(self, line : int ):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
-        self.reset      = bm.init.reset 
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
+        self.reset      = bm.init.reset
 
     def ERROR0(self, value):
         error = '{}type. {}line: {}{}'.format(self.yellow, self.white, self.yellow, self.line)

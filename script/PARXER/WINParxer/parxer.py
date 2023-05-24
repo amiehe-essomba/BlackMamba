@@ -191,8 +191,7 @@ class ASSEMBLY( ):
                                         else:
                                             print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = False )
 
-                                    if self.got_errors:
-                                        print( self.got_errors[ i ])
+                                    if self.got_errors: pass #print( self.got_errors[ i ])
                                     else: pass
                             else: pass
                         else: pass

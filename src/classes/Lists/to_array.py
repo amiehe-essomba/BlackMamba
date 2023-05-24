@@ -4,6 +4,7 @@ from script.LEXER                                   import particular_str_select
 from script.PARXER                                  import numerical_value
 from script.LEXER                                   import check_if_affectation
 import numpy as np
+import pandas as pd
 
 class TO:
     def __init__(self, DataBase: dict, line:int, master: str, function: str, FunctionInfo : list ):
@@ -44,23 +45,7 @@ class TO:
                                         ncol = self.newValues
                                         if type( self.newValues ) == type( int() ):
                                             if self.master:
-                                                if 0 < ncol <= len(self.master):
-                                                    if len(self.master )%self.newValues == 0:
-                                                        if self.newValues == len(self.master):
-                                                            self._return_ = np.array( [[x] for x in range(ncol)])
-                                                        else:
-                                                            self._return_  = []
-                                                            n = 0
-                                                            nrow = len(self.master) // ncol 
-                                                            for i in range(nrow):
-                                                                ss = []
-                                                                for j in range(ncol):
-                                                                    ss.append(self.master[n])
-                                                                    n += 1
-                                                                self._return_.append(ss)
-                                                            self._return_ = np.array(self._return_)
-                                                    else:  self.error = er.ERRORS( self.line ).ERROR58( 'ncol', len(self.master))
-                                                else:  self.error = er.ERRORS( self.line ).ERROR57( 'ncol', len(self.master))        
+                                                self._return_, self.error = create(self.master, ncol, self.line)      
                                             else: self.error = er.ERRORS( self.line ).ERROR24( 'list' )
                                         else: self.error = er.ERRORS( self.line ).ERROR3( 'ncol', 'an integer()')   
                                     else: pass 
@@ -72,7 +57,9 @@ class TO:
                     else: pass
             else:
                 if self.arguments[ 0 ] is None:
-                    if self.master: self._return_   = np.array( [self.master] )
+                    if self.master: 
+                        ncol = len(self.master)
+                        self._return_, self.error = create(self.master, ncol, self.line)
                     else: self.error = er.ERRORS( self.line ).ERROR24( 'list' )
                 else:
                     if self.values[ 0 ] is None:
@@ -93,23 +80,7 @@ class TO:
                                                 ncol = self.newValues
                                                 if type( self.newValues ) == type( int() ):
                                                     if self.master:
-                                                        if 0 < ncol <= len(self.master):
-                                                            if len(self.master )%self.newValues == 0:
-                                                                if self.newValues == len(self.master):
-                                                                    self._return_ = np.array( [[x] for x in range(ncol)])
-                                                                else:
-                                                                    self._return_  = []
-                                                                    n = 0
-                                                                    nrow = len(self.master) // ncol 
-                                                                    for i in range(nrow):
-                                                                        ss = []
-                                                                        for j in range(ncol):
-                                                                            ss.append(self.master[n])
-                                                                            n += 1
-                                                                        self._return_.append(ss)
-                                                                    self._return_ = np.array(self._return_)
-                                                            else:  self.error = er.ERRORS( self.line ).ERROR58( 'ncol', len(self.master))
-                                                        else:  self.error = er.ERRORS( self.line ).ERROR57( 'ncol', len(self.master))  
+                                                        self._return_,self.error = create(self.master, ncol, self.line)  
                                                     else: self.error = er.ERRORS( self.line ).ERROR24( 'list' )
                                                 else: self.error = er.ERRORS( self.line ).ERROR3( 'ncol', 'an integer()')   
                                             else: pass 
@@ -124,3 +95,69 @@ class TO:
         else: self.error = er.ERRORS( self.line ).ERROR12( self.function, 1)
         
         return self._return_, self.error
+    
+def create( master, ncol, line ):
+    error, _return_ = None , None
+
+    #if len( master ) % ncol == 0:
+    if master:
+        typ = type(master[0])
+        if typ not in [type(dict()), type(np.array([1])), 
+                        type(pd.DataFrame(dict(a=[1], b=[2]))), type(pd.Series([1,2], index=[1,2]))]:
+            
+            if typ == type(list())      :
+                LEN = len(master[0])
+                if master[0] : size = LEN * len(master) 
+                else: size = 1
+
+                for i, s in enumerate(master):
+                    if (type(s) == typ) :
+                        if (len(s) == LEN): pass 
+                        else:
+                            error = er.ERRORS( line ).ERROR75( i )  
+                            break
+                    else:
+                        error = er.ERRORS( line ).ERROR74( typ )  
+                        break
+            elif typ == type(tuple())   :
+                LEN = len(master[0])
+                if master[0] : size = LEN * len(master) 
+                else: size = 1
+
+                for i, s in enumerate(master):
+                    if (type(s) == typ) :
+                        if (len(s) == LEN): pass 
+                        else: 
+                            error = er.ERRORS( line ).ERROR75( i )  
+                            break
+                    else:
+                        error = er.ERRORS( line ).ERROR74( typ )  
+                        break
+            else:
+                size = len(master)
+                
+                for s in master:
+                    if (type(s) == typ): pass 
+                    else:
+                        error = er.ERRORS( line ).ERROR74( typ )  
+                        break
+            
+            if 0 < ncol <= size :
+                if size % ncol == 0:
+                    if error is None:
+                        try:
+                            if ncol == len(master):
+                                _return_ = np.array(master).reshape((-1, ncol))
+                            else:
+                                nrow = size // ncol 
+                                _return_ = np.array(master).reshape((nrow, ncol))
+                        except ValueError : 
+                            shape = np.array(master).shape
+                            error = er.ERRORS( line ).ERROR66( (nrow, ncol), shape )
+                    else: pass
+                else: error = er.ERRORS( line ).ERROR58( 'ncol', size )
+            else: error = er.ERRORS( line ).ERROR57( 'ncol', size )
+        else: error = er.ERRORS( line ).ERROR77( idd=0)
+    else:  error = er.ERRORS( line ).ERROR76( string="list")
+  
+    return _return_, error

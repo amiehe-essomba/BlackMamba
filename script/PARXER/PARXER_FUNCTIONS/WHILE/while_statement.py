@@ -2,7 +2,7 @@ from distutils.log import error
 import cython
 from script.LEXER.FUNCTION                              import print_value
 from script                                             import control_string
-from script.PARXER.PARXER_FUNCTIONS._IF_                import end_else_elif, if_statement
+from script.PARXER.PARXER_FUNCTIONS._IF_                import if_statement
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_            import unless_statement
 from script.PARXER.PARXER_FUNCTIONS._SWITCH_            import switch_statement
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import comment
@@ -13,9 +13,9 @@ from script.STDIN.LinuxSTDIN                            import bm_configure as b
 from script.PARXER.PARXER_FUNCTIONS.WHILE               import whileError as WEr
 from updatingDataBase                                   import updating
 from statement                                          import InternalStatement as IS
-try:  from CythonModules.Linux                          import loop_for
-except ImportError: from CythonModules.Windows          import loop_for
+from CythonModules.Windows                              import loop_for
 from statement.comment                                  import externalCmt
+from statement                                          import mainStatement        as MS
 
 
 @cython.cclass
@@ -254,9 +254,11 @@ class EXTERNAL_WHILE_LOOP_STATEMENT:
                             else:
                                 print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )             
                     else: pass
+                    
                     self.data_base['print'] = []
                     
-                    self.bool_value, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS( typ = 'while' )
+                    self.bool_value, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
+                                line=self.line).MAIN(typ = 'while', opposite = False, interpreter = True, function = 'loop')
                     if self.error is None: pass
                     else: break
                 else: break
@@ -515,7 +517,8 @@ class INTERNAL_WHILE_LOOP_STATEMENT:
                                 print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )             
                     else: pass
                     self.data_base['print'] = []
-                    self.bool_value, self.error = end_else_elif.MAIN_IF( main_string, self.data_base, self.line ).BOCKS( typ = 'while' )
+                    self.bool_value, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
+                                line=self.line).MAIN(typ = 'while', opposite = False, interpreter = True, function = 'loop')
                     if self.error is None: pass
                     else: break
                 else: break

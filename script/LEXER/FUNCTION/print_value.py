@@ -5,6 +5,7 @@ from script.PARXER.PRINT                import show_data
 from script.STDIN.LinuxSTDIN            import bm_configure as bm
 from CythonModules.Windows              import fileError as fe 
 from CythonModules.Windows              import show 
+import sys
 
 class PRINT:
     def __init__(self, master: str, data_base: dict, line: int):
@@ -90,6 +91,10 @@ class PRINT_PRINT:
 
         self.build_string = self.__string__ + self.build_string
 
+        # clear the bottom
+        sys.stdout.write(bm.clear.screen(0))
+        sys.stdout.flush()
+
         if loop is False:
             if key is False: print( '{}\n'.format( self.build_string+bm.init.reset ) )
             else: pass
@@ -110,7 +115,11 @@ class PRINT_PRINT:
                 else: self.build_string += self.master[i]
             
             self.build_string = self.__string__ + self.build_string
-                
+            
+            # clear the bottom
+            sys.stdout.write(bm.clear.screen(0))
+            sys.stdout.flush()
+
             if loop is False:
                 if key is False: print( '{}\n'.format( self.build_string+bm.init.reset ) )
                 else: pass

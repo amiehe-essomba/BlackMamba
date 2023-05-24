@@ -47,6 +47,7 @@ class DOT:
                                                     except ValueError:
                                                         shape1, shape2 = list(self.master.shape), list(self.newValues)
                                                         self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2 ) 
+                                                    except TypeError: self.error = er.ERRORS( self.line ).ERROR72()
                                                 else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                             else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
                                         elif typ == "redim" :
@@ -54,7 +55,8 @@ class DOT:
                                                 if type( self.newValues ) == type(tuple()):
                                                     try: self._return_ =  self.master.reshape(self.newValues)
                                                     except ValueError: 
-                                                        self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues) 
+                                                        self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues)
+                                                    except TypeError : self.error = er.ERRORS( self.line ).ERROR72('interger')
                                                 else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "tuple()" ) 
                                             else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                         elif typ == "solve" :
@@ -76,7 +78,7 @@ class DOT:
                                                         self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2)
                                                     except np.linalg.LinAlgError:
                                                         self.error = er.ERRORS( self.line ).ERROR69()
-                                                else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarry()" ) 
+                                                else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
                                             else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                         elif typ == "merge" :
                                             if list(self.master):
@@ -103,32 +105,7 @@ class DOT:
                                                 else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                             else: self.error = er.ERRORS( self.line ).ERROR3( "master", "integer()" ) 
                                         elif typ == "axis"  :
-                                            if type( self.newValues ) in [type(list())]:
-                                                if list( self.master): 
-                                                    try: 
-                                                        shape = self.master.shape 
-                                                        idd = []
-                                                        if self.newValues:
-                                                            for s in self.newValues :
-                                                                if type(s) == type(int()):
-                                                                    if s not in idd : idd.append(s)
-                                                                    else: pass
-                                                                else:
-                                                                    self.error = er.ERRORS( self.line ).ERROR70(self.newValues)
-                                                                    break
-                                                            if self.error is None:
-                                                                if idd :
-                                                                    idd = np.array(idd)
-                                                                    max_ = idd.max() 
-                                                                    if max_ < shape[1] : self._return_ = self.master[ :, idd ]
-                                                                    else: self.error = er.ERRORS( self.line ).ERROR71(max_)
-                                                                else: self._return_ = self.master.copy()
-                                                            else: pass
-                                                        else:  self.error = er.ERRORS( self.line ).ERROR24( 'list' )
-                                                    except (TypeError, ValueError): 
-                                                        self.error = er.ERRORS( self.line ).ERROR67("main matrix")
-                                                else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
-                                            else: self.error = er.ERRORS( self.line ).ERROR3( "master", "list()" )
+                                            self._return_, self.error = axis(self.master, self.newValues, self.line)
                                         else: pass
                                     else: pass 
                                 else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
@@ -167,7 +144,8 @@ class DOT:
                                                             try: self._return_ =  self.master.dot(self.newValues)
                                                             except ValueError:
                                                                 shape1, shape2 = list(self.master.shape), list(self.newValues)
-                                                                self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2 ) 
+                                                                self.error = er.ERRORS( self.line ).ERROR65( shape1, shape2 )
+                                                            except TypeError: self.error = er.ERRORS( self.line ).ERROR72() 
                                                         else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                                     else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "ndarray()" ) 
                                                 elif typ == "redim" :
@@ -176,6 +154,7 @@ class DOT:
                                                             try: self._return_ =  self.master.reshape(self.newValues)
                                                             except ValueError: 
                                                                 self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues) 
+                                                            except TypeError: self.error = er.ERRORS( self.line ).ERROR72('interger')
                                                         else:  self.error = er.ERRORS( self.line ).ERROR3( "master", "tuple()" ) 
                                                     else: self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                                 elif typ == "solve" :
@@ -224,32 +203,7 @@ class DOT:
                                                         else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
                                                     else: self.error = er.ERRORS( self.line ).ERROR3( "master", "integer()" )
                                                 elif typ == "axis"  :
-                                                    if type( self.newValues ) in [type(list())]:
-                                                        if list( self.master): 
-                                                            try: 
-                                                                shape = self.master.shape 
-                                                                idd = []
-                                                                if self.newValues:
-                                                                    for s in self.newValues :
-                                                                        if type(s) == type(int()):
-                                                                            if s not in idd : idd.append(s)
-                                                                            else: pass
-                                                                        else:
-                                                                            self.error = er.ERRORS( self.line ).ERROR70(self.newValues)
-                                                                            break
-                                                                    if self.error is None:
-                                                                        if idd :
-                                                                            idd = np.array(idd)
-                                                                            max_ = idd.max() 
-                                                                            if max_ < shape[1] : self._return_ = self.master[ :, idd ]
-                                                                            else: self.error = er.ERRORS( self.line ).ERROR71(max_)
-                                                                        else: self._return_ = self.master.copy()
-                                                                    else: pass
-                                                                else:  self.error = er.ERRORS( self.line ).ERROR24( 'list' )
-                                                            except (TypeError, ValueError): 
-                                                                self.error = er.ERRORS( self.line ).ERROR67("main matrix")
-                                                        else : self.error = er.ERRORS( self.line ).ERROR24( 'ndarray' )
-                                                    else: self.error = er.ERRORS( self.line ).ERROR3( "master", "list()" )
+                                                    self._return_, self.error = axis(self.master, self.newValues, self.line)
                                                 else: pass
                                             else: pass 
                                         else: self.error = er.ERRORS( self.line ).ERROR0( mainString ) 
@@ -263,3 +217,55 @@ class DOT:
         else: self.error = er.ERRORS( self.line ).ERROR12( self.function, 1)
         
         return self._return_, self.error
+    
+
+def axis(master, newValues, line):
+    error = None
+    if type( newValues ) in [type(list())]:
+        if master.size != 0 : 
+            try: 
+                shape = master.shape 
+                idd = []
+                if newValues:
+                    for s in newValues :
+                        if type(s) == type(int()):
+                            if s not in idd : idd.append(s)
+                            else: 
+                                error = er.ERRORS( line ).ERROR73( newValues)
+                                break
+                        else:
+                            error = er.ERRORS(  line ).ERROR70( newValues)
+                            break
+                    if error is None:
+                        if idd :
+                            if len(idd) <= len( master.shape):
+                                for ii, x in enumerate(idd):
+                                    if x <  master.shape[ii] : pass 
+                                    else: 
+                                        error = er.ERRORS( line ).ERROR71( x )
+                                        break 
+                                if error is None:
+                                    idd = np.array(idd)
+                                    max_ = idd.max()
+                                    if max_ < shape[0] : _return_ = master[ idd ]
+                                    else: error = er.ERRORS( line ).ERROR71( max_)
+                                else: pass 
+                            else:
+                                shape1, shape2 =  list(master.shape)
+                                error = er.ERRORS( line ).ERROR65( shape1, shape2 )
+                        else: _return_ = master.copy()
+                    else: pass
+                else:  error = er.ERRORS( line ).ERROR24( 'list' )
+            except (TypeError, ValueError): 
+                error = er.ERRORS( line ).ERROR67("main matrix")
+        else : error = er.ERRORS( line ).ERROR24( 'ndarray' )
+    elif type( newValues ) in [type(int()), type( bool()) ]:
+        if master.size != 0 : 
+            try:
+                if newValues < master.shape[1]: _return_ = master[ :, newValues, ]
+                else: error = er.ERRORS( line ).ERROR71( newValues )
+            except IndexError: error = er.ERRORS( line ).ERROR71( newValues )
+        else: error = er.ERRORS( line ).ERROR24( 'ndarray' )
+    else: error = er.ERRORS( line ).ERROR3( "master", "list()" )
+
+    return _return_, error 

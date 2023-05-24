@@ -1,8 +1,8 @@
 import sys
 import os
 from script.STDIN.LinuxSTDIN                import bm_configure as bm
-from  time                                  import sleep
-#from IDE.EDITOR                             import examples     as exp
+from time                                   import sleep
+from script.STDIN.LinuxSTDIN                import ascii
 from IDE.EDITOR                             import cursor_pos   as cp
 from IDE.EDITOR                             import func_class   as FC
 from IDE.EDITOR                             import string_to_chr 
@@ -99,12 +99,13 @@ class IDE:
         self.classes    = sorted(inp[3])
         self.func       = sorted(inp[2])
         self.vars       = sorted(inp[1])
-        self.os         = chr(9553)
-        self.mn         = chr(9552)
-        self.plu        = chr(9556)
-        self.pld        = chr(9562)
-        self.pru        = chr(9559)
-        self.prd        = chr(9565)
+        self.asc        = ascii.frame(True)
+        self.os         = self.asc['v']     #chr(9553)
+        self.mn         = self.asc['h']     #chr(9552)
+        self.plu        = self.asc['ul']    #chr(9556)
+        self.pld        = self.asc['dl']    #chr(9562)
+        self.pru        = self.asc['ur']    #chr(9559)
+        self.prd        = self.asc['dr']    #chr(9565)
         
         self.ver        = bm.init.bold+self.ww+" "+ self.mn*10+ self.pru
         self.emp        = bm.init.bold+self.ww+"   "+ " "*10+ self.os

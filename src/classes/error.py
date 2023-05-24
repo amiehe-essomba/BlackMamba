@@ -393,7 +393,7 @@ class ERRORS:
     
     def ERROR57(self, name: str = "ncol", max_ : int = 0):
         error = '{}line: {}{}'.format(  self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} not in {}]0, {}[ '.format( self.cyan, name,  self.red, max_) + error
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} not in {}[1, {}[ '.format( self.cyan, name,  self.red, max_) + error
         return self.error+self.reset
 
     def ERROR58(self, name: str = "ncol", max_ : int = 0):
@@ -464,9 +464,53 @@ class ERRORS:
         self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}in {}{} '.format(self.white, self.cyan, data ) + error
         return self.error+self.reset
     
-    def ERROR71(self, idd : int): #
+    def ERROR71(self, idd : int): 
         error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
         self.error = fe.FileErrors( 'IndexError' ).Errors()+'{}{} {}index {}out of range. '.format(self.cyan, idd, self.red, self.white) + error
+        return self.error+self.reset
+    
+    def ERROR72(self, string : str = "numerical"): #
+        error = '{}{} {}values. {}line: {}{}'.format(self.red, string, self.white, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}all values in master are not '.format(self.white) + error
 
         return self.error+self.reset
+    
+    def ERROR73(self, data = list): #
+        error = '{}found in {}{}. {}line: {}{}'.format(self.white, self.magenta, data, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}duplicated index '.format(self.white) + error
+
+        return self.error+self.reset
+    
+    def ERROR74(self, typ : any): #
+        if typ == type(list())      : string = 'list()'
+        elif typ == type(tuple())   : string = 'tuple()'
+        elif typ == type(int())     : string = 'integer()'
+        elif typ == type(float())   : string = 'float()'
+        elif typ == type(str())     : string = 'string()'
+        elif typ == type(complex()) : string = 'complex()'
+        else: string = 'numerical()'
+
+        error = '{}are not {}{} {}type. {}line: {}{}'.format(self.white, self.red, string, self.green, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}all the elements in the list '.format(self.white) + error
+
+        return self.error+self.reset
+
+    def ERROR75(self, idd : int ): #
+        error = '{}index(0).size {}!= {}index({}).size. {}line: {}{}'.format(self.red, self.white, self.red , idd, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}list dimension error '.format(self.white) + error
+        return self.error+self.reset
+    
+    def ERROR76(self, string = "list"): #
+        error = '{}EMPTY. {}line: {}{}'.format(self.green, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}the {}{} {}cannot be '.format(self.white, self.yellow, string, self.white) + error
+
+        return self.error+self.reset
+    
+    def ERROR77(self, idd ): #
+        error = '.{}line: {}{}'.format(self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}index({}{}{}) '.format(self.white, self.yellow, idd, self.white) + error
+
+        return self.error+self.reset
+    
+    
     

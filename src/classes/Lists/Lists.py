@@ -9,9 +9,6 @@ from script.PARXER                                  import numerical_value
 from script.LEXER                                   import check_if_affectation
 from src.classes.Lists                              import inserting, random_init, sorting
 
-
-
-
 class LIST:
     def __init__(self, 
             DataBase    : dict, 
@@ -69,14 +66,16 @@ class LIST:
                     self._return_ = random.choice( self.master )
                 else: self.error =  er.ERRORS( self.line ).ERROR24( 'list / tuple / range' )    
             else: self.error =  er.ERRORS( self.line ).ERROR14( self.function )
-        elif self.function in [ 'to_array']          :
+        elif self.function in [ 'array']             :
             self._return_, self.error = ta.TO( self.DataBase, self.line, self.master,
                                                  self.function, [self.FunctionInfo] ).ARRAY( mainName, mainString )
             if self.error is None:
-                self.index = self.DataBase['variables']['vars'].index( mainName )
-                if type(self._return_) in [type(list()), type(dict()), type(np.array([1]))]:
-                    self.DataBase['variables'][ 'values'][self.index] = self._return_.copy()
-                else: self.DataBase['variables'][ 'values'][self.index] = self._return_
+                try:
+                    self.index = self.DataBase['variables']['vars'].index( mainName )
+                    if type(self._return_) in [type(list()), type(dict()), type(np.array([1]))]:
+                        self.DataBase['variables'][ 'values'][self.index] = self._return_.copy()
+                    else: self.DataBase['variables'][ 'values'][self.index] = self._return_
+                except ValueError: pass
             else: pass
         elif self.function in [ 'enumerate' ]        :
             if None in self.arguments:
@@ -138,7 +137,7 @@ class LIST:
                                                 else: self.error =  er.ERRORS( self.line ).ERROR3( "master", 'a tuple()' )
                                             elif self.function in [ 'add'    ]:
                                                 self.master.append( self.final_val[ 0 ] )
-                                                self._return_ = self.master[ : ]
+                                                self._return_ = self.master.copy()
                                             elif self.function in [ 'round'  ]:
                                                 self.new = self.master[ : ]
                                                 if type( self.final_val[ 0 ] ) == type( int() ) :
@@ -196,7 +195,7 @@ class LIST:
                                                 else: self.error =  er.ERRORS( self.line ).ERROR3( "master" )
                                             elif self.function in [ 'add' ]             :
                                                 self.master.append( self.final_val[ 0 ] )
-                                                self._return_ = self.master[ : ]
+                                                self._return_ =  self.master.copy()
                                             elif self.function in [ 'round'  ]          :
                                                 self.new = []
                                                 if type( self.final_val[ 0 ] ) == type( int() ) :

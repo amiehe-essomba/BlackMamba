@@ -3,12 +3,14 @@ from CythonModules.Windows                      import fileError    as fe
 
 class mamba_error:
     def __init__(self, line: int = 0):
-        self.r = bm.init.reset 
-        self.w = bm.fg.rbg(255, 255, 255)
-        self.y = bm.fg.rbg(255,255,0)
-        self.c = bm.fg.rbg(255, 0, 255)
-        self.m = bm.fg.rbg(0, 255, 255)
-        self.line = 0
+        self.r          = bm.init.reset 
+        self.w          = bm.init.bold + bm.fg.rbg(255, 255, 255)
+        self.y          = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.c          = bm.init.bold + bm.fg.rbg(255, 0, 255)
+        self.m          = bm.init.bold + bm.fg.rbg(0, 255, 255)
+        self.red        = bm.init.bold + bm.fg.rbg(255, 0, 0)
+        self.line       = 0
+
     def ERROR1( self, string : str ):
         error = '{}{}. {}line: {}{}'.format( self.m, string, self.w, self.y, self.line)
         self.error = fe.FileErrors( 'SystemError' ).Errors()+ '{}you cannot run this package on '.format(self.c) + error
@@ -20,9 +22,11 @@ class mamba_error:
         return self.error+self.r 
     
     def ERROR3( self, string : str ):
-        error = '{}is not accepted. {}line: {}{}'.format( self.m, self.w, self.y, self.line)
-        self.error = fe.FileErrors( 'FileNameError' ).Errors()+ '{}input {}{}.bm '.format(self.w, self.c, string) + error
-        return self.error+self.r 
+        error = '{}is not a {} BLACK MAMBA {}file. {}line: {}{}'.format(self.w, self.red,
+                                                                        self.y, self.w, self.y, self.line)
+        self.error = fe.FileErrors( 'FileNameError' ).Errors() +'{}{} '.format(self.c, string) + error
+
+        return self.error+self.r
     
     def ERROR4( self, string : str ):
         error = '{}is not recognized. {}line: {}{}'.format( self.m, self.w, self.y, self.line)

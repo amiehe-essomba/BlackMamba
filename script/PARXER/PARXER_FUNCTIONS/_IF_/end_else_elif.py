@@ -1,8 +1,8 @@
 from script                                     import control_string
 from script.PARXER.LEXER_CONFIGURE              import numeric_lexer
 from script.STDIN.LinuxSTDIN                    import bm_configure as bm
-try: from CythonModules.Windows                 import fileError as fe 
-except ImportError:  from CythonModules.Linux   import fileError as fe
+from CythonModules.Windows                      import fileError as fe 
+import numpy as np
 
 class EXTERNAL_BLOCKS:
     def __init__(self, 
@@ -472,7 +472,9 @@ class MAIN_IF:
     def BOCKS( self, typ = 'if' ):
         self.error              = None
         self._return_           = None
-        self.type               = [ type(int()), type(float()), type(complex()) ]
+        self.type               = [ type(int()), type(float()), type(complex()),  np.float16, 
+                                    np.float32, np.float64 , np.int8, np.int16, np.int32, np.int64, 
+                                    np.complex64, np.complex128, np.complex64 ]
         self.strin              = ''
 
         if typ == 'if': self.string, self.error = self.control.DELETE_SPACE( self.master[ 2 : -1 ])
@@ -486,6 +488,9 @@ class MAIN_IF:
                 elif type( self._return_ ) in self.type                         :   self._return_   = True
                 elif type( self._return_ ) in [type( list() ), type( tuple() )] :
                     if len( self._return_ ) == 0 :  self._return_ = False
+                    else:                           self._return_ = True
+                elif type( self._return_ ) == type( np.array([1])):
+                    if self._return_.size == 0 :    self._return_ = False
                     else:                           self._return_ = True
                 elif type( self._return_ ) == type( range( 1 ) )                :   self._return_   = True
                 elif type( self._return_ ) == type( None )                      :   self._return_   = False
@@ -585,13 +590,13 @@ class CHECK_VALUES:
 class ERRORS:
     def __init__(self, line: int):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):

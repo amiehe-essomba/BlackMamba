@@ -10,7 +10,7 @@ import numpy
 import pandas as pd
 from  CythonModules.Windows           import frame
 from  script.STDIN.LinuxSTDIN    import bm_configure as bm
-
+import sys
 
 class SHOW :
     def __init__(self,
@@ -67,6 +67,10 @@ class SHOW :
         self.string2 = LineFeed(self.string2, self.type)
         self.string = bm.init.bold+self.string1 + self.string2
 
+        # clear the bottom
+        sys.stdout.write(bm.clear.screen(0))
+        sys.stdout.flush()
+        
         # print master if key is set on False
         if loop is False:
             #self.string += bm.init.reset

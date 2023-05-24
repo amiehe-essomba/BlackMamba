@@ -4,7 +4,6 @@ from src.classes                                    import run_func
 from script.LEXER.FUNCTION                          import main
 from src.functions                                  import function
 
-
 class INHERITANCE:
     def __init__(self, 
             DataBase: dict, 

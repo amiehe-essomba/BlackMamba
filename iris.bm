@@ -1,0 +1,7 @@
+from module prompt load prompt 
+
+def setosa():
+	return 10
+end:
+
+prompt( setosa() )

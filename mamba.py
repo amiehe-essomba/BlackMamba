@@ -84,14 +84,18 @@ def run_mamba():
                                 sys.stdout.write(bm.save.save)
                                 max_x, max_y  = test.get_win_ter()
                                 if max_x >= 100:
-                                    if term == 'orion': header.header(terminal='orion terminal')
-                                    else: header.header(terminal='pegasus terminal')
+                                    if term == 'orion': 
+                                        header.header(terminal='orion terminal')
+                                        color = bm.fg.rbg(255, 255, 0)
+                                    else: 
+                                        header.header(terminal='pegasus terminal')
+                                        color = bm.fg.rbg(255, 255, 255)
                                 else: pass 
                                 
                                 data_base = db.DATA_BASE().STORAGE().copy()
-                                WM.windows( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
+                                WM.IDE( data_base=data_base).terminal(c=color, terminal_name=term)
                             except KeyboardInterrupt:  pass
-                            except IndexError: pass
+                            except KeyError: pass
                         else: print(errors.mamba_error().ERROR4(arg[2]))
                     else: print(errors.mamba_error().ERROR5(arg[1]))
                 else : print(errors.mamba_error().ERROR6()) 

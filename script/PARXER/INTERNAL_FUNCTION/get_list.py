@@ -200,7 +200,7 @@ class LIST:
         self._return_               = []
         self.historyOfFunctions     = []
         self.listFunctions          = [ 'empty', 'clear', 'copy', 'remove', 'init', 'index', 'count', 'sorted', 'add', 'insert', 'random', 'enumerate',
-                                        'size', 'round', 'rand', 'choice' ]
+                                        'size', 'round', 'rand', 'choice', 'array' ]
 
         if self.numeric is not None:
             self.list_values, self.info, self._all_data_, self.error = LIS_OPTIONS( self.numeric, self.master,
@@ -281,14 +281,12 @@ class LIS_OPTIONS:
         self.all_data       = None
 
         for i, str_ in enumerate( self.master ):
-            if str_ not in [ '[' ]:
-                self.name += str_
+            if str_ not in [ '[' ]: self.name += str_
             else:
                 self.idd = i
                 break
 
-        if self.idd == 0:
-            self._return_, self.error = LIST( self.main_master, self.data_base, self.line ).LIST()
+        if self.idd == 0: self._return_, self.error = LIST( self.main_master, self.data_base, self.line ).LIST()
         else:
             self.name, self.error = self.control.DELETE_SPACE( self.name )
             if self.error is None:
@@ -307,16 +305,11 @@ class LIS_OPTIONS:
                             if self.error is None:
                                 self.info       = self.options
                                 self.all_data   = self.data
-                            else:
-                                self.error = self.error
-                        else:
-                            self.error = self.error
-                    else:
-                        self.error = ERRORS( self.line ).ERROR0( self.line )
-                else:
-                    self.error = self.error
-            else:
-                self.error = ERRORS( self.line ).ERROR0( self.master )
+                            else: pass
+                        else: pass
+                    else: self.error = ERRORS( self.line ).ERROR0( self.line )
+                else: pass
+            else: self.error = ERRORS( self.line ).ERROR0( self.master )
 
         return self._return_, self.info, self.all_data, self.error
 
@@ -403,8 +396,7 @@ class LIS_OPTIONS:
                                                 if self.type in [ type( list() ), type( tuple() ), type( range(1)),
                                                                   type(str()), type(np.array([0])) ]:
                                                     if self.num < len( object1 ):
-                                                        try:
-                                                            object1 = object1[ self.num ]
+                                                        try:  object1 = object1[ self.num ]
                                                         except IndexError:
                                                             if self.type == type( list() ):
                                                                 self.error = ERRORS(self.line).ERROR8()
@@ -492,7 +484,8 @@ class LIS_OPTIONS:
                                         if _type_1 == type( int() ) :
                                             if self.type in [ type( list() ), type( tuple()), type( range( 1 ) ),
                                                               type(str()) , type( np.array([0]) ) ]:
-                                                self.len = len( object1 )
+                                                if type(object1) == type( np.array([0]) ): self.len = object1.shape[0]
+                                                else : self.len = len( object1 )
 
                                                 if self.case ==   '1':
                                                     if self.num1 >= 0:
@@ -626,9 +619,9 @@ class LIS_OPTIONS:
                                                                 self.error = ERRORS(self.line).ERROR8('tuple')
                                                                 break
                                                     except ValueError:
-                                                        if object1.all():
+                                                        if object1.size != 0:
                                                             try:
-                                                                object1 = object1[self.dot[0]: self.dot[1]]
+                                                                object1 = object1[self.dot[0] : self.dot[1], ]
                                                                 self.all_value[i] = [x for x in range(self.dot[0], self.dot[1])]
                                                             except IndexError:
                                                                 self.error = ERRORS(self.line).ERROR8('ndarray')
@@ -676,13 +669,13 @@ class OPERATOR_TRANSFORMATION:
 class ERRORS:
     def __init__(self, line:int):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):

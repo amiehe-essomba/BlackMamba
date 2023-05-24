@@ -1,5 +1,5 @@
 from module encoding load fg, bg
-from module physics load  constants
+#from module physics load  constants
 
 class config:
 	def initialize():

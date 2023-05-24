@@ -3,11 +3,12 @@
 """
 
 from script                                             import control_string
-from statement.error                                    import error as er
 from script.PARXER.LEXER_CONFIGURE                      import numeric_lexer
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
-try                : from CythonModules.Windows         import fileError as fe
-except ImportError : from CythonModules.Linux           import fileError as fe
+from CythonModules.Windows                              import fileError as fe
+import numpy as np
+
+from statement.error                                    import error as er
 
 class MAIN:
     def __init__(self,
@@ -37,11 +38,16 @@ class MAIN:
         """
         self.error          = None
         self._return_       = None
-        self.type           = [type(int()), type(float()), type(complex())]
+        self.type           = [type( int() ), type( float() ), type( complex() ), 
+                               np.float16, np.float32, np.float64 , np.int8, np.int16, np.int32, np.int64, 
+                               np.complex64, np.complex128, np.complex64]
         self.type1          = [type(list()), type(tuple())]
-        self.strin          = ''
+        self.type2          = [type(np.array([1]))]
+        self.string         = ''
         self.all_type       = [type(int()), type(float()), type(complex()), type(list()), type(tuple()),
-                               type(None), type(range(1)), type(bool()), type(dict()), type(str())]
+                               type(None), type(range(1)), type(bool()), type(dict()), type(str()),
+                               np.float16, np.float32, np.float64 , np.int8, np.int16, np.int32, np.int64, 
+                               np.complex64, np.complex128, np.complex64, type(np.array([1])) ]
 
         if   typ == 'if'    :  self.string, self.error = self.control.DELETE_SPACE(self.master[2: -1])
         elif typ == 'elif'  :  self.string, self.error = self.control.DELETE_SPACE(self.master[4: -1])
@@ -58,29 +64,38 @@ class MAIN:
                 if self.error is None:
                     if typ in [ 'switch', 'case' ]: pass
                     else:
-                        if   type(self._return_) == type(bool())    : pass
-                        elif type(self._return_) in self.type       :
-                            if opposite is False: self._return_ = True
-                            else                : self._return_ = False
-                        elif type(self._return_) in self.type1      :
-                            if opposite is False:
-                                if len(self._return_) == 0  : self._return_ = False
-                                else                        : self._return_ = True
-                            else:
-                                if len(self._return_) == 0  : self._return_ = True
-                                else                        : self._return_ = False
-                        elif type(self._return_) == type(range(1))  :
-                            if opposite is False: self._return_ = True
-                            else                : self._return_ = False
-                        elif type(self._return_) == type(None)      :
-                            if opposite is False: self._return_ = False
-                            else                : self._return_ = True
-                        elif type(self._return_) == type(str())     :
-                            if opposite is False: self._return_ = [True if self._return_ else False][0]
-                            else                : self._return_ = [False if self._return_ else True][0]
-                        elif type(self._return_) == type(dict())    :
-                            if opposite is False:  self._return_ = [True if self._return_ else False][0]
-                            else                : self._return_ = [False if self._return_ else True][0]
+                        if type(self._return_) in self.all_type:
+                            if   type(self._return_) == type(bool())    : pass
+                            elif type(self._return_) in self.type       :
+                                if opposite is False: self._return_ = True
+                                else                : self._return_ = False
+                            elif type(self._return_) in self.type1      :
+                                if opposite is False:
+                                    if len(self._return_) == 0  : self._return_ = False
+                                    else                        : self._return_ = True
+                                else:
+                                    if len(self._return_) == 0  : self._return_ = True
+                                    else                        : self._return_ = False
+                            elif type(self._return_) in self.type2      :
+                                if opposite is False:
+                                    if self._return_.size == 0  : self._return_ = False
+                                    else                        : self._return_ = True
+                                else:
+                                    if self._return_.shape == 0 : self._return_ = True
+                                    else                        : self._return_ = False
+                            elif type(self._return_) == type(range(1))  :
+                                if opposite is False: self._return_ = True
+                                else                : self._return_ = False
+                            elif type(self._return_) == type(None)      :
+                                if opposite is False: self._return_ = False
+                                else                : self._return_ = True
+                            elif type(self._return_) == type(str())     :
+                                if opposite is False: self._return_ = [True if self._return_ else False][0]
+                                else                : self._return_ = [False if self._return_ else True][0]
+                            elif type(self._return_) == type(dict())    :
+                                if opposite is False:  self._return_ = [True if self._return_ else False][0]
+                                else                : self._return_ = [False if self._return_ else True][0]
+                        else: self.error = er.ERRORS(self.line).ERROR7(typ)
                 else:
                     if interpreter is False:
                         if   function is None:  pass
