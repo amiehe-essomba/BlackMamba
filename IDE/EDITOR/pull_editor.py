@@ -106,7 +106,6 @@ class IDE:
         self.pld        = self.asc['dl']    #chr(9562)
         self.pru        = self.asc['ur']    #chr(9559)
         self.prd        = self.asc['dr']    #chr(9565)
-        
         self.ver        = bm.init.bold+self.ww+" "+ self.mn*10+ self.pru
         self.emp        = bm.init.bold+self.ww+"   "+ " "*10+ self.os
         self.complet    = False 
@@ -120,9 +119,8 @@ class IDE:
         self.max_       = 40
         self.index_head = 0
         self.name       = bm.init.bold+bm.fg.rbg(255, 255, 0)+bm.init.rapid_blink+"BLACK MAMBA"+self.re+bm.bg.black_L
-        
-        self.lev1   = bm.init.bold+self.ww+"   "+" "*2+ "+"*(self.max_+2)
-        self.nex    = bm.init.bold+self.ww+"   "+" "*2+ "+" + " "*self.max_+"+"
+        self.lev1       = bm.init.bold+self.ww+"   "+" "*2+ "+"*(self.max_+2)
+        self.nex        = bm.init.bold+self.ww+"   "+" "*2+ "+" + " "*self.max_+"+"
         self.list_is_empty = False
         self.pos_x, self.pos_y = cursor_pos.cursor()
         self.pos_x, self.pos_y = int(self.pos_x ), int(self.pos_y)
