@@ -1,6 +1,5 @@
 import sys, os 
 import platform
-#import WindowsMain as WM  
 from windows import windows as WM
 import imp 
 import configparser
