@@ -6,7 +6,6 @@ from CythonModules.Windows                      import fileError    as fe
 def theta( params : int = 3):
     return np.random.random( params ).reshape((params, 1))
    
-@jit(nopython=True, parallel=True)
 def evaluation(X, y, theta):
     upper = ( (model(X=X, theta=theta) - y) ** 2 ).sum()
     lower = ( (y - np.mean(y)) ** 2 ).sum()
@@ -34,9 +33,8 @@ def MSE(X, y, theta):
 def grad(X, y, theta):
     return (X.T.dot( model(X=X, theta=theta) - y )) / X.shape[0]
 
-@jit(nopython=True, parallel=True)
 def SGD(X : np.ndarray, y : np.ndarray, theta : np.ndarray, 
-        learning_rate : float = 1e-4, tot = 1e-3, line : int = 1
+        learning_rate : float = 1e-4, tol = 1e-3, line : int = 1
         ):
     
     error = None
@@ -46,7 +44,7 @@ def SGD(X : np.ndarray, y : np.ndarray, theta : np.ndarray,
             if X.shape[1] > 1:
                 if y.shape[1] == 1:
                     if theta.shape[0] == X.shape[1] : 
-                        if theta.shape[0] == 1:
+                        if theta.shape[1] == 1:
                             cost_history, eval, iter = [], [], 0
                             while True:
                                 theta = theta - learning_rate * grad(X=X, y=y, theta=theta)
@@ -55,7 +53,7 @@ def SGD(X : np.ndarray, y : np.ndarray, theta : np.ndarray,
 
                                 if iter < 2 : pass 
                                 else:
-                                    if np.abs( cost_history[iter] - cost_history[iter-1] ) <= tot : break
+                                    if np.abs( cost_history[iter] - cost_history[iter-1] ) <= tol : break
                                     else: pass
 
                                 iter += 1
@@ -106,16 +104,16 @@ class ERRORS:
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str, m):
-        error = '{}should be {}({}, 1) {}ndarray. {}line: {}{}'.format(self.white, self.red, m, self.blue, 
+        error = '{}should be a {}[{}, 1] {}ndarray. {}line: {}{}'.format(self.white, self.red, m, self.blue, 
                                                     self.white,self.yellow, self.line)     
-        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}{}'.format( self.cyan, string) + error
+        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format( self.cyan, string) + error
 
         return self.error+self.reset
 
     def ERROR1(self, string: str, m):
-        error = '{}should be {}({}, n) {}ndarray {}with {}n >= 2. {}line: {}{}'.format(self.white, self.red, m,
+        error = '{}should be {}[{}, n] {}ndarray {}with {}n >= 2. {}line: {}{}'.format(self.white, self.red, m,
                  self.blue, self.white, self.green, self.white,self.yellow, self.line)     
-        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}{}'.format( self.cyan, string) + error
+        self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format( self.cyan, string) + error
 
         return self.error+self.reset
     

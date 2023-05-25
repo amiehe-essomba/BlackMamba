@@ -47,8 +47,8 @@ class RUN_FUNCTION:
             self.error = func.EXTERNAL_DEF_LOOP_STATEMENT( None, self.new_data_base,
                                         self.line ).DEF_STATEMENT( tabulation, self.all_data_analyses )
             if self.error is None:
-                self.vars                   = self.new_data_base[ 'variables' ]['vars'][:]
-                self._values_               = self.new_data_base[ 'variables' ]['values'][:]
+                self.vars                   = self.new_data_base[ 'variables' ]['vars'].copy()
+                self._values_               = self.new_data_base[ 'variables' ]['values'].copy()
                 self.initialize_values      = self.new_data_base[ 'variables' ]
                 self.DataBase[ 'irene' ]    = self.new_data_base[ 'irene' ]
                 self.keyActivation          = False

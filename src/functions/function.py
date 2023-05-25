@@ -214,7 +214,7 @@ class FUNCTION:
                 if  self.anonymous is False: pass 
                 else: self.error = er.ERRORS(self.line).ERROR27( self.function_name )
             if self.error is None:
-                updating_data.UPDATE_DATA_BASE( self.values, self.arguments, self.global_vars ).UPDATE( self.def_data_base.copy() )
+                updating_data.UPDATE_DATA_BASE( self.values.copy(), self.arguments.copy(), self.global_vars.copy() ).UPDATE( self.def_data_base )
             else: pass
         else: pass
 

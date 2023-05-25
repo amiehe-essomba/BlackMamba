@@ -41,28 +41,40 @@ class UPDATE_DATA_BASE:
             for i , value in enumerate( self.global_values ):
                 try:
                     if type(self.global_variables[i]) == type(np.array([])):
-                        data_base['variables']['vars'].append(self.global_variables[i])
-                        data_base['variables']['values'].append(value)
+                        if self.global_variables[ i ] not in data_base[ 'variables'] [ 'vars' ] :
+                            data_base[ 'variables'][ 'vars' ].append( self.global_variables[ i ] )
+                            data_base[ 'variables' ][ 'values' ].append( value )
+                        else:
+                            idd = data_base[ 'variables'] [ 'vars' ].index(self.global_variables[ i ])
+                            data_base[ 'variables' ][ 'values' ][idd] = value
                     else:
                         if value not in [ '@670532821@656188@656188185@' ]:
-                            data_base[ 'variables'] [ 'vars' ].append( self.global_variables[ i ] )
-                            data_base[ 'variables' ][ 'values' ].append( value )
+                            if self.global_variables[ i ] not in data_base[ 'variables'] [ 'vars' ] :
+                                data_base[ 'variables'][ 'vars' ].append( self.global_variables[ i ] )
+                                data_base[ 'variables' ][ 'values' ].append( value )
+                            else:
+                                idd = data_base[ 'variables'] [ 'vars' ].index(self.global_variables[ i ])
+                                data_base[ 'variables' ][ 'values' ][idd] = value
                         else: pass
                 except IndexError:
                     if value not in ['@670532821@656188@656188185@']:
-                        data_base['variables']['vars'].append(self.global_variables[i])
-                        data_base['variables']['values'].append(value)
+                        if self.global_variables[ i ] not in data_base[ 'variables'][ 'vars' ] :
+                            data_base[ 'variables'][ 'vars' ].append( self.global_variables[ i ] )
+                            data_base[ 'variables' ][ 'values' ].append( value )
+                        else:
+                            idd = data_base[ 'variables'][ 'vars' ].index(self.global_variables[ i ])
+                            data_base[ 'variables' ][ 'values' ][idd] = value
                     else: pass
             if 'anonymous' in self.global_variables:
                 idd_ = self.global_variables.index('anonymous')
                 del self.global_variables[idd_]
                 del self.global_values[idd_]
+
                 self.global_vars['vars']    = self.global_variables
                 self.global_vars['values']  = self.global_values
             else: pass
         else: pass
         
-
         if self.name_without_values: data_base[ 'empty_values' ] = self.name_without_values
         else: pass
 

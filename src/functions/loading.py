@@ -68,3 +68,47 @@ class LOAD:
                             db['global_vars']['values'].append(self.val[i])
                 else: pass
         except IndexError: pass
+
+def GLOBAL_VARS_CLASS(db  : dict, n : int):
+    try:
+        values_import  = db['modulesImport']['variables'].copy()
+        values         = db['variables'].copy() 
+
+        if not values['vars']:
+            if values_import['vars'][n]: 
+                values['vars']      = values_import['vars'][n].copy()
+                values['values']    = values_import['values'][n].copy()
+            else: pass 
+        else:
+            if values_import['vars'][n]: 
+                for i, s in enumerate(values_import['vars'][n]):
+                    if s in values['vars']:
+                        idd = values['vars'].index(s)
+                        values['values'][idd] = values_import['values'][n][i]
+                    else:
+                        values['vars'].append(s)
+                        values['values'].append(values_import['values'][n][i])
+            else: pass
+        db['variables'] = values.copy()
+        db['global_vars'] = values.copy()
+
+    except NameError: pass
+    
+def LOADING(main_list, func_name : str):
+    id1, id2, key, func, names = None, None, False, None, None
+  
+    if main_list:
+        for i, item in enumerate(main_list):
+            name = item['func_names']
+            functions = item['functions']
+            if func_name in name:
+                id1     = i
+                id2     = name.index(func_name)
+                func    = functions[id2]
+                key     = True
+                names   = name
+                break
+            else: pass 
+    else: pass
+
+    return {'key' : key, 'id1' : id1, 'id2' : id2, "func" : func, "names" : names}

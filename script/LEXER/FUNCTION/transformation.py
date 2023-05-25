@@ -35,6 +35,7 @@ from src.transform                  import datatype             as dt
 from src.ggplot                     import plot
 from src.ML.data                    import make_R
 from src.ML.LR                      import linearModel as LM
+from src.ML.data                    import normalization 
 
 def color_ansi( master, func, line):
     err = None
@@ -585,14 +586,14 @@ class C_F_I_S:
                                 else: break
 
                             if self.error is None:
-                                if   self._values_[-1] == "regression":
+                                if   self._values_[-1] == "regression"  :
                                     samples, features, noise, seed, shuffle, target, polynomial = self._values_[0] 
                                     self.final_value, self.error = make_R.R(samples=samples, features=features, seed=seed, noise=noise,
                                                     shuffle=shuffle, target=target, polynomial=polynomial)
-                                elif self._values_[-1] == "model": 
+                                elif self._values_[-1] == "model"       :
                                     X, y, theta, lr, tol = self._values_[0]
                                     self.final_value, self.error = LM.SGD(X=X, y=y, theta=theta, learning_rate=lr, tol=tol, line=self.line)
-                                elif self._values_[-1] == "predict": 
+                                elif self._values_[-1] == "predict"     :
                                     X, theta, show = self._values_[0]
                                     self.final_value, self.error = LM.predict(X=X, theta=theta, line=self.line)
                                     if self.error is None:
@@ -607,9 +608,15 @@ class C_F_I_S:
                                             plt.show()
                                         else: pass
                                     else: pass
-                                elif self._values_[-1] == "theta": 
+                                elif self._values_[-1] == "theta"       : 
                                     nrow = self._values_[0][0]
                                     self.final_value = LM.theta(params = nrow)
+                                elif self._values_[-1] in ["StandardScaler", 
+                                            "MinMaxScaler", "LogarithmicScaler", "SoftmaxScaler", "MinAbsScaler"]       :
+                                    X, axis, name = self._values_
+                                    self.final_value, self.error = normalization.Scaler(X = X, axis=axis, 
+                                                                                line = self.line, cal=name)
+
                                 else: pass
                             else: pass
                         elif len( self.list_of_values ) == 5    :
@@ -644,7 +651,7 @@ class C_F_I_S:
                                                                     self.data_base, self.line).LEXER(  self.value )
                                 if self.error is None: self._values_.append( self._value_ )
                                 else: break
-                            
+                       
                             if self.error is None: 
                                 if function == '__scan__':
                                     typ = self._values_[-1]
@@ -655,7 +662,7 @@ class C_F_I_S:
                                     elif typ == "scatter":
                                         X, Y, c, s, t, ps, xlab, ylab, figsize, legend, label, marker, typ = self._values_
                                         self.error = plot.ggplot(line=self.line, xlab=xlab, ylab=ylab, figsize=figsize,
-                                                legend=legend, title=t, plot_style=ps).scatter(X=X, Y=Y, color=c, size=s, label=label,
+                                                legend=legend, title=" ", plot_style=ps).scatter(X=X, Y=Y, color=c, size=s, label=label,
                                                 marker = marker)
                                     else: pass
                             else: pass

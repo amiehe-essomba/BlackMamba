@@ -142,11 +142,14 @@ class ggplot:
                         ax.set_ylabel(ylabel=self.ylab, fontsize="medium", color="black")
                         try:
                             if self.legend is True:
+                                if not label: label  ="o"
+                                else: pass 
+
                                 if type(self.color) == type(str()): 
-                                    if label is None: ax.legend("")
-                                    else: ax.legend(label=label)
+                                    if label is None: ax.legend(labels=label)
+                                    else: ax.legend(labels=label)
                                 else : 
-                                    if label is not None : ax.legend(handles = scatter.legend_elements()[0], label=label)
+                                    if label is not None : ax.legend(handles = scatter.legend_elements()[0], labels=label)
                                     else: ax.legend(handles = scatter.legend_elements()[0])
                             else: pass 
                         except Exception: pass

@@ -8,6 +8,7 @@ r = config.bold()+fg(255,0,0)
 re = config.reset()
 line = GetLine()
 b = config.bold()+fg(0,0,255)
+
 global y, w, g, r, re, line, b
 
 def theta( nrow : int = 3 ):
@@ -20,13 +21,13 @@ end:
 
 class LinearRegression:
 	def regression( 
-	X : ndarray, 
+	X 		: ndarray, 
 	Y		: ndarray,
-	theta 		: ndarray,
+	theta 	: ndarray,
 	learning_rate 	: float = 1e-4,
 	tol		: float = 1e-3
 	):
-		__scan__ * [X, Y, thata, learning_rate, tol], "model", "model"
+		__scan__ * [X, Y, theta, learning_rate, tol], "model", "model"
 	end:
 	
 	def predict(X: ndarray,thata: ndarray,show: bool = False):
@@ -36,7 +37,7 @@ end:
 
 
 class create :
-	def initialize(samples : int, features : int, noise : int):
+	def initialize(samples : int = 10, features : int = 1, noise : int = 2):
 		self.samples    = samples
 		self.features   = features 
 		self.noise      = noise
@@ -44,6 +45,14 @@ class create :
 	end:
 	
 	def data(seed : int = 1, shuffle : bool = True, target : int = 1, polynomial : int = 1):
+		y = config.bold()+fg(255, 255, 0)
+		w = config.bold()+fg(255,255,255)
+		g = config.bold()+fg(0,255,0)
+		r = config.bold()+fg(255,0,0)
+		re = config.reset()
+		line = GetLine()
+		b = config.bold()+fg(0,0,255)
+		
 		if samples >= 1:
 			if features >= 1:
 				if noise >= 0:
@@ -67,7 +76,7 @@ class create :
 				__show__ * "{g}ValueError : {y}features {w}cannot be  {r}lower than 1. {w}line : {y}{line} {w}in {g}data( ){w} / {r}class {b}create( ) {re}"
 			end:
 		else:
-			__show__ * "{g}ValueError : {y}samples {w}cannot be  {r}lower than 1. {w}line : {y}{line} {w}in {g}data( ){w} / {r}class {b}create( ) {re}"
+			__show__ * "{g}ValueError : {y}samples {w}cannot be {b}lower than 1. {w}line : {y}{line} {w}in {g}data( ){w} / {r}class {b}create( ) {re}"
 		end:
 	end:
 end:

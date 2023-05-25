@@ -715,7 +715,7 @@ class CLASS_TREATMENT:
                     if self.mod['key'] is True: 
                         self.db = self.DataBase.copy()
                         self.n   = self.DataBase['modulesImport']['fileNames'].index(self.main_name)
-                        load.LOAD(None, None).GLOBAL_VARS(self.db, self.DataBase['modulesImport']['variables'], self.n, typ = 'class')
+                        #load.GLOBAL_VARS_CLASS(self.db, self.n)
                         self.final_values, self.value_from_db, self.initialize_values, self.error = CLASS_TREATMENT( self.master, 
                                             self.db, self.line ).TREATMENT( self.main_name+'.', loading = True, idd1 = self.mod['id1'], 
                                                                                  idd2 = self.mod['id2'] )
@@ -796,6 +796,7 @@ class CLASS_TREATMENT:
                             self.check_type = False
                         else: pass   
                     else: self.error = er.ERRORS(self.line).ERROR13(self.main_name)
+            
             elif len( self.master[ 'names' ]) == 4:
                 if self.main_name in self.DataBase['modulesImport']['fileNames']: 
                     self.location       = self.DataBase['modulesImport']['fileNames'].index(self.main_name)

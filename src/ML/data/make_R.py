@@ -1,7 +1,16 @@
 from sklearn.datasets import  make_regression
 import numpy as np 
 
-def R(samples : int, features : int, noise : int, target : int = 1, seed : int = None, shuffle : bool = True, polynomial : int = None  ):
+def R(
+        samples     : int, 
+        features    : int, 
+        noise       : int, 
+        target      : int = 1, 
+        seed        : int = None, 
+        shuffle     : bool = True, 
+        polynomial  : int = None  
+        ):
+    
     X, Y = make_regression(
         n_samples=samples, 
         n_features=features, 
@@ -21,6 +30,8 @@ def R(samples : int, features : int, noise : int, target : int = 1, seed : int =
     bias = np.ones((X.shape[0], 1))
     MATRIX = np.column_stack((X, bias)).reshape((-1, X.shape[1]+1))
 
-    data = {"matrix" : MATRIX, "target" : Y.reshape((-1, 1)), "bias" : bias}
+    data = {"X" : X , "matrix" : MATRIX, "target" : Y.reshape((-1, 1)), "bias" : bias}
 
     return data, error
+
+

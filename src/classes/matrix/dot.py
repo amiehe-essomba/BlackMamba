@@ -220,7 +220,8 @@ class DOT:
     
 
 def axis(master, newValues, line):
-    error = None
+    error, _return_ = None, None 
+    
     if type( newValues ) in [type(list())]:
         if master.size != 0 : 
             try: 

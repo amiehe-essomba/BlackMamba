@@ -56,7 +56,7 @@ def run_mamba():
                         data_base = db.DATA_BASE().STORAGE().copy()
                         WM.IDE( data_base=data_base).terminal(c=bm.fg.rbg(255, 255, 255), terminal_name=term)
                     except KeyboardInterrupt:  pass
-                    except IndexError: pass
+                    except EOFError: pass
                 # get mamba version && author 
                 elif len(arg) == 2:
                     # get version of code
@@ -94,7 +94,7 @@ def run_mamba():
                                 data_base = db.DATA_BASE().STORAGE().copy()
                                 WM.IDE( data_base=data_base).terminal(c=color, terminal_name=term)
                             except KeyboardInterrupt:  pass
-                            except KeyError: pass
+                            except EOFError: pass
                         else: print(errors.mamba_error().ERROR4(arg[2]))
                     else: print(errors.mamba_error().ERROR5(arg[1]))
                 else : print(errors.mamba_error().ERROR6()) 

@@ -68,11 +68,12 @@ class CLASSIFICATION:
                                                 self.ind = self.db['globalIndex']
                                                 self.db['starter'] = self.ind
                                                 self.new_array =  data_from_file[self.ind + 1 : ]
-                                            
+                                                
                                             if self.lexer is not None:
                                                 num, self.key, self.error = PFI.ASSEMBLY(master = self.lexer, data_base = self.db, 
                                                             line = (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(main_string = self.normal_string,
                                                             interpreter=True, MainList=self.new_array, baseFileName=self.baseFileName, locked=locked)
+                                                
                                                 if self.error is None:  pass
                                                 else:  break
                                             else: pass
@@ -88,6 +89,7 @@ class CLASSIFICATION:
                                         self.lexer, self.normal_string, self.error = main.MAIN(string, self.db, 
                                                                     (self.lineI + self.line)).MAIN( interpreter = True,
                                                                     MainList = data_from_file[x+1: ] )
+                                        
                                         if self.error is None:
                                             if self.lexer is not None:
                                                 self.ind = np.abs(self.before -  self.db['globalIndex'])
@@ -101,6 +103,7 @@ class CLASSIFICATION:
                                                 num, self.key, self.error = PFI.ASSEMBLY(master = self.lexer, data_base = self.db, 
                                                             line = (self.lineI + self.line)).GLOBAL_ASSEMBLY_FILE_INTERPRETER(main_string = self.normal_string,
                                                             interpreter=True, MainList=self.new_array, baseFileName=self.baseFileName, locked=locked)
+                                                
                                                 if self.error is None: pass
                                                 else:  break
                                             else: pass

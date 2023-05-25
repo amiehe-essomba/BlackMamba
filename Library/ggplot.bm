@@ -8,8 +8,9 @@ r = config.bold()+fg(255,0,0)
 re = config.reset()
 line = GetLine()
 b = config.bold()+fg(0,0,255)
+t=0
 
-global y, w, g, r, re, line, b
+global y, w, g, r, re, line, b, t
 
 def plot( 
 	X 	: list tuple range ndarray=[1:10],
@@ -46,7 +47,7 @@ end:
 def scatter(
 	X 	: list tuple range ndarray=[1:10],
 	Y 	: list tuple range ndarray=[1:10],
-	color 	: string list = [1:10],
+	color 	: string list = "blue",
 	s 	: int    = 10,
 	title 	: string = "",
 	ps 	: string = "ggplot",
@@ -54,27 +55,26 @@ def scatter(
 	ylab 	: string = "Y",
 	figsize : tuple  = (6,6),
 	legend 	: bool   = True,
-	label 	: list string none = None,
 	marker 	: int    = 0,
-	cmap	: string = "plt.cm.Greens",
+	cmap	: string = "plt",
 	xmin	: list   = [],
 	xmax	: list   = [],
 	edgecolor : list string = "red",
-	location : string, tuple : "upper left"
+	location : string tuple = "upper left",
+	label 	: list string = "dataset"
 	):
 	
-	
+		
 	# checking figsize dimension
 	if length( figsize ) == 2:
 		if ? figsize[0] == ? 1:
 			if ? figsize[1] == ? 1:
 				if marker >= 0:
-					if marker in [0:18]:
-						new_marker = ["o", "^", "+", "*", ".", "v", "<", ">", "1", "2", "3", "4", "s", "p", "h", "H", "x", "D"]
-
+					if marker < 18 :
+						new_marker = ["o", "^", "+", "*"]#, ".", "v", "<", ">", "1", "2", "3", "4", "s", "p", "h", "H", "x", "D"]
 						if ? color == ? list():
-							if ? label in [ type(None), type(list())]:
-								if ? label == ? list():
+							if type(label) in [ type(string()), type(list())]:
+								if type(label) == type( list() ):
 									if label.size() == color.size():
 										__scan__ * X, Y, color, s, title, ps, xlab, ylab, figsize, legend, label, new_marker[marker], "scatter"
 									else:
@@ -84,14 +84,13 @@ def scatter(
 									__scan__ * X, Y, color, s, title, ps, xlab, ylab, figsize, legend, label, new_marker[marker], "scatter"
 								end:
 							else:
-								__show__ * "{b}TypeError : {y}label {w}should be a {y}list() or {r}none() {y}type. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"		
+								__show__ * "{b}TypeError : {y}label {w}should be a {y}list() or {r}string() {y}type. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"		
 							end:
 						else:
 							if type( label ) in [ type(None), type( string() )]:
 								__scan__ * X, Y, color, s, title, ps, xlab, ylab, figsize, legend, label, new_marker[marker], "scatter" 
 							else:
 								__show__ * "{b}TypeError : {y}label {w}should be a {b}string() or {r}none() {y}type. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"		
-
 							end:
 						end:
 					else:
@@ -111,7 +110,6 @@ def scatter(
 	end:
 end:
 
-
 def save( name : string ):
-	__scan__ * sname, "save_figure"
+	__scan__ * name, "save_figure"
 end:

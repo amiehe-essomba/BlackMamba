@@ -1,0 +1,21 @@
+# normaliztion 
+
+def StandardScaler(X : ndarray, axis : int none =None):
+	__scan__ * X, axis, "StandardScaler"
+end:
+
+def MinMaxScaler(X : ndarray, axis : int none =None):
+	__scan__ * X, axis, "MinMaxScaler"
+end:
+
+def LogarithmicScaler(X : ndarray, axis : int none =None):
+	__scan__ * X, axis, "LogarithmicScaler"
+end:
+
+def SoftmaxScaler(X : ndarray, axis : int none =None):
+	__scan__ * X, axis, "SoftmaxScaler"
+end:
+
+def MinAbsScaler(X : ndarray, axis : int none =None):
+	__scan__ * X, axis, "MinAbsScaler"
+end:
