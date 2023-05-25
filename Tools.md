@@ -5,6 +5,7 @@ To create a class, it must have a name and the choice of the name of a class is 
 
 ## Creating a class
 - **Using a constructor method named __initialize()__ function to make variables global**
+
 ![logo](/images/tools/class_01.png)
 
 The constructor method initializes  attributes with  values passed as parameters.
