@@ -422,6 +422,7 @@ class IDE:
                         
                         else: pass 
 
+                        
                         if self.border_x_limit is True  :
                             self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = buildString.string( 
                                                     self.Data['input'], self.Data['index']-1 )
@@ -441,6 +442,7 @@ class IDE:
                             sys.stdout.flush()
 
                             # checking windows dimension 
+                            self.max_x = 0
                             if self.max_x > 30 and self.max_y > 20:
                                 # checkng if str_drop_down exists
                                 if self.Data['str_drop_down']:

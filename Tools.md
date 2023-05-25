@@ -26,23 +26,7 @@ The use of this constructor method is really very practical and very useful, how
 
 ## Inheritance classes
 
-```ruby
-class setosa:
-    def initialize( color : string = 'red', size : float) -> None:
-        self.color = color
-        self.size  = size 
-        self.width = 0.3
-    end:
-end:
-
-class iris( setosa ):
-    def get():
-        return {color : color, size : size, width : width}
-    end:
-end:
-
-print * iris.get(), iris.color, iris.size, iris.width
-```
+![logo](/images/tools/class_04.png)
 
 Inheritance is a powerful feature in object-oriented programming that allows you to create a new class based on an existing class. The new class, known as the subclass or derived class, inherits the properties and methods of the existing class, known as the superclass or base class, and can also add its own properties and methods or modify those inherited from the base class.
 We start by creating a class setosa containing only the semi-global variables of this class using constructor method just to simplify things then a second class is created ( host class ), the class iris will host the class setosa just by defining setosa between brackets and so iris can access all of setosa's information down to the smallest detail.
