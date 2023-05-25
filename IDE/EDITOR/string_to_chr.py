@@ -31,7 +31,6 @@ def decoding_string() -> list:
 def convert( ) -> list :
     s = decoding_string()
     number = None 
-    
     if len(s) == 1:
         try:
             s = s[0].decode("utf-8")

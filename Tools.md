@@ -5,30 +5,13 @@ To create a class, it must have a name and the choice of the name of a class is 
 
 ## Creating a class
 - **Using a constructor method named __initialize()__ function to make variables global**
-
-```ruby
-class iris:
-    def initialize() -> None
-        self.color  = 'green'
-        self.length = 1.5
-        self.width  = 0.3
-    end:
-end:
-```
+![logo](/images/tools/class_01.png)
 
 The constructor method initializes  attributes with  values passed as parameters.
 
 - **Defining default values inside a constructor method named __initialize()__**
 
-```ruby
-class iris:
-    def initialize( color : string = "green") -> None:
-        self.color  = color
-        self.length = 1.5
-        self.width  = 0.3
-    end:
-end:
-```
+![logo](/images/tools/class_02.png)
 
 The **initialize()** function returning no value its output is always defined on **None**.
 It is also possible to define some variables in this function to make them more accessible in all functions connected to the host class, so no need to create several variables for each function. These variables created in the **initialize()** function are called **semi-global** because they can be accessed from any method within the class. By initializing these variables in the constructor method,
@@ -37,23 +20,7 @@ To create a pure global variable it is necessary to use the **global** function 
 In the constructor method **initialize()** you can also define default values as illustrated above.
 The use of this constructor method is really very practical and very useful, however if it is created, it must be the first to appear in a class because it is an initialization function and cannot be called in the code or even the entire program.
 
-
-```ruby
-class iris:
-    def initialize() -> None:
-        self.color  = 'green'     # sheets color
-        self.size   = 1.2         # its size
-        self.width  = 0.3         # sheets width
-    end:
-    
-    # get items
-    def get( item : string ) -> dictionary:
-        return {color : color, size: size, width : width}
-    end:
-end:    
-
-print * iris().get()
-```
+![logo](/images/tools/class_03.png)
 
 
 ## Inheritance classes
