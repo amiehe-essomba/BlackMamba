@@ -19,9 +19,7 @@ class NONE:
         self.numeric            = self.master[ 'numeric' ]
         self._return_           = None
 
-        if self.numeric is not None:
-            self._return_, self.error = NONE( self.master, self.data_base, self.line ).NONE()
-        else:
-            pass
+        if self.numeric is not None: self._return_, self.error = NONE( self.master, self.data_base, self.line ).NONE()
+        else: pass
 
         return self._return_, self.error

@@ -270,8 +270,7 @@ cdef class ERRORS:
         str le      
         str be      
         str ge      
-        str me 
-        str we     
+        str me    
         str reset   
 
     

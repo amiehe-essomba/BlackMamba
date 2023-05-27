@@ -9,10 +9,8 @@ from src.classes                    import error as er
 from script.PARXER.LEXER_CONFIGURE  import numeric_lexer
 from script.LEXER.FUNCTION          import main
 from script.STDIN.LinuxSTDIN        import bm_configure as bm
-try:
-    from CythonModules.Windows      import fileError as fe 
-except ImportError:
-    from CythonModules.Linux        import fileError as fe 
+from CythonModules.Windows          import fileError as fe 
+ 
 
 
 class LIST:

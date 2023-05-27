@@ -391,9 +391,17 @@ class IDE:
                                             )
                                        
                                         if self.error is None: pass 
-                                        else: self.error = TB.traceback.init(self.data_base,  self.histoty_tracback, self.error)
+                                        else: 
+                                            sys.stdout.write(bm.move_cursor.LEFT(1000))
+                                            sys.stdout.write(bm.clear.screen(0))
+                                            print(f"\n{self.error}\n")
+                                            #self.error = TB.traceback.init(self.data_base,  self.histoty_tracback, self.error)
                                     else:  pass
-                                else : self.error = TB.traceback.init(self.data_base,  self.histoty_tracback, self.error)
+                                else :
+                                    sys.stdout.write(bm.move_cursor.LEFT(1000))
+                                    sys.stdout.write(bm.clear.screen(0)) 
+                                    print(f"\n{self.error}\n")
+                                    #self.error = TB.traceback.init(self.data_base,  self.histoty_tracback, self.error)
                             else: pass
                             #####################################################################################
                             # initializing all variables
@@ -406,6 +414,7 @@ class IDE:
                             self.Data["I_S"]         = 0
                             self.Data["index"]       = 0
                             self.index               = self.if_line
+                            self.error               = None
                             #####################################################################################
                             self.Data['string_tabular'].append( [] )
                             self.Data['liste'].append( [] )

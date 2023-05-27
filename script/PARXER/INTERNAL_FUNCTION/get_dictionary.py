@@ -9,10 +9,8 @@ from script.PARXER.INTERNAL_FUNCTION                import get_list
 
 from src.classes.Unions                             import union
 from src.classes                                    import error as er
-try:
-    from CythonModules.Windows                      import fileError as fe 
-except ImportError:
-    from CythonModules.Linux                        import fileError as fe 
+from CythonModules.Windows                          import fileError as fe 
+
 
 
 class DICTIONARY:
@@ -57,8 +55,7 @@ class DICTIONARY:
                                         if self.error is None:
                                             self.name, self.error = self.control.CHECK_NAME( self.name, True )
                                             if self.error is None:
-                                                if not self.check_name:
-                                                    self.check_name.append( self.name )
+                                                if not self.check_name: self.check_name.append( self.name )
                                                 else:
                                                     if self.name in self.check_name:
                                                         self.error = ERRORS( self.line ).ERROR5(self.main_dict, self.name)
@@ -83,27 +80,15 @@ class DICTIONARY:
                                                                 if self.all_data is not None:
                                                                     self.final_val, self.error = self.numeric.NUMERICAL(self.lex,
                                                                                 self.data_base, self.line).ANALYSE( self.master )
-                                                                    if self.error is None:
-                                                                        self._return_[ self.name ] = self.final_val[ 0 ]
-                                                                    else:
-                                                                        self.error = self.error
-                                                                        break
+                                                                    if self.error is None: self._return_[ self.name ] = self.final_val[ 0 ]
+                                                                    else: break
                                                                 else:
                                                                     self.error = ERRORS( self.line ).ERROR0( self.main_dict )
                                                                     break
-                                                            else:
-                                                                self.error = self.error
-                                                                break
-                                                    else:
-                                                        self.error = self.error
-                                                        break
-                                                else:
-                                                    self.error = self.error
-                                                    break
-
-                                            else:
-                                                self.error = self.error
-                                                break
+                                                            else:  break
+                                                    else: break
+                                                else: break
+                                            else: break
                                         else:
                                             self.error = ERRORS( self.line ).ERROR0( self.main_dict )
                                             break
@@ -117,18 +102,14 @@ class DICTIONARY:
                                     else:
                                         self.error = ERRORS( self.line ).ERROR0( self.main_dict )
                                         break
-
                             else:
                                 self.error = ERRORS( self.line ).ERROR2( self.main_dict, self.sub_value[ 0 ] )
                                 break
-                        else:
-                            self.error = self.error
-                            break
+                        else: break
                     else:
                         self.error = ERRORS( self.line ).ERROR0( self.main_dict )
                         break
-            else:
-                self.error = self.error
+            else: pass
 
         else:
             self.error      =  None
@@ -148,8 +129,7 @@ class DICTIONARY:
             self.dict_values, self.error = DICTIONARY( self.master, self.data_base, self.line ).DICT()
             if self.error is None:
                 self._return_ = self.dict_values
-            else:
-                self.error = self.error
+            else:  pass
 
         else:
             self._names_        = self.master[ 'names' ]
@@ -216,35 +196,26 @@ class DICT_FUNCTION:
                 self.len  = len( self.names )
                 for name in self.names:
                     name, self.error = self.control.DELETE_SPACE( name )
-                    if not check:
-                        check.append( name )
+                    if not check: check.append( name )
                     else:
                         if name in check:
                             self.error = ERRORS( self.line ).ERROR6(self.master, name )
                             break
-                        else:
-                            check.append( name )
+                        else: check.append( name )
 
                 if self.error is None:
                     self.names = check[ : ]
                     for name in self.names:
-                        if name in self.lists :
-                            pass
+                        if name in self.lists : pass
                         else:
                             self.error = ERRORS( self.line ).ERROR7( name )
                             break
-                    if self.error is None:
-                        self._return_ = self.names
-                    else:
-                        self.error = self.error
-                else:
-                    self.error = self.error
+                    if self.error is None:  self._return_ = self.names
+                    else: pass
+                else: pass
+            else: pass
 
-            else:
-                self.error = self.error
-
-        else:
-            self.error = ERRORS( self.line ).ERROR4( main_string, self.master)
+        else: self.error = ERRORS( self.line ).ERROR4( main_string, self.master)
 
         return self._return_, self.error
 
@@ -272,24 +243,24 @@ class KEYS:
 class ERRORS:
     def __init__(self, line:int):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
         error = '{}line: {}{}'.format(self.cyan, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.cyan, string) + error
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
 
     def ERROR1(self, string: str, char: str):
         error = '{}due to {}<< {} >>. {}line: {}{}'.format(self.white, self.red, char, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.cyan, string) + error
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
 
@@ -303,26 +274,26 @@ class ERRORS:
     def ERROR3(self, string: str, char1: str = 'keyword', char2:str='value', char: str = None):
         error = '{}{} {}is not defined for the {}{} {}<< {} >>. {}line: {}{}'.format(self.red, char, self.white, self.green, char2, self.magenta, char,
                                                                                 self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+ '{}invalid syntax in {}<< {} >> '.format(self.cyan, string) + error
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+ '{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
 
     def ERROR4(self, string: str, char: str):
         error = '{}due to the fact that {}<< {} >> {}is {}EMPTY. {}line: {}{}'.format(self.white, self.red, char, self.white, self.yellow,
                                                                                                     self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{} invalid syntax in {}<< {} >> '.format(self.cyan, string) + error
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
 
     def ERROR5(self, string: str, char: str):
         error = '{}keyword {}<< {} >> {}is repeated. {}line: {}{}'.format(self.red, self.blue, char, self.yellow, self.white, self.yellow, self.line)
-        self.error =fe.FileErrors( 'SyntaxError' ).Errors()+ '{}invalid syntax in {}<< {} >> '.format(self.cyan, string) + error
+        self.error =fe.FileErrors( 'SyntaxError' ).Errors()+ '{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
 
     def ERROR6(self, string: str, char: str):
         error = '{}argument {}<< {} >> {}is repeated. {}line: {}{}'.format(self.white, self.magenta, char, self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white,  string) + error
+        self.error = fe.FileErrors( 'SyntaxError' ).Errors()+'{}invalid syntax in {}<< {} >> '.format(self.white, self.cyan, string) + error
 
         return self.error+self.reset
 

@@ -165,6 +165,8 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'classes' ].append(self.db[ 'classes' ])
                             self.DataBase[ 'modulesImport' ][ 'func_names' ].append( [] )
                             self.DataBase[ 'modulesImport' ][ 'functions' ].append([])
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadC' ].append( {} )
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ].append( {} )
 
                             if self.star is False:
                                 if  len(info['module']) != 4:
@@ -186,6 +188,8 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'classes' ][ self.index ]       = self.db[ 'classes' ] 
                             self.DataBase[ 'modulesImport' ][ 'functions' ][self.index]       = []
                             self.DataBase[ 'modulesImport' ][ 'func_names' ][self.index]      = []
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadC' ][self.index]    = {}
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.index]    = {}
                                                          
                             if self.star is False:
                                 if  len(info['module']) != 4:
@@ -261,6 +265,8 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'functions' ].append(self.db[ 'functions' ].copy() )
                             self.DataBase[ 'modulesImport' ][ 'class_names' ].append( [] )
                             self.DataBase[ 'modulesImport' ][ 'classes' ].append([])
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadC' ].append( {} )
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ].append( {} )
                          
                             if self.star is False:
                                 if len(info['module']) != 4:
@@ -283,6 +289,8 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'functions' ][ self.index ]     = self.db[ 'functions' ]
                             self.DataBase[ 'modulesImport' ][ 'classes' ][self.index]         = []
                             self.DataBase[ 'modulesImport' ][ 'class_names' ][self.index]     = []
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadC' ][self.index]    = {}
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][self.index]    = {}
                                                          
                             if self.star is False:
                                 if len(info['module']) != 4:
@@ -365,12 +373,14 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'classes' ].append(self.db[ 'classes' ])
                             self.DataBase[ 'modulesImport' ][ 'func_names' ].append( self.db[ 'func_names' ] )
                             self.DataBase[ 'modulesImport' ][ 'functions' ].append(self.db[ 'functions' ])
-                                                         
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadC' ].append( {} )
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ].append( {} )
+
                             if self.star is False:
                                 if len(info['module']) != 4:
                                     self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ].append(self.func)
                                     self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append(self.class_) 
-                                    self.DataBase[ 'modulesImport' ][ 'alias' ].append({} )
+                                    self.DataBase[ 'modulesImport' ][ 'alias' ].append( {} )
                                 else:
                                     if self.class_:  
                                         self.DataBase[ 'modulesImport' ][ 'mainClassNames' ].append([info['alias']])
@@ -390,7 +400,9 @@ class CLASSIFICATION:
                             self.DataBase[ 'modulesImport' ][ 'classes' ][ self.index ]       = self.db[ 'classes' ].copy()
                             self.DataBase[ 'modulesImport' ][ 'func_names' ][ self.index ]    = self.db[ 'func_names' ].copy() 
                             self.DataBase[ 'modulesImport' ][ 'functions' ][ self.index ]     = self.db[ 'functions' ].copy()
-                                                         
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadC' ][ self.index ]  = {}
+                            self.DataBase[ 'modulesImport' ][ 'modulesLoadF' ][ self.index ]  = {}
+
                             if self.star is False:
                                 if len(info['module']) != 4:
                                     self.DataBase[ 'modulesImport' ][ 'mainFuncNames' ][self.index ]      = self.func.copy()

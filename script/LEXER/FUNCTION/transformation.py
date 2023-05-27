@@ -572,8 +572,9 @@ class C_F_I_S:
                                                     else:self.sub_s += s
                                                 self.final_value = self.sub_s
                                             else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
-                                        else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
-                                        
+                                        else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )   
+                                    elif self._values_[ 0 ] == "plt_style_available":
+                                        self.final_value = plt_style = list( plt.style.available )
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                             else: pass                   
                         elif len( self.list_of_values ) == 3    :
@@ -643,7 +644,7 @@ class C_F_I_S:
                                     else: self.error = er.ERRORS( self.line ).ERROR37(func )
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
                             else: pass
-                        elif len( self.list_of_values ) in [12, 13, 14, 15]   :
+                        elif len( self.list_of_values ) in list(range(11, 30))  :
                             self._values_ = []
                             for value in self.list_of_values:
                                 self.value = value
@@ -656,14 +657,15 @@ class C_F_I_S:
                                 if function == '__scan__':
                                     typ = self._values_[-1]
                                     if typ == 'plot':
-                                        X, Y, c, ls, lw, t, ps, xlab, ylab, figsize, legend, typ = self._values_
+                                        X, Y, c, ls, lw, t, ps, xlab, ylab, figsize, legend, label, col, typ = self._values_
                                         self.error = plot.ggplot(line=self.line, xlab=xlab, ylab=ylab, figsize=figsize,
-                                                legend=legend, title=t, plot_style=ps).plot(X=X, Y=Y, color=c, ls=ls, lw=lw)
+                                                legend=legend, title=t, plot_style=ps).plot(X=X, Y=Y, color=c, ls=ls, 
+                                                lw=lw, label=label, col=col)
                                     elif typ == "scatter":
-                                        X, Y, c, s, t, ps, xlab, ylab, figsize, legend, label, marker, typ = self._values_
+                                        X, Y, c, s, t, ps, xlab, ylab, figsize, legend, label, marker, *rest, typ = self._values_
                                         self.error = plot.ggplot(line=self.line, xlab=xlab, ylab=ylab, figsize=figsize,
                                                 legend=legend, title=" ", plot_style=ps).scatter(X=X, Y=Y, color=c, size=s, label=label,
-                                                marker = marker)
+                                                marker = marker, rest=rest)
                                     else: pass
                             else: pass
                         else:self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )

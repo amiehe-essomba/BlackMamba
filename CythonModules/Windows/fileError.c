@@ -1413,6 +1413,7 @@ static const char __pyx_k_fg[] = "fg";
 static const char __pyx_k__21[] = ":";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_rbg[] = "rbg";
+static const char __pyx_k_bold[] = "bold";
 static const char __pyx_k_dict[] = "__dict__";
 static const char __pyx_k_init[] = "init";
 static const char __pyx_k_main[] = "__main__";
@@ -1516,6 +1517,7 @@ static PyObject *__pyx_kp_s__21;
 static PyObject *__pyx_n_s_blue_L;
 static PyObject *__pyx_n_s_bm;
 static PyObject *__pyx_n_s_bm_configure;
+static PyObject *__pyx_n_s_bold;
 static PyObject *__pyx_n_s_chars;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_cyan_L;
@@ -1726,8 +1728,8 @@ static int __pyx_pf_9fileError_10FileErrors___init__(struct __pyx_obj_9fileError
  *         self.stringType         = stringType
  * 
  *     cpdef Errors( self )                :             # <<<<<<<<<<<<<<
- *         if   self.stringType == 'ValueError'        :               return bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         if   self.stringType == 'ValueError'        :               return bm.init.bold + bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
  */
 
 static PyObject *__pyx_pw_9fileError_10FileErrors_3Errors(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
@@ -1794,9 +1796,9 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
   /* "fileError.pyx":11
  * 
  *     cpdef Errors( self )                :
- *         if   self.stringType == 'ValueError'        :               return bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
+ *         if   self.stringType == 'ValueError'        :               return bm.init.bold + bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_ValueError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 11, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
@@ -1804,36 +1806,48 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
@@ -1841,10 +1855,10 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
 
   /* "fileError.pyx":12
  *     cpdef Errors( self )                :
- *         if   self.stringType == 'ValueError'        :               return bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         if   self.stringType == 'ValueError'        :               return bm.init.bold + bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_NameError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 12, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
@@ -1852,81 +1866,45 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
-    goto __pyx_L0;
-  }
-
-  /* "fileError.pyx":13
- *         if   self.stringType == 'ValueError'        :               return bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
- */
-  __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_TypeError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 13, __pyx_L1_error)
-  __pyx_t_6 = (__pyx_t_5 != 0);
-  if (__pyx_t_6) {
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rbg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -1935,65 +1913,145 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     goto __pyx_L0;
   }
 
+  /* "fileError.pyx":13
+ *         if   self.stringType == 'ValueError'        :               return bm.init.bold + bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
+ */
+  __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_TypeError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_6 = (__pyx_t_5 != 0);
+  if (__pyx_t_6) {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+  }
+
   /* "fileError.pyx":14
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_SyntaxError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 14, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (__pyx_t_5) {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_r = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":15
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_AttributeError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 15, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
     __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
@@ -2005,53 +2063,69 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":16
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_DomainError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 16, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (__pyx_t_5) {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rbg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -2080,11 +2154,11 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
   }
 
   /* "fileError.pyx":17
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_IndexError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 17, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
@@ -2092,47 +2166,59 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":18
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_EOFError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 18, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
@@ -2140,81 +2226,45 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
-    goto __pyx_L0;
-  }
-
-  /* "fileError.pyx":19
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'IndentationError'  :               return bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
- */
-  __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_ZeroDivisionError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 19, __pyx_L1_error)
-  __pyx_t_6 = (__pyx_t_5 != 0);
-  if (__pyx_t_6) {
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rbg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2223,65 +2273,145 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     goto __pyx_L0;
   }
 
+  /* "fileError.pyx":19
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'IndentationError'  :               return bm.init.bold + bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
+ */
+  __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_ZeroDivisionError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_6 = (__pyx_t_5 != 0);
+  if (__pyx_t_6) {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+  }
+
   /* "fileError.pyx":20
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'IndentationError'  :               return bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'KeyError'          :               return bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'IndentationError'  :               return bm.init.bold + bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'KeyError'          :               return bm.init.bold + bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_ArithmeticError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 20, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (__pyx_t_5) {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_r = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":21
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'IndentationError'  :               return bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'KeyError'          :               return bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ExceptionNameError':               return bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'IndentationError'  :               return bm.init.bold + bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'KeyError'          :               return bm.init.bold + bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ExceptionNameError':               return bm.init.bold + bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_IndentationError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
     __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
@@ -2293,53 +2423,69 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":22
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'IndentationError'  :               return bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'KeyError'          :               return bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'ExceptionNameError':               return bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OverFlowError'     :               return bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'IndentationError'  :               return bm.init.bold + bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'KeyError'          :               return bm.init.bold + bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'ExceptionNameError':               return bm.init.bold + bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OverFlowError'     :               return bm.init.bold + bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_KeyError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (__pyx_t_5) {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rbg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -2368,11 +2514,11 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
   }
 
   /* "fileError.pyx":23
- *         elif self.stringType == 'IndentationError'  :               return bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'KeyError'          :               return bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ExceptionNameError':               return bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'OverFlowError'     :               return bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNotFoundError' :               return bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'IndentationError'  :               return bm.init.bold + bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'KeyError'          :               return bm.init.bold + bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ExceptionNameError':               return bm.init.bold + bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'OverFlowError'     :               return bm.init.bold + bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNotFoundError' :               return bm.init.bold + bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_ExceptionNameError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
@@ -2380,134 +2526,170 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cyan_L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_cyan_L); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":24
- *         elif self.stringType == 'KeyError'          :               return bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ExceptionNameError':               return bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OverFlowError'     :               return bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'FileNotFoundError' :               return bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileError'         :               return bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'KeyError'          :               return bm.init.bold + bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ExceptionNameError':               return bm.init.bold + bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OverFlowError'     :               return bm.init.bold + bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'FileNotFoundError' :               return bm.init.bold + bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileError'         :               return bm.init.bold + bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_OverFlowError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 24, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (__pyx_t_5) {
     __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_magenta_M); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_magenta_M); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":25
- *         elif self.stringType == 'ExceptionNameError':               return bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OverFlowError'     :               return bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNotFoundError' :               return bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'FileError'         :               return bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ModuleLoadError'   :               return bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ExceptionNameError':               return bm.init.bold + bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OverFlowError'     :               return bm.init.bold + bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNotFoundError' :               return bm.init.bold + bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'FileError'         :               return bm.init.bold + bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleLoadError'   :               return bm.init.bold + bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_FileNotFoundError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_yellow_L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_yellow_L); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":26
- *         elif self.stringType == 'OverFlowError'     :               return bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNotFoundError' :               return bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileError'         :               return bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'ModuleLoadError'   :               return bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ModuleError'       :               return bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OverFlowError'     :               return bm.init.bold + bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNotFoundError' :               return bm.init.bold + bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileError'         :               return bm.init.bold + bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'ModuleLoadError'   :               return bm.init.bold + bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleError'       :               return bm.init.bold + bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_FileError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 26, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
@@ -2515,49 +2697,69 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_green_L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_green_L); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":27
- *         elif self.stringType == 'FileNotFoundError' :               return bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileError'         :               return bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ModuleLoadError'   :               return bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'ModuleError'       :               return bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OSError'           :               return bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNotFoundError' :               return bm.init.bold + bm.fg.yellow_L               + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileError'         :               return bm.init.bold + bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleLoadError'   :               return bm.init.bold + bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'ModuleError'       :               return bm.init.bold + bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OSError'           :               return bm.init.bold + bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_ModuleLoadError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
     __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
@@ -2566,50 +2768,66 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_blue_L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":28
- *         elif self.stringType == 'FileError'         :               return bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ModuleLoadError'   :               return bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ModuleError'       :               return bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'OSError'           :               return bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileError'         :               return bm.init.bold + bm.fg.green_L                + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleLoadError'   :               return bm.init.bold + bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleError'       :               return bm.init.bold + bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'OSError'           :               return bm.init.bold + bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_ModuleError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 28, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (__pyx_t_5) {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_red_L); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_red_L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -2638,11 +2856,11 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
   }
 
   /* "fileError.pyx":29
- *         elif self.stringType == 'ModuleLoadError'   :               return bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ModuleError'       :               return bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OSError'           :               return bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleLoadError'   :               return bm.init.bold + bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleError'       :               return bm.init.bold + bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OSError'           :               return bm.init.bold + bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_OSError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 29, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
@@ -2650,47 +2868,59 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":30
- *         elif self.stringType == 'ModuleError'       :               return bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OSError'           :               return bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleError'       :               return bm.init.bold + bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OSError'           :               return bm.init.bold + bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_DirectoryNotFoundError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 30, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
@@ -2698,81 +2928,45 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
-    goto __pyx_L0;
-  }
-
-  /* "fileError.pyx":31
- *         elif self.stringType == 'OSError'           :               return bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
- */
-  __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_FileModeError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 31, __pyx_L1_error)
-  __pyx_t_6 = (__pyx_t_5 != 0);
-  if (__pyx_t_6) {
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rbg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2781,65 +2975,145 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     goto __pyx_L0;
   }
 
+  /* "fileError.pyx":31
+ *         elif self.stringType == 'OSError'           :               return bm.init.bold + bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
+ */
+  __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_FileModeError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_6 = (__pyx_t_5 != 0);
+  if (__pyx_t_6) {
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+  }
+
   /* "fileError.pyx":32
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_EncodingError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 32, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (__pyx_t_5) {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_r = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":33
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_DecodingError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 33, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
     __Pyx_XDECREF(__pyx_r);
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
@@ -2851,53 +3125,69 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":34
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNameError':                    return bm.init.bold + bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_UnicodeError, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 34, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (__pyx_t_5) {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_fg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rbg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -2926,10 +3216,10 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
   }
 
   /* "fileError.pyx":35
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'FileNameError':                    return bm.init.bold + bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  *     cpdef initError( self )             :
  */
   __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_self->stringType, __pyx_n_s_CircularLoadingError, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 35, __pyx_L1_error)
@@ -2938,45 +3228,57 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_bold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u__2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_bm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
   }
 
   /* "fileError.pyx":36
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNameError':                    return bm.init.bold + bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
  *     cpdef initError( self )             :
  *         cdef list stringSplit
  */
@@ -2986,38 +3288,50 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_2, __pyx_kp_u__2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_bold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_bm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rbg); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_self->stringType, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_kp_u__2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_bm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_reset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = 0;
     goto __pyx_L0;
   }
 
@@ -3025,8 +3339,8 @@ static PyObject *__pyx_f_9fileError_10FileErrors_Errors(struct __pyx_obj_9fileEr
  *         self.stringType         = stringType
  * 
  *     cpdef Errors( self )                :             # <<<<<<<<<<<<<<
- *         if   self.stringType == 'ValueError'        :               return bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         if   self.stringType == 'ValueError'        :               return bm.init.bold + bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
  */
 
   /* function exit code */
@@ -3085,8 +3399,8 @@ static PyObject *__pyx_pf_9fileError_10FileErrors_2Errors(struct __pyx_obj_9file
 }
 
 /* "fileError.pyx":37
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNameError':                    return bm.init.bold + bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  *     cpdef initError( self )             :             # <<<<<<<<<<<<<<
  *         cdef list stringSplit
  * 
@@ -3250,8 +3564,8 @@ static PyObject *__pyx_f_9fileError_10FileErrors_initError(struct __pyx_obj_9fil
   goto __pyx_L0;
 
   /* "fileError.pyx":37
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNameError':                    return bm.init.bold + bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  *     cpdef initError( self )             :             # <<<<<<<<<<<<<<
  *         cdef list stringSplit
  * 
@@ -4320,6 +4634,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_blue_L, __pyx_k_blue_L, sizeof(__pyx_k_blue_L), 0, 0, 1, 1},
   {&__pyx_n_s_bm, __pyx_k_bm, sizeof(__pyx_k_bm), 0, 0, 1, 1},
   {&__pyx_n_s_bm_configure, __pyx_k_bm_configure, sizeof(__pyx_k_bm_configure), 0, 0, 1, 1},
+  {&__pyx_n_s_bold, __pyx_k_bold, sizeof(__pyx_k_bold), 0, 0, 1, 1},
   {&__pyx_n_s_chars, __pyx_k_chars, sizeof(__pyx_k_chars), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_cyan_L, __pyx_k_cyan_L, sizeof(__pyx_k_cyan_L), 0, 0, 1, 1},
@@ -4372,9 +4687,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "fileError.pyx":11
  * 
  *     cpdef Errors( self )                :
- *         if   self.stringType == 'ValueError'        :               return bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
+ *         if   self.stringType == 'ValueError'        :               return bm.init.bold + bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple_ = PyTuple_Pack(3, __pyx_int_0, __pyx_int_255, __pyx_int_0); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
@@ -4382,185 +4697,185 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
   /* "fileError.pyx":12
  *     cpdef Errors( self )                :
- *         if   self.stringType == 'ValueError'        :               return bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         if   self.stringType == 'ValueError'        :               return bm.init.bold + bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__3 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
   /* "fileError.pyx":13
- *         if   self.stringType == 'ValueError'        :               return bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         if   self.stringType == 'ValueError'        :               return bm.init.bold + bm.fg.rbg(0, 255, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
  */
   __pyx_tuple__4 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_20, __pyx_int_174); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
   /* "fileError.pyx":14
- *         elif self.stringType == 'NameError'         :               return bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'NameError'         :               return bm.init.bold + bm.fg.rbg(255, 0, 0   )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
  */
   __pyx_tuple__5 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_255, __pyx_int_0); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
   /* "fileError.pyx":15
- *         elif self.stringType == 'TypeError'         :               return bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'TypeError'         :               return bm.init.bold + bm.fg.rbg(255,20, 174 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__6 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_199, __pyx_int_0); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
   /* "fileError.pyx":16
- *         elif self.stringType == 'SyntaxError'       :               return bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'SyntaxError'       :               return bm.init.bold + bm.fg.rbg(255, 255, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__7 = PyTuple_Pack(3, __pyx_int_199, __pyx_int_21, __pyx_int_133); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
   /* "fileError.pyx":17
- *         elif self.stringType == 'AttributeError'    :               return bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'AttributeError'    :               return bm.init.bold + bm.fg.rbg(255, 199, 0 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
  */
   __pyx_tuple__8 = PyTuple_Pack(3, __pyx_int_252, __pyx_int_127, __pyx_int_0); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
   /* "fileError.pyx":18
- *         elif self.stringType == 'DomainError'       :               return bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DomainError'       :               return bm.init.bold + bm.fg.rbg(199,21, 133 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__9 = PyTuple_Pack(3, __pyx_int_128, __pyx_int_0, __pyx_int_128); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
   /* "fileError.pyx":19
- *         elif self.stringType == 'IndexError'        :               return bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'IndentationError'  :               return bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'IndexError'        :               return bm.init.bold + bm.fg.rbg(252, 127, 0 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'IndentationError'  :               return bm.init.bold + bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__10 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_255, __pyx_int_255); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
   /* "fileError.pyx":20
- *         elif self.stringType == 'EOFError'          :               return bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ZeroDivisionError' :               return bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'IndentationError'  :               return bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'KeyError'          :               return bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EOFError'          :               return bm.init.bold + bm.fg.rbg(128, 0, 128 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ZeroDivisionError' :               return bm.init.bold + bm.fg.rbg(0, 255, 255 )      + f'{self.stringType} : ' + bm.init.reset #
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'IndentationError'  :               return bm.init.bold + bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'KeyError'          :               return bm.init.bold + bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__11 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_0, __pyx_int_255); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
   /* "fileError.pyx":22
- *         elif self.stringType == 'ArithmeticError'   :               return bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'IndentationError'  :               return bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'KeyError'          :               return bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'ExceptionNameError':               return bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OverFlowError'     :               return bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ArithmeticError'   :               return bm.init.bold + bm.fg.rbg(255, 0, 255 )      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'IndentationError'  :               return bm.init.bold + bm.fg.rbg(255, 20, 174)      + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'KeyError'          :               return bm.init.bold + bm.fg.rbg(255,140,100 )      + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'ExceptionNameError':               return bm.init.bold + bm.fg.cyan_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OverFlowError'     :               return bm.init.bold + bm.fg.magenta_M              + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__12 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_140, __pyx_int_100); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
   /* "fileError.pyx":29
- *         elif self.stringType == 'ModuleLoadError'   :               return bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'ModuleError'       :               return bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OSError'           :               return bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleLoadError'   :               return bm.init.bold + bm.fg.blue_L                 + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleError'       :               return bm.init.bold + bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OSError'           :               return bm.init.bold + bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__13 = PyTuple_Pack(3, __pyx_int_255, __pyx_int_170, __pyx_int_100); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
   /* "fileError.pyx":30
- *         elif self.stringType == 'ModuleError'       :               return bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'OSError'           :               return bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'ModuleError'       :               return bm.init.bold + bm.fg.red_L                  + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OSError'           :               return bm.init.bold + bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__14 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_255, __pyx_int_100); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
   /* "fileError.pyx":31
- *         elif self.stringType == 'OSError'           :               return bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'OSError'           :               return bm.init.bold + bm.fg.rbg(255,170, 100 )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__15 = PyTuple_Pack(3, __pyx_int_125, __pyx_int_200, __pyx_int_100); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
   /* "fileError.pyx":32
- *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DirectoryNotFoundError' :          return bm.init.bold + bm.fg.rbg(0, 255, 100  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__16 = PyTuple_Pack(3, __pyx_int_50, __pyx_int_20, __pyx_int_200); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
 
   /* "fileError.pyx":33
- *         elif self.stringType == 'FileModeError'     :               return bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileModeError'     :               return bm.init.bold + bm.fg.rbg(125, 200, 100)     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__17 = PyTuple_Pack(3, __pyx_int_90, __pyx_int_225, __pyx_int_25); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
 
   /* "fileError.pyx":34
- *         elif self.stringType == 'EncodingError'     :               return bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'EncodingError'     :               return bm.init.bold + bm.fg.rbg(50, 20, 200  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNameError':                    return bm.init.bold + bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  */
   __pyx_tuple__18 = PyTuple_Pack(3, __pyx_int_235, __pyx_int_100, __pyx_int_100); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
   /* "fileError.pyx":35
- *         elif self.stringType == 'DecodingError'     :               return bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
- *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'DecodingError'     :               return bm.init.bold + bm.fg.rbg(90, 225, 25  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'FileNameError':                    return bm.init.bold + bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset
  *     cpdef initError( self )             :
  */
   __pyx_tuple__19 = PyTuple_Pack(3, __pyx_int_23, __pyx_int_100, __pyx_int_55); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 35, __pyx_L1_error)
@@ -4568,9 +4883,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__19);
 
   /* "fileError.pyx":36
- *         elif self.stringType == 'UnicodeError'      :               return bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'CircularLoadingError'      :       return bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
- *         elif self.stringType == 'FileNameError':                    return bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
+ *         elif self.stringType == 'UnicodeError'      :               return bm.init.bold + bm.fg.rbg(235, 100, 100  )   + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'CircularLoadingError'      :       return bm.init.bold + bm.fg.rbg(23, 100, 55  )     + f'{self.stringType} : ' + bm.init.reset
+ *         elif self.stringType == 'FileNameError':                    return bm.init.bold + bm.fg.rbg(230, 15, 55  )     + f'{self.stringType} : ' + bm.init.reset             # <<<<<<<<<<<<<<
  *     cpdef initError( self )             :
  *         cdef list stringSplit
  */

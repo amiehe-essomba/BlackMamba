@@ -15,24 +15,26 @@ global y, w, g, r, re, line, b, t
 def plot( 
 	X 	: list tuple range ndarray=[1:10],
 	Y 	: list tuple range ndarray=[1:10], 
-	color 	: string = "red", 
+	color 	: string list = "red", 
 	ls  	: string = "--" , 
 	lw 	: int    = 1, 
 	title 	: string = "", 
-	ps 	: string = "ggplot", 
+	style 	: string = "ggplot", 
 	xlab 	: string = "X", 
 	ylab 	: string = "Y",
 	figsize : tuple  = (6,6),  
 	legend 	: bool   = True,
-	xmin 	: list   = [],
-	xmax 	: list   = []
+	xlim 	: list   = [],
+	ylim 	: list   = [],
+	col	: int none = 0,
+	label	: string list = " "
 	):
 	
 	# checking figsize dimension
 	if length( figsize ) == 2:
 		if ? figsize[0] == ? 1:
 			if ? figsize[1] == ? 1:
-				__scan__ * X, Y, color, ls, lw, title, ps, xlab, ylab, figsize, legend, "plot"
+				__scan__ * X, Y, color, ls, lw, title, style, xlab, ylab, figsize, legend, label, col, "plot"
 			else:
 				__show__ * "{g}ValueError : {w}in {figsize} {y}{figsize[1]} {w}is not an {r}integer() {y}type. {w}line : {y}{line} {w}in {g}plot( ){w} / {r}module {b}ggplot( ) {re}"
 			end:
@@ -50,66 +52,28 @@ def scatter(
 	color 	: string list = "blue",
 	s 	: int    = 10,
 	title 	: string = "",
-	ps 	: string = "ggplot",
+	style 	: string = "ggplot",
 	xlab 	: string = "X",
 	ylab 	: string = "Y",
 	figsize : tuple  = (6,6),
 	legend 	: bool   = True,
+	label 	: list string = "dataset",
 	marker 	: int    = 0,
+	lim	: tuple none = None,
+	location : string tuple = "B",
 	cmap	: string = "plt",
-	xmin	: list   = [],
-	xmax	: list   = [],
-	edgecolor : list string = "red",
-	location : string tuple = "upper left",
-	label 	: list string = "dataset"
+	axis	: list = [],
+	col 	: int none= 0
 	):
 	
-		
-	# checking figsize dimension
-	if length( figsize ) == 2:
-		if ? figsize[0] == ? 1:
-			if ? figsize[1] == ? 1:
-				if marker >= 0:
-					if marker < 18 :
-						new_marker = ["o", "^", "+", "*"]#, ".", "v", "<", ">", "1", "2", "3", "4", "s", "p", "h", "H", "x", "D"]
-						if ? color == ? list():
-							if type(label) in [ type(string()), type(list())]:
-								if type(label) == type( list() ):
-									if label.size() == color.size():
-										__scan__ * X, Y, color, s, title, ps, xlab, ylab, figsize, legend, label, new_marker[marker], "scatter"
-									else:
-										__show__ * "{g}ValueError : {w}size error between {b}color and {r}label. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"		
-									end:
-								else:
-									__scan__ * X, Y, color, s, title, ps, xlab, ylab, figsize, legend, label, new_marker[marker], "scatter"
-								end:
-							else:
-								__show__ * "{b}TypeError : {y}label {w}should be a {y}list() or {r}string() {y}type. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"		
-							end:
-						else:
-							if type( label ) in [ type(None), type( string() )]:
-								__scan__ * X, Y, color, s, title, ps, xlab, ylab, figsize, legend, label, new_marker[marker], "scatter" 
-							else:
-								__show__ * "{b}TypeError : {y}label {w}should be a {b}string() or {r}none() {y}type. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"		
-							end:
-						end:
-					else:
-						__show__ * "{g}ValueError : {y}marker {w}index out of range {r}maker {w}> {g}5. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"		
-					end:
-				else:
-					__show__ * "{g}ValueError : {y}marker {w}cannot be {r}negative. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"		
-				end:
-			else:
-				__show__ * "{g}ValueError : {w}in {figsize} {y}{figsize[1]} {w}is not an {r}integer() {y}type. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"
-			end:
-		else:
-			__show__ * "{g}ValueError : {w}in {figsize} {y}{figsize[0]} {w}is not an {r}integer() {y}type. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"
-		end:
-	else:
-		__show__ * "{g}ValueError : {r}figsize {w}should be 1D array. {w}line : {y}{line} {w}in {g}scatter( ){w} / {r}module {b}ggplot( ) {re}"
-	end:
+	__scan__ * X, Y, color, s, title, style, xlab, ylab, figsize, legend, label, marker, lim, location, col, "scatter"
 end:
 
 def save( name : string ):
 	__scan__ * name, "save_figure"
 end:
+
+def style():
+	__scan__ * "plt_style_available", "plot"
+end:
+

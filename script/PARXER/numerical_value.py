@@ -1330,6 +1330,7 @@ class FINAL_VALUE:
         self._return_       = None
         self.all_Float      = [ numpy.float16, numpy.float32, numpy.float64 ]
         self.all_Int        = [ numpy.int8, numpy.int16, numpy.int32, numpy.int64 ]
+        self.all_complex    = [ numpy.complex64, numpy.complex128, numpy.complex64]
 
         if   type( self.master ) == type( int() )       :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
         elif type( self.master ) == type( float() )     :   self._return_ = '{}{}float(){}'.format(bm.fg.blue, self.green, bm.fg.blue)
@@ -1345,6 +1346,7 @@ class FINAL_VALUE:
         elif type( self.master ) in self.all_Int        :   self._return_ = '{}{}integer(){}'.format(bm.fg.blue, self.red, bm.fg.blue)
         elif type( self.master ) == type( numpy.array([1])):self._return_ = '{}{}ndarray(){}'.format(bm.fg.blue, bm.fg.rbg(255,165,0), bm.fg.blue)
         elif type( self.master ) == type( pd.DataFrame({'r':[0, 0]})) : self._return_ = '{}{}table(){}'.format(bm.fg.blue, bm.fg.rbg(204,153,255), bm.fg.blue)
+        elif type( self.master ) in self.all_complex    :   self._return_ = '{}{}complex(){}'.format(bm.fg.blue, bm.fg.cyan, bm.fg.blue)
         else:  self._return_ = 'type not found'
 
         return self._return_+bm.init.reset

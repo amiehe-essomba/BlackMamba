@@ -43,8 +43,8 @@ class ERRORS:
     
     def ERROR4(self, data : str, index ): 
         data = write(string=data)
-        error = '{}{} {}is not an {}integer(). {}line: {}{}.'.format(self.green, index, self.white,
-                                                            self.red, self.white, self.yellow, self.line)
+        error = '{}{} {}is not an {}integer() {}type. {}line: {}{}.'.format(self.green, index, self.white,
+                                                            self.red, self.yellow, self.white, self.yellow, self.line)
         self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}in {}{} '.format( self.white, self.cyan, data ) + error
         return self.error+self.reset
     
@@ -61,8 +61,66 @@ class ERRORS:
     
     def ERROR7(self, string :str): 
         error = '{}cannot be empty. {}line: {}{}.'.format(self.green, self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors(  'ValueError' ).Errors()+'{}{}'.format( self.cyan, string ) + error
+        self.error =  fe.FileErrors(  'ValueError' ).Errors()+'{}{} '.format( self.cyan, string ) + error
         return self.error+self.reset
+    
+    def ERROR8(self, string :str): 
+        error = '{}dimension error. {}line: {}{}.'.format(self.green, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors(  'ValueError' ).Errors()+'{}{} '.format( self.cyan, string ) + error
+        return self.error+self.reset
+    
+    def ERROR9(self, data : str, index ): 
+        data = write(string=data)
+        error = '{}{} {}is not an {}integer() {}or {}float() {}type. {}line: {}{}.'.format(self.green, index, self.white,
+                                self.red, self.white, self.blue, self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}in {}{} '.format( self.white, self.cyan, data ) + error
+        return self.error+self.reset
+    
+    def ERROR10(self, index : int, string : str = "marker" ): 
+        error = '{}out of the {}range {}[0,{}]. {}line: {}{}.'.format(self.white, self.green, self.red, index, 
+                                                                      self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format(self.cyan, string) + error
+        return self.error+self.reset
+    
+    def ERROR11(self, data : list, name : str ): 
+        error = '{}not in the list {}{}. {}line: {}{}.'.format(self.white, self.green, data, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format(self.cyan, name) + error
+        return self.error+self.reset
+    
+    def ERROR12(self, data : list,): 
+        error = '{}xmin {}>= xmax{}. {}line: {}{}.'.format(self.red, self.white, self.red, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}in {}{} '.format(self.cyan, data) + error
+        return self.error+self.reset
+    
+    def ERROR13(self,  string : str = 'Y'): 
+        error = '{}should be {}[m, n] {}dimension. {}line: {}{}.'.format(self.white, self.red, self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} {}matrix '.format(self.cyan, string, self.white) + error
+        return self.error+self.reset
+    
+    def ERROR14(self,  string, idd): 
+        error = '{}is not an {}integer() {}type. {}line: {}{}.'.format(self.white, self.red, self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}in {}{} {}{} '.format(self.white, self.cyan, string, self.green, idd) + error
+        return self.error+self.reset
+    
+    def ERROR15(self,  idd): 
+        error = '{}in color list is not a {}list() {}or {}string() {}type. {}line: {}{}.'.format(self.white, self.red, self.white, self.blue, 
+                                                                                                 self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}the element {}{} '.format(self.white, self.green, idd) + error
+        return self.error+self.reset
+    
+    def ERROR16(self,  idd): 
+        error = '{}in the color list. {}line: {}{}.'.format(self.white, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}redim the element {}{} '.format(self.white, self.green, idd) + error
+        return self.error+self.reset
+    
+    def ERROR17(self,  idd): 
+        error = '{}of color list all elements are not {}integer() {}type. {}line: {}{}.'.format(self.white,  self.red, 
+                                                                                                 self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}in the element {}{} '.format(self.white, self.green, idd) + error
+        return self.error+self.reset
+    
+    
+   
 
 
 

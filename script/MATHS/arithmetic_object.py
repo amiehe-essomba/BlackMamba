@@ -6,15 +6,15 @@ from CythonModules.Windows              import making_arr   as ma
 import numpy                                                as np
 
 class ARITHMETICS:
-
     def __init__(self, data_base : dict, line : int)            :
         self.line           = line
         self.daba_base      = data_base
         self.type1          = [type( int() ), type( float() ), type( complex() ), type( bool() ), 
                                np.float16, np.float32, np.float64 ,
                                np.int8, np.int16, np.int32, np.int64, 
-                               np.complex64, np.complex128, np.complex64,
+                               np.complex64, np.complex128, np.complex64
                                ]
+        
         self.type2          = [type( list() ), type( tuple() )]
         self.type3          = [type( str() )]
         self.type4          = [type(np.array([1]))]
@@ -230,19 +230,34 @@ class ARITHMETICS:
             else: self.error = ERROR( self.line ).ERROR2( object1, object2)      
         elif self.get_type1 in [ type( list() )] and self.get_type2 in [ type( list() )]    :
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).DivListList( object2[ : ] )
-        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4                  :
             try:
-                self.result = object1 / object2
+                new_object = object2[object2 == 0.0]
+                for s in new_object:
+                    if s == object2.shape[0] :pass 
+                    else:
+                        self.error = ERROR( self.line ).ERROR4( )
+                        break
+                if self.error is None : self.result = object1 / object2
+                else: pass 
             except ZeroDivisionError: self.error = ERROR( self.line ).ERROR4( )
             except : self.error = ERROR( self.line ).ERROR6(  )
-        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4                  :
             try:
-                self.result = object1 / object2
+                new_object = object2[object2 == 0.0]
+                for s in new_object:
+                    if s != 0.0 :pass 
+                    else:
+                        self.error = ERROR( self.line ).ERROR4( )
+                        break
+                if self.error is None : self.result = object1 / object2
+                else: pass 
             except ZeroDivisionError: self.error = ERROR( self.line ).ERROR4( )
             except : self.error = ERROR( self.line ).ERROR6(  )
-        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1                  :
             try:
-                self.result = object1 / object2
+                if object2 != 0 : self.result = object1 / object2
+                else: self.error = ERROR( self.line ).ERROR4( )
             except ZeroDivisionError: self.error = ERROR( self.line ).ERROR4( )
             except : self.error = ERROR( self.line ).ERROR6(  )
         else: self.error = ERROR( self.line ).ERROR2( object1, object2 )
@@ -343,19 +358,32 @@ class ARITHMETICS:
                 self.error = ERROR( self.line ).ERROR2( object1, object2)           
         elif self.get_type1 in [type( list() )] and self.get_type2 in [type( list() )]          :
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).ModListList( object2[ : ], inv = False)
-        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4                      :
             try:
-                self.result = object1 % object2
+                new_object = object2[object2 == 0.0]
+                for s in new_object:
+                    if s != 0.0 : pass 
+                    else:
+                        self.error = ERROR( self.line ).ERROR3( )
+                        break
+                if self.error is None : self.result = object1 % object2
+                else : pass
             except ZeroDivisionError: self.error = ERROR( self.line ).ERROR3( )
             except : self.error = ERROR( self.line ).ERROR6(  )
-        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4                      :
             try:
-                self.result = object1 % object2
+                new_object = object2[object2 == 0.0]
+                for s in new_object:
+                    if s != 0.0 :pass 
+                    else:
+                        self.error = ERROR( self.line ).ERROR3( )
+                        break
+                if self.error is None : self.result = object1 % object2
+                else: pass 
             except ZeroDivisionError: self.error = ERROR( self.line ).ERROR3( )
             except : self.error = ERROR( self.line ).ERROR6(  )
-        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
-            try:
-                self.result = object1 % object2
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1                      :
+            try: self.result = object1 % object2
             except ZeroDivisionError: self.error = ERROR( self.line ).ERROR3( )
             except : self.error = ERROR( self.line ).ERROR6(  )
         else: self.error = ERROR( self.line ).ERROR2( object1, object2 )

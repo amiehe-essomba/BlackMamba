@@ -1432,12 +1432,13 @@ class ARITHMETIC_OPERATORS:
         self.chars = ['<', '>', '!', '?', '|', '&']
         self.error = None
 
+        """
         for str_ in self.master :
             if str_ in self.chars:
                 self.error = ERRORS( self.line ).ERROR0( self.master )
                 break
             else: pass
-
+        """
         return self.master, self.error
 
     def SCANNER(self, main_string: str):
@@ -1535,13 +1536,13 @@ class ARITHMETIC_OPERATORS:
 class ERRORS:
     def __init__(self, line):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str):
