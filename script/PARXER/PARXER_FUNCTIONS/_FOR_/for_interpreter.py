@@ -1,4 +1,4 @@
-import cython
+#import cython
 from script                                             import control_string
 from script.STDIN.WinSTDIN                              import stdin
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer

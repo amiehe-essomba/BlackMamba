@@ -6,6 +6,7 @@ def case():
 
 def string(string : str = "", idd : int = 0):
     str_ = ""
+   
     try:
         # checking if string exists
         if string: 

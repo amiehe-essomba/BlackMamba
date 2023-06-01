@@ -3,7 +3,7 @@ from script.LEXER                                   import main_lexer
 from script.LEXER                                   import particular_str_selection
 from script.PARXER                                  import numerical_value
 from script.LEXER                                   import check_if_affectation
-
+from CythonModules.Windows                          import frame
 
 class DICTIONARY:
     def __init__(self, DataBase: dict, line:int, master: str, function, FunctionInfo : list ):
@@ -117,12 +117,20 @@ class DICTIONARY:
                 else: self._return_ = True
             else: self.error = er.ERRORS( self.line ).ERROR14( self.function )    
         elif self.function in [ 'copy'  ]            :
-            if None in self.arguments: self._return_ = self.master.copy()
+            if None in self.arguments: 
+                if  mainName in self.DataBase[ 'variables' ][ 'vars' ]:
+                    self.idd =  self.DataBase[ 'variables' ][ 'vars' ].index( mainName )
+                    self.DataBase[ 'variables' ][ 'values' ][ self.idd ] = self.master.copy()
+                else: pass
             else: self.error = er.ERRORS( self.line ).ERROR14( self.function )       
         elif self.function in [ 'clear' ]            :
-            if None in self.arguments: self._return_ = self.master.clear()
+            if None in self.arguments: 
+                if  mainName in self.DataBase[ 'variables' ][ 'vars' ]:
+                    self.idd =  self.DataBase[ 'variables' ][ 'vars' ].index( mainName )
+                    self.DataBase[ 'variables' ][ 'values' ][ self.idd ] = self.master.clear()
+                else: pass
             else: self.error = er.ERRORS( self.line ).ERROR14( self.function ) 
-        elif self.function in [ 'remove']            :
+        elif self.function in [ 'remove', "merges"]  :
             if len( self.arguments ) == 1: 
                 if self.arguments[ 0 ] in [ 'key' ]:
                     if  self.value[ 0 ] is None: self.error = er.ERRORS( self.line ).ERROR15( self.function, [['name']] ) 
@@ -141,11 +149,23 @@ class DICTIONARY:
                                                             self.DataBase,self.line).ANALYSE( mainString )
                                             if self.error is None:
                                                 self.newValues = self.final_val[ 0 ]
-                                                if type( self.newValues ) == type( str() ):
-                                                    if self.newValues in list( self.master.keys() ):
-                                                        self._return_ = self.master.pop( self.newValues )
-                                                    else: self.error = er.ERRORS( self.line ).ERROR25( self.value[ 0 ] )
-                                                else: self.error =er. ERRORS( self.line ).ERROR3( "key", 'a string()' )
+                                                if   self.function =='remove':
+                                                    if type( self.newValues ) == type( str() ):
+                                                        if self.newValues in list( self.master.keys() ):
+                                                            self._return_ = self.master.pop( self.newValues )
+                                                        else: self.error = er.ERRORS( self.line ).ERROR25( self.value[ 0 ] )
+                                                    else: self.error =er. ERRORS( self.line ).ERROR3( "key", 'a string()' )
+                                                elif self.function == "merge":
+                                                    if type( self.newValues ) == type( dict() ):
+                                                        if self.newValues:
+                                                            if self.newValues in list( self.master.keys() ):
+                                                                if  mainName in self.DataBase[ 'variables' ][ 'vars' ]:
+                                                                    self.idd =  self.DataBase[ 'variables' ][ 'vars' ].index( mainName )
+                                                                    self.DataBase[ 'variables' ][ 'values' ][ self.idd ] = self.master.update( self.newValues )
+                                                                else: self._return_ = self.master.update( self.newValues )
+                                                            else: self.error = er.ERRORS( self.line ).ERROR25( self.value[ 0 ] )
+                                                        else: pass
+                                                    else: self.error =er. ERRORS( self.line ).ERROR3( "name", 'a dictionary()' )
                                             else: pass 
                                         else: self.error = er.ERRORS( self.line ).ERROR0( mainString )
                                     else: pass
@@ -171,11 +191,23 @@ class DICTIONARY:
                                                             self.DataBase,self.line).ANALYSE( mainString )
                                             if self.error is None:
                                                 self.newValues = self.final_val[ 0 ]
-                                                if type( self.newValues ) == type( str() ):
-                                                    if self.newValues in list( self.master.keys() ):
-                                                        self._return_ = self.master.pop( self.newValues )
-                                                    else: self.error = er.ERRORS( self.line ).ERROR25( self.arguments[ 0 ] )
-                                                else: self.error = er.ERRORS( self.line ).ERROR3( "key", 'a string()' )
+                                                if   self.function =="remove":
+                                                    if type( self.newValues ) == type( str() ):
+                                                        if self.newValues in list( self.master.keys() ):
+                                                            self._return_ = self.master.pop( self.newValues )
+                                                        else: self.error = er.ERRORS( self.line ).ERROR25( self.arguments[ 0 ] )
+                                                    else: self.error = er.ERRORS( self.line ).ERROR3( "key", 'a string()' )
+                                                elif self.function == "merge":
+                                                    if type( self.newValues ) == type( dict() ):
+                                                        if self.newValues:
+                                                            if self.newValues in list( self.master.keys() ):
+                                                                if  mainName in self.DataBase[ 'variables' ][ 'vars' ]:
+                                                                    self.idd =  self.DataBase[ 'variables' ][ 'vars' ].index( mainName )
+                                                                    self.DataBase[ 'variables' ][ 'values' ][ self.idd ] = self.master.update( self.newValues )
+                                                                else: self._return_ = self.master.update( self.newValues )
+                                                            else: self.error = er.ERRORS( self.line ).ERROR25( self.value[ 0 ] )
+                                                        else: pass
+                                                    else: self.error =er. ERRORS( self.line ).ERROR3( "name", 'a dictionary()' )
                                             else: pass 
                                         else: self.error = er.ERRORS( self.line ).ERROR0( mainString )
                                     else: pass
@@ -188,7 +220,6 @@ class DICTIONARY:
             else: self.error = er.ERRORS( self.line ).ERROR12( self.function, 1)              
         elif self.function in [ 'init'  ]            :
             if None in self.arguments: 
-                self._return_ = {}
                 self.idd =  self.DataBase[ 'variables' ][ 'vars' ].index( mainName )
                 self.DataBase[ 'variables' ][ 'values' ][ self.idd ] = {}
             else: self.error = er.ERRORS( self.line ).ERROR14( self.function )
@@ -279,5 +310,16 @@ class DICTIONARY:
                         else: self.error = er.ERRORS( self.line ).ERROR15( self.function, [['reverse']] )
                     else: self.error =  er.ERRORS( self.line ).ERROR23( self.arguments[ 0 ] )             
             else: self.error = er.ERRORS( self.line ).ERROR12( self.function, 1)
-        
+        elif self.function in [ 'asFrame']          :
+            if None in self.arguments: 
+                self._return_, s, ss, self.error  = frame.FRAME(self.master, self.line).FRAME(Frame = True)
+                
+                if self.error is None :
+                    if  mainName in self.DataBase[ 'variables' ][ 'vars' ]:
+                        self.idd =  self.DataBase[ 'variables' ][ 'vars' ].index( mainName )
+                        self.DataBase[ 'variables' ][ 'values' ][ self.idd ] = self._return_
+                    else: pass
+                else: pass
+            else: self.error = er.ERRORS( self.line ).ERROR14( self.function )
+            
         return self._return_, self.error  

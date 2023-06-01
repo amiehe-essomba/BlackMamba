@@ -163,6 +163,7 @@ def MAIN(system = 'Windows', file_name : str = ''):
                                                         interpreter = True, 
                                                         MainList = data_from_file[x+1: ] 
                                                         )
+                                        #print(error, string)
                                         if error is None:
                                             if lexer is not None:
                                                 if data_base['globalIndex'] is None: 
@@ -236,7 +237,7 @@ def MAIN(system = 'Windows', file_name : str = ''):
                                             break
                                     except EOFError: break
                         else: pass
-                except Exception: pass
+                except RuntimeError: pass
         else: print('\n{}\n'.format( error ) )
     else:  print('\n{}\n'.format( error ) )
     

@@ -1,0 +1,55 @@
+from module ggplot load scatter, plot
+load module regression as R
+from module norm load StandardScaler 
+from module matrix load ones
+from module frame load read_csv 
+from module prompt load prompt 
+
+path = 'https://sololearn.com/uploads/files/titanic.csv'
+
+data = R.create(samples=500, features=1, noise=10).data()
+Y, X, X_Y = data$target, data$X, data$matrix
+
+Y = StandardScaler(Y)
+X = StandardScaler(X)
+X_Y = StandardScaler(X_Y)
+
+color = ["blue", "red"]
+
+# get theta values 
+theta = R.theta(2)
+
+# training model 
+all_data = R.LinearRegression.regression(X=X_Y, Y=Y, theta=theta, learning_rate=2e-3, tol=1e-7)
+
+# getting new theta values 
+new_theta = all_data $ theta 
+
+# max iter 
+max_iter = all_data $ max_iter 
+
+# computing the new line 
+YY = X_Y.dot(new_theta)
+
+Y = Y.merge(YY)
+Y = Y.merge(YY)
+
+max = list([0:max_iter])
+cost_history = all_data $ cost_history
+evaluation   = all_data $ evaluation 
+
+new_data  = read_csv(path = path )
+new_data.asFrame()
+
+#prompt( new_data )
+X, Y = new_data.select(3), new_data.select(6)
+color, Y, X = list( new_data.select(0)), Y.redim((-1,1)), X.redim((-1,1))
+
+X, Y =  StandardScaler(X), StandardScaler(Y)
+
+scatter(X=X, Y=Y, color=[color], s=50, col=None, label=[["Survived", "Dead"]])
+
+#print * all_data.get("keys") 
+#scatter(X=X, Y=Y, s=50, col=None,  label = [ ["iris"], ["predict"]], color = color, axes=[0,0,1], location=['LL', 'LR'])
+#plot(X=max, Y=cost_history, label="cost function")
+#plot(X=max, Y=evaluation, label="coef function")

@@ -115,30 +115,70 @@ def check_dim(X, Y, label, axis, line : int = 0):
     if error is None: return error, data, LABEL[1:] 
     else: return error, data, LABEL 
 
-def scatter_params(line : int = 0, marker: str = 0):
+def scatter_params(line : int = 0, marker: list = [], M : int = 0):
     error       = None 
     m           = ["o", "^", "+", "*", ".", "v", "<", ">", "1", "2", "3", "4", "s", "p", "h", "H", "x", "D"]
     
-    if 0 <= marker < len(m): marker = m[marker]
-    else: error = er.ERRORS(line=line).ERROR10(len(m))
+    if not marker:
+        for i in range(M):
+            marker.append(m[0])
+    else:
+        for i, mark in enumerate( marker ):
+            if 0 <= mark < len(m): 
+                mark  = m[mark]
+                marker[i] = mark
+            else: 
+                error = er.ERRORS(line=line).ERROR10(index=len(m), string=f"marker[{i}]")
+                break 
+    
+    if error is None:
+        if len(marker) == M: pass 
+        elif len(marker) < M:
+            idd = len(marker)
+            while idd < M:
+                marker.append(m[0])
+                idd += 1 
+        else: error = er.ERRORS(line).ERROR20(string = "marker", N=M)
+    else: pass
 
     return marker, error 
 
-def scatter_Size(line, size):
+def scatter_Size(line: int, size : list = [], M : int = 0):
     chaine, error = None, None 
-   
+    
     if size is not  None:
-        if len(size) == 2:
-            size = list(size)
-            for i, s in enumerate(size):
-                if type(s) in [type(int()), type(float())]: size[i] = float(s)
-                else:
-                    error = er.ERRORS(line).ERROR9(size, s)
-                    break
-            if error is None:
-                if size[0] < size[1] : chaine = 'all' 
-                else: error = er.ERRORS(line).ERROR12(data=tuple(size))
-        else: error = er.ERRORS(line).ERROR8(string='lim')
-    else: pass 
+        for i, S in enumerate(size):
+            if type(S) in [type(tuple()), type(list())]:
+                if len(S) == 2:
+                    size = list(S)
+                    for i, s in enumerate(S):
+                        if type(s) in [type(int()), type(float())]: S[i] = float(s)
+                        else:
+                            error = er.ERRORS(line).ERROR9(size, s)
+                            break
+                    if error is None:
+                        if S[0] < S[1] : 
+                            chaine = 'all' 
+                            size[i] = S
+                        else: 
+                            error = er.ERRORS(line).ERROR12(data=tuple(S))
+                            break
+                    else: break
+                else: error = er.ERRORS(line).ERROR8(string='lim')
+            else:
+                error = er.ERRORS(line).ERROR21(string=f'lim[{i}]') 
+                break
+
+        if len(size) == M: pass 
+        elif len(size) < M:
+            idd = len(size)
+            while idd < M:
+                size.append(None)
+                idd += 1
+        else: error = er.ERRORS(line).ERROR20(string = "lim", N=M)
+    else: 
+        size = []
+        for i in range(M):
+            size.append(None)
 
     return size,  chaine, error

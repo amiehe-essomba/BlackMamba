@@ -1,4 +1,5 @@
 import                              numpy as np
+import                              pandas as pd
 from script                         import control_string
 from script.LEXER                   import particular_str_selection
 from script.LEXER                   import main_lexer
@@ -413,24 +414,26 @@ class LIS_OPTIONS:
                                                     self.error = ERRORS( self.line ).ERROR9( object1 )
                                                     break
                                             elif _type_ == type( str() )    :
-                                                if self.type == type( dict() ):
+                                                if self.type in [type( dict() ), type(pd.DataFrame({"s" : [1,2]}))]:
                                                     if self.num in list( object1.keys() ):
-                                                        object1 = object1[ self.num ]
-                                                        if type( object1 ) == type( str() ):
-                                                            object1 = "'" + object1 + "'"
-                                                        else: pass
+                                                        if self.type == type(pd.DataFrame({"s" : [1,2]})): 
+                                                            object1 = object1[[ self.num ]].values.reshape((-1,)) 
+                                                        else:
+                                                            object1 = object1[ self.num ]
+                                                            if type( object1 ) == type( str() ):
+                                                                object1 = "'" + object1 + "'"
+                                                            else: pass
                                                     else:
                                                         if globa_type == 'values':
-                                                            self.error = ERRORS( self.line ).ERROR12( object1, self.num )
+                                                            self.error = ERRORS( self.line ).ERROR12( list(object1.keys()), self.num )
                                                             break
                                                         else:
                                                             if i == len( self.all_value ) - 1: pass
                                                             else:
-                                                                self.error = ERRORS(self.line).ERROR12( object1,
-                                                                                            self.all_value[ i - 2 ] )
+                                                                self.error = ERRORS(self.line).ERROR12( object1, self.all_value[ i - 2 ] )
                                                                 break
                                                 else:
-                                                    self.error = ERRORS( self.line ).ERROR10( value, 'a dictionary()' )
+                                                    self.error = ERRORS( self.line ).ERROR18( object1 )
                                                     break
                                             else:
                                                 self.error = ERRORS( self.line ).ERROR11( value )
@@ -788,3 +791,9 @@ class ERRORS:
         self.error = fe.FileErrors( 'DomainError' ).Errors()+'{}in {}<< range( ) >> {}function. '.format(self.white, self.cyan, self.green) + error
         return self.error+self.reset
 
+    def ERROR18(self, string: str ):
+        error = '{}is not {}a dictionaty() or {}a table() {}type. {}line: {}{}'.format(self.white, self.red, self.blue, 
+                                                    self.yellow, self.white, self.yellow, self.line)
+        self.error = fe.FileErrors( 'TypeError' ).Errors()+'{}<< {} >> '.format(self.cyan, string) + error
+
+        return self.error+self.reset

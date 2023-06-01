@@ -39,7 +39,7 @@ class SHOW :
         # get master type
         self.type       = type( self.master )
         self.color      = ''
-        
+        err             = None
         # calor set in function of the master type
         self.color      = SHOW( self.type, self.data_base, self.key ).TYPE()
 
@@ -47,26 +47,28 @@ class SHOW :
             s,  self.master, tt, err = frame.FRAME({"s": self.master, 'id':list(self.master.index)}, 1).FRAME(False, 'DataFrame', True)
         else: pass 
         
-        # convert master to a string()
-        self.master     = str( self.master )
-
-        self.string2    = bm.init.bold+'{}{}{}'.format(self.color, self.master, self.reset)
         self.string1    = bm.init.bold+'{}[{} result{} ]{} : {}'.format( self.blue, self.orange, self.blue,  self.white, self.reset )
 
-        if self.type == type( str() ):
-            try:
-                if self.master[ 0 ] not in [ '"', "'"]:
-                    if self.data_base[ 'irene' ] is None:
-                        self.string2 = "{}'".format(self.color) + self.string2 + "{}'".format( self.color )
-                    else: self.data_base[ 'irene' ] = None
-                else: pass
-            except IndexError :
-                self.string2 = '{}"'.format(self.color) + '{}"'.format( self.color )
-        else: pass
+        if err is None:
+            # convert master to a string()
+            self.master     = str( self.master )
+            self.string2    = bm.init.bold+'{}{}{}'.format(self.color, self.master, self.reset)
 
-        self.string2 = LineFeed(self.string2, self.type)
-        self.string = bm.init.bold+self.string1 + self.string2
+            if self.type == type( str() ):
+                try:
+                    if self.master[ 0 ] not in [ '"', "'"]:
+                        if self.data_base[ 'irene' ] is None:
+                            self.string2 = "{}'".format(self.color) + self.string2 + "{}'".format( self.color )
+                        else: self.data_base[ 'irene' ] = None
+                    else: pass
+                except IndexError :
+                    self.string2 = '{}"'.format(self.color) + '{}"'.format( self.color )
+            else: pass
 
+            self.string2 = LineFeed(self.string2, self.type)
+            self.string = bm.init.bold+self.string1 + self.string2
+        else:  self.string = "\n"+self.string1 + err
+        
         # clear the bottom
         sys.stdout.write(bm.clear.screen(0))
         sys.stdout.flush()
@@ -93,7 +95,9 @@ class SHOW :
         self.color  = SHOW( self.type, self.data_base, self.key ).TYPE()
         
         if self.type == type(pd.DataFrame({'r':[0, 0]})):
+            #self.master = self.master.to_dict(orient='list')
             s, master, tt, err = frame.FRAME({"s": self.master,'id':list(self.master.index)},  1).FRAME(False, "DataFrame", True)
+            #s, master, tt, err = frame.FRAME(self.master.to_dict(orient='list'),  1).FRAME(False, "dictionary", True)
         else: pass 
         # put master as a string()
         self.master = str( self.master )

@@ -419,7 +419,8 @@ class CLASS_TREATMENT:
                                             'count', 'endwith', 'startwith', 'replace', 'size', 'rjust', 'ljust', 'centering', 'encoding', 'find', 'partition', 'fill',
                                             'title', 'istile', 'isascii', 'casefold', 'isspace', 'swapcase', 'isdecimal', 'isidentifier',
                                             'isprintable', 'isupper', 'islower', 'isnumeric', 'isdigit', 'decoding' ]
-                self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted', 'frame'] 
+                self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted', 'asFrame', "merge"
+                                            ] 
                 self.cplxFunctions      = [ 'img', 'real', 'norm', 'conj' ] 
                 self.floatFunctions     = [ 'round' ] 
                 self.rangeFunctions     = [ 'size', 'enumerate', 'choice', 'to_array', 'sum', 'std', 'mean', 'var', 'pstdev', 'stdev', 'Hmean', "Gmean", 
@@ -431,8 +432,8 @@ class CLASS_TREATMENT:
                 self.ndarrays           = [ 'sum', 'mean', 'std', 'pstd', 'var', 'pvar', 'sqrt', 'square', 'sorted', 'cov', 'linearR', 'min', 'max', 'ndim', 
                                            'quantile', 'median', 'sum_square', 'grouped', 'cms', 'round', 'iquantile', 'Q1', 'Q3', 'kurtosis', 'dtype', 
                                            'size', 'copy', 'owner', 'choice', 'all', 'any', "redim", "merge", 'sorted', 'trans', 'dot', 'itemsize','solve',
-                                           'norm', 'inv', "axis"]
-                self.table              = ['set_id', 'select', 'keys'] 
+                                           'norm', 'inv', "axis", "flatten"]
+                self.table              = ['set_id', 'select', 'keys', "tail", 'head', "update", "filter"]  
                 
                 if self.main_name in self.DataBase[ 'variables' ][ 'vars' ]: 
                     self.idd    = self.DataBase[ 'variables' ][ 'vars' ].index( self.main_name )

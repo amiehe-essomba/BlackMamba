@@ -32,7 +32,8 @@ class MATRIX_2D:
         self.master, self.nrow, self.ncol, self.master_one = c2D.Array( self.master )
         self._values_       = [self.master_one, self.nrow, self.ncol] 
         self.Type           = [ 'dtype', 'size', 'ndim', 'copy', 'owner', 'choice', "inv",
-                                'sorted', 'trans', 'dot', 'itemsize', 'all', 'any', "redim", "merge", "solve", "norm", "axis"]
+                                'sorted', 'trans', 'dot', 'itemsize', 'all', 'any', "redim", 
+                                "merge", "solve", "norm", "axis", "flatten"]
         
         if self.function in self.Type:
             if type(self.master_copy) == type(np.array([1])):
@@ -46,6 +47,8 @@ class MATRIX_2D:
                 elif self.function == 'sorted'  : 
                     self.master_copy.sort()
                     self._return_ = self.master_copy.copy()
+                elif self.function == 'flatten' : 
+                    self._return_ = self.master_copy.reshape((-1,))
                 elif self.function == 'choice'  : 
                     if len( list( self.master_copy.shape ) ) == 1:
                         self._return_ = np.random.choice(self.master_copy)
@@ -63,10 +66,11 @@ class MATRIX_2D:
                 elif self.function in ['dot', 'redim', 'merge', 'solve', 'norm', "axis"] : 
                     self._return_, self.error = dot.DOT(self.DataBase, self.line,
                                      self.master_copy.copy(), self.function, [self.FunctionInfo]).DOT(self.main_dict, typ=self.function)
-                elif self.function == 'all' : self._return_ = self.master_copy.all()
-                elif self.function == 'any' : self._return_ = self.master_copy.any()
-                elif self.function == 'itemsize' : self._return_ = self.master_copy.itemsize
-                else: self._return_ = np.array(self.master).size
+                elif self.function == 'all'     : self._return_ = self.master_copy.all()
+                elif self.function == 'any'     : self._return_ = self.master_copy.any()
+                elif self.function == 'itemsize': self._return_ = self.master_copy.itemsize
+                elif self.function == 'size'    : self._return_ = np.array(self.master).size
+                else: pass
             else: self.error = er.ERRORS( self.line ).ERROR3( mainName, "ndarray()" )
         else:
             if self.function not in ['round', "quantile"]:

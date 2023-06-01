@@ -89,7 +89,7 @@ def run_mamba():
                                     else: 
                                         header.header(terminal='pegasus terminal')
                                         color = bm.fg.rbg(255, 255, 255)
-                                else: pass 
+                                else: color = bm.fg.rbg(255, 255, 255)
                                 
                                 data_base = db.DATA_BASE().STORAGE().copy()
                                 WM.IDE( data_base=data_base).terminal(c=color, terminal_name=term)

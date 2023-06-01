@@ -12,7 +12,7 @@ class ERRORS:
         self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
         self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
         self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
-        self.reset      = bm.init.resett 
+        self.reset      = bm.init.reset 
 
     def ERROR0(self, string: str):
         error = '{}line: {}{}'.format(self.white, self.yellow, self.line)
@@ -204,9 +204,9 @@ class ERRORS:
 
         return self.error+self.reset
 
-    def ERROR28(self,):
+    def ERROR28(self, string = "master"):
         error = '{}is {}EMPTY. {}line: {}{}'.format(self.white, self.yellow, self.white, self.yellow, self.line)
-        self.error = fe.FileErrors('ValueError').Errors() + '{}master '.format(self.cyan) + error
+        self.error = fe.FileErrors('ValueError').Errors() + '{}{} '.format(self.cyan, string) + error
 
         return self.error + self.reset
 
@@ -345,3 +345,37 @@ class ERRORS:
         self.error = fe.FileErrors('IndexError').Errors() + error + func
 
         return self.error + self.reset
+
+    def ERROR46(self, func: str = "", df_size : int = 0):
+        error = '{}index size error: {}index.size() {}!= {}{}. {}line: {}{}'.format(self.white, self.bue, self.white, self.red, df_size,
+                        self.white, self.yellow, self.line)
+        self.error = fe.FileErrors('ValueError').Errors() + error + func
+
+        return self.error + self.reset
+    
+
+    def ERROR47(self, string: str, func:str = ''):
+        error = '{}is not  {}a string(),  {}or an integer() {}type. {}line: {}{}'.format(self.white,  self.blue,
+                                                                    self.red, self.yellow, self.white, self.yellow, self.line)        
+        self.error = fe.FileErrors( 'TypeError' ).Errors() + '{}<< {} >> '.format(self.cyan, string) + error + func
+
+        return self.error+self.reset
+    
+    def ERROR48(self, string: str, func:str = ''):
+        error = '{}is not  {}a list() {}or a tuple() {}type. {}line: {}{}'.format(self.white, self.yellow, 
+                                                                    self.blue, self.yellow, self.white, self.yellow, self.line)        
+        self.error = fe.FileErrors( 'TypeError' ).Errors() + '{}<< {} >> '.format(self.cyan, string) + error + func
+
+        return self.error+self.reset
+    
+    def ERROR49(self, string: list, key: str, func:str = ''):
+        error = '{}is not found in this list {}{}. {}line: {}{}'.format(self.white, self.green, string, self.white, self.yellow, self.line)        
+        self.error = fe.FileErrors( 'KeyError' ).Errors() + '{}<< {} >> '.format(self.cyan, key) + error + func
+
+        return self.error+self.reset
+    
+    def ERROR50(self):
+        error = '{}file not found or doesn\'t exist  {}{}. {}line: {}{}'.format(self.green,  self.white, self.yellow, self.line)        
+        self.error = fe.FileErrors( 'FileNotFoundError' ).Errors() +  error
+
+        return self.error+self.reset

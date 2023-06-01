@@ -13,6 +13,7 @@ cdef class Tuple:
             str error 
             str func 
 
+
         error = ''
         func = bm.fg.rbg(0, 255, 0   )+' in tuple( ).' + bm.init.reset 
 

@@ -23,13 +23,13 @@ setup(
         'dictionary.pyx',
         'Trigo.pyx',
         'Open.pyx',
-        "frame.pyx",
         "show.pyx", 
         "progress_bar.pyx",
         "handling_list.pyx",
         "Trees.pyx",
         "Trigo.pyx", 
-        "merge_list.pyx"
+        "merge_list.pyx",
+        "frame.pyx",
         ], 
         annotate = True
         )

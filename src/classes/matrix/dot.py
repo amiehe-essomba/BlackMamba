@@ -151,7 +151,8 @@ class DOT:
                                                 elif typ == "redim" :
                                                     if list(self.master):
                                                         if type( self.newValues ) == type(tuple()):
-                                                            try: self._return_ =  self.master.reshape(self.newValues)
+                                                            try: 
+                                                                self._return_ =  self.master.reshape(self.newValues)
                                                             except ValueError: 
                                                                 self.error = er.ERRORS( self.line ).ERROR66( self.master.shape, self.newValues) 
                                                             except TypeError: self.error = er.ERRORS( self.line ).ERROR72('interger')

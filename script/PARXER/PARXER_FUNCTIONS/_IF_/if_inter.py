@@ -42,6 +42,7 @@ class EXTERNAL_IF_STATEMENT:
         self.maxEmptyLine           = 2
 
         ############################################################################
+        
         if self.loop_list:
             for  j, _string_ in enumerate( self.loop_list ):
                 self.if_line    += 1

@@ -383,90 +383,92 @@ class words:
         else: b_=init.blink
 
         if locked is False:
-            for i, s in enumerate( self.string) :
-                if self.count['int'] % 2 == 0: self.color = init.bold+self.cc
-                else: self.color = self.c
+            try:
+                for i, s in enumerate( self.string) :
+                    if self.count['int'] % 2 == 0: self.color = init.bold+self.cc
+                    else: self.color = self.c
 
-                if s not in [ ' ' ]:
-                    if s in self.analyse.UPPER_CASE()+self.analyse.LOWER_CASE()+[str(x) for x in range(10)]+['_']:
-                        self.ss += s
-                        if i < len( self.string)-1: pass
+                    if s not in [ ' ' ]:
+                        if s in self.analyse.UPPER_CASE()+self.analyse.LOWER_CASE()+[str(x) for x in range(10)]+['_']:
+                            self.ss += s
+                            if i < len( self.string)-1: pass
+                            else:
+                                if self.ss: self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
+                                else: pass
                         else:
-                            if self.ss: self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                            else: pass
-                    else:
-                        if s in [ '#' ]:
-                            self.ss += s
-                            if i < len(self.string) - 1:  pass
-                            else:
-                                if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                                else:  pass
-                        elif s in ['"', "'"]:
-                            self.ss += s
-                            if i < len(self.string) - 1:  pass
-                            else:
-                                if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                                else:  pass
-                        elif s == "-":
-                            try:
-                                if self.string[i+1] == '>': 
-                                    self.ss += s
-                                    if i < len(self.string)-1: pass 
-                                    else: self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                                else: 
-                                    self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                                    self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
-                            except IndexError: 
-                                self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                                self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
-                        elif s == '>':
-                            if i == 0: self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
-                            else:
+                            if s in [ '#' ]:
+                                self.ss += s
+                                if i < len(self.string) - 1:  pass
+                                else:
+                                    if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
+                                    else:  pass
+                            elif s in ['"', "'"]:
+                                self.ss += s
+                                if i < len(self.string) - 1:  pass
+                                else:
+                                    if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
+                                    else:  pass
+                            elif s == "-":
                                 try:
-                                    if self.string[i-1] in ['-']:
-                                        self.ss += s 
+                                    if self.string[i+1] == '>': 
+                                        self.ss += s
                                         if i < len(self.string)-1: pass 
                                         else: self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
                                     else: 
-                                        self.ss += s
-                                        self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
+                                        self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
+                                        self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
                                 except IndexError: 
-                                    self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
-                        else:
-                            if self.ss:
-                                if '#' in self.ss:
-                                    self.ss += s
-                                    if i < len(self.string) - 1: pass
-                                    else:
-                                        if self.ss: self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                                        else:  pass
-                                else:
                                     self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                                    self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_)
-                                    self.ss     = ''
-                            else :
-                                self.newS   += words(s, self.color).keywords(n=n,count=self.count, b_=b_)
-                                self.ss     = ''
-                else:
-                    if self.ss :
-                        if '#' in self.ss:
-                            self.ss += ' '
-                            if i < len(self.string) - 1:  pass
+                                    self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
+                            elif s == '>':
+                                if i == 0: self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
+                                else:
+                                    try:
+                                        if self.string[i-1] in ['-']:
+                                            self.ss += s 
+                                            if i < len(self.string)-1: pass 
+                                            else: self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
+                                        else: 
+                                            self.ss += s
+                                            self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
+                                    except IndexError: 
+                                        self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_); self.ss=""
                             else:
-                                if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n,count=self.count, b_=b_)
-                                else:  pass
-                        else:
-                            if self.count['int'] % 2 == 0: self.color = self.cc
-                            else: self.color = self.c
-
-                            self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
-                            if code_w is False: self.newS   += self.cc + ' '
-                            else:  self.newS   += self.cc +' '
-                            self.ss     = ''
+                                if self.ss:
+                                    if '#' in self.ss:
+                                        self.ss += s
+                                        if i < len(self.string) - 1: pass
+                                        else:
+                                            if self.ss: self.newS += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
+                                            else:  pass
+                                    else:
+                                        self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
+                                        self.newS   += words(s, self.color).keywords(n=n, count=self.count, b_=b_)
+                                        self.ss     = ''
+                                else :
+                                    self.newS   += words(s, self.color).keywords(n=n,count=self.count, b_=b_)
+                                    self.ss     = ''
                     else:
-                        if code_w is False: self.newS   += self.cc + ' '
-                        else:  self.newS   += self.cc + ' '
-                        self.ss      = ''
+                        if self.ss :
+                            if '#' in self.ss:
+                                self.ss += ' '
+                                if i < len(self.string) - 1:  pass
+                                else:
+                                    if self.ss:  self.newS += words(self.ss, self.color).keywords(n=n,count=self.count, b_=b_)
+                                    else:  pass
+                            else:
+                                if self.count['int'] % 2 == 0: self.color = self.cc
+                                else: self.color = self.c
+
+                                self.newS   += words(self.ss, self.color).keywords(n=n, count=self.count, b_=b_)
+                                if code_w is False: self.newS   += self.cc + ' '
+                                else:  self.newS   += self.cc +' '
+                                self.ss     = ''
+                        else:
+                            if code_w is False: self.newS   += self.cc + ' '
+                            else:  self.newS   += self.cc + ' '
+                            self.ss      = ''
+            except TypeError : pass
         else:  self.newS = words(self.string, self.color).keywords(n=n, locked=locked, count=self.count, b_=b_)
 
         return self.newS

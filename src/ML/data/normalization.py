@@ -45,7 +45,7 @@ def Scaler(X : np.ndarray, axis : any = None, line : int = 0, cal : str = 'stand
                             else: error = ERRORS(line).ERROR4( "std(X)")
                         else: error =ERRORS(line).ERROR1('axis', X.shape[1])
             else: error = ERRORS(line).ERROR2()
-        else: error = ERRORS(line).ERROR0()
+        else: error = ERRORS(line).ERROR0(M = list(X.shape))
     except ValueError: error = ERRORS(line).ERROR3()
     except RuntimeWarning : 
         if   cal == 'StandardScaler'    : error = ERRORS(line).ERROR4( "std(X)")
@@ -68,9 +68,9 @@ class ERRORS:
         self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
-    def ERROR0(self):
-        error = '{}should be a {}[n, m] {}ndarray, {}with m and n not null. {}line: {}{}'.format(self.white, self.red, self.blue, 
-                                                   self.green, self.white,self.yellow, self.line)     
+    def ERROR0(self, M):
+        error = '{}should be a {}[n, m] {}ndarray, {}with m and n not null. but got {}[n, m] = {}. {}line: {}{}'.format(self.white, 
+                self.red, self.blue,  self.green, self.magenta, M, self.white,self.yellow, self.line)     
         self.error = fe.FileErrors( 'ValueError' ).Errors()+'{}the X matrix '.format( self.cyan) + error
 
         return self.error+self.reset

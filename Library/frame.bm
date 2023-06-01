@@ -1,13 +1,18 @@
 from module encoding load fg, bg
 
+def read_csv(path : string, header : bool = True, inferSchema : bool = True, sep : string = ""):
+	_std_ * [[path, header, inferSchema, sep], "read_csv", "DataFrame"]
+end:
+
+
 class data:
-	def initialize(values:dict list tuple, columns : list tuple none=None, index : int none=None):
+	def initialize(values:dict, index : list tuple none=None):
 		self.values 	= values
 		self.columns 	= columns
 		self.index 		= index
 	end:
 	def frame():
-		_std_ * [values, "frame", "DataFrame"]
+		_std_ * [[values, index], "frame", "DataFrame"]
 	end:
 	
 	def show(show_id :bool=True ):

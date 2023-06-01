@@ -10,13 +10,13 @@ def write(  string : str = ""  ):
 class ERRORS:
     def __init__(self, line):
         self.line       = line
-        self.cyan       = bm.fg.cyan_L
-        self.red        = bm.fg.red_L
-        self.green      = bm.fg.green_L
-        self.yellow     = bm.fg.yellow_L
-        self.magenta    = bm.fg.magenta_M
-        self.white      = bm.fg.white_L
-        self.blue       = bm.fg.blue_L
+        self.cyan       = bm.init.bold + bm.fg.rbg(0,255,255)
+        self.red        = bm.init.bold + bm.fg.rbg(255,0,0)
+        self.green      = bm.init.bold + bm.fg.rbg(0,255,0)
+        self.yellow     = bm.init.bold + bm.fg.rbg(255,255,0)
+        self.magenta    = bm.init.bold + bm.fg.rbg(255,0,255)
+        self.white      = bm.init.bold + bm.fg.rbg(255,255,255)
+        self.blue       = bm.init.bold + bm.fg.rbg(0,0,255)
         self.reset      = bm.init.reset
 
     def ERROR0(self, string: str, data : str):
@@ -36,9 +36,9 @@ class ERRORS:
         self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{} dimension Error '.format( self.cyan ) + error 
         return self.error+self.reset
        
-    def ERROR3(self): 
+    def ERROR3(self ): 
         error = '{}line: {}{}.'.format(self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}figure size dimension Error '.format( self.cyan ) + error
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}figure dimension Error '.format( self.cyan) + error
         return self.error+self.reset
     
     def ERROR4(self, data : str, index ): 
@@ -114,11 +114,38 @@ class ERRORS:
         return self.error+self.reset
     
     def ERROR17(self,  idd): 
-        error = '{}of color list all elements are not {}integer() {}type. {}line: {}{}.'.format(self.white,  self.red, 
-                                                                                                 self.yellow, self.white, self.yellow, self.line)
-        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}in the element {}{} '.format(self.white, self.green, idd) + error
+        error = '{}color[{}] are not {}integer() {}type. {}line: {}{}.'.format(self.white,  idd, self.red, 
+                                                            self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}all elements in '.format(self.white ) + error
         return self.error+self.reset
     
+    def ERROR18(self,  string : str="axes", ax : int=0, N : int = 1): 
+        error = '{}out of range {}[0, [N}]. {}line: {}{}.'.format(self.white,  self.red, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{}[{}] '.format(self.green, string, ax) + error
+        return self.error+self.reset
+    
+    def ERROR19(self,  string : str="axes", ax : int=0): 
+        error = '{}is not an {}integer() {}type. {}line: {}{}.'.format(self.white,  self.red, self.yellow,
+                                                                self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}{}[{}] '.format(self.green, string, ax) + error
+        return self.error+self.reset
+    
+    def ERROR20(self,  string : str="axes", N : int=0): 
+        error = '{}{}. {}line: {}{}.'.format(self.blue, N,  self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{}.size() {}> '.format(self.magenta, string, self.red) + error
+        return self.error+self.reset
+    
+    def ERROR21(self,  string = "lim"): 
+        error = '{}is not a {}list() {}or {}tuple() {}type. {}line: {}{}.'.format(self.white, self.red, self.white, self.blue, 
+                                                    self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}{} '.format(self.green ) + error
+        return self.error+self.reset
+    
+    def ERROR22(self,  string1 = 'a list()', string2 : str = ""): 
+        error = '{}is not {}{} {}type. {}line: {}{}.'.format(self.white, self.blue, string1, 
+                                                            self.yellow, self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}{} '.format(self.green, string2) + error
+        return self.error+self.reset
     
    
 

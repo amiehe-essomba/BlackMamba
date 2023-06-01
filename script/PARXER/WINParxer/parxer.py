@@ -175,6 +175,7 @@ class ASSEMBLY( ):
                         self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base, self.newLine ).FOR( main_string, 
                                 self.value['value'], self.value['variable'], loop_list = (self.listTransform, self.tab, self.error) )
 
+
                         if self.error is None:
                             if self.data_base[ 'print' ] is not None:
                                 self.list_of_values = self.data_base[ 'print' ]
@@ -251,9 +252,9 @@ class ASSEMBLY( ):
                             self.list_of_values = self.data_base[ 'print' ]
                             for i, value in enumerate( self.list_of_values ):
                                 if i < len( self.list_of_values) - 1:
-                                    print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
+                                    print_value.PRINT_PRINT( value, data_base=self.data_base ).PRINT_PRINT( key = False, loop = True )
                                 else:
-                                    print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
+                                    print_value.PRINT_PRINT( value, data_base=self.data_base ).PRINT_PRINT( key = False, loop = True )
                         else:  pass
                     else: pass
                 else: pass    

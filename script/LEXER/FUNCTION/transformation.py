@@ -2,6 +2,7 @@ import                              random
 import                              math
 import                              sys
 import                              numpy as np
+import                              pandas as pd
 import                              matplotlib.pyplot as plt 
 from statistics                     import variance, pvariance
 from script                         import control_string
@@ -277,7 +278,19 @@ class C_F_I_S:
                                                 func = bm.fg.rbg(0, 255, 0   )+f' in {self._value_[ 1 ]}( ).' +bm.fg.rbg(255,255,255)+\
                                                             ' / '+bm.fg.rbg(255, 255, 0)+"class " +bm.fg.rbg(0, 0, 255) +"data"+ bm.init.reset 
                                                 if   self._value_[ 1 ] == "frame":
-                                                    self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
+                                                    self.true_data, self.indexing = self._value_[0]
+                                                    self.final_value, s, ss, self.error  = frame.FRAME(self.true_data, self.line).FRAME(True)
+                                                    
+                                                    if self.error is None:
+                                                        if self.indexing is None: pass 
+                                                        else:
+                                                            if len(self.indexing) == self.final_value.iloc[:, [0]].values.shape[0]:
+                                                                self.final_value['indexing'] = self.indexing
+                                                                self.final_value.set_index("indexing", inplace=True) 
+                                                            else: 
+                                                                df_size = self.final_value.iloc[:, [0]].values.shape[0]
+                                                                self.error = er.ERRORS( self.line ).ERROR46( func=func, df_size=df_size )
+                                                    else: pass
                                                 elif self._value_[ 1 ] == "set_id":
                                                     self.final_value, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
                                                     if self.error is None:
@@ -297,7 +310,7 @@ class C_F_I_S:
                                                             self.final_value = self._value_[0][ self.name ]
                                                         except IndexError : self.error = er.ERRORS( self.line ).ERROR45( func=func )
                                                     else:pass
-                                                elif self._value_[ 1 ] == "show":
+                                                elif self._value_[ 1 ] == "show"  :
                                                     show, s, ss, self.error  = frame.FRAME(self._value_[0], self.line).FRAME(True)
                                                     if self.error is None:
                                                         show_id = self._value_[2]
@@ -309,9 +322,16 @@ class C_F_I_S:
                                                             r = bm.init.reset
                                                             self.s1    = bm.init.bold+'{}[{} result{} ]{} : {}'.format(b, o, b,  w, r )
                                                             sys.stdout.write( self.s1+"\n\n"+s+'\n')
-                                                            #print(s)
                                                         else: pass 
                                                     else: pass
+                                                elif self._value_[ 1 ] == "read_csv"  :
+                                                    try:
+                                    
+                                                        self.path,self.header, self.inferSchema, self.sep = self._value_[ 0 ]
+                                                        self.final_value = pd.read_csv(self.path)
+                                                        self.final_value = self.final_value.to_dict(orient='list')    
+                                                    except FileNotFoundError: self.error = er.ERRORS( self.line ).ERROR50( ) 
+                                                    except Exception: self.error = er.ERRORS( self.line ).ERROR50( )  
                                                     
                                             elif self._value_[ -1 ] in [ 'matrix' ]:
                                                 if len(self._value_) > 4:

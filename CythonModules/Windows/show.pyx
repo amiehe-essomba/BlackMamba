@@ -5,6 +5,7 @@ import pandas as pd
 from CythonModules.Windows       import frame
 from src.classes.matrix          import checking_2D as c2D
 from CythonModules.Windows       import fileError as fe
+from windows                     import screenConfig
 
 cdef str ERROR(unsigned long int line, unsigned long int nc1, unsigned long int nc2, unsigned long int nr):
     cdef : 
@@ -28,12 +29,19 @@ cdef run( master, str term = 'orion'):
         bint table = False
         unsigned long int n
         str str_ 
+        unsigned long long max_x, max_y, lenth 
+    max_x, max_y = screenConfig.cursorMax()
         
     if type(master) in [type(int()), type(float()), type(complex()) , type(bool()), type(None)]: master = str(master)
-    elif type(master) == type(list()): master = str( LIST(master).LIST())
-    elif type(master) == type(tuple()): master = str( TUPLE(master).TUPLE())
-    elif type(master) == type(str()): master = String( master)
-    elif type(master) == type(dict()): master = str( DICT(master).DICT())
+    elif type(master) == type(list())       : master = str( LIST(master).LIST())
+    elif type(master) == type(tuple())      : master = str( TUPLE(master).TUPLE())
+    elif type(master) == type(str())        : 
+        master = str(master)
+        if len( master ) < max_x: pass 
+        else: 
+            length = max_x // 3
+            master = master[ : length] + "..." + master[-length : ]
+    elif type(master) == type(dict())       : master = str( DICT(master).DICT())
     elif type(master) == type(np.array([1])): master, str_ = ARRAY({"s": master}).ARRAY()
     else: 
         try:
@@ -43,11 +51,11 @@ cdef run( master, str term = 'orion'):
     if term == 'orion' : return bm.words(master, bm.fg.rbg(255, 255, 255)).final()+bm.init.reset
     else: return master
 
-def String( str master):
+cdef String( str master):
     if master:
         master = bm.remove_ansi_chars().chars(master)
-        if len( master ) <= 20: pass
-        else: master = master[: 19 ] + '....' + master[-1]
+        if len( master ) < 15: pass
+        else: master = master[: 6 ] + '...' + master[-6:]
     else: pass
 
     return master 
@@ -63,7 +71,10 @@ cdef class LIST:
             list my_list = []
             list master_init
             unsigned long int ncol, nrow
-        
+            unsigned long long max_x, max_y, lenth 
+            max_x, max_y = screenConfig.cursorMax()
+            list array = []
+            
         if self.master:
             if len( self.master ) <= 5: my_list = self.master.copy()
             elif len( self.master ) > 5:
@@ -72,7 +83,7 @@ cdef class LIST:
                 my_list.append(self.master[ -1 ])
 
             for i in range(len(my_list)):
-                if   type(my_list[i]) in [type(int()), type(float()), type(complex()) , type(bool()), type(None)]: my_list[i] = my_list[i] 
+                if   type(my_list[i]) in [type(int()), type(float()), type(complex()) , type(bool()), type(None)]: pass
                 elif type(my_list[i]) in [type(list())]  : my_list[i] = LIST( my_list[i] ).SubLIST() 
                 elif type(my_list[i]) in [type(str())]   : my_list[i] = String( my_list[i] )
                 elif type(my_list[i]) in [type(tuple())] : my_list[i] = TUPLE( my_list[i] ).TUPLE() 

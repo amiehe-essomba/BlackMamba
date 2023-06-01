@@ -765,7 +765,6 @@ class DICT:
                     self.main_dict, self.error = self.control.CHECK_NAME(self.main_dict)
                     if self.error is None:  self.error = ERRORS( self.line ).ERROR2( self.main_dict )
                     else: pass
-
             elif self.type == 'dictionnary' :
                 self.input = {'numeric': [ self.main_dict ], 'type': 'dictionnary' }
                 self._return_, self.error = get_dictionary.DICTIONARY(self.input, self.data_base,
@@ -975,7 +974,6 @@ class DICT:
                 self.main_dict, self.error = self.control.CHECK_NAME(self.main_dict)
                 if self.error is None: self.error = ERRORS(self.line).ERROR2(self.main_dict)
                 else: pass
-
         elif self.type == 'dictionnary' :
             self.idd            = None
             self.string         = ''
@@ -1105,6 +1103,7 @@ class TYPE:
             if type( self.master ) == type( dict() ):
                 self.lists = list( self.master.keys() )
                 if 'values' not in self.lists:
+
                     self.num, self.error = get_list.LIST(self.master, self.data_base,
                                                          self.line).MAIN_LIST( main_string )
                     if self.error is None: self._return_ = self.num

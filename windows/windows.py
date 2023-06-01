@@ -41,7 +41,7 @@ def write(terminal_name='pegasus', string = "", decorator = "", color = "", rese
     if terminal_name == 'orion':
         # key word activation
         newString = decorator + bm.string().syntax_highlight( name=bm.words(string=string, color= color).final() )
-        if show is False: sys.stdout.write( newString )
+        if show is False: sys.stdout.write( newString ) 
         else : print(newString)
     else:
         # any activation keyword
@@ -147,6 +147,7 @@ class IDE:
                     _ = self.char[1]
                     self.char = self.char[0]
                     if self.char is not None:
+                    
                         # breaking loop while with the keyboardError ctrl+c
                         if self.char == 3               :
                             os.system('cls')
@@ -435,42 +436,32 @@ class IDE:
                         if self.border_x_limit is True  :
                             self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = buildString.string( 
                                                     self.Data['input'], self.Data['index']-1 )
-                            _, _, self.a_, self.b_ = buildString.string( 
-                                                    self.Data['string'], self.Data['I_S']-1 )
-                            # moving cursor left 
-                            sys.stdout.write( self.move.LEFT( pos = 1000 ) )
-                            # erasing entire line 
-                            sys.stdout.write( self.clear.line( pos = 2 ) )
-                            # writing string 
-                            write(terminal_name, self.Data['input'], self.Data['main_input'], self.color, self.reset)
-                            # move cusror on left egain
-                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-
-                            # replace the cussor 
-                            sys.stdout.write(self.move.TO(self.x, self.y) ) 
-                            sys.stdout.flush()
-
-                            # checking windows dimension 
+                            _, _, self.a_, self.b_ = buildString.string( self.Data['string'], self.Data['I_S']-1 )
                             
+                            # checking windows dimension 
+                     
                             if self.max_x > 30 and self.max_y > 20:
                                 # checkng if str_drop_down exists
                                 if self.Data['str_drop_down']:
                                     # saving cursor position 
                                     sys.stdout.write(bm.save.save)
                                     # clean screen from the cursor position untill the end of the line 
-                                    sys.stdout.write(self.clear.screen(pos=0))
-                                    
+                                    sys.stdout.write( self.move.DOWN( pos = 1 ) + 
+                                                  self.clear.screen(pos=0) + self.move.UP( pos = 1 ) )
                                     if self.indicator is None:
-                                        verbose, _, _, self.error = PE.DropDown(
+                                        verbose, _, self.scroll_size, self.error = PE.DropDown(
                                             data_base = self.data_base, line=self.if_line).MENU( self.Data['str_drop_down'], 
                                         self.Data['input'], self.indicator, self.indicator_pos, (self.max_x-self.x))
-
+                                       
                                         # restoring cursor position
                                         sys.stdout.write(bm.save.restore) 
                                         # computing the new params( x, y)
+
                                         self.X, self.y           = screenConfig.cursor()
                                         # moving cursor on the right position 
-                                        sys.stdout.write(self.move.TO(self.x, self.y) ) 
+                                        sys.stdout.write(self.move.TO(self.x, self.y)) 
+                                        #self.X, self.y           = screenConfig.cursor()
+                                        #####################################################
                                         sys.stdout.flush()
                                     else: 
                                         sys.stdout.write(bm.clear.screen(pos=0))
@@ -517,10 +508,23 @@ class IDE:
                                 else:
                                     # initialization 
                                     self.indicator_pos, self.indicator      = 0, None
-                                    # destroying all string under cursor position 
+                                    #destroying all string under cursor position 
                                     sys.stdout.write(self.clear.screen(pos=0)) 
                                     sys.stdout.flush()
                             else: pass
+                            sys.stdout.flush()
+
+                            # moving cursor left 
+                            sys.stdout.write( self.move.LEFT( pos = 1000 ) )
+                            # erasing entire line 
+                            sys.stdout.write( self.clear.line( pos = 2 ) )
+                            # writing string 
+                            write(terminal_name, self.Data['input'], self.Data['main_input'], self.color, self.reset)
+                            # move cusror on left egain
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+
+                            # replace the cussor 
+                            sys.stdout.write(self.move.TO(self.x, self.y) ) 
                             sys.stdout.flush()
                         else: pass
 

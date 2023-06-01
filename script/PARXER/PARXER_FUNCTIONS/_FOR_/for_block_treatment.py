@@ -1,9 +1,6 @@
 from script.PARXER.LEXER_CONFIGURE                      import lexer_and_parxer
 from updatingDataBase                                   import updating
-try:
-    from CythonModules.Linux                            import loop_for
-except ImportError:
-    from CythonModules.Windows                          import loop_for
+from CythonModules.Windows                          import loop_for
 
 
 class TREATMENT:
@@ -153,7 +150,6 @@ class TREATMENT:
             else: break
         
         """
-
         
         self.error      = loop_for.LOOP( self.data_base, self.line ).LOOP( list(self.for_values_init), self.var_name, loop_list )
         self.after      = updating.UPDATE( data_base=self.data_base ).AFTER()

@@ -6,7 +6,7 @@ from script.PARXER                                  import numerical_value
 from script.STDIN.LinuxSTDIN                        import bm_configure as bm
 from script.LEXER.FUNCTION                          import main
 from script.PARXER.INTERNAL_FUNCTION                import get_list
-
+import numpy as np
 from src.classes.Unions                             import union
 from src.classes                                    import error as er
 from CythonModules.Windows                          import fileError as fe 
@@ -80,7 +80,10 @@ class DICTIONARY:
                                                                 if self.all_data is not None:
                                                                     self.final_val, self.error = self.numeric.NUMERICAL(self.lex,
                                                                                 self.data_base, self.line).ANALYSE( self.master )
-                                                                    if self.error is None: self._return_[ self.name ] = self.final_val[ 0 ]
+                                                                    if self.error is None: 
+                                                                        if type(self.final_val[ 0 ]) in [type(dict()), type(list()), type(np.array([1]))]:
+                                                                            self._return_[ self.name ] = self.final_val[ 0 ].copy()
+                                                                        else : self._return_[ self.name ] = self.final_val[ 0 ]
                                                                     else: break
                                                                 else:
                                                                     self.error = ERRORS( self.line ).ERROR0( self.main_dict )
@@ -110,10 +113,8 @@ class DICTIONARY:
                         self.error = ERRORS( self.line ).ERROR0( self.main_dict )
                         break
             else: pass
+        else:  self.error,self._return_      =  None, {}
 
-        else:
-            self.error      =  None
-            self._return_   = {}
 
         return self._return_, self.error
 
@@ -123,12 +124,11 @@ class DICTIONARY:
         self.numeric            = self.master[ 'numeric' ]
         self._return_           = []
         self.historyOfFunctions = []
-        self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init'] 
+        self.dictFunctions      = [ 'empty', 'get', 'clear', 'copy', 'remove', 'init', 'sorted', 'asFrame', "merge"] 
 
         if self.numeric is not None:
             self.dict_values, self.error = DICTIONARY( self.master, self.data_base, self.line ).DICT()
-            if self.error is None:
-                self._return_ = self.dict_values
+            if self.error is None:  self._return_ = self.dict_values
             else:  pass
 
         else:
@@ -162,7 +162,6 @@ class DICTIONARY:
                                                                     self.line ).ARGUMENT_LIST( self._return_, self.params[ 1 ], function = True )
                                     else: pass                                                       
                                 else: pass    
-                            
                             else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'dictionary()' )
                         else: self.error = er.ERRORS( self.line ).ERROR22( self._names_[ 1 ], 'dictionry()' )
                     else: pass

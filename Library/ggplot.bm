@@ -47,26 +47,37 @@ def plot(
 end:
 
 def scatter(
-	X 	: list tuple range ndarray=[1:10],
-	Y 	: list tuple range ndarray=[1:10],
+	X 		: list tuple range ndarray=[1:10],
+	Y 		: list tuple range ndarray=[1:10],
 	color 	: string list = "blue",
-	s 	: int    = 10,
+	s 		: int list   = 10,
 	title 	: string = "",
 	style 	: string = "ggplot",
 	xlab 	: string = "X",
 	ylab 	: string = "Y",
-	figsize : tuple  = (6,6),
-	legend 	: bool   = True,
-	label 	: list string = "dataset",
-	marker 	: int    = 0,
-	lim	: tuple none = None,
-	location : string tuple = "B",
+	figsize : tuple = (6,6),
+	legend 	: bool = True,
+	label 	: list = [["data"]],
+	marker 	: list = [0],
+	lim		: tuple none = None,
+	location : list = ["B"],
 	cmap	: string = "plt",
-	axis	: list = [],
+	axes	: list none = None,
 	col 	: int none= 0
 	):
 	
-	__scan__ * X, Y, color, s, title, style, xlab, ylab, figsize, legend, label, marker, lim, location, col, "scatter"
+	__scan__ * X, Y, color, s, title, style, xlab, ylab, figsize, legend, label, marker, lim, location, col, axes, "scatter"
+end:
+
+def multiplots(
+	lineplot 	: dict none = None,
+	scatter 	: dict none = none,
+	pieplot		: dict none = None,
+	barplot     : dict none = None,
+	hisplot 	: dict none = None,
+	axes 		: list = [0]
+	):
+	return 10 
 end:
 
 def save( name : string ):

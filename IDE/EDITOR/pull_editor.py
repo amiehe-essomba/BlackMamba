@@ -317,10 +317,11 @@ class  DropDown:
                         np = len(self.new)
                         if np < 5: np -= 1 
                         else:  self.new = self.new[:5]
-                        idd = self.max_size + len(self.new)
-                        self.index = IDE(len(string), string, self.data_base).Linux( 
-                                inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, move_cursor_down=idd )
-                        self.max_size += self.index
+                        if self.new:
+                            idd = self.max_size + len(self.new)
+                            self.index = IDE(len(string), string, self.data_base).Linux( 
+                                    inp = [self.new, self.vr, self.fc, self.cc], true_chaine= true_chaine, move_cursor_down=idd )
+                        else: pass 
                     else: pass 
                 elif indicator in {7, 20}       :
                     self.idd        = len(string)

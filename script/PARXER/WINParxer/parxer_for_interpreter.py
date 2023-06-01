@@ -18,6 +18,8 @@ from src.modulesLoading                                     import modules, modu
 from script.PARXER.PARXER_FUNCTIONS._UNLESS_                import unless_statement     as US
 from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_         import cmt_interpreter      as cmt_int
 from statement                                              import mainStatement        as MS
+from script.PARXER.PARXER_FUNCTIONS._TRY_                   import try_inter 
+from script.PARXER.PARXER_FUNCTIONS.WHILE                   import while_statement
 
 class ASSEMBLY( ):
     def __init__(self, 
@@ -56,8 +58,10 @@ class ASSEMBLY( ):
             else: pass
 
         if self.active_function == 'all_data':
+            # numerical calculation
             if   self.master[ 'function' ] is None      :
                 self.error = partial_assembly.ASSEMBLY( self.master, self.data_base, self.line).ASSEMBLY( main_string, interpreter )
+            # active_function detected if function
             elif self.master[ 'function' ] == 'if'      :
                 self.newLine                    = self.line
                            
@@ -86,6 +90,7 @@ class ASSEMBLY( ):
                         self.data_base['print'] = []
                     else: pass
                 else: pass          
+            # active_function detected unless function
             elif self.master[ 'function' ] == 'unless'  :
                 self.newLine                    = self.line
                 
@@ -111,12 +116,12 @@ class ASSEMBLY( ):
                                         print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
                                     else:
                                         print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
-                                        
                             else: pass
                             self.data_base['print'] = []
                         else: pass
                     else: pass
                 else: pass
+            # active_function detected switch  function
             elif self.master[ 'function' ] == 'switch'  :
                 self.newLine                    = self.line
                 self._return_, self.error = MS.MAIN(main_string, self.data_base, self.newLine).MAIN(typ='switch',
@@ -140,12 +145,12 @@ class ASSEMBLY( ):
                                         print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
                                     else:
                                         print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )
-                                        
                             else: pass
                             self.data_base['print'] = []
                         else: pass
                     else: pass
                 else: pass
+            # active_function detected for function
             elif self.master[ 'function' ] == 'for'     :
                 self.newLine                    = self.line
                 
@@ -159,12 +164,14 @@ class ASSEMBLY( ):
                     self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine ).GROUPBY(1, MainList)
                     self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
                     
-                    self.listTransform = for_interpreter.EXTERNAL_FOR_STATEMENT( None, self.data_base,
+                    self.listTransform, self.tab, self.error = for_interpreter.EXTERNAL_FOR_STATEMENT( None, self.data_base,
                                                                         self.newLine ).FOR_STATEMENT(1, self.NewLIST )
                     
                     self.data_base[ 'print' ] = []
                     self.got_errors, self.error = for_block_treatment.TREATMENT( self.data_base,
-                                                    self.newLine ).FOR( main_string, self.value, self.name, True, self.listTransform )
+                                    self.newLine ).FOR( main_string=main_string, 
+                                    for_values = self.value['value'], name_var = self.value['variable'],
+                                    interpreter= True, loop_list = (self.listTransform, self.tab, self.error ))
 
                     if self.error is None:
                         if self.data_base[ 'print' ] is not None:
@@ -190,31 +197,68 @@ class ASSEMBLY( ):
                     self.data_base['print'] = []
 
                 else: self.error = self.error
+            # active_function detected while  function
+            elif self.master[ 'function' ] == 'while'   :
+                self.newLine                    = self.line 
+                self._return_, self.error = MS.MAIN(master = main_string, data_base=self.data_base,
+                                line=self.newLine).MAIN(typ = 'while', opposite = False, interpreter = True, function = 'loop')
+                if self.error is None:
+                    self.data_base[ 'print' ] = []
+                    
+                    if self.error is None:
+                        self.newLine                    = self.line 
+                        self.error = while_statement.EXTERNAL_WHILE_LOOP_STATEMENT( None , self.data_base,
+                                            self.newLine ).WHILE_STATEMENT( self._return_, 1, self.listTransform, main_string = main_string )
+                        
+                        if self.error is None:  self.data_base['print'] = []
+                        else: pass 
+                    else: pass
+                else: pass
             else: pass
         else:
+            # multi-line comments 
             if   self.master[ 'begin'  ] is True:
                 self.newLine  = self.line 
                 self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine ).GROUPBY(1, MainList )
                 self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
                 self.error = cmt_int.COMMENT_STATEMENT( None, self.data_base, self.newLine ).COMMENT( 1, self.NewLIST )             
+            # delecting variable
             elif self.master[ 'delete' ] is True: pass
+            # global variable
             elif self.master[ 'global' ] is True: pass
+            # printing values
             elif self.master[ 'print'  ]            is not None: pass
+            # modules transformed
             elif self.master[ 'transformation' ]    is not None: pass
+            # try statment
             elif self.master[ 'try' ]    is True:
-                self.data_base[ 'print' ] = []
-                self._, self.error = try_statement.EXTERNAL_TRY_STATEMENT(None,
-                                                    self.data_base, self.line ).TRY_STATEMENT(tabulation = 1)
+                self.newLine                    = self.line
+                self.data_base[ 'print' ]       = []
+                self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine ).GROUPBY(1, MainList)
+                self.data_base['globalIndex']   = len( self.NewLIST ) + self.data_base['starter']
 
-                if self.data_base[ 'print' ] is not None:
-                    self.list_of_values = self.data_base[ 'print' ]
-                    for i, value in enumerate( self.list_of_values ):
-                        if i < len( self.list_of_values) - 1:
-                            print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
-                        else:
-                            print_value.PRINT_PRINT( value ).PRINT_PRINT( key = False, loop = True )
-                else:  pass
+                self.listTransform ,self.error  = try_inter.EXTERNAL_TRY_STATEMENT( None, self.data_base,
+                                                                        self.newLine ).TRY_STATEMENT(1, self.NewLIST )
+                if self.error is None:
+                    self.MainStringTransform        = 't'+main_string
+                    self.listTransform              = [(self.MainStringTransform , True), self.listTransform]
+                 
+                    self._finally_key_, self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT(None,
+                                self.data_base, self.line ).TRY_STATEMENT(tabulation = 1, loop_list = self.listTransform )
+                    
+                    if self.error is None:
+                        if self.data_base[ 'print' ] is not None:
+                            self.list_of_values = self.data_base[ 'print' ]
+                            for i, value in enumerate( self.list_of_values ):
+                                if i < len( self.list_of_values ) - 1:
+                                    print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False, loop = True )
+                                else:
+                                    print_value.PRINT_PRINT( value, self.data_base ).PRINT_PRINT( key = False )  
+                        else:  pass
+                    else: pass
+                else: pass
             else:
+                # running functions
                 if   self.data_base[ 'current_func' ]  is not None:
                     self.newLine                    = self.line
                     self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine  ).GROUPBY(1, MainList)
@@ -224,6 +268,7 @@ class ASSEMBLY( ):
                     
                     self.error = def_interpreter.EXTERNAL_DEF_STATEMENT( None, self.data_base, self.newLine  ).DEF( tabulation = 1, 
                                                                         loop_list = self.listTransform )   
+                # runnnig classes
                 elif self.data_base[ 'current_class' ] is not None:
                     self.newLine                    = self.line
                     self.NewLIST                    = stdin.STDIN(self.data_base, self.newLine  ).GROUPBY(1, MainList)
@@ -235,6 +280,7 @@ class ASSEMBLY( ):
                                                                         loop_list = self.listTransform )
                     if self.error is None: pass
                     else: pass                    
+                # running modules importation 
                 elif self.data_base[ 'importation' ]   is not None:
                     self.newLine = self.line
                     self.modules = self.data_base[ 'importation' ] 

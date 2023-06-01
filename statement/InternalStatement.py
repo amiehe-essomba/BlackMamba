@@ -337,7 +337,7 @@ class INTERNAL_BLOCKS:
                             if self.normal_string[ -1 ] == ':':
                                 if self.normal_string[ 6 ] in [ ' ' ]:
                                     self._return_ = 'except:'
-                                    self.value, self.error = structure.STRUCT().EXCEPTIONS( normal_tring=self.normal_string,
+                                    self.value, self.error = structure.STRUCT(data_base=self.data_base, line=self.line).EXCEPTIONS( normal_string=self.normal_string,
                                                                             tabulation=self.tabulation, split=True)
                                 else:
                                     try:
