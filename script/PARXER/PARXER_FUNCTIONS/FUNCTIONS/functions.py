@@ -617,7 +617,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
         ############################################################################
         self.keyPass                = False
         ############################################################################
-        
+       
         for j, _string_ in enumerate( self.def_list ):
             if j != self.next_line:
                 self.if_line                         = 1

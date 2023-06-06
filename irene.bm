@@ -1,4 +1,4 @@
-from module ggplot load scatter, plot
+from module ggplot load scatter, plot, pie
 load module regression as R
 from module norm load StandardScaler 
 from module matrix load ones
@@ -47,7 +47,8 @@ color, Y, X = list( new_data.select(0)), Y.redim((-1,1)), X.redim((-1,1))
 
 X, Y =  StandardScaler(X), StandardScaler(Y)
 
-scatter(X=X, Y=Y, color=[color], s=50, col=None, label=[["Survived", "Dead"]])
+pie(data=[10, 5, 6], colnames=['A', 'B', "G"], box_loc=(0.5, 0.5, 0.5, 0.5), title="esso")
+#scatter(X=X, Y=Y, color=[color], s=50, col=None, label=[["Survived", "Dead"]])
 
 #print * all_data.get("keys") 
 #scatter(X=X, Y=Y, s=50, col=None,  label = [ ["iris"], ["predict"]], color = color, axes=[0,0,1], location=['LL', 'LR'])

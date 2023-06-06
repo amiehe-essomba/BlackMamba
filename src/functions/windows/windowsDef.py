@@ -745,7 +745,7 @@ class EXTERNAL_DEF_WINDOWS:
             except KeyboardInterrupt:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
-            except TypeError:
+            except EOFError:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
             

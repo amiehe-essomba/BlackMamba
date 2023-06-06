@@ -4,18 +4,18 @@ def case():
     
     return lower_case+upper_case+"_"
 
-def base(c : str = "", reset : str  =""):
+def base(c : str = "", reset : str  ="", key : str = ">>> ", active : bool = True):
     structure = {}
     ##############################################################################
-    # input initialized
-    input                                       = '{}{} {}'.format(c,  chr(9654)*3, reset)
-    # input main used to build the final string s
-    main_input                                  = '{}{} {}'.format(c, chr(9654)*3, reset)
+    if active is True:
+        # input initialized
+        input                                   = f'{c}{chr(9654)*3} {reset}'
+    else: input                                 = f'{c}{key}{reset}' 
     #size 
-    size                                        = len('>>> ')
+    size                                        = len(key)
     structure['size']                           = size
     structure['input']                          = ""
-    structure['main_input']                     = main_input
+    structure['main_input']                     = input
     ##############################################################################
     # string used for the code,
     structure['string']                         = ""

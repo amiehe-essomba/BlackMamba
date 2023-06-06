@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from src.ggplot import error as er
 from src.ggplot import dim
+import pandas as pd 
 
 def LAB(label : list, line : int, M : int):
     error = None 
@@ -291,21 +292,23 @@ def color_scatter_rebuild(color, N, line, M):
       
     return color, error 
 
-def pie_params(DATA, colname, groupby):
-    error = None
-    if type(colname) == type(str()):
-        if colname in list(DATA.keys()): DATA.groupby(groupby)[[colname]].sum()
-        else: pass 
-    else: 
-        for i, name in enumerate(colname):
-            if name in list(DATA.keys()): pass 
-            else :break
+def pie_params(DATA, colnames, line):
+    error, pie = None, None
+    if len(DATA) == len(colnames):
+        if DATA:
+            sum_ = 0
+            for i, val in enumerate(DATA):
+                try: sum_ += val
+                except TypeError: 
+                    error = er.ERRORS(line).ERROR23(f"data[{i}]")
+                    break
+            
+            if error is None: pie = pd.Series(data=DATA, index=colnames)
+            else: pass 
+        else: error = er.ERRORS(line).ERROR23("data")
+    else: error = er.ERRORS(line).ERROR24()
 
-        if not error:
-            DATA = DATA.groupby(groupby)[colname].sum()
-        else: pass 
-
-    return DATA 
+    return pie, error
 
 def AXES(axes : any, N : int = 0, line : int = 0):
     identical, error = [], None
@@ -459,22 +462,56 @@ class ggplot:
 
         return self.error 
     
-    def pie(self, DATA : any, groupby : str, colname : any, label : any="", title : str = "pie plot"):
+    def pie(self, DATA : list, colnames : any, loc : tuple = (), AX=None):
         def pct_t(pct, datasets):
-            try:
-                value = int(round(pct / np.sum(datasets)) ** 100.0)
-                return "{0:0.1f}".format(value, pct)
-            except ValueError: pass 
-
-        if groupby in list(DATA.keys()):
-            PIE, error = pie_params(DATA=DATA, colname=colname, groupby=groupby)
-            if error is None:
-                PIE.plot(kind='pie', autopct = lambda pct : pct_t(pct, PIE), textprops = dict(color="w"), label="")
-                plt.legend(bbox_to_anchor = (0.1, 0.1, 0.5, 0.5))
-                plt.title(title, fontsize="medium")
-                plt.show( )
+            value = int(round(pct / np.sum(datasets)) ** 100.0)
+            return "{0:0.1f}%".format(pct, value)
+        
+        def LOC(location, line):
+            e = None
+            if location:
+                if len(location) == 4:
+                    sum_ = 0.0
+                    
+                    for i, val in enumerate(location):
+                        try: sum_ += val
+                        except TypeError : 
+                            e = er.ERRORS(line).ERROR23(f"box_loc[{i}]")
+                            break 
+                else: e = er.ERRORS(line).ERROR25()
             else: pass 
+
+            return location, e
+
+        PIE, self.error = pie_params(DATA=DATA, colnames=colnames, line=self.line)
+        if self.error is None:
+            self.plot_style, self.error = plot_style(self.plot_style, self.line) 
+            if self.error is None:
+                plt.style.use(self.plot_style)
+                self.size_, self.error = figuresize(self.figsize, self.line)
+                if self.error is None:
+                    if AX is None:
+                        fig, axes = plt.subplots(1,1, figsize=self.size_)
+                    else: axes = AX
+                    PIE.plot(kind='pie', autopct = lambda pct : pct_t(pct, PIE), textprops = dict(color="w"), label="", ax=axes)
+                    bbox_to_anchor, self.error = LOC(loc, self.line)
+                    if self.error is None:
+                        if self.legend is True:
+                            if not self.title: 
+                                if bbox_to_anchor is None: pass 
+                                else: axes.legend(bbox_to_anchor = bbox_to_anchor) 
+                            else:
+                                if bbox_to_anchor is None: pass 
+                                else: axes.legend(title=self.title, bbox_to_anchor = bbox_to_anchor, fontsize="medium")
+                        else: pass
+                        if AX is None: plt.show( )
+                        else: pass
+                    else: pass 
+                else: pass
+            else: pass
         else: pass
+
+        return self.error
 
 def plot_scatter( all_value : dict, color : any, line : int = 0):
 

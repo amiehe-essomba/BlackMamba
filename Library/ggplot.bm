@@ -75,9 +75,22 @@ def multiplots(
 	pieplot		: dict none = None,
 	barplot     : dict none = None,
 	hisplot 	: dict none = None,
-	axes 		: list = [0]
+	axes 		: dict = {},
+	format      : tuple, none = None
 	):
 	return 10 
+end:
+
+def pie(
+	data 		: list ,
+	colnames 	: list,
+	box_loc 	: tuple none = None, 
+	title 		: string = "title",
+	legend 		: bool = True,
+	style 		: string = "ggplot",
+	figsize		: tuple = (6,6)
+	):
+	__scan__ * data, colnames, box_loc, title, legend, style, figsize, None, None, None, None, None, "pie"
 end:
 
 def save( name : string ):

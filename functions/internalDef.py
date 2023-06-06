@@ -140,10 +140,10 @@ class INTERNAL_BLOCKS:
                                         self.value = self.normal_string
                                 except IndexError: self.error = er.ERRORS(self.line).ERROR1('switch')
                         elif self.normal_string[: 3] == 'try'       :
-                            self._return_, self.value, self.error = structure.STRUCT().STRUCT(num=3,
+                            self._return_, self.value, self.error = structure.STRUCT(self.data_base, self.line).STRUCT(num=3,
                                                                                               normal_string=self.normal_string)
                         elif self.normal_string[: 5] == 'begin'     :
-                            self._return_, self.value, self.error = structure.STRUCT().STRUCT(num=5,
+                            self._return_, self.value, self.error = structure.STRUCT(self.data_base, self.line).STRUCT(num=5,
                                                                                               normal_string=self.normal_string)
                         elif self.normal_string[: 3] == 'def'       :
                             if self.normal_string[ 3 ] == ' ':

@@ -659,7 +659,7 @@ class C_F_I_S:
                                             hide  = self._values_[4]
                                             c =  scan.colors(cc=self._values_[2], blink=blink).color()
                                             self.final_value, self.error = scan.scan(self.data_base, 
-                                                self.line).STR(key=self._values_[0], terminal_name=self._values_[1], c=c, blink=blink, hide=hide)
+                                                self.line).STR(key=self._values_[0], terminal_name=self._values_[1], c=c, hide=hide)
                                         else: self.error = er.ERRORS( self.line ).ERROR38( func, _colors_ )
                                     else: self.error = er.ERRORS( self.line ).ERROR37(func )
                                 else: self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )
@@ -686,6 +686,11 @@ class C_F_I_S:
                                         self.error = plot.ggplot(line=self.line, xlab=xlab, ylab=ylab, figsize=figsize,
                                                 legend=legend, title=" ", plot_style=ps).scatter(X=X, Y=Y, color=c, size=s, label=label,
                                                 marker = marker, rest=rest)
+                                    elif typ == "pie":
+                                        data, colnames, box_loc, title, legend, style, figsize, *rest, typ = self._values_
+                                        self.error = plot.ggplot(line=self.line, xlab=None, ylab=None, figsize=figsize,
+                                                legend=legend, title=title, plot_style=style).pie(DATA=data, colnames=colnames,
+                                                                        loc=box_loc)
                                     else: pass
                             else: pass
                         else:self.error = er.ERRORS( self.line ).ERROR4( self.normal_string )

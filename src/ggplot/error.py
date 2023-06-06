@@ -147,6 +147,25 @@ class ERRORS:
         self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}{} '.format(self.green, string2) + error
         return self.error+self.reset
     
+    def ERROR23(self,  string = ""): 
+        error = '{}is not a {}numerical  {}value. {}line: {}{}.'.format(self.white, self.red, self.white,
+           self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'TypeError' ).Errors()+'{}{} '.format(self.green, string) + error
+        return self.error+self.reset
+    
+    def ERROR24(self,  string = "data & colnames"): 
+        error = '{}have not the same {}size. {}line: {}{}.'.format(self.white, self.red,
+           self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+'{}{} '.format(self.magenta, string) + error
+        return self.error+self.reset
+    
+    def ERROR25(self,  string = "box_loc"): 
+        error = ' {}length( {} ) {}!= {}4. {}line: {}{}.'.format(self.red, string, self.white, self.green,
+           self.white, self.yellow, self.line)
+        self.error =  fe.FileErrors( 'ValueError' ).Errors()+ error
+        return self.error+self.reset
+    
+    
    
 
 

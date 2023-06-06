@@ -1,4 +1,4 @@
-############################################################
+#############################################################
 #############################################################
 # Black Mamba orion and pegasus code iditor for Windows     #
 # This version has currently two code iditors:              #
@@ -6,153 +6,345 @@
 #                                                           #
 # * pegasus is the default editor                           #
 # * orion is the optimized code editor with a syntaxis      #
-#   color                                                   #
+# * coloration                                              #
 # basically we can use both without any problems because    #
 # they work very well.                                      #
 #                                                           #
 #                                                           #
-# * to select a terminal it's very simple, just do this     #
+# * To select a terminal it's very simple, just do this     #
 #                                                           #
 #       * mamba --T orion                                   #
 #       * mamba --T pegasus                                 #
 #############################################################
-############################################
-# **created by : amiehe-essomba            #
-# **updating by: amiehe-essomba            #
-# ** copyright 2023 amiehe-essomba         #         
-############################################
+############################################                #
+# ** created by : amiehe-essomba           #                #
+# ** updated by: amiehe-essomba            #                #
+# ** copyright 2023 amiehe-essomba         #                #
+############################################                #
 #############################################################
 
 
-import sys
-from script                                                 import control_string
-from script.STDIN.LinuxSTDIN                                import bm_configure     as bm
-from script.PARXER.PARXER_FUNCTIONS._IF_                    import IfError
+import sys, os 
+from windows                    import data
+from script                     import control_string
+from windows                    import screenConfig, buildString
+from ctypes                     import windll
+from IDE.EDITOR                 import string_to_chr 
+from script.STDIN.LinuxSTDIN    import bm_configure                 as bm
+from IDE.EDITOR                 import pull_editor                  as PE
+from windows                    import traceback                    as TB
+from script.PARXER.WINParxer    import parxer
+from script.LEXER.FUNCTION      import main
 
-class windows:
-    def __init__(self, data_base : dict):
+
+def write(terminal_name='pegasus', string = "", decorator = "", color = "", reset = '', show = False):
+    if terminal_name == 'orion':
+        # key word activation
+        newString = decorator + bm.string().syntax_highlight( name=bm.words(string=string, color= color).final() )
+        if show is False: sys.stdout.write( newString ) 
+        else : print(newString)
+    else:
+        # any activation keyword
+        newString = decorator +  color+ string + reset
+        if show is False: sys.stdout.write(newString)
+        else: print(newString)
+ 
+def re_write(terminal : str, indicator: int, Data : dict,  color : str ="", x : int = 0, y: int=0):
+    if indicator not in {65, 66}:
+        # moving cursor left 
+        if indicator != 14:
+            sys.stdout.write( bm.move_cursor.UP( pos= 1) + 
+            bm.move_cursor.LEFT( pos = 1000 ) )
+        else: sys.stdout.write( bm.move_cursor.LEFT( pos = 1000 ) )
+        # erasing entire line 
+        sys.stdout.write( bm.clear.line( pos = 2 ) )
+        # writing string 
+        write(terminal, Data['input'], Data['main_input'], color, bm.init.reset)
+        # move cusror on left egain
+    else: pass
+            
+class scan:
+    def __init__(self, data_base : dict = {}, line : int = 0):
         # main data base
-        self.data_base  = data_base
-        # string module analyses 
-        self.analyse    = control_string.STRING_ANALYSE(self.data_base, 1)
+        self.data_base                      = data_base
+        self.line                           = line
+        # contriling string
+        self.analyse                        = control_string.STRING_ANALYSE(self.data_base, 1)
+        
+    def STR(self, c: str = '', terminal_name : str = 'pegasus', key: str = '', hide:bool=False):
+        if hide == True: self.hide = bm.init.hide
+        else: self.hide = ""
 
-    def terminal(self, c: str = '', terminal_name : str = 'pegasus'):
-        # input initialization
-        self.input      = '{}>>>{} {}'.format(bm.fg.yellow_L, c, bm.init.reset)
-        # root of input 
-        self.main_input = '{}>>>{} {}'.format(bm.fg.yellow_L, c, bm.init.reset)
-        # lenght of the root 
-        self.length     = len(self.input)
-        # index initialization 
-        self.index      = self.length
-        # sub length initialization 
-        self.sub_length = len('{}{}{}'.format(bm.fg.yellow_L, c, bm.init.reset))
-        # index char in Input 
-        self.Index      = 0      
-        # line        
-        self.line       = 0    
-        # key         
-        self.key        = False  
-        # String used in BM for calculations        
-        self.mainString = ''      
-        # String index      
-        self.mainIndex  = 0    
-        # save cursor position          
-        self.cursor     = []
-        # false if clean line is not activated else true
-        self.clear_line = False         
-        
-        # write input initialized 
-        sys.stdout.write(bm.string().syntax_highlight(name=self.input))
-        #flush 
+        # reset color
+        self.reset                          = bm.init.reset
+        # initialization of data 
+        self.Data                           = data.base(c=c, reset=self.reset, key=key, active=False)
+        # getting max size (max_x, max_y) of the window 
+        self.max_x, self.max_y              = screenConfig.cursorMax()
+        # when Ctrl+ option are used 
+        self.indicator                      = None
+        # fixing the x-axis border 
+        self.border_x_limit                 = True 
+        # scroll list size 
+        self.scroll_size                    = 11
+        # story
+        self.histoty_tracback               = {
+            'TrueFileNames'                 : None,
+            "all_modules_load"              : None,
+            "modules"                       : None
+        }
+        self.error                          = None
+        ##########################################################################
+        k  = windll.kernel32
+        k.SetConsoleMode( k.GetStdHandle( -11 ), 7)
+        # clear entire line
+        sys.stdout.write( bm.clear.line(pos = 0) )
+        # move cursor left
+        sys.stdout.write( bm.move_cursor.LEFT(pos = 1000) )
+        # print the input value
+        sys.stdout.write( self.Data['main_input'] )
+        # getting the cursor coordiantes (x, y)
+        self.X, self.y                      = screenConfig.cursor()
         sys.stdout.flush()
-        
+        ###########################################################
+        self.move                   = bm.move_cursor
+        self.clear                  = bm.clear 
+        self.bold                   = bm.init.bold
+        self.color                  = self.hide + self.bold + bm.fg.rbg(255, 255, 255)
+        self.x                      = self.Data['size']+1
+        sys.stdout.write(self.move.TO(self.x, self.y))
+        # flush
+        sys.stdout.flush()
+        ###########################################################
+        # Y_max 
+        self.max_size_init          = 11 
+        # save cursor line 
+        self.save_cursor_position   = bm.save.save
+        # indictor position initialization 
+        self.indicator_pos          = 0
+        # indicator_max 
+        self.indicator_max          = 1
+        # checking if key_max_activation could be activated  for handling terminal tools
+        self.key_max_activation     = True 
+        # self.index and self.if_line 
+        self.index, self.if_line    = 0, 0 
+        # mystring 
+        self.STRING = ""
+        ###########################################################
+
         while True:
             try:
-                # get an input 
-                self.char = bm.read().readchar()
-                #print(self.char)
-                if self.char not in {10, 13}:
-                    # clear entire line
-                    if self.char == 12:
-                        # move cursor left 
-                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                        # clear entire line 
-                        sys.stdout.write(bm.clear.line(pos=2))
-                        # write input
-                        sys.stdout.write(self.main_input)
-                        #move cursor left again
-                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                # get windows (max_x, max_y) at each time 
+                self.max_x, self.max_y              = screenConfig.cursorMax()
+                # get user input, char is a list of two dimensional
+                self.char = string_to_chr.convert()
+                if self.char:
+                    _ = self.char[1]
+                    self.char = self.char[0]
+                    if self.char is not None:
+                    
+                        # breaking loop while with the keyboardError ctrl+c
+                        if self.char == 3               :
+                            self.error = bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
+                            break
                         
-                        # block init
-                        self.input      = self.main_input
-                        self.index      = self.length
-                        self.key        = False
-                        self.mainString = ''
-                        self.mainIndex  = 0
-                        self.clear_line = True
-                    # clear entire screen
-                    elif self.char == 19:
-                        #os.system('cls')
-                        sys.stdout.write(bm.clear.screen(pos=2))
-                        sys.stdout.write(bm.save.restore)
-                    # write char
-                    else:
-                        self.input       = self.input[ : self.index ] + chr( self.char ) + self.input[ self.index : ]
-                        self.mainString  = self.mainString[ : self.mainIndex ] + chr( self.char ) + self.mainString[ self.mainIndex : ]
-                        self.index       += 1
-                        self.mainIndex   += 1
-                    
-                elif self.char in {10, 13}:  # enter
-                    self.line += 1
-                    sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                    
-                    ####################################################################
-                    if terminal_name == 'orion':
-                        # Syntaxis color 
-                        self.input = self.input[: self.length] + bm.init.bold + bm.words(string=self.mainString, color=bm.fg.rbg(255, 255, 255)).final()
-                        # write the new string
-                        sys.stdout.write(self.input)
-                        break
-                    else:
-                        # write the new string
-                        self.input = self.input[: self.length] + bm.init.bold+bm.fg.rbg(255, 255, 255)+self.mainString+bm.init.reset
-                        sys.stdout.write(self.input)
-                        break
-                # tabular
-                elif self.char == 9:  
-                    self.tabular = '\t'
-                    self.input = self.input[: self.index] + self.tabular + self.input[self.index:]
-                    self.index += 1
-                                        
-                # moving cursor left
-                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
-                # clear line 
-                sys.stdout.write(bm.clear.line(pos=0))
-                # write string
-                if terminal_name == "pegasus":
-                    sys.stdout.write(bm.string().syntax_highlight(name=self.input))
-                else: sys.stdout.write(self.main_input+bm.string().syntax_highlight( bm.words(string=self.mainString, color=bm.fg.white_L).final() ))
-                # move cusor left again 
-                sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+                        # indentation Tab
+                        elif self.char == 9             :
+                            if  self.x < (self.max_x - 4) :  
+                                self.tt                  = ' ' * 4
+                                self.Data['string']      =  self.Data['string'][ : self.Data["I_S"] ] + chr( self.char ) + self.Data['string'][ self.Data["I_S"] : ]
+                                self.Data['input']       =  self.Data['input'][ : self.Data["index"] ] + str( self.tt ) + self.Data['input'][ self.Data["index"] : ]
+                                self.Data['index']      += 4
+                                self.Data['I_S']        += 1
+                                self.x                  += 4
+                                self.Data['get'].append([1 for x in range(4)])
+                            else: pass 
 
-                # updating cursor position on the line 
-                if self.index > 0:  sys.stdout.write(bm.move_cursor.RIGHT(self.index - self.sub_length))
-                else:   pass
+                        # writing char
+                        elif 32 <= self.char <= 126     :
+                            ##################################################
+                            # each character has 1 as length                 #
+                            # have a look on ansi char                       #
+                            # https://en.wikipedia.org/wiki/ANSI_escape_code #
+                            ##################################################
+                            if self.border_x_limit is True: 
+                                # building string
+                                self.Data['string']         = self.Data['string'][ : self.Data['I_S']] + chr( self.char ) + \
+                                            self.Data['string'][ self.Data['I_S'] : ]
+                                # building input
+                                self.Data['input']          = self.Data['input'][ : self.Data['index']] + chr( self.char ) + \
+                                            self.Data['input'][ self.Data['index'] : ]
+                                # increasing index of a step = 1
+                                self.Data['index']          += 1
+                                # increasing I_S of step = 1
+                                self.Data['I_S']            += 1
+                                # storing char in get
+                                self.Data['get'].append(1)
+                                # increase cursor position of +1
+                                self.x                      += 1
 
-                # flush
-                sys.stdout.flush()
-                   
-            #keyboardInterrupt
+                                # fixing the cursor position conditions
+                                if self.x < self.max_x : self.border_x_limit = True 
+                                else: self.border_x_limit = False 
+                            else: pass 
+
+                        # delecting char <backspace>
+                        elif self.char in {127, 8}      :
+                            if self.x > ( self.Data['size'] + 1):#self.Data['get']:
+                                self.Data['string']         =  self.Data['string'][ : self.Data["I_S"] - 1] + self.Data['string'][ self.Data["I_S"] : ]
+                                self.Data['I_S']           -= 1
+                                if type( self.Data['get'][self.Data['I_S']] ) == type(list()):
+                                    self.Data['input']      =  self.Data['input'][ : self.Data["index"] - 4] + self.Data['input'][ self.Data["index"] : ]
+                                    self.x                 -= 4
+                                    self.Data['index']     -= 4
+                                else:
+                                    self.Data['input']      =  self.Data['input'][ : self.Data["index"] - 1] + self.Data['input'][ self.Data["index"] : ]
+                                    self.x                 -= 1
+                                    self.Data['index']     -= 1
+                                
+                                del self.Data['get'][self.Data['I_S']]
+                            else: pass
+                        
+                        # moving cursor (up, down, left, right)
+                        elif self.char == 27            :
+                            if type(_) is type(list()): next1 = _[0]
+                            else: next1 = _
+                            
+                            if next1 in {68, 67, 66, 65, 49} :
+                                # move left 
+                                if   next1 == 68:
+                                    if self.Data['I_S'] > 0:
+                                        try:
+                                            self.Data['I_S']        -= 1
+                                            if type(self.Data['get'][self.Data['I_S']]) == type(list()):
+                                                self.x              -= 4
+                                                self.Data['index']  -= 4
+                                            else:
+                                                self.x              -= 1
+                                                self.Data['index']  -= 1
+                                        except IndexError : pass
+                                    else: pass
+                                # move right
+                                elif next1 == 67:
+                                    if self.x <=  (self.Data['size'] + len(self.Data['input'])):  
+                                        try:
+                                            if type(self.Data['get'][self.Data['I_S']]) == type(list()):
+                                                self.x              += 4
+                                                self.Data['index']  += 4
+                                            else:
+                                                self.x              += 1
+                                                self.Data['index']  += 1
+                                            self.Data['I_S']        += 1
+                                        except IndexError: pass
+                                    else: pass 
+                                # get the previous value stored in the list
+                                elif next1 == 65:  # up
+                                    if self.Data['liste']:
+                                        try: 
+                                            if self.index > 0 :
+                                                self.index                 -= 1
+                                                self.Data['input']          = self.Data['liste'][self.index]
+                                                self.Data['string']         = self.Data['string_tabular'][self.index]
+                                                self.Data['index']          = self.Data['tabular'][self.index]
+                                                self.Data['I_S']            = self.Data['string_tab'][self.index]
+                                                self.Data['get']            = self.Data['memory'][self.index].copy()
+                                                self.x, self.Y              = self.Data['x_y'][self.index]
+                                            else: pass
+                                        except IndexError : pass 
+                                    else: pass 
+                                else: pass 
+                            elif next1 is None: pass
+                            else: pass 
+
+                            next1, next2, next3, next4, next5 = 0, 0, 0, 0, 0
+
+                        # clear entire string ctrl+l
+                        elif self.char == 12            :
+                            # move cursor left
+                            sys.stdout.write(self.move.LEFT( pos = 1000 ))
+                            # clear entire line
+                            sys.stdout.write(self.clear.line( pos = 0 ))
+                           
+                            # initialization block
+                            self.x                   = self.Data['size'] + 1
+                            self.Data['string']      = ""
+                            self.Data['input']       = ""
+                            self.Data['get']         = []
+                            self.Data["I_S"]         = 0
+                            self.Data["index"]       = 0
+                          
+                        # move cursor at end of line ctrl+d
+                        elif self.char == 4             :
+                            self.Data['I_S']        = len(self.Data['string'])
+                            self.Data['index']      = len(self.Data['input'])
+                            self.x                  = len(self.Data['input']) + self.Data['size'] + 1
+
+                        # move cursor at the beginning of line ctrl+q
+                        elif self.char in{1, 17}        : 
+                            self.Data['I_S']        = 0
+                            self.Data['index']      = 0
+                            self.x                  = self.Data['size'] + 1
+                               
+                        # End-Of-File Error ctrl+z
+                        elif self.char == 26            :
+                            sys.stdout.write(self.clear.screen(pos=1))
+                            sys.stdout.write(self.move.TO(0,0))
+                            sys.stdout.write(self.clear.screen(pos=0))
+                            sys.stdout.write(self.move.DOWN(pos=1))
+                            sys.stdout.write(self.move.LEFT(pos=1000))
+                            sys.stdout.write(self.clear.line(pos=0))
+                            self.error = bm.bg.red_L + bm.fg.white_L + "EOFError" + bm.init.reset
+                            return
+                        
+                        # enter is pressed 
+                        elif self.char in {10, 13}      :
+                            # moving cursor left 
+                            sys.stdout.write( self.move.LEFT( pos = 1000 ) )
+                            # erasing entire line 
+                            sys.stdout.write( self.clear.line( pos = 2 ) )
+                            #####################################################################################
+                            self.STRING              = self.Data['liste'][self.if_line-1]
+                            #####################################################################################
+                            break
+                        
+                        else: pass 
+
+                        # checking windows dimension 
+                    
+                        # moving cursor left 
+                        sys.stdout.write( self.move.LEFT( pos = 1000 ) )
+                        # erasing entire line 
+                        sys.stdout.write( self.clear.line( pos = 2 ) )
+                        # writing string 
+                        write(terminal_name, self.Data['input'], self.Data['main_input'], self.color, self.reset)
+                        # move cusror on left egain
+                        sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+
+                        # replace the cussor 
+                        sys.stdout.write(self.move.TO(self.x, self.y) ) 
+                        sys.stdout.flush()
+                    
+                        #############################################################################
+                        ################### Updating the data stored in each lists  #################
+                        self.Data['x_y'][self.if_line]              = (self.x, self.y)
+                        self.Data['string_tabular'][self.if_line]   = self.Data['string']
+                        self.Data['string_tab'][self.if_line]       = self.Data['I_S']
+                        self.Data['liste'][self.if_line]            = self.Data['input']   
+                        self.Data['tabular'][self.if_line]          = self.Data['index'] 
+                        self.Data['memory'][self.if_line]           = self.Data['get'].copy() 
+                        #############################################################################
+                    else: pass
+                else: pass
             except KeyboardInterrupt:
-                self.error = IfError.ERRORS(self.if_line).ERROR4()
-                break
-            # EOF
-            except TypeError:
-                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                self.error= bm.bg.red_L + bm.fg.white_L + "KeyboardInterrupt" + bm.init.reset
                 break
             
-        return self.mainString, self.error 
+            except EOFError:
+                self.self.error = bm.bg.red_L + bm.fg.rbg(255,255,255) + "EOFError" + bm.init.reset
+                break
+        
+        return self.STRING, self.error
+    
     
 class colors:
     def __init__(self, cc: str, blink : bool = False):
