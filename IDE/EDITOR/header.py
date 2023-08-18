@@ -44,7 +44,7 @@ def header(string : str = 'Windows Version', terminal = 'orion terminal'):
 	l4 		= m-len("For more informations run:")
 
 	sec1 	= bold+w+'[ '+g+string+ w+' ]'+ r+" and "+w+'[ '+c+terminal+w+' ]'+re
-	sec2 	= bold+ma+'-Version 23.03.11.- '+w+chr(169)+c +' MIT License'+re
+	sec2 	= bold+ma+'--version 3.0.01--  '+w+chr(169)+c +' MIT License'+re
 	sec3 	= bold+w+f"{chr(9989)} For more informations,run:"+re
 	sec4 	= bold+w+f"{chr(9654)} help( " + r+"arg"+w+" )"+re
 	sec5 	= bold+w+f"{chr(9654)} License( )"+re

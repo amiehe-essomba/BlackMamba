@@ -7,7 +7,8 @@ from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch
 from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile      as WWh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import subWindowsFor     as sWFor
-from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import subWinTry         as swTry
+from script.LEXER.FUNCTION                                  import main
+from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import WindowsTry        as wTry
 from script.PARXER.PARXER_FUNCTIONS._TRY_                   import tryError          as TE
 from statement                                              import externalTry 
 
@@ -47,7 +48,8 @@ class EXTERNAL_TRY:
             tabulation  : int = 1,
             _type_      : str = 'try',
             c           : str = '',
-            term        : str = '' 
+            term        : str = '',
+            callbacks   :  dict = {}
             ):
         
         self.error                  = None
@@ -57,7 +59,7 @@ class EXTERNAL_TRY:
         self.tabulation             = tabulation
         self.max_emtyLine           = 5
         self.try_cancel             = False
-        
+        self.if_line                = 0 
         ############################################################################
         self.index_finally          = self.try_block['index_finally']
         self.locked_error           = self.try_block['locked_error']
@@ -101,8 +103,9 @@ class EXTERNAL_TRY:
                             self.store_value.append( self.normal_string )
                             self.loop.append( (self.normal_string, True ) )
 
-                            self._values, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
-                               bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+                            self._values, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.line, 
+                                        term=term ).TERMINAL( bool_value= self.value, 
+                                        tabulation=self.tabulation + 1, _type_ = _type_, c=c, callbacks=callbacks )
 
                             if self.error is None:
                                 self.history.append( 'if' )
@@ -114,8 +117,10 @@ class EXTERNAL_TRY:
                             self.store_value.append( self.normal_string )
                             self.loop.append( (self.normal_string, True) )
 
-                            self._values, self.error = swTry.INTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.line, term=term ).TERMINAL(
-                               tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+                            self._values, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, 
+                                        line=self.line, term=term ).TERMINAL(
+                                        tabulation=self.tabulation + 1, _type_ = _type_,
+                                        c=c, callbacks=callbacks )
                             if self.error is None:
                                 self.history.append( 'unless' )
                                 self.space = 0
@@ -127,7 +132,8 @@ class EXTERNAL_TRY:
                             self.loop.append((self.normal_string, True))
 
                             self._values, self.error  = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.line, 
-                                    term=term ).TERMINAL(  bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+                                    term=term ).TERMINAL(  bool_value= self.value, tabulation=self.tabulation + 1, 
+                                    _type_ = _type_, c=c, callbacks=callbacks )
 
                             if self.error is None:
                                 self.history.append( 'unless' )
@@ -160,8 +166,10 @@ class EXTERNAL_TRY:
                         # while loop
                         elif self.get_block == 'while:' :
                             self.loop.append((self.normal_string, True))
-                            self._values, self.error  = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
-                                            bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c)
+                            self._values, self.error  = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base, 
+                                            line=self.if_line, term=term ).TERMINAL(
+                                            bool_value= self.value, tabulation=self.tabulation + 1, 
+                                            _type_ = _type_, c=c, callbacks=callbacks)
                             
                             if self.error is None:
                                 self.history.append( 'while' )
@@ -180,7 +188,12 @@ class EXTERNAL_TRY:
                         elif self.get_block == 'any'     :
                             self.store_value.append(self.normal_string)
                             self.space = 0
-                            self.loop.append( (self.normal_string, True) )
+                            self.error      = main.SCANNER(master=self.value,data_base=self.data_base,
+                                                        line=self.if_line).SCANNER(_id_ = 1, _type_= _type_, _key_=True)
+                            if self.error is None: self.loop.append( (self.normal_string, True) )
+                            else: break
+
+                            #self.loop.append( (self.normal_string, True) )
                     else:  break
                 else:
                     self.get_block, self.value, self.error = externalTry.EXTERNAL_BLOCKS(string=self.string, normal_string=self.normal_string, 
@@ -323,5 +336,5 @@ class EXTERNAL_TRY:
         self.try_block['except_key']            = self.except_key
         self.try_block['active_calculations']   = self.active_calculations
         #############################################################################            
-    
+
         return self.loop,  self.try_cancel, self.error

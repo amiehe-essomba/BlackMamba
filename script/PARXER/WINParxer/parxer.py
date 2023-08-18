@@ -42,7 +42,8 @@ class ASSEMBLY( ):
             main_string     : str,              # main string 
             interpreter     : bool  = False,    # interpreter is activated
             term            : str   = '',       # terminal type
-            traceback       : dict  = {}
+            traceback       : dict  = {},       # trace back for modules loaded
+            callbacks       : dict  = {}        # history of callbacks
             ):
         
         # value to return 
@@ -87,7 +88,7 @@ class ASSEMBLY( ):
                     # running if IDE
                     self.listTransform, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base,
                                     line=self.newLine, term=term).TERMINAL(bool_value = self._return_, tabulation=1, _type_='conditional',
-                                    c = bm.fg.rbg(255,255,255) )
+                                    c = bm.fg.rbg(255,255,255), callbacks=callbacks )
 
                     if self.error is None:
                         # runnnig the interpreter 
@@ -117,7 +118,7 @@ class ASSEMBLY( ):
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.error = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base,
                                     line=self.newLine, term=term).TERMINAL(bool_value = self._return_,
-                                    tabulation=1, _type_='conditional', c = bm.fg.rbg(255,255,255) )
+                                    tabulation=1, _type_='conditional', c = bm.fg.rbg(255,255,255), callbacks=callbacks )
                     if self.error is None:
                         self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( None , self.data_base,
                                             self.newLine ).UNLESS_STATEMENT( self._return_, 1, self.listTransform )
@@ -143,7 +144,7 @@ class ASSEMBLY( ):
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.error = WSw.EXTERNAL_SWITCH_WINDOWS(data_base=self.data_base,
                                     line=self.newLine, term=term).TERMINAL(bool_value = self._return_,
-                                    tabulation=1, _type_='conditional',  c = bm.fg.rbg(255,255,255) )
+                                    tabulation=1, _type_='conditional',  c = bm.fg.rbg(255,255,255), callbacks=callbacks )
                     if self.error is None:
                         self.error = switch_statement.SWITCH_LOOP_STATEMENT( None , self.data_base,
                                             self.newLine ).SWITCH( self._return_, 1, self.listTransform )
@@ -208,7 +209,7 @@ class ASSEMBLY( ):
                     self.data_base[ 'print' ] = []
                     self.listTransform, self.error = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base,
                                     line=self.line, term=term).TERMINAL(bool_value = self._return_, tabulation=1, _type_='loop',
-                                    c = bm.fg.rbg(255,255,255) )
+                                    c = bm.fg.rbg(255,255,255), callbacks=callbacks )
 
                     if self.error is None:
                         self.newLine                    = self.line 
@@ -242,8 +243,8 @@ class ASSEMBLY( ):
             elif self.master[ 'try' ] is True:
                 self.data_base[ 'print' ] = []
                 self.newLine                    = self.line 
-                self.listTransform, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.newLine, term=term ).TERMINAL(
-                               tabulation=1, _type_ = 'try', c=bm.fg.rbg(255,255,255) )
+                self.listTransform, self.error = wTry.EXTERNAL_TRY_WINDOWS(data_base=self.data_base, line=self.newLine, 
+                                term=term ).TERMINAL(tabulation=1, _type_ = 'try', c=bm.fg.rbg(255,255,255), callbacks=callbacks )
                 if self.error is None:
                     self._finally_key_, self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT(None,
                                                         self.data_base, self.newLine ).TRY_STATEMENT(1, self.listTransform)

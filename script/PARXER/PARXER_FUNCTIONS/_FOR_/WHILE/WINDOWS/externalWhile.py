@@ -6,7 +6,7 @@ from statement.comment                                      import externalCmt
 from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless        as wU
 from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF            as wIF
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch        as WSw
-from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import subWindowsWhile      as subWWh
+from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile         as wwh
 from script.PARXER.PARXER_FUNCTIONS._FOR_.TRY.WIN           import WindowsTry           as wTry
 from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS     import begin
 from script.PARXER.PARXER_FUNCTIONS._FOR_.FOR.WIN           import subWindowsFor        as sWFor
@@ -45,7 +45,8 @@ class EXTERNAL_WHILE:
                     tabulation  : int = 1,
                     _type_      : str = 'loop',
                     c           : str = '',
-                    term        : str = ''
+                    term        : str = '',
+                    callbacks   : dict= {}
                     ):
         
         ############################################################################
@@ -95,8 +96,10 @@ class EXTERNAL_WHILE:
                         elif self.get_block == 'if:'     :
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
-                            self._values_, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
-                                            bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c)
+                            self._values_, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, 
+                                            line=self.if_line, term=term ).TERMINAL(
+                                            bool_value= self.value, tabulation=self.tabulation + 1, 
+                                            _type_ = _type_, c=c, callbacks=callbacks)
                             
                             if self.error is None:
                                 self.history.append('if')
@@ -108,15 +111,16 @@ class EXTERNAL_WHILE:
                         elif self.get_block == 'while:'  :
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
-                            self._values_, self.error = subWWh.INTERNAL_WHILE_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
-                                            bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c)
+                            self._values_, self.error = wwh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base, 
+                                            line=self.if_line, term=term ).TERMINAL(
+                                            bool_value= self.value, tabulation=self.tabulation + 1, 
+                                            _type_ = _type_, c=c, callbacks=callbacks)
 
                             if self.error is None:
                                 self.history.append('while')
                                 self.space = 0
                                 self.loop.append( self._values_ )
-
-                            else:  break
+                            else: break
                         # try block
                         elif self.get_block == 'try:'    :
                             self.store_value.append(self.normal_string)
@@ -136,14 +140,15 @@ class EXTERNAL_WHILE:
                             self.store_value.append(self.normal_string)
                             self.loop.append((self.normal_string, True))
                             # calling unless modules
-                            self._values_, self.error = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
-                                    bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+                            self._values_, self.error = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, 
+                                    line=self.if_line, term=term ).TERMINAL(
+                                    bool_value= self.value, tabulation=self.tabulation + 1, 
+                                    _type_ = _type_, c=c , callbacks=callbacks)
                             
                             if self.error is None:
                                 self.history.append( 'unless' )
                                 self.space = 0
                                 self.loop.append( self._values_ )
-
                             else:  break
                         # for loop
                         elif self.get_block == 'for:'    :

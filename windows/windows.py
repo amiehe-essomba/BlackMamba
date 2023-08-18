@@ -85,7 +85,7 @@ class IDE:
         # reset color
         self.reset                          = bm.init.reset
         # initialization of data 
-        self.Data                           = data.base(c=c, reset=self.reset)
+        self.Data                           = data.base(c=c, reset=self.reset, tab=0)
         # getting max size (max_x, max_y) of the window 
         self.max_x, self.max_y              = screenConfig.cursorMax()
         # when Ctrl+ option are used 
@@ -113,7 +113,7 @@ class IDE:
         # getting the cursor coordiantes (x, y)
         self.X, self.y                      = screenConfig.cursor()
         sys.stdout.flush()
-        ###########################################################
+        ##########################################################################
         self.move                   = bm.move_cursor
         self.clear                  = bm.clear 
         self.bold                   = bm.init.bold
@@ -122,7 +122,7 @@ class IDE:
         sys.stdout.write(self.move.TO(self.x, self.y))
         # flush
         sys.stdout.flush()
-        ###########################################################
+        ##########################################################################
         # Y_max 
         self.max_size_init          = 11 
         # save cursor line 
@@ -135,7 +135,7 @@ class IDE:
         self.key_max_activation     = True 
         # self.index and self.if_line 
         self.index, self.if_line    = 0, 0 
-        ###########################################################
+        ##########################################################################
 
         while True:
             try:
@@ -147,7 +147,6 @@ class IDE:
                     _ = self.char[1]
                     self.char = self.char[0]
                     if self.char is not None:
-                    
                         # breaking loop while with the keyboardError ctrl+c
                         if self.char == 3               :
                             os.system('cls')
@@ -337,7 +336,7 @@ class IDE:
                             self.Data['index']      = 0
                             self.x                  = self.Data['size'] + 1
                         
-                        # <crtl+g> or <ctrl + n> 
+                        # <crtl+t> or <ctrl + n> 
                         elif self.char in {20, 14}      : 
                             self.indicator = self.char 
                         
@@ -388,7 +387,8 @@ class IDE:
                                             line=self.if_line).GLOBAL_ASSEMBLY(
                                                         main_string=self.normal_string, 
                                                         interpreter = False, term=terminal_name, 
-                                                        traceback=self.histoty_tracback
+                                                        traceback=self.histoty_tracback,
+                                                        callbacks = self.Data.copy()
                                             )
                                        
                                         if self.error is None: pass 
@@ -408,12 +408,12 @@ class IDE:
                             # initializing all variables
                             self.if_line            += 1 
                             self.X, self.y           = screenConfig.cursor()
-                            self.x                   = self.Data['size'] + 1
+                            self.x                   = self.Data['size'] + 1  
                             self.Data['string']      = ""
-                            self.Data['input']       = ""
+                            self.Data['input']       = "" 
                             self.Data['get']         = []
-                            self.Data["I_S"]         = 0
-                            self.Data["index"]       = 0
+                            self.Data["I_S"]         = 0 
+                            self.Data["index"]       = 0 
                             self.index               = self.if_line
                             self.error               = None
                             #####################################################################################
@@ -429,10 +429,8 @@ class IDE:
                             self.indicator_max      = 1
                             self.scroll_size        = 11
                             #####################################################################################
-                        
                         else: pass 
 
-                        
                         if self.border_x_limit is True  :
                             self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = buildString.string( 
                                                     self.Data['input'], self.Data['index']-1 )

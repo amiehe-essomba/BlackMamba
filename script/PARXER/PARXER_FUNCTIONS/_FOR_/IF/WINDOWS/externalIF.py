@@ -3,7 +3,7 @@ from statement                                              import InternalState
 from statement                                              import externalIF           as eIF
 from script.PARXER.PARXER_FUNCTIONS._IF_                    import IfError
 from script.LEXER.FUNCTION                                  import main
-from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import subWindowsIF             as swIF
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS        import WindowsIF            as wIF
 from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS            import WindowsUnless        as wU
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch        as WSw
 from script.PARXER.PARXER_FUNCTIONS._FOR_.WHILE.WINDOWS     import WindowsWhile         as WWh
@@ -45,7 +45,8 @@ class EXTERNAL_IF:
             tabulation  : int = 1,
             _type_      : str = 'conditional',
             c           : str = '',
-            term        : str = ''
+            term        : str = '',
+            callbacks   : dict = {}
             ) -> tuple:
         """
         :param bool_value:
@@ -100,8 +101,10 @@ class EXTERNAL_IF:
                         elif self.get_block == 'if:'     :
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
-                            self._values_, self.error = swIF.INTERNAL_IF_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
-                               bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+                            self._values_, self.error = wIF.EXTERNAL_IF_WINDOWS(data_base=self.data_base, 
+                                            line=self.if_line, term=term ).TERMINAL(
+                                            bool_value= self.value, tabulation=self.tabulation + 1, 
+                                            _type_ = _type_, c=c, callbacks=callbacks )
                             
                             if self.error is None:
                                 self.history.append('if')
@@ -125,8 +128,10 @@ class EXTERNAL_IF:
                         elif self.get_block == 'unless:' :
                             self.store_value.append(self.normal_string)
                             self.loop.append((self.normal_string, True))
-                            self._values_, self.error = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
-                                        bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c )
+                            self._values_, self.error = wU.EXTERNAL_UNLESS_WINDOWS(data_base=self.data_base, 
+                                    line=self.if_line, term=term ).TERMINAL(
+                                        bool_value= self.value, tabulation=self.tabulation + 1, 
+                                        _type_ = _type_, c=c, callbacks=callbacks )
                             
                             if self.error is None:
                                 self.history.append( 'unless' )
@@ -137,8 +142,10 @@ class EXTERNAL_IF:
                         elif self.get_block == 'while:'  :
                             self.store_value.append(self.normal_string)
                             self.loop.append( ( self.normal_string, True ) )
-                            self._values_, self.error = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base, line=self.if_line, term=term ).TERMINAL(
-                                            bool_value= self.value, tabulation=self.tabulation + 1, _type_ = _type_, c=c)
+                            self._values_, self.error = WWh.EXTERNAL_WHILE_WINDOWS(data_base=self.data_base, line=self.if_line, 
+                                            term=term ).TERMINAL(
+                                            bool_value= self.value, tabulation=self.tabulation + 1, 
+                                            _type_ = _type_, c=c, callbacks=callbacks)
 
                             if self.error is None:
                                 self.history.append('while')

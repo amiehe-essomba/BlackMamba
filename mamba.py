@@ -60,13 +60,13 @@ def run_mamba():
                 # get mamba version && author 
                 elif len(arg) == 2:
                     # get version of code
-                    if arg[1] in ['--V', '--Version']:
+                    if arg[1].lower() in ['--v', '--version']:
                         s = bm.init.underline+bm.fg.yellow_L + 'Black Mamba' + \
                             bm.init.reset + bm.fg.white_L + ' version ' + \
-                            bm.init.reset+bm.fg.cyan_L + '1.0.0'+bm.init.reset
+                            bm.init.reset+bm.fg.cyan_L + '3.0.01'+bm.init.reset
                         print(f"\n{s}\n")
                     # get author 
-                    elif arg[1] in ['--Author', '--A']:
+                    elif arg[1].lower() in ['--author', '--a']:
                         bm.open_graven().author()
                     elif arg[1][-3:] in ['.bm'] :
                         BlackMamba.MAIN(system=system, file_name=arg[1])
@@ -97,6 +97,7 @@ def run_mamba():
                             except EOFError: pass
                         else: print(errors.mamba_error().ERROR4(arg[2]))
                     else: print(errors.mamba_error().ERROR5(arg[1]))
+                # print error 
                 else : print(errors.mamba_error().ERROR6()) 
             else:print(errors.mamba_error().ERROR9())
         else: print(errors.mamba_error().ERROR9())

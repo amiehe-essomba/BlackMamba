@@ -4,33 +4,34 @@ def case():
     
     return lower_case+upper_case+"_"
 
-def base(c : str = "", reset : str  ="", key : str = ">>> ", active : bool = True):
+def base(c : str = "", reset : str  ="", key : str = ">>>", active : bool = True, tab : int = 0):
+    t = 4
     structure = {}
     ##############################################################################
     if active is True:
         # input initialized
-        input                                   = f'{c}{chr(9654)*3} {reset}'
-    else: input                                 = f'{c}{key}{reset}' 
+        _input_                                   = f'{c}{chr(9654)*3} {reset}'
+    else: _input_                                 = f'{c}{key} {reset}' 
     #size 
-    size                                        = len(key)
+    size                                        = len(key) + 1 #+ tab * t
     structure['size']                           = size
-    structure['input']                          = ""
-    structure['main_input']                     = input
+    structure['input']                          = "" + " " * (tab  * t)
+    structure['main_input']                     = _input_
     ##############################################################################
     # string used for the code,
-    structure['string']                         = ""
+    structure['string']                         = "" + '\t' * tab
     # string used to handling the output that is the must inmportant string
     structure['s']                              = ""
     # initialisation of index associated to the input
-    structure['index']                          = 0
+    structure['index']                          = 0 + tab * t
     # initialisation of index I associated to the string s value
-    structure['I']                              = 0
+    structure['I']                              = 0 
      # index associated to the string string value
-    structure['I_S']                            = 0
+    structure['I_S']                            = 0 + tab
     # history of data associated to the string  input
     structure['liste']                          = [""]
     # history of data associated to the value returns by the function readchar
-    structure['get']                            = []
+    structure['get']                            = [] if active is True else [[1 for i in range(4)] for j in range(tab)]
     # initialisation of integer idd used to get the next of previous
     # values stored in the different histories of lists
     structure['idd']                            = 0
@@ -69,9 +70,9 @@ def base(c : str = "", reset : str  ="", key : str = ">>> ", active : bool = Tru
     # alphabetic char + underscore char
     structure['alpha']                          = case()
     # last cursor position
-    structure['x_y']                            = [(0,0)]
+    structure['x_y']                            = [(size, 0)]
     
-    return structure
+    return structure.copy()
     
 def indexation():
     indexation  = {

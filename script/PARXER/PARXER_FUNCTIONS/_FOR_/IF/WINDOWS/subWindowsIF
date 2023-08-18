@@ -17,18 +17,17 @@
 #       * mamba --T pegasus                                 #
 #############################################################
 ############################################                #
-# ** created  by : amiehe-essomba          #                #
-# ** updating by : amiehe-essomba          #                #
-# ** modified by : elena-royer             #                #
+# ** created by : amiehe-essomba           #                #
+# ** updating by: amiehe-essomba           #                #
 # ** copyright 2023 amiehe-essomba         #                #
 ############################################                #
 #############################################################
+
 
 import sys, os
 from windows                                            import customized_term as ct
 from ctypes                                             import windll
 from windows                                            import data
-from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script                                             import control_string
 from script.STDIN.LinuxSTDIN                            import bm_configure     as bm
 from script.DATA_BASE                                   import data_base        as db
@@ -41,32 +40,33 @@ from IDE.EDITOR                                         import string_build     
 from IDE.EDITOR                                         import pull_editor      as PE
 from IDE.EDITOR                                         import drop_box         as DR
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
-from script.PARXER.PARXER_FUNCTIONS._BEGIN_COMMENT_     import cmtError         as ce
-from script.PARXER.PARXER_FUNCTIONS._FOR_.BEGIN.WINDOWS import comment          as cmt
+from script.PARXER.PARXER_FUNCTIONS._FOR_.IF.WINDOWS    import externalIF       as eIF
 from windows                                            import screenConfig, buildString
 
-class COMMENT_WINDOWS:
-    def __init__(self,
-        data_base   : dict,
-        line        : int,
-        term        : str = "orion"
-        ):
 
-        # current line
-        self.line = line
+class INTERNAL_IF_WINDOWS:
+    def __init__(self, 
+                data_base   : dict,
+                line        : int,
+                term        : str 
+            ):
+        # current line 
+        self.line           = line
         # main data base
-        self.data_base = data_base
-        # terminal name
-        self.term = term
+        self.data_base      = data_base
+        # terminal type
+        self.term           = term
         # contriling string
-        self.analyse = control_string.STRING_ANALYSE(self.data_base, self.line)
+        self.analyse        = control_string.STRING_ANALYSE(self.data_base, 1)
 
-    def COMMENT(self,
-                tabulation  : int = 1,
-                c           : str = ''
+    def TERMINAL(self, 
+                bool_value  : bool,
+                tabulation  : int,
+                c           : str   = '',
+                _type_      : str   = 'conditional',
+                callbacks   : dict  = {}
                 ):
-        
-        # set color on yellow
+
         self.bold           = bm.init.bold
         self.c              = self.bold+bm.fg.rbg(255, 255, 0)
         self.t              = 4
@@ -89,9 +89,10 @@ class COMMENT_WINDOWS:
         self.scroll_size                    = 11 #
         # story
         self.error                          = None
-        # comment color settting
-        self.cmt_c                          = self.bold+bm.fg.rbg(153, 153, 255)
-        #self.color                          = self.cmt_c
+        # callbacks
+        self.callbacks                      = callbacks
+        # updating data 
+        self.Data, self._index_             = ct.updating_callbacks(self.callbacks, self.Data)
         ##########################################################################
         k  = windll.kernel32
         k.SetConsoleMode( k.GetStdHandle( -11 ), 7)
@@ -125,18 +126,15 @@ class COMMENT_WINDOWS:
         # checking if key_max_activation could be activated  for handling terminal tools
         self.key_max_activation     = True 
         # self.index and self.if_line 
-        self.index, self.if_line    = 0, 0
-        self.end_comment            = False
+        self.index, self.if_line    = self._index_, self._index_
         ##########################################################################
-        self.max_emtyLine       = 5
-        # used when save keyword is activated 
-        self.locked             = False
-        # storing comment lines
-        self.comment_storage    = []
-        # saving as < name > 
-        self.comment_name       = None
-        # break while loop
-        self.begin_cancel       = False
+        self.max_emtyLine        = 5
+        self.if_cancel           = False 
+        # struc for sub-function
+        self.else_block          = {
+            'index_else'            : 0,
+            'key_else_activation'   : None
+        }
         # false if clean line is not activated else true
         self.clear_line          = False 
         # activation of tab
@@ -370,22 +368,18 @@ class COMMENT_WINDOWS:
                             # erasing entire line 
                             sys.stdout.write( self.clear.line( pos = 2 ) )
                             # writing string 
-                            
+                            ct.write(self.term, self.Data['input'], self.Data['main_input'], self.color, self.reset, show=True)
                             #####################################################################################
                             if self.Data['string']:
-                                ct.write(self.term, self.Data['input'], self.Data['main_input'], 
-                                                            self.cmt_c, self.reset, show=True, locked=self.end_comment, n=0)
-
                                 #calling the main module DEF 
-                                self.loop, self.begin_cancel, self.locked, self.error = cmt.COMMENT(master=self.Data['string'], 
-                                    data_base=self.data_base,
-                                    line=self.if_line, space=self.space, history=self.history,  store_value=self.store_value,
-                                    save_block=self.locked, comment_storage=self.comment_storage).LINE( loop=self.loop,
-                                    tabulation=self.tabulation)
+                                self.loop, self.if_cancel, self.error = eIF.EXTERNAL_IF(master=self.Data['string'], data_base = self.data_base, line=self.if_line,
+                                    history=self.history, store_value=self.store_value, space=self.space, 
+                                    else_block=self.else_block).IF(bool_value=bool_value, tabulation=self.tabulation, 
+                                    loop=self.loop, _type_=_type_ , c=c, term=self.term, callbacks=self.Data.copy())
                                 
                                 #break while loop if error is not None
                                 if self.error is None: 
-                                    if self.begin_cancel is True : break 
+                                    if self.if_cancel is True : break 
                                     else: pass
                                 else: break
                             else: 
@@ -395,7 +389,7 @@ class COMMENT_WINDOWS:
                                     self.Data['string'] = self.analyse.BUILD_NON_CON(string=self.Data['string'], tabulation=self.tabulation)
                                     self.loop.append((self.Data['string'], False))
                                 else:
-                                    self.error = ce.ERRORS(self.if_line).ERROR4()
+                                    self.error = IfError.ERRORS(self.if_line).ERROR4()
                                     break
                             
                             #####################################################################################
@@ -410,7 +404,6 @@ class COMMENT_WINDOWS:
                             self.Data["index"]       = 0 + self.tabulation * self.t
                             self.index               = self.if_line
                             self.error               = None
-                            
                             #####################################################################################
                             self.Data['string_tabular'].append( [] )
                             self.Data['liste'].append( [] )
@@ -471,7 +464,7 @@ class COMMENT_WINDOWS:
                                                         # string and I_S
                                                         ct.buildingString(self.Data, self.a_, self.b_, verbose, typ="string")
                                                         # re-writing the string 
-                                                        ct.re_write(self.term, self.indicator, self.Data.copy(), self.cmt_c)
+                                                        ct.re_write(self.term, self.indicator, self.Data.copy(), self.color)
                                                         # new x position 
                                                         self.x                   += len(verbose) - len(self.Data['str_drop_down'])
                                                         sys.stdout.write(self.move.DOWN(pos = 1))
@@ -497,8 +490,7 @@ class COMMENT_WINDOWS:
                                             sys.stdout.write(self.error+"\n\n")
                                             self.error = None
                                             # writing string again after erasing entire line 
-                                            ct.write(self.term, self.Data['input'], self.Data['main_input'], 
-                                                        self.cmt_c, self.reset, locked=self.end_comment, n=0)
+                                            ct.write(self.term, self.Data['input'], self.Data['main_input'], self.color, self.reset)
                                 else:
                                     # initialization 
                                     self.indicator_pos, self.indicator      = 0, None
@@ -513,23 +505,13 @@ class COMMENT_WINDOWS:
                             # erasing entire line 
                             sys.stdout.write( self.clear.line( pos = 2 ) )
                             # writing string 
-                            ct.write(self.term, self.Data['input'], self.Data['main_input'], self.cmt_c, 
-                                     self.reset, locked=self.end_comment, n=0)
+                            ct.write(self.term, self.Data['input'], self.Data['main_input'], self.color, self.reset)
                             # move cusror on left egain
                             sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
 
                             # replace the cussor 
                             sys.stdout.write(self.move.TO(self.x, self.y) ) 
                             sys.stdout.flush()
-
-                            #########################################################################
-                            self.s, self.t_, self.err = self.analyse.BUILD_CON(string=self.Data['string'], 
-                                                                                  tabulation=self.tabulation)
-                            if self.err is None:
-                                if (self.t_ - 1) >= 0:  self.end_comment = True
-                                else:  self.end_comment = False
-                            else: self.end_comment = False
-                            #########################################################################
                         else: pass
 
                         #############################################################################
@@ -550,5 +532,5 @@ class COMMENT_WINDOWS:
             except EOFError:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
-
-        return self.loop, self.error
+            
+        return self.loop,  self.error

@@ -25,6 +25,9 @@
 
 
 import os, sys
+from windows                                            import customized_term as ct
+from ctypes                                             import windll
+from windows                                            import data
 from script.STDIN.LinuxSTDIN                            import bm_configure as bm
 from script.PARXER.PARXER_FUNCTIONS._IF_                import IfError
 from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import externalUnless as eU
@@ -39,7 +42,7 @@ from IDE.EDITOR                                         import left_right       
 from IDE.EDITOR                                         import string_build     as SB
 from IDE.EDITOR                                         import pull_editor      as PE
 from IDE.EDITOR                                         import drop_box         as DR
-
+from windows                                            import screenConfig, buildString
 
 class EXTERNAL_UNLESS_WINDOWS:
     def __init__(self, 
@@ -61,9 +64,478 @@ class EXTERNAL_UNLESS_WINDOWS:
             bool_value  : bool,
             tabulation  : int,  
             c           : str   = '',
-            _type_      : str   = 'conditional'
+            _type_      : str   = 'conditional',
+            callbacks   :  dict = {}
             ):
-            
+        
+        # set color on yellow
+        self.bold           = bm.init.bold
+        self.c              = self.bold+bm.fg.rbg(255, 255, 0)
+        self.t              = 4
+        if self.term == 'orion': pass
+        else: self.c        = self.bold+c
+
+        # tabulation
+        self.tabulation                     = tabulation
+        # reset
+        self.reset                          = bm.init.reset
+        # initialization of data 
+        self.Data                           = data.base(c=self.c, reset=self.reset, key='...', tab=self.tabulation, active=False)
+        # getting max size (max_x, max_y) of the window 
+        self.max_x, self.max_y              = screenConfig.cursorMax()
+        # when Ctrl+ option are used 
+        self.indicator                      = None #
+        # fixing the x-axis border 
+        self.border_x_limit                 = True 
+        # scroll list size 
+        self.scroll_size                    = 11 #
+        # story
+        self.error                          = None
+        # callbacks
+        self.callbacks                      = callbacks
+        # updating data 
+        self.Data, self._index_             = ct.updating_callbacks(self.callbacks, self.Data)
+        ##########################################################################
+        k  = windll.kernel32
+        k.SetConsoleMode( k.GetStdHandle( -11 ), 7)
+        # clear entire line
+        sys.stdout.write( bm.clear.line(pos = 0) )
+        # move cursor left
+        sys.stdout.write( bm.move_cursor.LEFT(pos = 1000) )
+        # print the input value
+        sys.stdout.write( self.Data['main_input'] )
+        # getting the cursor coordiantes (x, y)
+        self.X, self.y                      = screenConfig.cursor()
+        sys.stdout.flush()
+        ##########################################################################
+        self.move                   = bm.move_cursor
+        self.clear                  = bm.clear 
+        self.bold                   = bm.init.bold
+        self.color                  = self.bold + bm.fg.rbg(255, 255, 255)
+        self.x                      = self.Data['size'] + 1 + self.tabulation * self.t
+        sys.stdout.write(self.move.TO(self.x, self.y))
+        # flush
+        sys.stdout.flush()
+        ##########################################################################
+        # Y_max 
+        self.max_size_init          = 11 
+        # save cursor line 
+        self.save_cursor_position   = bm.save.save
+        # indictor position initialization 
+        self.indicator_pos          = 0
+        # indicator_max 
+        self.indicator_max          = 1
+        # checking if key_max_activation could be activated  for handling terminal tools
+        self.key_max_activation     = True 
+        # self.index and self.if_line 
+        self.index, self.if_line    = self._index_, self._index_
+        ##########################################################################
+        self.max_emtyLine        = 5
+        self.unless_cancell      = False 
+        # struc for sub-function
+        self.else_block          = {
+            'index_else'            : 0,
+            'key_else_activation'   : None
+        }
+        # false if clean line is not activated else true
+        self.clear_line          = False 
+        # activation of tab
+        self.active_tab          = None
+        # history value
+        self.history             = [ 'unless' ]
+        # loop
+        self.loop                = []
+        # storing value
+        self.store_value         = []
+        # accounting space line
+        self.space          = 0
+        # detecting if indentation was used
+        self.active_tab     = None
+        self.index_else          = 0
+        ##########################################################################
+
+        while True:
+            try:
+                # get input
+                self.char = string_to_chr.convert()
+                if self.char:
+                    _ = self.char[1]
+                    self.char = self.char[0]
+                    if self.char is not None:
+                        if self.char == 3               :
+                            self.error = IfError.ERRORS(self.if_line).ERROR4()
+                            break
+
+                        # indentation Tab
+                        elif self.char == 9             :
+                            if  self.x < (self.max_x - 4) :  
+                                self.tt                  = ' ' * 4
+                                self.Data['string']      =  self.Data['string'][ : self.Data["I_S"] ] + \
+                                                                chr( self.char ) + self.Data['string'][ self.Data["I_S"] : ]
+                                self.Data['input']       =  self.Data['input'][ : self.Data["index"] ] + \
+                                                                str( self.tt ) + self.Data['input'][ self.Data["index"] : ]
+                                self.Data['index']      += 4
+                                self.Data['I_S']        += 1
+                                self.x                  += 4
+                                self.Data['get'].append([1 for x in range(4)])
+                            else: pass 
+
+                        # writing char
+                        elif 32 <= self.char <= 126     :
+                            ##################################################
+                            # each character has 1 as length                 #
+                            # have a look on ansi char                       #
+                            # https://en.wikipedia.org/wiki/ANSI_escape_code #
+                            ##################################################
+                            if self.border_x_limit is True: 
+                                # building string
+                                self.Data['string']         = self.Data['string'][ : self.Data['I_S']] + chr( self.char ) + \
+                                            self.Data['string'][ self.Data['I_S'] : ]
+                                # building input
+                                self.Data['input']          = self.Data['input'][ : self.Data['index']] + chr( self.char ) + \
+                                            self.Data['input'][ self.Data['index'] : ]
+                                # increasing index of a step = 1
+                                self.Data['index']          += 1
+                                # increasing I_S of step = 1
+                                self.Data['I_S']            += 1
+                                # storing char in get
+                                self.Data['get'].append(1)
+                                # increase cursor position of +1
+                                self.x                      += 1
+
+                                # fixing the cursor position conditions
+                                if self.x < self.max_x : self.border_x_limit = True 
+                                else: self.border_x_limit = False 
+                            else: pass
+
+                        # delecting char <backspace>
+                        elif self.char in {127, 8}      :
+                            if self.x > ( self.Data['size'] + 1):
+                                self.Data['string']         =  self.Data['string'][ : self.Data["I_S"] - 1] + self.Data['string'][ self.Data["I_S"] : ]
+                                self.Data['I_S']           -= 1
+                                if type( self.Data['get'][self.Data['I_S']] ) == type(list()):
+                                    self.Data['input']      =  self.Data['input'][ : self.Data["index"] - 4] + self.Data['input'][ self.Data["index"] : ]
+                                    self.x                 -= 4
+                                    self.Data['index']     -= 4
+                                else:
+                                    self.Data['input']      =  self.Data['input'][ : self.Data["index"] - 1] + self.Data['input'][ self.Data["index"] : ]
+                                    self.x                 -= 1
+                                    self.Data['index']     -= 1
+                                
+                                del self.Data['get'][self.Data['I_S']]
+                            else: pass
+                        
+                        # moving cursor (up, down, left, right)
+                        elif self.char == 27            :
+                            if type(_) is type(list()): next1 = _[0]
+                            else: next1 = _
+                            
+                            if next1 in {68, 67, 66, 65, 49} :
+                                # move left 
+                                if   next1 == 68:
+                                    
+                                    if self.Data['I_S'] > 0:
+                                        try:
+                                            self.Data['I_S']        -= 1
+                                            if type(self.Data['get'][self.Data['I_S']]) == type(list()):
+                                                self.x              -= 4
+                                                self.Data['index']  -= 4
+                                            else:
+                                                self.x              -= 1
+                                                self.Data['index']  -= 1
+                                        except IndexError : pass
+                                    else: pass
+                                # move right
+                                elif next1 == 67:
+                                    if self.x <=  (self.Data['size'] + len(self.Data['input'])):  
+                                        try:
+                                            if type(self.Data['get'][self.Data['I_S']]) == type(list()):
+                                                self.x              += 4
+                                                self.Data['index']  += 4
+                                            else:
+                                                self.x              += 1
+                                                self.Data['index']  += 1
+                                            self.Data['I_S']        += 1
+                                        except IndexError: pass
+                                    else: pass 
+                                # get the previous value stored in the list
+                                elif next1 == 65:  # up
+                                    if self.Data['liste']:
+                                        try: 
+                                            if self.index > 0 :
+                                                self.index                 -= 1
+                                                self.Data['input']          = self.Data['liste'][self.index]
+                                                self.Data['string']         = self.Data['string_tabular'][self.index]
+                                                self.Data['index']          = self.Data['tabular'][self.index]
+                                                self.Data['I_S']            = self.Data['string_tab'][self.index]
+                                                self.Data['get']            = self.Data['memory'][self.index].copy()
+                                                self.x, self.Y              = self.Data['x_y'][self.index]
+                                            else: pass
+                                        except IndexError : pass 
+                                    else: pass 
+                                # get the next value stored in the list
+                                elif next1 == 66:  # down
+                                    if self.Data['liste']:
+                                        try: 
+                                            if self.index < len(self.Data['liste']) :
+                                                self.index                 += 1
+                                                self.Data['input']          = self.Data['liste'][self.index]
+                                                self.Data['string']         = self.Data['string_tabular'][self.index]
+                                                self.Data['index']          = self.Data['tabular'][self.index]
+                                                self.Data['I_S']            = self.Data['string_tab'][self.index]
+                                                self.Data['get']            = self.Data['memory'][self.index].copy()
+                                                self.x, self.Y              = self.Data['x_y'][self.index]
+                                            else: pass
+                                        except IndexError : pass 
+                                    else: pass 
+                                # ctrl + left or ctrl + right
+                                elif next1 == 49: 
+                                    if self.Data['str_drop_down'] : 
+                                        next2 =  _[1]
+                                        # ctrl-up, ctrl-down is handled 
+                                        if next2 in {67, 68}: pass 
+                                        # ctrl-right is handled 
+                                        elif next2 == 65: 
+                                            self.indicator = 65 
+                                            if self.indicator_pos >= 1: self.indicator_pos -= 1
+                                            else: pass
+                                        # ctrl-left is handled 
+                                        elif next2 == 66: 
+                                            self.indicator = 66
+                                            if self.indicator_pos < self.indicator_max : self.indicator_pos += 1
+                                            else: pass 
+                                        else: pass
+                                    else: pass
+                            elif next1 is None: pass
+                            else: pass
+                        
+                        # clear entire string ctrl+l
+                        elif self.char == 12            :
+                            # move cursor left
+                            sys.stdout.write(self.move.LEFT( pos = 1000 ))
+                            # clear entire line
+                            sys.stdout.write(self.clear.line( pos = 0 ))
+                           
+                            # initialization block
+                            self.x                   = self.Data['size'] + 1
+                            self.Data['string']      = ""
+                            self.Data['input']       = ""
+                            self.Data['get']         = []
+                            self.Data["I_S"]         = 0
+                            self.Data["index"]       = 0
+
+                        # move cursor at end of line ctrl+d
+                        elif self.char == 4             :
+                            self.Data['I_S']        = len(self.Data['string'])
+                            self.Data['index']      = len(self.Data['input'])
+                            self.x                  = len(self.Data['input']) + self.Data['size'] + 1
+                        
+                        # clear entire screen and restore cursor position ctrl+s
+                        elif self.char == 19: 
+                            sys.stdout.write(self.clear.screen(pos = 1))
+                            sys.stdout.write(self.move.TO( self.x, 0))
+                            sys.stdout.write(bm.save.save)
+                            self.X, self.y           = screenConfig.cursor()
+                        
+                        # move cursor at the beginning of line ctrl+q
+                        elif self.char in{1, 17}        : 
+                            self.Data['I_S']        = 0
+                            self.Data['index']      = 0
+                            self.x                  = self.Data['size'] + 1
+                        
+                        # <crtl+t> or <ctrl + n> 
+                        elif self.char in {20, 14}      : 
+                            self.indicator = self.char 
+                        
+                        # End-Of-File Error ctrl+z
+                        elif self.char == 26            :
+                            self.error = IfError.ERRORS(self.if_line).ERROR4()
+                            break
+                        
+                        # <ctrl+alt+down> => <down >
+                        elif self.char in {1001}        : 
+                            self.indicator = 66
+                            self.indicator_pos += 1
+                        
+                        # <ctrl+alt+up> => <up>
+                        elif self.char in {1000}        : 
+                            self.indicator = 65 
+                            if self.indicator_pos >= 1: self.indicator_pos -= 1
+                            else: pass
+                        
+                        # enter is pressed 
+                        elif self.char in {10, 13}      :
+                            # moving cursor left 
+                            sys.stdout.write( self.move.LEFT( pos = 1000 ) )
+                            # erasing entire line 
+                            sys.stdout.write( self.clear.line( pos = 2 ) )
+                            # writing string 
+                            ct.write(self.term, self.Data['input'], self.Data['main_input'], self.color, self.reset, show=True)
+                            #####################################################################################
+                            if self.Data['string']:
+                                #calling the main module DEF 
+                                self.loop, self.unless_cancel, self.error = eU.EXTERNAL_UNLESS(master=self.Data['string'], data_base = self.data_base, line=self.if_line,
+                                            history=self.history, store_value=self.store_value, space=self.space, 
+                                            index_else=self.index_else).UNLESS(bool_value=bool_value, tabulation=self.tabulation, 
+                                            loop=self.loop, _type_=_type_ , c=c, term=self.term, callbacks=self.Data.copy())
+                                
+                                #break while loop if error is not None
+                                if self.error is None: 
+                                    if self.unless_cancel is True : break 
+                                    else: pass
+                                else: break
+                            else: 
+                                # if no string
+                                if self.space <= self.max_emtyLine:
+                                    self.space += 1
+                                    self.Data['string'] = self.analyse.BUILD_NON_CON(string=self.Data['string'], tabulation=self.tabulation)
+                                    self.loop.append((self.Data['string'], False))
+                                else:
+                                    self.error = IfError.ERRORS(self.if_line).ERROR4()
+                                    break
+                            
+                            #####################################################################################
+                            # initializing all variables
+                            self.if_line            += 1 
+                            self.X, self.y           = screenConfig.cursor()
+                            self.x                   = self.Data['size'] + 1 + self.tabulation * self.t
+                            self.Data['string']      = "" + "\t" * self.tabulation
+                            self.Data['input']       = "" + " " * (self.tabulation  * self.t)
+                            self.Data['get']         = [[1 for i in range(4)] for j in range(self.tabulation)]
+                            self.Data["I_S"]         = 0 + self.tabulation
+                            self.Data["index"]       = 0 + self.tabulation * self.t
+                            self.index               = self.if_line
+                            self.error               = None
+                            #####################################################################################
+                            self.Data['string_tabular'].append( [] )
+                            self.Data['liste'].append( [] )
+                            self.Data['string_tab'].append( [] )
+                            self.Data['tabular'].append( [] )
+                            self.Data['x_y'].append( [] )
+                            self.Data['memory'].append( [] )
+                            #####################################################################################
+                            self.indicator_pos      = 0
+                            self.indicator          = None
+                            self.indicator_max      = 1
+                            self.scroll_size        = 11
+                            #####################################################################################
+                        else: pass 
+
+                        if self.border_x_limit is True  :
+                            self.Data['drop_idd'], self.Data['str_drop_down'], self.a, self.b = buildString.string( 
+                                                    self.Data['input'], self.Data['index']-1 )
+                            _, _, self.a_, self.b_ = buildString.string( self.Data['string'], self.Data['I_S']-1 )
+                            
+                            # checking windows dimension 
+                     
+                            if self.max_x > 30 and self.max_y > 20:
+                                # checkng if str_drop_down exists
+                                if self.Data['str_drop_down']:
+                                    # saving cursor position 
+                                    sys.stdout.write(bm.save.save)
+                                    # clean screen from the cursor position untill the end of the line 
+                                    sys.stdout.write( self.move.DOWN( pos = 1 ) + 
+                                                  self.clear.screen(pos=0) + self.move.UP( pos = 1 ) )
+                                    if self.indicator is None:
+                                        verbose, _, self.scroll_size, self.error = PE.DropDown(
+                                            data_base = self.data_base, line=self.if_line).MENU( self.Data['str_drop_down'], 
+                                        self.Data['input'], self.indicator, self.indicator_pos, (self.max_x-self.x))
+                                       
+                                        # restoring cursor position
+                                        sys.stdout.write(bm.save.restore) 
+                                        # computing the new params( x, y)
+
+                                        self.X, self.y           = screenConfig.cursor()
+                                        # moving cursor on the right position 
+                                        sys.stdout.write(self.move.TO(self.x, self.y)) 
+                                        #self.X, self.y           = screenConfig.cursor()
+                                        #####################################################
+                                        sys.stdout.flush()
+                                    else: 
+                                        sys.stdout.write(bm.clear.screen(pos=0))
+                                        verbose, _, self.scroll_size, self.indicator_pos, self.error = PE.DropDown(data_base = self.data_base, 
+                                                    line=self.if_line).MENU( self.Data['str_drop_down'], self.Data['string'], self.indicator, 
+                                                    self.indicator_pos, (self.max_x-self.x), iter=True)
+                                     
+                                        if self.error is None: 
+                                            if verbose is not None: 
+                                                if (self.max_x - (self.x + len(verbose))) > 0:
+                                                    if self.indicator in {7, 14, 20}:
+                                                        # input and index
+                                                        ct.buildingString(self.Data, self.a, self.b, verbose)
+                                                        # string and I_S
+                                                        ct.buildingString(self.Data, self.a_, self.b_, verbose, typ="string")
+                                                        # re-writing the string 
+                                                        ct.re_write(self.term, self.indicator, self.Data.copy(), self.color)
+                                                        # new x position 
+                                                        self.x                   += len(verbose) - len(self.Data['str_drop_down'])
+                                                        sys.stdout.write(self.move.DOWN(pos = 1))
+                                                        self.X, self.y           = screenConfig.cursor()
+                                                        # moving cursor on the right position 
+                                                        sys.stdout.write(self.move.TO(self.x, self.y) )
+                                                        sys.stdout.flush()
+                                                        verbose, self.indicator  = None, None
+                                                    else:
+                                                        sys.stdout.write( self.move.UP(pos = self.scroll_size ) )
+                                                        sys.stdout.flush()
+                                                else: pass  
+                                            else: pass
+
+                                            #sys.stdout.write(bm.save.restore) 
+                                            sys.stdout.write(self.move.UP(pos = 1))
+                                            self.X, self.y           = screenConfig.cursor()
+                                            # moving cursor on the right position 
+                                            sys.stdout.write(self.move.TO(self.x, self.y) )
+                                            sys.stdout.flush()
+                                            self.indicator = None
+                                        else:
+                                            sys.stdout.write(self.error+"\n\n")
+                                            self.error = None
+                                            # writing string again after erasing entire line 
+                                            ct.write(self.term, self.Data['input'], self.Data['main_input'], self.color, self.reset)
+                                else:
+                                    # initialization 
+                                    self.indicator_pos, self.indicator      = 0, None
+                                    #destroying all string under cursor position 
+                                    sys.stdout.write(self.clear.screen(pos=0)) 
+                                    sys.stdout.flush()
+                            else: pass
+                            sys.stdout.flush()
+
+                            # moving cursor left 
+                            sys.stdout.write( self.move.LEFT( pos = 1000 ) )
+                            # erasing entire line 
+                            sys.stdout.write( self.clear.line( pos = 2 ) )
+                            # writing string 
+                            ct.write(self.term, self.Data['input'], self.Data['main_input'], self.color, self.reset)
+                            # move cusror on left egain
+                            sys.stdout.write(bm.move_cursor.LEFT(pos=1000))
+
+                            # replace the cussor 
+                            sys.stdout.write(self.move.TO(self.x, self.y) ) 
+                            sys.stdout.flush()
+                        else: pass
+
+                        #############################################################################
+                        ################### Updating the data stored in each lists  #################
+                        self.Data['x_y'][self.if_line]              = (self.x, self.y)
+                        self.Data['string_tabular'][self.if_line]   = self.Data['string']
+                        self.Data['string_tab'][self.if_line]       = self.Data['I_S']
+                        self.Data['liste'][self.if_line]            = self.Data['input']   
+                        self.Data['tabular'][self.if_line]          = self.Data['index'] 
+                        self.Data['memory'][self.if_line]           = self.Data['get'].copy() 
+                        #############################################################################
+
+                    else: pass 
+                else: pass
+            except KeyboardInterrupt:
+                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                break
+            except EOFError:
+                self.error = IfError.ERRORS(self.if_line).ERROR4()
+                break
+
+        """
         ###########################################################
         # set color on yellow
         self.bold           = bm.init.bold
@@ -743,4 +1215,7 @@ class EXTERNAL_UNLESS_WINDOWS:
                 self.error = IfError.ERRORS(self.if_line).ERROR4()
                 break
         
+        """
+        # 
+
         return self.loop,  self.error
