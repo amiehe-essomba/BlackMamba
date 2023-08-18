@@ -112,7 +112,12 @@ def bottom(max_x: int, x ):
 	sys.stdout.write(s3+"\n")
 	sys.stdout.flush()
 	
+
+def head():
+	s = bm.init.bold + bm.init.underline + bm.fg.yellow_L + 'Black Mamba'.upper() + \
+		bm.init.reset + bm.init.bold + bm.fg.rbg(255, 255, 255) + " Programming Language " + \
+		bm.init.reset + bm.init.bold + bm.fg.rbg(0, 255, 0) + ' version ' + \
+		bm.init.reset + bm.init.bold  + bm.fg.rbg(0, 255, 255) + '( mamba 3.0.01 )' + bm.init.reset + '\n\n'
 	
 	
-	
-	
+	print(s)

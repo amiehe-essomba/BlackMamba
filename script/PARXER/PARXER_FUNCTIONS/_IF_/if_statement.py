@@ -31,12 +31,13 @@ class EXTERNAL_IF_LOOP_STATEMENT:
 
     @cython.cfunc
     def IF_STATEMENT(self,
-                     bool_value     : bool,                     # boolean value used to activate the calculation
-                     tabulation     : int   = 0,                # tabulation
-                     loop_list      : list  = [],               # all values
-                     _type_         : str   = 'conditional',    # type structure
-                     keyPass        : bool  = False             # if pass function is detected
-                    ):
+            bool_value     : bool,                     # boolean value used to activate the calculation
+            tabulation     : int   = 0,                # tabulation
+            loop_list      : list  = [],               # all values
+            _type_         : str   = 'conditional',    # type structure
+            keyPass        : bool  = False             # if pass function is detected
+        ):
+        
         """
         module analize:
         #########################\n
@@ -321,22 +322,24 @@ class EXTERNAL_IF_LOOP_STATEMENT:
                                         self.error = IfError.ERRORS( self.line ).ERROR2( self.history[ -1 ])
                                         break
                                 elif self.get_block == 'elif:' :
-                                    if self.key_else_activation == None:
+                                    if self.key_else_activation is  None:
                                         if self.store_value:
                                             self.history.append( 'elif' )
                                             self.bool_value         = self.value
                                             self.store_value        = []
                                             self.bool_key           = None
 
-                                            for _bool_ in self.boolean_store:
-                                                if _bool_ is True:
-                                                    self.bool_key = True
-                                                    break
-                                                else: self.bool_key = False
-                                                    
-                                            if self.bool_key is True: self.bool_value = False
-                                            else: self.bool_value = True
-                                                
+                                            if self.bool_value is True: 
+                                                for _bool_ in self.boolean_store:
+                                                    if _bool_ is True:
+                                                        self.bool_key = True
+                                                        break
+                                                    else: self.bool_key = False
+                                                        
+                                                if self.bool_key is True: self.bool_value = False
+                                                else: pass
+                                            else: pass 
+
                                             self.boolean_store.append( self.bool_value )
                                             self.data_base[ 'pass' ]    = None
                                             self.keyPass                = False

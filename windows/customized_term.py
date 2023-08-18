@@ -41,15 +41,16 @@ def re_write(terminal : str, indicator: int, Data : dict,  color : str ="", x : 
 
 def updating_callbacks(data1, data2):
     index = 0
-
-    if data1['string_tabular']:
-        data2['string_tabular']     = data1['string_tabular']   + data2['string_tabular']
-        data2['tabular']            = data1['tabular']          + data2['tabular'] 
-        data2['liste']              = data1['liste']            + data2['liste'] 
-        data2['string_tab']         = data1['string_tab']       + data2['string_tab'] 
-        data2['memory']             = data1['memory']           + data2['memory'] 
-        data2['x_y']                = data1['x_y']              + data2['x_y']
-        index = len(data1['tabular'] )
-    else: pass
-
+    try:
+        if data1['string_tabular']:
+            data2['string_tabular']     = data1['string_tabular']   + data2['string_tabular']
+            data2['tabular']            = data1['tabular']          + data2['tabular'] 
+            data2['liste']              = data1['liste']            + data2['liste'] 
+            data2['string_tab']         = data1['string_tab']       + data2['string_tab'] 
+            data2['memory']             = data1['memory']           + data2['memory'] 
+            data2['x_y']                = data1['x_y']              + data2['x_y']
+            index = len(data1['tabular'] )
+        else: pass
+    except KeyError: pass 
+    
     return data2, index

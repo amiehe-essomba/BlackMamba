@@ -648,7 +648,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                             else: self.keyPass = True
                         elif self.get_block == 'if:'     :
                             self.next_line  = j + 1
-                            self.error = if_statement.INTERNAL_IF_LOOP_STATEMENT ( self.master,
+                            self.error = if_statement.EXTERNAL_IF_LOOP_STATEMENT( self.master,
                                         self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
                                                     self.def_list[ j + 1], _type_ = _type_, keyPass=self.keyPass )
                             if self.error is None:
@@ -681,7 +681,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                             else: break
                         elif self.get_block == 'unless:' :
                             self.next_line  = j + 1
-                            self.error = unless_statement.INTERNAL_UNLESS_FOR_STATEMENT( self.master , self.data_base,
+                            self.error = unless_statement.EXTERNAL_UNLESS_FOR_STATEMENT( self.master , self.data_base,
                                             self.line ).UNLESS_STATEMENT( self.value, self.tabulation + 1,
                                             self.def_list[ j + 1], _type_ = _type_, keyPass = self.keyPass )
                             if self.error is None:
@@ -719,7 +719,7 @@ class EXTERNAL_DEF_LOOP_STATEMENT:
                         elif self.get_block == 'try:'    :
                             self.next_line = j + 1
                             
-                            self._finally_key_, self.error = try_statement.INTERNAL_TRY_FOR_STATEMENT( self.master,
+                            self._finally_key_, self.error = try_statement.EXTERNAL_TRY_FOR_STATEMENT( self.master,
                                                         self.data_base, self.line ).TRY_STATEMENT(self.tabulation + 1,
                                                             self.def_list[ self.next_line],  keyPass = self.keyPass, _type_ =  _type_)
                             if self.error is None:
@@ -896,7 +896,7 @@ class INTERNAL_DEF_LOOP_STATEMENT:
                             else: self.keyPass = True
                         elif self.get_block == 'if:'     :
                             self.next_line  = j + 1
-                            self.error = if_statement.INTERNAL_IF_LOOP_STATEMENT ( self.master,
+                            self.error = if_statement.EXTERNAL_IF_LOOP_STATEMENT( self.master,
                                         self.data_base, self.line ).IF_STATEMENT( self.value, self.tabulation + 1,
                                                         self.def_list[ j + 1], _type_ = _type_, keyPass = self.keyPass )
                             if self.error is None:
