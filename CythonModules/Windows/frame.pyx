@@ -357,7 +357,7 @@ cdef class FRAME:
             else:  return pan['s'], chaine+bm.init.reset, master_dict.copy(), self.error['s']
         else: return f"\n{chaine}"+bm.init.reset
 
-cdef class ERRORS:.
+cdef class ERRORS:
     cdef public:
         unsigned long int line 
     cdef:

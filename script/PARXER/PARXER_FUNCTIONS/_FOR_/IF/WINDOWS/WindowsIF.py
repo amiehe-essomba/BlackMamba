@@ -150,7 +150,6 @@ class EXTERNAL_IF_WINDOWS:
         self.space          = 0
         # detecting if indentation was used
         self.active_tab     = None
-        
         ##########################################################################
 
         while True:

@@ -379,3 +379,17 @@ class ERRORS:
         self.error = fe.FileErrors( 'FileNotFoundError' ).Errors() +  error
 
         return self.error+self.reset
+    
+    def ERROR51(self, string: str = '', func : str=''):
+        error = '{}{} {}is negative or null. {}line: {}{}'.format(self.cyan, string, self.magenta, self.white, self.yellow, self.line)        
+        self.error = fe.FileErrors( 'ValueError' ).Errors() +  error+func
+
+        return self.error+self.reset
+    
+    def ERROR52(self, str1: str = 'Start', str2 :str='Stop', func : str=''):
+        error = '{}{} >= {}. {}line: {}{}'.format(self.cyan, str1, str2,  self.white, self.yellow, self.line)        
+        self.error = fe.FileErrors( 'ValueError' ).Errors() +  error+func
+
+        return self.error+self.reset
+    
+    

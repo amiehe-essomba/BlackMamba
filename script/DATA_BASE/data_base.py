@@ -132,7 +132,8 @@ class DATA_BASE:
     def FUNCTIONS(self):
         self.function_name  = ['integer', 'float', 'string', 'complex', 'type', 'list', 'tuple', 'boolean', 'dictionary',
                                'length', 'range', 'ansi', 'rand', 'GetLine', 'scan_test', 
-                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 'GetClassNames']
+                               'min', 'max', 'fopen', 'floor', 'License', 'help', 'matrix1', 'sget', 'GetFuncNames', 
+                               'GetClassNames', 'abs', 'sum', 'prod', "pow", "randn", 'rands']
         
         self.function_expressions   = [
             {
@@ -286,9 +287,9 @@ class DATA_BASE:
             },
             {
                 'rand'              : {
-                'type'              : [ ['string'], ['tuple'] ],
-                'value'             : [ '"norm"', '(0, 1)' ],
-                'arguments'         : [ 'rand_type', 'input' ],
+                'type'              : [ ['string'], ['tuple'], ['int'] ],
+                'value'             : [ '"norm"', '(0, 1)', '1' ],
+                'arguments'         : [ 'rand_type', 'input', 'size' ],
                 'history_of_data'   : [
                                         ('tline = GetLine() - 1                                         ', True),
                                         ('t# computational random number by using the randomint from C  ', True),
@@ -503,6 +504,97 @@ class DATA_BASE:
                 'history_of_data'   : [
                                         ('t_get_line_ * "class_names"           ', True),
                                         ('end:                                 ', False),
+                                      ]
+                                    }
+            },
+            {
+                'abs'           : {
+                'type'              : [ ['float', 'int', 'bool'] ],                                        # input type
+                'value'             : [ None ],                                          # default value
+                'arguments'         : [ 'input' ],                                      # argument's name
+                'history_of_data'   : [
+                                        ( 't_abs_ * input                   ', True),
+                                        ('end:                              ', False )
+                                      ]                                                 # history of data
+                                    }
+            },
+            {
+                'sum'              : {
+                'type'              : [['list', 'tuple']],
+                'value'             : [ None ],
+                'arguments'         : [ 'input' ],
+                'history_of_data'   : [
+                                        ('tline = GetLine() - 1                                         ', True),
+                                        ('tif  input.size() != 0   :                                    ', True),
+                                        [
+                                            ('tt__scan__ * [input, \'sum\']                 ', True),
+                                            ('telse:                                        ', False),
+                                            ('tt__show__ * "{ansi(\'fg\', \'G\')}ValueError : ' \
+                                             '{ansi(\'fg\', \'R\')} input {ansi(\'fgl\', \'W\')} cannot be' \
+                                             '{ansi(\'fg\', \'C\')} EMPTY. ' \
+                                             '{ansi(\'fgl\', \'W\')}line : {ansi(\'fgl\', \'Y\')}{line} '\
+                                             '{ansi(\'fg\', \'C\')} in {ansi(\'fgl\', \'G\')} sum( ) function.'\
+                                             '{ansi(\'r\', \'reset\')}"                     ', True),
+                                            ('tend:                                         ', False)
+                                        ],
+                                        ('end:                                                          ', False)
+                                      ]
+                }
+            },
+            {
+                'prod'              : {
+                'type'              : [['list', 'tuple']],
+                'value'             : [ None ],
+                'arguments'         : [ 'input' ],
+                'history_of_data'   : [
+                                        ('tline = GetLine() - 1                                         ', True),
+                                        ('tif  input.size() != 0   :                                    ', True),
+                                        [
+                                            ('tt__scan__ * [input, \'prod\']                 ', True),
+                                            ('telse:                                        ', False),
+                                            ('tt__show__ * "{ansi(\'fg\', \'G\')}ValueError : ' \
+                                             '{ansi(\'fg\', \'R\')} input {ansi(\'fgl\', \'W\')} cannot be' \
+                                             '{ansi(\'fg\', \'C\')} EMPTY. ' \
+                                             '{ansi(\'fgl\', \'W\')}line : {ansi(\'fgl\', \'Y\')}{line} '\
+                                             '{ansi(\'fg\', \'C\')} in {ansi(\'fgl\', \'G\')} prod( ) function.'\
+                                             '{ansi(\'r\', \'reset\')}"                     ', True),
+                                            ('tend:                                         ', False)
+                                        ],
+                                        ('end:                                                          ', False)
+                                      ]
+                }
+            },
+            {
+                'pow'     : {
+                'type'              : [ ['int', 'float', 'cplx', 'bool'], ['int'] ],
+                'value'             : [ None, None ],
+                'arguments'         : [ 'input', 'index' ],
+                'history_of_data'   : [
+                                        ('treturn input ^ index               ', True),
+                                        ('end:                                 ', False),
+                                      ]
+                                    }
+            },
+            {
+                'randn'     : {
+                'type'              : [ ['int'], ['int', 'none']],
+                'value'             : [ None,  'None'],
+                'arguments'         : [ 'row', 'col' ],
+                'history_of_data'   : [
+                                        ('t__rand__ * [row, col, \'randn\']       ', True),
+                                        ('end:                                 ', False),
+                                      ]
+                                    }
+            },
+
+            {
+                'rands'     : {
+                'type'              : [ ['float', 'int'], ['float', 'int'], ['int']],
+                'value'             : [ None,  None, '10'],
+                'arguments'         : [ 'Start', 'Stop', 'num' ],
+                'history_of_data'   : [
+                                        ('t__rand__ * [Start, Stop, num, \'rands\']     ', True),
+                                        ('end:                                          ', False),
                                       ]
                                     }
             },

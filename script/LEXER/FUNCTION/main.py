@@ -4,6 +4,7 @@ from script.LEXER               import check_if_affectation
 from script.LEXER               import main_lexer
 from script.STDIN.LinuxSTDIN    import bm_configure as bm
 from CythonModules.Windows      import fileError    as fe 
+import numpy as np
 
 
 
@@ -102,10 +103,14 @@ class MAIN:
                             self.data_base[ 'exit' ] =  self.final_value[ 'exit' ]
                         else:
                             try:
-                                if self.final_value['transformation'] not in [ None, ' ', '']:
-                                    self.data_base['transformation'] = self.final_value['transformation']
-                                else:  pass
+                                if type(self.final_value['transformation']) != type(np.array([])):
+                                    if self.final_value['transformation'] not in [ None, ' ', '']:
+                                        self.data_base['transformation'] = self.final_value['transformation']
+                                    else:  pass
+                                else: self.data_base['transformation'] = self.final_value['transformation']
                             except ValueError:
+                                self.data_base['transformation'] = self.final_value['transformation']
+                            except FutureWarning:
                                 self.data_base['transformation'] = self.final_value['transformation']
                     else: pass
                 else: pass

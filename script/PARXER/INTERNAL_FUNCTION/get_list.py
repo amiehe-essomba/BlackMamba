@@ -46,7 +46,7 @@ class LIST:
                         self.check_dot, self.error = self.selection.SELECTION(self.true_value, self.true_value,
                                                                 self.data_base,self.line).CHAR_SELECTION( ':' )
                         if self.error is None:
-                            if len( self.check_dot )   == 1:
+                            if   len( self.check_dot ) == 1:
                                 self.dict_value, self.error = self.affectation.AFFECTATION(self.true_value,
                                                             self.true_value,self.data_base, self.line ).DEEP_CHECKING()
 
@@ -187,9 +187,7 @@ class LIST:
                         break
             else: self.error = self.error
 
-        else:
-            self.error      = None
-            self._return_   = self._return_
+        else:  self.error      = None
 
         return self._return_, self.error
 

@@ -5,7 +5,7 @@ from script.STDIN.LinuxSTDIN    import bm_configure                 as bm
 def write(terminal_name='pegasus', string = "", decorator = "", color = "", reset = '', show = False, locked=False, n=0):
     if terminal_name == 'orion':
         # key word activation
-        newString = decorator + bm.string().syntax_highlight( name=bm.words(string=string, color= color).final(locked=locked, n=0) )
+        newString = decorator + bm.string().syntax_highlight( name=bm.words(string=string, color= color).final(locked=locked, n=n) )
         if show is False: sys.stdout.write( newString ) 
         else : print(newString)
     else:
@@ -52,5 +52,5 @@ def updating_callbacks(data1, data2):
             index = len(data1['tabular'] )
         else: pass
     except KeyError: pass 
-    
+
     return data2, index

@@ -93,6 +93,12 @@ class C_F_I_S:
                                             except (ValueError, TypeError):
                                                 func = bm.fg.rbg(0, 255, 0   )+' in float( ).' + bm.init.reset 
                                                 self.error = er.ERRORS( self.line ).ERROR2( self.value, 'a float', func )
+                                        elif function in [ '_abs_'   ]      :
+                                            try:
+                                                self.final_value = abs(  self._value_ )
+                                            except (ValueError, TypeError):
+                                                func = bm.fg.rbg(0, 255, 0   )+' in abs( ).' + bm.init.reset 
+                                                self.error = er.ERRORS( self.line ).ERROR2( self.value, 'a float', func )
                                         elif function in [ '_complex_' ]    :
                                             try:
                                                 self.final_value = complex( self._value_ )
@@ -487,27 +493,80 @@ class C_F_I_S:
                                             elif self._value_ == 'class_names': self.final_value = self.data_base['class_names']
                                             else: self.error = er.ERRORS( self.line ).ERROR0( self.normal_string )
                                         elif function in [ '__scan__'  ]    :
-                                            func = bm.fg.rbg(0, 255, 0   )+' in sget( ).' + bm.init.reset
-                                            s1, s2, s3 =  self._value_[0],  self._value_[1],  self._value_[2]
-                                
-                                            self.final_value = f"{bm.init.bold}{input( s1 )}" 
-                                            self.final_value = bm.remove_ansi_chars().chars( self.final_value )
-                                            if s2 is None:
-                                                if s3 is False: pass 
+                                            if   len(self._value_) == 2:
+                                                if   self._value_[-1] == 'sum' :
+                                                    func = bm.fg.rbg(0, 255, 0   )+' in sum( ).' + bm.init.reset 
+
+                                                    try: self.final_value = np.array(self._value_[0]).sum() 
+                                                    except (ValueError, TypeError):
+                                                        sum_ = 0.0
+                                                        for s in self._value_[0]:
+                                                            try:
+                                                                sum_ += s
+                                                            except (ValueError, TypeError):
+                                                                self.error = er.ERRORS(line=self.line).ERROR10(type1=sum_, type2=s, func=func)
+                                                                break
+                                                elif self._value_[-1] == 'prod':
+                                                    func = bm.fg.rbg(0, 255, 0   )+' in prod( ).' + bm.init.reset 
+                                                    try: self.final_value = np.array(self._value_[0]).prod() 
+                                                    except (ValueError, TypeError):
+                                                        sum_ = 0.0
+                                                        for s in self._value_[0]:
+                                                            try:
+                                                                sum_ += s
+                                                            except (ValueError, TypeError):
+                                                                self.error = er.ERRORS(line=self.line).ERROR10(type1=sum_, type2=s, func=func)
+                                                                break
+                                                else: pass
+                                            elif len(self._value_) == 3:
+                                                func = bm.fg.rbg(0, 255, 0   )+' in sget( ).' + bm.init.reset
+                                                s1, s2, s3 =  self._value_[0],  self._value_[1],  self._value_[2]
+                                    
+                                                self.final_value = f"{bm.init.bold}{input( s1 )}" 
+                                                self.final_value = bm.remove_ansi_chars().chars( self.final_value )
+                                                if s2 is None:
+                                                    if s3 is False: pass 
+                                                    else: 
+                                                        if len(self.final_value) == 1: pass 
+                                                        else: self.error = er.ERRORS( self.line ).ERROR39( func=func)
                                                 else: 
-                                                    if len(self.final_value) == 1: pass 
-                                                    else: self.error = er.ERRORS( self.line ).ERROR39( func=func)
-                                            else: 
-                                                if s3 is False: self.final_value = self.final_value.split(s2)
-                                                else:
-                                                    if len(self.final_value) == 1: pass 
-                                                    else: self.error = er.ERRORS( self.line ).ERROR39( func=func)
+                                                    if s3 is False: self.final_value = self.final_value.split(s2)
+                                                    else:
+                                                        if len(self.final_value) == 1: pass 
+                                                        else: self.error = er.ERRORS( self.line ).ERROR39( func=func)
                                         elif function in [ '__open__'  ]    :
                                             self._open_  = self._value_[ 'open']
                                             self._open_, self.error = oc.OPEN_CHECK( self._open_, self.data_base, self.line ).CHECK()
                                             
                                             if self.error is None:
                                                 self.final_value, self.error = Open.Open(self.data_base, self.line).Open(self._open_)
+                                            else: pass
+                                        elif function in [ '__rand__'  ]    :
+                                            if self._value_[-1]  == 'randn':
+                                                func = bm.fg.rbg(0, 255, 0   )+' in randn( ).' + bm.init.reset 
+                                                if self._value_[1] is not None:
+                                                    if self._value_[0] > 0:
+                                                        if self._value_[1] > 0:
+                                                            self.final_value = np.random.randn(
+                                                                np.abs(self._value_[0]), 
+                                                                np.abs(self._value_[1]) )
+                                                        else: self.error = er.ERRORS( self.line ).ERROR51( string='col', func=func )
+                                                    else: self.error = er.ERRORS( self.line ).ERROR51( string='row', func=func )
+                                                else:
+                                                    if self._value_[0] > 0:
+                                                        self.final_value = np.random.randn(
+                                                            np.abs(self._value_[0]))
+                                                    else: self.error = er.ERRORS( self.line ).ERROR51( string='row', func=func )
+                                            elif self._value_[-1]  == 'rands':
+                                                func = bm.fg.rbg(0, 255, 0   )+' in rands( ).' + bm.init.reset 
+                                                if self._value_[0] < self._value_[1]:
+                                                    if self._value_[1] > 0:
+                                                        if self._value_[2] > 0:
+                                                            self.final_value = np.linspace( 
+                                                                self._value_[0],  self._value_[1],  self._value_[2])
+                                                        else: self.error = er.ERRORS( self.line ).ERROR51( string='num', func=func )
+                                                    else: self.error = er.ERRORS( self.line ).ERROR51( string='Stop', func=func )
+                                                else: self.error = er.ERRORS( self.line ).ERROR52( func=func )
                                             else: pass
                                     else: self.error = er.ERRORS( self.line ).ERROR3( self.value )
                                 else: self.error = self.error
@@ -533,6 +592,7 @@ class C_F_I_S:
                                         self.final_value = random.randint( self.__value__[ 0 ], self.__value__[ 1 ] )
                                     elif self.__type__ == 'norm':
                                         self.final_value = random.random()
+                                    else:pass
                                 elif function == '__maths__'    :
                                     self.final_value, self.error = Trigo.Maths( self.line).Maths( self._values_)
                                 elif function == '__scan__'     :

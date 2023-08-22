@@ -309,7 +309,8 @@ class words:
                 else: self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['initialize', 'integer', 'dictionary', 'set', 'get','min', 'max', 'scan', 'floor', 'License', 'help', 'fopen'
                                     'object', 'settings', 'print', 'boolean', 'complex', 'any', 'GetLine', 'ansi', 'rand', 'length', 'type', 
-                                    'anonymous', 'prompt', 'sget', 'lambda']:
+                                    'anonymous', 'prompt', 'sget', 'lambda', 'abs', 'GetFuncNames', 'GetClassNames', 'sum', 'prod', 'pow',
+                                    'randn', 'rands']:
                 if self.count % 2 == 0: self.newString += self.b+fg.rbg(25,165,200) + self.string + init.reset
                 else: self.newString += self.b+self.color + self.string + init.reset
             elif    self.string in ['->', '==', '!=', '>=', '<=']:

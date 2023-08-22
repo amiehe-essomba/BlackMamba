@@ -18,6 +18,7 @@ class R:
         self.master_inv = None
         self.master_v   = []
 
+        if np.array(self.master).shape == (len(self.master),) : self.master = [self.master]
         if   self._value_[4] in ['sum']:
             if self._value_[5] is None:
                 for x, _value_ in enumerate(self.master):

@@ -263,7 +263,8 @@ class ASSEMBLY( ):
                 # running def
                 if   self.data_base[ 'current_func' ]  is not None:
                     self.error = WD.EXTERNAL_DEF_WINDOWS(data_base=self.data_base, 
-                                        line=self.line, term=term).TERMINAL(tabulation=1, c=bm.fg.rbg(255,255,255) )
+                                        line=self.line, term=term).TERMINAL(tabulation=1, 
+                                        c=bm.fg.rbg(255,255,255), callbacks=callbacks )
                     if self.error is None: pass
                     else: pass
                 # runnnig classes

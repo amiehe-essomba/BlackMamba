@@ -15,7 +15,7 @@ class ARITHMETICS:
                                np.complex64, np.complex128, np.complex64
                                ]
         
-        self.type2          = [type( list() ), type( tuple() )]
+        self.type2          = [type( list() )]
         self.type3          = [type( str() )]
         self.type4          = [type(np.array([1]))]
 
@@ -27,11 +27,11 @@ class ARITHMETICS:
         self.get_type2      = type( object2 )
         self.result         = None
 
-        if self.get_type1 in self.type1 and self.get_type2 in self.type1                    :                                             
+        if   self.get_type1 in self.type1 and self.get_type2 in self.type1                  :                                             
             self.result = object1 + object2
         elif self.get_type1 in self.type3 and self.get_type2 in self.type3                  : 
             self.result = object1 + object2
-        elif self.get_type1 in self.type1 and self.get_type2 in [type( list() )]            :                                                    
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type2                  :                                                    
             if self.get_type1 == type(float() ):
                 self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).AddListFloat( object1 )
             elif self.get_type1 == type( int() ):
@@ -40,7 +40,7 @@ class ARITHMETICS:
                 self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).AddListCPLX( object1 )
             elif self.get_type1 == type( bool() ):
                 self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).AddListBool( object1 )           
-        elif self.get_type1 in [type( list() )] and self.get_type2 in self.type1            :                                            
+        elif self.get_type1 in self.type2 and self.get_type2 in self.type1                  :                                            
             if self.get_type2 == type(float() ):
                 self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).AddListFloat( object2 )
             elif self.get_type2 == type( int() ):
@@ -49,23 +49,21 @@ class ARITHMETICS:
                 self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).AddListCPLX( object2 )
             elif self.get_type2 == type( bool() ):
                 self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).AddListBool( object2 )
-        elif self.get_type1 in [type( list() )] and self.get_type2 in [type( list() )]      :                                 
+        elif self.get_type1 in self.type2 and self.get_type2 in self.type2                  :                                 
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).AddListList( object2[ : ] )
-        elif self.get_type1 in [type(tuple())] and self.get_type2 in [type(tuple())]        :                                   
-            self.result, self.error = ma.Arithmetic( list( object1[ : ] ), self.line ).AddListList( list( object2[ : ] ), ob_type = 'tuple' )
-        elif self.get_type1 in self.type3 and self.get_type2 in [type( list() )]            :    
+        elif self.get_type1 in self.type3 and self.get_type2 in self.type2                  :    
             self.result, self.error = ma.Arithmetic( object2[ : ], self.line ).AddListString( object1, inv = True )
-        elif self.get_type1 in [type( list() )] and self.get_type2 in self.type3            :                                             
+        elif self.get_type1 in self.type2 and self.get_type2 in self.type3                  :                                             
             self.result, self.error = ma.Arithmetic( object1[ : ], self.line ).AddListString( object2, inv=False )
-        elif self.get_type1 in self.type4 and self.get_type2 in self.type4:
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type4                  :
             try:
                 self.result = object1 + object2
             except : self.error = ERROR( self.line ).ERROR6(  )
-        elif self.get_type1 in self.type1 and self.get_type2 in self.type4:
+        elif self.get_type1 in self.type1 and self.get_type2 in self.type4                  :
             try:
                 self.result = object1 + object2
             except : self.error = ERROR( self.line ).ERROR6(  )
-        elif self.get_type1 in self.type4 and self.get_type2 in self.type1:
+        elif self.get_type1 in self.type4 and self.get_type2 in self.type1                  :
             try:
                 self.result = object1 + object2
             except : self.error = ERROR( self.line ).ERROR6(  )

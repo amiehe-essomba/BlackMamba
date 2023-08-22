@@ -59,6 +59,7 @@ class INTERNAL_BLOCKS:
         self.badFunctions       = ['elif', 'else', 'except', 'finally', 'case', 'default', 'func', 'class']
         self.err                = '{} / {}class {}{}( )'.format(bm.fg.white_L, bm.fg.red_L, bm.fg.blue_L,
                                                  class_name) + bm.init.reset
+        
         try:
             self.string, self.error = self.control.DELETE_SPACE(self.string)
             self.normal_string, self.error = self.control.DELETE_SPACE(self.normal_string)

@@ -1,6 +1,8 @@
 from colorama 			    			import Fore, Style
 from CythonModules.Windows 				import fileError as fe 
 from script.STDIN.LinuxSTDIN 	        import bm_configure as bm
+import numpy as 						np
+from CythonModules.Windows          	import array_to_list        as atl
 
 cdef DIFF( str string1, str string2 ):
 	cdef :
@@ -43,48 +45,56 @@ cdef class Arithmetic:
 	
 	def __init__(self, listOfValue, line = 0 ) : 
 		self.listOfValue		= listOfValue
-		self.line			= line
+		self.line				= line
 
 	
 	cpdef AddListFloat( self , float  Index, str ob_type = 'list')						:
-		
+		cdef :
+			dict new = {"s" : None}
 		error	= ''
 
 		if self.listOfValue:
-			for i in range( len( self.listOfValue ) ):
-				try:
-					self.listOfValue[ i ] 	+= Index
-				except TypeError:
-					error = ERRORS( self.line ).ERROR1(self.listOfValue[ i ], Index )
-					break
-				else: pass
+			try:
+				new['s'] = np.array(self.listOfValue) + Index
+			except TypeError:
+				for i in range( len( self.listOfValue ) ):
+					try:
+						self.listOfValue[ i ] 	+= Index
+					except TypeError:
+						error = ERRORS( self.line ).ERROR1(self.listOfValue[ i ], Index )
+						break
+					else: pass
 		else: error = ERRORS( self.line ).ERROR3( ob_type )
 		
 		if not error: 
 			error = None
-			if ob_type == 'list' : return  self.listOfValue[ : ], error 
+			if ob_type == 'list' : return  new['s'], error
 			else: return  tuple( self.listOfValue[ : ] ), error
 
 		else: return  None, error 
 
 
 	cpdef AddListInt ( self, int Index , str ob_type = 'list')							:
-
+		cdef :
+			dict new = {"s" : None}
 		error	= ''
 
 		if self.listOfValue:
-			for i in range( len( self.listOfValue ) ):
-				try:
-					self.listOfValue[ i ] 	+= Index
-				except TypeError:
-					error = ERRORS( self.line ).ERROR1( self.listOfValue[ i ], Index )
-					break
-				else: pass
+			try:
+				new['s'] = np.array(self.listOfValue) + Index
+			except TypeError:
+				for i in range( len( self.listOfValue ) ):
+					try:
+						self.listOfValue[ i ] 	+= Index
+					except TypeError:
+						error = ERRORS( self.line ).ERROR1(self.listOfValue[ i ], Index )
+						break
+					else: pass
 		else: error = ERRORS( self.line ).ERROR3( ob_type )
 		
 		if not error: 
 			error = None
-			if ob_type == 'list' : return  self.listOfValue[ : ], error 
+			if ob_type == 'list' : return  new['s'], error 
 			else: return  tuple( self.listOfValue[ : ] ), error
 
 		else: return  None, error 

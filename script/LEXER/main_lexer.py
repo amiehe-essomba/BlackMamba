@@ -324,7 +324,7 @@ class FINAL_LEXER:
 
                             elif self.new_function[ 0 ] in [ '_int_', '_float_', '_complex_', '_string_', '_length_',
                                                 '_boolean_', '_list_', '_tuple_', '_dictionary_', '_sqrt_', '_sum_',
-                                                '_rang_', '__ansii__', '__show__', '__rand__', '_get_line_', '_mean_',
+                                                '_rang_', '__ansii__', '__show__', '__rand__', '_get_line_', '_mean_', '_abs_',
                                                 '__scan__','_max_', '_min_', '_var_', '_std_','__open__', '__maths__', '__prompt__' ]:
                                 self.get_values, self.error = transformation.C_F_I_S( self.new_data[ 0 ], self.data_base,
                                                                     self.line ).FUNCTION(self.new_function[ 0 ] )

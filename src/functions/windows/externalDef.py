@@ -29,6 +29,7 @@ from src.functions                                      import error            
 from functions                                          import internalDef          as ID
 from statement.comment                                  import externalCmt
 from src.functions.windows                              import subWindowsDef        as SWD
+from src.functions.windows                              import windowsDef           as WD
 from script                                             import control_string
 from script.PARXER.PARXER_FUNCTIONS._FOR_.UNLESS        import WindowsUnless        as wU
 from script.PARXER.PARXER_FUNCTIONS._FOR_.SWITCH.WINDOWS    import WindowsSwitch    as WSw
@@ -71,7 +72,8 @@ class EXTERNAL_DEF:
             c           : str   = '',           # color inside def
             function    : str   = 'def',        # function type
             _type_      : str   = 'def',        # type 
-            term        : str   = ''
+            term        : str   = '',
+            callbacks   : dict  = {}
             ):
         
         #########################################################
@@ -237,7 +239,7 @@ class EXTERNAL_DEF:
                                     self.space = 0
                                     self.def_starage.append( ( self.value, True ) )                                           
                                 # functions
-                                elif self.get_block == 'def:'   :
+                                elif self.get_block == 'deff:'   :
                                     self.store_value.append( self.normal_string )
                                     
                                     # data base initialization
@@ -246,8 +248,10 @@ class EXTERNAL_DEF:
                                     self.lexer, _, self.error = main.MAIN(self.value, self.db, self.line).MAIN( _type_ = 'def' )
                                     if self.error is None:
                                         # calling the sub-function 
-                                        self.error = SWD.INTERNAL_DEF_WINDOWS(data_base=self.db, line=self.line,term=term).TERMINAL( tabulation=self.tabulation+1, 
-                                                class_name=class_name, class_key=class_key, function=function, _type_=_type_, c=c)
+                                        self.error = SWD.INTERNAL_DEF_WINDOWS(data_base=self.db, line=self.line,
+                                                term=term).TERMINAL( tabulation=self.tabulation+1, 
+                                                class_name=class_name, class_key=class_key, function=function, 
+                                                _type_=_type_, c=c)
                                                                                                                     
                                         if self.error is None: 
                                             self.history.append( 'def' )

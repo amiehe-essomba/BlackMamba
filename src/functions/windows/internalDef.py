@@ -66,7 +66,8 @@ class INTERNAL_DEF:
             c           : str   = '',           # color inside def
             function    : str   = 'def',        # function type
             _type_      : str   = 'def',        # type
-            term        : str   = '' 
+            term        : str   = '',
+            callbacks   : dict  = {}
             ):
 
         #########################################################
